@@ -67,7 +67,7 @@ class ProductController extends Controller
         //
     }
 
-    // IMPORT
+    // IMPORT PRODUCTS
     public function import() 
     {
         Excel::import(new ProductsImport, 'product.csv');

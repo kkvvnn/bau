@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
+            $table->string('Collection_Id')->nullable();
+            $table->string('Collection_Name')->nullable();
+            $table->text('Interior_Pic')->nullable();
             $table->timestamps();
         });
     }

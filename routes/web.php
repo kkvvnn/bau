@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CollectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/import_from_csv', [ProductController::class, 'import']);
+Route::get('/import_product_from_csv', [ProductController::class, 'import']) -> name('import_product_from_csv');
+Route::get('/import_collection_from_csv', [CollectionController::class, 'import']) -> name('import_collection_from_csv');;

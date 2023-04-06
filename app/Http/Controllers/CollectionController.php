@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CollectionsImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Models\Collection;
 use App\Http\Requests\StoreCollectionRequest;
 use App\Http\Requests\UpdateCollectionRequest;
@@ -62,5 +65,13 @@ class CollectionController extends Controller
     public function destroy(Collection $collection)
     {
         //
+    }
+
+    // IMPORT COLLECTIONS
+    public function import() 
+    {
+        Excel::import(new CollectionsImport, 'collection.csv');
+        
+        return redirect('/')->with('success', 'All good!');
     }
 }
