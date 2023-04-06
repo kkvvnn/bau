@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\ProductsImport;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Collection;
+use App\Http\Requests\StoreCollectionRequest;
+use App\Http\Requests\UpdateCollectionRequest;
 
-use App\Models\Product;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
-
-class ProductController extends Controller
+class CollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,7 +27,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreCollectionRequest $request)
     {
         //
     }
@@ -38,7 +35,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Collection $collection)
     {
         //
     }
@@ -46,7 +43,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Collection $collection)
     {
         //
     }
@@ -54,7 +51,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateCollectionRequest $request, Collection $collection)
     {
         //
     }
@@ -62,16 +59,8 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Collection $collection)
     {
         //
-    }
-
-    // IMPORT
-    public function import() 
-    {
-        Excel::import(new ProductsImport, 'product.csv');
-        
-        return redirect('/')->with('success', 'All good!');
     }
 }
