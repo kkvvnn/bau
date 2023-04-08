@@ -16,8 +16,8 @@ class Controller extends BaseController
     public function down($id = 1)
     {
 //        $products = Product::all();
-        $product = Product::find($id);
-        $deleted = Product::where('Picture', null)->delete();
+        $product = Product::findOrFail($id);
+        
 
         // $i = 1;
         // foreach ($products as $product) {
@@ -26,8 +26,8 @@ class Controller extends BaseController
         //     echo "<br>";
         // }
 
-        $string = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
-        $name_file = Str::remove($string, $product->Picture);
+        $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
+        $name_file = Str::remove($string_for_delete, $product->Picture);
 
 //        $name_file = 'c8b0ef73-19ed-11e3-a4c8-005056ad2cf4___0002.jpg';
 
@@ -43,5 +43,10 @@ class Controller extends BaseController
             'url' => $url,
             'product' => $product,
         ]);
+    }
+
+    public function index2($id = 1)
+    {
+        return $this->down($id);
     }
 }

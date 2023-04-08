@@ -73,7 +73,10 @@ class ProductController extends Controller
     // IMPORT PRODUCTS
     public function import() 
     {
+        Product::truncate();    // clear all data in table
+
         Excel::import(new ProductsImport, 'product.csv');
+        $deleted = Product::where('Picture', null)->delete();
         
         return redirect('/')->with('success', 'All good!');
     }

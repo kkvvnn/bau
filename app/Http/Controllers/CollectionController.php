@@ -70,6 +70,8 @@ class CollectionController extends Controller
     // IMPORT COLLECTIONS
     public function import() 
     {
+        Collection::truncate();    // clear all data in table
+
         Excel::import(new CollectionsImport, 'collection.csv');
         
         return redirect('/')->with('success', 'All good!');

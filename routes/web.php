@@ -26,3 +26,4 @@ Route::get('/import_collection_from_csv', [CollectionController::class, 'import'
 Route::get('/product_index', [ProductController::class, 'index']) -> name('product_index');
 
 Route::get('/ddooww/{id?}', [Controller::class, 'down']);
+Route::get('/index/{id?}', [Controller::class, 'index2']);
