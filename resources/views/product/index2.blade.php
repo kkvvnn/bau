@@ -215,9 +215,20 @@
             Storage::disk('public')->put($name_file, $file);
         }
       
-        $name_file = 'small_img/' . $name_file;
+        // $name_file = 'small_img/' . $name_file;
       
-        $url = Storage::url($name_file); 
+        
+      
+        $url = Storage::url('small_img/' . $name_file); 
+        // $url = Storage::url($name_file); 
+
+        // use Illuminate\Support\Str;
+ 
+        $url = Str::swap([
+            '.jpeg' => '.jpg',
+            '.png' => '.jpg',
+            // 'great' => 'fantastic',
+        ], $url);
       ?>
 
       <div class="col">
