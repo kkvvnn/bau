@@ -215,6 +215,7 @@
             Storage::disk('public')->put($name_file, $file);
         }
       
+        $name_file = 'small_img/' . $name_file;
       
         $url = Storage::url($name_file); 
       ?>
