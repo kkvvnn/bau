@@ -16,8 +16,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('product.index', [
+        // $products = Product::all();
+        // $users = User::where('votes', '>', 100)->paginate(15);
+       
+        // $products = Product::where([ 
+        //         ['Lenght', 120], 
+        //         ['Height', 60],
+        //     ])->paginate(6);
+
+        $products = Product::paginate(15);
+
+        return view('product.index2', [
             'products' => $products
         ]);
     }

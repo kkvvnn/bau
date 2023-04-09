@@ -37,12 +37,12 @@ class Controller extends BaseController
         }
 
 
-        $url = Storage::url($name_file);
+        return  Storage::url($name_file);
 
-        return view('aaa', [
-            'url' => $url,
-            'product' => $product,
-        ]);
+        // return view('aaa', [
+        //     'url' => $url,
+        //     'product' => $product,
+        // ]);
     }
 
     public function index2($id = 1)
