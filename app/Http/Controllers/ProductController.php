@@ -6,6 +6,7 @@ use App\Imports\ProductsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
@@ -16,7 +17,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($products)
+    public function index($products, $type)
     {
         // $products = Product::all();
         // $users = User::where('votes', '>', 100)->paginate(15);
@@ -34,6 +35,8 @@ class ProductController extends Controller
 
     public function index_keramogranit()
     {
+        $type = 'keramogranit';
+
         $products = Product::where([ 
                 ['Name', 'LIKE', '%керамогранит%'],
                 ['Category', 'LIKE', '%керамогранит%'],
@@ -41,11 +44,13 @@ class ProductController extends Controller
                 // ['Height', 80],
             ])->paginate(15);
         
-            return $this->index($products);
+            return $this->index($products, $type);
     }
 
     public function index_plitka()
     {
+        $type = 'plitka';
+
         $products = Product::where([ 
                 ['Name', 'LIKE', '%плитка%'],
                 ['Category', 'LIKE', '%плитка%'],
@@ -53,11 +58,13 @@ class ProductController extends Controller
                 // ['Height', 80],
             ])->paginate(15);
         
-            return $this->index($products);
+            return $this->index($products, $type);
     }
 
     public function index_mosaic()
     {
+        $type = 'mosaic';
+
         $products = Product::where([ 
                 ['Name', 'LIKE', '%мозаика%'],
                 ['Category', 'LIKE', '%мозаика%'],
@@ -65,11 +72,13 @@ class ProductController extends Controller
                 // ['Height', 80],
             ])->paginate(15);
         
-            return $this->index($products);
+            return $this->index($products, $type);
     }
 
     public function index_decor()
     {
+        $type = 'decor';
+
         $products = Product::where([ 
                 ['Name', 'LIKE', '%декор%'],
                 // ['Category', 'LIKE', '%мозаика%'],
@@ -77,13 +86,32 @@ class ProductController extends Controller
                 // ['Height', 80],
             ])->paginate(15);
         
-            return $this->index($products);
+            return $this->index($products, $type);
     }
 
     public function index_all()
     {
+        $type = 'all';
+
         $products = Product::paginate(15);
-        return $this->index($products);
+        return $this->index($products, $type);
+    }
+
+    public function search(Request $request)
+    {
+        $type = 'search';
+
+        $name = $request->input('name');
+        $name = '%' . $name . '%';
+
+        $products = Product::where([ 
+                ['Name', 'LIKE', $name],
+                // ['Category', 'LIKE', '%мозаика%'],
+                // ['Lenght', 80], 
+                // ['Height', 80],
+            ])->paginate(15);
+        
+            return $this->index($products, $type);
     }
 
     /**

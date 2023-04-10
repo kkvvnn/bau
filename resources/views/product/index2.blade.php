@@ -156,6 +156,10 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
+        <form class="d-flex mt-3" role="search" action="{{route('search')}}">
+          <input class="form-control me-2" type="search" name="name" placeholder="поиск" aria-label="Search">
+          <button class="btn btn-success" type="submit">Найти</button>
+        </form>
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('index_keramogranit')}}">Керамогранит</a>
@@ -183,10 +187,7 @@
             </ul>
           </li> -->
         </ul>
-        <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="поиск" aria-label="Search">
-          <button class="btn btn-success" type="submit">Найти</button>
-        </form>
+        
       </div>
     </div>
   </div>

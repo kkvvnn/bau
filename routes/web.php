@@ -28,6 +28,7 @@ Route::get('/keramogranit_index', [ProductController::class, 'index_keramogranit
 Route::get('/plitka_index', [ProductController::class, 'index_plitka']) -> name('index_plitka');
 Route::get('/mosaic_index', [ProductController::class, 'index_mosaic']) -> name('index_mosaic');
 Route::get('/decor_index', [ProductController::class, 'index_decor']) -> name('index_decor');
+Route::get('/search', [ProductController::class, 'search']) -> name('search');
 
 Route::get('/product/{id?}', [ProductController::class, 'show']) -> name('show');
 

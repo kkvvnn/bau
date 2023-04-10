@@ -215,37 +215,62 @@
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
 <div><p></p></div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <!-- <div class="row row-cols-1 row-cols-md-3 g-4"> -->
 
         
     
       
       
 
-      <div class="col">
-            <div class="card h-100">
-            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+      <!-- <div class="col"> -->
+            <!-- <div class="card h-100">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
             
             
-            <img src="{{$url}}" class="card-img-top" alt="...">
+            <!-- <img src="{{$url}}" class="mg-fluid" alt="..."> -->
             
-            <div class="card-body">
-                <h5 class="card-title">{{$product->Name}}</h5>
-                <p class="card-text"></p>
-            </div>
-            <div class="card-footer">
-                <small class="text-body-secondary">{{$product->RMPrice}} р</small>
-            </div>
+            
             
 
-          </div>
-        </div>
+          
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+    <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" alt="...">
+    </div>
+    <div class="col">
+      <h2>{{$product->Name}}</h2>
+    </div>
+  </div>
+</div>
+    
 
-       
-        
+
+
+
+<!-- Модальное окно -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+      <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+
+        
+      </div>
+    </div>
+ 
  
 </main>
 
