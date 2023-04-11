@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Collection;
+use App\Models\CollectionProduct;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -49,4 +51,26 @@ class Controller extends BaseController
     {
         return $this->down($id);
     }
+
+    public function many()
+    {
+        // CollectionProduct::truncate();
+        // set_time_limit(600);
+
+        // $products = Product::all();
+       
+        // $collections = Collection::all();
+
+        // foreach ($products as $product) {
+        //     foreach($collections as $collection) {
+        //         if (Str::contains($product->Collection_Id, $collection->Collection_Id))
+        //         $product->collections()->attach($collection);
+        //     }
+        // }
+
+        // $product = Product::find(49);
+        // dd($product->collections);
+    }
 }
+
+

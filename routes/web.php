@@ -16,21 +16,29 @@ use App\Http\Controllers\Controller;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
 Route::get('/import_product_from_csv', [ProductController::class, 'import']) -> name('import_product_from_csv');
 Route::get('/import_collection_from_csv', [CollectionController::class, 'import']) -> name('import_collection_from_csv');
 
-Route::get('/product_index', [ProductController::class, 'index_all']) -> name('product_index');
+Route::get('/', [ProductController::class, 'index_all']) -> name('product_index');
 Route::get('/keramogranit_index', [ProductController::class, 'index_keramogranit']) -> name('index_keramogranit');
 Route::get('/plitka_index', [ProductController::class, 'index_plitka']) -> name('index_plitka');
 Route::get('/mosaic_index', [ProductController::class, 'index_mosaic']) -> name('index_mosaic');
 Route::get('/decor_index', [ProductController::class, 'index_decor']) -> name('index_decor');
 Route::get('/search', [ProductController::class, 'search']) -> name('search');
 
+Route::get('/collection/{name}', [ProductController::class, 'collection_name']);
+
 Route::get('/product/{id?}', [ProductController::class, 'show']) -> name('show');
 
 Route::get('/ddooww/{id?}', [Controller::class, 'down'])->name('img_url');
 Route::get('/index/{id?}', [Controller::class, 'index2']);
+
+
+Route::get('/many', [Controller::class, 'many'])->name('many');
+
+Route::get('/index_collection', [CollectionController::class, 'index']) -> name('index_collection');
+

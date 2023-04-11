@@ -156,6 +156,10 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
+      <form class="d-flex mt-3" role="search" action="{{route('search')}}">
+          <input class="form-control me-2" type="search" name="name" placeholder="поиск" aria-label="Search">
+          <button class="btn btn-success" type="submit">Найти</button>
+        </form>
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('index_keramogranit')}}">Керамогранит</a>
@@ -168,6 +172,13 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('index_decor')}}">Декор</a>
+          </li>
+          <hr>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('index_collection')}}">По названию коллекции</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="">По размеру</a>
           </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -183,10 +194,7 @@
             </ul>
           </li> -->
         </ul>
-        <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="поиск" aria-label="Search">
-          <button class="btn btn-success" type="submit">Найти</button>
-        </form>
+        
       </div>
     </div>
   </div>
@@ -240,6 +248,16 @@
     </div>
     <div class="col">
       <h2>{{$product->Name}}</h2>
+    <hr>
+      <!-- <p>Коллекция: {{$collection[0]->Collection_Name}}, {{($collection[1]->Collection_Name)??null}}</p> -->
+      <h4>Коллекция: 
+        @foreach ($collection as $one_collection)
+          {{$one_collection->Collection_Name}}. 
+        @endforeach
+      </h4>
+      <h5>
+        Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}
+      </h5>
     </div>
   </div>
 </div>
@@ -254,7 +272,7 @@
     <div class="modal-content">
       
       <div class="modal-body">
-      <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
+      <img src="{{$url}}" class="img-fluid" alt="...">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>

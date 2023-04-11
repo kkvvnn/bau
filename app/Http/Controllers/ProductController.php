@@ -42,7 +42,7 @@ class ProductController extends Controller
                 ['Category', 'LIKE', '%керамогранит%'],
                 // ['Lenght', 80], 
                 // ['Height', 80],
-            ])->paginate(15);
+            ])->orderByDesc('Height')->paginate(15);
         
             return $this->index($products, $type);
     }
@@ -56,7 +56,7 @@ class ProductController extends Controller
                 ['Category', 'LIKE', '%плитка%'],
                 // ['Lenght', 80], 
                 // ['Height', 80],
-            ])->paginate(15);
+            ])->orderByDesc('Height')->paginate(15);
         
             return $this->index($products, $type);
     }
@@ -70,7 +70,7 @@ class ProductController extends Controller
                 ['Category', 'LIKE', '%мозаика%'],
                 // ['Lenght', 80], 
                 // ['Height', 80],
-            ])->paginate(15);
+            ])->orderByDesc('Height')->paginate(15);
         
             return $this->index($products, $type);
     }
@@ -84,7 +84,7 @@ class ProductController extends Controller
                 // ['Category', 'LIKE', '%мозаика%'],
                 // ['Lenght', 80], 
                 // ['Height', 80],
-            ])->paginate(15);
+            ])->orderByDesc('Height')->paginate(15);
         
             return $this->index($products, $type);
     }
@@ -93,7 +93,7 @@ class ProductController extends Controller
     {
         $type = 'all';
 
-        $products = Product::paginate(15);
+        $products = Product::orderByDesc('Height')->paginate(15);
         return $this->index($products, $type);
     }
 
@@ -109,7 +109,7 @@ class ProductController extends Controller
                 // ['Category', 'LIKE', '%мозаика%'],
                 // ['Lenght', 80], 
                 // ['Height', 80],
-            ])->paginate(15);
+            ])->orderByDesc('Height')->paginate(15);
         
             return $this->index($products, $type);
     }
@@ -130,12 +130,27 @@ class ProductController extends Controller
         //
     }
 
+    public function collection_name($id)
+    {
+        $type = 'collection_name';
+
+        $products = Product::where([ 
+                ['Collection_Id', 'LIKE', $id],
+                // ['Category', 'LIKE', '%керамогранит%'],
+                // ['Lenght', 80], 
+                // ['Height', 80],
+            ])->orderByDesc('Height')->paginate(15);
+        
+            return $this->index($products, $type);
+    }
+
     /**
      * Display the specified resource.
      */
     public function show($id = 1)
     {
         $product = Product::findOrFail($id);
+        $collection = $product->collections;
 
         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
         $name_file = Str::remove($string_for_delete, $product->Picture);
@@ -144,6 +159,7 @@ class ProductController extends Controller
         return view('product.show', [
             'product' => $product,
             'url' => $url,
+            'collection' => $collection,
         ]);
     }
 
@@ -174,7 +190,7 @@ class ProductController extends Controller
     // IMPORT PRODUCTS
     public function import() 
     {
-        Product::truncate();    // clear all data in table   
+        // Product::truncate();    // clear all data in table   
 
         Excel::import(new ProductsImport, 'product.csv');
         $deleted = Product::where('Picture', null)->delete();

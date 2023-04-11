@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Imports\CollectionsImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Arr;
 
 use App\Models\Collection;
+use App\Models\Product;
 use App\Http\Requests\StoreCollectionRequest;
 use App\Http\Requests\UpdateCollectionRequest;
 
@@ -16,7 +18,21 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        foreach ($products as $product) {
+            // $collects[] = $product->collections[0]->Collection_Name;
+            $collects[] = $product->collections[0]->Collection_Name . $product->collections[0]->Collection_Id;
+        }
+
+        // dd($collects);
+        $collects = array_unique($collects);
+        $collects = Arr::sort($collects);
+        
+
+        return view('collection.index', [
+            'collects' => $collects,
+        ]);
     }
 
     /**
@@ -70,7 +86,7 @@ class CollectionController extends Controller
     // IMPORT COLLECTIONS
     public function import() 
     {
-        Collection::truncate();    // clear all data in table
+        // Collection::truncate();    // clear all data in table
 
         Excel::import(new CollectionsImport, 'collection.csv');
         

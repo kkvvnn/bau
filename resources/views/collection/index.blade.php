@@ -146,7 +146,7 @@
 <nav class="navbar navbar-dark bg-dark bg-gradient fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{route('product_index')}}">На главную</a>
-   
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -156,10 +156,6 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <form class="d-flex mt-3" role="search" action="{{route('search')}}">
-          <input class="form-control me-2" type="search" name="name" placeholder="поиск" aria-label="Search">
-          <button class="btn btn-success" type="submit">Найти</button>
-        </form>
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('index_keramogranit')}}">Керамогранит</a>
@@ -177,9 +173,6 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('index_collection')}}">По названию коллекции</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="">По размеру</a>
-          </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Название2
@@ -194,7 +187,10 @@
             </ul>
           </li> -->
         </ul>
-        
+        <form class="d-flex mt-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="поиск" aria-label="Search">
+          <button class="btn btn-success" type="submit">Найти</button>
+        </form>
       </div>
     </div>
   </div>
@@ -203,19 +199,7 @@
 
 <main>
 
-  <!-- <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
-      </div>
-    </div>
-  </section> -->
-
+ 
 
 
 
@@ -223,63 +207,31 @@
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
 <div><p></p></div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        
-      @foreach($products as $product)
-      
-      <?php
-      $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
-        $name_file = Str::remove($string_for_delete, $product->Picture);
-      
-      //        $name_file = 'c8b0ef73-19ed-11e3-a4c8-005056ad2cf4___0002.jpg';
-      
-        if (Storage::disk('public')->missing($name_file)) {
-            $file = Storage::disk('ftp')->get($name_file);
-            Storage::disk('public')->put($name_file, $file);
-        }
-      
-        // $name_file = 'small_img/' . $name_file;
-      
-        
-      
-        $url = Storage::url($name_file); 
-        $url_small = Storage::url('small_img/' . $name_file);
-        // $url = Storage::url($name_file); 
-
-        // use Illuminate\Support\Str;
- 
-        $url_small = Str::swap([
-            '.jpeg' => '.jpg',
-            '.png' => '.jpg',
-            // 'great' => 'fantastic',
-        ], $url_small);
-      ?>
-
-      <div class="col">
-            <div class="card h-100">
-            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-            <a href="/product/{{$product->id}}">
-            <!-- <img src="{{$url_small}}" class="card-img-top shadow" alt="..."> -->
-            <img src="{{$url_small}}" class="card-img-top" alt="...">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">{{$product->Name}}</h5>
-                <p class="card-text"></p>
-            </div>
-            <div class="card-footer">
-                <small class="text-body-secondary">{{$product->RMPrice}} ₽/{{$product->MainUnit}}</small>
-            </div>
+          
+            
             
 
-          </div>
-        </div>
+          
 
-        @endforeach
+    
+<div class="container">
+  <div class="row row-cols-3">
+    @foreach ($collects as $collect)  
+        <div class="col">
+    
+        <a href="collection/{{substr($collect, -9)}}" class="link-dark text-decoration-none text-reset">{{substr($collect, 0, -9)}}</a>
+        <hr>
         
+        </div>
+    @endforeach
+  </div>
+</div>
+
+       
       </div>
     </div>
-  </div>
-  {{ $products->links() }}
+ 
+ 
 </main>
 
 <!-- <footer class="text-body-secondary py-5">
