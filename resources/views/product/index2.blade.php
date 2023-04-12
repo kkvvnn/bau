@@ -229,7 +229,7 @@
       
       <?php
       $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
-        $name_file = Str::remove($string_for_delete, $product->Picture);
+      $name_file = Str::remove($string_for_delete, $product->Picture);
       
       //        $name_file = 'c8b0ef73-19ed-11e3-a4c8-005056ad2cf4___0002.jpg';
       

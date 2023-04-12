@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TelegramSendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,6 @@ Route::get('/index/{id?}', [Controller::class, 'index2']);
 Route::get('/many', [Controller::class, 'many'])->name('many');
 
 Route::get('/index_collection', [CollectionController::class, 'index']) -> name('index_collection');
+
+Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send']) -> name('send_to_telegram');
 
