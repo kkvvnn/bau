@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Imports\CollectionsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Collection;
 use App\Models\Product;
@@ -28,7 +29,7 @@ class CollectionController extends Controller
         // dd($collects);
         $collects = array_unique($collects);
         $collects = Arr::sort($collects);
-        
+
 
         return view('collection.index', [
             'collects' => $collects,
@@ -84,12 +85,19 @@ class CollectionController extends Controller
     }
 
     // IMPORT COLLECTIONS
-    public function import() 
+    public function import()
     {
-        // Collection::truncate();    // clear all data in table
+        $url = "http://catalog.bauservice.ru/affiliate_new/nCatg0d8.csv";
+        $contents = file_get_contents($url);
+        $contents = mb_convert_encoding($contents, "UTF-8", "WINDOWS-1251");
 
-        Excel::import(new CollectionsImport, 'collection.csv');
-        
+        $date = date("Y-m-d_His");
+        $name = 'import/collections/collection_' . $date . '.csv';
+
+        Storage::put($name, $contents);
+
+        Excel::import(new CollectionsImport, $name);
+
         return redirect('/')->with('success', 'All good!');
     }
 }

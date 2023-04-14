@@ -21,12 +21,12 @@ class ProductController extends Controller
     {
         // $products = Product::all();
         // $users = User::where('votes', '>', 100)->paginate(15);
-       
-        
 
-        
 
-        
+
+
+
+
 
         return view('product.index2', [
             'products' => $products
@@ -37,56 +37,56 @@ class ProductController extends Controller
     {
         $type = 'keramogranit';
 
-        $products = Product::where([ 
-                ['Name', 'LIKE', '%керамогранит%'],
-                ['Category', 'LIKE', '%керамогранит%'],
-                // ['Lenght', 80], 
-                // ['Height', 80],
-            ])->orderByDesc('Height')->paginate(15);
-        
-            return $this->index($products, $type);
+        $products = Product::where([
+            ['Name', 'LIKE', '%керамогранит%'],
+            ['Category', 'LIKE', '%керамогранит%'],
+            // ['Lenght', 80], 
+            // ['Height', 80],
+        ])->orderByDesc('Height')->paginate(15);
+
+        return $this->index($products, $type);
     }
 
     public function index_plitka()
     {
         $type = 'plitka';
 
-        $products = Product::where([ 
-                ['Name', 'LIKE', '%плитка%'],
-                ['Category', 'LIKE', '%плитка%'],
-                // ['Lenght', 80], 
-                // ['Height', 80],
-            ])->orderByDesc('Height')->paginate(15);
-        
-            return $this->index($products, $type);
+        $products = Product::where([
+            ['Name', 'LIKE', '%плитка%'],
+            ['Category', 'LIKE', '%плитка%'],
+            // ['Lenght', 80], 
+            // ['Height', 80],
+        ])->orderByDesc('Height')->paginate(15);
+
+        return $this->index($products, $type);
     }
 
     public function index_mosaic()
     {
         $type = 'mosaic';
 
-        $products = Product::where([ 
-                ['Name', 'LIKE', '%мозаика%'],
-                ['Category', 'LIKE', '%мозаика%'],
-                // ['Lenght', 80], 
-                // ['Height', 80],
-            ])->orderByDesc('Height')->paginate(15);
-        
-            return $this->index($products, $type);
+        $products = Product::where([
+            ['Name', 'LIKE', '%мозаика%'],
+            ['Category', 'LIKE', '%мозаика%'],
+            // ['Lenght', 80], 
+            // ['Height', 80],
+        ])->orderByDesc('Height')->paginate(15);
+
+        return $this->index($products, $type);
     }
 
     public function index_decor()
     {
         $type = 'decor';
 
-        $products = Product::where([ 
-                ['Name', 'LIKE', '%декор%'],
-                // ['Category', 'LIKE', '%мозаика%'],
-                // ['Lenght', 80], 
-                // ['Height', 80],
-            ])->orderByDesc('Height')->paginate(15);
-        
-            return $this->index($products, $type);
+        $products = Product::where([
+            ['Name', 'LIKE', '%декор%'],
+            // ['Category', 'LIKE', '%мозаика%'],
+            // ['Lenght', 80], 
+            // ['Height', 80],
+        ])->orderByDesc('Height')->paginate(15);
+
+        return $this->index($products, $type);
     }
 
     public function index_all()
@@ -104,14 +104,14 @@ class ProductController extends Controller
         $name = $request->input('name');
         $name = '%' . $name . '%';
 
-        $products = Product::where([ 
-                ['Name', 'LIKE', $name],
-                // ['Category', 'LIKE', '%мозаика%'],
-                // ['Lenght', 80], 
-                // ['Height', 80],
-            ])->orderByDesc('Height')->paginate(15);
-        
-            return $this->index($products, $type);
+        $products = Product::where([
+            ['Name', 'LIKE', $name],
+            // ['Category', 'LIKE', '%мозаика%'],
+            // ['Lenght', 80], 
+            // ['Height', 80],
+        ])->orderByDesc('Height')->paginate(15);
+
+        return $this->index($products, $type);
     }
 
     /**
@@ -134,14 +134,14 @@ class ProductController extends Controller
     {
         $type = 'collection_name';
 
-        $products = Product::where([ 
-                ['Collection_Id', 'LIKE', $id],
-                // ['Category', 'LIKE', '%керамогранит%'],
-                // ['Lenght', 80], 
-                // ['Height', 80],
-            ])->orderByDesc('Height')->paginate(15);
-        
-            return $this->index($products, $type);
+        $products = Product::where([
+            ['Collection_Id', 'LIKE', $id],
+            // ['Category', 'LIKE', '%керамогранит%'],
+            // ['Lenght', 80], 
+            // ['Height', 80],
+        ])->orderByDesc('Height')->paginate(15);
+
+        return $this->index($products, $type);
     }
 
     /**
@@ -154,7 +154,7 @@ class ProductController extends Controller
 
         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
         $name_file = Str::remove($string_for_delete, $product->Picture);
-        $url = Storage::url($name_file); 
+        $url = Storage::url($name_file);
 
         return view('product.show', [
             'product' => $product,
@@ -188,13 +188,22 @@ class ProductController extends Controller
     }
 
     // IMPORT PRODUCTS
-    public function import() 
+    public function import()
     {
         // Product::truncate();    // clear all data in table   
 
-        Excel::import(new ProductsImport, 'product.csv');
+        $url = "http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv";
+        $contents = file_get_contents($url);
+        $contents = mb_convert_encoding($contents, "UTF-8", "WINDOWS-1251");
+
+        $date = date("Y-m-d_His");
+        $name = 'import/products/product_' . $date . '.csv';
+
+        Storage::put($name, $contents);
+
+        Excel::import(new ProductsImport, $name);
         $deleted = Product::where('Picture', null)->delete();
-        
+
         return redirect('/')->with('success', 'All good!');
     }
 }

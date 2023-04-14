@@ -41,6 +41,8 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts
         'Lenght' => $row['lenght'],
         'Height' => $row['height'],
         'Thickness' => $row['thickness'],
+        'Width' => $row['width'],
+        'Depth' => $row['depth'],
         'PCS_in_Package' => $row['pcs_in_package'],
         'Package_Value' => $row['package_value'],
         'Package_Weight' => $row['package_weight'],
@@ -49,12 +51,34 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts
         'DesignValue' => $row['designvalue'],
         'Color' => $row['color'],
         'Cover' => $row['cover'],
+        'SpoutHeight' => $row['spoutheight'],
+        'WaterSupply' => $row['watersupply'],
+        'WaterOutlet' => $row['wateroutlet'],
+        'WaterDraining' => $row['waterdraining'],
         'Surface' => $row['surface'],
         'FrostResistance' => $row['frostresistance'],
         'Rectified' => $row['rectified'],
+        'Form' => $row['form'],
+        'Orientation' => $row['orientation'],
+        'TypeOfinstallation' => $row['typeofinstallation'],
+        'Volume' => $row['volume'],
+        'Package_bundle' => $row['package_bundle'],
+        'Warrantysuper' => $row['warrantysuper'],
         'BaseValue' => $row['basevalue'],
         'Architectural_surface' => $row['architectural_surface'],
         'Durability' => $row['durability'],
+        'Rashod' => $row['rashod'],
+        'TempoNanese' => $row['temponanese'],
+        'Propo' => $row['propo'],
+        'Worktime' => $row['worktime'],
+        'SrokGod' => $row['srokgod'],
+        'NormaUp' => $row['normaup'],
+        'Gotovn' => $row['gotovn'],
+        'Adgezon' => $row['adgezon'],
+        'Type' => $row['type'],
+        'Power' => $row['power'],
+        'Voltage' => $row['voltage'],
+        'Vivod' => $row['vivod'],
         'Picture' => $row['picture'],
         'Picture2' => $row['picture2'],
         'Picture3' => $row['picture3'],
@@ -87,6 +111,6 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts
      */
     public function uniqueBy()
     {
-        return 'Name';
+        return 'Element_Code';
     }
 }
