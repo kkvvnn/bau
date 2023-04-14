@@ -31,6 +31,21 @@ class TelegramSendController extends Controller
     public function send($skip, $count)
     {
         set_time_limit(600);
+
+
+        
+
+        function sendTelegram($method, $arrayQuery, $token)
+        {
+            $ch = curl_init('https://api.telegram.org/bot' . $token . '/' . $method);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $arrayQuery);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            $res = curl_exec($ch);
+            curl_close($ch);
+            return $res;
+        }
         // $_GET['count'] = 0;
         // $skip = $request->cookie('count');
 
@@ -38,8 +53,13 @@ class TelegramSendController extends Controller
         // $products = Product::offset($request->skip4)->limit($request->count)->get();
         $products = Product::select("*")->where('balance', '1')->skip($skip)->take($count)->get();
         // $products = Product::all();
+
         
-// dd($products);
+        $skip2 = (int)$skip + (int)$count;
+
+        echo $skip2; echo '<br>';
+
+        // dd($products);
         foreach ($products as $product) {
             $collection_product = CollectionProduct::where('product_id', $product->id)->first();
             $collection = Collection::where('id', $collection_product->collection_id)->first();
@@ -96,7 +116,8 @@ class TelegramSendController extends Controller
 
             // echo $img_url;
 
-            $msg = "<b>$title</b> \nКоллекция: <b>$collection_name</b> \nАртикул: <b>$vendor_code</b> \nБрэнд: <b>$brand</b> \n";
+            $msg = "<b>$title</b> \nКоллекция: <b>$collection_name</b> \nАртикул:<b> $vendor_code</b> \nБрэнд: <b>$brand</b> \n";
+
             $msg .= $collection_name_tag;
             $msg .= $usage;
             $msg .= $category;
@@ -108,7 +129,7 @@ class TelegramSendController extends Controller
             $msg .= $color;
             $msg .= $architectural_surface;
 
-            
+
 
             // $msg = urlencode($msg);
             // $msg = urldecode($msg);
@@ -128,17 +149,26 @@ class TelegramSendController extends Controller
                 'caption' => $msg,
                 'photo' => curl_file_create($img_url),
                 'parse_mode' => 'html',
+                // 'has_spoiler' => true,
             );
-            $ch = curl_init('https://api.telegram.org/bot' . $token . '/sendPhoto');
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $arrayQuery);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            $res = curl_exec($ch);
-            curl_close($ch);
+            // $ch = curl_init('https://api.telegram.org/bot' . $token . '/sendPhoto');
+            // curl_setopt($ch, CURLOPT_POST, 1);
+            // curl_setopt($ch, CURLOPT_POSTFIELDS, $arrayQuery);
+            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // curl_setopt($ch, CURLOPT_HEADER, false);
+            // $res = curl_exec($ch);
+            // curl_close($ch);
+
+
+
+            sendTelegram('sendPhoto', $arrayQuery, $token);
 
             sleep(3);
         }
+
+       
+
+
 
         $this->all_tags = array_unique($this->all_tags);
         sort($this->all_tags);
