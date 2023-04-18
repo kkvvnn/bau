@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Product;
 use App\Models\Collection;
 use App\Models\CollectionProduct;
@@ -17,9 +18,9 @@ class Controller extends BaseController
 
     public function down($id = 1)
     {
-//        $products = Product::all();
+        //        $products = Product::all();
         $product = Product::findOrFail($id);
-        
+
 
         // $i = 1;
         // foreach ($products as $product) {
@@ -31,7 +32,7 @@ class Controller extends BaseController
         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
         $name_file = Str::remove($string_for_delete, $product->Picture);
 
-//        $name_file = 'c8b0ef73-19ed-11e3-a4c8-005056ad2cf4___0002.jpg';
+        //        $name_file = 'c8b0ef73-19ed-11e3-a4c8-005056ad2cf4___0002.jpg';
 
         if (Storage::disk('public')->missing($name_file)) {
             $file = Storage::disk('ftp')->get($name_file);
@@ -54,23 +55,16 @@ class Controller extends BaseController
 
     public function many()
     {
-        // CollectionProduct::truncate();
-        // set_time_limit(600);
+        $products = Product::all();
 
-        // $products = Product::all();
-       
-        // $collections = Collection::all();
+        foreach ($products as $product) {
 
-        // foreach ($products as $product) {
-        //     foreach($collections as $collection) {
-        //         if (Str::contains($product->Collection_Id, $collection->Collection_Id))
-        //         $product->collections()->attach($collection);
-        //     }
-        // }
+            $collection_number = explode(', ', $product->Collection_Id);
+            $collections = Collection::whereIn('Collection_Id', $collection_number)->get();
 
-        // $product = Product::find(49);
-        // dd($product->collections);
+            foreach ($collections as $collection) {
+                $product->collections()->attach($collection->id);
+            }
+        }
     }
 }
-
-

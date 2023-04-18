@@ -6,11 +6,13 @@ use App\Imports\CollectionsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Collection;
 use App\Models\Product;
 use App\Http\Requests\StoreCollectionRequest;
 use App\Http\Requests\UpdateCollectionRequest;
+use App\Models\CollectionProduct;
 
 class CollectionController extends Controller
 {
@@ -19,17 +21,35 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        // $product = Product::with('collections')
+        // ->find(6);
+        // $col_prod = CollectionProduct::where('id', '>', 0)->groupBy('collection_id')->get();
+$col = [];
+        $collectS_id = DB::table('collection_product')
+            ->select('collection_id')
+            ->distinct()
+            ->get();
 
-        foreach ($products as $product) {
-            // $collects[] = $product->collections[0]->Collection_Name;
-            $collects[] = $product->collections[0]->Collection_Name . $product->collections[0]->Collection_Id;
-        }
+            foreach ($collectS_id as $collect_id) {
+                $col[] = $collect_id->collection_id;
+            }
+            // dd($col);
+            $collects = Collection::find($col);
+            // dd($collects);
 
+        // return ($product->collections);
+
+        // return $product;
+
+        // foreach ($products as $product) {
+
+        //     dd($product->collections[0]->Collection_Name);
+        //     $collects[] = $product->collections;
+        // }
+
+        // $collects = array_unique($collects);
         // dd($collects);
-        $collects = array_unique($collects);
-        $collects = Arr::sort($collects);
-
+        // $collects = Arr::sort($collects);
 
         return view('collection.index', [
             'collects' => $collects,

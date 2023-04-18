@@ -219,7 +219,7 @@
     @foreach ($collects as $collect)  
         <div class="col">
     
-        <a href="collection/{{substr($collect, -9)}}" class="link-dark text-decoration-none text-reset">{{substr($collect, 0, -9)}}</a>
+        <a href="/collection/{{$collect->Collection_Id}}" class="link-dark text-decoration-none text-reset">{{$collect->Collection_Name}}</a>
         <hr>
         
         </div>

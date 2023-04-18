@@ -16,8 +16,10 @@ class Collection extends Model
         'Interior_Pic',
     ];
 
-    public function products(): BelongsToMany
+    // protected $guarded = true;
+
+    public function products()
     {
-        return $this->belongsToMany(Product::class, 'collection_product', 'collection_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'collection_product');
     }
 }

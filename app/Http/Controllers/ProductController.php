@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\CollectionProduct;
 
 class ProductController extends Controller
 {
