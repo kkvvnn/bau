@@ -94,7 +94,27 @@ class ProductController extends Controller
     {
         $type = 'all';
 
-        $products = Product::orderByDesc('Height')->paginate(15);
+        $products = Product::where('balanceCount', '>', 2)->orderByDesc('Height')->paginate(15);
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
+        // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
+        return $this->index($products, $type);
+    }
+
+    public function index_ker($price = 800, $count = 10)
+    {
+        $type = 'all';
+
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
+        $products = Product::where([['balanceCount', '>', $count], ['Price', '<', $price], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
+        return $this->index($products, $type);
+    }
+
+    public function index_plit($price = 500, $count = 10)
+    {
+        $type = 'all';
+
+        $products = Product::where([['balanceCount', '>', $count], ['Price', '<', $price], ['Name', 'LIKE', '%литка%']])->paginate(15);
         return $this->index($products, $type);
     }
 

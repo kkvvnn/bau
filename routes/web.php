@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\TelegramSendController;
 
 /*
@@ -39,9 +41,15 @@ Route::get('/ddooww/{id?}', [Controller::class, 'down'])->name('img_url');
 Route::get('/index/{id?}', [Controller::class, 'index2']);
 
 
+Route::get('/avito_export', [AvitoController::class, 'export']);
+
 Route::get('/many', [Controller::class, 'many'])->name('many');
 
 Route::get('/index_collection', [CollectionController::class, 'index']) -> name('index_collection');
 
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send']) -> name('send_to_telegram');
 
+Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker']) -> name('index_ker');
+Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit']) -> name('index_plit');
+
+Route::get('/qr_code/show', [QrCodeController::class, 'show']) -> name('qr_code_show');
