@@ -186,11 +186,14 @@ class ProductController extends Controller
 
         // dd($urls_c);
 
-        
+
         $name_files = [];
-        for ($pic = 1 ; $pic <= 24; ++$pic) {
-            if ($pic == 1) {$name = 'Picture';}
-            $name = 'Picture' . $pic;
+        for ($pic = 1; $pic <= 24; ++$pic) {
+            if ($pic == 1) {
+                $name = 'Picture';
+            } else {
+                $name = 'Picture' . $pic;
+            }
             if ($product->$name != null) {
                 $name_files[$name] = Str::remove($string_for_delete, $product->$name);
             }
@@ -203,7 +206,7 @@ class ProductController extends Controller
         foreach ($name_files as $key => $value) {
             $urls[] = Storage::url($key . '/' . $value);
         }
-// dd($urls);
+        // dd($urls);
         // $url1 = Storage::url('Picture1/' . $name_file);
         // $url2 = Storage::url('Picture2/' . $name_file2);
 
@@ -311,7 +314,7 @@ class ProductController extends Controller
         // dd($products);
 
         $product_pic = 'Picture' . $where_pic;
-        
+
 
         dd($product_pic);
         set_time_limit(600);
