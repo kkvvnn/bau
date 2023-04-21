@@ -224,6 +224,8 @@ class ProductController extends Controller
         $date = date("Y-m-d_His");
         $name = 'import/products/product_' . $date . '.csv';
 
+        dd($name);
+
         Storage::put($name, $contents);
 
         Excel::import(new ProductsImport, $name);
