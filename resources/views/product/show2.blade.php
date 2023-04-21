@@ -67,6 +67,7 @@
                     @endforeach
                 </div>
             </div>
+            <hr>
             <div class="row">
             <div class="col-sm-6">
                     @foreach ($urls as $url)
