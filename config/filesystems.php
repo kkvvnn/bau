@@ -90,6 +90,46 @@ return [
             'throw' => false,
         ],
 
+        'public6' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture6'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public7' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture7'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public8' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture8'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public9' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture9'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public10' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture10'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'collections' => [
             'driver' => 'local',
             'root' => storage_path('app/public/Collections'),
