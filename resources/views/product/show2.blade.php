@@ -47,7 +47,7 @@
                     <h5>
                         Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}
                         <br>
-                        Цена зак: {{$product->Price}} ₽/{{$product->MainUnit}}
+                        <!-- Цена зак: {{$product->Price}} ₽/{{$product->MainUnit}} -->
                         <!-- <br> {{round(($product->RMPrice/$product->Price)*100 - 100, 2)}}% -->
                     </h5>
                     <hr>
