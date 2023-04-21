@@ -154,6 +154,7 @@ class CollectionController extends Controller
         // dd($products);
 
         $cols = $this->all_collections_list();
+        
         $collections = Collection::find($cols);
         // dd($collections);
 

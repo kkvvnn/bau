@@ -66,6 +66,22 @@ return [
             'throw' => false,
         ],
 
+        'public4' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture4'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public5' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture5'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'collections' => [
             'driver' => 'local',
             'root' => storage_path('app/public/Collections'),

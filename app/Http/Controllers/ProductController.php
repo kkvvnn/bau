@@ -253,11 +253,11 @@ class ProductController extends Controller
             return;
         }
 
-        if (Storage::disk('public3')->missing($name_file)) {
+        if (Storage::disk('public5')->missing($name_file)) {
 
             $file = Storage::disk('ftp')->get($name_file);
             if ($file != null) {
-                Storage::disk('public3')->put($name_file, $file);
+                Storage::disk('public5')->put($name_file, $file);
             }
         }
     }
@@ -269,14 +269,14 @@ class ProductController extends Controller
         // $name_file = 'small_img/' . $name_file;
         // $products = Product::where([['id', '<=', 400], ['id', '!=', 226], ['Picture2', '!=', null]])->get();
         // $products = Product::where([['id', '<', 2000], ['Picture2', '!=', null]])->get();
-        $products = Product::where('Picture3', '!=', null)->get();
-        dd($products);
+        $products = Product::where([['id', '<', 1000], ['Picture5', '!=', null]])->get();
+        // dd($products);
 
         set_time_limit(600);
 
         foreach ($products as $product) {
             // dd($product->Picture2);
-            $this->mydown($product->Picture3);
+            $this->mydown($product->Picture5);
         }
 
 
