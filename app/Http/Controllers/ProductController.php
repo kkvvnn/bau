@@ -269,7 +269,7 @@ class ProductController extends Controller
         // $name_file = 'small_img/' . $name_file;
         // $products = Product::where([['id', '<=', 400], ['id', '!=', 226], ['Picture2', '!=', null]])->get();
         // $products = Product::where([['id', '<', 2000], ['Picture2', '!=', null]])->get();
-        $products = Product::where([['id', '<', 1000], ['Picture5', '!=', null]])->get();
+        $products = Product::where([['id', '<', 1300], ['Picture5', '!=', null]])->get();
         // dd($products);
 
         set_time_limit(600);
