@@ -62,6 +62,13 @@
             </div>
             <div class="row">
             <div class="col-sm-6">
+                    @foreach ($url_collection as $url_c)
+                    <img src="/storage/Collections/{{$url_c}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
+                    @endforeach
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
                     @foreach ($urls as $url)
                     <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
                     @endforeach

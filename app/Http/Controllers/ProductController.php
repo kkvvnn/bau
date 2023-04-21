@@ -170,10 +170,22 @@ class ProductController extends Controller
      */
     public function show($id = 1)
     {
+        $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
+
         $product = Product::findOrFail($id);
         $collection = $product->collections;
 
-        $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
+        $url_collection = $collection[0]->Interior_Pic;
+
+        $url_collection = explode(', ', $url_collection);
+
+        $urls_c = [];
+        foreach ($url_collection as $kkkj) {
+            $urls_c[] = Str::remove($string_for_delete, $kkkj);
+        }
+
+        // dd($urls_c);
+
         
         $name_files = [];
         for ($pic = 1 ; $pic <= 24; ++$pic) {
@@ -200,6 +212,7 @@ class ProductController extends Controller
             'urls' => $urls,
             // 'url2' => $url2,
             'collection' => $collection,
+            'url_collection' => $urls_c,
         ]);
     }
 
