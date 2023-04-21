@@ -130,6 +130,118 @@ return [
             'throw' => false,
         ],
 
+        'public11' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture11'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public12' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture12'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public13' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture13'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public14' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture14'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public15' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture15'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public16' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture16'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public17' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture17'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public18' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture18'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public19' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture19'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public20' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture20'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public21' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture21'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public22' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture22'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public23' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture23'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public24' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture24'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'collections' => [
             'driver' => 'local',
             'root' => storage_path('app/public/Collections'),

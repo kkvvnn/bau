@@ -174,16 +174,31 @@ class ProductController extends Controller
         $collection = $product->collections;
 
         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
-        $name_file = Str::remove($string_for_delete, $product->Picture);
-        $name_file2 = Str::remove($string_for_delete, $product->Picture2);
+        
+        $name_files = [];
+        for ($pic = 1 ; $pic <= 24; ++$pic) {
+            if ($pic == 1) {$name = 'Picture';}
+            $name = 'Picture' . $pic;
+            if ($product->$name != null) {
+                $name_files[$name] = Str::remove($string_for_delete, $product->$name);
+            }
+        }
 
-        $url1 = Storage::url('Picture1/' . $name_file);
-        $url2 = Storage::url('Picture2/' . $name_file2);
+        // $name_file = Str::remove($string_for_delete, $product->Picture);
+        // $name_file2 = Str::remove($string_for_delete, $product->Picture2);
+
+        $urls = [];
+        foreach ($name_files as $key => $value) {
+            $urls[] = Storage::url($key . '/' . $value);
+        }
+// dd($urls);
+        // $url1 = Storage::url('Picture1/' . $name_file);
+        // $url2 = Storage::url('Picture2/' . $name_file2);
 
         return view('product.show2', [
             'product' => $product,
-            'url1' => $url1,
-            'url2' => $url2,
+            'urls' => $urls,
+            // 'url2' => $url2,
             'collection' => $collection,
         ]);
     }
@@ -285,7 +300,7 @@ class ProductController extends Controller
         $product_pic = 'Picture' . $where_pic;
         
 
-        // dd($product_pic);
+        dd($product_pic);
         set_time_limit(600);
 
         foreach ($products as $product) {

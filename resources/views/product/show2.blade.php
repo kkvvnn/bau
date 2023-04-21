@@ -24,7 +24,7 @@
         <div>
             <p></p>
         </div>
-        
+
 
 
 
@@ -32,10 +32,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                    <img src="{{$url1}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" alt="...">
-                    <img src="{{$url2}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" alt="...">
-                </div>
+                
                 <div class="col">
                     <h2>{{$product->Name}}</h2>
                     <hr>
@@ -63,31 +60,14 @@
                     </h5>
                 </div>
             </div>
-        </div>
-
-
-
-
-
-        <!-- Модальное окно -->
-        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-
-                    <div class="modal-body">
-                        <img src="{{$url1}}" class="img-fluid" alt="...">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                    </div>
+            <div class="row">
+            <div class="col-sm-6">
+                    @foreach ($urls as $url)
+                    <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
+                    @endforeach
                 </div>
             </div>
-        </div> -->
-
-
-
-
-
+        </div>
 
     </div>
 </div>
