@@ -229,7 +229,7 @@ class ProductController extends Controller
         Storage::put($name, $contents);
 
         Excel::import(new ProductsImport, $name);
-        // $deleted = Product::where('Picture', null)->delete();
+        $deleted = Product::where('Picture', null)->delete();
 
         return redirect('/')->with('success', 'All good!');
     }

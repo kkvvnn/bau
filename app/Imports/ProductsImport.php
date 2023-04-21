@@ -6,8 +6,9 @@ use App\Models\Product;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class ProductsImport implements ToModel, WithHeadingRow, WithUpserts
+class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkReading
 {
     /**
      * @param array $row
@@ -112,5 +113,10 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts
     public function uniqueBy()
     {
         return 'Element_Code';
+    }
+
+    public function chunkSize(): int
+    {
+        return 500;
     }
 }
