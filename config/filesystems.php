@@ -50,6 +50,30 @@ return [
             'throw' => false,
         ],
 
+        'public2' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture2'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public3' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Picture3'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'collections' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Collections'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

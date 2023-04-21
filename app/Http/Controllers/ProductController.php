@@ -175,11 +175,15 @@ class ProductController extends Controller
 
         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
         $name_file = Str::remove($string_for_delete, $product->Picture);
-        $url = Storage::url($name_file);
+        $name_file2 = Str::remove($string_for_delete, $product->Picture2);
 
-        return view('product.show', [
+        $url = Storage::url($name_file);
+        $url2 = Storage::url('Picture2/'.$name_file2);
+
+        return view('product.show2', [
             'product' => $product,
             'url' => $url,
+            'url2' => $url2,
             'collection' => $collection,
         ]);
     }
@@ -226,5 +230,67 @@ class ProductController extends Controller
         $deleted = Product::where('Picture', null)->delete();
 
         return redirect('/')->with('success', 'All good!');
+    }
+
+    public function mydown($name)
+    {
+        if ($name == null) {
+            return;
+        }
+        $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
+        $name_file = Str::remove($string_for_delete, $name);
+
+        // $name_file = '';
+        // $name_file = 'Picture2/' . $name_file;
+
+        // dd($name_file);
+        // echo $name_file;
+        // echo '<br>';
+
+        //        $name_file = 'c8b0ef73-19ed-11e3-a4c8-005056ad2cf4___0002.jpg';
+
+        if ($name_file == null) {
+            return;
+        }
+
+        if (Storage::disk('public3')->missing($name_file)) {
+
+            $file = Storage::disk('ftp')->get($name_file);
+            if ($file != null) {
+                Storage::disk('public3')->put($name_file, $file);
+            }
+        }
+    }
+
+    public function download_all()
+    {
+
+
+        // $name_file = 'small_img/' . $name_file;
+        // $products = Product::where([['id', '<=', 400], ['id', '!=', 226], ['Picture2', '!=', null]])->get();
+        // $products = Product::where([['id', '<', 2000], ['Picture2', '!=', null]])->get();
+        $products = Product::where('Picture3', '!=', null)->get();
+        dd($products);
+
+        set_time_limit(600);
+
+        foreach ($products as $product) {
+            // dd($product->Picture2);
+            $this->mydown($product->Picture3);
+        }
+
+
+
+        // $url = Storage::url($name_file);
+        // $url_small = Storage::url('small_img/' . $name_file);
+        // // $url = Storage::url($name_file); 
+
+        // // use Illuminate\Support\Str;
+
+        // $url_small = Str::swap([
+        //   '.jpeg' => '.jpg',
+        //   '.png' => '.jpg',
+        //   // 'great' => 'fantastic',
+        // ], $url_small);
     }
 }

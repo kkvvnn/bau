@@ -46,10 +46,15 @@ Route::get('/avito_export', [AvitoController::class, 'export']);
 Route::get('/many', [Controller::class, 'many'])->name('many');
 
 Route::get('/index_collection', [CollectionController::class, 'index']) -> name('index_collection');
+Route::get('/download_all_collections', [CollectionController::class, 'download_all_collections']) -> name('download_all_collections');
 
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send']) -> name('send_to_telegram');
 
 Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker']) -> name('index_ker');
 Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit']) -> name('index_plit');
 
+Route::get('/download_all', [ProductController::class, 'download_all']) -> name('download_all');
+
 Route::get('/qr_code/show', [QrCodeController::class, 'show']) -> name('qr_code_show');
+
+Route::get('/scan_qr', [QrCodeController::class, 'scan']) -> name('scan_qr');

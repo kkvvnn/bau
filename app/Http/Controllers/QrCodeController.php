@@ -18,4 +18,10 @@ class QrCodeController extends Controller
             'products' => $products
         ]);
     }
+
+    public function scan()
+    {
+        
+        return view('qr_code.scan_qr');
+    }
 }

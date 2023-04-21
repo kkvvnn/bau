@@ -7,6 +7,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 
 use App\Models\Collection;
 use App\Models\Product;
@@ -16,40 +18,29 @@ use App\Models\CollectionProduct;
 
 class CollectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function all_collections_list()
     {
-        // $product = Product::with('collections')
-        // ->find(6);
-        // $col_prod = CollectionProduct::where('id', '>', 0)->groupBy('collection_id')->get();
-$col = [];
+        $col = [];
         $collectS_id = DB::table('collection_product')
             ->select('collection_id')
             ->distinct()
             ->get();
 
-            foreach ($collectS_id as $collect_id) {
-                $col[] = $collect_id->collection_id;
-            }
-            // dd($col);
-            $collects = Collection::find($col);
-            // dd($collects);
+        foreach ($collectS_id as $collect_id) {
+            $col[] = $collect_id->collection_id;
+        }
 
-        // return ($product->collections);
+        return $col;
+    }
 
-        // return $product;
-
-        // foreach ($products as $product) {
-
-        //     dd($product->collections[0]->Collection_Name);
-        //     $collects[] = $product->collections;
-        // }
-
-        // $collects = array_unique($collects);
-        // dd($collects);
-        // $collects = Arr::sort($collects);
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $cols = $this->all_collections_list();
+        
+        $collects = Collection::find($cols);
 
         return view('collection.index', [
             'collects' => $collects,
@@ -119,5 +110,80 @@ $col = [];
         Excel::import(new CollectionsImport, $name);
 
         return redirect('/')->with('success', 'All good!');
+    }
+
+    public function mydown($name)
+    {
+        set_time_limit(60);
+        if ($name == null) {
+            return;
+        }
+        $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
+        $name_file = Str::remove($string_for_delete, $name);
+
+        // $name_file = '';
+        // $name_file = 'Picture2/' . $name_file;
+
+        // dd($name_file);
+        // echo $name_file;
+        // echo '<br>';
+
+        //        $name_file = 'c8b0ef73-19ed-11e3-a4c8-005056ad2cf4___0002.jpg';
+
+        if ($name_file == null) {
+            return;
+        }
+
+        if (Storage::disk('collections')->missing($name_file)) {
+
+            $file = Storage::disk('ftp')->get($name_file);
+            if ($file != null) {
+                Storage::disk('collections')->put($name_file, $file);
+            }
+        }
+    }
+
+    public function download_all_collections()
+    {
+
+
+        // $name_file = 'small_img/' . $name_file;
+        // $products = Product::where([['id', '<=', 400], ['id', '!=', 226], ['Picture2', '!=', null]])->get();
+        // $products = Product::where([['id', '<', 2000], ['Picture2', '!=', null]])->get();
+        // $products = Product::where('Picture3', '!=', null)->get();
+        // dd($products);
+
+        $cols = $this->all_collections_list();
+        $collections = Collection::find($cols);
+        // dd($collections);
+
+        
+
+        foreach ($collections as $collection) {
+            $list_pic = $collection->Interior_Pic;
+            $arr_pic = explode(', ', $list_pic);
+
+            // dd($arr_pic[1]);
+           
+            foreach($arr_pic as $pic) {
+                // dd($pic);
+                $this->mydown($pic);
+            }
+            // $this->mydown($arr_pic[1]);
+        }
+
+
+
+        // $url = Storage::url($name_file);
+        // $url_small = Storage::url('small_img/' . $name_file);
+        // // $url = Storage::url($name_file); 
+
+        // // use Illuminate\Support\Str;
+
+        // $url_small = Str::swap([
+        //   '.jpeg' => '.jpg',
+        //   '.png' => '.jpg',
+        //   // 'great' => 'fantastic',
+        // ], $url_small);
     }
 }
