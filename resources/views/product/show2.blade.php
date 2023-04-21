@@ -24,19 +24,7 @@
         <div>
             <p></p>
         </div>
-        <!-- <div class="row row-cols-1 row-cols-md-3 g-4"> -->
-
-
-
-
-
-
-        <!-- <div class="col"> -->
-        <!-- <div class="card h-100">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-
-
-        <!-- <img src="{{$url}}" class="mg-fluid" alt="..."> -->
+        
 
 
 
@@ -45,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" alt="...">
+                    <img src="{{$url1}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" alt="...">
                     <img src="{{$url2}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" alt="...">
                 </div>
                 <div class="col">
@@ -87,7 +75,7 @@
                 <div class="modal-content">
 
                     <div class="modal-body">
-                        <img src="{{$url}}" class="img-fluid" alt="...">
+                        <img src="{{$url1}}" class="img-fluid" alt="...">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>

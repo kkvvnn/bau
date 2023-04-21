@@ -177,12 +177,12 @@ class ProductController extends Controller
         $name_file = Str::remove($string_for_delete, $product->Picture);
         $name_file2 = Str::remove($string_for_delete, $product->Picture2);
 
-        $url = Storage::url($name_file);
+        $url1 = Storage::url('Picture1/'.$name_file);
         $url2 = Storage::url('Picture2/'.$name_file2);
 
         return view('product.show2', [
             'product' => $product,
-            'url' => $url,
+            'url1' => $url1,
             'url2' => $url2,
             'collection' => $collection,
         ]);
