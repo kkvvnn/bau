@@ -30,52 +30,94 @@
 
 
 
-        <div class="container">
-            <div class="row">
-                
-                <div class="col">
-                    <h2>{{$product->Name}}</h2>
-                    <hr>
-                    <h3>
-                        {{$product->Producer_Brand}}
-                    </h3>
-                    <h4>Коллекция:
-                        @foreach ($collection as $one_collection)
-                        <a href="/collection/{{$one_collection->Collection_Id}}" class="link-dark text-decoration-none text-reset">{{$one_collection->Collection_Name}}. </a>
-                        @endforeach
-                    </h4>
-                    <h5>
-                        Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}
-                        <br>
-                        <!-- Цена зак: {{$product->Price}} ₽/{{$product->MainUnit}} -->
-                        <!-- <br> {{round(($product->RMPrice/$product->Price)*100 - 100, 2)}}% -->
-                    </h5>
-                    <hr>
-                    <h5>
-                        Остаток: {{$product->balanceCount}} {{$product->MainUnit}}
-                    </h5>
-                    <hr>
-                    <h5>
+
+        <div class="row">
+
+            <div class="col">
+                <h2>{{$product->Name}}</h2>
+                <hr>
+                <h3>
+                    {{$product->Producer_Brand}}
+                </h3>
+                <h4>Коллекция:
+                    @foreach ($collection as $one_collection)
+                    <a href="/collection/{{$one_collection->Collection_Id}}" class="link-dark text-decoration-none text-reset">{{$one_collection->Collection_Name}}. </a>
+                    @endforeach
+                </h4>
+                <h5>
+                    Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}
+                    <br>
+                    <!-- Цена зак: {{$product->Price}} ₽/{{$product->MainUnit}} -->
+                    <!-- <br> {{round(($product->RMPrice/$product->Price)*100 - 100, 2)}}% -->
+                </h5>
+                <hr>
+                <h5>
+                    Остаток: {{$product->balanceCount}} {{$product->MainUnit}}
+                </h5>
+                <hr>
+                <!-- <h5>
                         Артикул: {{$product->Element_Code}}
-                    </h5>
-                </div>
-            </div>
-            <div class="row">
-            <div class="col-sm-6">
-                    @foreach ($url_collection as $url_c)
-                    <img src="/storage/Collections/{{$url_c}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
-                    @endforeach
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-            <div class="col-sm-6">
-                    @foreach ($urls as $url)
-                    <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
-                    @endforeach
-                </div>
+                    </h5> -->
             </div>
         </div>
+        <!-- <div class="container">
+                <div class="row" data-masonry='{"percentPosition": true }'>
+                    <div class="col-sm-6 col-lg-4 mb-4">
+
+                        @foreach ($url_collection as $url_c)
+                        <div>
+                            <img src="/storage/Collections/{{$url_c}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
+                        </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div> -->
+        <!-- <hr> -->
+        <!-- <div class="row" data-masonry='{"percentPosition": true }'>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div>
+                        @foreach ($urls as $url)
+                        <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt=".">
+                        @endforeach
+                    </div>
+                </div>
+            </div> -->
+
+
+
+
+
+        <div class="container-fluid">
+
+            
+
+            <div class="grid">
+                <div class="grid-sizer"></div>
+                @foreach ($url_collection as $url_c)
+                <div class="grid-item">
+                    <img src="/storage/Collections/{{$url_c}}" />
+                </div>
+                @endforeach
+
+            </div>
+            <hr>
+            <div class="grid">
+                <div class="grid-sizer"></div>
+                @foreach ($urls as $url)
+                <div class="grid-item">
+                    <img src="{{$url}}" />
+                </div>
+                @endforeach
+
+            </div>
+
+        </div>
+
+
+
+
+
 
     </div>
 </div>

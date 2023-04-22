@@ -106,6 +106,64 @@
       margin-bottom: 30px;
       border: 6px solid #F5F5F5;
     }
+
+    /* ============================================================================== */
+
+    
+* { box-sizing: border-box; }
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+@media (max-width: 575px) {
+  .grid-sizer,
+  .grid-item {
+    width: 100%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .grid-sizer,
+  .grid-item {
+    width: 50%;
+  }
+}
+
+/* To change the amount of columns on larger devices, uncomment the code below */
+
+/* @media (min-width: 768px) and (max-width: 991px) {
+  .grid-sizer,
+  .grid-item {
+    width: 33.333%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .grid-sizer,
+  .grid-item {
+    width: 25%;
+  }
+}
+@media (min-width: 1200px) {
+  .grid-sizer,
+  .grid-item {
+    width: 20%;
+  }
+} */
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+}
   </style>
 
 
@@ -187,7 +245,20 @@
   </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script>
+  // init Masonry
+var $grid = $('.grid').masonry({
+  itemSelector: '.grid-item',
+  percentPosition: true,
+  columnWidth: '.grid-sizer'
+});
 
+// layout Masonry after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry();
+});
+</script>
 </body>
 
 </html>
