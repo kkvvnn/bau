@@ -268,7 +268,7 @@ class ProductController extends Controller
     public function mydown($name, $public_n)
     {
         set_time_limit(600);
-        // $disk = 'public' . $public_n;
+        $disk = 'public' . $public_n;
         if ($name == null) {
             return;
         }
@@ -288,11 +288,11 @@ class ProductController extends Controller
             return;
         }
 
-        if (Storage::disk('public')->missing($public_n . '/' .$name_file)) {
+        if (Storage::disk($disk)->missing($name_file)) {
 
             $file = Storage::disk('ftp')->get($name_file);
             if ($file != null) {
-                Storage::disk('public')->put($public_n . '/' .$name_file, $file);
+                Storage::disk($disk)->put($name_file, $file);
             }
         }
     }
@@ -310,18 +310,18 @@ class ProductController extends Controller
         // $name_file = 'small_img/' . $name_file;
         // $products = Product::where([['id', '<=', 400], ['id', '!=', 226], ['Picture2', '!=', null]])->get();
         // $products = Product::where([['id', '<', 2000], ['Picture2', '!=', null]])->get();
-        $products = Product::where(('Picture' . $where_pic), '!=', null)->limit(10)->get();
+        $products = Product::where(('Picture' . $where_pic), '!=', null)->get();
         // dd($products);
 
         $product_pic = 'Picture' . $where_pic;
 
 
-        // dd($product_pic);
+        dd($product_pic);
         set_time_limit(600);
 
         foreach ($products as $product) {
             // dd($product->Picture{$where_pic});
-            $this->mydown($product->$product_pic, $product_pic);
+            $this->mydown($product->$product_pic, $disk);
         }
 
 
