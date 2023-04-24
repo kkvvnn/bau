@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\TelegramSendController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +59,5 @@ Route::get('/download_all/{pic?}', [ProductController::class, 'download_all']) -
 Route::get('/qr_code/show', [QrCodeController::class, 'show']) -> name('qr_code_show');
 
 Route::get('/scan_qr', [QrCodeController::class, 'scan']) -> name('scan_qr');
+
+Route::get('/img/{path}', [ImageController::class, 'show'])->where('path', '.*')->name('img_sm');

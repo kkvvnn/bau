@@ -25,7 +25,7 @@
 
 
 
-      $url1 = Storage::url('Picture1/' . $name_file);
+      $url1 = Storage::url('Picture/' . $name_file);
       // dd($url1)
       // $url_small = Storage::url('small_img/' . $name_file);
       // $url = Storage::url($name_file); 

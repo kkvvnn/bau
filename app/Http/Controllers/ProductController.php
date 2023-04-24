@@ -202,17 +202,22 @@ class ProductController extends Controller
         // $name_file = Str::remove($string_for_delete, $product->Picture);
         // $name_file2 = Str::remove($string_for_delete, $product->Picture2);
 
-        $urls = [];
+        $urls_2 = [];
         foreach ($name_files as $key => $value) {
-            $urls[] = Storage::url($key . '/' . $value);
+            $urls_2[] = Storage::url($key . '/' . $value);
         }
-        // dd($urls);
+
+        // $urls = [];
+        // foreach ($urls_2 as $url) {
+        //     $urls[] = urldecode(Str::remove("/storage/", $url));
+        // }
+        // dd($urls_2);
         // $url1 = Storage::url('Picture1/' . $name_file);
         // $url2 = Storage::url('Picture2/' . $name_file2);
 
         return view('product.show2', [
             'product' => $product,
-            'urls' => $urls,
+            'urls' => $urls_2,
             // 'url2' => $url2,
             'collection' => $collection,
             'url_collection' => $urls_c,
@@ -248,6 +253,7 @@ class ProductController extends Controller
     {
         // Product::truncate();    // clear all data in table   
 
+        set_time_limit(60);
         $url = "http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv";
         $contents = file_get_contents($url);
         $contents = mb_convert_encoding($contents, "UTF-8", "WINDOWS-1251");

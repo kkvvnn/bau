@@ -106,6 +106,7 @@
                 <div class="grid-sizer"></div>
                 @foreach ($urls as $url)
                 <div class="grid-item">
+                    <!-- <img src="{{$url}}" style="border-bottom:1px solid"/> -->
                     <img src="{{$url}}" />
                 </div>
                 @endforeach
