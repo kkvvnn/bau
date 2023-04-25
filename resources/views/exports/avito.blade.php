@@ -20,7 +20,7 @@
             <th>Description</th>
             <th>Address</th>
             <th>AdType</th>
-            <th>AvitoDateEnd</th>
+            <!-- <th>AvitoDateEnd</th> -->
             <th>FinishingSubType</th>
             <th>Condition</th>
             <th>VideoUrl</th>
@@ -189,7 +189,7 @@
             <tr>
                 <td></td>
                 <td>{{ $product->Element_Code }}</td>
-                <td>По телефону и в сообщениях</td>
+                <td>В сообщениях</td>
                 <td>kkvvnn89@gmail.com</td>
                 <td>Активно</td>
                 <td>Владимир</td>
@@ -206,7 +206,7 @@
                 <td>{{$description}}</td> <!-- -->
                 <td>Москва</td>
                 <td>Товар от производителя</td>
-                <td>{{$date_next_month}}</td>
+                <!-- <td>{{$date_next_month}}</td> -->
                 <td>{{$FinishingSubType}}</td>
                 <td>Новое</td>
                 <td></td>
