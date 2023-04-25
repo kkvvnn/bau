@@ -208,17 +208,17 @@ class ProductController extends Controller
         }
 
         // dd($urls_2);
-        $urls = [];
-        foreach ($urls_2 as $url) {
-            $urls[] = Str::replace('/storage' , '/img', $url);
-        }
+        // $urls = [];
+        // foreach ($urls_2 as $url) {
+        //     $urls[] = Str::replace('/storage' , '/img', $url);
+        // }
         // dd($urls);
         // $url1 = Storage::url('Picture1/' . $name_file);
         // $url2 = Storage::url('Picture2/' . $name_file2);
 
         return view('product.show2', [
             'product' => $product,
-            'urls' => $urls,
+            'urls' => $urls_2,
             // 'url2' => $url2,
             'collection' => $collection,
             'url_collection' => $urls_c,
