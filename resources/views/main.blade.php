@@ -164,6 +164,10 @@
   display: block;
   max-width: 100%;
 }
+
+.card:hover {
+  border: 2px solid grey;
+}
   </style>
 
 

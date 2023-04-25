@@ -24,6 +24,7 @@ class ImageController extends Controller
         ]);
 
         // dd($server->getImageResponse($path, request()->all()));
+        // dd(request()->all());
         return $server->getImageResponse($path, request()->all());
     }
 }
