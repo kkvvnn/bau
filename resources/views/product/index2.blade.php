@@ -55,6 +55,8 @@
             <!-- <small class="text-body-secondary">Закупка: {{$product->Price}} ₽/{{$product->MainUnit}}</small> -->
             <!-- <hr> -->
             <small class="text-body-secondary">Доступно: {{$product->balanceCount}}</small>
+            <hr>
+            <small class="text-body-secondary">{{$product->Element_Code}}</small>
           </div>
 
 

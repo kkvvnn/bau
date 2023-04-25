@@ -55,9 +55,9 @@
                     Остаток: {{$product->balanceCount}} {{$product->MainUnit}}
                 </h5>
                 <hr>
-                <!-- <h5>
+                <h5>
                         Артикул: {{$product->Element_Code}}
-                    </h5> -->
+                    </h5>
             </div>
         </div>
         <!-- <div class="container">
