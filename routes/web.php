@@ -8,6 +8,7 @@ use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\TelegramSendController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\AquaFloorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,5 @@ Route::get('/qr_code/show', [QrCodeController::class, 'show']) -> name('qr_code_
 Route::get('/scan_qr', [QrCodeController::class, 'scan']) -> name('scan_qr');
 
 Route::get('/img/{path}', [ImageController::class, 'show'])->where('path', '.*')->name('img_sm');
+
+Route::get('/aquafloor/import', [AquaFloorController::class, 'import'])->name('aqua_flor_import');
