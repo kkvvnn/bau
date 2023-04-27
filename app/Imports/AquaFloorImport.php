@@ -20,6 +20,7 @@ class AquaFloorImport implements ToModel, WithHeadingRow, WithUpserts
         return new AquaFloor([
             'title' => $row['title'],
             'collection' => $row['collection'],
+            'collection_url' => $row['collection_url'],
             'price' => $row['price'],
             'description_collection' => $row['description_collection'],
             'cound_decors' => $row['cound_decors'],

@@ -165,8 +165,24 @@
   max-width: 100%;
 }
 
-.card:hover {
+/* .card:hover {
   border: 2px solid grey;
+} */
+
+.img-wrap {
+  position: relative;
+  /* filter: brightness(90%) */
+}
+.img-wrap:hover {
+  
+  filter: brightness(80%)
+}
+
+.img-wrap .clss {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
   </style>
 
@@ -219,6 +235,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('index_plit')}}">Плитка деш</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('aquafloor_index_collections')}}">AquaFloor</a>
               </li>
               <!-- <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('scan_qr')}}">123</a>

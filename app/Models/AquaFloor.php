@@ -12,6 +12,7 @@ class AquaFloor extends Model
     protected $fillable = [
         'title',
         'collection',
+        'collection_url',
         'price',
         'description_collection',
         'cound_decors',

@@ -64,3 +64,7 @@ Route::get('/scan_qr', [QrCodeController::class, 'scan']) -> name('scan_qr');
 Route::get('/img/{path}', [ImageController::class, 'show'])->where('path', '.*')->name('img_sm');
 
 Route::get('/aquafloor/import', [AquaFloorController::class, 'import'])->name('aqua_flor_import');
+Route::get('/aquafloor/download_pic', [AquaFloorController::class, 'download_pic']);
+Route::get('/aquafloor/index', [AquaFloorController::class, 'index'])->name('aquafloor_index');
+Route::get('/aquafloor/index_collections', [AquaFloorController::class, 'index_collections'])->name('aquafloor_index_collections');
+Route::get('/aquafloor/collection/{collection_name}', [AquaFloorController::class, 'index_one_collection']);

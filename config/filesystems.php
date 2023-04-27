@@ -58,6 +58,14 @@ return [
             'throw' => false,
         ],
 
+        'aquafloor' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Aquafloor'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
         // 'avito' => [
         //     'driver' => 'local',
         //     'root' => storage_path('app/public/avito'),

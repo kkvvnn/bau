@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('collection')->nullable();
+            $table->string('collection_url')->nullable();
             $table->integer('price');
             $table->text('description_collection')->nullable();
             $table->integer('cound_decors')->nullable();
