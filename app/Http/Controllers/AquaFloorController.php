@@ -72,6 +72,15 @@ class AquaFloorController extends Controller
         ]);
     }
 
+    public function index_product($title)
+    {
+        $product = AquaFloor::where('title', $title)->get();
+        // dd($product);
+        return view('aquafloor.index_product', [
+            'product_one' => $product
+        ]);
+    }
+
     public function index_one_collection($collection_name)
     {
         $products = AquaFloor::where('collection_url', $collection_name)->paginate(20);

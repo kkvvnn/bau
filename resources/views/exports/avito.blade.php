@@ -31,16 +31,23 @@
 
         <!-- ----------------------------------------------- -->
         @php
-        if(stripos($product->Name, 'Декор') !== false)
-        $FinishingSubType = 'Другое';
-        elseif(stripos($product->Name, 'Мозаика') !== false)
-        $FinishingSubType = 'Мозаика';
-        elseif(stripos($product->Name, 'Плитка') !== false)
-        $FinishingSubType = 'Керамическая плитка';
-        elseif(stripos($product->Name, 'Керамогранит') !== false)
-        $FinishingSubType = 'Керамогранит';
-        else
-        $FinishingSubType = 'Другое';
+        if(stripos($product->Name, 'Декор') !== false) {
+            $FinishingType = 'Другое';
+            $FinishingSubType = '';
+        }
+        elseif(stripos($product->Name, 'Мозаика') !== false) {
+            $FinishingSubType = 'Мозаика';
+            $FinishingType = 'Плитка, керамогранит и мозаика';
+        }
+        elseif(stripos($product->Name, 'Плитка') !== false) {
+            $FinishingType = 'Плитка, керамогранит и мозаика';
+            $FinishingSubType = 'Керамическая плитка';
+        }
+        elseif(stripos($product->Name, 'Керамогранит') !== false) {
+            $FinishingType = 'Плитка, керамогранит и мозаика';
+            $FinishingSubType = 'Керамогранит';
+        }
+        
         @endphp
 
         <!-- --------------------------------------------------------- -->
@@ -201,7 +208,7 @@
                 <td>Стройматериалы</td>
                 <td>Ремонт и строительство</td>
                 <td>Package</td>
-                <td>Плитка, керамогранит и мозаика</td>
+                <td>{{$FinishingType}}</td>
                 <td>79039890822</td> <!-- -->
                 <td>{{$description}}</td> <!-- -->
                 <td>Москва</td>
