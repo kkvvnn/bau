@@ -73,8 +73,11 @@
             }
             $description .= '</p>
         <ul>';
-            $description .= '<li><strong>Размер: </strong>' . $product->Height .'x' . $product->Lenght . '</li>';
 
+
+            if($product->Height != 0 && $product->Lenght != 0) {
+            $description .= '<li><strong>Размер: </strong>' . $product->Height .'x' . $product->Lenght . '</li>';
+            }
             if($product->Thickness != null && $product->Thickness != 0) {
             $description .= '<li><strong>Толщина: </strong>' . $product->Thickness . '</li>';
             }
@@ -182,8 +185,10 @@
         if ($lenght != $height) {
             $size .= $type . ' ' . $height . '*' . $lenght . ', ';
         }
-        $keywords .= $size;
 
+        if($product->Height != 0 && $product->Lenght != 0) {
+        $keywords .= $size;
+        }
 
         $keywords .= $type . ' лапарет, ';
         
@@ -339,7 +344,7 @@
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>Владимир</td>
-            <td>{{ round($product->RMPrice * 0.9, -1) }}</td>
+            <td>{{ round($product->RMPrice * 0.87, -1) }}</td>
             <td>Напольные решения</td>
             <td>{{ $title }}</td>
             <td>{{$img_full}}</td> <!-- -->
