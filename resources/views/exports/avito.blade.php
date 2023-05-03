@@ -60,11 +60,12 @@
         <!-- ------------------------------------------------------- -->
 
         @php
-        $description = '<p>Керамическая плитка, керамогранит Laparet (Лапарет), Скидка до 20 % от розничной цены при самовывозе. Доставка по Москве, cамовывоз на западе Москвы. Размеры 20х120 60х60 60х120 80х80 80х160 и др.</p>';
+        $description = '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
         $description .= '<p><strong>' . $product->Name . '. '
                 . $product->Producer_Brand . ' ('
                 . $product->Country_of_manufacture . ')</strong></p>';
-        $description .= '<p>Коллекция: ';
+        $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
+        $description .= '<p><strong>Коллекция: </strong>';
             $collections = $product->collections;
             foreach ($collections as $collection) {
             $description .= $collection->Collection_Name;
@@ -72,46 +73,48 @@
             }
             $description .= '</p>
         <ul>';
-            $description .= '<li>Размер: ' . $product->Height .'x' . $product->Lenght . '</li>';
+            $description .= '<li><strong>Размер: </strong>' . $product->Height .'x' . $product->Lenght . '</li>';
 
             if($product->Thickness != null && $product->Thickness != 0) {
-            $description .= '<li>Толщина: ' . $product->Thickness . '</li>';
+            $description .= '<li><strong>Толщина: </strong>' . $product->Thickness . '</li>';
             }
             if($product->Place_in_the_Collection != null) {
-            $description .= '<li>Место в коллекции: ' . $product->Place_in_the_Collection . '</li>';
+            $description .= '<li><strong>Место в коллекции: </strong>' . $product->Place_in_the_Collection . '</li>';
             }
             if($product->DesignValue != null) {
-            $description .= '<li>Рисунок: ' . $product->DesignValue . '</li>';
+            $description .= '<li><strong>Рисунок: </strong>' . $product->DesignValue . '</li>';
             }
             if($product->Color != null) {
-            $description .= '<li>Цвет: ' . $product->Color . '</li>';
+            $description .= '<li><strong>Цвет: </strong>' . $product->Color . '</li>';
             }
             if($product->Cover != null) {
-            $description .= '<li>Покрытие: ' . $product->Cover . '</li>';
+            $description .= '<li><strong>Покрытие: </strong>' . $product->Cover . '</li>';
             }
             if($product->Surface != null) {
-            $description .= '<li>Поверхность: ' . $product->Surface . '</li>';
+            $description .= '<li><strong>Поверхность: </strong>' . $product->Surface . '</li>';
             }
             if($product->MainUnit != null) {
-            $description .= '<li>Единица измерения товара: ' . $product->MainUnit . '</li>';
+            $description .= '<li><strong>Единица измерения товара: </strong>' . $product->MainUnit . '</li>';
             }
             if($product->PCS_in_Package != null) {
-            $description .= '<li>Штук в упаковке: ' . $product->PCS_in_Package . '</li>';
+            $description .= '<li><strong>Штук в упаковке: </strong>' . $product->PCS_in_Package . '</li>';
             }
             if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
-            $description .= '<li>Кв. метров в упаковке: ' . $product->Package_Value . '</li>';
+            $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->Package_Value . '</li>';
             }
             if($product->Producer_Brand != null) {
-            $description .= '<li>Производитель: ' . $product->Producer_Brand . '</li>';
+            $description .= '<li><strong>Производитель: </strong>' . $product->Producer_Brand . '</li>';
             }
             if($product->Country_of_manufacture != null) {
-            $description .= '<li>Страна производства: ' . $product->Country_of_manufacture . '</li>';
+            $description .= '<li><strong>Страна производства: </strong>' . $product->Country_of_manufacture . '</li>';
             }
 
-            $description .= '</ul>';
-        $description .= '<p>Цена указана за 1 ' . $product->MainUnit . '</p>';
+            $description .= '</ul><br>';
+        
 
-        $description .= '<p>Полный список коллекции и наличие уточняйте у менеджера</p>';
+        $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+        $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+        $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
         
 
         $keywords = '';
@@ -246,10 +249,12 @@
             $keywords .= $type . ' ' . $country . ', ';
         }
 
+        
+
 
 
         if ($type != 'декор') {
-            $description .= '<p>------------------------</p>';
+            $description .= '<p>_____________________</p>';
             $description .= '<p><em>' . $keywords . '</em></p>';
         }
         
