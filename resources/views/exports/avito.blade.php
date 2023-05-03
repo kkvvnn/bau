@@ -64,6 +64,13 @@
         $description .= '<p><strong>' . $product->Name . '. '
                 . $product->Producer_Brand . ' ('
                 . $product->Country_of_manufacture . ')</strong></p>';
+
+        
+        $date = date('d-m-Y');
+        if ($product->balanceCount > 0) {
+        $description .= '<p>&#9989; На утро '.$date.' доступно '.$product->balanceCount.' '.$product->MainUnit.'</p>';
+        }
+
         $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
         $description .= '<p><strong>Коллекция: </strong>';
             $collections = $product->collections;
@@ -71,8 +78,8 @@
             $description .= $collection->Collection_Name;
             $description .= '. ';
             }
-            $description .= '</p>
-        <ul>';
+            
+            $description .= '</p><ul>';
 
 
             if($product->Height != 0 && $product->Lenght != 0) {

@@ -26,7 +26,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
     {
         return view('exports.avito', [
             // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
-            'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
+            'products' => Product::where([['Name', 'not like', '%екор%'],['balanceCount', '>=', 1], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
         ]);
     }
 }
