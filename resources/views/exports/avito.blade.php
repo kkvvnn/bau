@@ -344,6 +344,8 @@
         $title = preg_replace('/K\w+P/', '', $title);
         $title = preg_replace('/MM\d+/', '', $title);
         }
+        $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
+        $title = preg_replace('/\d\d\d\d-\d\d\d\d/', '', $title);
         if (mb_strlen($title) < 42) { $title='Laparet ' . $title; } 
         @endphp 
 
