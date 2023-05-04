@@ -344,16 +344,27 @@
         $title = preg_replace('/K\w+P/', '', $title);
         $title = preg_replace('/MM\d+/', '', $title);
         }
-        if (mb_strlen($title) < 42) { $title='Laparet ' . $title; } @endphp <tr>
+        if (mb_strlen($title) < 42) { $title='Laparet ' . $title; } 
+        @endphp 
+
+        @php
+            if ($product->RMPriceOld == 0) {
+                $price = round($product->RMPrice * 0.87, -1);
+            } else {
+                $price = $product->RMPrice;
+            }
+        @endphp
+        
+        <tr>
             <td></td>
             <td>{{ $product->Element_Code }}</td>
             <td>В сообщениях</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>Владимир</td>
-            <td>{{ round($product->RMPrice * 0.87, -1) }}</td>
+            <td>{{$price}}</td>
             <td>Напольные решения</td>
-            <td>{{ $title }}</td>
+            <td>{{$title}}</td>
             <td>{{$img_full}}</td> <!-- -->
             <td>Отделка</td>
             <td>Стройматериалы</td>
