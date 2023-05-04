@@ -68,7 +68,7 @@
         $description .= '<p>--------------------</p>';
         $date = date('d-m-Y');
         if ($product->balanceCount > 0) {
-        $description .= '<p>&#9989; На утро '.$date.' доступно '.$product->balanceCount.' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+        $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
         }
         $description .= '<p>--------------------</p>';
 
