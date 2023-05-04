@@ -68,7 +68,7 @@
         
         $date = date('d-m-Y');
         if ($product->balanceCount > 0) {
-        $description .= '<p>&#9989; На утро '.$date.' доступно '.$product->balanceCount.' '.$product->MainUnit.'</p>';
+        $description .= '<p>&#9989; На утро '.$date.' доступно '.$product->balanceCount.' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
         }
 
         $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
