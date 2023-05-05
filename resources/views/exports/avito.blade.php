@@ -61,9 +61,17 @@
 
         @php
         $description = '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-        $description .= '<p><strong>' . $product->Name . '. '
+       
+        if ($product->Novinka == 1) {
+            $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Name . '. '
                 . $product->Producer_Brand . ' ('
                 . $product->Country_of_manufacture . ')</strong></p>';
+        } else {
+            $description .= '<p><strong>' . $product->Name . '. '
+                . $product->Producer_Brand . ' ('
+                . $product->Country_of_manufacture . ')</strong></p>';
+        }
+
 
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
