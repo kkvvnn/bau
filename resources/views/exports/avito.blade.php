@@ -353,7 +353,7 @@
 
         @php
             if ($product->RMPriceOld == 0) {
-                $price = round($product->RMPrice * 0.87, -1);
+                $price = round($product->RMPrice * 0.91, -1);
             } else {
                 $price = $product->RMPrice;
             }
