@@ -291,11 +291,18 @@ $grid.imagesLoaded().progress( function() {
   data: {
     package_value: <?php echo $product->Package_Value; ?>,
     pcs_in_package: <?php echo $product->PCS_in_Package; ?>,
-    result: ''
+    count: ''
   },
-  methods: {
-    reverseMessage: function () {
-      this.result = 123
+  computed: {
+    packages: function () {
+      let count_int = Math.trunc(this.count / this.package_value)
+      let count_float = this.count / this.package_value
+      if (count_float == count_int) {
+        return count_int
+      } else {
+        return count_int + 1
+      }
+      
     }
   }
 })

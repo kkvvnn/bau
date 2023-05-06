@@ -61,12 +61,12 @@
                 <hr>
                 <h5>В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong>   кв.м: <strong>{{$product->Package_Value}}</strong></h5>
                 <hr>
-                <!-- <div id="app-5">
-                    <input type="text" name="count" id="count">
-                    <button v-on:click="reverseMessage">Рассчитать</button>
-                    @{{ result }}
+                <div id="app-5">
+                    <input v-model="count" placeholder="Количество кв.м?"> 
                     
-                </div> -->
+                    <h5>@{{ packages }} упаков. </h5>
+                    
+                </div>
                 <hr>
             </div>
         </div>
