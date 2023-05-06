@@ -269,6 +269,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
   // init Masonry
 var $grid = $('.grid').masonry({
@@ -282,6 +283,25 @@ $grid.imagesLoaded().progress( function() {
   $grid.masonry();
 });
 </script>
+
+
+<script>
+  var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    package_value: <?php echo $product->Package_Value; ?>,
+    pcs_in_package: <?php echo $product->PCS_in_Package; ?>,
+    result: ''
+  },
+  methods: {
+    reverseMessage: function () {
+      this.result = 123
+    }
+  }
+})
+</script>
+
+
 </body>
 
 </html>

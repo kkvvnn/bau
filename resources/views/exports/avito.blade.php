@@ -287,30 +287,30 @@
         <!-- http://193.124.113.217/storage/Picture1/1026a170-a32c-4db9-b281-4896c7448acd___v8_1E66_63c30.jpeg -->
         <!-- $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/'; -->
         @php
-        $img1 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture/', $product->Picture);
+        $img1 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture/', $product->Picture).'?123';
 
         if (isset($product->Picture2) && $product->Picture2 != null) {
-        $img2 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture2/', $product->Picture2);
+        $img2 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture2/', $product->Picture2).'?123';
         } else {$img2 = null;}
         if (isset($product->Picture3) && $product->Picture3 != null) {
-        $img3 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture3/', $product->Picture3);
+        $img3 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture3/', $product->Picture3).'?123';
         } else {$img3 = null;}
         if (isset($product->Picture4) && $product->Picture4 != null) {
-        $img4 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture4/', $product->Picture4);
+        $img4 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture4/', $product->Picture4).'?123';
         } else {$img4 = null;}
         if (isset($product->Picture5) && $product->Picture5 != null) {
-        $img5 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture5/', $product->Picture5);
+        $img5 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture5/', $product->Picture5).'?123';
         } else {$img5 = null;}
         if (isset($product->Picture6) && $product->Picture6 != null) {
-        $img6 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture6/', $product->Picture6);
+        $img6 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture6/', $product->Picture6).'?123';
         } else {$img6 = null;}
 
         $img_coll_all = $product->collections[0]->Interior_Pic;
         $img_coll_all = explode(', ', $img_coll_all);
-        $img_coll = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Collections/', $img_coll_all[0]);
+        $img_coll = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Collections/', $img_coll_all[0]).'?123';
 
         if (isset($img_coll_all[1])) {
-        $img_coll_2 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Collections/', $img_coll_all[1]);
+        $img_coll_2 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Collections/', $img_coll_all[1]).'?123';
         } else {
         $img_coll_2 = null;
         }

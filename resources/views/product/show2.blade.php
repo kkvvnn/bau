@@ -56,8 +56,18 @@
                 </h5>
                 <hr>
                 <h5>
-                        Артикул: {{$product->Element_Code}}
-                    </h5>
+                    Артикул: {{$product->Element_Code}}
+                </h5>
+                <hr>
+                <h5>В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong> | кв.м: <strong>{{$product->Package_Value}}</strong></h5>
+                <hr>
+                <!-- <div id="app-5">
+                    <input type="text" name="count" id="count">
+                    <button v-on:click="reverseMessage">Рассчитать</button>
+                    @{{ result }}
+                    
+                </div> -->
+                <hr>
             </div>
         </div>
         <!-- <div class="container">
@@ -90,7 +100,7 @@
 
         <div class="container-fluid">
 
-            
+
 
             <div class="grid">
                 <div class="grid-sizer"></div>

@@ -56,13 +56,15 @@
             <p class="card-text"></p>
           </div>
           <div class="card-footer">
-            <small class="text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</small>
+            <p class="text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</p>
             <hr>
             <!-- <small class="text-body-secondary">Закупка: {{$product->Price}} ₽/{{$product->MainUnit}}</small> -->
             <!-- <hr> -->
-            <small class="text-body-secondary">Доступно: {{$product->balanceCount}}</small>
+            <p class="text-body-secondary">Доступно: {{$product->balanceCount}}</p>
             <hr>
-            <small class="text-body-secondary">{{$product->Element_Code}}</small>
+            <p class="text-body-secondary">{{$product->Element_Code}}</p>
+            <hr>
+            <p class="text-body-secondary">В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong> | кв.м: <strong>{{$product->Package_Value}}</strong></p>
           </div>
 
 
