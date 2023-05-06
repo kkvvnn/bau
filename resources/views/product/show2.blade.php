@@ -64,7 +64,7 @@
                 <div id="app-5">
                     <input v-model="count" placeholder="Количество кв.м?"> 
                     
-                    <h5>@{{ packages }} упаков. </h5>
+                    <h5>@{{ packages }} упаков. общая площадь @{{ all }} кв.м</h5>
                     
                 </div>
                 <hr>

@@ -303,6 +303,15 @@ $grid.imagesLoaded().progress( function() {
         return count_int + 1
       }
       
+    },
+    all: function () {
+      let count_int = Math.trunc(this.count / this.package_value)
+      let count_float = this.count / this.package_value
+      if (count_float == count_int) {
+        return count_int * this.package_value
+      } else {
+        return (count_int + 1) * this.package_value
+      }
     }
   }
 })
