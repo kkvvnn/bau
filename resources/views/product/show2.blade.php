@@ -59,7 +59,7 @@
                     Артикул: {{$product->Element_Code}}
                 </h5>
                 <hr>
-                <h5>В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong> | кв.м: <strong>{{$product->Package_Value}}</strong></h5>
+                <h5>В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong>   кв.м: <strong>{{$product->Package_Value}}</strong></h5>
                 <hr>
                 <!-- <div id="app-5">
                     <input type="text" name="count" id="count">

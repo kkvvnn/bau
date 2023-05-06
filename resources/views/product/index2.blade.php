@@ -64,7 +64,7 @@
             <hr>
             <p class="text-body-secondary">{{$product->Element_Code}}</p>
             <hr>
-            <p class="text-body-secondary">В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong> | кв.м: <strong>{{$product->Package_Value}}</strong></p>
+            <p class="text-body-secondary">В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong>   кв.м: <strong>{{$product->Package_Value}}</strong></p>
           </div>
 
 
