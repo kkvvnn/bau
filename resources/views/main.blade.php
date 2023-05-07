@@ -285,37 +285,7 @@ $grid.imagesLoaded().progress( function() {
 </script>
 
 
-<script>
-  var app5 = new Vue({
-  el: '#app-5',
-  data: {
-    package_value: <?php echo $product->Package_Value; ?>,
-    pcs_in_package: <?php echo $product->PCS_in_Package; ?>,
-    count: ''
-  },
-  computed: {
-    packages: function () {
-      let count_int = Math.trunc(this.count / this.package_value)
-      let count_float = this.count / this.package_value
-      if (count_float == count_int) {
-        return count_int
-      } else {
-        return count_int + 1
-      }
-      
-    },
-    all: function () {
-      let count_int = Math.trunc(this.count / this.package_value)
-      let count_float = this.count / this.package_value
-      if (count_float == count_int) {
-        return (count_int * this.package_value).toFixed(2)
-      } else {
-        return ((count_int + 1) * this.package_value).toFixed(2)
-      }
-    }
-  }
-})
-</script>
+@yield('scripts')
 
 
 </body>

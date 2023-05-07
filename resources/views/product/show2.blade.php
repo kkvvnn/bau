@@ -135,3 +135,34 @@
 
 
 @endsection
+
+@section('scripts')
+
+<script>
+  var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    package_value: <?php echo $product->Package_Value; ?>,
+    pcs_in_package: <?php echo $product->PCS_in_Package; ?>,
+    count: null
+  },
+  computed: {
+    packages: function () {
+      let count_int = Math.trunc(this.count / this.package_value)
+      let count_float = this.count / this.package_value
+      if (count_float == count_int) {
+        return count_int
+      } else {
+        return count_int + 1
+      }
+      
+    },
+    
+    all: function () {
+      return (this.packages * this.package_value).toFixed(2)
+    }
+  }
+})
+</script>
+
+@endsection
