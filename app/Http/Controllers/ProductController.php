@@ -150,7 +150,7 @@ class ProductController extends Controller
             // ['Category', 'LIKE', '%мозаика%'],
             // ['Lenght', 80], 
             // ['Height', 80],
-        ])->orderByDesc('Height')->paginate(15);
+        ])->orderByDesc('balanceCount')->paginate(15);
 
         $products->appends(['name' => $name]);
 
