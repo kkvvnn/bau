@@ -152,6 +152,8 @@ class ProductController extends Controller
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
+        $products->appends(['name' => $name]);
+
         return $this->index($products, $type);
     }
 
