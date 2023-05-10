@@ -61,6 +61,8 @@ class ProductController extends Controller
             // ['Height', 80],
         ])->orderByDesc('balanceCount')->paginate(15);
 
+        $products->appends(['lenght' => $request->lenght, 'height' => $request->height]);
+
         // dd($request->height);
 
         return $this->index($products, $type);
