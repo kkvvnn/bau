@@ -34,6 +34,9 @@ Route::get('/plitka_index', [ProductController::class, 'index_plitka']) -> name(
 Route::get('/mosaic_index', [ProductController::class, 'index_mosaic']) -> name('index_mosaic');
 Route::get('/decor_index', [ProductController::class, 'index_decor']) -> name('index_decor');
 Route::get('/search', [ProductController::class, 'search']) -> name('search');
+Route::get('/size', [ProductController::class, 'index_size']) -> name('index_size');
+
+Route::view('/size_form', 'size_form') -> name('index_size_form');
 
 Route::get('/collection/{name}', [ProductController::class, 'collection_name']);
 

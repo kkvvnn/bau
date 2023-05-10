@@ -48,6 +48,24 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
+    public function index_size(Request $request)
+    {
+        $type = '';
+
+        $products = Product::where([
+            ['Name', 'LIKE', '%керамогранит%'],
+            // ['Category', 'LIKE', '%керамогранит%'],
+            ['Lenght', $request->lenght],
+            ['Height', $request->height],
+            // ['Lenght', 80], 
+            // ['Height', 80],
+        ])->orderByDesc('balanceCount')->paginate(15);
+
+        // dd($request->height);
+
+        return $this->index($products, $type);
+    }
+
     public function index_plitka()
     {
         $type = 'plitka';
