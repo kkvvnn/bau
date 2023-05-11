@@ -51,6 +51,19 @@ class ProductController extends Controller
         ]);
     }
 
+    public function cersanit()
+    {
+        $products = Product::where('Producer_Brand', 'Cersanit')->get();
+
+        foreach ($products as $product) {
+
+            $collection = $product->collections;
+            $title = $product->Producer_Brand . ' ' . $collection[0]->Collection_Name . ' ' . $product->Owner_Article;
+
+            echo $title . '<br>';
+        }
+    }
+
     public function index_keramogranit()
     {
         $type = 'keramogranit';
