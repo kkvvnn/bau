@@ -60,7 +60,13 @@
         <!-- ------------------------------------------------------- -->
 
         @php
-        $description = '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+        if ($product->Producer_Brand == 'Laparet') {
+            $description = '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+        } elseif ($product->Producer_Brand == 'Cersanit') {
+            $description = '<p>Керамическая плитка и керамогранит Cersanit , Церсанит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+        } else {
+            $description = '<p>Керамическая плитка и керамогранит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+        }
        
         if ($product->Novinka == 1) {
             $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Name . '. '
@@ -207,7 +213,11 @@
         $keywords .= $size;
         }
 
-        $keywords .= $type . ' лапарет, ';
+        if ($product->Producer_Brand == 'Laparet') {
+            $keywords .= $type . ' лапарет, ';
+        } elseif ($product->Producer_Brand == 'Cersanit') {
+            $keywords .= $type . ' церсанит, ';
+        }
         
        
 
@@ -256,7 +266,7 @@
 
         $keywords .= $type . ' ' .mb_strtolower($color) . ', ';
 
-        $keywords .= 'Laparet ' . $type . ', ';
+        $keywords .= $product->Producer_Brand . ' ' . $type . ', ';
         
 
         $owner_code = $product->Owner_Article;
@@ -356,7 +366,7 @@
         }
         $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
         $title = preg_replace('/\d\d\d\d-\d\d\d\d/', '', $title);
-        if (mb_strlen($title) < 42) { $title='Laparet ' . $title; } 
+        if (mb_strlen($title) < 42) { $title=$product->Producer_Brand . ' ' . $title; } 
         @endphp 
 
         @php

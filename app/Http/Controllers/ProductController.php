@@ -15,6 +15,23 @@ use App\Models\CollectionProduct;
 
 class ProductController extends Controller
 {
+
+    public function index_full()
+    {
+        $type = '';
+        
+        $products = Product::where([
+            ['Name', 'LIKE', '%керамогранит%'],
+            ['Category', 'LIKE', '%керамогранит%'],
+            // ['Lenght', 80], 
+            // ['Height', 80],
+        ])->orderByDesc('Height')->paginate(15);
+
+        return view('index-full', [
+            'products' => $products
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -145,12 +162,8 @@ class ProductController extends Controller
         $name = $request->input('name');
         $name = '%' . $name . '%';
 
-        $products = Product::where([
-            ['Name', 'LIKE', $name],
-            // ['Category', 'LIKE', '%мозаика%'],
-            // ['Lenght', 80], 
-            // ['Height', 80],
-        ])->orderByDesc('balanceCount')->paginate(15);
+
+        $products = Product::where('Name', 'LIKE', $name)->orWhere('Producer_Brand', 'LIKE', $name)->orderByDesc('balanceCount')->paginate(15);
 
         $products->appends(['name' => $name]);
 

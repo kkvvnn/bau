@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('Country_of_manufacture')->nullable();
             $table->string('MainUnit')->nullable();
             $table->tinyInteger('Novinka')->nullable();
-            $table->integer('Skidka')->nullable();
+            $table->string('Skidka')->nullable();
             $table->tinyInteger('balance')->nullable();
             $table->string('balanceCount')->nullable();
             $table->string('Category')->nullable();

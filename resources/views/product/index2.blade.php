@@ -52,7 +52,7 @@
             <img src="{{$url1}}" class="card-img-top" alt="...">
           </a>
           <div class="card-body">
-            <h5 class="card-title">{{$product->Name}}</h5>
+            <h5 class="card-title">{{$product->Producer_Brand}} {{$product->Name}}</h5>
             <p class="card-text"></p>
           </div>
           <div class="card-footer">
