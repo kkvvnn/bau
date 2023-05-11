@@ -366,15 +366,22 @@
         }
         $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
         $title = preg_replace('/\d\d\d\d-\d\d\d\d/', '', $title);
-        if (mb_strlen($title) < 42) { $title=$product->Producer_Brand . ' ' . $title; } 
+        if (mb_strlen($title) < 42) { $title = $product->Producer_Brand . ' ' . $title; } 
         @endphp 
 
         @php
-            if ($product->RMPriceOld == 0) {
-                $price = round($product->RMPrice * 0.91, -1);
-            } else {
-                $price = $product->RMPrice;
+            if ($product->Producer_Brand == 'Laparet') {
+                if ($product->RMPriceOld == 0) {
+                    $price = round($product->RMPrice * 0.91, -1);
+                } else {
+                    $price = $product->RMPrice;
+                }
             }
+            if ($product->Producer_Brand == 'Cersanit') {
+                $price = round($product->RMPrice * 1.05, -1);
+            }
+
+            
         @endphp
         
         <tr>
