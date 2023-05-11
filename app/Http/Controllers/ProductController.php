@@ -53,7 +53,7 @@ class ProductController extends Controller
 
     public function cersanit()
     {
-        $products = Product::where('Producer_Brand', 'Cersanit')->get();
+        $products = Product::where('Producer_Brand', 'Cersanit')->orderBy('Name')->get();
 
         foreach ($products as $product) {
 
