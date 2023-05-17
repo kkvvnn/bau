@@ -12,6 +12,7 @@ class AvitoController extends Controller
 {
     public function export()
     {
+        set_time_limit(90);
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
         $filename = 'avito/' . date("Y-m-d_His") . '.xlsx';
         Excel::store(new AvitoExport, $filename, 'public');
