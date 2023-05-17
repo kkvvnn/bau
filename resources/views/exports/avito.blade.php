@@ -293,9 +293,6 @@
 
         @endphp
 
-        <!-- ----------------------------------------------------------------- -->
-        <!-- http://193.124.113.217/storage/Picture1/1026a170-a32c-4db9-b281-4896c7448acd___v8_1E66_63c30.jpeg -->
-        <!-- $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/'; -->
         @php
         $img1 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture/', $product->Picture);
 
@@ -315,9 +312,14 @@
         $img6 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Picture6/', $product->Picture6);
         } else {$img6 = null;}
 
+        if (isset($product->collections[0])) {
         $img_coll_all = $product->collections[0]->Interior_Pic;
         $img_coll_all = explode(', ', $img_coll_all);
         $img_coll = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Collections/', $img_coll_all[0]);
+        } else {
+        $img_coll = null;
+        }
+
 
         if (isset($img_coll_all[1])) {
         $img_coll_2 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', 'http://193.124.113.217/storage/Collections/', $img_coll_all[1]);
