@@ -9,6 +9,7 @@ use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\TelegramSendController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\AquaFloorController;
+use App\Http\Controllers\MyHelpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,3 +74,5 @@ Route::get('/aquafloor/index', [AquaFloorController::class, 'index'])->name('aqu
 Route::get('/aquafloor/index_collections', [AquaFloorController::class, 'index_collections'])->name('aquafloor_index_collections');
 Route::get('/aquafloor/collection/{collection_name}', [AquaFloorController::class, 'index_one_collection']);
 Route::get('/aquafloor/product/{title}', [AquaFloorController::class, 'index_product']);
+
+Route::get('/list-all', [MyHelpController::class, 'list']);
