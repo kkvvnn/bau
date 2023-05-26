@@ -1,4 +1,4 @@
-<table>
+<table cellspacing="2" cellpadding="2" border='1' rules='rows'>
 @foreach ($products as $product)
 
 
