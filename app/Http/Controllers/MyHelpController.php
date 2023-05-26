@@ -16,4 +16,15 @@ class MyHelpController extends Controller
             'products' => $products
         ]);
     }
+
+    public function biggest()
+    {
+
+        $products = Product::where([['Producer_Brand', 'Laparet'], ['Lenght', 120], ['Height', 60]])->orderBy('balanceCount')->get();
+        // dd($products);
+
+        return view('help.biggest', [
+            'products' => $products
+        ]);
+    }
 }

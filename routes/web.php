@@ -76,3 +76,4 @@ Route::get('/aquafloor/collection/{collection_name}', [AquaFloorController::clas
 Route::get('/aquafloor/product/{title}', [AquaFloorController::class, 'index_product']);
 
 Route::get('/list-all', [MyHelpController::class, 'list']);
+Route::get('/biggest', [MyHelpController::class, 'biggest']);
