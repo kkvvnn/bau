@@ -31,15 +31,15 @@
 
         <!-- ----------------------------------------------- -->
         @php
-        if(stripos($product->Name, 'Мозаика') !== false) {
+        if(stripos($product->Name, 'озаика') !== false) {
         $FinishingSubType = 'Мозаика';
         $FinishingType = 'Плитка, керамогранит и мозаика';
         }
-        elseif(stripos($product->Name, 'Плитка') !== false) {
+        elseif(stripos($product->Name, 'литка') !== false) {
         $FinishingType = 'Плитка, керамогранит и мозаика';
         $FinishingSubType = 'Керамическая плитка';
         }
-        elseif(stripos($product->Name, 'Керамогранит') !== false) {
+        elseif(stripos($product->Name, 'ерамогранит') !== false) {
         $FinishingType = 'Плитка, керамогранит и мозаика';
         $FinishingSubType = 'Керамогранит';
         } else {
