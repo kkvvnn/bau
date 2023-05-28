@@ -31,11 +31,7 @@
 
         <!-- ----------------------------------------------- -->
         @php
-        if(stripos($product->Name, 'Декор') !== false) {
-        $FinishingType = 'Другое';
-        $FinishingSubType = '';
-        }
-        elseif(stripos($product->Name, 'Мозаика') !== false) {
+        if(stripos($product->Name, 'Мозаика') !== false) {
         $FinishingSubType = 'Мозаика';
         $FinishingType = 'Плитка, керамогранит и мозаика';
         }
@@ -46,6 +42,9 @@
         elseif(stripos($product->Name, 'Керамогранит') !== false) {
         $FinishingType = 'Плитка, керамогранит и мозаика';
         $FinishingSubType = 'Керамогранит';
+        } else {
+        $FinishingType = 'Другое';
+        $FinishingSubType = '';
         }
 
         @endphp
