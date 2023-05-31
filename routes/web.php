@@ -22,13 +22,15 @@ use App\Http\Controllers\MyHelpController;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 
+// ------------------IMPORT_FROM_BAUSERVIS_TO_DATABASE----------------------
 Route::get('/import_product_from_csv', [ProductController::class, 'import']) -> name('import_product_from_csv');
 Route::get('/import_collection_from_csv', [CollectionController::class, 'import']) -> name('import_collection_from_csv');
+Route::get('/many', [Controller::class, 'many'])->name('many');
+Route::get('/download_all_collections', [CollectionController::class, 'download_all_collections']) -> name('download_all_collections');
+Route::get('/download_all/{pic?}', [ProductController::class, 'download_all']) -> name('download_all');
 
+// -----------------------------------------------------------------------------
 Route::get('/', [ProductController::class, 'index_all']) -> name('product_index');
 Route::get('/keramogranit_index', [ProductController::class, 'index_keramogranit']) -> name('index_keramogranit');
 Route::get('/plitka_index', [ProductController::class, 'index_plitka']) -> name('index_plitka');
@@ -39,35 +41,28 @@ Route::get('/size', [ProductController::class, 'index_size']) -> name('index_siz
 Route::get('/cersanit', [ProductController::class, 'cersanit']);
 
 Route::view('/size_form', 'size_form') -> name('index_size_form');
-
 Route::get('/collection/{name}', [ProductController::class, 'collection_name']);
-
 Route::get('/product/{id?}', [ProductController::class, 'show']) -> name('show');
-
 Route::get('/ddooww/{id?}', [Controller::class, 'down'])->name('img_url');
 Route::get('/index/{id?}', [Controller::class, 'index2']);
-
-
-Route::get('/avito_export', [AvitoController::class, 'export']);
-
-Route::get('/many', [Controller::class, 'many'])->name('many');
-
 Route::get('/index_collection', [CollectionController::class, 'index']) -> name('index_collection');
-Route::get('/download_all_collections', [CollectionController::class, 'download_all_collections']) -> name('download_all_collections');
-
-Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send']) -> name('send_to_telegram');
-
 Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker']) -> name('index_ker');
 Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit']) -> name('index_plit');
 
-Route::get('/download_all/{pic?}', [ProductController::class, 'download_all']) -> name('download_all');
+// --------------------CREATE_AVITO_FILE--------------------------------------
+Route::get('/avito_export', [AvitoController::class, 'export']);
 
+// ----------------------TELEGRAM-------------------------------------------------
+Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send']) -> name('send_to_telegram');
+
+// --------------------------QRCODE--------------------------------------------
 Route::get('/qr_code/show', [QrCodeController::class, 'show']) -> name('qr_code_show');
-
 Route::get('/scan_qr', [QrCodeController::class, 'scan']) -> name('scan_qr');
+
 
 Route::get('/img/{path}', [ImageController::class, 'show'])->where('path', '.*')->name('img_sm');
 
+// -----------------AQUAFLOOR-----------------------
 Route::get('/aquafloor/import', [AquaFloorController::class, 'import'])->name('aqua_flor_import');
 Route::get('/aquafloor/download_pic', [AquaFloorController::class, 'download_pic']);
 Route::get('/aquafloor/index', [AquaFloorController::class, 'index'])->name('aquafloor_index');
@@ -75,5 +70,6 @@ Route::get('/aquafloor/index_collections', [AquaFloorController::class, 'index_c
 Route::get('/aquafloor/collection/{collection_name}', [AquaFloorController::class, 'index_one_collection']);
 Route::get('/aquafloor/product/{title}', [AquaFloorController::class, 'index_product']);
 
+// ----------------HELP_CONTROLLER----------------
 Route::get('/list-all', [MyHelpController::class, 'list']);
 Route::get('/biggest', [MyHelpController::class, 'biggest']);
