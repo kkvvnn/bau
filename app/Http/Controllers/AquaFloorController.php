@@ -14,7 +14,7 @@ class AquaFloorController extends Controller
     public function import()
     {
         // $name = Storage::get('aquafloor/import/aquafloor_all.xlsx');
-        $name = 'import/aquafloor/aquafloor_all2.xlsx';
+        $name = 'import/aquafloor/aquafloor.xlsx';
 
         Excel::import(new AquaFloorImport, $name);
 
@@ -100,7 +100,7 @@ class AquaFloorController extends Controller
 
         $collections = array_unique($collections);
         $collections = array_reverse($collections);
-        // $collections = AquaFloor::distinct()->get(['collection']); 
+        // $collections = AquaFloor::distinct()->get(['collection']);
         // dd($collections);
         return view('aquafloor.index_collections', [
             'collections' => $collections
