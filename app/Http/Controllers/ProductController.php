@@ -19,11 +19,11 @@ class ProductController extends Controller
     public function index_full()
     {
         $type = '';
-        
+
         $products = Product::where([
             ['Name', 'LIKE', '%керамогранит%'],
             ['Category', 'LIKE', '%керамогранит%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -71,7 +71,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Name', 'LIKE', '%керамогранит%'],
             ['Category', 'LIKE', '%керамогранит%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -87,7 +87,7 @@ class ProductController extends Controller
             // ['Category', 'LIKE', '%керамогранит%'],
             ['Lenght', $request->lenght],
             ['Height', $request->height],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('balanceCount')->paginate(15);
 
@@ -105,7 +105,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Name', 'LIKE', '%плитка%'],
             ['Category', 'LIKE', '%плитка%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -119,7 +119,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Name', 'LIKE', '%мозаика%'],
             ['Category', 'LIKE', '%мозаика%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -133,7 +133,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Name', 'LIKE', '%декор%'],
             // ['Category', 'LIKE', '%мозаика%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -206,7 +206,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Collection_Id', 'LIKE', $id],
             // ['Category', 'LIKE', '%керамогранит%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -264,12 +264,24 @@ class ProductController extends Controller
         // $url1 = Storage::url('Picture1/' . $name_file);
         // $url2 = Storage::url('Picture2/' . $name_file2);
 
+
+        $path_dir = 'storage/Foto/' . $product->Element_Code;
+//        $directories = Storage::directories('public/Foto');
+        $files = Storage::files('public/Foto/'.$product->Element_Code);
+//        dd($files);
+        $fotossss = $files;
+        $fotos = [];
+        foreach ($fotossss as $f) {
+            $fotos[] = str_replace('public', '/storage', $f);
+        }
+//dd($fotos);
         return view('product.show2', [
             'product' => $product,
             'urls' => $urls_2,
             // 'url2' => $url2,
             'collection' => $collection,
             'url_collection' => $urls_c,
+            'fotos' => $fotos,
         ]);
     }
 
@@ -300,7 +312,7 @@ class ProductController extends Controller
     // IMPORT PRODUCTS
     public function import()
     {
-        // Product::truncate();    // clear all data in table   
+        // Product::truncate();    // clear all data in table
 
         set_time_limit(60);
         $url = "http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv";
@@ -383,7 +395,7 @@ class ProductController extends Controller
 
         // $url = Storage::url($name_file);
         // $url_small = Storage::url('small_img/' . $name_file);
-        // // $url = Storage::url($name_file); 
+        // // $url = Storage::url($name_file);
 
         // // use Illuminate\Support\Str;
 
