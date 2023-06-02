@@ -61,7 +61,10 @@
                                 <hr>
                                 <p class="text-body-secondary">{{$product->Element_Code}}</p>
                                 <hr>
-                                @if(file_exists('storage/Foto/'. $product->Element_Code))
+                                @php
+                                    $vendor_code = str_replace('х', '', $product->Element_Code);
+                                @endphp
+                                @if(file_exists('storage/Foto/'. $vendor_code))
                                     <p class="h5 text-success">Есть фото</p>
                                 @else
                                     <p class="h5 text-danger">Нет фото</p>
