@@ -10,13 +10,8 @@ class PhotoController extends Controller
     public function store(Request $request)
     {
         $path = $request->vendor;
-//        dd($path);
-//        $image = $request->file('foto')->store($path, 'foto');
-//        $extension = $request->file('foto')->extension();
-
-//        $date = date("Y-m-d_His");
-
-        $image = $request->file('foto')->store($path, 'foto');
+//
+        $path = Storage::disk('foto')->putFile($path, $request->file('foto'));
         return redirect('/');
     }
 }
