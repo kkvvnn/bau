@@ -77,7 +77,7 @@ return [
         'foto' => [
             'driver' => 'local',
             'root' => storage_path('app/public/foto'),
-            'url' => env('APP_URL') . '/storage/foto',
+            'url' => '/storage/foto',
             'visibility' => 'public',
             'throw' => false,
         ],

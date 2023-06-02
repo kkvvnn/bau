@@ -265,14 +265,14 @@ class ProductController extends Controller
         // $url2 = Storage::url('Picture2/' . $name_file2);
 
         $vendor_code = str_replace('х', '', $product->Element_Code);
-        $path_dir = 'storage/Foto/' . $vendor_code;
+//        $path_dir = 'storage/Foto/' . $vendor_code;
 //        $directories = Storage::directories('public/Foto');
-        $files = Storage::files(base_path().'/public/storage/foto/'.$vendor_code);
-        dd($files);
+        $files = Storage::disk('foto')->files('/'.$vendor_code);
+//        dd($files);
         $fotossss = $files;
         $fotos = [];
         foreach ($fotossss as $f) {
-            $fotos[] = str_replace('public', '/storage', $f);
+            $fotos[] = Storage::disk('foto')->url($f);
         }
 //dd($fotos);
         return view('product.show2', [
