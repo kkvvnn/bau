@@ -264,10 +264,10 @@ class ProductController extends Controller
         // $url1 = Storage::url('Picture1/' . $name_file);
         // $url2 = Storage::url('Picture2/' . $name_file2);
 
-
-        $path_dir = 'storage/Foto/' . $product->Element_Code;
+        $vendor_code = str_replace('х', '', $product->Element_Code);
+        $path_dir = 'storage/Foto/' . $vendor_code;
 //        $directories = Storage::directories('public/Foto');
-        $files = Storage::files('public/Foto/'.$product->Element_Code);
+        $files = Storage::files('public/Foto/'.$vendor_code);
 //        dd($files);
         $fotossss = $files;
         $fotos = [];

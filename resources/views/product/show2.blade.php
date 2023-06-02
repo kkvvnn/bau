@@ -93,13 +93,15 @@
             </div>
         </div>
     </div> -->
-
+            @php
+                $vendor_code = str_replace('х', '', $product->Element_Code);
+            @endphp
 
             <div>
                 <form action="{{ route('save-foto') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <input type="hidden" name="vendor" value="{{ $product->Element_Code }}">
+                        <input type="hidden" name="vendor" value="{{ $vendor_code }}">
                         <input class="form-control" type="file" name="foto" id="">
                         <p></p>
                         <input class="btn btn-primary" type="submit" value="Отправить">
