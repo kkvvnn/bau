@@ -66,6 +66,22 @@ return [
             'throw' => false,
         ],
 
+        'primavera' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Primavera'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'foto' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Foto'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
         // 'avito' => [
         //     'driver' => 'local',
         //     'root' => storage_path('app/public/avito'),
@@ -91,7 +107,7 @@ return [
             'host' => env('FTP_HOST'),
             'username' => env('FTP_USERNAME'),
             'password' => env('FTP_PASSWORD'),
-         
+
             // Optional FTP Settings...
             // 'port' => env('FTP_PORT', 21),
             // 'root' => env('FTP_ROOT'),
@@ -102,7 +118,7 @@ return [
 
     ],
 
-    
+
 
     /*
     |--------------------------------------------------------------------------

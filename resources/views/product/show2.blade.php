@@ -62,10 +62,10 @@
                 <h5>В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong>   кв.м: <strong>{{$product->Package_Value}}</strong></h5>
                 <hr>
                 <div id="app-5">
-                    <input v-model="count" placeholder="Количество кв.м?"> 
-                    
+                    <input v-model="count" placeholder="Количество кв.м?">
+
                     <h5>@{{ packages }} упаков. общая площадь @{{ all }} кв.м</h5>
-                    
+
                 </div>
                 <hr>
             </div>
@@ -95,7 +95,15 @@
             </div> -->
 
 
-
+<div>
+    <form action="{{ route('save-foto') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="vendor" value="{{ $product->Element_Code }}">
+        <input type="file" name="foto" id="">
+        <input type="submit" value="Отправить">
+    </form>
+</div>
+        <hr>
 
 
         <div class="container-fluid">
@@ -155,9 +163,9 @@
       } else {
         return count_int + 1
       }
-      
+
     },
-    
+
     all: function () {
       return (this.packages * this.package_value).toFixed(2)
     }

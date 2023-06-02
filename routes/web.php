@@ -73,3 +73,12 @@ Route::get('/aquafloor/product/{title}', [AquaFloorController::class, 'index_pro
 // ----------------HELP_CONTROLLER----------------
 Route::get('/list-all', [MyHelpController::class, 'list']);
 Route::get('/biggest', [MyHelpController::class, 'biggest']);
+
+//--------------------PRIMAVERA------------------------
+Route::get('/primavera/import', [\App\Http\Controllers\PrimaveraController::class, 'import']);
+Route::get('/primavera', [\App\Http\Controllers\PrimaveraController::class, 'index'])->name('primavera.index');
+Route::get('/primavera/download-pic', [\App\Http\Controllers\PrimaveraController::class, 'download_pic']);
+Route::get('/primavera/{id}', [\App\Http\Controllers\PrimaveraController::class, 'show'])->name('primavera.show');
+
+//-------------------PHOTO------------------------
+Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
