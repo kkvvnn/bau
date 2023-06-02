@@ -15,12 +15,6 @@
     </div>
   </section> -->
 
-@php
-    phpinfo();
-@endphp
-
-
-
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
             <div>
