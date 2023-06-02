@@ -11,7 +11,7 @@ class PhotoController extends Controller
     {
         $path = $request->vendor;
 //        $image = $request->file('foto')->store($path, 'foto');
-        $extension = $request->file('foto')->extension();
+        $extension = $request->file('foto')->getClientOriginalExtension();
 
         $date = date("Y-m-d_His");
 
