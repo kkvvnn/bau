@@ -15,7 +15,7 @@ class PhotoController extends Controller
 
         $date = date("Y-m-d_His");
 
-        $image = $request->file('foto')->store('foto');
+        $image = $request->file('foto')->store('/storage/Foto/'.$path);
         return redirect('/');
     }
 }
