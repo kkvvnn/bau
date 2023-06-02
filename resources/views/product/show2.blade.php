@@ -15,7 +15,9 @@
     </div>
   </section> -->
 
-
+@php
+    phpinfo();
+@endphp
 
 
 
