@@ -267,8 +267,8 @@ class ProductController extends Controller
         $vendor_code = str_replace('х', '', $product->Element_Code);
         $path_dir = 'storage/Foto/' . $vendor_code;
 //        $directories = Storage::directories('public/Foto');
-        $files = Storage::files('public/foto/'.$vendor_code);
-//        dd($files);
+        $files = Storage::files(base_path().'/public/storage/foto/'.$vendor_code);
+        dd($files);
         $fotossss = $files;
         $fotos = [];
         foreach ($fotossss as $f) {
