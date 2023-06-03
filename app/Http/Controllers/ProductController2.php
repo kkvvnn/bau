@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\ProductsImport;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-
-use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Models\CollectionProduct;
+use App\Imports\ProductsImport;
+use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -23,14 +21,8 @@ class ProductController extends Controller
         // $products = Product::all();
         // $users = User::where('votes', '>', 100)->paginate(15);
 
-
-
-
-
-
-
         return view('product.index2', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 
@@ -41,7 +33,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Name', 'LIKE', '%керамогранит%'],
             ['Category', 'LIKE', '%керамогранит%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -55,7 +47,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Name', 'LIKE', '%плитка%'],
             ['Category', 'LIKE', '%плитка%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -69,7 +61,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Name', 'LIKE', '%мозаика%'],
             ['Category', 'LIKE', '%мозаика%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -83,7 +75,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Name', 'LIKE', '%декор%'],
             // ['Category', 'LIKE', '%мозаика%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -107,6 +99,7 @@ class ProductController extends Controller
 
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
         $products = Product::where([['balanceCount', '>', $count], ['Price', '<', $price], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
+
         return $this->index($products, $type);
     }
 
@@ -115,6 +108,7 @@ class ProductController extends Controller
         $type = 'all';
 
         $products = Product::where([['balanceCount', '>', $count], ['Price', '<', $price], ['Name', 'LIKE', '%литка%']])->paginate(15);
+
         return $this->index($products, $type);
     }
 
@@ -123,12 +117,12 @@ class ProductController extends Controller
         $type = 'search';
 
         $name = $request->input('name');
-        $name = '%' . $name . '%';
+        $name = '%'.$name.'%';
 
         $products = Product::where([
             ['Name', 'LIKE', $name],
             // ['Category', 'LIKE', '%мозаика%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -158,7 +152,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['Collection_Id', 'LIKE', $id],
             // ['Category', 'LIKE', '%керамогранит%'],
-            // ['Lenght', 80], 
+            // ['Lenght', 80],
             // ['Height', 80],
         ])->orderByDesc('Height')->paginate(15);
 
@@ -186,13 +180,12 @@ class ProductController extends Controller
 
         // dd($urls_c);
 
-
         $name_files = [];
-        for ($pic = 1; $pic <= 24; ++$pic) {
+        for ($pic = 1; $pic <= 24; $pic++) {
             if ($pic == 1) {
                 $name = 'Picture';
             } else {
-                $name = 'Picture' . $pic;
+                $name = 'Picture'.$pic;
             }
             if ($product->$name != null) {
                 $name_files[$name] = Str::remove($string_for_delete, $product->$name);
@@ -204,7 +197,7 @@ class ProductController extends Controller
 
         $urls = [];
         foreach ($name_files as $key => $value) {
-            $urls[] = Storage::url($key . '/' . $value);
+            $urls[] = Storage::url($key.'/'.$value);
         }
         // dd($urls);
         // $url1 = Storage::url('Picture1/' . $name_file);
@@ -246,14 +239,14 @@ class ProductController extends Controller
     // IMPORT PRODUCTS
     public function import()
     {
-        // Product::truncate();    // clear all data in table   
+        // Product::truncate();    // clear all data in table
 
-        $url = "http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv";
+        $url = 'http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv';
         $contents = file_get_contents($url);
-        $contents = mb_convert_encoding($contents, "UTF-8", "WINDOWS-1251");
+        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
 
-        $date = date("Y-m-d_His");
-        $name = 'import/products/product_' . $date . '.csv';
+        $date = date('Y-m-d_His');
+        $name = 'import/products/product_'.$date.'.csv';
 
         // dd($name);
 
@@ -268,7 +261,7 @@ class ProductController extends Controller
     public function mydown($name, $public_n)
     {
         set_time_limit(600);
-        $disk = 'public' . $public_n;
+        $disk = 'public'.$public_n;
         if ($name == null) {
             return;
         }
@@ -306,15 +299,13 @@ class ProductController extends Controller
             $where_pic = $disk;
         }
 
-
         // $name_file = 'small_img/' . $name_file;
         // $products = Product::where([['id', '<=', 400], ['id', '!=', 226], ['Picture2', '!=', null]])->get();
         // $products = Product::where([['id', '<', 2000], ['Picture2', '!=', null]])->get();
-        $products = Product::where(('Picture' . $where_pic), '!=', null)->get();
+        $products = Product::where(('Picture'.$where_pic), '!=', null)->get();
         // dd($products);
 
-        $product_pic = 'Picture' . $where_pic;
-
+        $product_pic = 'Picture'.$where_pic;
 
         dd($product_pic);
         set_time_limit(600);
@@ -324,11 +315,9 @@ class ProductController extends Controller
             $this->mydown($product->$product_pic, $disk);
         }
 
-
-
         // $url = Storage::url($name_file);
         // $url_small = Storage::url('small_img/' . $name_file);
-        // // $url = Storage::url($name_file); 
+        // // $url = Storage::url($name_file);
 
         // // use Illuminate\Support\Str;
 

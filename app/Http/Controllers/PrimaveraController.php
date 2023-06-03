@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Imports\PrimaverasImport;
 use App\Models\Primavera;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -54,7 +53,7 @@ class PrimaveraController extends Controller
                 $file_extension = pathinfo($url)['extension'];
                 // dd($file_extension);
 
-                $file_name = $product->vendor_code . '_1.' . $file_extension;
+                $file_name = $product->vendor_code.'_1.'.$file_extension;
                 // dd($file_name);
 
                 if (Storage::disk('primavera')->missing($file_name)) {

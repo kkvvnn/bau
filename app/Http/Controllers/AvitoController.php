@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\AvitoExport;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 // use Illuminate\Http\Request;
 
@@ -14,9 +14,9 @@ class AvitoController extends Controller
     {
         set_time_limit(90);
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
-        $filename = 'avito/' . $foto . date("Y-m-d_His") . '.xlsx';
+        $filename = 'avito/'.$foto.date('Y-m-d_His').'.xlsx';
         Excel::store(new AvitoExport($foto), $filename, 'public');
 
-        return config('app.url') . Storage::url($filename);
+        return config('app.url').Storage::url($filename);
     }
 }

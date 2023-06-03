@@ -6,13 +6,12 @@ use App\Models\AquaFloor;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
+
 // use Maatwebsite\Excel\Concerns\WithChunkReading;
 
 class AquaFloorImport implements ToModel, WithHeadingRow, WithUpserts
 {
     /**
-     * @param array $row
-     *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function model(array $row)
@@ -55,5 +54,4 @@ class AquaFloorImport implements ToModel, WithHeadingRow, WithUpserts
     {
         return 'title';
     }
-
 }

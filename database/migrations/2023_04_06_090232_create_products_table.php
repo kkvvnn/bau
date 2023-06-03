@@ -99,7 +99,7 @@ return new class extends Migration
             $table->text('Picture22')->nullable();
             $table->text('Picture23')->nullable();
             $table->text('Picture24')->nullable();
-            
+
             $table->timestamps();
         });
     }

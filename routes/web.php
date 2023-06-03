@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AquaFloorController;
+use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\QrCodeController;
-use App\Http\Controllers\AvitoController;
-use App\Http\Controllers\TelegramSendController;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\MyHelpController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\TelegramSendController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,43 +22,41 @@ use App\Http\Controllers\MyHelpController;
 |
 */
 
-
 // ------------------IMPORT_FROM_BAUSERVIS_TO_DATABASE----------------------
-Route::get('/import_product_from_csv', [ProductController::class, 'import']) -> name('import_product_from_csv');
-Route::get('/import_collection_from_csv', [CollectionController::class, 'import']) -> name('import_collection_from_csv');
+Route::get('/import_product_from_csv', [ProductController::class, 'import'])->name('import_product_from_csv');
+Route::get('/import_collection_from_csv', [CollectionController::class, 'import'])->name('import_collection_from_csv');
 Route::get('/many', [Controller::class, 'many'])->name('many');
-Route::get('/download_all_collections', [CollectionController::class, 'download_all_collections']) -> name('download_all_collections');
-Route::get('/download_all/{pic?}', [ProductController::class, 'download_all']) -> name('download_all');
+Route::get('/download_all_collections', [CollectionController::class, 'download_all_collections'])->name('download_all_collections');
+Route::get('/download_all/{pic?}', [ProductController::class, 'download_all'])->name('download_all');
 
 // -----------------------------------------------------------------------------
-Route::get('/', [ProductController::class, 'index_all']) -> name('product_index');
-Route::get('/keramogranit_index', [ProductController::class, 'index_keramogranit']) -> name('index_keramogranit');
-Route::get('/plitka_index', [ProductController::class, 'index_plitka']) -> name('index_plitka');
-Route::get('/mosaic_index', [ProductController::class, 'index_mosaic']) -> name('index_mosaic');
-Route::get('/decor_index', [ProductController::class, 'index_decor']) -> name('index_decor');
-Route::get('/search', [ProductController::class, 'search']) -> name('search');
-Route::get('/size', [ProductController::class, 'index_size']) -> name('index_size');
+Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
+Route::get('/keramogranit_index', [ProductController::class, 'index_keramogranit'])->name('index_keramogranit');
+Route::get('/plitka_index', [ProductController::class, 'index_plitka'])->name('index_plitka');
+Route::get('/mosaic_index', [ProductController::class, 'index_mosaic'])->name('index_mosaic');
+Route::get('/decor_index', [ProductController::class, 'index_decor'])->name('index_decor');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+Route::get('/size', [ProductController::class, 'index_size'])->name('index_size');
 Route::get('/cersanit', [ProductController::class, 'cersanit']);
 
-Route::view('/size_form', 'size_form') -> name('index_size_form');
+Route::view('/size_form', 'size_form')->name('index_size_form');
 Route::get('/collection/{name}', [ProductController::class, 'collection_name']);
-Route::get('/product/{id?}', [ProductController::class, 'show']) -> name('show');
+Route::get('/product/{id?}', [ProductController::class, 'show'])->name('show');
 Route::get('/ddooww/{id?}', [Controller::class, 'down'])->name('img_url');
 Route::get('/index/{id?}', [Controller::class, 'index2']);
-Route::get('/index_collection', [CollectionController::class, 'index']) -> name('index_collection');
-Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker']) -> name('index_ker');
-Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit']) -> name('index_plit');
+Route::get('/index_collection', [CollectionController::class, 'index'])->name('index_collection');
+Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker'])->name('index_ker');
+Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit'])->name('index_plit');
 
 // --------------------CREATE_AVITO_FILE--------------------------------------
 Route::get('/avito_export/{foto?}', [AvitoController::class, 'export']);
 
 // ----------------------TELEGRAM-------------------------------------------------
-Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send']) -> name('send_to_telegram');
+Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');
 
 // --------------------------QRCODE--------------------------------------------
-Route::get('/qr_code/show', [QrCodeController::class, 'show']) -> name('qr_code_show');
-Route::get('/scan_qr', [QrCodeController::class, 'scan']) -> name('scan_qr');
-
+Route::get('/qr_code/show', [QrCodeController::class, 'show'])->name('qr_code_show');
+Route::get('/scan_qr', [QrCodeController::class, 'scan'])->name('scan_qr');
 
 Route::get('/img/{path}', [ImageController::class, 'show'])->where('path', '.*')->name('img_sm');
 

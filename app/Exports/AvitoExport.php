@@ -6,15 +6,15 @@ namespace App\Exports;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
-use PhpOffice\PhpSpreadsheet\Cell\Cell;
-use Maatwebsite\Excel\Concerns\ToModel;
-use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
+use PhpOffice\PhpSpreadsheet\Cell\Cell;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 
 class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
 {
     public $foto = '';
+
     public function __construct($foto)
     {
         $this->foto = $foto;
@@ -37,7 +37,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         // dd($products_cersanit_except);
         // dd($products_all);
         $ids_cersanit_except = [];
-        foreach($products_cersanit_except as $pr) {
+        foreach ($products_cersanit_except as $pr) {
             $ids_cersanit_except[] = $pr->id;
         }
 
@@ -49,15 +49,14 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         if ($this->foto == '') {
             return view('exports.avito', [
                 // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
-                'products' => $products
+                'products' => $products,
             ]);
         } else {
             return view('exports.avito_foto', [
                 // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
-                'products' => $products
+                'products' => $products,
             ]);
         }
-
 
     }
 }

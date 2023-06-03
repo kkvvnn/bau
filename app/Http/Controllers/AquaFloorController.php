@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Imports\AquaFloorImport;
-use Illuminate\Http\Request;
 use App\Models\AquaFloor;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AquaFloorController extends Controller
 {
@@ -27,22 +26,21 @@ class AquaFloorController extends Controller
         $products = AquaFloor::all();
 
         for ($i = 1; $i <= 3; $i++) {
-            $img_n = 'img_' . $i;
+            $img_n = 'img_'.$i;
             foreach ($products as $product) {
 
                 if ($product->$img_n == '' || $product->$img_n == null) {
                     continue;
                 }
 
-                $url = 'https://aqua-floor.com' . $product->$img_n;
+                $url = 'https://aqua-floor.com'.$product->$img_n;
 
                 // $url = "https://aqua-floor.com/media/product/AF4012ART_str.jpg";
-
 
                 $file_extension = pathinfo($url)['extension'];
                 // dd($file_extension);
 
-                $file_name = $product->title . '_'.$i.'.' . $file_extension;
+                $file_name = $product->title.'_'.$i.'.'.$file_extension;
                 // dd($file_name);
 
                 if (Storage::disk('aquafloor')->missing($file_name)) {
@@ -67,8 +65,9 @@ class AquaFloorController extends Controller
     public function index()
     {
         $products = AquaFloor::paginate(20);
+
         return view('aquafloor.index', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 
@@ -77,15 +76,16 @@ class AquaFloorController extends Controller
         $product = AquaFloor::where('title', $title)->get();
         // dd($product);
         return view('aquafloor.index_product', [
-            'product_one' => $product
+            'product_one' => $product,
         ]);
     }
 
     public function index_one_collection($collection_name)
     {
         $products = AquaFloor::where('collection_url', $collection_name)->paginate(20);
+
         return view('aquafloor.index', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 
@@ -103,7 +103,7 @@ class AquaFloorController extends Controller
         // $collections = AquaFloor::distinct()->get(['collection']);
         // dd($collections);
         return view('aquafloor.index_collections', [
-            'collections' => $collections
+            'collections' => $collections,
         ]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
 
 class MyHelpController extends Controller
@@ -13,7 +12,7 @@ class MyHelpController extends Controller
         // dd($products);
 
         return view('help.list', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 
@@ -24,7 +23,7 @@ class MyHelpController extends Controller
         // dd($products);
 
         return view('help.biggest', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 }

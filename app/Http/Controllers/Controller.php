@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Collection;
-use App\Models\CollectionProduct;
-
+use App\Models\Product;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -20,7 +18,6 @@ class Controller extends BaseController
     {
         //        $products = Product::all();
         $product = Product::findOrFail($id);
-
 
         // $i = 1;
         // foreach ($products as $product) {
@@ -39,8 +36,7 @@ class Controller extends BaseController
             Storage::disk('public')->put($name_file, $file);
         }
 
-
-        return  Storage::url($name_file);
+        return Storage::url($name_file);
 
         // return view('aaa', [
         //     'url' => $url,

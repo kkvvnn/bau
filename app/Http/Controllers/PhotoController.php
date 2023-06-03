@@ -24,6 +24,7 @@ class PhotoController extends Controller
 //        dd($path);
 
         Storage::disk('foto')->delete($path);
+
         return redirect()->route('show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
     }
 }

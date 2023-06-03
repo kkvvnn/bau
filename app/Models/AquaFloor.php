@@ -37,6 +37,6 @@ class AquaFloor extends Model
         'img_1',
         'img_2',
         'img_3',
-        
+
     ];
 }
