@@ -88,7 +88,7 @@
                     <div class="mb-3">
                         <input type="hidden" name="vendor" value="{{ $vendor_code }}">
                         <input type="hidden" name="id" value="{{ $product->id }}">
-                        <input class="form-control" type="file" name="foto" id="">
+                        <input class="form-control" type="file" name="foto" id="" required>
                         <p></p>
                         <input class="btn btn-primary" type="submit" value="Отправить">
                     </div>
