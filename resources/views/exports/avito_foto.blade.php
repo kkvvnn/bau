@@ -354,13 +354,6 @@
         if ($img4 != null) {
         $img_full .= ' | ' . $img4;
         }
-        if ($img5 != null) {
-        $img_full .= ' | ' . $img5;
-        }
-        if ($img6 != null) {
-        $img_full .= ' | ' . $img6;
-        }
-
 
         @endphp
 
