@@ -77,31 +77,7 @@
                     <hr>
                 </div>
             </div>
-            <!-- <div class="container">
-                <div class="row" data-masonry='{"percentPosition": true }'>
-                    <div class="col-sm-6 col-lg-4 mb-4">
 
-                        @foreach ($url_collection as $url_c)
-                <div>
-                    <img src="/storage/Collections/{{$url_c}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt="...">
-                        </div>
-
-            @endforeach
-
-            </div>
-        </div>
-    </div> -->
-            <!-- <hr> -->
-            <!-- <div class="row" data-masonry='{"percentPosition": true }'>
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div>
-                        @foreach ($urls as $url)
-                <img src="{{$url}}" class="img-fluid shadow p-3 mb-5 bg-white rounded" alt=".">
-
-            @endforeach
-            </div>
-        </div>
-    </div> -->
             @php
                 $vendor_code = str_replace('х', '', $product->Element_Code);
             @endphp
@@ -119,9 +95,6 @@
                 </form>
             </div>
             <hr>
-
-
-
 
 
             <div class="container-fluid">
@@ -161,7 +134,9 @@
                                     @csrf
                                     <input type="hidden" name="foto_delete" value="{{ $foto }}">
                                     <input type="hidden" name="id" value="{{ $product->id }}">
-                                    <button  type="submit" class="btn btn-danger" style="position: absolute; top: 0; right: 0">Удалить</button>
+                                    <button type="submit" class="btn btn-danger"
+                                            style="position: absolute; top: 0; right: 0">Удалить
+                                    </button>
                                 </form>
                             </div>
                         @endforeach

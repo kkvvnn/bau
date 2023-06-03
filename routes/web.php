@@ -50,7 +50,7 @@ Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker
 Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit']) -> name('index_plit');
 
 // --------------------CREATE_AVITO_FILE--------------------------------------
-Route::get('/avito_export', [AvitoController::class, 'export']);
+Route::get('/avito_export/{foto?}', [AvitoController::class, 'export']);
 
 // ----------------------TELEGRAM-------------------------------------------------
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send']) -> name('send_to_telegram');

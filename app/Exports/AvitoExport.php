@@ -14,6 +14,12 @@ use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 
 class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
 {
+    public $foto = '';
+    public function __construct($foto)
+    {
+        $this->foto = $foto;
+    }
+
     public function bindValue(Cell $cell, $value)
     {
 
@@ -40,9 +46,18 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $products = $products_all->except($ids_cersanit_except);
         // dd($products);
 
-        return view('exports.avito', [
-            // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
-            'products' => $products
-        ]);
+        if ($this->foto == '') {
+            return view('exports.avito', [
+                // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
+                'products' => $products
+            ]);
+        } else {
+            return view('exports.avito_foto', [
+                // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
+                'products' => $products
+            ]);
+        }
+
+
     }
 }

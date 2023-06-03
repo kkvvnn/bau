@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Storage;
 
 class AvitoController extends Controller
 {
-    public function export()
+    public function export($foto = '')
     {
         set_time_limit(90);
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
-        $filename = 'avito/' . date("Y-m-d_His") . '.xlsx';
-        Excel::store(new AvitoExport, $filename, 'public');
+        $filename = 'avito/' . $foto . date("Y-m-d_His") . '.xlsx';
+        Excel::store(new AvitoExport($foto), $filename, 'public');
 
-        return Storage::url($filename);
+        return config('app.url') . Storage::url($filename);
     }
 }
