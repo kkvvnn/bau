@@ -15,4 +15,15 @@ class PhotoController extends Controller
 //        return redirect('/');
         return redirect()->route('show', ['id' => $request->id])->with('status', 'Фото загружено!');
     }
+
+    public function delete(Request $request)
+    {
+//        dd($request->foto_delete);
+        $path = $request->foto_delete;
+        $path = str_replace('/storage/foto', '', $path);
+//        dd($path);
+
+        Storage::disk('foto')->delete($path);
+        return redirect()->route('show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
+    }
 }

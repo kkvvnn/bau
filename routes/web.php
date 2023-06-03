@@ -82,3 +82,4 @@ Route::get('/primavera/{id}', [\App\Http\Controllers\PrimaveraController::class,
 
 //-------------------PHOTO------------------------
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
+Route::any('photo-delete', [\App\Http\Controllers\PhotoController::class, 'delete'])->name('photo.delete');

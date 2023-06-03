@@ -28,6 +28,12 @@
                 </div>
             @endif
 
+            @if (session('status_delete'))
+                <div class="alert alert-warning">
+                    {{ session('status_delete') }}
+                </div>
+            @endif
+
 
             <div class="row">
 
@@ -144,12 +150,19 @@
 
 
                 <hr>
+
                 @if(count($fotos))
                     <div class="grid">
                         <div class="grid-sizer"></div>
                         @foreach ($fotos as $foto)
-                            <div class="grid-item">
+                            <div class="grid-item" style="position: relative; display:inline-block;">
                                 <img src="{{$foto}}"/>
+                                <form action="{{ route('photo.delete') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="foto_delete" value="{{ $foto }}">
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                    <button  type="submit" class="btn btn-danger" style="position: absolute; top: 0; right: 0">Удалить</button>
+                                </form>
                             </div>
                         @endforeach
 
