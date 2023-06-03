@@ -63,9 +63,10 @@
                                 <hr>
                                 @php
                                     $vendor_code = str_replace('х', '', $product->Element_Code);
+                                    $files = Storage::disk('foto')->files('/'.$vendor_code);
                                 @endphp
-                                @if(file_exists('storage/foto/'. $vendor_code))
-                                    <p class="h5 text-success">Есть фото</p>
+                                @if(count($files))
+                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>
                                 @else
                                     <p class="h5 text-danger">Нет фото</p>
                                 @endif
