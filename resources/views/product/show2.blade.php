@@ -22,6 +22,13 @@
             </div>
 
 
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+
             <div class="row">
 
                 <div class="col">
@@ -98,6 +105,7 @@
                     @csrf
                     <div class="mb-3">
                         <input type="hidden" name="vendor" value="{{ $vendor_code }}">
+                        <input type="hidden" name="id" value="{{ $product->id }}">
                         <input class="form-control" type="file" name="foto" id="">
                         <p></p>
                         <input class="btn btn-primary" type="submit" value="Отправить">
