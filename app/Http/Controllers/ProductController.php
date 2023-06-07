@@ -37,7 +37,7 @@ class ProductController extends Controller
         // $products = Product::all();
         // $users = User::where('votes', '>', 100)->paginate(15);
 
-        return view('product.index2', [
+        return view('product.index', [
             'products' => $products,
         ]);
     }
@@ -266,7 +266,7 @@ class ProductController extends Controller
             $fotos[] = Storage::disk('foto')->url($f);
         }
 //dd($fotos);
-        return view('product.show2', [
+        return view('product.show', [
             'product' => $product,
             'urls' => $urls_2,
             // 'url2' => $url2,
