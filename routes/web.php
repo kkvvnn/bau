@@ -81,3 +81,16 @@ Route::get('/primavera/{id}', [\App\Http\Controllers\PrimaveraController::class,
 //-------------------PHOTO------------------------
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
 Route::any('photo-delete', [\App\Http\Controllers\PhotoController::class, 'delete'])->name('photo.delete');
+
+//------------------- ORDERS ROUTES --------------------
+Route::group(['prefix' => 'admin/orders'], function () {
+    Route::get('/', \App\Http\Controllers\Adminlte\Order\IndexController::class)->name('order.index');
+    Route::get('/create', \App\Http\Controllers\Adminlte\Order\CreateController::class)->name('order.create');
+    Route::post('/', \App\Http\Controllers\Adminlte\Order\StoreController::class)->name('order.store');
+    Route::get('/{order}/edit', \App\Http\Controllers\Adminlte\Order\EditController::class)->name('order.edit');
+    Route::get('/{order}', \App\Http\Controllers\Adminlte\Order\ShowController::class)->name('order.show');
+    Route::patch('/{order}', \App\Http\Controllers\Adminlte\Order\UpdateController::class)->name('order.update');
+    Route::delete('/{order}', \App\Http\Controllers\Adminlte\Order\DeleteController::class)->name('order.delete');
+});
+//-------------------- END ORDERS ROUTES -----------------
+Route::get('/admin', \App\Http\Controllers\Adminlte\Main\IndexController::class)->name('main.index');
