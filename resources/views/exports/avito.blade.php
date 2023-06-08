@@ -467,9 +467,6 @@
                     if($product->color_name != null) {
                     $description .= '<li><strong>Цвет: </strong>' . $product->color_name . '</li>';
                     }
-                    if($product->factura_poverhnosti != null) {
-                    $description .= '<li><strong>Покрытие: </strong>' . $product->factura_poverhnosti . '</li>';
-                    }
                     if($product->poverhnost != null) {
                     $description .= '<li><strong>Поверхность: </strong>' . $product->poverhnost . '</li>';
                     }
@@ -485,6 +482,9 @@
                     if($product->for != null) {
                     $description .= '<li><strong>Назначение: </strong>' . $product->for . '</li>';
                     }
+                    if($product->vendor_code != null) {
+                    $description .= '<li><strong>Артикул: </strong>' . $product->vendor_code . '</li>';
+                    }
 
                     $description .= '</ul><br>';
 
@@ -498,7 +498,7 @@
 
 
                 $type = 'керамогранит';
-                $pod = $type . ' ' . strtolower($product->decor);
+                $pod = $type . ' ' . mb_strtolower($product->decor);
 
 
                 $keywords .= $pod . ', ';
