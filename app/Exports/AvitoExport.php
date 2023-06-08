@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 // use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -46,15 +47,19 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $products = $products_all->except($ids_cersanit_except);
         // dd($products);
 
+        $primavera = Primavera::all();
+
         if ($this->foto == '') {
             return view('exports.avito', [
                 // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
                 'products' => $products,
+                'primavera' => $primavera,
             ]);
         } else {
             return view('exports.avito_foto', [
                 // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
                 'products' => $products,
+                'primavera' => $primavera,
             ]);
         }
 

@@ -31,7 +31,7 @@
 
         <!-- ----------------------------------------------- -->
         @php
-        
+
         if(stripos($product->Name, 'литка') !== false) {
         $FinishingType = 'Плитка, керамогранит и мозаика';
         $FinishingSubType = 'Керамическая плитка';
@@ -67,7 +67,7 @@
         } else {
             $description = '<p>Керамическая плитка и керамогранит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
         }
-       
+
         if ($product->Novinka == 1) {
             $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Name . '. '
                 . $product->Producer_Brand . ' ('
@@ -94,7 +94,7 @@
             $description .= $collection->Collection_Name;
             $description .= '. ';
             }
-            
+
             $description .= '</p><ul>';
 
 
@@ -136,16 +136,16 @@
             }
 
             $description .= '</ul><br>';
-        
+
 
         $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
         $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
         $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
-        
+
 
         $keywords = '';
 
-        
+
         if(stripos($product->Name, 'екор') !== false) {
         $type = 'декор';
         }
@@ -218,14 +218,14 @@
         } elseif ($product->Producer_Brand == 'Cersanit') {
             $keywords .= $type . ' церсанит, ';
         }
-        
-       
+
+
 
         $surface = $product->Surface;
         $surf = '';
 
         if ($surface != null) {
-            
+
             if ($type == 'мозаика' || $type == 'керамическая плитка') {
                 $surf = $surface;
             }
@@ -252,7 +252,7 @@
         $color = '';
 
         if ($color_baza != null) {
-            
+
             if ($type == 'мозаика' || $type == 'керамическая плитка') {
                 $color = str_replace('ый', 'ая', $color_baza);
                 $color = str_replace('ой', 'ая', $color);
@@ -267,7 +267,7 @@
         $keywords .= $type . ' ' .mb_strtolower($color) . ', ';
 
         $keywords .= $product->Producer_Brand . ' ' . $type . ', ';
-        
+
 
         $owner_code = $product->Owner_Article;
 
@@ -281,7 +281,7 @@
             $keywords .= $type . ' ' . $country . ', ';
         }
 
-        
+
 
 
 
@@ -289,7 +289,7 @@
             $description .= '<p>_____________________</p>';
             $description .= '<p><em>' . $keywords . '</em></p>';
         }
-        
+
 
         @endphp
 
@@ -368,8 +368,8 @@
         }
         $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
         $title = preg_replace('/\d\d\d\d-\d\d\d\d/', '', $title);
-        if (mb_strlen($title) < 42) { $title = $product->Producer_Brand . ' ' . $title; } 
-        @endphp 
+        if (mb_strlen($title) < 42) { $title = $product->Producer_Brand . ' ' . $title; }
+        @endphp
 
         @php
             if ($product->Producer_Brand == 'Laparet') {
@@ -383,9 +383,9 @@
                 $price = round($product->RMPrice * 1.05, -1);
             }
 
-            
+
         @endphp
-        
+
         <tr>
             <td></td>
             <td>{{ $product->Element_Code }}</td>
@@ -412,5 +412,201 @@
             <td></td>
             </tr>
             @endforeach
+
+
+        {{--    ---------------------PRIMAVERA------------------------------}}
+        @foreach($primavera as $product)
+            @php
+                $price = $product->price;
+                $price = '';
+//                --------------------------
+                $title = $product->title_avito;
+//                -----------------------------
+                $img = $product->img1;
+                $imgs_2 = $product->img2;
+                $imgs_2 = explode("\n", $imgs_2);
+                foreach ($imgs_2 as $i) {
+                    $img .= ' | '.$i;
+                }
+//                ---------------------
+                if(stripos($product->title, 'литка') !== false) {
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                $FinishingSubType = 'Керамическая плитка';
+                }
+                elseif(stripos($product->title, 'озаика') !== false) {
+                $FinishingSubType = 'Мозаика';
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                }
+                elseif(stripos($product->title, 'ерамогранит') !== false) {
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                $FinishingSubType = 'Керамогранит';
+                } else {
+                $FinishingType = 'Другое';
+                $FinishingSubType = '';
+                }
+//                ---------------------
+                $description = '<p>Керамическая плитка и керамогранит Primavera , Примавера. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                $description .= '<p><strong>' . $product->title . '. '
+                        . $product->brand . ' ('
+                        . $product->country . ')</strong></p>';
+                $description .= '</p><ul>';
+
+
+                    if($product->width != 0 && $product->length != 0) {
+                    $description .= '<li><strong>Размер: </strong>' . $product->length .'x' . $product->width . '</li>';
+                    }
+                    if($product->fat != null && $product->fat != 0) {
+                    $description .= '<li><strong>Толщина: </strong>' . $product->fat . '</li>';
+                    }
+                    if($product->format != null) {
+                    $description .= '<li><strong>Формат: </strong>' . $product->format . '</li>';
+                    }
+                    if($product->decor != null) {
+                    $description .= '<li><strong>Рисунок: </strong>' . $product->decor . '</li>';
+                    }
+                    if($product->color_name != null) {
+                    $description .= '<li><strong>Цвет: </strong>' . $product->color_name . '</li>';
+                    }
+                    if($product->factura_poverhnosti != null) {
+                    $description .= '<li><strong>Покрытие: </strong>' . $product->factura_poverhnosti . '</li>';
+                    }
+                    if($product->poverhnost != null) {
+                    $description .= '<li><strong>Поверхность: </strong>' . $product->poverhnost . '</li>';
+                    }
+                    if($product->count_in_pack != null) {
+                    $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_pack . '</li>';
+                    }
+                    if($product->meters_in_pack != null) {
+                    $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->meters_in_pack . '</li>';
+                    }
+                    if($product->country != null) {
+                    $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
+                    }
+                    if($product->for != null) {
+                    $description .= '<li><strong>Назначение: </strong>' . $product->for . '</li>';
+                    }
+
+                    $description .= '</ul><br>';
+
+
+                $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+                $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+                $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+
+
+                $keywords = '';
+
+
+                $type = 'керамогранит';
+                $pod = $type . ' ' . strtolower($product->decor);
+
+
+                $keywords .= $pod . ', ';
+
+                $lenght = round((float)str_replace(',', '.', $product->length), 0, PHP_ROUND_HALF_EVEN);
+                $height = round((float)str_replace(',', '.', $product->width), 0, PHP_ROUND_HALF_EVEN);
+
+                $size = '';
+                $size .= $type . ' ' . $lenght . 'х' . $height . ', ';
+                if ($lenght != $height) {
+                    $size .= $type . ' ' . $height . 'х' . $lenght . ', ';
+                }
+                $size .= $type . ' ' . $lenght . '*' . $height . ', ';
+                if ($lenght != $height) {
+                    $size .= $type . ' ' . $height . '*' . $lenght . ', ';
+                }
+
+                if($product->width != 0 && $product->length != 0) {
+                $keywords .= $size;
+                }
+
+
+                $keywords .= $type . ' примавера, ';
+
+
+                $surface = $product->poverhnost;
+                $surf = '';
+
+                if ($surface != null) {
+
+                    if ($type == 'мозаика' || $type == 'керамическая плитка') {
+                        $surf = $surface;
+                    }
+
+                    if ($type == 'керамогранит') {
+                        $surf = str_replace('ая', 'ый', $surface);
+                    }
+                }
+
+                $keywords .= $type . ' ' .mb_strtolower($surf) . ', ';
+
+
+                $color_baza = $product->color;
+                $color = '';
+
+                if ($color_baza != null) {
+
+                    if ($type == 'мозаика' || $type == 'керамическая плитка') {
+                        $color = str_replace('ый', 'ая', $color_baza);
+                        $color = str_replace('ой', 'ая', $color);
+                        $color = str_replace('ий', 'яя', $color);
+                    }
+
+                    if ($type == 'керамогранит') {
+                        $color = $color_baza;
+                    }
+                }
+
+                $keywords .= $type . ' ' .mb_strtolower($color) . ', ';
+
+                $keywords .= $product->brand . ' ' . $type . ', ';
+
+
+                $owner_code = $product->vendor_code;
+
+                if ($owner_code != null) {
+                    $keywords .= $type . ' ' . $owner_code . ', ';
+                }
+
+                $country = $product->country;
+
+                if ($country != null) {
+                    $keywords .= $type . ' ' . $country . ', ';
+                }
+
+                if ($type != 'декор') {
+                    $description .= '<p>_____________________</p>';
+                    $description .= '<p><em>' . $keywords . '</em></p>';
+                }
+
+            @endphp
+            <tr>
+                <td></td>
+                <td>{{ $product->vendor_code }}</td>
+                <td>В сообщениях</td>
+                <td>kkvvnn89@gmail.com</td>
+                <td>Активно</td>
+                <td>Владимир</td>
+                <td>{{$price}}</td>
+                <td>Напольные решения</td>
+                <td>{{$title}}</td>
+                <td>{{$img}}</td> <!-- -->
+                <td>Отделка</td>
+                <td>Стройматериалы</td>
+                <td>Ремонт и строительство</td>
+                <td>Package</td>
+                <td>{{$FinishingType}}</td>
+                <td>79039890822</td> <!-- -->
+                <td>{{$description}}</td> <!-- -->
+                <td>Москва, парк Победы</td>
+                <td>Товар от производителя</td>
+                <td>{{$FinishingSubType}}</td>
+                <td>Новое</td>
+                <td></td>
+            </tr>
+        @endforeach
+
+        {{--    -----------------------PRIMAVERA_END----------------------------}}
+
     </tbody>
 </table>
