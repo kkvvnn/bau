@@ -418,7 +418,9 @@
         @foreach($primavera as $product)
             @php
                 $price = $product->price;
-                $price = '';
+                $meters = floatval(str_replace(',', '.', $product->meters_in_pack));
+                $price = (int)$price / $meters;
+                $price = round($price, -1);
 //                --------------------------
                 $title = $product->title_avito;
 //                -----------------------------
