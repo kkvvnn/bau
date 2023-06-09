@@ -77,6 +77,8 @@ Route::get('/primavera/import', [\App\Http\Controllers\PrimaveraController::clas
 Route::get('/primavera', [\App\Http\Controllers\PrimaveraController::class, 'index'])->name('primavera.index');
 Route::get('/primavera/download-pic', [\App\Http\Controllers\PrimaveraController::class, 'download_pic']);
 Route::get('/primavera/{id}', [\App\Http\Controllers\PrimaveraController::class, 'show'])->name('primavera.show');
+Route::get('/primavera-search', [\App\Http\Controllers\PrimaveraController::class, 'search'])->name('primavera.search');
+Route::view('/primavera-search-form','primavera.search')->name('primavera.search.form');
 
 //-------------------PHOTO------------------------
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Imports\PrimaverasImport;
 use App\Models\Primavera;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -44,6 +46,18 @@ class PrimaveraController extends Controller
         }
 
         return view('primavera.show', compact('product', 'imgs_2', 'fotos'));
+    }
+
+    public function search(Request $request)
+    {
+        $name = $request->input('name');
+        $name = '%'.$name.'%';
+
+        $products = Primavera::where('title', 'LIKE', $name)->paginate(15);
+
+        $products->appends(['name' => $name]);
+
+        return view('primavera.index', compact('products'));
     }
 
     public function download_pic()
