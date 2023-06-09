@@ -421,9 +421,7 @@
         @foreach($primavera as $product)
             @php
                 $price = $product->price;
-                $meters = floatval(str_replace(',', '.', $product->meters_in_pack));
-                $price = (int)$price / $meters;
-                $price = round($price, -1);
+                $price = round($price * 0.93, -1);
 //                --------------------------
                 $title = $product->title_avito;
 //                -----------------------------
@@ -471,7 +469,7 @@
                 $description .= '<p><strong>' . $product->title . '. '
                         . $product->brand . ' ('
                         . $product->country . ')</strong></p>';
-                $description .= '</p><ul>';
+                $description .= '<p><em>Цена указана за 1 м.кв.</em></p><ul>';
 
 
                     if($product->width != 0 && $product->length != 0) {
