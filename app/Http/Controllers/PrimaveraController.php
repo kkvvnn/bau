@@ -32,7 +32,18 @@ class PrimaveraController extends Controller
         $imgs_2 = $product->img2;
         $imgs_2 = explode("\n", $imgs_2);
 
-        return view('primavera.show', compact('product', 'imgs_2'));
+        $vendor_code = $product->vendor_code;
+//        $path_dir = 'storage/Foto/' . $vendor_code;
+//        $directories = Storage::directories('public/Foto');
+        $files = Storage::disk('foto_primavera')->files('/'.$vendor_code);
+//        dd($files);
+        $fotossss = $files;
+        $fotos = [];
+        foreach ($fotossss as $f) {
+            $fotos[] = Storage::disk('foto_primavera')->url($f);
+        }
+
+        return view('primavera.show', compact('product', 'imgs_2', 'fotos'));
     }
 
     public function download_pic()

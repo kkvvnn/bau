@@ -16,6 +16,15 @@ class PhotoController extends Controller
         return redirect()->route('show', ['id' => $request->id])->with('status', 'Фото загружено!');
     }
 
+    public function store_primavera(Request $request)
+    {
+        $path = $request->vendor;
+//
+        $path = Storage::disk('foto_primavera')->putFile($path, $request->file('foto'));
+//        return redirect('/');
+        return redirect()->route('primavera.show', ['id' => $request->id])->with('status', 'Фото загружено!');
+    }
+
     public function delete(Request $request)
     {
 //        dd($request->foto_delete);
@@ -26,5 +35,17 @@ class PhotoController extends Controller
         Storage::disk('foto')->delete($path);
 
         return redirect()->route('show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
+    }
+
+    public function delete_primavera(Request $request)
+    {
+//        dd($request->foto_delete);
+        $path = $request->foto_delete;
+        $path = str_replace('/storage/foto-primavera', '', $path);
+//        dd($path);
+
+        Storage::disk('foto_primavera')->delete($path);
+
+        return redirect()->route('primavera.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
     }
 }

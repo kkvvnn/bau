@@ -427,11 +427,27 @@
 //                --------------------------
                 $title = $product->title_avito;
 //                -----------------------------
-                $img = $product->img1;
+//              ------------------------------------------FOTO-------------------------------------
+                $vendor_code = $product->vendor_code;
+                $files = Storage::disk('foto_primavera')->files('/'.$vendor_code);
+                $img_foto = '';
+                foreach ($files as $file) {
+                    $img_foto .= config('app.url').'/storage/foto-primavera/'.$file . ' | ';
+                }
+        //          -----------------------------------------------------------------------------------
+                $img = $img_foto . $product->img1;
                 $imgs_2 = $product->img2;
                 $imgs_2 = explode("\n", $imgs_2);
                 foreach ($imgs_2 as $i) {
                     $img .= ' | '.$i;
+                }
+
+                $img_full_arr = explode(' | ', $img);
+                if (count($img_full_arr) <= 10) {
+                    $img_ready = $img;
+                } else {
+                    $img_full_arr = array_slice($img_full_arr, 0, 10);
+                    $img_ready = implode(' | ', $img_full_arr);
                 }
 //                ---------------------
                 if(stripos($product->title, 'литка') !== false) {
@@ -595,7 +611,7 @@
                 <td>{{$price}}</td>
                 <td>Напольные решения</td>
                 <td>{{$title}}</td>
-                <td>{{$img}}</td> <!-- -->
+                <td>{{$img_ready}}</td> <!-- -->
                 <td>Отделка</td>
                 <td>Стройматериалы</td>
                 <td>Ремонт и строительство</td>

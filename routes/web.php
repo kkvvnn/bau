@@ -80,7 +80,9 @@ Route::get('/primavera/{id}', [\App\Http\Controllers\PrimaveraController::class,
 
 //-------------------PHOTO------------------------
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
+Route::any('photo-primavera', [\App\Http\Controllers\PhotoController::class, 'store_primavera'])->name('save-foto-primavera');
 Route::any('photo-delete', [\App\Http\Controllers\PhotoController::class, 'delete'])->name('photo.delete');
+Route::any('photo-delete-primavera', [\App\Http\Controllers\PhotoController::class, 'delete_primavera'])->name('photo-primavera.delete');
 
 //------------------- ORDERS ROUTES --------------------
 Route::group(['prefix' => 'admin/orders'], function () {
