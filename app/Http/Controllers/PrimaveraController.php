@@ -53,7 +53,7 @@ class PrimaveraController extends Controller
         $name = $request->input('name');
         $name = '%'.$name.'%';
 
-        $products = Primavera::where('title', 'LIKE', $name)->paginate(15);
+        $products = Primavera::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
 
         $products->appends(['name' => $name]);
 

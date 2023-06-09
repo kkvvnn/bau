@@ -494,7 +494,7 @@
                     $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_pack . '</li>';
                     }
                     if($product->meters_in_pack != null) {
-                    $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->meters_in_pack . '</li>';
+                    $description .= '<li><strong>Кв. метров в упаковке: </strong>' . str_replace(',', '.', $product->meters_in_pack) . '</li>';
                     }
                     if($product->country != null) {
                     $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
