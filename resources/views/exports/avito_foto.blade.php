@@ -434,7 +434,7 @@
                 foreach ($files as $file) {
                     $img_foto .= config('app.url').'/storage/foto-primavera/'.$file . ' | ';
                 }
-        //          -----------------------------------------------------------------------------------
+
                 $img = $img_foto . $product->img1;
                 $imgs_2 = $product->img2;
                 $imgs_2 = explode("\n", $imgs_2);
@@ -443,6 +443,7 @@
                 }
 
                 $img_full_arr = explode(' | ', $img);
+
                 if (count($img_full_arr) <= 10) {
                     $img_ready = $img;
                 } else {
@@ -592,7 +593,7 @@
                 $country = $product->country;
 
                 if ($country != null) {
-                    $keywords .= $type . ' ' . $country . ', ';
+                    $keywords .= $type . ' ' . $country;
                 }
 
                 if ($type != 'декор') {
