@@ -227,13 +227,13 @@
                 <a class="nav-link active" aria-current="page" href="{{route('index_collection')}}">По названию коллекции</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('index_ker')}}">Керамогранит деш</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('index_plit')}}">Плитка деш</a>
-              </li>
-              <li class="nav-item">
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link active" aria-current="page" href="{{route('index_ker')}}">Керамогранит деш</a>--}}
+{{--              </li>--}}
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link active" aria-current="page" href="{{route('index_plit')}}">Плитка деш</a>--}}
+{{--              </li>--}}
+{{--              <li class="nav-item">--}}
                 <a class="nav-link active" aria-current="page" href="{{route('aquafloor_index_collections')}}">AquaFloor</a>
               </li>
               <li class="nav-item">
@@ -241,6 +241,9 @@
               </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('primavera.index')}}">PrimaVera</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('primavera.search.form')}}">PrimaVera Поиск</a>
                 </li>
               <!-- <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('scan_qr')}}">123</a>
