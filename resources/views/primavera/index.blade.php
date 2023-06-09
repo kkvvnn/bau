@@ -34,6 +34,17 @@
             <p class="text-body-secondary">{{$product->vendor_code}}</p>
             <hr>
             <p class="text-body-secondary">В упаковке шт: <strong>{{$product->count_in_pack}}</strong>   кв.м: <strong>{{$product->meters_in_pack}}</strong></p>
+
+              @php
+                  $vendor_code = $product->vendor_code;
+                  $files = Storage::disk('foto_primavera')->files('/'.$vendor_code);
+              @endphp
+              @if(count($files))
+                  <p class="h5 text-success">Есть {{ count($files) }} фото</p>
+              @else
+                  <p class="h5 text-danger">Нет фото</p>
+              @endif
+
           </div>
 
 
