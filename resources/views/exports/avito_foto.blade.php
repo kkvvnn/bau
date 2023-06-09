@@ -595,7 +595,7 @@
                 if ($country != null) {
                     $keywords .= $type . ' ' . $country;
                 }
-
+//---
                 if ($type != 'декор') {
                     $description .= '<p>_____________________</p>';
                     $description .= '<p><em>' . $keywords . '</em></p>';
