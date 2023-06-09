@@ -82,6 +82,14 @@ return [
             'throw' => false,
         ],
 
+        'foto_primavera' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/foto-primavera'),
+            'url' => '/storage/foto-primavera',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         // 'avito' => [
         //     'driver' => 'local',
         //     'root' => storage_path('app/public/avito'),
