@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 // use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
@@ -48,18 +49,21 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         // dd($products);
 
         $primavera = Primavera::all();
+        $absolut_gres = AbsolutGresScrap::all();
 
         if ($this->foto == '') {
             return view('exports.avito', [
                 // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
                 'products' => $products,
                 'primavera' => $primavera,
+                'absolut_gres' => $absolut_gres,
             ]);
         } else {
             return view('exports.avito_foto', [
                 // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
                 'products' => $products,
                 'primavera' => $primavera,
+                'absolut_gres' => $absolut_gres,
             ]);
         }
 

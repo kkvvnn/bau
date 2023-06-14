@@ -629,5 +629,189 @@
         {{--    -----------------------PRIMAVERA_END----------------------------}}
 
 
+
+        {{--    ---------------------ABSOLUT_GRES------------------------------}}
+        @foreach($absolut_gres as $product)
+            @php
+                if ($product->price_old == null) {
+                    $price = round($product->price_from_xml * 0.93, -1);
+                } else {
+                    $price = $product->price_from_xml;
+                }
+//                --------------------------
+                $code_avito = str_replace(' ', '', $product->vendor_code);
+//                --------------------------
+                $title = $product->title_avito;
+//                -----------------------------
+//              ------------------------------------------FOTO-------------------------------------
+                $vendor_code = str_replace(' ', '', $product->vendor_code);
+                $files = Storage::disk('foto_absolut_gres')->files('/'.$vendor_code);
+                $img_foto = '';
+                foreach ($files as $file) {
+                    $img_foto .= config('app.url').'/storage/foto-absolut-gres/'.$file . ' | ';
+                }
+
+                $img = $img_foto . $product->picture;
+
+                $img_full_arr = explode(' | ', $img);
+
+                if (count($img_full_arr) <= 10) {
+                    $img_ready = $img;
+                } else {
+                    $img_full_arr = array_slice($img_full_arr, 0, 10);
+                    $img_ready = implode(' | ', $img_full_arr);
+                }
+//                ---------------------
+                if(stripos($product->title, 'литка') !== false) {
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                $FinishingSubType = 'Керамическая плитка';
+                }
+                elseif(stripos($product->title, 'озаика') !== false) {
+                $FinishingSubType = 'Мозаика';
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                }
+                elseif(stripos($product->title, 'ерамогранит') !== false) {
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                $FinishingSubType = 'Керамогранит';
+                } else {
+                $FinishingType = 'Другое';
+                $FinishingSubType = '';
+                }
+//                ---------------------
+                $description = '<p>Керамическая плитка и керамогранит Absolut Gres , Абсолют Грес. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                $description .= '<p><strong>' . $product->title . '. '
+                        . $product->brand . ' ('
+                        . $product->country . ')</strong></p>';
+                $description .= '<p><strong>Коллекция: </strong>' .$product->collection. '</p>';
+                $description .= '<p><em>Цена указана за 1 '.$product->unit.'.</em></p><ul>';
+
+
+                    if($product->width != 0 && $product->length != 0) {
+                    $description .= '<li><strong>Размер: </strong>' . $product->length .'x' . $product->width . '</li>';
+                    }
+                    if($product->size != null) {
+                    $description .= '<li><strong>Формат: </strong>' . $product->size . '</li>';
+                    }
+                    if($product->style != null) {
+                    $description .= '<li><strong>Стиль: </strong>' . $product->style . '</li>';
+                    }
+                    if($product->surface != null) {
+                    $description .= '<li><strong>Поверхность: </strong>' . $product->surface . '</li>';
+                    }
+                    if($product->count_in_pack != null) {
+                    $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_pack . '</li>';
+                    }
+                    if($product->meters_in_pack != null) {
+                    $description .= '<li><strong>Кв. метров в упаковке: </strong>' . str_replace(',', '.', $product->meters_in_pack) . '</li>';
+                    }
+                    if($product->country != null) {
+                    $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
+                    }
+                    if($product->vendor_code != null) {
+                    $description .= '<li><strong>Артикул: </strong>' . $product->vendor_code . '</li>';
+                    }
+
+                    $description .= '</ul><br>';
+
+
+                $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+                $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+                $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+
+
+                $keywords = '';
+
+
+                $type = 'керамогранит';
+
+                $lenght = round((float)str_replace(',', '.', $product->length), 0, PHP_ROUND_HALF_EVEN);
+                $height = round((float)str_replace(',', '.', $product->width), 0, PHP_ROUND_HALF_EVEN);
+
+                $size = '';
+                $size .= $type . ' ' . $lenght . 'х' . $height . ', ';
+                if ($lenght != $height) {
+                    $size .= $type . ' ' . $height . 'х' . $lenght . ', ';
+                }
+                $size .= $type . ' ' . $lenght . '*' . $height . ', ';
+                if ($lenght != $height) {
+                    $size .= $type . ' ' . $height . '*' . $lenght . ', ';
+                }
+
+                if($product->width != 0 && $product->length != 0) {
+                $keywords .= $size;
+                }
+
+
+                $keywords .= $type . ' абсолют грес, ';
+
+
+                $surface = $product->surface;
+                $surf = '';
+
+                if ($surface != null) {
+
+                    if ($type == 'мозаика' || $type == 'керамическая плитка') {
+                        $surf = $surface;
+                    }
+
+                    if ($type == 'керамогранит') {
+                        $surf = str_replace('ая', 'ый', $surface);
+                    }
+                }
+
+                $keywords .= $type . ' ' .mb_strtolower($surf) . ', ';
+
+                $keywords .= $product->brand . ' ' . $type . ', ';
+
+
+                $owner_code = $product->vendor_code;
+
+                if ($owner_code != null) {
+                    $keywords .= $type . ' ' . $owner_code . ', ';
+                }
+
+                $country = $product->country;
+
+                if ($country != null) {
+                    $keywords .= $type . ' ' . $country;
+                }
+//---
+                if ($type != 'декор') {
+                    $description .= '<p>_____________________</p>';
+                    $description .= '<p><em>' . $keywords . '</em></p>';
+                }
+
+            @endphp
+            <tr>
+                <td></td>
+                <td>{{ $code_avito }}</td>
+                <td>В сообщениях</td>
+                <td>kkvvnn89@gmail.com</td>
+                <td>Активно</td>
+                <td>Владимир</td>
+                <td>{{$price}}</td>
+                <td>Напольные решения</td>
+                <td>{{$title}}</td>
+                <td>{{$img_ready}}</td> <!-- -->
+                <td>Отделка</td>
+                <td>Стройматериалы</td>
+                <td>Ремонт и строительство</td>
+                <td>Package</td>
+                <td>{{$FinishingType}}</td>
+                <td>79039890822</td> <!-- -->
+                <td>{{$description}}</td> <!-- -->
+                <td>Москва, парк Победы</td>
+                <td>Товар от производителя</td>
+                <td>{{$FinishingSubType}}</td>
+                <td>Новое</td>
+                <td></td>
+            </tr>
+        @endforeach
+
+        {{--    -----------------------ABSOLUT_GRES_END----------------------------}}
+
+
+
+
     </tbody>
 </table>
