@@ -43,7 +43,7 @@
                     <h2>{{$product->title}}</h2>
                     <hr>
                     <h3>
-                        PrimaVera
+                        {{$product->brand}}
                     </h3>
                     {{--                <h4>Коллекция:--}}
                     {{--                    @foreach ($collection as $one_collection)--}}
