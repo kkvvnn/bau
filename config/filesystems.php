@@ -90,6 +90,14 @@ return [
             'throw' => false,
         ],
 
+        'foto_absolut_gres' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/foto-absolut-gres'),
+            'url' => '/storage/foto-absolut-gres',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         // 'avito' => [
         //     'driver' => 'local',
         //     'root' => storage_path('app/public/avito'),

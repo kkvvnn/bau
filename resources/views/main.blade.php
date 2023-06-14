@@ -245,6 +245,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('primavera.search.form')}}">PrimaVera Поиск</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('absolut_gres.index')}}">Absolut Gres</a>
+                </li>
               <!-- <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('scan_qr')}}">123</a>
               </li> -->

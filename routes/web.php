@@ -83,8 +83,10 @@ Route::view('/primavera-search-form','primavera.search')->name('primavera.search
 //-------------------PHOTO------------------------
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
 Route::any('photo-primavera', [\App\Http\Controllers\PhotoController::class, 'store_primavera'])->name('save-foto-primavera');
+Route::any('photo-absolut_gres', [\App\Http\Controllers\PhotoController::class, 'store_absolut_gres'])->name('save-foto-absolut_gres');
 Route::any('photo-delete', [\App\Http\Controllers\PhotoController::class, 'delete'])->name('photo.delete');
 Route::any('photo-delete-primavera', [\App\Http\Controllers\PhotoController::class, 'delete_primavera'])->name('photo-primavera.delete');
+Route::any('photo-delete-absolut_gres', [\App\Http\Controllers\PhotoController::class, 'delete_absolut_gres'])->name('photo-absolut_gres.delete');
 
 //------------------- ORDERS ROUTES --------------------
 Route::group(['prefix' => 'admin/orders'], function () {
@@ -98,3 +100,10 @@ Route::group(['prefix' => 'admin/orders'], function () {
 });
 //-------------------- END ORDERS ROUTES -----------------
 Route::get('/admin', \App\Http\Controllers\Adminlte\Main\IndexController::class)->name('main.index');
+
+//-------------------ABSOLUTE GRES-----------------------
+Route::get('/absolut-gres-import-from-xml', [\App\Http\Controllers\AbsolutGresController::class, 'import_from_xml']);
+Route::get('/absolut-gres-import-scrap', [\App\Http\Controllers\AbsolutGresController::class, 'import_scrap']);
+Route::get('/absolut-gres', [\App\Http\Controllers\AbsolutGresController::class, 'index'])->name('absolut_gres.index');
+Route::get('/absolut-gres/{id}', [\App\Http\Controllers\AbsolutGresController::class, 'show'])->name('absolut_gres.show');
+//------------------END ABSOLUTE GRES-------------------
