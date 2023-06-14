@@ -16,7 +16,7 @@ class AbsolutGresController extends Controller
         $contents = file_get_contents($url);
 
         $date = date('Y-m-d_His');
-        $name = 'import/absolute_gres/absolute_gres_'.$date.'.xml';
+        $name = 'import/absolut_gres/absolut_gres_'.$date.'.xml';
 
         Storage::put($name, $contents);
 
