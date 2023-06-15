@@ -94,6 +94,7 @@ class CollectionController extends Controller
     // IMPORT COLLECTIONS
     public function import()
     {
+        Collection::truncate();
         $url = 'http://catalog.bauservice.ru/affiliate_new/nCatg0d8.csv';
         $contents = file_get_contents($url);
         $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
@@ -111,7 +112,7 @@ class CollectionController extends Controller
     public function mydown($name)
     {
         set_time_limit(60);
-        Collection::truncate();
+
         if ($name == null) {
             return;
         }
