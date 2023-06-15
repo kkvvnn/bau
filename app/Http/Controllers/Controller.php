@@ -64,5 +64,6 @@ class Controller extends BaseController
                 $product->collections()->attach($collection->id);
             }
         }
+        return redirect('/')->with('success', 'Таблицы Product и Collection связаны. Ok!');
     }
 }

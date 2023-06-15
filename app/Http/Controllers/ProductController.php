@@ -320,7 +320,7 @@ class ProductController extends Controller
         Excel::import(new ProductsImport, $name);
         $deleted = Product::where('Picture', null)->delete();
 
-        return redirect('/')->with('success', 'All good!');
+        return redirect('/')->with('success', 'Таблица Product обновлена. Ok!');
     }
 
     public function mydown($name, $public_n)

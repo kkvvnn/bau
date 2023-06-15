@@ -106,7 +106,7 @@ class CollectionController extends Controller
 
         Excel::import(new CollectionsImport, $name);
 
-        return redirect('/')->with('success', 'All good!');
+        return redirect('/')->with('success', 'Таблица Collection обновлена. Ok!');
     }
 
     public function mydown($name)
