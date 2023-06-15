@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collection;
+use App\Models\CollectionProduct;
 use App\Models\Product;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -51,6 +52,7 @@ class Controller extends BaseController
 
     public function many()
     {
+        CollectionProduct::truncate();
         $products = Product::all();
 
         foreach ($products as $product) {

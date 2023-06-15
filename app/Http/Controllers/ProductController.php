@@ -303,7 +303,7 @@ class ProductController extends Controller
     // IMPORT PRODUCTS
     public function import()
     {
-        // Product::truncate();    // clear all data in table
+        Product::truncate();    // clear all data in table
 
         set_time_limit(60);
         $url = 'http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv';

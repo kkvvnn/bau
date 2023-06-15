@@ -111,6 +111,7 @@ class CollectionController extends Controller
     public function mydown($name)
     {
         set_time_limit(60);
+        Collection::truncate();
         if ($name == null) {
             return;
         }
