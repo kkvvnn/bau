@@ -61,6 +61,8 @@
                                 <hr>
                                 <p class="text-body-secondary">{{$product->Element_Code}}</p>
                                 <hr>
+                                <p class="text-body-secondary">Обновлено: {{$product->updated_at->toDateString()}}</p>
+                                <hr>
                                 @php
                                     $vendor_code = str_replace('х', '', $product->Element_Code);
                                     $files = Storage::disk('foto')->files('/'.$vendor_code);
