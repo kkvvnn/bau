@@ -17,6 +17,7 @@ class AvitoController extends Controller
         $filename = 'avito/'.$foto.date('Y-m-d_His').'.xlsx';
         Excel::store(new AvitoExport($foto), $filename, 'public');
 
-        return config('app.url').Storage::url($filename);
+        $url = config('app.url').Storage::url($filename);
+        return view('exports.url', compact('url'));
     }
 }
