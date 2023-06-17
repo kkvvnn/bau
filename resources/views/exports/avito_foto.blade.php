@@ -79,6 +79,9 @@
                 }
 
 
+            if ($product->Name != 'Tiaki Green Керамогранит 60x120 Полированный') {
+
+
                 $description .= '<p>--------------------</p>';
                 $date = date('d.m.Y');
                 if ($product->balanceCount > 0) {
@@ -88,6 +91,10 @@
 
 
                 $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
+            } else {
+                $description .= '<p><strong>В НАЛИЧИИ!</strong></p>';
+            }
+
                 $description .= '<p><strong>Коллекция: </strong>';
                     $collections = $product->collections;
                     foreach ($collections as $collection) {
@@ -384,6 +391,10 @@
                 }
                 if ($product->Producer_Brand == 'Cersanit') {
                     $price = round($product->RMPrice * 1.05, -1);
+                }
+
+                if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный') {
+                    $price = '';
                 }
 
 

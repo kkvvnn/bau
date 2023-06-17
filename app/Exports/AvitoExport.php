@@ -46,6 +46,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         // dd($ids_cersanit_except);
 
         $products = $products_all->except($ids_cersanit_except);
+
+        $tiaki_green_60x120 = Product::where('Name', 'like', 'Tiaki Green Керамогранит 60x120 Полированный')->get();
+//        dd($tiaki_green_60x120);
+        $products->add($tiaki_green_60x120[0]);
         // dd($products);
 
         $primavera = Primavera::all();
