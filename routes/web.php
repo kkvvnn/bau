@@ -71,6 +71,7 @@ Route::get('/aquafloor/product/{title}', [AquaFloorController::class, 'index_pro
 // ----------------HELP_CONTROLLER----------------
 Route::get('/list-all', [MyHelpController::class, 'list']);
 Route::get('/biggest', [MyHelpController::class, 'biggest']);
+Route::get('/derevo', [MyHelpController::class, 'derevo']);
 
 //--------------------PRIMAVERA------------------------
 Route::get('/primavera/import', [\App\Http\Controllers\PrimaveraController::class, 'import']);

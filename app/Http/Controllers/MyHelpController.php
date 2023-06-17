@@ -26,4 +26,13 @@ class MyHelpController extends Controller
             'products' => $products,
         ]);
     }
+
+    public function derevo()
+    {
+        $products = Product::where([['DesignValue', 'like', 'Дерево'], ['Lenght', '>', 110], ['Lenght', '<', 120], ['Height', '>', 18], ['Height', '<', 23]])->paginate(15);
+
+        return view('product.index', [
+            'products' => $products,
+        ]);
+    }
 }
