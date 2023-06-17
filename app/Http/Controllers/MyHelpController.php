@@ -29,7 +29,7 @@ class MyHelpController extends Controller
 
     public function derevo()
     {
-        $products = Product::where([['DesignValue', 'like', 'Дерево'], ['Lenght', '>', 110], ['Lenght', '<', 120], ['Height', '>', 18], ['Height', '<', 23]])->paginate(15);
+        $products = Product::where([['Lenght', '>', 110], ['Lenght', '<', 120], ['Height', '>', 18], ['Height', '<', 23]])->paginate(15);
 
         return view('product.index', [
             'products' => $products,
