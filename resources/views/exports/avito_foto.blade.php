@@ -79,7 +79,7 @@
                 }
 
 
-            if ($product->Name != 'Tiaki Green Керамогранит 60x120 Полированный') {
+            if ($product->Name != 'Tiaki Green Керамогранит 60x120 Полированный' && $product->Name != 'Dalim Mint Керамогранит 60x60 Полированный') {
 
 
                 $description .= '<p>--------------------</p>';
@@ -92,7 +92,10 @@
 
                 $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
             } else {
-                $description .= '<p><strong>В НАЛИЧИИ!</strong></p>';
+                $description .= '<p>--------------------</p>';
+                $date = date('d.m.Y');
+                $description .= '<p>&#9989; На утро '.$date. ' - <strong>В НАЛИЧИИ !</strong></p>';
+                $description .= '<p>--------------------</p>';
             }
 
                 $description .= '<p><strong>Коллекция: </strong>';
@@ -393,7 +396,7 @@
                     $price = round($product->RMPrice * 1.05, -1);
                 }
 
-                if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный') {
+                if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный' || $product->Name == 'Dalim Mint Керамогранит 60x60 Полированный') {
                     $price = '';
                 }
 
