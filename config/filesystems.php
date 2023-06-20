@@ -132,6 +132,20 @@ return [
             // 'timeout' => 30,
         ],
 
+        'ftp_leedo' => [
+            'driver' => 'ftp',
+            'host' => 'vh400.timeweb.ru',
+            'username' => 'leedoceram_nomenkl',
+            'password' => 'Zagruzka789',
+
+            // Optional FTP Settings...
+            'port' => 21,
+            // 'root' => env('FTP_ROOT'),
+            // 'passive' => true,
+            // 'ssl' => true,
+            // 'timeout' => 30,
+        ],
+
     ],
 
     /*

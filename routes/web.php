@@ -108,3 +108,7 @@ Route::get('/absolut-gres-import-scrap', [\App\Http\Controllers\AbsolutGresContr
 Route::get('/absolut-gres', [\App\Http\Controllers\AbsolutGresController::class, 'index'])->name('absolut_gres.index');
 Route::get('/absolut-gres/{id}', [\App\Http\Controllers\AbsolutGresController::class, 'show'])->name('absolut_gres.show');
 //------------------END ABSOLUTE GRES-------------------
+
+//---------------------LEDOO-CARAMELLE---------------------
+Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_ftp_json']);
+//-------------------LEDOO-CARAMELLE-END-------------------
