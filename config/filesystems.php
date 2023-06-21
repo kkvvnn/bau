@@ -98,6 +98,14 @@ return [
             'throw' => false,
         ],
 
+        'foto_leedo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/foto-leedo'),
+            'url' => '/storage/leedo',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         // 'avito' => [
         //     'driver' => 'local',
         //     'root' => storage_path('app/public/avito'),
@@ -134,7 +142,7 @@ return [
 
         'ftp_leedo' => [
             'driver' => 'ftp',
-            'host' => 'vh400.timeweb.ru',
+            'host' => '92.53.96.128',
             'username' => 'leedoceram_nomenkl',
             'password' => 'Zagruzka789',
 
