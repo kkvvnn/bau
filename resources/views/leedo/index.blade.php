@@ -18,27 +18,27 @@
                         <div class="col">
                             <div class="card h-100">
                                 <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                                <a href="/leedo/{{$product['System_ID']??''}}">
-                                    <img src="{{$product['Basic_pic']??''}}" class="card-img-top" alt="...">
+                                <a href="/leedo/show/{{$product->id}}">
+                                    <img src="{{$product->Basic_pic}}" class="card-img-top" alt="...">
                                 </a>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$product['Brand_name']??''}} {{$product['Item_name']??''}}</h5>
+                                    <h5 class="card-title">{{$product->Brand_name}} {{$product->Item_name}}</h5>
                                     <p class="card-text"></p>
                                 </div>
                                 <div class="card-footer">
-                                    <p class="text-body-secondary">Цена: {{$product['Price_rozn']??''}}
-                                        ₽/{{$product['unit']??''}}</p>
+                                    <p class="text-body-secondary">Цена: {{$product->Price_rozn}}
+                                        ₽/{{$product->unit}}</p>
                                     <hr>
-                                    <!-- <small class="text-body-secondary">Закупка: {{$product['Price_OPT']??''}} ₽/{{$product['unit']??''}}</small> -->
+                                    <!-- <small class="text-body-secondary">Закупка: ₽/</small> -->
                                     <!-- <hr> -->
-                                    <p class="text-body-secondary">Доступно Москва: {{$product['Sklad_Msk_LeeDo']??0}} {{$product['unit']??''}}</p>
-                                    <p class="text-body-secondary">Доступно Санкт-Петербург: {{$product['Sklad_SPb_LeeDo']??0}} {{$product['unit']??''}}</p>
+                                    <p class="text-body-secondary">Доступно Москва: {{$product->Sklad_Msk_LeeDo??0}} {{$product->unit}}</p>
+                                    <p class="text-body-secondary">Доступно Санкт-Петербург: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}</p>
                                     <hr>
-                                    <p class="text-body-secondary">Обновлено: {{$time_of_import}}</p>
+                                    <p class="text-body-secondary">Обновлено: {{$product->updated_at->toDateString()}}</p>
                                     <hr>
 
                                     @php
-                                        $vendor_code = $product['System_ID'];
+                                        $vendor_code = $product->System_ID;
                                         $files = Storage::disk('foto_leedo')->files('/'.$vendor_code);
                                     @endphp
                                     @if(count($files))
@@ -59,5 +59,5 @@
             </div>
         </div>
     </div>
-
+    {{ $products->links() }}
 @endsection

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class LeedoController extends Controller
 {
-    public function import_ftp_to_json()
+    public function import_from_ftp_to_database()
     {
         $date = date('Y-m-d_His');
 
@@ -19,55 +19,62 @@ class LeedoController extends Controller
         $file = preg_replace("/^$bom/", '', $file);
         //      ------------end delete bom-----------------------
         if ($file != null) {
-            $name = '/import/leedo/price_'. $date .'.json';
+            $name = '/import/leedo/price_' . $date . '.json';
             Storage::disk('local')->put($name, $file);
         }
 
         Storage::copy($name, str_replace('leedo/', 'leedo/old/', $name));
         Storage::move($name, 'import/leedo/price.json');
 
-        return redirect('/')->with('success', 'Таблица Leedo обновлена. Ok!');
+        LeedoProduct::truncate();
+        $json = Storage::disk('local')->get('import/leedo/price.json');
+        $products = json_decode($json, true);
+        foreach ($products as $product) {
+            LeedoProduct::create($product);
+        }
+
+        return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
     }
 
     public function index()
     {
-        $json = Storage::disk('local')->get('import/leedo/price.json');
-        $time_of_import_unix = Storage::lastModified('import/leedo/price.json');
-        $time_of_import = Carbon::createFromTimestamp($time_of_import_unix)->format('Y-m-d');
+        $products = LeedoProduct::paginate(15);
 
-        $products = json_decode($json, true);
-
-        return view('leedo.index', compact('products', 'time_of_import'));
+        return view('leedo.index', compact('products'));
     }
 
     public function download_leedo_img()
     {
-        set_time_limit(360);
+        set_time_limit(60);
 
-        $json = Storage::disk('local')->get('import/leedo/price.json');
-        $products = json_decode($json, true);
-
-//        dd($products);
+        $products = LeedoProduct::all();
 
         $imgs = [];
 
         foreach ($products as $product) {
-            if(isset($product['Basic_pic'])) {
-                $imgs[] = $product['Basic_pic'];
-            }if(isset($product['Picture1'])) {
-                $imgs[] = $product['Picture1'];
-            }if(isset($product['Picture2'])) {
-                $imgs[] = $product['Picture2'];
-            }if(isset($product['Picture3'])) {
-                $imgs[] = $product['Picture3'];
-            }if(isset($product['Picture4'])) {
-                $imgs[] = $product['Picture4'];
-            }if(isset($product['Picture5'])) {
-                $imgs[] = $product['Picture5'];
-            }if(isset($product['Picture6'])) {
-                $imgs[] = $product['Picture6'];
-            }if(isset($product['Picture7'])) {
-                $imgs[] = $product['Picture7'];
+            if ($product->Basic_pic != null) {
+                $imgs[] = $product->Basic_pic;
+            }
+            if ($product->Picture1 != null) {
+                $imgs[] = $product->Picture1;
+            }
+            if ($product->Picture2 != null) {
+                $imgs[] = $product->Picture2;
+            }
+            if ($product->Picture3 != null) {
+                $imgs[] = $product->Picture3;
+            }
+            if ($product->Picture4 != null) {
+                $imgs[] = $product->Picture4;
+            }
+            if ($product->Picture5 != null) {
+                $imgs[] = $product->Picture5;
+            }
+            if ($product->Picture6 != null) {
+                $imgs[] = $product->Picture6;
+            }
+            if ($product->Picture7 != null) {
+                $imgs[] = $product->Picture7;
             }
         }
 //        dd($imgs);
@@ -82,5 +89,55 @@ class LeedoController extends Controller
                 }
             }
         }
+    }
+
+    public function show($id)
+    {
+        $product = LeedoProduct::find($id);
+
+        $images = [];
+
+        if ($product->Basic_pic != null) {
+            $images[] = $product->Basic_pic;
+        }
+        if ($product->Picture1 != null) {
+            $images[] = $product->Picture1;
+        }
+        if ($product->Picture2 != null) {
+            $images[] = $product->Picture2;
+        }
+        if ($product->Picture3 != null) {
+            $images[] = $product->Picture3;
+        }
+        if ($product->Picture4 != null) {
+            $images[] = $product->Picture4;
+        }
+        if ($product->Picture5 != null) {
+            $images[] = $product->Picture5;
+        }
+        if ($product->Picture6 != null) {
+            $images[] = $product->Picture6;
+        }
+        if ($product->Picture7 != null) {
+            $images[] = $product->Picture7;
+        }
+
+
+        $vendor_code = $product->System_ID;
+//        $path_dir = 'storage/Foto/' . $vendor_code;
+//        $directories = Storage::directories('public/Foto');
+        $files = Storage::disk('foto_leedo')->files('/' . $vendor_code);
+//        dd($files);
+        $fotossss = $files;
+        $fotos = [];
+        foreach ($fotossss as $f) {
+            $fotos[] = Storage::disk('foto_leedo')->url($f);
+        }
+
+        return view('leedo.show', [
+            'product' => $product,
+            'images' => $images,
+            'fotos' => $fotos,
+        ]);
     }
 }

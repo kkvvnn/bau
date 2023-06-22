@@ -85,9 +85,11 @@ Route::view('/primavera-search-form','primavera.search')->name('primavera.search
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
 Route::any('photo-primavera', [\App\Http\Controllers\PhotoController::class, 'store_primavera'])->name('save-foto-primavera');
 Route::any('photo-absolut_gres', [\App\Http\Controllers\PhotoController::class, 'store_absolut_gres'])->name('save-foto-absolut_gres');
+Route::any('photo-leedo', [\App\Http\Controllers\PhotoController::class, 'store_leedo'])->name('save-foto-leedo');
 Route::any('photo-delete', [\App\Http\Controllers\PhotoController::class, 'delete'])->name('photo.delete');
 Route::any('photo-delete-primavera', [\App\Http\Controllers\PhotoController::class, 'delete_primavera'])->name('photo-primavera.delete');
 Route::any('photo-delete-absolut_gres', [\App\Http\Controllers\PhotoController::class, 'delete_absolut_gres'])->name('photo-absolut_gres.delete');
+Route::any('photo-delete-leedo', [\App\Http\Controllers\PhotoController::class, 'delete_leedo'])->name('photo-leedo.delete');
 
 //------------------- ORDERS ROUTES --------------------
 Route::group(['prefix' => 'admin/orders'], function () {
@@ -110,7 +112,8 @@ Route::get('/absolut-gres/{id}', [\App\Http\Controllers\AbsolutGresController::c
 //------------------END ABSOLUTE GRES-------------------
 
 //---------------------LEDOO-CARAMELLE---------------------
-Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_ftp_to_json']);
+Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_from_ftp_to_database']);
 Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class, 'download_leedo_img']);
 Route::get('/leedo-index', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
+Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
 //-------------------LEDOO-CARAMELLE-END-------------------

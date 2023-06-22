@@ -33,6 +33,14 @@ class PhotoController extends Controller
 //        return redirect('/');
         return redirect()->route('absolut_gres.show', ['id' => $request->id])->with('status', 'Фото загружено!');
     }
+    public function store_leedo(Request $request)
+    {
+        $path = $request->vendor;
+//
+        $path = Storage::disk('foto_leedo')->putFile($path, $request->file('foto'));
+//        return redirect('/');
+        return redirect()->route('leedo.show', ['id' => $request->id])->with('status', 'Фото загружено!');
+    }
 
     public function delete(Request $request)
     {
@@ -62,11 +70,23 @@ class PhotoController extends Controller
     {
 //        dd($request->foto_delete);
         $path = $request->foto_delete;
-        $path = str_replace('/storage/foto-absolut-gres', '', $path);
+        $path = str_replace('/storage/foto-leedo', '', $path);
 //        dd($path);
 
         Storage::disk('foto_absolut_gres')->delete($path);
 
         return redirect()->route('absolut_gres.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
+    }
+
+    public function delete_leedo(Request $request)
+    {
+//        dd($request->foto_delete);
+        $path = $request->foto_delete;
+        $path = str_replace('/storage/foto-leedo', '', $path);
+//        dd($path);
+
+        Storage::disk('foto_leedo')->delete($path);
+
+        return redirect()->route('leedo.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
     }
 }

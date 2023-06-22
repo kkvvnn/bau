@@ -109,7 +109,7 @@ return [
         'foto_leedo' => [
             'driver' => 'local',
             'root' => storage_path('app/public/foto-leedo'),
-            'url' => '/storage/leedo',
+            'url' => '/storage/foto-leedo',
             'visibility' => 'public',
             'throw' => false,
         ],
