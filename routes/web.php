@@ -111,5 +111,6 @@ Route::get('/absolut-gres/{id}', [\App\Http\Controllers\AbsolutGresController::c
 
 //---------------------LEDOO-CARAMELLE---------------------
 Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_ftp_to_json']);
+Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class, 'download_leedo_img']);
 Route::get('/leedo-index', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
 //-------------------LEDOO-CARAMELLE-END-------------------

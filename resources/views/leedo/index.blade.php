@@ -31,8 +31,8 @@
                                     <hr>
                                     <!-- <small class="text-body-secondary">Закупка: {{$product['Price_OPT']??''}} ₽/{{$product['unit']??''}}</small> -->
                                     <!-- <hr> -->
-                                    <p class="text-body-secondary">Доступно Москва: {{$product['Sklad_Msk_LeeDo']??''}} {{$product['unit']??''}}</p>
-                                    <p class="text-body-secondary">Доступно Санкт-Петербург: {{$product['Sklad_SPb_LeeDo']??''}} {{$product['unit']??''}}</p>
+                                    <p class="text-body-secondary">Доступно Москва: {{$product['Sklad_Msk_LeeDo']??0}} {{$product['unit']??''}}</p>
+                                    <p class="text-body-secondary">Доступно Санкт-Петербург: {{$product['Sklad_SPb_LeeDo']??0}} {{$product['unit']??''}}</p>
                                     <hr>
                                     <p class="text-body-secondary">Обновлено: {{$time_of_import}}</p>
                                     <hr>

@@ -58,6 +58,14 @@ return [
             'throw' => false,
         ],
 
+        'leedo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/leedo'),
+            // 'url' => env('APP_URL').'/storage',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'aquafloor' => [
             'driver' => 'local',
             'root' => storage_path('app/public/Aquafloor'),
