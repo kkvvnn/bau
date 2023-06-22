@@ -70,7 +70,7 @@ class PhotoController extends Controller
     {
 //        dd($request->foto_delete);
         $path = $request->foto_delete;
-        $path = str_replace('/storage/foto-leedo', '', $path);
+        $path = str_replace('/storage/foto-absolut-gres', '', $path);
 //        dd($path);
 
         Storage::disk('foto_absolut_gres')->delete($path);
