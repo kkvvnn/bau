@@ -843,7 +843,11 @@
                     $title = 'Мозаика ';
                 }
 
-                $title .= str_replace('(распродажа остатков)', '', $product->Item_name);
+                $title .= $product->Item_name;
+                $title = str_replace('(распродажа остатков)', '', $title);
+                $title = str_replace('40 шт в упак.', '', $title);
+                $title = str_replace('20 шт в упак.', '', $title);
+                $title = str_replace('(14 шт в коробке)', '', $title);
 //                -----------------------------
 //              ------------------------------------------FOTO-------------------------------------
                 $vendor_code = $product->System_ID;
