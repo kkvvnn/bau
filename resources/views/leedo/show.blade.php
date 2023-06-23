@@ -67,6 +67,9 @@
                     <h5>В упаковке шт: <strong>{{$product->Pcs_per_box}}</strong> кв.м:
                         <strong>{{$product->Sq_m_per_box}}</strong></h5>
                     <hr>
+                    <h5>
+                        {{trim($product->Description, '"')}}
+                    </h5>
                 </div>
             </div>
 
