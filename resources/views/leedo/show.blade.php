@@ -75,7 +75,7 @@
                     </h5>
                     <hr>
                     <h5 class="lead">
-                        {{trim($product->Description, '"')}}
+                        {{ucfirst(trim($product->Description, '"'))}}
                     </h5>
                 </div>
             </div>
