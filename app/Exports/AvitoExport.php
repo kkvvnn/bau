@@ -4,6 +4,7 @@ namespace App\Exports;
 
 // use Maatwebsite\Excel\Concerns\FromCollection;
 use App\Models\AbsolutGres\AbsolutGresScrap;
+use App\Models\LeedoProduct;
 use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
@@ -53,9 +54,14 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $products->add($tiaki_green_60x120[0]);
         $products->add($dalim_mint[0]);
         // dd($products);
-
+//      ==============================================
         $primavera = Primavera::all();
+//      ==============================================
         $absolut_gres = AbsolutGresScrap::all();
+//      ==============================================
+        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
+//      ==============================================
+
 
         if ($this->foto == '') {
             return view('exports.avito', [
@@ -63,6 +69,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'products' => $products,
                 'primavera' => $primavera,
                 'absolut_gres' => $absolut_gres,
+                'leedo' => $leedo,
             ]);
         } else {
             return view('exports.avito_foto', [
@@ -70,6 +77,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'products' => $products,
                 'primavera' => $primavera,
                 'absolut_gres' => $absolut_gres,
+                'leedo' => $leedo,
             ]);
         }
 

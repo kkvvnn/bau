@@ -824,7 +824,166 @@
 
         {{--    -----------------------ABSOLUT_GRES_END----------------------------}}
 
+        {{--    ---------------------LEEDO------------------------------}}
+        @foreach($leedo as $product)
+            @php
+                $price = $product->Price_rozn;
+                $price = round($price * 0.90, -1);
+//                --------------------------
+                $title = '';
+                if (stripos($product->Category, 'Декор') != false) {
+                    $title = 'Декор ';
+                } elseif (stripos($product->Category, 'Бордюр') != false) {
+                    $title = 'Бордюр ';
+                } elseif (stripos($product->Category, 'Керамическая_плитка') != false) {
+                    $title = 'Керамическая плитка ';
+                } elseif (stripos($product->Category, 'Керамический_гранит') != false) {
+                    $title = 'Керамогранит ';
+                } elseif (stripos($product->Category, 'заика') != false) {
+                    $title = 'Мозаика ';
+                }
 
+                $title .= $product->Item_name;
+//                -----------------------------
+//              ------------------------------------------FOTO-------------------------------------
+                $vendor_code = $product->System_ID;
+                $files = Storage::disk('foto_leedo')->files('/'.$vendor_code);
+                $img_foto = '';
+                foreach ($files as $file) {
+                    $img_foto .= config('app.url').'/storage/foto-leedo/'.$file . ' | ';
+                }
+
+                $img = $img_foto . $product->Basic_pic;
+                if ($product->Picture1 != null) {
+                    $img .= ' | ' . $product->Picture1;
+                }
+                if ($product->Picture2 != null) {
+                    $img .= ' | ' . $product->Picture2;
+                }
+                if ($product->Picture3 != null) {
+                    $img .= ' | ' . $product->Picture3;
+                }
+                if ($product->Picture4 != null) {
+                    $img .= ' | ' . $product->Picture4;
+                }
+                if ($product->Picture5 != null) {
+                    $img .= ' | ' . $product->Picture5;
+                }
+                if ($product->Picture6 != null) {
+                    $img .= ' | ' . $product->Picture6;
+                }
+                if ($product->Picture7 != null) {
+                    $img .= ' | ' . $product->Picture7;
+                }
+
+                $img_full_arr = explode(' | ', $img);
+
+                if (count($img_full_arr) <= 10) {
+                    $img_ready = $img;
+                } else {
+                    $img_full_arr = array_slice($img_full_arr, 0, 10);
+                    $img_ready = implode(' | ', $img_full_arr);
+                }
+//                ---------------------
+                if(stripos($product->Category, 'литка') !== false) {
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                $FinishingSubType = 'Керамическая плитка';
+                }
+                elseif(stripos($product->Category, 'ерамогранит') !== false) {
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                $FinishingSubType = 'Керамогранит';
+                }
+                elseif(stripos($product->Category, 'озаика') !== false) {
+                $FinishingSubType = 'Мозаика';
+                $FinishingType = 'Плитка, керамогранит и мозаика';
+                } else {
+                $FinishingType = 'Другое';
+                $FinishingSubType = '';
+                }
+//                ---------------------
+                $description = '<p>Мозаика и керамогранит Caramelle & LeeDo. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                $description .= '<p><strong>' . $product->Item_chip . '. '
+                        . $product->Brand_name . '</strong></p>';
+
+                $description .= '<p>--------------------</p>';
+                $date = date('d.m.Y');
+                if (($product->Sklad_Msk_LeeDo > 0 && $product->Sklad_Msk_LeeDo != null) || ($product->Sklad_SPb_LeeDo > 0 && $product->Sklad_SPb_LeeDo != null)) {
+                $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.round($product->Sklad_Msk_LeeDo)+round($product->Sklad_SPb_LeeDo).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                }
+                $description .= '<p>--------------------</p>';
+
+                $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
+
+
+                    if($product->Tile_size_cm != null) {
+                    $description .= '<li><strong>Размер листа, см: </strong>' . $product->Tile_size_cm . '</li>';
+                    }
+                    if($product->Chip_size_mm != null) {
+                    $description .= '<li><strong>Размер чипа, мм: </strong>' . $product->Chip_size_mm . '</li>';
+                    }
+                    if($product->Thickness_mm != null) {
+                    $description .= '<li><strong>Толщина, мм: </strong>' . $product->Thickness_mm . '</li>';
+                    }
+                    if($product->Tile_sheet_square != null) {
+                    $description .= '<li><strong>Площадь листа: </strong>' . $product->Tile_sheet_square . '</li>';
+                    }
+                    if($product->Form != null) {
+                    $description .= '<li><strong>Форма: </strong>' . $product->Form . '</li>';
+                    }
+                    if($product->Color_text != null) {
+                    $description .= '<li><strong>Цвет: </strong>' . $product->Color_text . '</li>';
+                    }
+                    if($product->Surface != null) {
+                    $description .= '<li><strong>Поверхность: </strong>' . $product->Surface . '</li>';
+                    }
+                    if($product->Material != null) {
+                    $description .= '<li><strong>Материал: </strong>' . $product->Material . '</li>';
+                    }
+                    if($product->Usage != null) {
+                    $description .= '<li><strong>Применение: </strong>' . $product->Usage . '</li>';
+                    }
+                    if($product->Category != null) {
+                    $description .= '<li><strong>Категория: </strong>' . str_replace('_', ' ', $product->Category) . '</li>';
+                    }
+
+                    $description .= '</ul><p><em>';
+
+                    $description .= ucfirst(trim($product->Description, '"')) . '</em></p>';
+                    $description .= '<p>-------------------</p>';
+
+
+                $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+                $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+                $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+
+            @endphp
+            <tr>
+                <td></td>
+                <td>{{ $product->System_ID }}</td>
+                <td>В сообщениях</td>
+                <td>kkvvnn89@gmail.com</td>
+                <td>Активно</td>
+                <td>Владимир</td>
+                <td>{{$price}}</td>
+                <td>Напольные решения</td>
+                <td>{{$title}}</td>
+                <td>{{$img_ready}}</td> <!-- -->
+                <td>Отделка</td>
+                <td>Стройматериалы</td>
+                <td>Ремонт и строительство</td>
+                <td>Package</td>
+                <td>{{$FinishingType}}</td>
+                <td>79039890822</td> <!-- -->
+                <td>{{$description}}</td> <!-- -->
+                <td>Москва, парк Победы</td>
+                <td>Товар от производителя</td>
+                <td>{{$FinishingSubType}}</td>
+                <td>Новое</td>
+                <td></td>
+            </tr>
+        @endforeach
+
+        {{--    -----------------------LEEDO_END----------------------------}}
 
 
     </tbody>
