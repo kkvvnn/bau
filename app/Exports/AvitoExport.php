@@ -59,9 +59,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ==============================================
         $absolut_gres = AbsolutGresScrap::all();
 //      ==============================================
-        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
+//        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
+        $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%']])->get();
 //      ==============================================
-
+//dd($leedo);
 
         if ($this->foto == '') {
             return view('exports.avito', [
