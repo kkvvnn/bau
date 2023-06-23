@@ -51,13 +51,13 @@
                     </h5>
                     <hr>
                     <h5>
-                        Остаток Москва: {{$product->Sklad_Msk_LeeDo??0}} {{$product->unit}}
+                        Остаток Москва: {{round($product->Sklad_Msk_LeeDo)??0}} {{$product->unit}}
                         <br>
-                        Резерв Москва: {{$product->Reserv_Msk_LeeDo??0}} {{$product->unit}}
+                        Резерв Москва: {{round($product->Reserv_Msk_LeeDo)??0}} {{$product->unit}}
                         <br>
-                        Остаток Санкт-Петербург: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}
+                        Остаток Санкт-Петербург: {{round($product->Sklad_SPb_LeeDo)??0}} {{$product->unit}}
                         <br>
-                        Резерв Санкт-Петербург: {{$product->Reserv_SPb_LeeDo??0}} {{$product->unit}}
+                        Резерв Санкт-Петербург: {{round($product->Reserv_SPb_LeeDo)??0}} {{$product->unit}}
                     </h5>
                     <hr>
                     <h5>
@@ -65,9 +65,16 @@
                     </h5>
                     <hr>
                     <h5>В упаковке шт: <strong>{{$product->Pcs_per_box}}</strong> кв.м:
-                        <strong>{{$product->Sq_m_per_box}}</strong></h5>
+                        <strong>{{$product->Sq_m_per_box}}</strong>
+                        <br>
+                            Размер листа, см: {{$product->Tile_size_cm}}
+                        <br>
+                            Размер чипа, мм: {{$product->Chip_size_mm}}
+                        <br>
+                            Площадь листа: {{$product->Tile_sheet_square}}
+                    </h5>
                     <hr>
-                    <h5>
+                    <h5 class="lead">
                         {{trim($product->Description, '"')}}
                     </h5>
                 </div>
