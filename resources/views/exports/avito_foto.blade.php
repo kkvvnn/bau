@@ -882,8 +882,14 @@
 
                 $img_full_arr = explode(' | ', $img);
 
+                foreach ($img_full_arr as &$i) {
+                    if (!str_starts_with($i, 'http')) {
+                        $i = str_replace('www.leedo.ru', 'https://www.leedo.ru', $i);
+                    }
+                }
+
                 if (count($img_full_arr) <= 10) {
-                    $img_ready = $img;
+                    $img_ready = implode(' | ', $img_full_arr);
                 } else {
                     $img_full_arr = array_slice($img_full_arr, 0, 10);
                     $img_ready = implode(' | ', $img_full_arr);
