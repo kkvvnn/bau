@@ -56,48 +56,8 @@ class AltaceraController extends Controller
         }
     }
 
-    public function altacera_price_list_import_to_database()
+    public function json_balance_to_database()
     {
-        $territories = Storage::json('import/altacera/territory/territory.json');
-        $prices = Storage::json('import/altacera/price/price.json');
-        $tovars = Storage::json('import/altacera/tovar/tovar.json');
-        $categories = Storage::json('import/altacera/category/category.json');
-        $balances = Storage::json('import/altacera/balance/balance.json');
-        $pictures = Storage::json('import/altacera/picture/picture.json');
-        // dd($prices);
-
-        foreach ($territories as $territory) {
-            if ($territory['price_list'] == 'Москва') {
-                $type_price_id = $territory['type_price_id'];
-                $depot_id = $territory['depot_id'];
-            }
-        }
-
-        foreach ($prices as $price) {
-            if ($price['type_price_id'] == $type_price_id) {
-                $price_list = $price['price_list'];
-            }
-        }
-
-        // dd($price_list);
-
-        foreach ($price_list as $p_r) {
-            $altacera_price_lists = AltaceraPriceList::create($p_r);
-        }
-
-        // $altacera_price_lists = AltaceraPriceList::create();
-    }
-
-    public function altacera_tovars_import_to_database()
-    {
-        $tovars = Storage::json('import/altacera/tovar/tovar.json');
-        // dd($tovars);
-
-        foreach ($tovars as $tovar) {
-            // dd($tovar);
-            $altacera_tovars = AltaceraTovar::create($tovar);
-        }
-
 
     }
 }
