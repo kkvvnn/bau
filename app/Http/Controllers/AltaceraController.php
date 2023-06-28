@@ -31,17 +31,19 @@ class AltaceraController extends Controller
             Storage::put($name_zip, $contents);
 
             $zip = new ZipArchive;
-            $res = $zip->open($name_zip);
+            $res = $zip->open(Storage::path($name_zip));
+//            dd($res);
 
             if ($res === true) {
                 $files = Storage::files('import/altacera/' . $value . '/');
                 Storage::delete($files);
 
-                $zip->extractTo('import/altacera/' . $value . '/');
+                $zip->extractTo(Storage::path('import/altacera/' . $value . '/'));
                 $zip->close();
 
                 // dd($files);
                 $files = Storage::files('import/altacera/' . $value . '/');
+//                dd($files);
                 Storage::move($files[0], 'import/altacera/' . $value . '/' . $value .'.json');
                 echo 'ok';
             } else {
