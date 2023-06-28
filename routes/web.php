@@ -120,5 +120,10 @@ Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 's
 
 //---------------------ALTACERA---------------------
 Route::get('/altacera-unzip', [\App\Http\Controllers\AltaceraController::class, 'altacera_unzip']);
-Route::get('/altacera-import', [\App\Http\Controllers\AltaceraController::class, 'json_price_to_database']);
+Route::get('/altacera-import-territory', [\App\Http\Controllers\AltaceraController::class, 'json_territory_to_database']);
+Route::get('/altacera-import-balance', [\App\Http\Controllers\AltaceraController::class, 'json_balance_to_database']);
+Route::get('/altacera-import-price', [\App\Http\Controllers\AltaceraController::class, 'json_price_to_database']);
+Route::get('/altacera-import-tovar', [\App\Http\Controllers\AltaceraController::class, 'json_tovar_to_database']);
+Route::get('/altacera-import-category', [\App\Http\Controllers\AltaceraController::class, 'json_category_to_database']);
+Route::get('/altacera-import-picture', [\App\Http\Controllers\AltaceraController::class, 'json_picture_to_database']);
 //-------------------ALTACERA-END-------------------

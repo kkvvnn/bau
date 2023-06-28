@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Altacera\AltaceraBalance;
+use App\Models\Altacera\AltaceraCategory;
+use App\Models\Altacera\AltaceraPicture;
 use App\Models\Altacera\AltaceraPrice;
+use App\Models\Altacera\AltaceraTerritory;
 use App\Models\AltaceraPriceList;
-use App\Models\AltaceraTovar;
+use App\Models\Altacera\AltaceraTovar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
@@ -58,14 +61,31 @@ class AltaceraController extends Controller
         }
     }
 
+//    ==============================================================================
+    public function json_territory_to_database()
+    {
+        AltaceraTerritory::truncate();
+        $json = Storage::disk('local')->get('import/altacera/territory/territory.json');
+        $products = json_decode($json, true);
+//        dd($products);
+        foreach ($products as $product) {
+            AltaceraTerritory::create($product);
+        }
+
+//        return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
+    }
+
     public function json_balance_to_database()
     {
         AltaceraBalance::truncate();
+
+        $territory = AltaceraTerritory::where('price_list', 'Москва')->get();
+//        dd($territory[0]->depot_id);
         $json = Storage::disk('local')->get('import/altacera/balance/balance.json');
         $products = json_decode($json, true);
 //        dd($products);
         foreach ($products as $product) {
-            if ($product['depot_id'] == '8c279853-d2c9-11e8-80c3-0cc47afc14e9') {
+            if ($product['depot_id'] == $territory[0]->depot_id) {
                 AltaceraBalance::create($product);
             }
         }
@@ -76,11 +96,14 @@ class AltaceraController extends Controller
     public function json_price_to_database()
     {
         AltaceraPrice::truncate();
+
+        $territory = AltaceraTerritory::where('price_list', 'Москва')->get();
+//        dd($territory);
         $json = Storage::disk('local')->get('import/altacera/price/price.json');
         $products_all = json_decode($json, true);
 
         foreach ($products_all as $pr) {
-            if ($pr['type_price_id'] == '5945b787-12b2-11eb-80eb-00155d5d5700') {
+            if ($pr['type_price_id'] == $territory[0]->type_price_id) {
                 $products = $pr['price_list'];
             }
         }
@@ -92,9 +115,42 @@ class AltaceraController extends Controller
 //        return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
     }
 
-    public function altacera_import_to_database()
+    public function json_tovar_to_database()
     {
-        $this->altacera_unzip();
-        $this->json_balance_to_database();
+        AltaceraTovar::truncate();
+        $json = Storage::disk('local')->get('import/altacera/tovar/tovar.json');
+        $products = json_decode($json, true);
+//        dd($products);
+        foreach ($products as $product) {
+            AltaceraTovar::create($product);
+        }
+
+//        return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
+    }
+
+    public function json_category_to_database()
+    {
+        AltaceraCategory::truncate();
+        $json = Storage::disk('local')->get('import/altacera/category/category.json');
+        $products = json_decode($json, true);
+//        dd($products);
+        foreach ($products as $product) {
+            AltaceraCategory::create($product);
+        }
+
+//        return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
+    }
+
+    public function json_picture_to_database()
+    {
+        AltaceraPicture::truncate();
+        $json = Storage::disk('local')->get('import/altacera/picture/picture.json');
+        $products = json_decode($json, true);
+//        dd($products);
+        foreach ($products as $product) {
+            AltaceraPicture::create($product);
+        }
+
+//        return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
     }
 }
