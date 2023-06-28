@@ -120,4 +120,5 @@ Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 's
 
 //---------------------ALTACERA---------------------
 Route::get('/altacera-unzip', [\App\Http\Controllers\AltaceraController::class, 'altacera_unzip']);
+Route::get('/altacera-import', [\App\Http\Controllers\AltaceraController::class, 'json_price_to_database']);
 //-------------------ALTACERA-END-------------------

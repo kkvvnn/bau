@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Altacera\AltaceraBalance;
+use App\Models\Altacera\AltaceraPrice;
 use App\Models\AltaceraPriceList;
 use App\Models\AltaceraTovar;
 use Illuminate\Http\Request;
@@ -44,7 +46,7 @@ class AltaceraController extends Controller
                 // dd($files);
                 $files = Storage::files('import/altacera/' . $value . '/');
 //                dd($files);
-                Storage::move($files[0], 'import/altacera/' . $value . '/' . $value .'.json');
+                Storage::move($files[0], 'import/altacera/' . $value . '/' . $value . '.json');
                 echo 'ok';
             } else {
                 echo 'failed';
@@ -58,6 +60,41 @@ class AltaceraController extends Controller
 
     public function json_balance_to_database()
     {
+        AltaceraBalance::truncate();
+        $json = Storage::disk('local')->get('import/altacera/balance/balance.json');
+        $products = json_decode($json, true);
+//        dd($products);
+        foreach ($products as $product) {
+            if ($product['depot_id'] == '8c279853-d2c9-11e8-80c3-0cc47afc14e9') {
+                AltaceraBalance::create($product);
+            }
+        }
 
+//        return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
+    }
+
+    public function json_price_to_database()
+    {
+        AltaceraPrice::truncate();
+        $json = Storage::disk('local')->get('import/altacera/price/price.json');
+        $products_all = json_decode($json, true);
+
+        foreach ($products_all as $pr) {
+            if ($pr['type_price_id'] == '5945b787-12b2-11eb-80eb-00155d5d5700') {
+                $products = $pr['price_list'];
+            }
+        }
+//        dd($products);
+        foreach ($products as $product) {
+            AltaceraPrice::create($product);
+        }
+
+//        return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
+    }
+
+    public function altacera_import_to_database()
+    {
+        $this->altacera_unzip();
+        $this->json_balance_to_database();
     }
 }
