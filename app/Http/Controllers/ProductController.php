@@ -168,7 +168,7 @@ class ProductController extends Controller
         $name = $request->input('name');
         $name = '%'.$name.'%';
 
-        $products = Product::where('Name', 'LIKE', $name)->orWhere('Producer_Brand', 'LIKE', $name)->orderByDesc('balanceCount')->paginate(15);
+        $products = Product::where('Name', 'LIKE', $name)->orWhere('Element_Code', 'LIKE', $name)->orderByDesc('balanceCount')->paginate(15);
 
         $products->appends(['name' => $name]);
 
