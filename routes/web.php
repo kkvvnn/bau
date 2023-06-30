@@ -117,3 +117,9 @@ Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class,
 Route::get('/leedo-index', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
 Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
 //-------------------LEDOO-CARAMELLE-END-------------------
+
+//---------------------ALTACERA---------------------
+Route::get('/altacera-import-all', [\App\Http\Controllers\AltaceraImportController::class, 'altacera_import_all']);
+Route::get('/altacera-index', [\App\Http\Controllers\AltaceraController::class, 'index'])->name('altacera.index');
+Route::get('/altacera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
+//-------------------ALTACERA-END-------------------

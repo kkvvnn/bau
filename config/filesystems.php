@@ -82,6 +82,14 @@ return [
             'throw' => false,
         ],
 
+        'altacera' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Altacera'),
+            'url' => '/storage/Altacera',
+            // 'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'foto' => [
             'driver' => 'local',
             'root' => storage_path('app/public/foto'),
