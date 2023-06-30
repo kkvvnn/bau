@@ -175,6 +175,26 @@ class AltaceraImportController extends Controller
         }
     }
 
+    public function download_img()
+    {
+        $products = AltaceraTovarAvailable::all();
+        $tovar_ids_arr = [];
+        foreach ($products as $product) {
+            $tovar_ids_arr[] = $product->tovar_id;
+        }
+
+        foreach ($tovar_ids_arr as $arr) {
+            $name_file = $arr . '.JPEG';
+            if (Storage::disk('altacera')->missing($name_file)) {
+
+                $file = file_get_contents('https://zakaz.altacera.ru/pics/'.$arr.'.JPEG');
+                if ($file != null) {
+                    Storage::disk('altacera')->put($name_file, $file);
+                }
+            }
+        }
+    }
+
     public function altacera_import_all()
     {
         set_time_limit(120);

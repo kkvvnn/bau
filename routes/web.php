@@ -121,4 +121,5 @@ Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 's
 //---------------------ALTACERA---------------------
 Route::get('/altacera-import-all', [\App\Http\Controllers\AltaceraImportController::class, 'altacera_import_all']);
 Route::get('/altacera-index', [\App\Http\Controllers\AltaceraController::class, 'index'])->name('altacera.index');
+Route::get('/altacera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
 //-------------------ALTACERA-END-------------------

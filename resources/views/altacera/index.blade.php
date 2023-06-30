@@ -14,18 +14,20 @@
 
                 @foreach($products as $product)
 
+
+
                     <div class="col">
                         <div class="card h-100">
                             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                             <a href="/altacera/{{$product->id}}">
-                                <img src="" class="card-img-top" alt="...">
+                                <img src="{{Storage::disk('altacera')->url($product->tovar_id . '.JPEG')}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{$product->tovar}}</h5>
+                                <h5 class="card-title">{{$product->category_rel->parent}} {{$product->tovar}}</h5>
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="text-body-secondary">Цена: {{++$i}} ₽</p>
+                                <p class="text-body-secondary">Цена: {{$product->price->price}} ₽</p>
                                 <hr>
 
                                 <p class="text-body-secondary">{{$product->artikul}}</p>

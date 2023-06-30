@@ -13,6 +13,8 @@ class AltaceraController extends Controller
     {
         $products = AltaceraTovarAvailable::paginate(15);
 
+//        $product = AltaceraTovarAvailable::find(226);
+//        dd($product);
 
         return view('altacera.index', [
             'products' => $products,
