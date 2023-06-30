@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class MyHelpController extends Controller
 {
@@ -34,5 +35,20 @@ class MyHelpController extends Controller
         return view('product.index', [
             'products' => $products,
         ]);
+    }
+
+    public function count_product_with_foto()
+    {
+        $directories = Storage::directories('public/foto');
+
+        foreach ($directories as $directory) {
+            $files = Storage::files($directory);
+            if (count($files) == 0) {
+                Storage::deleteDirectory($directory);
+            }
+        }
+
+        $directories = Storage::directories('public/foto');
+        dd($directories);
     }
 }
