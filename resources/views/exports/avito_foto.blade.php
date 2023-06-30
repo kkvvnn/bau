@@ -365,6 +365,16 @@
                 $img_full .= ' | ' . $img4;
                 }
 
+
+            $img_full_arr = explode(' | ', $img_full);
+
+            if (count($img_full_arr) <= 10) {
+                $img_ready = $img_full;
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_ready = implode(' | ', $img_full_arr);
+            }
+
             @endphp
 
             @php
@@ -413,7 +423,7 @@
                 <td>{{$price}}</td>
                 <td>Напольные решения</td>
                 <td>{{$title}}</td>
-                <td>{{$img_full}}</td> <!-- -->
+                <td>{{$img_ready}}</td> <!-- -->
                 <td>Отделка</td>
                 <td>Стройматериалы</td>
                 <td>Ремонт и строительство</td>
