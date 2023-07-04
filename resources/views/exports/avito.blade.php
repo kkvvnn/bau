@@ -993,7 +993,16 @@
             //                -----------------------------
             //              ------------------------------------------FOTO-------------------------------------
 
-                        $img_ready = config('app.url').Storage::disk('altacera')->url($product->tovar_id . '.JPEG');
+                        $imgs = config('app.url').Storage::disk('altacera')->url($product->tovar_id . '.JPEG');
+
+                        $img_full_arr = explode(' | ', $imgs);
+
+                        if (count($img_full_arr) <= 10) {
+                            $img_ready = $imgs;
+                        } else {
+                            $img_full_arr = array_slice($img_full_arr, 0, 10);
+                            $img_ready = implode(' | ', $img_full_arr);
+                        }
 
             //                ---------------------
                         if(stripos($product->collection_item, 'литка') !== false) {
@@ -1018,12 +1027,14 @@
                                 . $product->country . ')</strong></p>';
                         $description .= '<p><strong>Коллекция: </strong>' .$product->category. '</p>';
 
-                        $description .= '<p>--------------------</p>';
+
                         $date = date('d.m.Y');
                         if ($product->balance->free_balance > 0) {
-                        $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.$product->balance->free_balance.' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                              $description .= '<p>--------------------</p>';
+                              $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.$product->balance->free_balance.' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                              $description .= '<p>--------------------</p>';
                         }
-                        $description .= '<p>--------------------</p>';
+
 
                         $description .= '<p><em>Цена указана за 1 '.$unit.'.</em></p><ul>';
 
