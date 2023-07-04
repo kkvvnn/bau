@@ -157,7 +157,7 @@ class AltaceraImportController extends Controller
 
     public function tovar_in_avaliable()
     {
-        $balances = AltaceraBalance::where('balance', '!=', 0)->get();
+        $balances = AltaceraBalance::where('balance', '>', 0)->get();
 
         $tovar_ids = [];
         foreach ($balances as $balance) {

@@ -30,4 +30,9 @@ class AltaceraTovarAvailable extends Model
     {
         return $this->hasOne(AltaceraCategory::class, 'category_id', 'category_id');
     }
+
+    public function balance(): HasOne
+    {
+        return $this->hasOne(AltaceraBalance::class, 'tovar_id', 'tovar_id');
+    }
 }

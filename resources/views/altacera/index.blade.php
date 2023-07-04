@@ -8,13 +8,21 @@
             </div>
             <div class="row row-cols-1 row-cols-md-3 g-4">
 
-                @php
-                    $i = 0;
-                @endphp
-
                 @foreach($products as $product)
 
-
+                    @php
+                        $units = $product->units;
+                        $unit_id = $product->balance->unit_id;
+//                        dd($units);
+                        $unit = '';
+                        foreach ($units as $u) {
+                            if ($u['unit_id'] == $unit_id) {
+                                $unit = $u['unit'];
+                                break;
+                            }
+                        }
+//                        dd($unit);
+                    @endphp
 
                     <div class="col">
                         <div class="card h-100">
@@ -23,14 +31,24 @@
                                 <img src="{{Storage::disk('altacera')->url($product->tovar_id . '.JPEG')}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{$product->category_rel->parent}} {{$product->tovar}}</h5>
+                                <h5 class="card-title">{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->artikul}}</h5>
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
                                 <p class="text-body-secondary">Цена: {{$product->price->price}} ₽</p>
                                 <hr>
+                                @if(str_contains($product->balance->free_balance, '.'))
+                                    <p class="text-body-secondary">Остаток: {{rtrim(rtrim($product->balance->free_balance, '0'), '.')}} {{$unit}}</p>
+                                    <hr>
+                                @else
+                                    <p class="text-body-secondary">Остаток: {{$product->balance->free_balance}} {{$unit}}</p>
+                                    <hr>
+                                @endif
 
-                                <p class="text-body-secondary">{{$product->artikul}}</p>
+                                <p class="text-body-secondary">{{$product->category_rel->parent}}</p>
+                                <hr>
+
+                                <p class="text-body-secondary">Артикул: {{$product->artikul}}</p>
                                 <hr>
                                 <p class="text-body-secondary">В упаковке шт: <strong></strong>   кв.м: <strong></strong></p>
 
