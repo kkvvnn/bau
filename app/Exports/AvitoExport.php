@@ -4,6 +4,7 @@ namespace App\Exports;
 
 // use Maatwebsite\Excel\Concerns\FromCollection;
 use App\Models\AbsolutGres\AbsolutGresScrap;
+use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\LeedoProduct;
 use App\Models\Primavera;
 use App\Models\Product;
@@ -62,7 +63,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
         $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%']])->get();
 //      ==============================================
-//dd($leedo);
+        $altacera = AltaceraTovarAvailable::all();
+//      ==============================================
 
         if ($this->foto == '') {
             return view('exports.avito', [
@@ -71,6 +73,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'primavera' => $primavera,
                 'absolut_gres' => $absolut_gres,
                 'leedo' => $leedo,
+                'altacera' => $altacera,
             ]);
         } else {
             return view('exports.avito_foto', [
@@ -79,6 +82,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'primavera' => $primavera,
                 'absolut_gres' => $absolut_gres,
                 'leedo' => $leedo,
+                'altacera' => $altacera,
             ]);
         }
 
