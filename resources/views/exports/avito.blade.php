@@ -981,17 +981,17 @@
                                     }
 
                                     $pack_ratio = '';
-                                    foreach ($units as $u) {
-                                        if ($u['unit'] == 'Упак') {
-                                            $pack_ratio = $u['unit_ratio'];
+                                    foreach ($units as $u2) {
+                                        if ($u2['unit'] == 'Упак') {
+                                            $pack_ratio = $u2['unit_ratio'];
                                             break;
                                         }
                                     }
 
                                     $one_count_ratio = '';
-                                    foreach ($units as $u) {
-                                        if ($u['unit'] == 'шт') {
-                                            $one_count_ratio = $u['unit_ratio'];
+                                    foreach ($units as $u3) {
+                                        if ($u3['unit'] == 'шт') {
+                                            $one_count_ratio = $u3['unit_ratio'];
                                             break;
                                         }
                                     }
@@ -1113,8 +1113,8 @@
                                 $type = '';
                         }
 
-                        $lenght = round((float)str_replace(',', '.', $product->height), 0, PHP_ROUND_HALF_EVEN);
-                        $height = round((float)str_replace(',', '.', $product->width), 0, PHP_ROUND_HALF_EVEN);
+                        $lenght = $product->height;
+                        $height = $product->width;
 
                         $size = '';
                         $size .= $type . ' ' . $lenght . 'х' . $height . ', ';
@@ -1165,10 +1165,10 @@
                             $keywords .= $type . ' ' . $country;
                         }
             //---
-//                        if ($type != 'декор') {
+                        if ($type != 'декор') {
                             $description .= '<p>_____________________</p>';
                             $description .= '<p><em>' . $keywords . '</em></p>';
-//                        }
+                        }
 
         @endphp
         <tr>
