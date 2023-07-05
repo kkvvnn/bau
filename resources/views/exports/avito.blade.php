@@ -1056,7 +1056,10 @@
 
 
                             if($product->width != 0 && $product->height != 0) {
-                            $description .= '<li><strong>Размер: </strong>' . $product->height .'x' . $product->width . '</li>';
+                            $description .= '<li><strong>Размер, см: </strong>' . $product->height/10 .'x' . $product->width/10 . '</li>';
+                            }
+                            if($product->thickness != null) {
+                            $description .= '<li><strong>Толщина, мм: </strong>' . $product->thickness . '</li>';
                             }
                             if($product->surface_type != null) {
                             $description .= '<li><strong>Поверхность: </strong>' . $product->surface_type . '</li>';
@@ -1073,7 +1076,7 @@
                             if($product->country != null) {
                             $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
                             }
-                            if($product->artilul != null) {
+                            if($product->artikul != null) {
                             $description .= '<li><strong>Артикул: </strong>' . $product->artikul . '</li>';
                             }
 
@@ -1088,7 +1091,27 @@
                         $keywords = '';
 
 
-                        $type = 'керамогранит';
+                        if(stripos($product->collection_item, 'екор') !== false) {
+                            $type = 'декор';
+                            }
+                            elseif(stripos($product->collection_item, 'анно') !== false) {
+                            $type = 'панно';
+                            }
+                            elseif(stripos($product->collection_item, 'ордюр') !== false) {
+                            $type = 'бордюр';
+                            }
+                            elseif(stripos($product->collection_item, 'озаика') !== false) {
+                            $type = 'мозаика';
+                            }
+                            elseif(stripos($product->collection_item, 'литка') !== false) {
+                            $type = 'керамическая плитка';
+                            }
+                            elseif(stripos($product->collection_item, 'ерамогранит') !== false) {
+                            $type = 'керамогранит';
+                            }
+                            else {
+                                $type = '';
+                        }
 
                         $lenght = round((float)str_replace(',', '.', $product->height), 0, PHP_ROUND_HALF_EVEN);
                         $height = round((float)str_replace(',', '.', $product->width), 0, PHP_ROUND_HALF_EVEN);
@@ -1106,31 +1129,6 @@
                         if($product->width != 0 && $product->height != 0) {
                         $keywords .= $size;
                         }
-
-
-                        if(stripos($product->collection_item, 'екор') !== false) {
-                            $type = 'декор';
-                            }
-                            elseif(stripos($product->collection_item, 'озаика') !== false) {
-                            $type = 'мозаика';
-                            }
-                            elseif(stripos($product->collection_item, 'анно') !== false) {
-                            $type = 'панно';
-                            }
-                            elseif(stripos($product->collection_item, 'ордюр') !== false) {
-                            $type = 'бордюр';
-                            }
-                            elseif(stripos($product->collection_item, 'литка') !== false) {
-                            $type = 'керамическая плитка';
-                            }
-                            elseif(stripos($product->collection_item, 'ерамогранит') !== false) {
-                            $type = 'керамогранит';
-                            }
-                            else {
-                                $type = '';
-                        }
-
-
 
                         $surface = $product->surface_type;
                         $surf = '';
