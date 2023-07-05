@@ -1041,14 +1041,20 @@
                         $description .= '<p><strong>' . $product->tovar . '. '
                                 . $product->category_rel->parent . ' ('
                                 . $product->country . ')</strong></p>';
-                        $description .= '<p><strong>Коллекция: </strong>' .$product->category. '</p>';
+                        $description .= '<p><strong>Коллекция: </strong>'.$product->category_rel->parent.' / '.$product->category. '</p>';
 
 
                         $date = date('d.m.Y');
                         if ($product->balance->free_balance > 0) {
-                              $description .= '<p>--------------------</p>';
-                              $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.$product->balance->free_balance.' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
-                              $description .= '<p>--------------------</p>';
+                            if(str_contains($product->balance->free_balance, '.')){
+                                $description .= '<p>--------------------</p>';
+                                $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.rtrim(rtrim($product->balance->free_balance, '0'), '.').' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                                $description .= '<p>--------------------</p>';
+                            } else {
+                                $description .= '<p>--------------------</p>';
+                                $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.$product->balance->free_balance.' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                                $description .= '<p>--------------------</p>';
+                            }
                         }
 
 
