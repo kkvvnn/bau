@@ -1003,7 +1003,7 @@
                             $price = $product->price->price;
                         }
             //                --------------------------
-                        $code_avito = strtolower($product->artikul);
+                        $code_avito = $product->artikul;
             //                --------------------------
                         $title = $product->category_rel->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul;
             //                -----------------------------
