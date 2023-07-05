@@ -207,5 +207,7 @@ class AltaceraImportController extends Controller
         $this->json_category_to_database();
         $this->json_picture_to_database();
         $this->tovar_in_avaliable();
+
+        return redirect()->route('altacera.index')->with('success', 'Таблица Altacera обновлена. Ok!');
     }
 }
