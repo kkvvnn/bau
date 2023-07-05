@@ -1103,7 +1103,7 @@
                             $size .= $type . ' ' . $height . '*' . $lenght . ', ';
                         }
 
-                        if($product->width != 0 && $product->length != 0) {
+                        if($product->width != 0 && $product->height != 0) {
                         $keywords .= $size;
                         }
 
@@ -1167,10 +1167,10 @@
                             $keywords .= $type . ' ' . $country;
                         }
             //---
-                        if ($type != 'декор') {
+//                        if ($type != 'декор') {
                             $description .= '<p>_____________________</p>';
                             $description .= '<p><em>' . $keywords . '</em></p>';
-                        }
+//                        }
 
         @endphp
         <tr>
