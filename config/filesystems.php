@@ -122,6 +122,14 @@ return [
             'throw' => false,
         ],
 
+        'foto_altacera' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/foto-altacera'),
+            'url' => '/storage/foto-altacera',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         // 'avito' => [
         //     'driver' => 'local',
         //     'root' => storage_path('app/public/avito'),

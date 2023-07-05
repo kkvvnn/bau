@@ -979,6 +979,22 @@
                                             break;
                                         }
                                     }
+
+                                    $pack_ratio = '';
+                                    foreach ($units as $u) {
+                                        if ($u['unit'] == 'Упак') {
+                                            $pack_ratio = $u['unit_ratio'];
+                                            break;
+                                        }
+                                    }
+
+                                    $one_count_ratio = '';
+                                    foreach ($units as $u) {
+                                        if ($u['unit'] == 'шт') {
+                                            $one_count_ratio = $u['unit_ratio'];
+                                            break;
+                                        }
+                                    }
             //        --------------------------------------------------------------
 
                         if ($product->sale == 0) {
@@ -1045,11 +1061,14 @@
                             if($product->surface_type != null) {
                             $description .= '<li><strong>Поверхность: </strong>' . $product->surface_type . '</li>';
                             }
-                            if($product->count_in_pack != null) {
-                            $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_pack . '</li>';
+                            if($product->Рельеф != null) {
+                            $description .= '<li><strong>Рельеф: </strong>' . $product->Рельеф . '</li>';
                             }
-                            if($product->meters_in_pack != null) {
-                            $description .= '<li><strong>Кв. метров в упаковке: </strong>' . str_replace(',', '.', $product->meters_in_pack) . '</li>';
+                            if($unit == 'м2') {
+                            $description .= '<li><strong>Штук в упаковке: </strong>' . $pack_ratio/$one_count_ratio . '</li>';
+                            }
+                            if($unit == 'м2') {
+                            $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $pack_ratio . '</li>';
                             }
                             if($product->country != null) {
                             $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';

@@ -42,6 +42,15 @@ class PhotoController extends Controller
         return redirect()->route('leedo.show', ['id' => $request->id])->with('status', 'Фото загружено!');
     }
 
+    public function store_altacera(Request $request)
+    {
+        $path = $request->vendor;
+//
+        $path = Storage::disk('foto_altacera')->putFile($path, $request->file('foto'));
+//        return redirect('/');
+        return redirect()->route('altacera.show', ['id' => $request->id])->with('status', 'Фото загружено!');
+    }
+
     public function delete(Request $request)
     {
 //        dd($request->foto_delete);
@@ -88,5 +97,17 @@ class PhotoController extends Controller
         Storage::disk('foto_leedo')->delete($path);
 
         return redirect()->route('leedo.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
+    }
+
+    public function delete_altacera(Request $request)
+    {
+//        dd($request->foto_delete);
+        $path = $request->foto_delete;
+        $path = str_replace('/storage/foto-altacera', '', $path);
+//        dd($path);
+
+        Storage::disk('foto_altacera')->delete($path);
+
+        return redirect()->route('altacera.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
     }
 }
