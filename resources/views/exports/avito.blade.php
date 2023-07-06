@@ -1006,6 +1006,7 @@
                         $code_avito = $product->artikul;
             //                --------------------------
                         $title = $product->category_rel->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul;
+                        $title = str_replace('Архив', '', $title);
             //                -----------------------------
             //              ------------------------------------------FOTO-------------------------------------
 
@@ -1175,6 +1176,8 @@
                             $description .= '<p>_____________________</p>';
                             $description .= '<p><em>' . $keywords . '</em></p>';
                         }
+
+                        $description = str_replace('Архив', '', $description);
 
         @endphp
         <tr>
