@@ -115,7 +115,7 @@
                     @foreach ($urls as $url)
                         <div class="grid-item">
                             <!-- <img src="{{$url}}" style="border-bottom:1px solid"/> -->
-                            <img src="{{$url}}" style="border-bottom:0.5px solid slategrey"/>
+                            <img src="{{$url}}" style="border:0.5px solid slategrey"/>
                         </div>
                     @endforeach
 
