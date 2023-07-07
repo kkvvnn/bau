@@ -257,9 +257,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('altacera.index')}}">Altacera Delacora New Trend</a>
                 </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('scan_qr')}}">123</a>
-              </li> -->
               <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Название2

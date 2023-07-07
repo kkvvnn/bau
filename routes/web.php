@@ -4,10 +4,8 @@ use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MyHelpController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TelegramSendController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,12 +51,6 @@ Route::get('/avito_export/{foto?}', [AvitoController::class, 'export']);
 
 // ----------------------TELEGRAM-------------------------------------------------
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');
-
-// --------------------------QRCODE--------------------------------------------
-Route::get('/qr_code/show', [QrCodeController::class, 'show'])->name('qr_code_show');
-Route::get('/scan_qr', [QrCodeController::class, 'scan'])->name('scan_qr');
-
-Route::get('/img/{path}', [ImageController::class, 'show'])->where('path', '.*')->name('img_sm');
 
 // -----------------AQUAFLOOR-----------------------
 Route::get('/aquafloor/import', [AquaFloorController::class, 'import'])->name('aqua_flor_import');
