@@ -18,8 +18,10 @@
 
                         </a>
                         <div class="clss">
+                            <a href="/aquafloor/product/{{$product->title}}" class="text-decoration-none text-reset">
                             <h2 class="card-title text-white">{{$product->title}}</h2>
                             <h3 class="text-info">{{$product->price}} р/м.кв</h3>
+                            </a>
                         </div>
                     </div>
 
