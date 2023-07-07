@@ -56,7 +56,9 @@
                                 <img src="{{$url1}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{$product->Producer_Brand}} {{$product->Name}}</h5>
+                                <a href="/product/{{$product->id}}" class="text-decoration-none text-reset">
+                                    <h5 class="card-title">{{$product->Producer_Brand}} {{$product->Name}}</h5>
+                                </a>
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">

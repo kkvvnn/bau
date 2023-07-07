@@ -22,7 +22,9 @@
                                     <img src="{{$product->Basic_pic}}" class="card-img-top" alt="...">
                                 </a>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$product->Brand_name}} {{$product->Item_name}}</h5>
+                                    <a href="/leedo/show/{{$product->id}}" class="text-decoration-none text-reset">
+                                        <h5 class="card-title">{{$product->Brand_name}} {{$product->Item_name}}</h5>
+                                    </a>
                                     <p class="card-text"></p>
                                 </div>
                                 <div class="card-footer">
@@ -31,10 +33,13 @@
                                     <hr>
                                     <!-- <small class="text-body-secondary">Закупка: ₽/</small> -->
                                     <!-- <hr> -->
-                                    <p class="text-body-secondary">Доступно Москва: {{$product->Sklad_Msk_LeeDo??0}} {{$product->unit}}</p>
-                                    <p class="text-body-secondary">Доступно Санкт-Петербург: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}</p>
+                                    <p class="text-body-secondary">Доступно
+                                        Москва: {{$product->Sklad_Msk_LeeDo??0}} {{$product->unit}}</p>
+                                    <p class="text-body-secondary">Доступно
+                                        Санкт-Петербург: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}</p>
                                     <hr>
-                                    <p class="text-body-secondary">Обновлено: {{$product->updated_at->toDateString()}}</p>
+                                    <p class="text-body-secondary">
+                                        Обновлено: {{$product->updated_at->toDateString()}}</p>
                                     <hr>
 
                                     @php

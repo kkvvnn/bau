@@ -54,7 +54,9 @@
                                      class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->artikul}}</h5>
+                                <a href="/altacera/{{$product->id}}" class="text-decoration-none text-reset">
+                                    <h5 class="card-title">{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->artikul}}</h5>
+                                </a>
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
@@ -74,8 +76,9 @@
                                 <hr>
 
                                 @if($unit == 'м2')
-                                <p class="text-body-secondary">Кв.м. в упаковке: {{$pack_ratio}}; шт в упаковке: {{$pack_ratio/$one_count_ratio}}</p>
-                                <hr>
+                                    <p class="text-body-secondary">Кв.м. в упаковке: {{$pack_ratio}}; шт в
+                                        упаковке: {{$pack_ratio/$one_count_ratio}}</p>
+                                    <hr>
                                 @endif
 
                                 <p class="text-body-secondary">Обновлено: {{$product->updated_at->toDateString()}}</p>
