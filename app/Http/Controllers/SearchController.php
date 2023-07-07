@@ -26,7 +26,7 @@ class SearchController extends Controller
             ]);
         }
 
-        $altacera = AltaceraTovar::where('tovar', 'LIKE', $name)->orWhere('artikul', 'LIKE', $name)->paginate(15);
+        $altacera = AltaceraTovarAvailable::where('tovar', 'LIKE', $name)->orWhere('artikul', 'LIKE', $name)->paginate(15);
         $altacera->appends(['name' => $name]);
         if (count($altacera)) {
             return view('altacera.index', [
