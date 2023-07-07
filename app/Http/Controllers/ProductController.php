@@ -224,6 +224,8 @@ class ProductController extends Controller
             $urls_c[] = Str::remove($string_for_delete, $kkkj);
         }
 
+        $urls_c = array_slice($urls_c, 0, 2);
+
         // dd($urls_c);
 
         $name_files = [];
@@ -245,6 +247,8 @@ class ProductController extends Controller
         foreach ($name_files as $key => $value) {
             $urls_2[] = Storage::url($key.'/'.$value);
         }
+
+        $urls_2 = array_slice($urls_2, 0, 5);
 
         // dd($urls_2);
         // $urls = [];
