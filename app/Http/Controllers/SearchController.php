@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovar;
 use App\Models\Altacera\AltaceraTovarAvailable;
+use App\Models\AquaFloor;
 use App\Models\LeedoProduct;
 use App\Models\Primavera;
 use App\Models\Product;
@@ -55,6 +56,14 @@ class SearchController extends Controller
         if (count($leedo)) {
             return view('leedo.index', [
                 'products' => $leedo,
+            ]);
+        }
+
+        $aquafloor = AquaFloor::where('title', 'LIKE', $name)->paginate(15);
+        $aquafloor->appends(['name' => $name]);
+        if (count($aquafloor)) {
+            return view('aquafloor.index', [
+                'products' => $aquafloor,
             ]);
         }
 
