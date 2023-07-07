@@ -51,4 +51,9 @@ class MyHelpController extends Controller
         $directories = Storage::directories('public/foto');
         dd($directories);
     }
+
+    public function not_found_rezults()
+    {
+        return view('myhelp.notfound');
+    }
 }

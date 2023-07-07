@@ -35,7 +35,7 @@ Route::get('/keramogranit_index', [ProductController::class, 'index_keramogranit
 Route::get('/plitka_index', [ProductController::class, 'index_plitka'])->name('index_plitka');
 Route::get('/mosaic_index', [ProductController::class, 'index_mosaic'])->name('index_mosaic');
 Route::get('/decor_index', [ProductController::class, 'index_decor'])->name('index_decor');
-Route::get('/search', [ProductController::class, 'search'])->name('search');
+//Route::get('/search', [ProductController::class, 'search']);
 Route::get('/size', [ProductController::class, 'index_size'])->name('index_size');
 Route::get('/cersanit', [ProductController::class, 'cersanit']);
 
@@ -73,6 +73,10 @@ Route::get('/list-all', [MyHelpController::class, 'list']);
 Route::get('/biggest', [MyHelpController::class, 'biggest']);
 Route::get('/derevo', [MyHelpController::class, 'derevo']);
 Route::get('/count-product-with-foto', [MyHelpController::class, 'count_product_with_foto']);
+Route::get('/not-found-rezults', [MyHelpController::class, 'not_found_rezults']);
+
+//---------------------SEARCH_CONTROLLER---------------
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
 //--------------------PRIMAVERA------------------------
 Route::get('/primavera/import', [\App\Http\Controllers\PrimaveraController::class, 'import']);

@@ -211,23 +211,24 @@
               <input class="form-control me-2" type="search" name="name" placeholder="поиск" aria-label="Search">
               <button class="btn btn-success" type="submit">Найти</button>
             </form>
+              <hr>
+
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('index_keramogranit')}}">Керамогранит</a>
+                <a class="nav-link active" aria-current="page" href="{{route('product_index')}}">Laparet / Cersanit</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('index_plitka')}}">Керамическая плитка</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('index_mosaic')}}">Мозаика</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('index_decor')}}">Декор</a>
-              </li>
-              <hr>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('index_collection')}}">По названию коллекции</a>
-              </li>
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link active" aria-current="page" href="{{route('index_plitka')}}">Керамическая плитка</a>--}}
+{{--              </li>--}}
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link active" aria-current="page" href="{{route('index_mosaic')}}">Мозаика</a>--}}
+{{--              </li>--}}
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link active" aria-current="page" href="{{route('index_decor')}}">Декор</a>--}}
+{{--              </li>--}}
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link active" aria-current="page" href="{{route('index_collection')}}">По названию коллекции</a>--}}
+{{--              </li>--}}
 
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_ker')}}">Керамогранит деш</a>--}}
@@ -238,9 +239,9 @@
 {{--              <li class="nav-item">--}}
                 <a class="nav-link active" aria-current="page" href="{{route('aquafloor_index_collections')}}">AquaFloor</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('index_size_form')}}">По размеру</a>
-              </li>
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link active" aria-current="page" href="{{route('index_size_form')}}">По размеру</a>--}}
+{{--              </li>--}}
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('primavera.index')}}">PrimaVera</a>
                 </li>
