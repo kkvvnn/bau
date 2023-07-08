@@ -63,7 +63,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
         $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%']])->get();
 //      ==============================================
-        $altacera = AltaceraTovarAvailable::all();
+        $altacera = AltaceraTovarAvailable::where('artikul', '!=', 'PWU09DLM3')->get();
 //      ==============================================
 
         if ($this->foto == '') {
