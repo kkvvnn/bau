@@ -248,7 +248,7 @@ class ProductController extends Controller
             $urls_2[] = Storage::url($key.'/'.$value);
         }
 
-        $urls_2 = array_slice($urls_2, 0, 5);
+        $urls_2 = array_slice($urls_2, 0, 4);
 
         // dd($urls_2);
         // $urls = [];
