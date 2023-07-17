@@ -81,11 +81,13 @@ Route::view('/primavera-search-form','primavera.search')->name('primavera.search
 //-------------------PHOTO------------------------
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
 Route::any('photo-primavera', [\App\Http\Controllers\PhotoController::class, 'store_primavera'])->name('save-foto-primavera');
+Route::any('photo-pixmosaic', [\App\Http\Controllers\PhotoController::class, 'store_pixmosaic'])->name('save-foto-pixmosaic');
 Route::any('photo-absolut_gres', [\App\Http\Controllers\PhotoController::class, 'store_absolut_gres'])->name('save-foto-absolut_gres');
 Route::any('photo-leedo', [\App\Http\Controllers\PhotoController::class, 'store_leedo'])->name('save-foto-leedo');
 Route::any('photo-altacera', [\App\Http\Controllers\PhotoController::class, 'store_altacera'])->name('save-foto-altacera');
 Route::any('photo-delete', [\App\Http\Controllers\PhotoController::class, 'delete'])->name('photo.delete');
 Route::any('photo-delete-primavera', [\App\Http\Controllers\PhotoController::class, 'delete_primavera'])->name('photo-primavera.delete');
+Route::any('photo-delete-pixmosaic', [\App\Http\Controllers\PhotoController::class, 'delete_pixmosaic'])->name('photo-pixmosaic.delete');
 Route::any('photo-delete-absolut_gres', [\App\Http\Controllers\PhotoController::class, 'delete_absolut_gres'])->name('photo-absolut_gres.delete');
 Route::any('photo-delete-leedo', [\App\Http\Controllers\PhotoController::class, 'delete_leedo'])->name('photo-leedo.delete');
 Route::any('photo-delete-altacera', [\App\Http\Controllers\PhotoController::class, 'delete_altacera'])->name('photo-altacera.delete');
@@ -123,3 +125,9 @@ Route::get('/altacera-index', [\App\Http\Controllers\AltaceraController::class, 
 Route::get('/altacera/{id}', [\App\Http\Controllers\AltaceraController::class, 'show'])->name('altacera.show');
 Route::get('/altacera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
 //-------------------ALTACERA-END-------------------
+
+//---------------------PIXMOSAIC---------------------
+Route::get('/pixmosaic/import', [\App\Http\Controllers\PixmosaicController::class, 'import']);
+Route::get('/pixmosaic', [\App\Http\Controllers\PixmosaicController::class, 'index'])->name('pixmosaic.index');
+Route::get('/pixmosaic/{id}', [\App\Http\Controllers\PixmosaicController::class, 'show'])->name('pixmosaic.show');
+//-------------------PIXMOSAIC-END-------------------

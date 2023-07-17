@@ -25,6 +25,15 @@ class PhotoController extends Controller
         return redirect()->route('primavera.show', ['id' => $request->id])->with('status', 'Фото загружено!');
     }
 
+    public function store_pixmosaic(Request $request)
+    {
+        $path = $request->vendor;
+//
+        $path = Storage::disk('foto_pixmosaic')->putFile($path, $request->file('foto'));
+//        return redirect('/');
+        return redirect()->route('pixmosaic.show', ['id' => $request->id])->with('status', 'Фото загружено!');
+    }
+
     public function store_absolut_gres(Request $request)
     {
         $path = $request->vendor;
@@ -73,6 +82,18 @@ class PhotoController extends Controller
         Storage::disk('foto_primavera')->delete($path);
 
         return redirect()->route('primavera.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
+    }
+
+    public function delete_pixmosaic(Request $request)
+    {
+//        dd($request->foto_delete);
+        $path = $request->foto_delete;
+        $path = str_replace('/storage/foto-pixmosaic', '', $path);
+//        dd($path);
+
+        Storage::disk('foto_pixmosaic')->delete($path);
+
+        return redirect()->route('pixmosaic.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
     }
 
     public function delete_absolut_gres(Request $request)

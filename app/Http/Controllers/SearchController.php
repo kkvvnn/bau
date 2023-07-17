@@ -7,6 +7,7 @@ use App\Models\Altacera\AltaceraTovar;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\LeedoProduct;
+use App\Models\Pixmosaic;
 use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -64,6 +65,14 @@ class SearchController extends Controller
         if (count($aquafloor)) {
             return view('aquafloor.index', [
                 'products' => $aquafloor,
+            ]);
+        }
+
+        $pixmosaic = Pixmosaic::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $pixmosaic->appends(['name' => $name]);
+        if (count($pixmosaic)) {
+            return view('pixmosaic.index', [
+                'products' => $pixmosaic,
             ]);
         }
 

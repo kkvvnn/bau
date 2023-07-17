@@ -106,6 +106,14 @@ return [
             'throw' => false,
         ],
 
+        'foto_pixmosaic' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/foto-pixmosaic'),
+            'url' => '/storage/foto-pixmosaic',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'foto_absolut_gres' => [
             'driver' => 'local',
             'root' => storage_path('app/public/foto-absolut-gres'),
