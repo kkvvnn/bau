@@ -14,6 +14,8 @@ class PixmosaicController extends Controller
 {
     public function import()
     {
+        Pixmosaic::truncate();
+
         $name = 'import/pixmosaic/pix_all.xlsx';
 
         Excel::import(new PixmosaicsImport(), $name);
