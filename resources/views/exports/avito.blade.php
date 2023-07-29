@@ -996,11 +996,14 @@
                                         }
                                     }
             //        --------------------------------------------------------------
-
-                        if ($product->sale == 0) {
-                            $price = round($product->price->price * 0.93, -1);
+                        if($product->price !== null) {
+                            if ($product->sale == 0) {
+                                $price = round($product->price->price * 0.93, -1);
+                            } else {
+                                $price = $product->price->price;
+                            }
                         } else {
-                            $price = $product->price->price;
+                            $price = '';
                         }
             //                --------------------------
                         $code_avito = $product->artikul;
