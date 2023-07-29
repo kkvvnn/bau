@@ -60,7 +60,11 @@
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="text-body-secondary">Цена: {{$product->price->price}} ₽/{{$unit}}</p>
+                                @if($product->price !== null)
+                                    <p class="text-body-secondary">Цена: {{$product->price->price}} ₽/{{$unit}}</p>
+                                @else
+                                    <p class="text-body-secondary">Цена: Не указана</p>
+                                @endif
                                 <hr>
                                 @if(str_contains($product->balance->free_balance, '.'))
                                     <p class="text-body-secondary">
