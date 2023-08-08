@@ -7,6 +7,7 @@ use App\Models\Altacera\AltaceraTovar;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\LeedoProduct;
+use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Pixmosaic;
 use App\Models\Primavera;
 use App\Models\Product;
@@ -41,6 +42,14 @@ class SearchController extends Controller
         if (count($primavera)) {
             return view('primavera.index', [
                 'products' => $primavera,
+            ]);
+        }
+
+        $ntceramic = NtCeramicNoImgs::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $ntceramic->appends(['name' => $name]);
+        if (count($ntceramic)) {
+            return view('ntceramic.index', [
+                'products' => $ntceramic,
             ]);
         }
 
