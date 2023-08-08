@@ -25,6 +25,15 @@ class PhotoController extends Controller
         return redirect()->route('primavera.show', ['id' => $request->id])->with('status', 'Фото загружено!');
     }
 
+    public function store_ntceramic(Request $request)
+    {
+        $path = $request->vendor;
+//
+        $path = Storage::disk('foto_ntceramic')->putFile($path, $request->file('foto'));
+//        return redirect('/');
+        return redirect()->route('ntceramic.show', ['id' => $request->id])->with('status', 'Фото загружено!');
+    }
+
     public function store_pixmosaic(Request $request)
     {
         $path = $request->vendor;
@@ -82,6 +91,18 @@ class PhotoController extends Controller
         Storage::disk('foto_primavera')->delete($path);
 
         return redirect()->route('primavera.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
+    }
+
+    public function delete_ntceramic(Request $request)
+    {
+//        dd($request->foto_delete);
+        $path = $request->foto_delete;
+        $path = str_replace('/storage/foto-ntceramic', '', $path);
+//        dd($path);
+
+        Storage::disk('foto_ntceramic')->delete($path);
+
+        return redirect()->route('ntceramic.show', ['id' => $request->id])->with('status_delete', 'Фото удалено!');
     }
 
     public function delete_pixmosaic(Request $request)

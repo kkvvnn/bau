@@ -106,6 +106,14 @@ return [
             'throw' => false,
         ],
 
+        'foto_ntceramic' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/foto-ntceramic'),
+            'url' => '/storage/foto-ntceramic',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'foto_pixmosaic' => [
             'driver' => 'local',
             'root' => storage_path('app/public/foto-pixmosaic'),
