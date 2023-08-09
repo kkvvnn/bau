@@ -159,6 +159,8 @@ class NtCeramicController extends Controller
         if ($product->referer->img42 != null) {
             $imgs_2[] = $product->referer->img42;
         }
+
+        $imgs_2 = array_reverse($imgs_2);
 //        $imgs_2 = $product->img2;
 //        $imgs_2 = explode("\n", $imgs_2);
 
