@@ -6,6 +6,7 @@ namespace App\Exports;
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\LeedoProduct;
+use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
@@ -65,6 +66,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ==============================================
         $altacera = AltaceraTovarAvailable::where('artikul', '!=', 'PWU09DLM3')->get();
 //      ==============================================
+        $ntceramic = NtCeramicNoImgs::all();
+//      ==============================================
 
         if ($this->foto == '') {
             return view('exports.avito', [
@@ -74,6 +77,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'absolut_gres' => $absolut_gres,
                 'leedo' => $leedo,
                 'altacera' => $altacera,
+                'ntceramic' => $ntceramic,
             ]);
         } else {
             return view('exports.avito_foto', [
@@ -83,6 +87,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'absolut_gres' => $absolut_gres,
                 'leedo' => $leedo,
                 'altacera' => $altacera,
+                'ntceramic' => $ntceramic,
             ]);
         }
 
