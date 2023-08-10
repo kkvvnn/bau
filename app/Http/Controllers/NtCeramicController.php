@@ -35,6 +35,11 @@ class NtCeramicController extends Controller
     {
         $product = NtCeramicNoImgs::find($id);
 //        dd($products);
+
+        if (!$product) {
+            return abort(404);
+        }
+
         $imgs_2 = [];
         if ($product->referer->img2 != null) {
             $imgs_2[] = $product->referer->img2;
