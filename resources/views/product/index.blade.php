@@ -62,7 +62,7 @@
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="text-body-secondary">Ценаa: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</p>
+                                <p class="text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</p>
                                 <hr>
 
                                 <p class="text-body-secondary">Доступно: {{$product->balanceCount}}</p>
