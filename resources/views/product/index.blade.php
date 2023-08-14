@@ -64,12 +64,10 @@
                             <div class="card-footer">
                                 <p class="text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</p>
                                 <hr>
-                                <!-- <small class="text-body-secondary">Закупка: {{$product->Price}} ₽/{{$product->MainUnit}}</small> -->
-                                <!-- <hr> -->
+
                                 <p class="text-body-secondary">Доступно: {{$product->balanceCount}}</p>
                                 <hr>
-                                <p class="text-body-secondary">{{$product->Element_Code}}</p>
-                                <hr>
+
                                 <p class="text-body-secondary">Обновлено: {{$product->updated_at->toDateString()}}</p>
                                 <hr>
                                 @php
