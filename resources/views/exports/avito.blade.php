@@ -63,7 +63,7 @@
             $description = '';
 
             if($add_description_first != '') {
-            $description .= '<p>'.$add_description_first.'</p>';
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
             if ($product->Producer_Brand == 'Laparet') {
@@ -159,7 +159,7 @@
             $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
             if($add_description != '') {
-            $description .= '<p>'.$add_description.'</p>';
+            $description .= '<p>'.nl2br($add_description).'</p>';
             }
 
 
@@ -481,7 +481,7 @@
             $description = '';
 
             if($add_description_first != '') {
-            $description .= '<p>'.$add_description_first.'</p>';
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
             $description .= '<p>Керамическая плитка и керамогранит Primavera , Примавера. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
@@ -533,7 +533,7 @@
             $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
             if($add_description != '') {
-            $description .= '<p>'.$add_description.'</p>';
+            $description .= '<p>'.nl2br($add_description).'</p>';
             }
 
 
@@ -690,7 +690,7 @@
             $description = '';
 
             if($add_description_first != '') {
-            $description .= '<p>'.$add_description_first.'</p>';
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
             $description .= '<p>Керамическая плитка и керамогранит Absolut Gres , Абсолют Грес. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
@@ -734,7 +734,7 @@
             $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
             if($add_description != '') {
-            $description .= '<p>'.$add_description.'</p>';
+            $description .= '<p>'.nl2br($add_description).'</p>';
             }
 
 
@@ -913,7 +913,7 @@
             $description = '';
 
             if($add_description_first != '') {
-            $description .= '<p>'.$add_description_first.'</p>';
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
             $description .= '<p>Мозаика и керамогранит Caramelle & LeeDo. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
@@ -972,7 +972,7 @@
             $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
             if($add_description != '') {
-            $description .= '<p>'.$add_description.'</p>';
+            $description .= '<p>'.nl2br($add_description).'</p>';
             }
 
         @endphp
@@ -1085,7 +1085,7 @@
             $description = '';
 
             if($add_description_first != '') {
-            $description .= '<p>'.$add_description_first.'</p>';
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
                         $description .= '<p>Керамическая плитка и керамогранит '.$product->category_rel->parent.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
                         $description .= '<p><strong>' . $product->tovar . '. '
@@ -1144,7 +1144,7 @@
                         $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
                         if($add_description != '') {
-                        $description .= '<p>'.$add_description.'</p>';
+                        $description .= '<p>'.nl2br($add_description).'</p>';
                         }
 
 
@@ -1349,7 +1349,7 @@
             $description = '';
 
             if($add_description_first != '') {
-            $description .= '<p>'.$add_description_first.'</p>';
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
             $description .= '<p>Керамогранит NT Ceramic. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
@@ -1391,7 +1391,7 @@
             $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
             if($add_description != '') {
-            $description .= '<p>'.$add_description.'</p>';
+            $description .= '<p>'.nl2br($add_description).'</p>';
             }
 
 
