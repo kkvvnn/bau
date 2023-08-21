@@ -28,6 +28,14 @@
                         <option>В сообщениях</option>
                     </select>
                 </div>
+                <div class="mb-3">
+                    <label for="add_description_first" class="form-label">Добавить текст в начало всех объявлений</label>
+                    <textarea class="form-control" id="add_description_first" name="add_description_first" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="add_description" class="form-label">Добавить текст в конец всех объявлений</label>
+                    <textarea class="form-control" id="add_description" name="add_description" rows="3"></textarea>
+                </div>
                 <button type="submit" class="btn btn-primary">Создать файл автозагрузки</button>
             </form>
 
