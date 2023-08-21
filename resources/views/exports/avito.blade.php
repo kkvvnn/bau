@@ -3,7 +3,7 @@
     <tr>
         <th>AvitoId</th>
         <th>Id</th>
-        <th>ContactMethod</th>
+        <th>Contact_method</th>
         <th>EMail</th>
         <th>AvitoStatus</th>
         <th>ManagerName</th>
@@ -400,7 +400,7 @@
         <tr>
             <td></td>
             <td>{{ $product->Element_Code }}</td>
-            <td>В сообщениях</td>
+            <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>Владимир</td>
@@ -413,9 +413,9 @@
             <td>Ремонт и строительство</td>
             <td>Package</td>
             <td>{{$FinishingType}}</td>
-            <td>79039890822</td> <!-- -->
+            <td>{{ $phone }}</td> <!-- -->
             <td>{{$description}}</td> <!-- -->
-            <td>Москва, парк Победы</td>
+            <td>{{ $address }}</td>
             <td>Товар от производителя</td>
             <!-- <td>{{$date_next_month}}</td> -->
             <td>{{$FinishingSubType}}</td>
@@ -605,7 +605,7 @@
         <tr>
             <td></td>
             <td>{{ $product->vendor_code }}</td>
-            <td>В сообщениях</td>
+            <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>Владимир</td>
@@ -618,9 +618,9 @@
             <td>Ремонт и строительство</td>
             <td>Package</td>
             <td>{{$FinishingType}}</td>
-            <td>79039890822</td> <!-- -->
+            <td>{{ $phone }}</td> <!-- -->
             <td>{{$description}}</td> <!-- -->
-            <td>Москва, парк Победы</td>
+            <td>{{ $address }}</td>
             <td>Товар от производителя</td>
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
@@ -773,7 +773,7 @@
         <tr>
             <td></td>
             <td>{{ $code_avito }}</td>
-            <td>В сообщениях</td>
+            <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>Владимир</td>
@@ -786,9 +786,9 @@
             <td>Ремонт и строительство</td>
             <td>Package</td>
             <td>{{$FinishingType}}</td>
-            <td>79039890822</td> <!-- -->
+            <td>{{ $phone }}</td> <!-- -->
             <td>{{$description}}</td> <!-- -->
-            <td>Москва, парк Победы</td>
+            <td>{{ $address }}</td>
             <td>Товар от производителя</td>
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
@@ -938,7 +938,7 @@
         <tr>
             <td></td>
             <td>{{ $product->System_ID }}</td>
-            <td>В сообщениях</td>
+            <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>Владимир</td>
@@ -951,9 +951,9 @@
             <td>Ремонт и строительство</td>
             <td>Package</td>
             <td>{{$FinishingType}}</td>
-            <td>79039890822</td> <!-- -->
+            <td>{{ $phone }}</td> <!-- -->
             <td>{{$description}}</td> <!-- -->
-            <td>Москва, парк Победы</td>
+            <td>{{ $address }}</td>
             <td>Товар от производителя</td>
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
@@ -1186,7 +1186,7 @@
         <tr>
             <td></td>
             <td>{{ $code_avito }}</td>
-            <td>В сообщениях</td>
+            <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>Владимир</td>
@@ -1199,9 +1199,9 @@
             <td>Ремонт и строительство</td>
             <td>Package</td>
             <td>{{$FinishingType}}</td>
-            <td>79039890822</td> <!-- -->
+            <td>{{ $phone }}</td> <!-- -->
             <td>{{$description}}</td> <!-- -->
-            <td>Москва, парк Победы</td>
+            <td>{{ $address }}</td>
             <td>Товар от производителя</td>
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
@@ -1341,7 +1341,7 @@
         <tr>
             <td></td>
             <td>{{ $product->vendor_code }}</td>
-            <td>В сообщениях</td>
+            <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>Владимир</td>
@@ -1354,9 +1354,9 @@
             <td>Ремонт и строительство</td>
             <td>Package</td>
             <td>{{$FinishingType}}</td>
-            <td>79039890822</td> <!-- -->
+            <td>{{ $phone }}</td> <!-- -->
             <td>{{$description}}</td> <!-- -->
-            <td>Москва, парк Победы</td>
+            <td>{{ $address }}</td>
             <td>Товар от производителя</td>
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>

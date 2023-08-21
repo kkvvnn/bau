@@ -19,10 +19,16 @@ use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
 {
     public $foto = '';
+    public $phone = '';
+    public $contact_method = '';
+    public $address = '';
 
-    public function __construct($foto)
+    public function __construct($foto, $phone, $contact_method, $address)
     {
         $this->foto = $foto;
+        $this->phone = $phone;
+        $this->contact_method = $contact_method;
+        $this->address = $address;
     }
 
     public function bindValue(Cell $cell, $value)
@@ -78,6 +84,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'leedo' => $leedo,
                 'altacera' => $altacera,
                 'ntceramic' => $ntceramic,
+                'phone' => $this->phone,
+                'contact_method' => $this->contact_method,
+                'address' => $this->address,
             ]);
         } else {
             return view('exports.avito_foto', [
