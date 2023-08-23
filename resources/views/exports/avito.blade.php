@@ -3,7 +3,7 @@
     <tr>
         <th>AvitoId</th>
         <th>Id</th>
-        <th>Contact_method</th>
+        <th>ContactMethod</th>
         <th>EMail</th>
         <th>AvitoStatus</th>
         <th>ManagerName</th>
