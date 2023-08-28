@@ -20,15 +20,17 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 {
     public $foto = '';
     public $phone = '';
+    public $name = '';
     public $contact_method = '';
     public $address = '';
     public $add_description = '';
     public $add_description_first = '';
 
-    public function __construct($foto, $phone, $contact_method, $address, $add_description, $add_description_first)
+    public function __construct($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first)
     {
         $this->foto = $foto;
         $this->phone = $phone;
+        $this->name = $name;
         $this->contact_method = $contact_method;
         $this->address = $address;
         $this->add_description = $add_description;
@@ -89,6 +91,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'altacera' => $altacera,
                 'ntceramic' => $ntceramic,
                 'phone' => $this->phone,
+                'name' => $this->name,
                 'contact_method' => $this->contact_method,
                 'address' => $this->address,
                 'add_description' => $this->add_description,

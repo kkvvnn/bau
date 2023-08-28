@@ -17,6 +17,10 @@
                     <div id="phoneHelp" class="form-text">Телефон будет указан в объявлениях Avito.</div>
                 </div>
                 <div class="mb-3">
+                    <label for="name" class="form-label">Контактное лицо</label>
+                    <input type="text" class="form-control" id="name" name="name"  value="Владимир">
+                </div>
+                <div class="mb-3">
                     <label for="address" class="form-label">Адрес размещения</label>
                     <input type="text" class="form-control" id="address" name="address" value="Москва, парк Победы">
                 </div>

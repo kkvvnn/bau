@@ -413,7 +413,7 @@
             <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
-            <td>Владимир</td>
+            <td>{{ $name }}</td>
             <td>{{$price}}</td>
             <td>Напольные решения</td>
             <td>{{$title}}</td>
@@ -629,7 +629,7 @@
             <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
-            <td>Владимир</td>
+            <td>{{ $name }}</td>
             <td>{{$price}}</td>
             <td>Напольные решения</td>
             <td>{{$title}}</td>
@@ -807,7 +807,7 @@
             <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
-            <td>Владимир</td>
+            <td>{{ $name }}</td>
             <td>{{$price}}</td>
             <td>Напольные решения</td>
             <td>{{$title}}</td>
@@ -982,7 +982,7 @@
             <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
-            <td>Владимир</td>
+            <td>{{ $name }}</td>
             <td>{{$price}}</td>
             <td>Напольные решения</td>
             <td>{{$title}}</td>
@@ -1239,7 +1239,7 @@
             <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
-            <td>Владимир</td>
+            <td>{{ $name }}</td>
             <td>{{$price}}</td>
             <td>Напольные решения</td>
             <td>{{$title}}</td>
@@ -1404,7 +1404,7 @@
             <td>{{ $contact_method }}</td>
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
-            <td>Владимир</td>
+            <td>{{ $name }}</td>
             <td>{{$price}}</td>
             <td>Напольные решения</td>
             <td>{{$title}}</td>

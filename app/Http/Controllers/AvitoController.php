@@ -15,13 +15,14 @@ class AvitoController extends Controller
     {
         set_time_limit(90);
         $phone = $request->phone??"79039890822";
+        $name = $request->name??"Владимир";
         $contact_method = $request->contact_method??"В сообщениях";
         $address = $request->address??"Москва, парк Победы";
         $add_description = $request->add_description??"";
         $add_description_first = $request->add_description_first??"";
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
         $filename = 'avito/'.$foto.date('Y-m-d_His').'.xlsx';
-        Excel::store(new AvitoExport($foto, $phone, $contact_method, $address, $add_description, $add_description_first), $filename, 'public');
+        Excel::store(new AvitoExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first), $filename, 'public');
 
         $url = config('app.url').Storage::url($filename);
         return view('exports.url', compact('url'));
