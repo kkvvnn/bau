@@ -33,14 +33,14 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Номер заказа</th>
                                     <th>Наименование</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($orders as $order)
                                     <tr>
-                                        <td>{{ $order->id }}</td>
+                                        <td><a href="{{ route('order.show', $order->id) }}">{{ $order->order_code }}</a></td>
                                         <td><a href="{{ route('order.show', $order->id) }}">{{ $order->title }}</a> </td>
                                     </tr>
                                 @endforeach

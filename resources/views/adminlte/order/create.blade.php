@@ -28,16 +28,10 @@
                         @csrf
 
                         <div class="form-group">
+                            <label for="order_code">Номер заказа</label>
+                            <input type="text" name="order_code" id="order_code" class="form-control" placeholder="Номер заказа">
                             <label for="title">Наименование</label>
                             <input type="text" name="title" id="title" class="form-control" placeholder="Наименование">
-                            <label for="vendor_code">Артикул</label>
-                            <input type="text" name="vendor_code" id="vendor_code" class="form-control" placeholder="Артикул">
-                            <label for="count">Количество</label>
-                            <input type="text" name="count" id="count" class="form-control" placeholder="Количество">
-                            <label for="unit">Ед.измерения</label>
-                            <input type="text" name="unit" id="unit" class="form-control" placeholder="Ед.измерения">
-                            <label for="price">Цена</label>
-                            <input type="text" name="price" id="price" class="form-control" placeholder="Цена">
                             <label for="customer">Заказчик</label>
                             <input type="text" name="customer" id="customer" class="form-control" placeholder="Заказчик">
                             <label for="customer_phone">Телефон</label>
@@ -46,8 +40,6 @@
                             <input type="text" name="customer_address" id="customer_address" class="form-control" placeholder="Адрес">
                             <label for="shipping">Доставка</label>
                             <input type="text" name="shipping" id="shipping" class="form-control" placeholder="Доставка">
-                            <label for="order_code">Номер заказа</label>
-                            <input type="text" name="order_code" id="order_code" class="form-control" placeholder="Номер заказа">
                             <label for="status">Статус</label>
                             <input type="text" name="status" id="status" class="form-control" placeholder="Статус">
                             <label for="note">Примечание</label>

@@ -23,17 +23,13 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'vendor_code' => 'string',
-            'count' => 'required|string',
-            'unit' => 'required|string',
-            'price' => 'required|string',
-            'customer' => 'required|string',
-            'customer_phone' => 'string',
-            'customer_address' => 'string',
-            'shipping' => 'string',
-            'order_code' => 'string',
-            'status' => 'string',
-            'note' => 'string',
+//            'customer' => 'string',
+//            'customer_phone' => 'string',
+//            'customer_address' => 'string',
+//            'shipping' => 'string',
+            'order_code' => 'required|string',
+//            'status' => 'string',
+//            'note' => 'string',
         ];
     }
 }

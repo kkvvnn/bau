@@ -40,8 +40,8 @@
                             <table class="table table-hover text-nowrap">
                                 <tbody>
                                     <tr>
-                                        <td>ID</td>
-                                        <td>{{ $order->id }}</td>
+                                        <td>Номер заказа</td>
+                                        <td>{{ $order->order_code }}</td>
                                     </tr>
                                     <tr>
                                         <td>Наименование</td>
