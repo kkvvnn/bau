@@ -310,17 +310,17 @@ class ProductController extends Controller
         Product::truncate();    // clear all data in table
 
         set_time_limit(60);
-//        $url = 'http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv';
-//        $contents = file_get_contents($url);
-//        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
-//
-//        $date = date('Y-m-d_His');
-//        $name = 'import/products/product_'.$date.'.csv';
-        $name = 'import/products/product_2023-08-30_100140.csv';
+        $url = 'http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv';
+        $contents = file_get_contents($url);
+        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
+
+        $date = date('Y-m-d_His');
+        $name = 'import/products/product_'.$date.'.csv';
+//        $name = 'import/products/product_2023-08-30_100140.csv';
 
         // dd($name);
 
-//        Storage::put($name, $contents);
+        Storage::put($name, $contents);
 
         Excel::import(new ProductsImport, $name);
         $deleted = Product::where('Picture', null)->delete();
