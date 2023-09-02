@@ -70,6 +70,8 @@
                 $description .= '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             } elseif ($product->Producer_Brand == 'Cersanit') {
                 $description .= '<p>Керамическая плитка и керамогранит Cersanit , Церсанит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+            } elseif ($product->Producer_Brand == 'Vitra') {
+                $description .= '<p>Керамическая плитка и керамогранит Vitra , Витра. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             } else {
                 $description .= '<p>Керамическая плитка и керамогранит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             }
@@ -395,10 +397,20 @@
                 } else {
                     $price = $product->RMPrice;
                 }
+            } elseif ($product->Producer_Brand == 'Cersanit') {
+                if ($product->RMPriceOld == 0) {
+                    $price = round($product->RMPrice * 0.93, -1);
+                } else {
+                    $price = $product->RMPrice;
+                }
+            } elseif ($product->Producer_Brand == 'Vitra') {
+                if ($product->RMPriceOld == 0) {
+                    $price = round($product->RMPrice * 0.93, -1);
+                } else {
+                    $price = $product->RMPrice;
+                }
             }
-            if ($product->Producer_Brand == 'Cersanit') {
-                $price = round($product->RMPrice * 1.05, -1);
-            }
+
 
             if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный' || $product->Name == 'Dalim Mint Керамогранит 60x60 Полированный') {
                 $price = '';

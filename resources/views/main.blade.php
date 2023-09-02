@@ -215,7 +215,7 @@
 
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('product_index')}}">Laparet / Cersanit</a>
+                <a class="nav-link active" aria-current="page" href="{{route('product_index')}}">Laparet / Cersanit / Vitra</a>
               </li>
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_plitka')}}">Керамическая плитка</a>--}}
