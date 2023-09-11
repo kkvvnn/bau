@@ -140,3 +140,9 @@ Route::get('/ntceramic/import', [\App\Http\Controllers\NtCeramicController::clas
 Route::get('/ntceramic', [\App\Http\Controllers\NtCeramicController::class, 'index'])->name('ntceramic.index');
 Route::get('/ntceramic/{id}', [\App\Http\Controllers\NtCeramicController::class, 'show'])->name('ntceramic.show');
 //------------------NTCERAMIC-END---------------------
+
+//--------------------KEVIS------------------------
+Route::get('/kevis/import', [\App\Http\Controllers\KevisController::class, 'import']);
+Route::get('/kevis', [\App\Http\Controllers\KevisController::class, 'index'])->name('kevis.index');
+Route::get('/kevis/{id}', [\App\Http\Controllers\KevisController::class, 'show'])->name('kevis.show');
+//-------------------KEVIS-END----------------------
