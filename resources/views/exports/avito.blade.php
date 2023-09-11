@@ -391,26 +391,27 @@
         @endphp
 
         @php
-            if ($product->Producer_Brand == 'Laparet') {
-                if ($product->RMPriceOld == 0) {
-                    $price = round($product->RMPrice * 0.91, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            } elseif ($product->Producer_Brand == 'Cersanit') {
-                if ($product->RMPriceOld == 0) {
-                    $price = round($product->RMPrice * 0.93, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            } elseif ($product->Producer_Brand == 'Vitra') {
-                if ($product->RMPriceOld == 0) {
-                    $price = round($product->RMPrice * 0.93, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            }
+//            if ($product->Producer_Brand == 'Laparet') {
+//                if ($product->RMPriceOld == 0) {
+//                    $price = round($product->RMPrice * 0.91, -1);
+//                } else {
+//                    $price = $product->RMPrice;
+//                }
+//            } elseif ($product->Producer_Brand == 'Cersanit') {
+//                if ($product->RMPriceOld == 0) {
+//                    $price = round($product->RMPrice * 0.93, -1);
+//                } else {
+//                    $price = $product->RMPrice;
+//                }
+//            } elseif ($product->Producer_Brand == 'Vitra') {
+//                if ($product->RMPriceOld == 0) {
+//                    $price = round($product->RMPrice * 0.93, -1);
+//                } else {
+//                    $price = $product->RMPrice;
+//                }
+//            }
 
+            $price = $product->RMPrice;
 
             if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный' || $product->Name == 'Dalim Mint Керамогранит 60x60 Полированный') {
                 $price = '';
