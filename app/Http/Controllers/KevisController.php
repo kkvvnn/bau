@@ -33,6 +33,9 @@ class KevisController extends Controller
 //        dd($products);
         $imgs = explode(' | ', $product->images);
 
+        $img1 = array_slice($imgs, 0, 3);
+        $img2 = array_slice($imgs, 3);
+
 //        $vendor_code = $product->vendor_code;
 ////        $path_dir = 'storage/Foto/' . $vendor_code;
 ////        $directories = Storage::directories('public/Foto');
@@ -44,6 +47,6 @@ class KevisController extends Controller
 //            $fotos[] = Storage::disk('foto_primavera')->url($f);
 //        }
 
-        return view('kevis.show', compact('product', 'imgs'));
+        return view('kevis.show', compact('product', 'imgs', 'img1', 'img2'));
     }
 }

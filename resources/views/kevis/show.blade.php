@@ -134,7 +134,15 @@
 {{--                <hr>--}}
                 <div class="grid">
                     <div class="grid-sizer"></div>
-                    @foreach($imgs as $img)
+                    @foreach($img1 as $img)
+                        <div class="grid-item">
+                            <img src="{{$img}}" style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="grid">
+                    <div class="grid-sizer"></div>
+                    @foreach($img2 as $img)
                         <div class="grid-item">
                             <img src="{{$img}}" style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>
                         </div>
