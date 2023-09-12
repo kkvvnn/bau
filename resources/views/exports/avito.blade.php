@@ -1471,7 +1471,7 @@
 
             $description .= '<p>Керамогранит Kevis. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             $description .= '<p><strong>Керамогранит ' . $product->brand . ' '
-                    . $product->code . ' ('
+                    . $product->title . ' ('
                     . $product->country . ')</strong></p>';
             $description .= '<p>Коллекция: '.$product->collection.'</p>';
             $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
