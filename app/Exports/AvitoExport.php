@@ -5,6 +5,7 @@ namespace App\Exports;
 // use Maatwebsite\Excel\Concerns\FromCollection;
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
+use App\Models\Kevis;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
@@ -80,6 +81,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ==============================================
         $ntceramic = NtCeramicNoImgs::all();
 //      ==============================================
+        $kevis = Kevis::all();
+//      ==============================================
 
         if ($this->foto == '') {
             return view('exports.avito', [
@@ -90,6 +93,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'leedo' => $leedo,
                 'altacera' => $altacera,
                 'ntceramic' => $ntceramic,
+                'kevis' => $kevis,
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,
@@ -106,6 +110,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'leedo' => $leedo,
                 'altacera' => $altacera,
                 'ntceramic' => $ntceramic,
+                'kevis' => $kevis,
             ]);
         }
 
