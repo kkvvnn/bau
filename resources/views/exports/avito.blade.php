@@ -1473,6 +1473,11 @@
             $description .= '<p><strong>Керамогранит ' . $product->brand . ' '
                     . $product->title . ' ('
                     . $product->country . ')</strong></p>';
+
+            $description .= '<p>----------</p>';
+            $description .= '<p>&#9989; <strong>В наличии!</strong></p>';
+            $description .= '<p>----------</p>';
+
             $description .= '<p>Коллекция: '.$product->collection.'</p>';
             $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
 
