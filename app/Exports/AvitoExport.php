@@ -75,7 +75,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $absolut_gres = AbsolutGresScrap::all();
 //      ==============================================
 //        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
-        $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%']])->get();
+        $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->get();
 //      ==============================================
         $altacera = AltaceraTovarAvailable::where([['artikul', '!=', 'PWU09DLM3'], ['artikul', '!=', 'GFA114CMT07R'], ['artikul', '!=', 'BWA60ALD004'], ['artikul', '!=', 'DWU09BNT017'], ['artikul', '!=', 'GFA57SLC00L'], ['artikul', '!=', 'PWA11ALD1']])->get();
 //      ==============================================
