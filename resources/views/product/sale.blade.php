@@ -68,7 +68,7 @@
                                 <p class="text-body-secondary">Доступно: {{$product->balanceCount}}</p>
                                 <hr>
 
-                                <p class="text-body-secondary"> Дата обновления: {{$product->updated_at->toDateString()}}</p>
+{{--                                <p class="text-body-secondary"> Дата обновления: {{$product->updated_at->toDateString()}}</p>--}}
                                 <hr>
                                 @php
                                     $vendor_code = str_replace('х', '', $product->Element_Code);
