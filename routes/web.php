@@ -29,7 +29,7 @@ Route::get('/download_all/{pic?}', [ProductController::class, 'download_all'])->
 
 // -----------------------------------------------------------------------------
 Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
-Route::get('/sale', [ProductController::class, 'index_sale'])->name('product_index');
+Route::get('/sale', [ProductController::class, 'index_sale'])->name('product_sale');
 Route::get('/keramogranit_index', [ProductController::class, 'index_keramogranit'])->name('index_keramogranit');
 Route::get('/plitka_index', [ProductController::class, 'index_plitka'])->name('index_plitka');
 Route::get('/mosaic_index', [ProductController::class, 'index_mosaic'])->name('index_mosaic');

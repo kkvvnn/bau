@@ -146,7 +146,7 @@ class ProductController extends Controller
     {
         $type = 'sale';
 
-        $products = Product::where('RMPriceOld', '!=', 0)->orderByDesc('RMPrice')->paginate(15);
+        $products = Product::where('RMPriceOld', '>', 'RMPrice')->orderByDesc('RMPrice')->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
         // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
