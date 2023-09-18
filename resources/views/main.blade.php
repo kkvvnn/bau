@@ -266,6 +266,10 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('kevis.index')}}">Kevis</a>
                 </li>
+                <hr>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('product_sale')}}">Распродажа</a>
+                </li>
               <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Название2
