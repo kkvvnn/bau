@@ -142,6 +142,19 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
+    public function index_sale()
+    {
+        $type = 'sale';
+
+        $products = Product::where('RMPriceOld', '!=', 0)->orderByDesc('RMPrice')->paginate(15);
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
+        // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
+        return view('product.sale', [
+            'products' => $products,
+        ]);
+    }
+
     public function index_ker($price = 800, $count = 10)
     {
         $type = 'all';
