@@ -147,7 +147,7 @@ class ProductController extends Controller
     {
         $type = 'sale';
 
-        $products = Product::whereRaw('(RMPriceOld - RMPrice) > 0')->whereRaw('balanceCount > 100')->whereRaw('Name not like "%екор%"')->whereRaw('Name not like "%ордюр%"')->orderByRaw('RMPriceOld - RMPrice DESC')->paginate(15);
+        $products = Product::whereRaw('(RMPriceOld - RMPrice) > 0')->whereRaw('balanceCount > 10')->whereRaw('Name not like "%екор%"')->whereRaw('Name not like "%ордюр%"')->orderByRaw('RMPriceOld - RMPrice DESC')->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
         // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
