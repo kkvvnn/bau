@@ -62,23 +62,23 @@
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</p>
+                                <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</p>
                                 <hr>
 
-                                <p class="text-body-secondary">Доступно: {{$product->balanceCount}}</p>
+                                <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}}</p>
                                 <hr>
 
-                                <p class="text-body-secondary"> Дата обновления: {{$product->updated_at->toDateString()}}</p>
-                                <hr>
-                                @php
-                                    $vendor_code = str_replace('х', '', $product->Element_Code);
-                                    $files = Storage::disk('foto')->files('/'.$vendor_code);
-                                @endphp
-                                @if(count($files))
-                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>
-                                @else
-                                    <p class="h5 text-danger">Нет фото</p>
-                                @endif
+                                <p class="text-body-secondary"> Обновлено: {{$product->updated_at->toDateString()}}</p>
+{{--                                <hr>--}}
+{{--                                @php--}}
+{{--                                    $vendor_code = str_replace('х', '', $product->Element_Code);--}}
+{{--                                    $files = Storage::disk('foto')->files('/'.$vendor_code);--}}
+{{--                                @endphp--}}
+{{--                                @if(count($files))--}}
+{{--                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>--}}
+{{--                                @else--}}
+{{--                                    <p class="h5 text-danger">Нет фото</p>--}}
+{{--                                @endif--}}
                             </div>
 
 

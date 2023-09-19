@@ -61,40 +61,40 @@
                         Остаток: {{$product->balanceCount}} {{$product->MainUnit}}
                     </h5>
                     <hr>
-                    <h5>
-                        Артикул: {{$product->Element_Code}}
-                    </h5>
+{{--                    <h5>--}}
+{{--                        Артикул: {{$product->Element_Code}}--}}
+{{--                    </h5>--}}
+{{--                    <hr>--}}
+                    <h5>В упаковке <strong>{{$product->PCS_in_Package}}</strong> шт. <strong>{{$product->Package_Value}}</strong> кв.м
+                        </h5>
                     <hr>
-                    <h5>В упаковке шт: <strong>{{$product->PCS_in_Package}}</strong> кв.м:
-                        <strong>{{$product->Package_Value}}</strong></h5>
-                    <hr>
-                    <div id="app-5">
-                        <input v-model="count" placeholder="Количество кв.м?">
+{{--                    <div id="app-5">--}}
+{{--                        <input v-model="count" placeholder="Количество кв.м?">--}}
 
-                        <h5>@{{ packages }} упаков. общая площадь @{{ all }} кв.м</h5>
+{{--                        <h5>@{{ packages }} упаков. общая площадь @{{ all }} кв.м</h5>--}}
 
-                    </div>
-                    <hr>
+{{--                    </div>--}}
+{{--                    <hr>--}}
                 </div>
             </div>
 
-            @php
-                $vendor_code = str_replace('х', '', $product->Element_Code);
-            @endphp
+{{--            @php--}}
+{{--                $vendor_code = str_replace('х', '', $product->Element_Code);--}}
+{{--            @endphp--}}
 
-            <div>
-                <form action="{{ route('save-foto') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                        <input type="hidden" name="vendor" value="{{ $vendor_code }}">
-                        <input type="hidden" name="id" value="{{ $product->id }}">
-                        <input class="form-control" type="file" name="foto" id="" required>
-                        <p></p>
-                        <input class="btn btn-primary" type="submit" value="Отправить">
-                    </div>
-                </form>
-            </div>
-            <hr>
+{{--            <div>--}}
+{{--                <form action="{{ route('save-foto') }}" method="post" enctype="multipart/form-data">--}}
+{{--                    @csrf--}}
+{{--                    <div class="mb-3">--}}
+{{--                        <input type="hidden" name="vendor" value="{{ $vendor_code }}">--}}
+{{--                        <input type="hidden" name="id" value="{{ $product->id }}">--}}
+{{--                        <input class="form-control" type="file" name="foto" id="" required>--}}
+{{--                        <p></p>--}}
+{{--                        <input class="btn btn-primary" type="submit" value="Отправить">--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--            </div>--}}
+{{--            <hr>--}}
 
 
             <div class="container-fluid">
@@ -154,31 +154,31 @@
 
 @section('scripts')
 
-    <script>
-        var app5 = new Vue({
-            el: '#app-5',
-            data: {
-                package_value: <?php echo $product->Package_Value; ?>,
-                pcs_in_package: <?php echo $product->PCS_in_Package; ?>,
-                count: null
-            },
-            computed: {
-                packages: function () {
-                    let count_int = Math.trunc(this.count / this.package_value)
-                    let count_float = this.count / this.package_value
-                    if (count_float == count_int) {
-                        return count_int
-                    } else {
-                        return count_int + 1
-                    }
+{{--    <script>--}}
+{{--        var app5 = new Vue({--}}
+{{--            el: '#app-5',--}}
+{{--            data: {--}}
+{{--                package_value: <?php echo $product->Package_Value; ?>,--}}
+{{--                pcs_in_package: <?php echo $product->PCS_in_Package; ?>,--}}
+{{--                count: null--}}
+{{--            },--}}
+{{--            computed: {--}}
+{{--                packages: function () {--}}
+{{--                    let count_int = Math.trunc(this.count / this.package_value)--}}
+{{--                    let count_float = this.count / this.package_value--}}
+{{--                    if (count_float == count_int) {--}}
+{{--                        return count_int--}}
+{{--                    } else {--}}
+{{--                        return count_int + 1--}}
+{{--                    }--}}
 
-                },
+{{--                },--}}
 
-                all: function () {
-                    return (this.packages * this.package_value).toFixed(2)
-                }
-            }
-        })
-    </script>
+{{--                all: function () {--}}
+{{--                    return (this.packages * this.package_value).toFixed(2)--}}
+{{--                }--}}
+{{--            }--}}
+{{--        })--}}
+{{--    </script>--}}
 
 @endsection
