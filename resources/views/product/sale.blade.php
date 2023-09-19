@@ -62,14 +62,14 @@
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}   <del>{{$product->RMPriceOld}} ₽/{{$product->MainUnit}}</del></p>
+                                <p class="text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}   <del>{{$product->RMPriceOld}} ₽/{{$product->MainUnit}}</del>  {{100*round(($product->RMPriceOld-$product->RMPrice)/$product->RMPriceOld, 2)}}%</p>
                                 <hr>
 
                                 <p class="text-body-secondary">Доступно: {{$product->balanceCount}}</p>
                                 <hr>
 
 {{--                                <p class="text-body-secondary"> Дата обновления: {{$product->updated_at->toDateString()}}</p>--}}
-                                <hr>
+{{--                                <hr>--}}
                                 @php
                                     $vendor_code = str_replace('х', '', $product->Element_Code);
                                     $files = Storage::disk('foto')->files('/'.$vendor_code);
