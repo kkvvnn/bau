@@ -62,23 +62,24 @@
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}   <del>{{$product->RMPriceOld}} ₽/{{$product->MainUnit}}</del>  {{100*round(($product->RMPriceOld-$product->RMPrice)/$product->RMPriceOld, 2)}}%</p>
+                                <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}}    <small class="text-muted"><del>{{$product->RMPriceOld}} </del></small>  ₽/{{$product->MainUnit}}</p>
                                 <hr>
-
-                                <p class="text-body-secondary">Доступно: {{$product->balanceCount}}</p>
+                                <p class="fs-5 text-body-secondary">-{{100*round(($product->RMPriceOld-$product->RMPrice)/$product->RMPriceOld, 2)}}%</p>
                                 <hr>
+                                <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}} {{$product->MainUnit}}</p>
+{{--                                <hr>--}}
 
 {{--                                <p class="text-body-secondary"> Дата обновления: {{$product->updated_at->toDateString()}}</p>--}}
 {{--                                <hr>--}}
-                                @php
-                                    $vendor_code = str_replace('х', '', $product->Element_Code);
-                                    $files = Storage::disk('foto')->files('/'.$vendor_code);
-                                @endphp
-                                @if(count($files))
-                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>
-                                @else
-                                    <p class="h5 text-danger">Нет фото</p>
-                                @endif
+{{--                                @php--}}
+{{--                                    $vendor_code = str_replace('х', '', $product->Element_Code);--}}
+{{--                                    $files = Storage::disk('foto')->files('/'.$vendor_code);--}}
+{{--                                @endphp--}}
+{{--                                @if(count($files))--}}
+{{--                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>--}}
+{{--                                @else--}}
+{{--                                    <p class="h5 text-danger">Нет фото</p>--}}
+{{--                                @endif--}}
                             </div>
 
 
