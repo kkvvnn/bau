@@ -136,7 +136,7 @@ class ProductController extends Controller
     {
         $type = 'all';
 
-        $products = Product::where('balanceCount', '>=', 0)->orderByDesc('Height')->paginate(15);
+        $products = Product::where('balanceCount', '>=', 0)->orderByRaw('Lenght * Height DESC')->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
         // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
