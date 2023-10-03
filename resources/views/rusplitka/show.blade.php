@@ -40,7 +40,7 @@
             <div class="row">
 
                 <div class="col">
-                    <h2>{{$product->svoystvo}} {{$product->name}}</h2>
+                    <h2>{{$product->svoystvo}} {{$product->name}} ({{$product->size_b}}x{{$product->size_a}})</h2>
                     <hr>
                     <h3>
                         {{$product->brand_name}}

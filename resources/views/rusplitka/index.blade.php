@@ -30,7 +30,7 @@
                             </a>
                             <div class="card-body">
                                 <a href="/rusplitka/{{$product->id}}" class="text-decoration-none text-reset">
-                                    <h5 class="card-title">{{$product->svoystvo}} {{$product->brand_name}} {{$product->name}}</h5>
+                                    <h5 class="card-title">{{$product->svoystvo}} {{$product->brand_name}} {{$product->name}} ({{$product->size_b}}x{{$product->size_a}})</h5>
                                 </a>
                                 <p class="card-text"></p>
                             </div>
