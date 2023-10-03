@@ -147,3 +147,8 @@ Route::get('/kevis/import', [\App\Http\Controllers\KevisController::class, 'impo
 Route::get('/kevis', [\App\Http\Controllers\KevisController::class, 'index'])->name('kevis.index');
 Route::get('/kevis/{id}', [\App\Http\Controllers\KevisController::class, 'show'])->name('kevis.show');
 //-------------------KEVIS-END----------------------
+
+//--------------------RUSPLITKA------------------------
+Route::get('/rusplitka/import', [\App\Http\Controllers\RusplitkaController::class, 'import']);
+Route::get('/rusplitka/test', [\App\Http\Controllers\RusplitkaController::class, 'test']);
+//------------------RUSPLITKA-END----------------------
