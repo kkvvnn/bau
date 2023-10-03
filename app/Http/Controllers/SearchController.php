@@ -85,6 +85,14 @@ class SearchController extends Controller
             ]);
         }
 
+        $rusplitka = \App\Models\Rusplitka\Product::where('name', 'LIKE', $name)->paginate(15);
+        $rusplitka->appends(['name' => $name]);
+        if (count($rusplitka)) {
+            return view('rusplitka.index', [
+                'products' => $rusplitka,
+            ]);
+        }
+
         return redirect('/not-found-rezults');
     }
 }
