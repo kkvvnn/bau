@@ -266,6 +266,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('kevis.index')}}">Kevis</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('rusplitka.index')}}">Rusplitka</a>
+                </li>
                 <hr>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('product_sale')}}">Распродажа</a>

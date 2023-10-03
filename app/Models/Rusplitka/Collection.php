@@ -13,9 +13,9 @@ class Collection extends Model
     protected $guarded = false;
     protected $table = 'rusplitka_collections';
 
-    protected $casts = [
-        'picture' => 'array'
-    ];
+//    protected $casts = [
+//        'picture' => 'array'
+//    ];
 
     public function products(): HasMany
     {

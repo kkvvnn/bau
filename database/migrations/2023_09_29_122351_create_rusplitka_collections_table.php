@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rusplitka_collections', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->json('picture')->nullable();
+            $table->text('picture')->nullable();
             $table->string('url')->nullable();
             $table->string('type')->nullable();
             $table->string('name')->nullable();

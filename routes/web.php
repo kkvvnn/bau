@@ -151,4 +151,6 @@ Route::get('/kevis/{id}', [\App\Http\Controllers\KevisController::class, 'show']
 //--------------------RUSPLITKA------------------------
 Route::get('/rusplitka/import', [\App\Http\Controllers\RusplitkaController::class, 'import']);
 Route::get('/rusplitka/test', [\App\Http\Controllers\RusplitkaController::class, 'test']);
+Route::get('/rusplitka', [\App\Http\Controllers\RusplitkaController::class, 'index'])->name('rusplitka.index');
+Route::get('/rusplitka/{id}', [\App\Http\Controllers\RusplitkaController::class, 'show'])->name('rusplitka.show');
 //------------------RUSPLITKA-END----------------------

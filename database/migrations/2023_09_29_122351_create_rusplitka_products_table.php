@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('collection_id')->nullable();
-            $table->json('picture')->nullable();
+            $table->text('picture')->nullable();
             $table->string('url')->nullable();
             $table->string('external_id')->nullable();
             $table->string('name')->nullable();

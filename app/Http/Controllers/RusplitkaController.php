@@ -61,7 +61,7 @@ class RusplitkaController extends Controller
     {
         $this->saveXmlFile();
         $array = $this->xml_to_array();
-//        dd($array['shop']['offers']['offer']);
+//        dd($array['shop']['offers']['offer'][2]);
 //        dd($array['shop']['collections']['collection']);
 
         $collections = $array['shop']['collections']['collection'];
@@ -69,7 +69,7 @@ class RusplitkaController extends Controller
         foreach ($collections as $collection) {
             Collection::create([
                 'code' => $collection['@attributes']['id'],
-                'picture' => json_encode($collection['picture']),
+                'picture' => is_array($collection['picture']) ? implode(' | ', $collection['picture']) : $collection['picture'],
                 'url' => $collection['url'],
                 'type' => $collection['type'],
                 'name' => $collection['name'],
@@ -85,7 +85,7 @@ class RusplitkaController extends Controller
             Product::create([
                 'code' => $product['@attributes']['id'],
                 'collection_id' => $product['collection_id'],
-                'picture' => json_encode($product['picture']),
+                'picture' => is_array($product['picture']) ? implode(' | ', $product['picture']) : $product['picture'],
                 'url' => $product['url'],
                 'external_id' => $product['external_id'] ?? null,
                 'name' => $product['name'],
@@ -119,7 +119,27 @@ class RusplitkaController extends Controller
 //        $collection = Collection::find(3);
 //        dd($collection->products);
 
-        $product = Product::find(88);
-        dd($product->collection);
+//        $product = Product::find(88);
+//        dd($product->collection);
+    }
+
+    public function index()
+    {
+        $products = Product::paginate(15);
+        return view('rusplitka.index', compact('products'));
+    }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        $img = $product->picture;
+        $imgs = explode(' | ', $img);
+//        dd($product);
+
+        $collection = $product->collection;
+        $img_collection = $collection->picture;
+        $img_collection = explode(' | ', $img_collection);
+
+        return view('rusplitka.show', compact('product', 'imgs', 'img_collection'));
     }
 }

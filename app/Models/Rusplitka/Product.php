@@ -13,9 +13,9 @@ class Product extends Model
     protected $guarded = false;
     protected $table = 'rusplitka_products';
 
-    protected $casts = [
-        'picture' => 'array'
-    ];
+//    protected $casts = [
+//        'picture' => 'array'
+//    ];
 
     public function collection(): BelongsTo
     {
