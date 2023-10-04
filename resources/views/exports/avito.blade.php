@@ -1544,6 +1544,118 @@
 
     {{--    -----------------------KEVIS_END----------------------------}}
 
+    {{--    ---------------------RUSPLITKA------------------------------}}
+    @foreach($rusplitka as $product)
+        @php
+            $price = $product->price_rozn;
+//            $price = round($price * 0.93, -1);
+//                --------------------------
+            $title = $product->svoystvo.' '.$product->brand_name.' '.$product->name;
+//                -----------------------------
+//              ------------------------------------------FOTO-------------------------------------
+
+            $img = $product->picture;
+            $img_collection = $product->collection->picture;
+
+            $img = $img . ' | ' . $img_collection;
+
+            $img_full_arr = explode(' | ', $img);
+
+            if (count($img_full_arr) <= 10) {
+                $img_ready = $img;
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_ready = implode(' | ', $img_full_arr);
+            }
+//                ---------------------
+            $FinishingType = 'Плитка, керамогранит и мозаика';
+            $FinishingSubType = 'Керамогранит';
+//                ---------------------
+            $description = '';
+
+            if($add_description_first != '') {
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
+            }
+
+            $description .= '<p>Керамогранит '.$product->brand_name.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+            $description .= '<p><strong>Керамогранит ' . $product->brand_name . ' '
+                    . $product->name . ' ('
+                    . $product->collection->country . ')</strong></p>';
+
+            $description .= '<p>--------------------</p>';
+            $date = date('d.m.Y');
+            if ($product->rest_real_free > 0) {
+            $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.$product->rest_real_free.' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            }
+            $description .= '<p>--------------------</p>';
+
+            $description .= '<p>Коллекция: '.$product->collection->name.'</p>';
+            $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
+
+
+                $description .= '<li><strong>Размер, см: </strong>' . $product->size_b.'х'.$product->size_a. '</li>';
+                if($product->thickness != null) {
+                $description .= '<li><strong>Толщина: </strong>' . $product->thickness . '</li>';
+                }
+                if($product->surface != null) {
+                $description .= '<li><strong>Поверхность: </strong>' . $product->surface . '</li>';
+                }
+                if($product->in_pack_sht != null) {
+                $description .= '<li><strong>Штук в упаковке: </strong>' . $product->in_pack_sht . '</li>';
+                }
+                if($product->in_pack_m2 != null) {
+                $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->in_pack_m2 . '</li>';
+                }
+                if($product->collection->country != null) {
+                $description .= '<li><strong>Страна производства: </strong>' . $product->collection->country . '</li>';
+                }
+                if($product->artikul != null) {
+                $description .= '<li><strong>Артикул: </strong>' . $product->artikul . '</li>';
+                }
+
+                $description .= '</ul><br>';
+
+
+            $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+            $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+            $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+
+            if($add_description != '') {
+            $description .= '<p>'.nl2br($add_description).'</p>';
+            }
+
+
+            $code = $product->external_id . 'RusPL';
+
+        @endphp
+        <tr>
+            <td></td>
+            <td>{{ $code }}</td>
+            <td>{{ $contact_method }}</td>
+            <td>kkvvnn89@gmail.com</td>
+            <td>Активно</td>
+            <td>{{ $name }}</td>
+            <td>{{$price}}</td>
+            <td>Напольные решения</td>
+            <td>{{$title}}</td>
+            <td>{{$img_ready}}</td> <!-- -->
+            <td>Отделка</td>
+            <td>Стройматериалы</td>
+            <td>Ремонт и строительство</td>
+            <td>Package</td>
+            <td>{{$FinishingType}}</td>
+            <td>{{ $phone }}</td> <!-- -->
+            <td>{{$description}}</td> <!-- -->
+            <td>{{ $address }}</td>
+            <td>Товар от производителя</td>
+            <td>{{$FinishingSubType}}</td>
+            <td>Новое</td>
+            <td></td>
+        </tr>
+    @endforeach
+
+    {{--    -----------------------RUSPLITKA_END----------------------------}}
+
 
     </tbody>
 </table>

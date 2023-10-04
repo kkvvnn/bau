@@ -6,6 +6,7 @@ namespace App\Exports;
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\Kevis;
+use App\Models\Rusplitka\Product as RusplitkaProduct;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
@@ -84,6 +85,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ==============================================
         $kevis = Kevis::all();
 //      ==============================================
+        $rusplitka = RusplitkaProduct::where('svoystvo', 'Керамогранит')->get();
+//      ==============================================
 
         if ($this->foto == '') {
             return view('exports.avito', [
@@ -95,6 +98,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'altacera' => $altacera,
                 'ntceramic' => $ntceramic,
                 'kevis' => $kevis,
+                'rusplitka' => $rusplitka,
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,
@@ -112,6 +116,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'altacera' => $altacera,
                 'ntceramic' => $ntceramic,
                 'kevis' => $kevis,
+                'rusplitka' => $rusplitka,
             ]);
         }
 
