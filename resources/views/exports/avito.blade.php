@@ -1578,9 +1578,9 @@
             }
 
             $description .= '<p>Керамогранит '.$product->brand_name.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-            $description .= '<p><strong>Керамогранит ' . $product->brand_name . ' '
-                    . $product->name . ' ('
-                    . $product->collection->country . ')</strong></p>';
+            $description .= '<p><strong>'.$product->svoystvo.' '.$product->brand_name.' '
+                    .$product->name.' ['.$product->size_b.'x'.$product->size_a.'] ('
+                    .$product->collection->country.')</strong></p>';
 
             $description .= '<p>--------------------</p>';
             $date = date('d.m.Y');
