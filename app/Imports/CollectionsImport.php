@@ -17,7 +17,7 @@ class CollectionsImport implements ToModel, WithHeadingRow, WithUpserts
         return new Collection([
             'Collection_Id' => $row['collection_id'],
             'Collection_Name' => $row['collection_name'],
-            'Interior_Pic' => $row['interior_pic'],
+            'Interior_Pic' => str_replace('\\', '/', $row['interior_pic']),
         ]);
     }
 

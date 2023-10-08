@@ -323,7 +323,7 @@ class ProductController extends Controller
     {
         Product::truncate();    // clear all data in table
 
-        set_time_limit(60);
+        set_time_limit(120);
         $url = 'http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv';
         $contents = file_get_contents($url);
         $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
