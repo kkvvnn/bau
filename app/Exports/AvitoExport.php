@@ -85,7 +85,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ==============================================
         $kevis = Kevis::all();
 //      ==============================================
-        $rusplitka = RusplitkaProduct::where('svoystvo', 'Керамогранит')->get();
+        $rusplitka = RusplitkaProduct::where([['svoystvo', 'Керамогранит'], ['rest_real_free', '!=', 0]])->get();
 //      ==============================================
 
         if ($this->foto == '') {
