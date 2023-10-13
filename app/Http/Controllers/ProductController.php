@@ -147,7 +147,12 @@ class ProductController extends Controller
     {
         $type = 'vivod';
 
-        $products = Product::where([['balanceCount', '>=', 0], ['Vivod', 1]])->orderByRaw('Lenght * Height DESC')->orderByRaw('balanceCount DESC')->paginate(15);
+        $products = Product::where([['balanceCount', '>', 0], ['Vivod', 1], ['Lenght', '>=', 60], ['Height', '>=', 60]])->orderByRaw('balanceCount DESC')->paginate(15);
+//        $products = Product::where([['balanceCount', '>=', 0], ['Vivod', 1], ['Lenght', '>=', 60], ['Height', '>=', 60]])->orderByRaw('Lenght * Height DESC')->orderByRaw('balanceCount DESC')->get();
+//        dd($products);
+//        foreach ($products as $product) {
+//            echo $product->Name.'<br>';
+//        }
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
         // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
