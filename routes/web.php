@@ -29,6 +29,7 @@ Route::get('/download_all/{pic?}', [ProductController::class, 'download_all'])->
 
 // -----------------------------------------------------------------------------
 Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
+Route::get('/min/{count?}', [ProductController::class, 'index_min'])->name('product_min');
 Route::get('/sale', [ProductController::class, 'index_sale'])->name('product_sale');
 Route::get('/vivod', [ProductController::class, 'index_vivod'])->name('product_vivod');
 Route::get('/no-vivod', [ProductController::class, 'index_no_vivod'])->name('product_no_vivod');

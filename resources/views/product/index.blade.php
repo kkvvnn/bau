@@ -46,6 +46,8 @@
                     @php
                         if ($product->RMPriceOld > 0) {
                           $old_price = $product->RMPriceOld;
+                        } else {
+                            $old_price = '';
                         }
 
                         $vivod = $product->Vivod;
@@ -54,6 +56,7 @@
                         } else {
                             $vivod = '';
                         }
+
                     @endphp
 
                     <div class="col">
@@ -69,7 +72,7 @@
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</p>
+                                <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
                                 <hr>
 
                                 <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}} {{$vivod}}</p>
