@@ -47,6 +47,13 @@
                         if ($product->RMPriceOld > 0) {
                           $old_price = $product->RMPriceOld;
                         }
+
+                        $vivod = $product->Vivod;
+                        if ($vivod == 1) {
+                            $vivod = 'Вывод из OA';
+                        } else {
+                            $vivod = '';
+                        }
                     @endphp
 
                     <div class="col">
@@ -65,7 +72,7 @@
                                 <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}</p>
                                 <hr>
 
-                                <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}}</p>
+                                <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}} {{$vivod}}</p>
                                 <hr>
 
                                 <p class="text-body-secondary"> Обновлено: {{$product->updated_at->toDateString()}}</p>
