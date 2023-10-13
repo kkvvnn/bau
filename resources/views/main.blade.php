@@ -273,6 +273,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('product_sale')}}">Распродажа</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('product_vivod')}}">Вывод из OA Laparet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('product_no_vivod')}}">НЕ вывод из OA</a>
+                </li>
               <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Название2

@@ -143,6 +143,28 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
+    public function index_vivod()
+    {
+        $type = 'vivod';
+
+        $products = Product::where([['balanceCount', '>=', 0], ['Vivod', 1]])->orderByRaw('Lenght * Height DESC')->orderByRaw('balanceCount DESC')->paginate(15);
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
+        // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
+        return $this->index($products, $type);
+    }
+
+    public function index_no_vivod()
+    {
+        $type = 'vivod';
+
+        $products = Product::where([['balanceCount', '>=', 0], ['Vivod', null]])->orderByRaw('Lenght * Height DESC')->orderByRaw('balanceCount DESC')->paginate(15);
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
+        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
+        // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
+        return $this->index($products, $type);
+    }
+
     public function index_sale()
     {
         $type = 'sale';
