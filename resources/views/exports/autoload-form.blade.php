@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Адрес размещения</label>
-                    <input type="text" class="form-control" id="address" name="address" value="Московская область, Одинцовский городской округ, рабочий посёлок Новоивановское, Западная улица, с100">
+                    <input type="text" class="form-control" id="address" name="address" value="Москва, Филёвская линия, метро Фили">
                 </div>
                 <div class="mb-3">
                     <label for="contact_method" class="form-label">Способ связи</label>

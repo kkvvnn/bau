@@ -17,7 +17,7 @@ class AvitoController extends Controller
         $phone = $request->phone??"79039890822";
         $name = $request->name??"Владимир";
         $contact_method = $request->contact_method??"В сообщениях";
-        $address = $request->address??"Московская область, Одинцовский городской округ, рабочий посёлок Новоивановское, Западная улица, с100";
+        $address = $request->address??"Москва, Филёвская линия, метро Фили";
         $add_description = $request->add_description??"";
         $add_description_first = $request->add_description_first??"";
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
