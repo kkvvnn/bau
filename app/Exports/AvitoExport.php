@@ -71,7 +71,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //        $products->add($dalim_mint[0]);
         // dd($products);
 //      ==============================================
-        $primavera = Primavera::all();
+        $primavera = Primavera::where('country', '!=', 'Киргизия')->get();
 //      ==============================================
         $absolut_gres = AbsolutGresScrap::all();
 //      ==============================================
