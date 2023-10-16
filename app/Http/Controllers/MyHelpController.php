@@ -56,4 +56,10 @@ class MyHelpController extends Controller
     {
         return view('myhelp.notfound');
     }
+
+    public function vitra_count()
+    {
+        $vitra = Product::where('Producer_Brand', 'Vitra')->get();
+        dd($vitra);
+    }
 }

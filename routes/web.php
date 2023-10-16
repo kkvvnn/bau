@@ -67,6 +67,7 @@ Route::get('/aquafloor/product/{title}', [AquaFloorController::class, 'index_pro
 
 // ----------------HELP_CONTROLLER----------------
 Route::get('/list-all', [MyHelpController::class, 'list']);
+Route::get('/vitra-count', [MyHelpController::class, 'vitra_count']);
 Route::get('/biggest', [MyHelpController::class, 'biggest']);
 Route::get('/derevo', [MyHelpController::class, 'derevo']);
 Route::get('/count-product-with-foto', [MyHelpController::class, 'count_product_with_foto']);

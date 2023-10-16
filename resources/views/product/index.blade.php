@@ -74,9 +74,14 @@
                             <div class="card-footer">
                                 <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
                                 <hr>
-                                <p class="fs-5 text-body-secondary">Цена -20%: {{round($product->RMPrice * 0.8, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
-                                <hr>
-
+                                @if($product->Producer_Brand == 'Laparet' && $product->RMPriceOld == 0)
+                                    <p class="fs-5 text-body-secondary">Цена -20%: {{round($product->RMPrice * 0.8, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
+                                    <hr>
+                                @endif
+                                @if($product->Producer_Brand == 'Vitra' && $product->RMPriceOld == 0)
+                                    <p class="fs-5 text-body-secondary">Цена -15%: {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
+                                    <hr>
+                                @endif
 
                                 <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}} {{$vivod}}</p>
                                 <hr>
