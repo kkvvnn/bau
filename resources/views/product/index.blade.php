@@ -75,12 +75,15 @@
                                 <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
                                 <hr>
                                 @if($product->Producer_Brand == 'Laparet' && $product->RMPriceOld == 0)
-                                    <p class="fs-5 text-body-secondary">Цена -20%: {{round($product->RMPrice * 0.8, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
+                                    <p class="fs-5 text-body-secondary"><button type="button" class="btn btn-info">Цена -20%: {{round($product->RMPrice * 0.8, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></button></p>
                                     <hr>
                                 @endif
                                 @if($product->Producer_Brand == 'Vitra' && $product->RMPriceOld == 0)
-                                    <p class="fs-5 text-body-secondary">Цена -15%: {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
+                                    <p class="fs-5 text-body-secondary"><button type="button" class="btn btn-info">Цена -15%: {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></button></p>
                                     <hr>
+                                @endif
+                                @if($product->RMPriceOld)
+                                    <button type="button" class="btn btn-warning">РАСПРОДАЖА</button>                                    <hr>
                                 @endif
 
                                 <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}} {{$vivod}}</p>
