@@ -62,4 +62,27 @@ class MyHelpController extends Controller
         $vitra = Product::where('Producer_Brand', 'Vitra')->get();
         dd($vitra);
     }
+
+    public function price_list_60x60_60x120()
+    {
+        $products = Product::where([['Producer_Brand', 'Laparet'],['balance', 1],['Category', 'Керамогранит'],['Lenght', '>=', 59],['Lenght', '<=', 121],['Height', '>=', 59],['Height', '<=', 61]])->orderBy('Lenght')->orderBy('Name')->get();
+
+        echo '<table>';
+        foreach ($products as $product) {
+            echo '<tr>';
+            echo '<td>'.$product->Name.'</td>'.'<td>'.$product->RMPrice.'</td>';
+            if ($product->RMPriceOld) {
+                echo '<td>Распродажа</td>';
+            } else {
+                echo '<td></td>';
+            }
+            if ($product->Vivod) {
+                echo '<td>Вывод из OA</td>';
+            } else {
+                echo '<td></td>';
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
 }
