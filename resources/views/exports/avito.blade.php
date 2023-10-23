@@ -95,7 +95,7 @@
             $description .= '<p>--------------------</p>';
             $date = date('d.m.Y');
             if ($product->balanceCount > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
             }
             $description .= '<p>--------------------</p>';
 
@@ -940,7 +940,7 @@
             $description .= '<p>--------------------</p>';
             $date = date('d.m.Y');
             if (($product->Sklad_Msk_LeeDo > 0 && $product->Sklad_Msk_LeeDo != null) || ($product->Sklad_SPb_LeeDo > 0 && $product->Sklad_SPb_LeeDo != null)) {
-            $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.round($product->Sklad_Msk_LeeDo)+round($product->Sklad_SPb_LeeDo).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' остаток '.round($product->Sklad_Msk_LeeDo)+round($product->Sklad_SPb_LeeDo).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
             }
             $description .= '<p>--------------------</p>';
 
@@ -1116,11 +1116,11 @@
                         if ($product->balance->free_balance > 0) {
                             if(str_contains($product->balance->free_balance, '.')){
                                 $description .= '<p>--------------------</p>';
-                                $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.rtrim(rtrim($product->balance->free_balance, '0'), '.').' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                                $description .= '<p>&#9989; На утро '.$date.' остаток '.rtrim(rtrim($product->balance->free_balance, '0'), '.').' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
                                 $description .= '<p>--------------------</p>';
                             } else {
                                 $description .= '<p>--------------------</p>';
-                                $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.$product->balance->free_balance.' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                                $description .= '<p>&#9989; На утро '.$date.' остаток '.$product->balance->free_balance.' '.$unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
                                 $description .= '<p>--------------------</p>';
                             }
                         }
@@ -1589,7 +1589,7 @@
             $description .= '<p>--------------------</p>';
             $date = date('d.m.Y');
             if ($product->rest_real_free > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' доступно &asymp; '.$product->rest_real_free.' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' остаток '.$product->rest_real_free.' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
             }
             $description .= '<p>--------------------</p>';
 
