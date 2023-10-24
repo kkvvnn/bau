@@ -50,15 +50,27 @@
                                 . </a>
                         @endforeach
                     </h4>
-                    <h5>
-                        Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}}
-                        <br>
-                        <!-- Цена зак: {{$product->Price}} ₽/{{$product->MainUnit}} -->
-                        <!-- <br> {{round(($product->RMPrice/$product->Price)*100 - 100, 2)}}% -->
-                    </h5>
                     <hr>
+
+
+                    <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
+                    <hr>
+                    @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
+                        <p class="fs-5 text-body-secondary"><button type="button" class="btn btn-info">Цена -20%: {{round($product->RMPrice * 0.8, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></button></p>
+                        <hr>
+                    @endif
+                    @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
+                        <p class="fs-5 text-body-secondary"><button type="button" class="btn btn-info">Цена -15%: {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></button></p>
+                        <hr>
+                    @endif
+                    @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
+                        <button type="button" class="btn btn-warning">РАСПРОДАЖА</button>                                    <hr>
+                    @endif
+
+
+
                     <h5>
-                        Остаток: {{$product->balanceCount}} {{$product->MainUnit}}
+                        Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}
                     </h5>
                     <hr>
 {{--                    <h5>--}}

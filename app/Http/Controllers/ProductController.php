@@ -327,6 +327,20 @@ class ProductController extends Controller
             $fotos[] = Storage::disk('foto')->url($f);
         }
 //dd($fotos);
+
+        if ($product->RMPriceOld > 0) {
+            $old_price = $product->RMPriceOld;
+        } else {
+            $old_price = '';
+        }
+
+        $vivod = $product->Vivod;
+        if ($vivod == 1) {
+            $vivod = 'Вывод из OA';
+        } else {
+            $vivod = '';
+        }
+
         return view('product.show', [
             'product' => $product,
             'urls' => $urls_2,
@@ -334,6 +348,8 @@ class ProductController extends Controller
             'collection' => $collection,
             'url_collection' => $urls_c,
             'fotos' => $fotos,
+            'vivod' => $vivod,
+            'old_price' => $old_price,
         ]);
     }
 
