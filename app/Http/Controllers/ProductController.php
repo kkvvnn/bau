@@ -271,17 +271,24 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
         $collection = $product->collections;
+//        dd($collection);
+//        dd(count($collection));
 
-        $url_collection = $collection[0]->Interior_Pic;
+        if (count($collection)) {
+            $url_collection = $collection[0]->Interior_Pic;
 
-        $url_collection = explode(', ', $url_collection);
+            $url_collection = explode(', ', $url_collection);
 
-        $urls_c = [];
-        foreach ($url_collection as $kkkj) {
-            $urls_c[] = Str::remove($string_for_delete, $kkkj);
+            $urls_c = [];
+            foreach ($url_collection as $kkkj) {
+                $urls_c[] = Str::remove($string_for_delete, $kkkj);
+            }
+
+            $urls_c = array_slice($urls_c, 0, 2);
+        } else {
+            $urls_c = [];
         }
 
-        $urls_c = array_slice($urls_c, 0, 2);
 
         // dd($urls_c);
 
