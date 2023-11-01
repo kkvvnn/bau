@@ -37,8 +37,6 @@
                             <div class="card-footer">
                                 <p class="fs-5 text-body-secondary">Цена: {{$product->price_rozn}} ₽/{{$product->unit}}</p>
                                 <hr>
-                                <p class="fs-5 text-body-secondary">Закупка: {{$product->price}} ₽</p>
-                                <hr>
 
                                 <p class="fs-5 text-body-secondary">Доступно {{$product->rest_real_free}} {{$product->unit}}</p>
                                 <hr>
