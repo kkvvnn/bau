@@ -355,10 +355,16 @@
 
     //          -----------------------------------------------------------------------------------
 
-            $img_full = $img1;
             if ($img_coll != null) {
-            $img_full .= ' | ' . $img_coll;
+                $img_full = $img_coll . ' | ' . $img1;
+            } else {
+                $img_full = $img1;
             }
+
+
+//            if ($img_coll != null) {
+//            $img_full .= ' | ' . $img1;
+//            }
             if ($img_coll_2 != null) {
             $img_full .= ' | ' . $img_coll_2;
             }
@@ -371,6 +377,12 @@
             }
             if ($img4 != null) {
             $img_full .= ' | ' . $img4;
+            }
+            if ($img5 != null) {
+            $img_full .= ' | ' . $img5;
+            }
+            if ($img6 != null) {
+            $img_full .= ' | ' . $img6;
             }
 
         @endphp
