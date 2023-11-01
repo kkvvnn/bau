@@ -86,7 +86,7 @@
                                     <button type="button" class="btn btn-warning">РАСПРОДАЖА</button>                                    <hr>
                                 @endif
 
-                                <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}} {{$vivod}}</p>
+                                <p class="fs-5 text-body-secondary">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
                                 <hr>
 
                                 <p class="text-body-secondary"> Обновлено: {{$product->updated_at->toDateString()}}</p>
