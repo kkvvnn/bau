@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NTCeramic\NtCeramicNoImgs;
+use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
@@ -84,5 +86,31 @@ class MyHelpController extends Controller
             echo '</tr>';
         }
         echo '</table>';
+    }
+
+    public function nt_prim_ruspl()
+    {
+        $products = NtCeramicNoImgs::all();
+
+        echo "==================NT-CERAMIC============================". '<br>';
+        foreach ($products as $product) {
+            echo $product->vendor_code.' ';
+        }
+
+        echo '<br>';
+        $products = Primavera::all();
+
+        echo "==================PRIMAVERA============================". '<br>';
+        foreach ($products as $product) {
+            echo $product->vendor_code.' ';
+        }
+
+        echo '<br>';
+        $products = \App\Models\Rusplitka\Product::all();
+
+        echo "==================RUSPLITKA============================". '<br>';
+        foreach ($products as $product) {
+            echo $product->name.' ';
+        }
     }
 }
