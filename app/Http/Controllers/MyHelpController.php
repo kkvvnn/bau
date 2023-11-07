@@ -96,6 +96,9 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             echo $product->vendor_code.' ';
         }
+        foreach ($products as $product) {
+            echo $product->title.' ';
+        }
 
         echo '<br>';
         $products = Primavera::all();
@@ -103,6 +106,9 @@ class MyHelpController extends Controller
         echo "==================PRIMAVERA============================". '<br>';
         foreach ($products as $product) {
             echo $product->vendor_code.' ';
+        }
+        foreach ($products as $product) {
+            echo $product->title_avito.' ';
         }
 
         echo '<br>';
