@@ -430,6 +430,8 @@
             if ($product->Producer_Brand == 'Laparet' || $product->Producer_Brand == 'Vitra') {
                 if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
                     $price = round($product->RMPrice * 0.85, -1);
+                } else {
+                    $price = $product->RMPrice;
                 }
             } else {
                 $price = $product->RMPrice;
