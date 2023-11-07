@@ -108,7 +108,7 @@ class MyHelpController extends Controller
             echo $product->vendor_code.' ';
         }
         foreach ($products as $product) {
-            echo $product->title_avito.' ';
+            echo str_replace('Керамогранит', '',$product->title_avito).' ';
         }
 
         echo '<br>';
