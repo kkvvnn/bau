@@ -94,10 +94,7 @@ class MyHelpController extends Controller
 
         echo "==================NT-CERAMIC============================". '<br>';
         foreach ($products as $product) {
-            echo $product->vendor_code.' ';
-        }
-        foreach ($products as $product) {
-            echo $product->title.' ';
+            echo $product->vendor_code.' '.$product->title.'<br>';
         }
 
         echo '<br>';
@@ -105,10 +102,7 @@ class MyHelpController extends Controller
 
         echo "==================PRIMAVERA============================". '<br>';
         foreach ($products as $product) {
-            echo $product->vendor_code.' ';
-        }
-        foreach ($products as $product) {
-            echo str_replace('Керамогранит', '',$product->title_avito).' ';
+            echo $product->vendor_code.' '.str_replace('Керамогранит', '',$product->title_avito).'<br>';
         }
 
         echo '<br>';
@@ -116,7 +110,7 @@ class MyHelpController extends Controller
 
         echo "==================RUSPLITKA============================". '<br>';
         foreach ($products as $product) {
-            echo $product->name.' ';
+            echo $product->name.'<br>';
         }
     }
 }
