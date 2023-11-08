@@ -39,28 +39,33 @@ class TechnotileController extends Controller
         foreach ($products as $product) {
             Product::create([
                 'code' => $product['@attributes']['id'],
-                'available' => $product['@attributes']['available'],
-                'url' => $product['url'],
-                'price' => $product['price'],
-                'category_id' => $product['categoryId'],
-                'picture' => $product['picture'],
-                'name' => $product['name'],
-                'description' => $product['description'],
-                'country' => $product['country_of_origin'],
-                'collection' => $product['param'][0],
-                'surface_type' => $product['param'][1],
-                'surface_faktura' => $product['param'][2],
-                'color' => $product['param'][3],
-                'length' => $product['param'][4],
-                'width' => $product['param'][5],
-                'fat' => $product['param'][6],
-                'in_pallet_m2' => $product['param'][7],
-                'pallet_massa_kg' => $product['param'][8],
-                'in_box_m2' => $product['param'][9],
-                'box_massa_kg' => $product['param'][10],
-                'count_in_box' => $product['param'][11],
+                'available' => $product['@attributes']['available'] ?? null,
+                'url' => $product['url'] ?? null,
+                'price' => $product['price'] ?? null,
+                'category_id' => $product['categoryId'] ?? null,
+                'picture' => $product['picture'] ?? null,
+                'name' => $product['name'] ?? null,
+                'description' => $product['description'] ?? null,
+                'country' => $product['country_of_origin'] ?? null,
+                'collection' => $product['param'][0] ?? null,
+                'surface_type' => $product['param'][1] ?? null,
+                'surface_faktura' => $product['param'][2] ?? null,
+                'color' => $product['param'][3] ?? null,
+                'length' => $product['param'][4] ?? null,
+                'width' => $product['param'][5] ?? null,
+                'fat' => $product['param'][6] ?? null,
+                'in_pallet_m2' => $product['param'][7] ?? null,
+                'pallet_massa_kg' => $product['param'][8] ?? null,
+                'in_box_m2' => $product['param'][9] ?? null,
+                'box_massa_kg' => $product['param'][10] ?? null,
+                'count_in_box' => $product['param'][11]??null,
             ]);
         }
+    }
 
+    public function index()
+    {
+        $products = Product::paginate(15);
+        return view('technotile.index', compact('products'));
     }
 }
