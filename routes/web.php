@@ -160,3 +160,7 @@ Route::get('/rusplitka/test', [\App\Http\Controllers\RusplitkaController::class,
 Route::get('/rusplitka', [\App\Http\Controllers\RusplitkaController::class, 'index'])->name('rusplitka.index');
 Route::get('/rusplitka/{id}', [\App\Http\Controllers\RusplitkaController::class, 'show'])->name('rusplitka.show');
 //------------------RUSPLITKA-END----------------------
+
+//--------------------TECHNOTILE------------------------
+Route::get('/technotile/import', [\App\Http\Controllers\TechnotileController::class, 'import']);
+//------------------TECHNOTILE-END----------------------
