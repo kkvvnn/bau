@@ -40,24 +40,24 @@
             <div class="row">
 
                 <div class="col">
-                    <h2>{{$product->svoystvo}} {{$product->name}} ({{$product->size_b}}x{{$product->size_a}})</h2>
+                    <h2>{{$product->name}} {{$product->width/10}}x{{$product->length/10}}</h2>
                     <hr>
                     <h3>
-                        {{$product->brand_name}}
+                        {{$product->description}}
                     </h3>
-                                    <h4>Коллекция: {{$product->collection->name}}
+                                    <h4>Коллекция: {{$product->collection}}
                     {{--                    @foreach ($collection as $one_collection)--}}
                     {{--                    <a href="/collection/{{$one_collection->Collection_Id}}" class="link-dark text-decoration-none text-reset">{{$one_collection->Collection_Name}}. </a>--}}
                     {{--                    @endforeach--}}
                                     </h4>
                     <p class="fs-5 text-body-secondary">
-                        Цена: {{$product->price_rozn}} ₽/{{$product->unit}}
+                        Цена: {{$product->price}} ₽
                     </p>
                         {{--                    <!-- Цена зак: {{$product->Price}} ₽/{{$product->MainUnit}} -->--}}
                         {{--                    <!-- <br> {{round(($product->RMPrice/$product->Price)*100 - 100, 2)}}% -->--}}
                     <hr>
 
-                    <p class="fs-5 text-body-secondary">Доступно {{$product->rest_real_free}} {{$product->unit}}</p>
+{{--                    <p class="fs-5 text-body-secondary">Доступно {{$product->rest_real_free}} {{$product->unit}}</p>--}}
                     {{--                <h5>--}}
                     {{--                    Остаток: {{$product->balanceCount}} {{$product->MainUnit}}--}}
                     {{--                </h5>--}}
@@ -66,8 +66,8 @@
 {{--                        Артикул: {{$product->vendor_code}}--}}
 {{--                    </h5>--}}
 {{--                    <hr>--}}
-                    <p class="fs-5 text-body-secondary">В упаковке шт: <strong>{{$product->in_pack_sht}}</strong> кв.м:
-                        <strong>{{$product->in_pack_m2}}</strong></p>
+                    <p class="fs-5 text-body-secondary">В упаковке шт: <strong>{{$product->count_in_box}}</strong> кв.м:
+                        <strong>{{$product->in_box_m2}}</strong></p>
                     {{--                <div id="app-5">--}}
                     {{--                    <input v-model="count" placeholder="Количество кв.м?"> --}}
                     {{--                    --}}
@@ -132,22 +132,22 @@
 
 {{--                </div>--}}
                 <hr>
+{{--                <div class="grid">--}}
+{{--                    <div class="grid-sizer"></div>--}}
+{{--                    @foreach($img_collection as $img)--}}
+{{--                        <div class="grid-item">--}}
+{{--                            <img src="{{$img}}"/>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--                <hr>--}}
                 <div class="grid">
                     <div class="grid-sizer"></div>
-                    @foreach($img_collection as $img)
+{{--                    @foreach($product->picture as $img)--}}
                         <div class="grid-item">
-                            <img src="{{$img}}"/>
+                            <img src="{{$product->picture}}"/>
                         </div>
-                    @endforeach
-                </div>
-                <hr>
-                <div class="grid">
-                    <div class="grid-sizer"></div>
-                    @foreach($imgs as $img)
-                        <div class="grid-item">
-                            <img src="{{$img}}"/>
-                        </div>
-                    @endforeach
+{{--                    @endforeach--}}
                 </div>
                 {{--            <div class="grid">--}}
                 {{--                <div class="grid-sizer"></div>--}}

@@ -68,4 +68,10 @@ class TechnotileController extends Controller
         $products = Product::paginate(15);
         return view('technotile.index', compact('products'));
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        return view('technotile.show', compact('product'));
+    }
 }

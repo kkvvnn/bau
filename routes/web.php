@@ -164,4 +164,5 @@ Route::get('/rusplitka/{id}', [\App\Http\Controllers\RusplitkaController::class,
 //--------------------TECHNOTILE------------------------
 Route::get('/technotile/import', [\App\Http\Controllers\TechnotileController::class, 'import']);
 Route::get('/technotile/index', [\App\Http\Controllers\TechnotileController::class, 'index'])->name('technotile.index');
+Route::get('/technotile/{id}', [\App\Http\Controllers\TechnotileController::class, 'show'])->name('technotile.show');
 //------------------TECHNOTILE-END----------------------
