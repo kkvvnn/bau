@@ -1810,7 +1810,8 @@
 
             $description .= '<p>-------------------------</p>';
             $description .= '<p><em>'.$product->surface_type.' '.$product->surface_faktura.'<br>';
-            $description .= $product->surface_faktura.' '.$product->surface_type.'</em></p>';
+            $description .= $product->surface_faktura.' '.$product->surface_type.'<br>';
+            $description .= $product->code.'</em></p>';
 
 
             $code = $product->code . 't_tile';
