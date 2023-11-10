@@ -1696,6 +1696,52 @@
 //            $price = round($price * 0.93, -1);
 //                --------------------------
             $title = str_replace('Плитка керамогранит ', '', $product->name).' '.($product->width/10).'x'.($product->length/10);
+            $title = str_replace('полированный', 'полир.', $title);
+
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('лаппатирование', 'лаппатир.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('структурный', 'структ.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('легкое', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('мягкое', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('бежевый', 'беж', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('антискользящий', 'антиск.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('оранжевый', 'оранж.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('коричневый', 'корич.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Тёмный', 'Тём', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Светлый', 'Свет', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Светло', 'Св', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Натуральный', 'Натур.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Рифленый', 'Рифл.', $title);
+            }
+
+            if (mb_strlen($title) < 37) {
+                $title = 'Керамогранит ' . $title;
+            }
+
 //                -----------------------------
 //              ------------------------------------------FOTO-------------------------------------
 
