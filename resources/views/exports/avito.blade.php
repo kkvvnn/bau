@@ -305,7 +305,15 @@
                 $keywords .= $type . ' ' . $country . ', ';
             }
 
+            if ($product->Color == 'Белый' && $product->DesignValue == 'Мрамор') {
+                $keywords .= $type . ' белый мрамор, ';
+                $keywords .= $type . ' под мрамор белый, ';
+            }
 
+            if ($product->Color == 'Черный' && $product->DesignValue == 'Мрамор') {
+                $keywords .= $type . ' черный мрамор, ';
+                $keywords .= $type . ' под мрамор черный, ';
+            }
 
 
 
@@ -1751,8 +1759,12 @@
             $description .= '<p>'.nl2br($add_description).'</p>';
             }
 
+//            $description .= '<p>-------------------------</p>';
+//            $description .= '<p>'.$product->code.'</p>';
+
             $description .= '<p>-------------------------</p>';
-            $description .= '<p>'.$product->code.'</p>';
+            $description .= '<p><em>'.$product->surface_type.' '.$product->surface_faktura.'<br>';
+            $description .= $product->surface_faktura.' '.$product->surface_type.'</em></p>';
 
 
             $code = $product->code . 't_tile';
