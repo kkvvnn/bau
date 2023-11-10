@@ -7,6 +7,7 @@ use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\Kevis;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
+use App\Models\Technotile\Product as TechnotileProduct;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
@@ -76,8 +77,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $absolut_gres = AbsolutGresScrap::all();
 //      ==============================================
 //        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
-//        $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->get();
-        $leedo = [];
+        $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->get();
+//        $leedo = [];
+//        dd($leedo);
 //      ==============================================
         $altacera = AltaceraTovarAvailable::where([['artikul', '!=', 'PWU09DLM3'], ['artikul', '!=', 'GFA114CMT07R'], ['artikul', '!=', 'BWA60ALD004'], ['artikul', '!=', 'DWU09BNT017'], ['artikul', '!=', 'GFA57SLC00L'], ['artikul', '!=', 'PWA11ALD1']])->get();
 //      ==============================================
@@ -87,6 +89,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ==============================================
         $rusplitka = RusplitkaProduct::where([['svoystvo', 'Керамогранит'], ['rest_real_free', '!=', 0]])->get();
 //      ==============================================
+        $technotile = TechnotileProduct::where('available', 'true')->get();
 
         if ($this->foto == '') {
             return view('exports.avito', [
@@ -99,6 +102,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'ntceramic' => $ntceramic,
                 'kevis' => $kevis,
                 'rusplitka' => $rusplitka,
+                'technotile' => $technotile,
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,

@@ -1680,6 +1680,112 @@
 
     {{--    -----------------------RUSPLITKA_END----------------------------}}
 
+    {{--    ---------------------TECHNOTILE------------------------------}}
+    @foreach($technotile as $product)
+        @php
+//            $price = $product->price;
+            $price = '';
+//            $price = round($price * 0.93, -1);
+//                --------------------------
+            $title = str_replace('Плитка керамогранит ', '', $product->name).' '.($product->width/10).'x'.($product->length/10);
+//                -----------------------------
+//              ------------------------------------------FOTO-------------------------------------
+
+            $img = $product->picture;
+
+            $img_full_arr = explode(' | ', $img);
+
+            if (count($img_full_arr) <= 10) {
+                $img_ready = $img;
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_ready = implode(' | ', $img_full_arr);
+            }
+//                ---------------------
+            $FinishingType = 'Плитка, керамогранит и мозаика';
+            $FinishingSubType = 'Керамогранит';
+//                ---------------------
+            $description = '';
+
+            if($add_description_first != '') {
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
+            }
+
+            $description .= '<p>Керамогранит '.$product->description.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+            $description .= '<p><strong>'.$product->name.' '.$product->width.'x'
+                    .$product->length.' '.$product->description.' ('
+                    .$product->country.')</strong></p>';
+
+            $description .= '<p>Коллекция: '.$product->collection.'</p>';
+//            $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
+
+
+                $description .= '<li><strong>Размер: </strong>' . $product->width.'х'.$product->length. ' мм</li>';
+                if($product->fat != null) {
+                $description .= '<li><strong>Толщина: </strong>' . $product->fat . ' мм</li>';
+                }
+                if($product->surface_type != null) {
+                $description .= '<li><strong>Поверхность: </strong>' . $product->surface_type . '</li>';
+                }
+                if($product->surface_faktura != null) {
+                $description .= '<li><strong>Фактура поверхности: </strong>' . $product->surface_faktura . '</li>';
+                }
+                if($product->count_in_box != null) {
+                $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_box . '</li>';
+                }
+                if($product->in_box_m2 != null) {
+                $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->in_box_m2 . '</li>';
+                }
+                if($product->country != null) {
+                $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
+                }
+
+                $description .= '</ul><br>';
+
+
+            $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+            $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+            $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+
+            if($add_description != '') {
+            $description .= '<p>'.nl2br($add_description).'</p>';
+            }
+
+            $description .= '<p>-------------------------</p>';
+            $description .= '<p>'.$product->code.'</p>';
+
+
+            $code = $product->code . 't_tile';
+
+        @endphp
+        <tr>
+            <td></td>
+            <td>{{ $code }}</td>
+            <td>{{ $contact_method }}</td>
+            <td>kkvvnn89@gmail.com</td>
+            <td>Активно</td>
+            <td>{{ $name }}</td>
+            <td>{{$price}}</td>
+            <td>Напольные решения</td>
+            <td>{{$title}}</td>
+            <td>{{$img_ready}}</td> <!-- -->
+            <td>Отделка</td>
+            <td>Стройматериалы</td>
+            <td>Ремонт и строительство</td>
+            <td>Package</td>
+            <td>{{$FinishingType}}</td>
+            <td>{{ $phone }}</td> <!-- -->
+            <td>{{$description}}</td> <!-- -->
+            <td>{{ $address }}</td>
+            <td>Товар от производителя</td>
+            <td>{{$FinishingSubType}}</td>
+            <td>Новое</td>
+            <td></td>
+        </tr>
+    @endforeach
+
+    {{--    -----------------------TECHNOTILE_END----------------------------}}
+
 
     </tbody>
 </table>
