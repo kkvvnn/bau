@@ -1773,7 +1773,7 @@
             $description .= '<p>Коллекция: '.$product->collection.'</p>';
 //            $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
 
-
+                $description .= '<ul>';
                 $description .= '<li><strong>Размер: </strong>' . $product->width.'х'.$product->length. ' мм</li>';
                 if($product->fat != null) {
                 $description .= '<li><strong>Толщина: </strong>' . $product->fat . ' мм</li>';
