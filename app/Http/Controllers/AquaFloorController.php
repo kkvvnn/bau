@@ -13,7 +13,7 @@ class AquaFloorController extends Controller
     public function import()
     {
         // $name = Storage::get('aquafloor/import/aquafloor_all.xlsx');
-        $name = 'import/aquafloor/aquafloor.xlsx';
+        $name = 'import/aquafloor/aquafloor_new.xlsx';
 
         Excel::import(new AquaFloorImport, $name);
 
@@ -64,7 +64,7 @@ class AquaFloorController extends Controller
 
     public function index()
     {
-        $products = AquaFloor::paginate(20);
+        $products = AquaFloor::paginate(15);
 
         return view('aquafloor.index', [
             'products' => $products,

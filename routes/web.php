@@ -60,7 +60,7 @@ Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class,
 // -----------------AQUAFLOOR-----------------------
 Route::get('/aquafloor/import', [AquaFloorController::class, 'import'])->name('aqua_flor_import');
 Route::get('/aquafloor/download_pic', [AquaFloorController::class, 'download_pic']);
-Route::get('/aquafloor/index', [AquaFloorController::class, 'index'])->name('aquafloor_index');
+Route::get('/aquafloor/index2', [AquaFloorController::class, 'index'])->name('aquafloor_index');
 Route::get('/aquafloor/index_collections', [AquaFloorController::class, 'index_collections'])->name('aquafloor_index_collections');
 Route::get('/aquafloor/collection/{collection_name}', [AquaFloorController::class, 'index_one_collection']);
 Route::get('/aquafloor/product/{title}', [AquaFloorController::class, 'index_product']);
