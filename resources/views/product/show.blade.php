@@ -52,6 +52,7 @@
                     @endif
 
                     <h5>Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
+                    <p>Актуально на {{$product->updated_at->toDateString()}}</p>
                     <hr>
 
                 </div>
