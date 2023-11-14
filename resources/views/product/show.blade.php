@@ -52,10 +52,6 @@
                     @endif
 
                     <h5>Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
-                    <hr>
-
-                    <h5>В упаковке <strong>{{$product->PCS_in_Package}}</strong> шт. <strong>{{$product->Package_Value}}</strong> кв.м</h5>
-                    <hr>
 
                 </div>
             </div>
@@ -83,12 +79,6 @@
 
                 <table class="table table-striped">
                     <tbody>
-                    @if($product->PCS_in_Package)
-                        <tr>
-                            <th scope="row">Количество в упаковке</th>
-                            <td>{{$product->PCS_in_Package}}</td>
-                        </tr>
-                    @endif
                     @if($product->Owner_Article)
                         <tr>
                             <th scope="row">Артикул</th>
@@ -183,6 +173,18 @@
                         <tr>
                             <th scope="row">Стойкость к истиранию</th>
                             <td>{{$product->Durability}}</td>
+                        </tr>
+                    @endif
+                    @if($product->Package_Value)
+                        <tr>
+                            <th scope="row">Кв.м в упаковке</th>
+                            <td>{{$product->Package_Value}}</td>
+                        </tr>
+                    @endif
+                    @if($product->PCS_in_Package)
+                        <tr>
+                            <th scope="row">Количество в упаковке</th>
+                            <td>{{$product->PCS_in_Package}}</td>
                         </tr>
                     @endif
                     </tbody>
