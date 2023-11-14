@@ -5,6 +5,7 @@ namespace App\Exports;
 // use Maatwebsite\Excel\Concerns\FromCollection;
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
+use App\Models\AquaFloor;
 use App\Models\Kevis;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
 use App\Models\Technotile\Product as TechnotileProduct;
@@ -90,6 +91,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $rusplitka = RusplitkaProduct::where([['svoystvo', 'Керамогранит'], ['rest_real_free', '!=', 0]])->get();
 //      ==============================================
         $technotile = TechnotileProduct::where('available', 'true')->get();
+//      ==============================================
+        $aquafloor = AquaFloor::where('title', 'not like', '%Подложка%')->get();
+
 
         if ($this->foto == '') {
             return view('exports.avito', [
@@ -103,6 +107,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'kevis' => $kevis,
                 'rusplitka' => $rusplitka,
                 'technotile' => $technotile,
+                'aquafloor' => $aquafloor,
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,
