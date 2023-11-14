@@ -63,7 +63,7 @@
                 @if($product->vendor_code)
                     <tr>
                         <th scope="row">Артикул</th>
-                        <td>{{$product->vendor_code}} мм</td>
+                        <td>{{$product->vendor_code}}</td>
                     </tr>
                 @endif
                 @if($product->klass_iznosostojkosti)
