@@ -28,11 +28,6 @@
 
                     <h4>Коллекция: <a href="{{route('aquafloor.show.collection', $product->collection)}}">{{$product->collection}}</a></h4>
                     <p class="fs-5 text-body-secondary">Цена: {{$product->price}} ₽</p>
-                    <hr>
-
-                    @if($product->count_in_box)
-                        <p class="fs-5 text-body-secondary">В упаковке шт: <strong>{{$product->count_in_box}}</strong></p>
-                    @endif
                 </div>
             </div>
 
@@ -57,6 +52,12 @@
                     <tr>
                         <th scope="row">Размер</th>
                         <td>{{$product->razmer}} мм</td>
+                    </tr>
+                @endif
+                @if($product->count_in_box)
+                    <tr>
+                        <th scope="row">В упаковке штук</th>
+                        <td>{{$product->count_in_box}}</td>
                     </tr>
                 @endif
                 @if($product->vendor_code)
