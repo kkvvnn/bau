@@ -52,6 +52,7 @@
                     @endif
 
                     <h5>Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
+                    <hr>
 
                 </div>
             </div>
