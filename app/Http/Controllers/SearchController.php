@@ -69,7 +69,7 @@ class SearchController extends Controller
             ]);
         }
 
-        $aquafloor = AquaFloor::where('title', 'LIKE', $name)->paginate(15);
+        $aquafloor = AquaFloor::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
         $aquafloor->appends(['name' => $name]);
         if (count($aquafloor)) {
             return view('aquafloor.index', [
