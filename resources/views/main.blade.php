@@ -237,7 +237,7 @@
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_plit')}}">Плитка деш</a>--}}
 {{--              </li>--}}
 {{--              <li class="nav-item">--}}
-                <a class="nav-link active" aria-current="page" href="{{route('aquafloor_index_collections')}}">AquaFloor</a>
+                <a class="nav-link active" aria-current="page" href="{{route('aquafloor_index')}}">AquaFloor</a>
               </li>
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_size_form')}}">По размеру</a>--}}
