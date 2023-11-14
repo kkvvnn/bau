@@ -13,7 +13,7 @@ class AquaFloorController extends Controller
     public function import()
     {
         // $name = Storage::get('aquafloor/import/aquafloor_all.xlsx');
-        $name = 'import/aquafloor/aquafloor.xlsx';
+        $name = 'import/aquafloor/aquafloor_new.xlsx';
 
         Excel::import(new AquaFloorImport, $name);
 
@@ -64,46 +64,25 @@ class AquaFloorController extends Controller
 
     public function index()
     {
-        $products = AquaFloor::paginate(20);
+        $products = AquaFloor::paginate(15);
 
         return view('aquafloor.index', [
             'products' => $products,
         ]);
     }
 
-    public function index_product($title)
+    public function show($id)
     {
-        $product = AquaFloor::where('title', $title)->get();
-        // dd($product);
-        return view('aquafloor.index_product', [
-            'product_one' => $product,
-        ]);
+        $product = AquaFloor::find($id);
+
+        return view('aquafloor.show', compact('product'));
     }
 
-    public function index_one_collection($collection_name)
+    public function show_collection($name)
     {
-        $products = AquaFloor::where('collection_url', $collection_name)->paginate(20);
+        $products = AquaFloor::where('collection', $name)->paginate(15);
 
-        return view('aquafloor.index', [
-            'products' => $products,
-        ]);
+        return view('aquafloor.index', compact('products'));
     }
 
-    public function index_collections()
-    {
-        $collections = [];
-        $products = AquaFloor::all();
-
-        foreach ($products as $product) {
-            $collections[] = $product->collection_url;
-        }
-
-        $collections = array_unique($collections);
-        $collections = array_reverse($collections);
-        // $collections = AquaFloor::distinct()->get(['collection']);
-        // dd($collections);
-        return view('aquafloor.index_collections', [
-            'collections' => $collections,
-        ]);
-    }
 }
