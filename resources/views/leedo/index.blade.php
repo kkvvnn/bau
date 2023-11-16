@@ -39,7 +39,7 @@
                                         Санкт-Петербург: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}</p>
                                     <hr>
                                     <p class="text-body-secondary">
-                                        Обновлено: {{$product->updated_at->toDateString()}}</p>
+                                        Обновлено: {{$product->updated_at->format('d.m.Y')}}</p>
                                     <hr>
 
                                     @php

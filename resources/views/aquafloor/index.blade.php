@@ -40,7 +40,7 @@
                                 <p class="fs-5 text-body-secondary">Цена: {{$product->price}} ₽</p>
                                 <hr>
 
-                                <p class="text-body-secondary"> Обновлено: {{$product->updated_at->toDateString()}}</p>
+                                <p class="text-body-secondary"> Обновлено: {{$product->updated_at->format('d.m.Y')}}</p>
 {{--                                <hr>--}}
 {{--                                <p class="fs-5 text-body-secondary">В упаковке шт:--}}
 {{--                                    <strong>{{$product->in_pack_sht}}</strong> кв.м:--}}

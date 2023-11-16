@@ -89,7 +89,7 @@
                                 <p class="fs-5 text-body-secondary">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
                                 <hr>
 
-                                <p class="text-body-secondary"> Обновлено: {{$product->updated_at->toDateString()}}</p>
+                                <p class="text-body-secondary"> Обновлено: {{$product->updated_at->format('d.m.Y')}}</p>
 {{--                                <hr>--}}
 {{--                                @php--}}
 {{--                                    $vendor_code = str_replace('х', '', $product->Element_Code);--}}

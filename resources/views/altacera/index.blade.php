@@ -85,18 +85,18 @@
                                     <hr>
                                 @endif
 
-                                <p class="text-body-secondary">Обновлено: {{$product->updated_at->toDateString()}}</p>
-                                <hr>
+                                <p class="text-body-secondary">Обновлено: {{$product->updated_at->format('d.m.Y')}}</p>
+{{--                                <hr>--}}
 
-                                @php
-                                    $vendor_code = $product->artikul;
-                                    $files = Storage::disk('foto_altacera')->files('/'.$vendor_code);
-                                @endphp
-                                @if(count($files))
-                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>
-                                @else
-                                    <p class="h5 text-danger">Нет фото</p>
-                                @endif
+{{--                                @php--}}
+{{--                                    $vendor_code = $product->artikul;--}}
+{{--                                    $files = Storage::disk('foto_altacera')->files('/'.$vendor_code);--}}
+{{--                                @endphp--}}
+{{--                                @if(count($files))--}}
+{{--                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>--}}
+{{--                                @else--}}
+{{--                                    <p class="h5 text-danger">Нет фото</p>--}}
+{{--                                @endif--}}
                             </div>
 
 
