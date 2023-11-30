@@ -307,6 +307,19 @@
   @yield('content')
   </main>
 
+  <div class="container">
+      <footer class="py-3 my-4">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+              <li class="nav-item"><a href="{{route('product_index')}}" class="nav-link px-2 text-body-secondary">Главная</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Контакты</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О нас</a></li>
+          </ul>
+          <p class="text-center text-body-secondary">&copy; {{ date('Y') }} Company Name, Inc</p>
+      </footer>
+  </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>

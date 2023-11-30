@@ -271,12 +271,9 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
         $collection = $product->collections;
-//        dd($collection);
-//        dd(count($collection));
 
         if (count($collection)) {
             $url_collection = $collection[0]->Interior_Pic;
-
             $url_collection = explode(', ', $url_collection);
 
             $urls_c = [];
@@ -288,9 +285,6 @@ class ProductController extends Controller
         } else {
             $urls_c = [];
         }
-
-
-        // dd($urls_c);
 
         $name_files = [];
         for ($pic = 1; $pic <= 24; $pic++) {
@@ -346,6 +340,20 @@ class ProductController extends Controller
         } else {
             $vivod = '';
         }
+//        -------------------------
+        $text_color = '';
+        $date_now = \Carbon\Carbon::now();
+        $date_of_update = $product->updated_at;
+        $diff_days = $date_now->diffInDays($date_of_update);
+
+        if ($diff_days == 0) {
+            $text_color = 'text-success';
+        } elseif ($diff_days <= 7) {
+            $text_color = 'text-warning';
+        } else {
+            $text_color = 'text-danger';
+        }
+//        ------------------------------
 
         return view('product.show', [
             'product' => $product,
@@ -356,6 +364,7 @@ class ProductController extends Controller
             'fotos' => $fotos,
             'vivod' => $vivod,
             'old_price' => $old_price,
+            'text_color' => $text_color,
         ]);
     }
 

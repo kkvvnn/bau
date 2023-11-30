@@ -13,35 +13,15 @@
                 </div>
             @endif
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4" data-masonry='{"percentPosition": true }'>
 
                 @foreach($products as $product)
 
-                        <?php
+                    @php
                         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
                         $name_file = Str::remove($string_for_delete, $product->Picture);
-
-
-
-                        // if (Storage::disk('public')->missing($name_file)) {
-                        //   $file = Storage::disk('ftp')->get($name_file);
-                        //   Storage::disk('public')->put($name_file, $file);
-                        // }
-
-
                         $url1 = Storage::url('Picture/' . $name_file);
-                        // dd($url1)
-                        // $url_small = Storage::url('small_img/' . $name_file);
-                        // $url = Storage::url($name_file);
-
-                        // use Illuminate\Support\Str;
-
-                        // $url_small = Str::swap([
-                        //   '.jpeg' => '.jpg',
-                        //   '.png' => '.jpg',
-                        //   // 'great' => 'fantastic',
-                        // ], $url_small);
-                        ?>
+                    @endphp
 
                     @php
                         if ($product->RMPriceOld > 0 && $product->RMPriceOld > $product->RMPrice) {
@@ -58,6 +38,20 @@
                         }
 
                     @endphp
+                    @php
+                        $text_color = '';
+                        $date_now = \Carbon\Carbon::now();
+                        $date_of_update = $product->updated_at;
+                        $diff_days = $date_now->diffInDays($date_of_update);
+
+                        if ($diff_days == 0) {
+                            $text_color = 'text-success';
+                        } elseif ($diff_days <= 7) {
+                            $text_color = 'text-warning';
+                        } else {
+                            $text_color = 'text-danger';
+                        }
+                    @endphp
 
                     <div class="col">
                         <div class="card h-100">
@@ -72,24 +66,24 @@
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
+                                <h5 class="card-title pricing-card-title">{{$product->RMPrice}} <span class="text-muted fw-light">₽/{{$product->MainUnit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h5>
                                 <hr>
                                 @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                                    <p class="fs-5 text-body-secondary"><button type="button" class="btn btn-info">Цена -10%: {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></button></p>
+                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>
                                     <hr>
                                 @endif
                                 @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                                    <p class="fs-5 text-body-secondary"><button type="button" class="btn btn-info">Цена -10%: {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></button></p>
+                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>
                                     <hr>
                                 @endif
                                 @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
-                                    <button type="button" class="btn btn-warning">РАСПРОДАЖА</button>                                    <hr>
+                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>                                    <hr>
                                 @endif
 
                                 <p class="fs-5 text-body-secondary">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
                                 <hr>
 
-                                <p class="text-body-secondary"> Обновлено: {{$product->updated_at->format('d.m.Y')}}</p>
+                                <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
 {{--                                <hr>--}}
 {{--                                @php--}}
 {{--                                    $vendor_code = str_replace('х', '', $product->Element_Code);--}}
