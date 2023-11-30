@@ -69,7 +69,6 @@
                                 <a href="/product/{{$product->id}}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->Producer_Brand}} {{$product->Name}}</h5>
                                 </a>
-                                <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
                                 <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}} ₽/{{$product->MainUnit}} <small class="text-muted"><del>{{$old_price}} </del></small></p>
