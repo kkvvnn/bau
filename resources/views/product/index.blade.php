@@ -13,7 +13,7 @@
                 </div>
             @endif
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4" data-masonry='{"percentPosition": true }'>
 
                 @foreach($products as $product)
 
