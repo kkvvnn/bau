@@ -19,7 +19,7 @@
 
             <div class="row">
                 <div class="col">
-                    <h1 class="display-5">{{$product->Name}}</h1>
+                    <h1 class="display-6">{{$product->Name}}</h1>
 
                     <hr>
 
@@ -43,14 +43,6 @@
             <div class="row">
                 <div class="col-md-6">
                     <div id="carouselExample" class="carousel slide carousel-dark">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                    aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                    aria-label="Slide 3"></button>
-                        </div>
                         <div class="carousel-inner">
                             @php
                                 $active_slider = 'active';
@@ -78,18 +70,18 @@
                 </div>
                 <div class="col-md-6">
 
-                    <h2 class="card-title mt-4 pricing-card-title">{{$product->RMPrice}} <small
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->RMPrice}} <small
                             class="text-muted fw-light">р/{{$product->MainUnit}}</small></h2>
 
                     <br>
 
                     @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
                         <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                            Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>
+                            Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
                     @endif
                     @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
                         <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                            Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>
+                            Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
                     @endif
                     @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
                         <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">
@@ -104,141 +96,158 @@
             </div>
             <hr>
         </div>
-        {{--            <div class="container-fluid">--}}
-        {{--                <div class="grid">--}}
-        {{--                    <div class="grid-sizer"></div>--}}
-        {{--                    @foreach ($url_collection as $url_c)--}}
-        {{--                        <div class="grid-item">--}}
-        {{--                            <img src="/storage/Collections/{{$url_c}}"/>--}}
-        {{--                        </div>--}}
-        {{--                    @endforeach--}}
 
-        {{--                </div>--}}
-        {{--                <hr>--}}
-        {{--                <div class="grid">--}}
-        {{--                    <div class="grid-sizer"></div>--}}
-        {{--                    @foreach ($urls as $url)--}}
-        {{--                        <div class="grid-item">--}}
-        {{--                            <img src="{{$url}}" style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>--}}
-        {{--                        </div>--}}
-        {{--                    @endforeach--}}
-        {{--                </div>--}}
 
         <div class="container">
-            <table class="table table-striped">
-                <tbody>
-                @if($product->Owner_Article)
-                    <tr>
-                        <th scope="row">Артикул</th>
-                        <td>{{$product->Owner_Article}}</td>
-                    </tr>
-                @endif
-                @if($product->Producer_Brand)
-                    <tr>
-                        <th scope="row">Бренд</th>
-                        <td>{{$product->Producer_Brand}}</td>
-                    </tr>
-                @endif
-                @if($product->Country_of_manufacture)
-                    <tr>
-                        <th scope="row">Страна производства</th>
-                        <td>{{$product->Country_of_manufacture}}</td>
-                    </tr>
-                @endif
-                @if($product->Category)
-                    <tr>
-                        <th scope="row">Категория</th>
-                        <td>{{$product->Category}}</td>
-                    </tr>
-                @endif
-                @if($product->Place_in_the_Collection)
-                    <tr>
-                        <th scope="row">Место в коллекции</th>
-                        <td>{{$product->Place_in_the_Collection}}</td>
-                    </tr>
-                @endif
-                @if($product->DesignValue)
-                    <tr>
-                        <th scope="row">Дизайн</th>
-                        <td>{{$product->DesignValue}}</td>
-                    </tr>
-                @endif
-                @if($product->Color)
-                    <tr>
-                        <th scope="row">Цвет</th>
-                        <td>{{$product->Color}}</td>
-                    </tr>
-                @endif
-                @if($product->Surface)
-                    <tr>
-                        <th scope="row">Поверхность</th>
-                        <td>{{$product->Surface}}</td>
-                    </tr>
-                @endif
-                @if($product->Cover)
-                    <tr>
-                        <th scope="row">Покрытие</th>
-                        <td>{{$product->Cover}}</td>
-                    </tr>
-                @endif
-                @if($product->FrostResistance)
-                    <tr>
-                        <th scope="row">Морозоустойчивость</th>
-                        <td>{{$product->FrostResistance}}</td>
-                    </tr>
-                @endif
-                @if($product->Rectified)
-                    <tr>
-                        <th scope="row">Ректифицированная</th>
-                        <td>{{$product->Rectified}}</td>
-                    </tr>
-                @endif
-                @if($product->Lenght)
-                    <tr>
-                        <th scope="row">Длина</th>
-                        <td>{{$product->Lenght}} см</td>
-                    </tr>
-                @endif
-                @if($product->Height)
-                    <tr>
-                        <th scope="row">Ширина</th>
-                        <td>{{$product->Height}} см</td>
-                    </tr>
-                @endif
-                @if($product->Thickness && $product->Thickness != 0)
-                    <tr>
-                        <th scope="row">Толщина</th>
-                        <td>{{$product->Thickness}} см</td>
-                    </tr>
-                @endif
-                @if($product->Package_Weight)
-                    <tr>
-                        <th scope="row">Вес упаковки</th>
-                        <td>{{$product->Package_Weight}} кг</td>
-                    </tr>
-                @endif
-                @if($product->Durability)
-                    <tr>
-                        <th scope="row">Стойкость к истиранию</th>
-                        <td>{{$product->Durability}}</td>
-                    </tr>
-                @endif
-                @if($product->Package_Value)
-                    <tr>
-                        <th scope="row">Кв.м в упаковке</th>
-                        <td>{{$product->Package_Value}}</td>
-                    </tr>
-                @endif
-                @if($product->PCS_in_Package)
-                    <tr>
-                        <th scope="row">Количество в упаковке</th>
-                        <td>{{$product->PCS_in_Package}}</td>
-                    </tr>
-                @endif
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-striped">
+                        <tbody>
+                        @if($product->Owner_Article)
+                            <tr>
+                                <th scope="row">Артикул</th>
+                                <td>{{$product->Owner_Article}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Producer_Brand)
+                            <tr>
+                                <th scope="row">Бренд</th>
+                                <td>{{$product->Producer_Brand}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Country_of_manufacture)
+                            <tr>
+                                <th scope="row">Страна производства</th>
+                                <td>{{$product->Country_of_manufacture}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Category)
+                            <tr>
+                                <th scope="row">Категория</th>
+                                <td>{{$product->Category}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Place_in_the_Collection)
+                            <tr>
+                                <th scope="row">Место в коллекции</th>
+                                <td>{{$product->Place_in_the_Collection}}</td>
+                            </tr>
+                        @endif
+                        @if($product->DesignValue)
+                            <tr>
+                                <th scope="row">Дизайн</th>
+                                <td>{{$product->DesignValue}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Color)
+                            <tr>
+                                <th scope="row">Цвет</th>
+                                <td>{{$product->Color}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Surface)
+                            <tr>
+                                <th scope="row">Поверхность</th>
+                                <td>{{$product->Surface}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Cover)
+                            <tr>
+                                <th scope="row">Покрытие</th>
+                                <td>{{$product->Cover}}</td>
+                            </tr>
+                        @endif
+                        @if($product->FrostResistance)
+                            <tr>
+                                <th scope="row">Морозоустойчивость</th>
+                                <td>{{$product->FrostResistance}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Rectified)
+                            <tr>
+                                <th scope="row">Ректифицированная</th>
+                                <td>{{$product->Rectified}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Lenght)
+                            <tr>
+                                <th scope="row">Длина</th>
+                                <td>{{$product->Lenght}} см</td>
+                            </tr>
+                        @endif
+                        @if($product->Height)
+                            <tr>
+                                <th scope="row">Ширина</th>
+                                <td>{{$product->Height}} см</td>
+                            </tr>
+                        @endif
+                        @if($product->Thickness && $product->Thickness != 0)
+                            <tr>
+                                <th scope="row">Толщина</th>
+                                <td>{{$product->Thickness}} см</td>
+                            </tr>
+                        @endif
+                        @if($product->Package_Weight)
+                            <tr>
+                                <th scope="row">Вес упаковки</th>
+                                <td>{{$product->Package_Weight}} кг</td>
+                            </tr>
+                        @endif
+                        @if($product->Durability)
+                            <tr>
+                                <th scope="row">Стойкость к истиранию</th>
+                                <td>{{$product->Durability}}</td>
+                            </tr>
+                        @endif
+                        @if($product->Package_Value)
+                            <tr>
+                                <th scope="row">Кв.м в упаковке</th>
+                                <td>{{$product->Package_Value}}</td>
+                            </tr>
+                        @endif
+                        @if($product->PCS_in_Package)
+                            <tr>
+                                <th scope="row">Количество в упаковке</th>
+                                <td>{{$product->PCS_in_Package}}</td>
+                            </tr>
+                        @endif
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="container-fluid">
+                        <div class="grid">
+                            <div class="grid-sizer"></div>
+                            @foreach ($urls as $url)
+                                <div class="grid-item">
+                                    <img src="{{$url}}"
+                                         style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container-fluid">
+                    <div class="grid">
+                        <div class="grid-sizer"></div>
+                        @foreach ($urls as $url)
+                            <div class="grid-item">
+                                <img src="{{$url}}"
+                                     style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
