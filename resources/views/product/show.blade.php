@@ -42,88 +42,89 @@
         <div class="container-md">
             <div class="row">
                 <div class="col-md-6">
-                    <div id="carouselExample" class="carousel slide carousel-dark">
+                    <div id="carouselExample_collection" class="carousel slide carousel-dark">
                         <div class="carousel-inner">
                             @php
                                 $active_slider = 'active';
                             @endphp
-                            @foreach($urls as $url)
+                            @foreach($url_collection as $url_z)
                                 <div class="carousel-item {{$active_slider}}">
-                                    <img src="{{$url}}" class="d-block w-100" alt="...">
+                                    <img src="/storage/Collections/{{$url_z}}" class="d-block w-100" alt="...">
                                 </div>
                                 @php
                                     $active_slider = '';
                                 @endphp
                             @endforeach
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample_collection"
                                 data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample_collection"
                                 data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-
-                </div>
-                <div class="col-md-6">
-
-                    <h2 class="card-title mt-5 pricing-card-title">{{$product->RMPrice}} <small
-                            class="text-muted fw-light">₽/{{$product->MainUnit}}</small></h2>
-
-                    <br>
-
-                    @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                            Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
-                    @endif
-                    @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                            Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
-                    @endif
-                    @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
-                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">
-                            Распродажа</p>
-                    @endif
-
-                    <h5 class="mt-4">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
-                    <p>Актуально на <span
-                            class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
-
                 </div>
             </div>
+
             <hr>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div id="carouselExample_collection" class="carousel slide carousel-dark">
+                        <div id="carouselExample" class="carousel slide carousel-dark">
                             <div class="carousel-inner">
                                 @php
                                     $active_slider = 'active';
                                 @endphp
-                                @foreach($url_collection as $url_z)
+                                @foreach($urls as $url)
                                     <div class="carousel-item {{$active_slider}}">
-                                        <img src="/storage/Collections/{{$url_z}}" class="d-block w-100" alt="...">
+                                        <img src="{{$url}}" class="d-block w-100" alt="...">
                                     </div>
                                     @php
                                         $active_slider = '';
                                     @endphp
                                 @endforeach
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample_collection"
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                                     data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample_collection"
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
                                     data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <h2 class="card-title mt-5 pricing-card-title">{{$product->RMPrice}} <small
+                                class="text-muted fw-light">₽/{{$product->MainUnit}}</small></h2>
+
+                        <br>
+
+                        @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
+                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
+                                Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
+                        @endif
+                        @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
+                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
+                                Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
+                        @endif
+                        @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
+                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">
+                                Распродажа</p>
+                        @endif
+
+                        <h5 class="mt-4">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
+                        <p>Актуально на <span
+                                class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
+
                     </div>
                 </div>
             </div>
