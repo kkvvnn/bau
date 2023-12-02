@@ -104,9 +104,9 @@
                                 @php
                                     $active_slider = 'active';
                                 @endphp
-                                @foreach($url_collection as $url)
+                                @foreach($url_collection as $url2)
                                     <div class="carousel-item {{$active_slider}}">
-                                        <img src="{{$url}}" class="d-block w-100" alt="...">
+                                        <img src="{{$url2}}" class="d-block w-100" alt="...">
                                     </div>
                                     @php
                                         $active_slider = '';
