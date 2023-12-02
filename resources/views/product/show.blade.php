@@ -41,8 +41,8 @@
 
         <div class="container-md">
             <div class="row">
-                <p class="fs-5">Интерьер</p>
                 <div class="col-md-6">
+                    <p class="fs-5">Интерьер</p>
                     <div id="carouselExample_collection" class="carousel slide carousel-dark">
                         <div class="carousel-inner">
                             @php
@@ -69,12 +69,37 @@
                         </button>
                     </div>
                 </div>
+                <div class="col-md-6">
+
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->RMPrice}} <small
+                            class="text-muted fw-light">₽/{{$product->MainUnit}}</small></h2>
+
+                    <br>
+
+                    @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
+                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
+                            Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
+                    @endif
+                    @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
+                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
+                            Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
+                    @endif
+                    @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
+                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">
+                            Распродажа</p>
+                    @endif
+
+                    <h5 class="mt-4">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
+                    <p>Актуально на <span
+                            class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
+
+                </div>
             </div>
             <hr>
             <div class="container">
                 <div class="row">
-                    <p class="fs-5">Изображения лиц</p>
                     <div class="col-md-6">
+                        <p class="fs-5">Изображения лиц</p>
                         <div id="carouselExample" class="carousel slide carousel-dark">
                             <div class="carousel-inner">
                                 @php
@@ -102,31 +127,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-6">
 
-                        <h2 class="card-title mt-5 pricing-card-title">{{$product->RMPrice}} <small
-                                class="text-muted fw-light">₽/{{$product->MainUnit}}</small></h2>
-
-                        <br>
-
-                        @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                                Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
-                        @endif
-                        @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                                Цена -15% {{round($product->RMPrice * 0.85, -1)}} ₽/{{$product->MainUnit}}</p>
-                        @endif
-                        @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
-                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">
-                                Распродажа</p>
-                        @endif
-
-                        <h5 class="mt-4">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
-                        <p>Актуально на <span
-                                class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
-
-                    </div>
                 </div>
             </div>
         </div>
