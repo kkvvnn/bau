@@ -354,7 +354,7 @@ class ProductController extends Controller
             $text_color = 'text-danger';
         }
 //        ------------------------------
-        $images_all = array_merge($urls_2, $urls_c);
+//        $images_all = array_merge($urls_2, $urls_c);
 
         return view('product.show', [
             'product' => $product,

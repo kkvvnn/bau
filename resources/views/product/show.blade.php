@@ -266,9 +266,9 @@
                     </div>
                     <div class="grid">
                         <div class="grid-sizer"></div>
-                        @foreach ($url_collection as $url)
+                        @foreach ($url_collection as $url_c)
                             <div class="grid-item">
-                                <img src="{{$url}}"
+                                <img src="{{$url_c}}"
                                      style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>
                             </div>
                         @endforeach
