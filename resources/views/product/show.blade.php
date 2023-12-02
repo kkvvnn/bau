@@ -44,6 +44,19 @@
                 <div class="col-md-6">
                     <p class="fs-5">Интерьер</p>
                     <div id="carouselExample_collection" class="carousel slide carousel-dark">
+                        <div class="carousel-indicators">
+                            @php
+                                $number_slide = 1;
+                                $active_number_slider = 'class="active" aria-current="true"';
+                            @endphp
+                            @foreach($url_collection as $url_z)
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" {{$active_number_slider}} aria-label="Slide {{str($number_slide)}}"></button>
+                                @php
+                                    $active_number_slider = '';
+                                    $number_slide++;
+                                @endphp
+                            @endforeach
+                        </div>
                         <div class="carousel-inner">
                             @php
                                 $active_slider = 'active';
