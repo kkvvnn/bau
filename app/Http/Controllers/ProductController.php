@@ -281,7 +281,7 @@ class ProductController extends Controller
                 $urls_c[] = Str::remove($string_for_delete, $kkkj);
             }
 
-            $urls_c = array_slice($urls_c, 0, 2);
+//            $urls_c = array_slice($urls_c, 0, 2);
         } else {
             $urls_c = [];
         }
