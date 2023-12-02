@@ -106,7 +106,7 @@
                                 @endphp
                                 @foreach($url_collection as $url2)
                                     <div class="carousel-item {{$active_slider}}">
-                                        <img src="{{$url2}}" class="d-block w-100" alt="...">
+                                        <img src="/storage/Collections/{{$url2}}" class="d-block w-100" alt="...">
                                     </div>
                                     @php
                                         $active_slider = '';
@@ -268,7 +268,7 @@
                         <div class="grid-sizer"></div>
                         @foreach ($url_collection as $url_c)
                             <div class="grid-item">
-                                <img src="{{$url_c}}"
+                                <img src="/storage/Collections/{{$url_c}}"/>
                                      style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>
                             </div>
                         @endforeach
