@@ -53,7 +53,6 @@
                                 <button type="button" data-bs-target="#carouselExample_collection" data-bs-slide-to="{{$number_slide}}" {{$active_number_slider}} aria-label="Slide {{(string)(++$number_slide)}}"></button>
                                 @php
                                     $active_number_slider = '';
-                                    $number_slide++;
                                 @endphp
                             @endforeach
                         </div>
