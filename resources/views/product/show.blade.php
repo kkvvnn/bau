@@ -50,7 +50,7 @@
                                 $active_number_slider = 'class="active" aria-current="true"';
                             @endphp
                             @foreach($url_collection as $url_z)
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" {{$active_number_slider}} aria-label="Slide {{str($number_slide)}}"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" {{$active_number_slider}} aria-label="Slide {{(string)($number_slide)}}"></button>
                                 @php
                                     $active_number_slider = '';
                                     $number_slide++;
