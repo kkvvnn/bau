@@ -44,18 +44,18 @@
                 <div class="col-md-6">
                     <p class="fs-5">Интерьер</p>
                     <div id="carouselExample_collection" class="carousel slide carousel-dark">
-                        <div class="carousel-indicators">
-                            @php
-                                $number_slide = 0;
-                                $active_number_slider = 'class="active" aria-current="true"';
-                            @endphp
-                            @foreach($url_collection as $url_z)
-                                <button type="button" data-bs-target="#carouselExample_collection" data-bs-slide-to="{{$number_slide}}" {{$active_number_slider}} aria-label="Slide {{(string)(++$number_slide)}}"></button>
-                                @php
-                                    $active_number_slider = '';
-                                @endphp
-                            @endforeach
-                        </div>
+{{--                        <div class="carousel-indicators">--}}
+{{--                            @php--}}
+{{--                                $number_slide = 0;--}}
+{{--                                $active_number_slider = 'class="active" aria-current="true"';--}}
+{{--                            @endphp--}}
+{{--                            @foreach($url_collection as $url_z)--}}
+{{--                                <button type="button" data-bs-target="#carouselExample_collection" data-bs-slide-to="{{$number_slide++}}" {{$active_number_slider}} aria-label="Slide {{$number_slide}}"></button>--}}
+{{--                                @php--}}
+{{--                                    $active_number_slider = '';--}}
+{{--                                @endphp--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
                         <div class="carousel-inner">
                             @php
                                 $active_slider = 'active';
