@@ -41,6 +41,7 @@
 
         <div class="container-md">
             <div class="row">
+                <p class="fs-5">Интерьер</p>
                 <div class="col-md-6">
                     <div id="carouselExample_collection" class="carousel slide carousel-dark">
                         <div class="carousel-inner">
@@ -69,10 +70,10 @@
                     </div>
                 </div>
             </div>
-
             <hr>
             <div class="container">
                 <div class="row">
+                    <p class="fs-5">Изображения лиц</p>
                     <div class="col-md-6">
                         <div id="carouselExample" class="carousel slide carousel-dark">
                             <div class="carousel-inner">
