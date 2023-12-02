@@ -71,7 +71,7 @@
                 <div class="col-md-6">
 
                     <h2 class="card-title mt-5 pricing-card-title">{{$product->RMPrice}} <small
-                            class="text-muted fw-light">р/{{$product->MainUnit}}</small></h2>
+                            class="text-muted fw-light">₽/{{$product->MainUnit}}</small></h2>
 
                     <br>
 
@@ -213,19 +213,6 @@
                         @endif
                         </tbody>
                     </table>
-                </div>
-                <div class="col-md-6">
-                    <div class="container-fluid">
-                        <div class="grid">
-                            <div class="grid-sizer"></div>
-                            @foreach ($urls as $url)
-                                <div class="grid-item">
-                                    <img src="{{$url}}"
-                                         style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
