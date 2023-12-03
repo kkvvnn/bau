@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-md-6">
 {{--                    <p class="fs-5">Интерьер</p>--}}
-                    <div id="carouselExample_collection" class="carousel slide carousel-dark pt-5">
+                    <div id="carouselExample_collection" class="carousel slide carousel-dark pt-3">
                         <div class="carousel-indicators">
                             @php
                                 $n_slide = 0;
