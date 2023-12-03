@@ -1,5 +1,9 @@
 @extends('main')
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+@endsection
+
 @section('content')
 
     <div class="album py-5 bg-body-tertiary">
@@ -59,10 +63,13 @@
                         <div class="carousel-inner">
                             @php
                                 $active_slider = 'active';
+                                $nn_c = 0;
                             @endphp
                             @foreach($url_collection as $url_z)
                                 <div class="carousel-item {{$active_slider}}">
+                                    <a href="/storage/Collections/{{$url_z}}" data-fancybox="gallery" data-caption="Caption #{{++$nn_c}}">
                                     <img src="/storage/Collections/{{$url_z}}" class="d-block w-100" alt="...">
+                                    </a>
                                 </div>
                                 @php
                                     $active_slider = '';
@@ -128,10 +135,13 @@
                             <div class="carousel-inner">
                                 @php
                                     $active_slider = 'active';
+                                    $nn = 0;
                                 @endphp
                                 @foreach($urls as $url)
                                     <div class="carousel-item {{$active_slider}}">
-                                        <img src="{{$url}}" class="d-block w-100" alt="...">
+                                        <a href="{{$url}}" data-fancybox="gallery" data-caption="Caption #{{++$nn}}">
+                                            <img src="{{$url}}" class="d-block w-100" alt="...">
+                                        </a>
                                     </div>
                                     @php
                                         $active_slider = '';
@@ -316,5 +326,10 @@
 @endsection
 
 @section('scripts')
-
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+        });
+    </script>
 @endsection

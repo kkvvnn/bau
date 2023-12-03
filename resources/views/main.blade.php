@@ -188,6 +188,7 @@
 }
   </style>
 
+    @yield('styles')
 
 </head>
 
