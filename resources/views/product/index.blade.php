@@ -63,7 +63,6 @@
                                 <a href="/product/{{$product->id}}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->Producer_Brand}} {{$product->Name}}</h5>
                                 </a>
-                                <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
                                 <h5 class="card-title pricing-card-title">{{$product->RMPrice}} <span class="text-muted fw-light">₽/{{$product->MainUnit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h5>
