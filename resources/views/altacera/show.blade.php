@@ -1,5 +1,7 @@
 @extends('main')
 
+@section('title', $product->artikul.' '.$product->category_rel->parent.' '.$product->collection_item.' '.$product->name_for_site)
+
 @section('content')
 
     <!-- <section class="py-5 text-center container">

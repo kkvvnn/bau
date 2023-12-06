@@ -1,5 +1,7 @@
 @extends('main')
 
+@section('title', $product->name)
+
 @section('content')
 
     <!-- <section class="py-5 text-center container">

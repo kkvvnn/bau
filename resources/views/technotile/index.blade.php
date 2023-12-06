@@ -1,5 +1,9 @@
 @extends('main')
 
+@section('title', 'TechnoTile')
+
+@section('title', 'TechnoTile')
+
 @section('content')
     <div class="album py-5 bg-body-tertiary">
         <div class="container">

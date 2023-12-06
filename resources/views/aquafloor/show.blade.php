@@ -1,5 +1,7 @@
 @extends('main')
 
+@section('title', $product->title)
+
 @section('content')
 
     <div class="album py-5 bg-body-tertiary">

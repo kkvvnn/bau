@@ -1,5 +1,7 @@
 @extends('main')
 
+@section('title', config('app.name'))
+
 @section('content')
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
