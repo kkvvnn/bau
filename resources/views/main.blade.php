@@ -296,6 +296,29 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Официальные сайты
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="https://laparet.ru/">Bauservice</a></li>
+                        <li><a class="dropdown-item" href="https://aquafloors.ru/">Aquafloor</a></li>
+                        <li><a class="dropdown-item" href="https://primavera-opt.ru/">Primavera</a></li>
+                        <li><a class="dropdown-item" href="https://kontact-m.ru/brands/absolut-gres/">Absolut Gres</a></li>
+                        <li><a class="dropdown-item" href="https://www.leedo.ru/">Leedo</a></li>
+                        <li><a class="dropdown-item" href="https://altakeramika.ru/">Altacera</a></li>
+                        <li><a class="dropdown-item" href="https://pixmosaic.ru/">PIX Mosaic</a></li>
+                        <li><a class="dropdown-item" href="https://ntceramic.ru/">NT Ceramic</a></li>
+                        <li><a class="dropdown-item" href="https://kevisceramica.ru/">Kevis</a></li>
+                        <li><a class="dropdown-item" href="https://www.rusplitka.ru/">Rusplitka</a></li>
+                        <li><a class="dropdown-item" href="https://technotile.ru/">Technotile</a></li>
+                        <li><a class="dropdown-item" href="https://empero.info/">Empero</a></li>
+{{--                        <li>--}}
+{{--                            <hr class="dropdown-divider">--}}
+{{--                        </li>--}}
+{{--                        <li><a class="dropdown-item" href="#">Something else here</a></li>--}}
+                    </ul>
+                </li>
             </ul>
 
           </div>
