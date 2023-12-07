@@ -301,18 +301,18 @@
                         Официальные сайты
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="https://laparet.ru/">Bauservice</a></li>
-                        <li><a class="dropdown-item" href="https://aquafloors.ru/">Aquafloor</a></li>
-                        <li><a class="dropdown-item" href="https://primavera-opt.ru/">Primavera</a></li>
-                        <li><a class="dropdown-item" href="https://kontact-m.ru/brands/absolut-gres/">Absolut Gres</a></li>
-                        <li><a class="dropdown-item" href="https://www.leedo.ru/">Leedo</a></li>
-                        <li><a class="dropdown-item" href="https://altakeramika.ru/">Altacera</a></li>
-                        <li><a class="dropdown-item" href="https://pixmosaic.ru/">PIX Mosaic</a></li>
-                        <li><a class="dropdown-item" href="https://ntceramic.ru/">NT Ceramic</a></li>
-                        <li><a class="dropdown-item" href="https://kevisceramica.ru/">Kevis</a></li>
-                        <li><a class="dropdown-item" href="https://www.rusplitka.ru/">Rusplitka</a></li>
-                        <li><a class="dropdown-item" href="https://technotile.ru/">Technotile</a></li>
-                        <li><a class="dropdown-item" href="https://empero.info/">Empero</a></li>
+                        <li><a class="dropdown-item" href="https://laparet.ru/" target="_blank">Bauservice</a></li>
+                        <li><a class="dropdown-item" href="https://aquafloors.ru/" target="_blank">Aquafloor</a></li>
+                        <li><a class="dropdown-item" href="https://primavera-opt.ru/" target="_blank">Primavera</a></li>
+                        <li><a class="dropdown-item" href="https://kontact-m.ru/brands/absolut-gres/" target="_blank">Absolut Gres</a></li>
+                        <li><a class="dropdown-item" href="https://www.leedo.ru/" target="_blank">Leedo</a></li>
+                        <li><a class="dropdown-item" href="https://altakeramika.ru/" target="_blank">Altacera</a></li>
+                        <li><a class="dropdown-item" href="https://pixmosaic.ru/" target="_blank">PIX Mosaic</a></li>
+                        <li><a class="dropdown-item" href="https://ntceramic.ru/" target="_blank">NT Ceramic</a></li>
+                        <li><a class="dropdown-item" href="https://kevisceramica.ru/" target="_blank">Kevis</a></li>
+                        <li><a class="dropdown-item" href="https://www.rusplitka.ru/" target="_blank">Rusplitka</a></li>
+                        <li><a class="dropdown-item" href="https://technotile.ru/" target="_blank">Technotile</a></li>
+                        <li><a class="dropdown-item" href="https://empero.info/" target="_blank">Empero</a></li>
 {{--                        <li>--}}
 {{--                            <hr class="dropdown-divider">--}}
 {{--                        </li>--}}
