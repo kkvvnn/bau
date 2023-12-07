@@ -63,20 +63,21 @@
             }
 
             if ($product->Producer_Brand == 'Laparet') {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $description .= '<p>Весь декабрь у нас действует <strong>ЧЕСТНАЯ 15% СКИДКА</strong> на всю линейку керамической плитки от Laparet. Успей оформить заказ!</p>';
-                }
+//                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+//                    $description .= '<p>Весь декабрь у нас действует <strong>ЧЕСТНАЯ 15% СКИДКА</strong> на всю линейку керамической плитки от Laparet. Успей оформить заказ!</p>';
+//                }
                 $description .= '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             } elseif ($product->Producer_Brand == 'Cersanit') {
                 $description .= '<p>Керамическая плитка и керамогранит Cersanit , Церсанит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             } elseif ($product->Producer_Brand == 'Vitra') {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $description .= '<p>Весь декабрь у нас действует <strong>ЧЕСТНАЯ 10% СКИДКА</strong> на всю линейку керамической плитки от Vitra. Успей оформить заказ!</p>';
-                }
+//                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+//                    $description .= '<p>Весь декабрь у нас действует <strong>ЧЕСТНАЯ 10% СКИДКА</strong> на всю линейку керамической плитки от Vitra. Успей оформить заказ!</p>';
+//                }
                 $description .= '<p>Керамическая плитка и керамогранит Vitra , Витра. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             } else {
                 $description .= '<p>Керамическая плитка и керамогранит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             }
+
 
             if ($product->Novinka == 1) {
                 $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Name . '. '
@@ -434,22 +435,22 @@
 //            }
 
 //--------------------------------------------------------------------------
-//            $price = $product->RMPrice;
-            if ($product->Producer_Brand == 'Laparet') {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * 0.85, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            } elseif ($product->Producer_Brand == 'Vitra') {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * 0.90, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            } else {
-                $price = $product->RMPrice;
-            }
+            $price = $product->RMPrice;
+//            if ($product->Producer_Brand == 'Laparet') {
+//                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+//                    $price = round($product->RMPrice * 0.85, -1);
+//                } else {
+//                    $price = $product->RMPrice;
+//                }
+//            } elseif ($product->Producer_Brand == 'Vitra') {
+//                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+//                    $price = round($product->RMPrice * 0.90, -1);
+//                } else {
+//                    $price = $product->RMPrice;
+//                }
+//            } else {
+//                $price = $product->RMPrice;
+//            }
 
 //            if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный' || $product->Name == 'Dalim Mint Керамогранит 60x60 Полированный') {
 //                $price = '';
