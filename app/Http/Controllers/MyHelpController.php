@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Altacera\AltaceraTovar;
+use App\Models\Altacera\AltaceraTovarAvailable;
+use App\Models\Kevis;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use mysql_xdevapi\Table;
 
 class MyHelpController extends Controller
 {
@@ -112,5 +116,98 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             echo $product->name.'<br>';
         }
+    }
+
+    public function calacatta_all()
+    {
+        $products = Product::all();
+
+        echo '<table>';
+        echo '<tr><th>BAUSERVICE</th><th>Цена</th></tr>';
+        foreach ($products as $product) {
+            if (strpos($product->Name, 'alacatta') !== false) {
+                echo '<tr>';
+                echo '<td>'.$product->Name.'</td><td>'.$product->RMPrice.'</td>';
+                echo '</tr>';
+            }
+
+        }
+        echo '</table>';
+        echo '<br>';
+
+        $products = AltaceraTovarAvailable::all();
+
+        echo '<table>';
+        echo '<tr><th>ALTACERA</th><th>Цена</th></tr>';
+        foreach ($products as $product) {
+            if (strpos($product->tovar, 'alacatta') !== false) {
+                echo '<tr>';
+                echo '<td>'.$product->tovar.'</td><td>'.$product->price->price.'</td>';
+                echo '</tr>';
+            }
+
+        }
+        echo '</table>';
+        echo '<br>';
+
+        $products = NtCeramicNoImgs::all();
+
+        echo '<table>';
+        echo '<tr><th>NtCeramic</th><th>Цена</th></tr>';
+        foreach ($products as $product) {
+            if (strpos($product->title, 'alacatta') !== false) {
+                echo '<tr>';
+                echo '<td>'.$product->title.'</td><td>'.$product->price.'</td>';
+                echo '</tr>';
+            }
+
+        }
+        echo '</table>';
+        echo '<br>';
+
+        $products = Primavera::all();
+
+        echo '<table>';
+        echo '<tr><th>Primavera</th><th>Цена</th></tr>';
+        foreach ($products as $product) {
+            if (strpos($product->title, 'alacatta') !== false) {
+                echo '<tr>';
+                echo '<td>'.$product->title.'</td><td>'.$product->price.'</td>';
+                echo '</tr>';
+            }
+
+        }
+        echo '</table>';
+        echo '<br>';
+
+        $products = Kevis::all();
+
+        echo '<table>';
+        echo '<tr><th>Kevis</th><th>Цена</th></tr>';
+        foreach ($products as $product) {
+            if (strpos($product->title, 'alacatta') !== false) {
+                echo '<tr>';
+                echo '<td>'.$product->title.'</td><td>'.$product->price.'</td>';
+                echo '</tr>';
+            }
+
+        }
+        echo '</table>';
+        echo '<br>';
+
+        $products = \App\Models\Rusplitka\Product::all();
+
+        echo '<table>';
+        echo '<tr><th>Rusplitka</th><th>Цена</th></tr>';
+        foreach ($products as $product) {
+            if (strpos($product->name, 'alacatta') !== false) {
+                echo '<tr>';
+                echo '<td>'.$product->name.'</td><td>'.$product->price_rozn.'</td>';
+                echo '</tr>';
+            }
+
+        }
+        echo '</table>';
+        echo '<br>';
     }
 }

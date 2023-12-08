@@ -73,6 +73,7 @@ Route::get('/biggest', [MyHelpController::class, 'biggest']);
 Route::get('/derevo', [MyHelpController::class, 'derevo']);
 Route::get('/count-product-with-foto', [MyHelpController::class, 'count_product_with_foto']);
 Route::get('/not-found-rezults', [MyHelpController::class, 'not_found_rezults']);
+Route::get('/calacatta-all', [MyHelpController::class, 'calacatta_all']);
 
 //---------------------SEARCH_CONTROLLER---------------
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
