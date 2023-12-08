@@ -85,8 +85,5 @@ class UpdateBauservice extends Command
 //        ----------MANY-END-------------
 
         $this->call('up');
-
-        dd($result);
-//        return redirect('/')->with('success', 'Таблица Product обновлена. Ok!');
     }
 }
