@@ -20,7 +20,7 @@
 <body>
     <div class="flex-container">
         <h1>Сервис временно недоступен.</h1>
-        <р class="lead">Ведутся технические работы.</р>
+        <p class="lead">Ведутся технические работы.</p>
     </div>
 </body>
 </html>
