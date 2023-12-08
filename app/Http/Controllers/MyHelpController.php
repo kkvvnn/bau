@@ -157,7 +157,7 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             if (strpos($product->title, 'alacatta') !== false) {
                 echo '<tr>';
-                echo '<td>'.$product->title.'</td><td>'.$product->price.'</td>';
+                echo '<td>'.$product->title.' '.$product->vendor_code'</td><td>'.$product->price.'</td>';
                 echo '</tr>';
             }
 
