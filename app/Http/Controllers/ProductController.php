@@ -278,7 +278,7 @@ class ProductController extends Controller
 
             $urls_c = [];
             foreach ($url_collection as $kkkj) {
-                $urls_c[] = Str::remove($string_for_delete, $kkkj);
+                $urls_c[] = Storage::disk('collections')->url(Str::remove($string_for_delete, $kkkj));
             }
 
 //            $urls_c = array_slice($urls_c, 0, 2);

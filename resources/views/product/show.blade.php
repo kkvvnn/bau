@@ -67,8 +67,8 @@
                             @endphp
                             @foreach($url_collection as $url_z)
                                 <div class="carousel-item {{$active_slider}}">
-                                    <a href="/storage/Collections/{{$url_z}}" data-fancybox="gallery_collection" data-caption="Caption #{{++$nn_c}}">
-                                    <img src="/storage/Collections/{{$url_z}}" class="d-block w-100" alt="...">
+                                    <a href="{{$url_z}}" data-fancybox="gallery_collection" data-caption="Caption #{{++$nn_c}}">
+                                    <img src="{{$url_z}}" class="d-block w-100" alt="...">
                                     </a>
                                 </div>
                                 @php

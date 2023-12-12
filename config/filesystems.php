@@ -53,7 +53,7 @@ return [
         'collections' => [
             'driver' => 'local',
             'root' => storage_path('app/public/Collections'),
-            // 'url' => env('APP_URL').'/storage',
+             'url' => env('APP_URL').'/storage/Collections',
             // 'visibility' => 'public',
             'throw' => false,
         ],
