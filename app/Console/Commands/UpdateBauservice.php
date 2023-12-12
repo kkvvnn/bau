@@ -74,7 +74,7 @@ class UpdateBauservice extends Command
 //        ---------IMPORT-COLLECTION-END---------
 //        ----------MANY--------------
         CollectionProduct::truncate();
-        $products = Product::where('GroupProduct', '01 Плитка');
+        $products = Product::where(['GroupProduct', '01 Плитка']);
 
         foreach ($products as $product) {
 
