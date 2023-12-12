@@ -66,11 +66,13 @@
                                 $nn_c = 0;
                             @endphp
                             @foreach($url_collection as $url_z)
+                                @if ($url_z)
                                 <div class="carousel-item {{$active_slider}}">
                                     <a href="{{$url_z}}" data-fancybox="gallery_collection" data-caption="Caption #{{++$nn_c}}">
                                     <img src="{{$url_z}}" class="d-block w-100" alt="...">
                                     </a>
                                 </div>
+                                @endif
                                 @php
                                     $active_slider = '';
                                 @endphp
