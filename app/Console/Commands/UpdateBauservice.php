@@ -43,48 +43,48 @@ class UpdateBauservice extends Command
         ]);
 
 //        ---------IMPORT-PRODUCT---------
-        Product::truncate();    // clear all data in table
-
-        $url = 'http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv';
-        $contents = file_get_contents($url);
-        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
-
-        $date = date('Y-m-d_His');
-        $name = 'import/products/product_'.$date.'.csv';
-
-        Storage::put($name, $contents);
-
-        Excel::import(new ProductsImport, $name);
-        $deleted = Product::where('Picture', null)->delete();
+//        Product::truncate();    // clear all data in table
+//
+//        $url = 'http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv';
+//        $contents = file_get_contents($url);
+//        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
+//
+//        $date = date('Y-m-d_His');
+//        $name = 'import/products/product_'.$date.'.csv';
+//
+//        Storage::put($name, $contents);
+//
+//        Excel::import(new ProductsImport, $name);
+//        $deleted = Product::where('Picture', null)->delete();
 //        ---------IMPORT-PRODUCT-END---------
 
 
 //        ---------IMPORT-COLLECTION---------
-        Collection::truncate();
-        $url = 'http://catalog.bauservice.ru/affiliate_new/nCatg0d8.csv';
-        $contents = file_get_contents($url);
-        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
-
-        $date = date('Y-m-d_His');
-        $name = 'import/collections/collection_'.$date.'.csv';
-
-        Storage::put($name, $contents);
-
-        Excel::import(new CollectionsImport, $name);
+//        Collection::truncate();
+//        $url = 'http://catalog.bauservice.ru/affiliate_new/nCatg0d8.csv';
+//        $contents = file_get_contents($url);
+//        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
+//
+//        $date = date('Y-m-d_His');
+//        $name = 'import/collections/collection_'.$date.'.csv';
+//
+//        Storage::put($name, $contents);
+//
+//        Excel::import(new CollectionsImport, $name);
 //        ---------IMPORT-COLLECTION-END---------
 //        ----------MANY--------------
-        CollectionProduct::truncate();
-        $products = Product::where([['GroupProduct', '01 Плитка']])->get();
-
-        foreach ($products as $product) {
-
-            $collection_number = explode(', ', $product->Collection_Id);
-            $collections = Collection::whereIn('Collection_Id', $collection_number)->get();
-
-            foreach ($collections as $collection) {
-                $product->collections()->attach($collection->id);
-            }
-        }
+//        CollectionProduct::truncate();
+//        $products = Product::where([['GroupProduct', '01 Плитка']])->get();
+//
+//        foreach ($products as $product) {
+//
+//            $collection_number = explode(', ', $product->Collection_Id);
+//            $collections = Collection::whereIn('Collection_Id', $collection_number)->get();
+//
+//            foreach ($collections as $collection) {
+//                $product->collections()->attach($collection->id);
+//            }
+//        }
 //        ----------MANY-END-------------
 
 
@@ -102,6 +102,10 @@ class UpdateBauservice extends Command
             }
         }
 //        ---------DOWNLOAD_COLLECTION_IMAGES-END-------
+
+//        ---------DOWNLOAD_PRODUCTS_IMAGES-------
+
+//        ---------DOWNLOAD_PRODUCTS_IMAGES-END-------
 
         $this->call('up');
     }
