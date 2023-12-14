@@ -27,8 +27,10 @@ class BauserviceDownloadImages extends Command
     /**
      * Execute the console command.
      */
-    public function handle(int $disk = 1)
+    public function handle()
     {
+        $disk = $this->argument('number');
+
         $this->call('down', [
             '--refresh' => 15
         ]);
