@@ -45,21 +45,25 @@ class BauserviceDownloadImages extends Command
 //        $bar->finish();
 //        $this->newLine(3);
 
+        try {
+            if ($disk == 1) {
+                $where_pic = '';
+            } else {
+                $where_pic = $disk;
+            }
 
-        if ($disk == 1) {
-            $where_pic = '';
-        } else {
-            $where_pic = $disk;
+            $products = Product::where(('Picture' . $where_pic), '!=', null)->get();
+
+            $product_pic = 'Picture' . $where_pic;
+
+            foreach ($products as $product) {
+                $this->mydown($product->$product_pic, $product_pic);
+            }
+        } catch (\Illuminate\Database\QueryException $exception) {
+            $this->call('up');
+            $this->error($exception->getMessage());
+            return 0;
         }
-
-        $products = Product::where(('Picture'.$where_pic), '!=', null)->get();
-
-        $product_pic = 'Picture'.$where_pic;
-
-        foreach ($products as $product) {
-            $this->mydown($product->$product_pic, $product_pic);
-        }
-
 
         $this->call('up');
         $this->info('The command was successful!');
@@ -78,7 +82,7 @@ class BauserviceDownloadImages extends Command
             return;
         }
 
-        if (Storage::disk('public')->missing($public_n.'/'.$name_file)) {
+        if (Storage::disk('public')->missing($public_n . '/' . $name_file)) {
 
             $file = Storage::disk('ftp')->get($name_file);
             if ($file != null) {
@@ -89,7 +93,7 @@ class BauserviceDownloadImages extends Command
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });
-                Storage::disk('public')->put($public_n.'/'.$name_file, $image->encode());
+                Storage::disk('public')->put($public_n . '/' . $name_file, $image->encode());
             }
         }
     }

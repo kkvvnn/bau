@@ -68,7 +68,7 @@
                             @foreach($url_collection as $url_z)
                                 @if ($url_z)
                                 <div class="carousel-item {{$active_slider}}">
-                                    <a href="{{$url_z}}" data-fancybox="gallery_collection" data-caption="Caption #{{++$nn_c}}">
+                                    <a href="{{$url_z}}" data-fancybox="gallery_collection" data-caption="Интерьер {{++$nn_c}}">
                                     <img src="{{$url_z}}" class="d-block w-100" alt="...">
                                     </a>
                                 </div>
@@ -141,7 +141,7 @@
                                 @endphp
                                 @foreach($urls as $url)
                                     <div class="carousel-item {{$active_slider}}">
-                                        <a href="{{$url}}" data-fancybox="gallery" data-caption="Caption #{{++$nn}}">
+                                        <a href="{{$url}}" data-fancybox="gallery" data-caption="Лицо {{++$nn}}">
                                             <img src="{{$url}}" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
@@ -298,12 +298,6 @@
                 <div class="container-fluid">
                     <div class="grid">
                         <div class="grid-sizer"></div>
-                        @foreach ($urls as $url)
-                            <div class="grid-item">
-                                <img src="{{$url}}"
-                                     style="border-bottom:1px solid rgba(78, 73, 60, 0.20);border-left:1px solid rgba(78, 73, 60, 0.20)"/>
-                            </div>
-                        @endforeach
                         @foreach ($urls as $url)
                             <div class="grid-item">
                                 <img src="{{$url}}"
