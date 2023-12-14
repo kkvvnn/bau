@@ -137,9 +137,17 @@ class ProductController extends Controller
         $type = 'all';
 
         $products = Product::where([['GroupProduct', '01 Плитка'], ['balanceCount', '>=', 0]])->orderByRaw('Lenght * Height DESC')->paginate(15);
+//        $products = Product::where([['GroupProduct', '01 Плитка'], ['balanceCount', '>=', 0]])->orderByRaw('Lenght * Height DESC')->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
         // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
         // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
+        return $this->index($products, $type);
+    }
+
+    public function index_santech()
+    {
+        $type = 'santech';
+        $products = Product::where([['GroupProduct', '02 Сантехника'], ['balanceCount', '>=', 0]])->paginate(15);
         return $this->index($products, $type);
     }
 
@@ -363,17 +371,32 @@ class ProductController extends Controller
 //        ------------------------------
 //        $images_all = array_merge($urls_2, $urls_c);
 
-        return view('product.show', [
-            'product' => $product,
-            'urls' => $urls_2,
-            // 'url2' => $url2,
-            'collection' => $collection,
-            'url_collection' => $urls_c,
-            'fotos' => $fotos,
-            'vivod' => $vivod,
-            'old_price' => $old_price,
-            'text_color' => $text_color,
-        ]);
+        if ($product->GroupProduct != '02 Сантехника') {
+            return view('product.show', [
+                'product' => $product,
+                'urls' => $urls_2,
+                // 'url2' => $url2,
+                'collection' => $collection,
+                'url_collection' => $urls_c,
+                'fotos' => $fotos,
+                'vivod' => $vivod,
+                'old_price' => $old_price,
+                'text_color' => $text_color,
+            ]);
+        } else {
+            return view('product.santech.show', [
+                'product' => $product,
+                'urls' => $urls_2,
+                // 'url2' => $url2,
+                'collection' => $collection,
+                'url_collection' => $urls_c,
+                'fotos' => $fotos,
+                'vivod' => $vivod,
+                'old_price' => $old_price,
+                'text_color' => $text_color,
+            ]);
+        }
+
     }
 
     /**
