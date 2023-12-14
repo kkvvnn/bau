@@ -93,8 +93,16 @@
                 </div>
                 <div class="col-md-6">
 
+                    @php
+                        if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice) {
+                            $old_price = $product->RMPriceOld;
+                        } else {
+                            $old_price = '';
+                        }
+                    @endphp
+
                     <h2 class="card-title mt-5 pricing-card-title">{{$product->RMPrice}} <small
-                            class="text-muted fw-light">₽/{{$product->MainUnit}}</small></h2>
+                            class="text-muted fw-light">₽/{{$product->MainUnit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
 
                     <br>
 
