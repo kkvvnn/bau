@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ProductController extends Controller
+class ProductController2 extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -40,7 +40,6 @@ Route::get('/mosaic_index', [ProductController::class, 'index_mosaic'])->name('i
 Route::get('/decor_index', [ProductController::class, 'index_decor'])->name('index_decor');
 //Route::get('/search', [ProductController::class, 'search']);
 Route::get('/size', [ProductController::class, 'index_size'])->name('index_size');
-Route::get('/cersanit', [ProductController::class, 'cersanit']);
 
 Route::view('/size_form', 'size_form')->name('index_size_form');
 Route::get('/collection/{name}', [ProductController::class, 'collection_name']);

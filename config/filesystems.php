@@ -44,17 +44,17 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => storage_path('app/public/images/bauservice/products'),
+            'url' => env('APP_URL').'/storage/images/bauservice/products',
             'visibility' => 'public',
             'throw' => false,
         ],
 
         'collections' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/Collections'),
-            'url' => env('APP_URL').'/storage/Collections',
-//            'visibility' => 'public',
+            'root' => storage_path('app/public/images/bauservice/collections'),
+            'url' => env('APP_URL').'/storage/images/bauservice/collections',
+            'visibility' => 'public',
             'throw' => false,
         ],
 

@@ -86,7 +86,6 @@ class BauserviceDownloadCollectionImages extends Command
             $file = Storage::disk('ftp')->get($name_file);
             if ($file != null) {
                 $manager = new ImageManager(['driver' => 'imagick']);
-//                $image = $manager->make($file)->resize(300);
                 $image = $manager->make($file);
                 $image->resize(900, 900, function ($constraint) {
                     $constraint->aspectRatio();

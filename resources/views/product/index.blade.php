@@ -22,7 +22,7 @@
                     @php
                         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
                         $name_file = Str::remove($string_for_delete, $product->Picture);
-                        $url1 = Storage::url('Picture/' . $name_file);
+                        $url1 = Storage::disk('public')->url($name_file);
                     @endphp
 
                     @php

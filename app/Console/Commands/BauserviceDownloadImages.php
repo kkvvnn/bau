@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Product;
 use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
@@ -29,7 +30,7 @@ class BauserviceDownloadImages extends Command
      */
     public function handle()
     {
-        $disk = $this->argument('number');
+        $picture_number_of = $this->argument('number');
 
         $this->call('down', [
             '--refresh' => 15
@@ -46,19 +47,37 @@ class BauserviceDownloadImages extends Command
 //        $this->newLine(3);
 
         try {
-            if ($disk == 1) {
+            if ($picture_number_of == 1) {
                 $where_pic = '';
             } else {
-                $where_pic = $disk;
+                $where_pic = $picture_number_of;
             }
 
-            $products = Product::where(('Picture' . $where_pic), '!=', null)->get();
+            $products_count = Product::where(('Picture' . $where_pic), '!=', null)->count();
+            $step = round($products_count / 100);
 
-            $product_pic = 'Picture' . $where_pic;
+            $bar = $this->output->createProgressBar($step);
+            $bar->start();
 
-            foreach ($products as $product) {
-                $this->mydown($product->$product_pic, $product_pic);
-            }
+            Product::where(('Picture' . $where_pic), '!=', null)
+                ->chunk($step, function (Collection $products) use ($where_pic, $bar) {
+
+                    $product_pic = 'Picture' . $where_pic;
+
+                    foreach ($products as $product) {
+                        $this->download_images_to_storage($product->$product_pic);
+                    }
+                    $bar->advance();
+            });
+
+            $bar->finish();
+            $this->newLine(3);
+
+//            $product_pic = 'Picture' . $where_pic;
+//
+//            foreach ($products as $product) {
+//                $this->download_images_to_storage($product->$product_pic);
+//            }
         } catch (\Illuminate\Database\QueryException $exception) {
             $this->call('up');
             $this->error($exception->getMessage());
@@ -70,7 +89,7 @@ class BauserviceDownloadImages extends Command
 //        $this->error('Something went wrong!');
     }
 
-    public function mydown($name, $public_n)
+    private function download_images_to_storage($name): void
     {
         if ($name == null) {
             return;
@@ -82,18 +101,17 @@ class BauserviceDownloadImages extends Command
             return;
         }
 
-        if (Storage::disk('public')->missing($public_n . '/' . $name_file)) {
+        if (Storage::disk('public')->missing($name_file)) {
 
             $file = Storage::disk('ftp')->get($name_file);
             if ($file != null) {
                 $manager = new ImageManager(['driver' => 'imagick']);
-//                $image = $manager->make($file)->resize(300);
                 $image = $manager->make($file);
                 $image->resize(900, 900, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });
-                Storage::disk('public')->put($public_n . '/' . $name_file, $image->encode());
+                Storage::disk('public')->put($name_file, $image->encode());
             }
         }
     }

@@ -7,67 +7,21 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Imports\ProductsImport;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
-    public function index_full()
-    {
-        $type = '';
-
-        $products = Product::where([
-            ['Name', 'LIKE', '%керамогранит%'],
-            ['Category', 'LIKE', '%керамогранит%'],
-            // ['Lenght', 80],
-            // ['Height', 80],
-        ])->orderByDesc('Height')->paginate(15);
-
-        return view('index-full', [
-            'products' => $products,
-        ]);
-    }
-
     /**
      * Display a listing of the resource.
      */
-    public function index($products, $type)
+    public function index($products, $type): View
     {
-        // $products = Product::all();
-        // $users = User::where('votes', '>', 100)->paginate(15);
-
         return view('product.index', [
             'products' => $products,
         ]);
-    }
-
-    public function cersanit()
-    {
-        $products = Product::where('Producer_Brand', 'Cersanit')->orderBy('Name')->get();
-
-        foreach ($products as $product) {
-
-            $collection = $product->collections;
-            $title = $product->Producer_Brand.' '.$collection[0]->Collection_Name.' '.$product->Owner_Article;
-
-            echo $title.'<br>';
-        }
-    }
-
-    public function index_keramogranit()
-    {
-        $type = 'keramogranit';
-
-        $products = Product::where([
-            ['Name', 'LIKE', '%керамогранит%'],
-            ['Category', 'LIKE', '%керамогранит%'],
-            // ['Lenght', 80],
-            // ['Height', 80],
-        ])->orderByDesc('Height')->paginate(15);
-
-        return $this->index($products, $type);
     }
 
     public function index_size(Request $request)
@@ -291,7 +245,6 @@ class ProductController extends Controller
                 }
             }
 
-//            $urls_c = array_slice($urls_c, 0, 2);
         } else {
             $urls_c = [];
         }
@@ -311,37 +264,19 @@ class ProductController extends Controller
             }
         }
 
-        // $name_file = Str::remove($string_for_delete, $product->Picture);
-        // $name_file2 = Str::remove($string_for_delete, $product->Picture2);
-
         $urls_2 = [];
         foreach ($name_files as $key => $value) {
-            $urls_2[] = Storage::url($key.'/'.$value);
+            $urls_2[] = Storage::disk('public')->url($value);
         }
 
-//        $urls_2 = array_slice($urls_2, 0, 4);
-
-
-        // dd($urls_2);
-        // $urls = [];
-        // foreach ($urls_2 as $url) {
-        //     $urls[] = Str::replace('/storage' , '/img', $url);
-        // }
-        // dd($urls);
-        // $url1 = Storage::url('Picture1/' . $name_file);
-        // $url2 = Storage::url('Picture2/' . $name_file2);
-
         $vendor_code = str_replace('х', '', $product->Element_Code);
-//        $path_dir = 'storage/Foto/' . $vendor_code;
-//        $directories = Storage::directories('public/Foto');
+
         $files = Storage::disk('foto')->files('/'.$vendor_code);
-//        dd($files);
         $fotossss = $files;
         $fotos = [];
         foreach ($fotossss as $f) {
             $fotos[] = Storage::disk('foto')->url($f);
         }
-//dd($fotos);
 
         if ($product->RMPriceOld > 0) {
             $old_price = $product->RMPriceOld;
@@ -369,7 +304,6 @@ class ProductController extends Controller
             $text_color = 'text-danger';
         }
 //        ------------------------------
-//        $images_all = array_merge($urls_2, $urls_c);
 
         if ($product->GroupProduct != '02 Сантехника') {
             return view('product.show', [
@@ -435,9 +369,6 @@ class ProductController extends Controller
 
         $date = date('Y-m-d_His');
         $name = 'import/products/product_'.$date.'.csv';
-//        $name = 'import/products/product_2023-08-30_100140.csv';
-
-        // dd($name);
 
         Storage::put($name, $contents);
 
