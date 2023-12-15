@@ -28,23 +28,13 @@ class BauserviceDownloadImages extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $picture_number_of = $this->argument('number');
 
         $this->call('down', [
             '--refresh' => 15
         ]);
-
-//        $bar = $this->output->createProgressBar(3);
-//        $bar->start();
-//        sleep(1);
-//        $bar->advance();
-//        sleep(1);
-//        $bar->advance();
-//        sleep(1);
-//        $bar->finish();
-//        $this->newLine(3);
 
         try {
             if ($picture_number_of == 1) {
@@ -54,16 +44,14 @@ class BauserviceDownloadImages extends Command
             }
 
             $products_count = Product::where(('Picture' . $where_pic), '!=', null)->count();
-            $step = round($products_count / 100);
+            $chunk_size = (int) round($products_count / 100);
 
-            $bar = $this->output->createProgressBar($step);
+            $bar = $this->output->createProgressBar(100);
             $bar->start();
 
             Product::where(('Picture' . $where_pic), '!=', null)
-                ->chunk($step, function (Collection $products) use ($where_pic, $bar) {
-
+                ->chunk($chunk_size, function (Collection $products) use ($where_pic, $bar) {
                     $product_pic = 'Picture' . $where_pic;
-
                     foreach ($products as $product) {
                         $this->download_images_to_storage($product->$product_pic);
                     }
@@ -73,20 +61,13 @@ class BauserviceDownloadImages extends Command
             $bar->finish();
             $this->newLine(3);
 
-//            $product_pic = 'Picture' . $where_pic;
-//
-//            foreach ($products as $product) {
-//                $this->download_images_to_storage($product->$product_pic);
-//            }
         } catch (\Illuminate\Database\QueryException $exception) {
             $this->call('up');
             $this->error($exception->getMessage());
-            return 0;
         }
 
         $this->call('up');
         $this->info('The command was successful!');
-//        $this->error('Something went wrong!');
     }
 
     private function download_images_to_storage($name): void
@@ -102,7 +83,6 @@ class BauserviceDownloadImages extends Command
         }
 
         if (Storage::disk('public')->missing($name_file)) {
-
             $file = Storage::disk('ftp')->get($name_file);
             if ($file != null) {
                 $manager = new ImageManager(['driver' => 'imagick']);
