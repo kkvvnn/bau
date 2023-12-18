@@ -249,7 +249,7 @@ class ProductController extends Controller
             $urls_c = [];
         }
         if (empty($urls_c)) {
-            $urls_c[] = Storage::disk('public')->url('no_image.jpg');
+            $urls_c[] = Storage::disk('no_image')->url('no_image.jpg');
         }
 
         $name_files = [];
