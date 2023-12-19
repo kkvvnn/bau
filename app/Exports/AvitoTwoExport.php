@@ -20,7 +20,7 @@ use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 
-class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
+class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
 {
     public $foto = '';
     public $phone = '';
@@ -68,31 +68,38 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ==============================================
         $primavera = Primavera::where('country', '!=', 'Киргизия')->get();
+        $primavera = [];
 //      ==============================================
         $absolut_gres = AbsolutGresScrap::all();
+        $absolut_gres = [];
 //      ==============================================
 //        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
         $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->get();
-//        $leedo = [];
+        $leedo = [];
 //        dd($leedo);
 //      ==============================================
         $altacera = AltaceraTovarAvailable::where([['artikul', '!=', 'PWU09DLM3'], ['artikul', '!=', 'GFA114CMT07R'], ['artikul', '!=', 'BWA60ALD004'], ['artikul', '!=', 'DWU09BNT017'], ['artikul', '!=', 'GFA57SLC00L'], ['artikul', '!=', 'PWA11ALD1']])->get();
+        $altacera = [];
 //      ==============================================
         $ntceramic = NtCeramicNoImgs::all();
+        $ntceramic = [];
 //      ==============================================
         $kevis = Kevis::all();
+        $kevis = [];
 //      ==============================================
         $rusplitka = RusplitkaProduct::where([['svoystvo', 'Керамогранит'], ['rest_real_free', '!=', 0]])->get();
+        $rusplitka = [];
 //      ==============================================
 //        $technotile = TechnotileProduct::where('available', 'true')->get();
 //        $technotile = TechnotileProduct::where([['available', 'true'], ['price', '>=', 2000]])->get();
         $technotile = [];
 //      ==============================================
         $aquafloor = AquaFloor::where('title', 'not like', '%Подложка%')->get();
+        $aquafloor = [];
 
 
         if ($this->foto == '') {
-            return view('exports.avito', [
+            return view('exports.avito-two', [
                 // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
                 'products' => $products,
                 'primavera' => $primavera,

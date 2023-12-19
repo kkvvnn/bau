@@ -17,31 +17,12 @@
 
                 @foreach($products as $product)
 
-                        <?php
+                        @php
                         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
                         $name_file = Str::remove($string_for_delete, $product->Picture);
 
-
-
-                        // if (Storage::disk('public')->missing($name_file)) {
-                        //   $file = Storage::disk('ftp')->get($name_file);
-                        //   Storage::disk('public')->put($name_file, $file);
-                        // }
-
-
-                        $url1 = Storage::url('Picture/' . $name_file);
-                        // dd($url1)
-                        // $url_small = Storage::url('small_img/' . $name_file);
-                        // $url = Storage::url($name_file);
-
-                        // use Illuminate\Support\Str;
-
-                        // $url_small = Str::swap([
-                        //   '.jpeg' => '.jpg',
-                        //   '.png' => '.jpg',
-                        //   // 'great' => 'fantastic',
-                        // ], $url_small);
-                        ?>
+                        $url1 = Storage::disk('public')->url($name_file);
+                        @endphp
 
                     @php
                         if ($product->RMPriceOld > 0) {

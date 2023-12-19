@@ -463,11 +463,11 @@
             <td></td>
             <td>{{ $product->Element_Code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>kkvvnn89@gmail.com</td>
+            <td>rodioncom@yandex.ru</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
             <td>{{$price}}</td>
-            <td>Напольные решения</td>
+            <td>Керамическая плитка. Керамогранит</td>
             <td>{{$title}}</td>
             <td>{{$img_full}}</td> <!-- -->
             <td>Отделка</td>

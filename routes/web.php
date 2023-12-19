@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\AvitoController;
+use App\Http\Controllers\AvitoTwoController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MyHelpController;
@@ -52,7 +53,9 @@ Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_pl
 
 // --------------------CREATE_AVITO_FILE--------------------------------------
 Route::get('/avito_export/{foto?}', [AvitoController::class, 'export'])->name('avito-export');
+Route::get('/avito_export_two/{foto?}', [AvitoTwoController::class, 'export'])->name('avito-export-two');
 Route::view('/avito', 'exports.autoload-form');
+Route::view('/avito-two', 'exports.autoload-two-form');
 
 // ----------------------TELEGRAM-------------------------------------------------
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');
