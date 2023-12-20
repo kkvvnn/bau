@@ -7,7 +7,11 @@
                 <p></p>
             </div>
 
-            <h1 class="display-6">Автозагрузка Авито</h1>
+            @if($rodion)
+                <div class="text-bg-warning p-3"><h1 class="display-6">Автозагрузка Авито аккаунт Родион</h1></div>
+            @else
+                <h1 class="display-6">Автозагрузка Авито</h1>
+            @endif
             <hr>
             <h3>{{ $url }}</h3>
 

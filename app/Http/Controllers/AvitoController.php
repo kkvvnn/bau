@@ -25,6 +25,7 @@ class AvitoController extends Controller
         Excel::store(new AvitoExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
-        return view('exports.url', compact('url'));
+        $rodion = false;
+        return view('exports.url', compact('url', 'rodion'));
     }
 }

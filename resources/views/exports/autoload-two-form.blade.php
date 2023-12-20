@@ -7,7 +7,7 @@
                 <p></p>
             </div>
 
-            <h1 class="display-6">Автозагрузка Авито аккаунт Родион</h1>
+            <div class="text-bg-warning p-3"><h1 class="display-6">Автозагрузка Авито аккаунт Родион</h1></div>
             <hr>
 
             <form action="{{route('avito-export-two')}}">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Адрес размещения</label>
-                    <input type="text" class="form-control" id="address" name="address" value="Москва, Филёвская линия, метро Фили">
+                    <input type="text" class="form-control" id="address" name="address" value="Москва, Арбатско-Покровская линия ">
                 </div>
                 <div class="mb-3">
                     <label for="contact_method" class="form-label">Способ связи</label>
