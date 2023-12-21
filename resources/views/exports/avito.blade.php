@@ -435,22 +435,22 @@
 //            }
 
 //--------------------------------------------------------------------------
-            $price = $product->RMPrice;
-//            if ($product->Producer_Brand == 'Laparet') {
-//                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-//                    $price = round($product->RMPrice * 0.85, -1);
-//                } else {
-//                    $price = $product->RMPrice;
-//                }
-//            } elseif ($product->Producer_Brand == 'Vitra') {
+//            $price = $product->RMPrice;
+            if ($product->Producer_Brand == 'Laparet') {
+                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+                    $price = round($product->RMPrice * 0.9, -1);
+                } else {
+                    $price = $product->RMPrice;
+                }
+            } elseif ($product->Producer_Brand == 'Vitra') {
 //                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
 //                    $price = round($product->RMPrice * 0.90, -1);
 //                } else {
-//                    $price = $product->RMPrice;
+                    $price = $product->RMPrice;
 //                }
-//            } else {
-//                $price = $product->RMPrice;
-//            }
+            } else {
+                $price = $product->RMPrice;
+            }
 
 //            if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный' || $product->Name == 'Dalim Mint Керамогранит 60x60 Полированный') {
 //                $price = '';
@@ -1091,8 +1091,8 @@
             //        --------------------------------------------------------------
                         if($product->price !== null) {
                             if ($product->sale == 0) {
-//                                $price = round($product->price->price * 0.93, -1);
-                                $price = $product->price->price;
+                                $price = round($product->price->price * 0.95, -1);
+//                                $price = $product->price->price;
                             } else {
                                 $price = $product->price->price;
                             }
