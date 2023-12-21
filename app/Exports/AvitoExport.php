@@ -70,6 +70,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $primavera = Primavera::where('country', '!=', 'Киргизия')->get();
 //      ==============================================
         $absolut_gres = AbsolutGresScrap::all();
+        $absolut_gres = [];
 //      ==============================================
 //        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
         $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->get();

@@ -58,7 +58,7 @@
             $FinishingSubType = 'Керамическая плитка';
 
 
-            $description .= 'Laparet коллекция '.$collection->Collection_Name;
+            $description .= 'Laparet  '.$collection->Collection_Name . ' коллекция керамогранита и керамической плитки';
 
             $images_products_1 = []; //container for products image Picture1
             $images_products_2 = []; //container for products image Picture2
@@ -70,8 +70,7 @@
                 @php
                     $description .= '<p><em>---------------------</em></p>';
                     $description .= '<p><strong>' . $product->Name . '. '
-                           . $product->Producer_Brand . ' /'
-                           . $product->Country_of_manufacture . '/</strong></p>';
+                           . $product->Producer_Brand . '</strong></p>';
                 @endphp
 
                 @php
