@@ -46,6 +46,8 @@
         @php
             $description = '';
 
+            $description .= '<p>Добрый день.Мы являемся официальными дилерами производителя Laparet.В нашем шоу-руме вы можете ознакомится со всеми коллекциями керамогранита и керамической плитки.</p>';
+
             if($add_description_first != '') {
                 $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
@@ -53,6 +55,10 @@
             $collection_first_word = explode(' ',trim($collection->Collection_Name))[0];
 
             $title = 'Керамогранит Laparet коллекция '.$collection->Collection_Name;
+
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Керамогранит ', '', $title);
+            }
 
             $FinishingType = 'Плитка, керамогранит и мозаика';
             $FinishingSubType = 'Керамическая плитка';
@@ -74,36 +80,70 @@
                 @endphp
 
                 @php
-                    if($product->RMPrice != null) {
-                    $description .= '<p><em>'.$product->RMPrice .' Р/'. $product->MainUnit . '</em></p>';
-                    }
-                    $description .='<ul>';
-//                    if($product->Height != 0 && $product->Lenght != 0) {
-//                    $description .= '<li>Размер: <em>' . $product->Height .'x' . $product->Lenght . '</em></li>';
-//                    }
-//                    if($product->Thickness != null && $product->Thickness != 0) {
-//                    $description .= '<li>Толщина: <em>' . $product->Thickness . '</em></li>';
-//                    }
-                    if($product->DesignValue != null) {
-                    $description .= '<li>Рисунок: <em>' . $product->DesignValue . '</em></li>';
-                    }
-                    if($product->Color != null) {
-                    $description .= '<li>Цвет: <em>' . $product->Color . '</em></li>';
-                    }
-                    if($product->Surface != null) {
-                    $description .= '<li>Поверхность: <em>' . $product->Surface . '</em></li>';
-                    }
-//                    if($product->PCS_in_Package != null) {
-//                    $description .= '<li>В упаковке штук: <em>' . $product->PCS_in_Package . '</em></li>';
-//                    }
-//                    if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
-//                    $description .= '<li>В упаковке: <em>' . $product->Package_Value .' '.$product->MainUnit. '</em></li>';
-//                    }
-//                    if($product->balanceCount != null) {
-//                    $description .= '<li>Примерный остаток: <em>' . $product->balanceCount .' '.$product->MainUnit. '</em></li>';
-//                    }
 
-                    $description .= '</ul>';
+
+                    if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+                        $price_product = round($product->RMPrice * 0.9, -1);
+                    } else {
+                        $price_product = $product->RMPrice;
+                    }
+
+                        if($product->RMPrice != null) {
+                        $description .= '<p><em>'.$price_product .' Р/'. $product->MainUnit . '</em></p>';
+                        }
+                        $description .='<ul>';
+    //                    if($product->Height != 0 && $product->Lenght != 0) {
+    //                    $description .= '<li>Размер: <em>' . $product->Height .'x' . $product->Lenght . '</em></li>';
+    //                    }
+    //                    if($product->Thickness != null && $product->Thickness != 0) {
+    //                    $description .= '<li>Толщина: <em>' . $product->Thickness . '</em></li>';
+    //                    }
+                        if($product->DesignValue != null) {
+                        $description .= '<li>Рисунок: <em>' . $product->DesignValue . '</em></li>';
+                        }
+                        if($product->Color != null) {
+                        $description .= '<li>Цвет: <em>' . $product->Color . '</em></li>';
+                        }
+                        if($product->Surface != null) {
+                        $description .= '<li>Поверхность: <em>' . $product->Surface . '</em></li>';
+                        }
+    //                    if($product->PCS_in_Package != null) {
+    //                    $description .= '<li>В упаковке штук: <em>' . $product->PCS_in_Package . '</em></li>';
+    //                    }
+    //                    if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
+    //                    $description .= '<li>В упаковке: <em>' . $product->Package_Value .' '.$product->MainUnit. '</em></li>';
+    //                    }
+                        $date_now = date('d.m.Y');
+
+                            if ($product->balanceCount == 0) {
+                                $description .= '<li>Остаток: <em>по запросу</em></li>';
+                            } elseif ($product->balanceCount > 0 && $product->balanceCount <= 2) {
+                                $description .= '<li>Остаток: <em> до 2 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 2 && $product->balanceCount <= 5) {
+                                $description .= '<li>Остаток: <em> 2 - 5 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 5 && $product->balanceCount <= 10) {
+                                $description .= '<li>Остаток: <em> 5 - 10 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 10 && $product->balanceCount <= 25) {
+                                $description .= '<li>Остаток: <em> 10 - 25 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 25 && $product->balanceCount <= 50) {
+                                $description .= '<li>Остаток: <em> 25 - 50 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 50 && $product->balanceCount <= 75) {
+                                $description .= '<li>Остаток: <em> 50 - 75 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 75 && $product->balanceCount <= 100) {
+                                $description .= '<li>Остаток: <em> 75 - 100 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 100 && $product->balanceCount <= 125) {
+                                $description .= '<li>Остаток: <em> 100 - 125 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 125 && $product->balanceCount <= 150) {
+                                $description .= '<li>Остаток: <em> 125 - 150 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 150 && $product->balanceCount <= 175) {
+                                $description .= '<li>Остаток: <em> 150 - 175 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } elseif ($product->balanceCount > 175 && $product->balanceCount <= 200) {
+                                $description .= '<li>Остаток: <em> 175 - 200 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            } else {
+                                $description .= '<li>Остаток: <em> более 200 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                            }
+
+                        $description .= '</ul>';
                 @endphp
 
                 @php
@@ -165,6 +205,7 @@
         @endphp
 
         @php
+            $description .= '<p>Приглашаем вас в наш салон</p><p>Более детально по наличию и цене уточняйте в виде сообщения</p><p>Если вам не хватило, то пишите нужный артикул керамогранита, и мы ответим вам по наличию и цене</p><p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
             if($add_description != '') {
                 $description .= '<p>'.nl2br($add_description).'</p>';
             }
