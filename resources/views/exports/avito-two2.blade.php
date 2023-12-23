@@ -27,8 +27,21 @@
     </thead>
     <tbody>
 
+    @php
+        $nnn = 0;
+    @endphp
+
     @foreach($collections as $collection)
+{{--        @if(\App\Models\Product::where([['Collection_Id', 'like', "%{$collection->Collection_Id}%"], ['GroupProduct', '01 Плитка'],['Producer_Brand', 'Laparet'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%пецэлем%'], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->count())--}}
+
         @php
+            $nnn++;
+        @endphp
+
+        @if($nnn)
+
+        @php
+        $nnn--;
             $description = '';
             $__collection_id = $collection->Collection_Id;
             $products = \App\Models\Product::where([['Collection_Id', 'like', "%{$__collection_id}%"], ['GroupProduct', '01 Плитка'],['Producer_Brand', 'Laparet'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%пецэлем%'], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
@@ -233,6 +246,7 @@
             <td>Новое</td>
             <td></td>
         </tr>
+        @endif
     @endforeach
     {{-----------------------------------END-BAUSERVICE--------------------------}}
     </tbody>
