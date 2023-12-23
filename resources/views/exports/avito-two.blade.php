@@ -59,7 +59,7 @@
             $FinishingSubType = 'Керамическая плитка';
 
 
-            $description .= 'Laparet  '.$collection->Collection_Name . ' коллекция керамогранита и керамической плитки';
+            $description .= '<p><strong>Laparet  '.$collection->Collection_Name . ' коллекция керамогранита и керамической плитки</strong></p>';
 
             $images_products_1 = []; //container for products image Picture1
             $images_products_2 = []; //container for products image Picture2
@@ -202,6 +202,8 @@
 
         @php
             $description .= '<p>Приглашаем вас в наш салон</p><p>Более детально по наличию и цене уточняйте в виде сообщения</p><p>Если вам не хватило, то пишите нужный артикул керамогранита, и мы ответим вам по наличию и цене</p><p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
+            $description .= '<p>_____________</p>';
+            $description .= '<p><em>Лапарет '.$collection->Collection_Name.'</em></p>';
             if($add_description != '') {
                 $description .= '<p>'.nl2br($add_description).'</p>';
             }
