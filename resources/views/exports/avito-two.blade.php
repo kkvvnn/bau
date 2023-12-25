@@ -241,9 +241,9 @@
             $element_code = str_replace('Студио', 'Studio', $element_code);
             $element_code = str_replace('Мармара', 'Marmara', $element_code);
 
-            if ($collection->Collection_Name == 'Vita') {
-                 $element_code = '9999303577_bau';
-            }
+//            if ($collection->Collection_Name == 'Vita') {
+//                 $element_code = '9999303577_bau';
+//            }
         @endphp
 
         <tr>
