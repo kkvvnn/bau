@@ -233,12 +233,17 @@
                 $description .= '<p>'.nl2br($add_description).'</p>';
             }
             $price = '';
+
             $element_code = str_replace(' ', '', $collection->Collection_Name).'_bau';
             $element_code = str_replace('бежевый', 'bezh', $element_code);
             $element_code = str_replace('серый', 'ser', $element_code);
             $element_code = str_replace('беж', 'bezhe', $element_code);
             $element_code = str_replace('Студио', 'Studio', $element_code);
             $element_code = str_replace('Мармара', 'Marmara', $element_code);
+
+            if ($collection->Collection_Name == 'Vita') {
+                 $element_code = '9999303577_bau';
+            }
         @endphp
 
         <tr>
