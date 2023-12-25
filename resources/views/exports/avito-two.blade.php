@@ -91,6 +91,9 @@
     //                    if($product->Thickness != null && $product->Thickness != 0) {
     //                    $description .= '<li>Толщина: <em>' . $product->Thickness . '</em></li>';
     //                    }
+                        if($product->Owner_Article != null) {
+                        $description .= '<li>Артикул: <em>' . $product->Owner_Article . '</em></li>';
+                        }
                         if($product->DesignValue != null) {
                         $description .= '<li>Рисунок: <em>' . $product->DesignValue . '</em></li>';
                         }
@@ -298,6 +301,9 @@
     //                    if($product->Thickness != null && $product->Thickness != 0) {
     //                    $description .= '<li>Толщина: <em>' . $product->Thickness . '</em></li>';
     //                    }
+                        if($product->Owner_Article != null) {
+                        $description .= '<li>Артикул: <em>' . $product->Owner_Article . '</em></li>';
+                        }
                         if($product->DesignValue != null) {
                         $description .= '<li>Рисунок: <em>' . $product->DesignValue . '</em></li>';
                         }
