@@ -218,6 +218,7 @@
 
             $img_full_arr = array_slice($img_full_arr, 0, 10);
             $img_full = implode(' | ', $img_full_arr);
+            $img_full = trim($img_full, ' | ');
 
         @endphp
 
