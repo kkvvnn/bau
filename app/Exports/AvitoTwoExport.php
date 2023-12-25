@@ -43,7 +43,7 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
     {
         set_time_limit(90);
 
-//      =================COLLECTIONS-LIST======================
+//      =================LAPARET-COLLECTIONS======================
         $laparets = Product::where([['GroupProduct', '01 Плитка'], ['Producer_Brand', 'Laparet'], ['Name', 'not like', '%ставк%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
 
         $collections_id = [];
@@ -56,10 +56,15 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
 
         $collections_unique = Collection::whereIn('Collection_Id', $collections_id)->get();
 
-//      ===================COLLECTIONS-LIST-END========================
+//      ===================LAPARET-COLLECTIONS-END========================
+//      ===========KERAMAMARAZZI-MONPARNAS========================
+        $monparnas = Product::where([['GroupProduct', '01 Плитка'], ['Producer_Brand', 'Kerama Marazzi'], ['Name', 'like', '%онпарнас%']])->get();
+//        dd($monparnas[0]->collections[0]->Interior_Pic);
+//      ===========KERAMAMARAZZI-MONPARNAS-END========================
 
         return view('exports.avito-two', [
             'collections' => $collections_unique,
+            'monparnas' => $monparnas,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,
