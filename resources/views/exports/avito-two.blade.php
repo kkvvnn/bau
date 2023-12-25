@@ -371,8 +371,7 @@
 
         @php
             $images_collection = array_slice($images_collection, 0, 2);
-
-            $images_products_1 = array_slice($images_products_1, 0, 2);
+            $images_products_1 = array_slice($images_products_1, 0, 9);
             $images_products_2 = array_slice($images_products_2, 0, 2);
             $images_products_3 = array_slice($images_products_3, 0, 2);
             $images_products_4 = array_slice($images_products_4, 0, 2);
