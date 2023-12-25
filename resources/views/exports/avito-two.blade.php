@@ -50,10 +50,11 @@
 
             $collection_first_word = explode(' ',trim($collection->Collection_Name))[0];
 
-            $title = 'Керамогранит Laparet коллекция '.$collection->Collection_Name;
+//            $title = 'Керамогранит Laparet коллекция '.$collection->Collection_Name;
+            $title = 'Laparet '.$collection->Collection_Name.' керамогранит Лапарет';
 
             if (mb_strlen($title) > 50) {
-                $title = str_replace('Керамогранит ', '', $title);
+                $title = str_replace(' Лапарет', '', $title);
             }
 
             $FinishingType = 'Плитка, керамогранит и мозаика';
@@ -66,6 +67,8 @@
             $images_products_2 = []; //container for products image Picture2
             $images_products_3 = []; //container for products image Picture3
             $images_products_4 = []; //container for products image Picture4
+            $images_products_5 = []; //container for products image Picture5
+            $images_products_6 = []; //container for products image Picture6
         @endphp
         @foreach($products as $product)
             @if(mb_stripos($product->Name, $collection_first_word) !== false)
@@ -103,6 +106,9 @@
                         if($product->Surface != null) {
                         $description .= '<li>Поверхность: <em>' . $product->Surface . '</em></li>';
                         }
+//                        if($product->Field_of_Application != null) {
+//                        $description .= '<li>Подходит: <em>' . $product->Field_of_Application . '</em></li>';
+//                        }
     //                    if($product->PCS_in_Package != null) {
     //                    $description .= '<li>В упаковке штук: <em>' . $product->PCS_in_Package . '</em></li>';
     //                    }
@@ -112,37 +118,37 @@
                         $date_now = date('d.m.Y');
 
                             if ($product->balanceCount == 0) {
-                                $description .= '<li>Остаток: <em>по запросу</em></li>';
+                                $description .= '<li>Свободный остаток: <em>по запросу</em></li>';
                             } elseif ($product->balanceCount > 0 && $product->balanceCount <= 2) {
-                                $description .= '<li>Остаток: <em> до 2 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> до 2 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 2 && $product->balanceCount <= 5) {
-                                $description .= '<li>Остаток: <em> 2 - 5 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 2 - 5 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 5 && $product->balanceCount <= 10) {
-                                $description .= '<li>Остаток: <em> 5 - 10 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 5 - 10 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 10 && $product->balanceCount <= 25) {
-                                $description .= '<li>Остаток: <em> 10 - 25 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 10 - 25 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 25 && $product->balanceCount <= 50) {
-                                $description .= '<li>Остаток: <em> 25 - 50 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 25 - 50 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 50 && $product->balanceCount <= 75) {
-                                $description .= '<li>Остаток: <em> 50 - 75 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 50 - 75 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 75 && $product->balanceCount <= 100) {
-                                $description .= '<li>Остаток: <em> 75 - 100 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 75 - 100 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 100 && $product->balanceCount <= 125) {
-                                $description .= '<li>Остаток: <em> 100 - 125 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 100 - 125 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 125 && $product->balanceCount <= 150) {
-                                $description .= '<li>Остаток: <em> 125 - 150 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 125 - 150 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 150 && $product->balanceCount <= 175) {
-                                $description .= '<li>Остаток: <em> 150 - 175 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 150 - 175 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 175 && $product->balanceCount <= 200) {
-                                $description .= '<li>Остаток: <em> 175 - 200 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 175 - 200 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 200 && $product->balanceCount <= 300) {
-                                $description .= '<li>Остаток: <em> 200 - 300 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 200 - 300 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 300 && $product->balanceCount <= 400) {
-                                $description .= '<li>Остаток: <em> 300 - 400 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 300 - 400 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } elseif ($product->balanceCount > 400 && $product->balanceCount <= 500) {
-                                $description .= '<li>Остаток: <em> 400 - 500 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> 400 - 500 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             } else {
-                                $description .= '<li>Остаток: <em> более 500 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
+                                $description .= '<li>Свободный остаток: <em> более 500 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
                             }
 
                         $description .= '</ul>';
@@ -155,12 +161,16 @@
                     $images_products_3[] = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture3);
                     } else {$img3 = null;}
                     if (isset($product->Picture4) && $product->Picture4 != null) {
-                    $images_products_3[] = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture4);
+                    $images_products_4[] = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture4);
+                    } else {$img4 = null;}
+                    if (isset($product->Picture5) && $product->Picture5 != null) {
+                    $images_products_5[] = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture5);
+                    } else {$img4 = null;}
+                    if (isset($product->Picture6) && $product->Picture6 != null) {
+                    $images_products_6[] = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture6);
                     } else {$img4 = null;}
 
         //    ------------------------------------------FOTO-------------------------------------
-
-
 
                 @endphp
             @endif
@@ -168,44 +178,54 @@
 
         @php
             $images_collection = array_slice($images_collection, 0, 2);
-            $images_products_1 = array_slice($images_products_1, 0, 2);
-            $images_products_2 = array_slice($images_products_2, 0, 2);
-            $images_products_3 = array_slice($images_products_3, 0, 2);
-            $images_products_4 = array_slice($images_products_4, 0, 2);
 
-            $img_full = '';
+            $img_full_arr = [];
             foreach ($images_collection as $i_c) {
                 if (isset($i_c)) {
-                    $img_full .= $i_c . ' | ';
+                    $img_full_arr[] = $i_c;
                 }
             }
             foreach ($images_products_1 as $i_p_1) {
                 if (isset($i_p_1)) {
-                    $img_full .= $i_p_1 . ' | ';
+                    $img_full_arr[] = $i_p_1;
                 }
             }
             foreach ($images_products_2 as $i_p_2) {
                 if (isset($i_p_2)) {
-                    $img_full .= $i_p_2 . ' | ';
+                    $img_full_arr[] = $i_p_2;
                 }
             }
             foreach ($images_products_3 as $i_p_3) {
                 if (isset($i_p_3)) {
-                    $img_full .= $i_p_3 . ' | ';
+                    $img_full_arr[] = $i_p_3;
                 }
             }
             foreach ($images_products_4 as $i_p_4) {
                 if (isset($i_p_4)) {
-                    $img_full .= $i_p_4 . ' | ';
+                    $img_full_arr[] = $i_p_4;
+                }
+            }
+            foreach ($images_products_5 as $i_p_5) {
+                if (isset($i_p_5)) {
+                    $img_full_arr[] = $i_p_5;
+                }
+            }
+            foreach ($images_products_6 as $i_p_6) {
+                if (isset($i_p_6)) {
+                    $img_full_arr[] = $i_p_6;
                 }
             }
 
-            $img_full = trim($img_full, ' | ');
+            $img_full_arr = array_slice($img_full_arr, 0, 10);
+            $img_full = implode(' | ', $img_full_arr);
 
         @endphp
 
         @php
-            $description .= '<p>Приглашаем вас в наш салон</p><p>Более детально по наличию и цене уточняйте в виде сообщения</p><p>Если вам не хватило, то пишите нужный артикул керамогранита, и мы ответим вам по наличию и цене</p><p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
+            $description .= '<p>Приглашаем вас в наш салон</p>';
+            $description .= '<p>Более детально по наличию и цене уточняйте в виде сообщения</p>';
+            $description .= '<p>Если вам не хватило, то укажите нужный артикул керамогранита (дату производства, номер партии, тон, калибр), и мы ответим вам по наличию и цене</p>';
+            $description .= '<p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
             $description .= '<p>_____________</p>';
             $description .= '<p><em>Лапарет '.$collection->Collection_Name.'</em><br>';
             $description .= '<em>Laparet '.$collection->Collection_Name.'</em></p>';
@@ -213,7 +233,12 @@
                 $description .= '<p>'.nl2br($add_description).'</p>';
             }
             $price = '';
-            $element_code = str_replace('х', '', $product->Element_Code).'_bau';
+            $element_code = str_replace(' ', '', $collection->Collection_Name).'_bau';
+            $element_code = str_replace('бежевый', 'bezh', $element_code);
+            $element_code = str_replace('серый', 'ser', $element_code);
+            $element_code = str_replace('беж', 'bezhe', $element_code);
+            $element_code = str_replace('Студио', 'Studio', $element_code);
+            $element_code = str_replace('Мармара', 'Marmara', $element_code);
         @endphp
 
         <tr>
