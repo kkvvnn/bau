@@ -377,7 +377,7 @@
             $images_products_3 = array_slice($images_products_3, 0, 2);
             $images_products_4 = array_slice($images_products_4, 0, 2);
 
-            dd($images_products_2);
+//            dd($images_products_2);
 
             $img_full = '';
             foreach ($images_collection as $i_c) {
@@ -408,7 +408,7 @@
 
             $img_full = trim($img_full, ' | ');
 
-            dd($img_full);
+//            dd($img_full);
 
         @endphp
 
