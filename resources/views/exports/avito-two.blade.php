@@ -115,7 +115,7 @@
     //                    if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
     //                    $description .= '<li>В упаковке: <em>' . $product->Package_Value .' '.$product->MainUnit. '</em></li>';
     //                    }
-                        $date_now = date('d.m.Y');
+                        $date_now = $product->updated_at->format('d.m.Y');
 
                             if ($product->balanceCount == 0) {
                                 $description .= '<li>Свободный остаток: <em>по запросу</em></li>';
@@ -349,7 +349,7 @@
     //                    if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
     //                    $description .= '<li>В упаковке: <em>' . $product->Package_Value .' '.$product->MainUnit. '</em></li>';
     //                    }
-                        $date_now = date('d.m.Y');
+                        $date_now = $product->updated_at->format('d.m.Y');
 
                             if ($product->balanceCount == 0) {
                                 $description .= '<li>Остаток: <em>по запросу</em></li>';
