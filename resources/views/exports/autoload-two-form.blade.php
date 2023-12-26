@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Адрес размещения</label>
-                    <input type="text" class="form-control" id="address" name="address" value="Москва, Арбатско-Покровская линия ">
+                    <input type="text" class="form-control" id="address" name="address" value="Москва, Филёвская линия, метро Кунцевская">
                 </div>
                 <div class="mb-3">
                     <label for="contact_method" class="form-label">Способ связи</label>
