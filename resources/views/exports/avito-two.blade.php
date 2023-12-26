@@ -61,7 +61,7 @@
             $FinishingSubType = 'Керамическая плитка';
 
 
-            $description .= '<p><strong>Laparet  '.$collection->Collection_Name . ' коллекция керамогранита и керамической плитки</strong></p>';
+            $description .= '<p><strong>&#127876; Laparet  '.$collection->Collection_Name . ' коллекция керамогранита и керамической плитки</strong></p>';
 
             $images_products_1 = []; //container for products image Picture1
             $images_products_2 = []; //container for products image Picture2
@@ -74,7 +74,7 @@
             @if(mb_stripos($product->Name, $collection_first_word) !== false)
                 @php
                     $description .= '<p><em>---------------------</em></p>';
-                    $description .= '<p><strong>' . $product->Name . '. '
+                    $description .= '<p><strong>&#128204; ' . $product->Name . '. '
                            . $product->Producer_Brand . '</strong></p>';
 
 
@@ -302,7 +302,7 @@
             $FinishingType = 'Плитка, керамогранит и мозаика';
             $FinishingSubType = 'Керамическая плитка';
 
-            $description .= '<p><strong>Kerama Marazzi  '.$collection->Collection_Name . ' коллекция настенной плитки и декоров</strong></p>';
+            $description .= '<p><strong>&#127876; Kerama Marazzi  '.$collection->Collection_Name . ' коллекция настенной плитки и декоров</strong></p>';
 
             $images_products_1 = []; //container for products image Picture1
             $images_products_2 = []; //container for products image Picture2
@@ -312,7 +312,7 @@
         @foreach($monparnas as $product)
                 @php
                     $description .= '<p><em>---------------------</em></p>';
-                    $description .= '<p><strong>' . $product->Name . '. '
+                    $description .= '<p><strong>&#128204; ' . $product->Name . '. '
                            . $product->Producer_Brand . '</strong></p>';
 
 
@@ -450,7 +450,11 @@
         @endphp
 
         @php
-            $description .= '<p>Приглашаем вас в наш салон</p><p>Более детально по наличию и цене уточняйте в виде сообщения</p><p>Если вам не хватило, то пишите нужный артикул керамогранита, и мы ответим вам по наличию и цене</p><p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
+            $description .= '<p>_____________</p>';
+            $description .= '<p>Приглашаем вас в наш салон</p>';
+            $description .= '<p>Более детально по наличию и цене уточняйте в виде сообщения</p>';
+            $description .= '<p>Если вам не хватило, то укажите нужный артикул керамогранита (дату производства, номер партии, тон, калибр), и мы ответим вам по наличию и цене</p>';
+            $description .= '<p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
             $description .= '<p>_____________</p>';
             $description .= '<p><em>Керама Марацци '.$collection->Collection_Name.'</em><br>';
             $description .= '<em>Kerama Marazzi '.$collection->Collection_Name.'</em></p>';
