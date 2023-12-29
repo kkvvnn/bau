@@ -169,3 +169,10 @@ Route::get('/technotile/import', [\App\Http\Controllers\TechnotileController::cl
 Route::get('/technotile/index', [\App\Http\Controllers\TechnotileController::class, 'index'])->name('technotile.index');
 Route::get('/technotile/{id}', [\App\Http\Controllers\TechnotileController::class, 'show'])->name('technotile.show');
 //------------------TECHNOTILE-END----------------------
+
+//--------------------EMPERO------------------------
+Route::view('/empero/import', 'empero.import');
+Route::post('/empero/import-work', [\App\Http\Controllers\EmperoController::class, 'import_work'])->name('empero.import-work');
+Route::get('/empero/index', [\App\Http\Controllers\EmperoController::class, 'index'])->name('empero.index');
+Route::get('/empero/{id}', [\App\Http\Controllers\EmperoController::class, 'show'])->name('empero.show');
+//------------------EMPERO-END----------------------

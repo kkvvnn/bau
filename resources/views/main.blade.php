@@ -237,7 +237,10 @@
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_plit')}}">Плитка деш</a>--}}
 {{--              </li>--}}
-{{--              <li class="nav-item">--}}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('empero.index')}}">Empero</a>
+                </li>
+              <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('aquafloor_index')}}">AquaFloor</a>
               </li>
 {{--              <li class="nav-item">--}}
