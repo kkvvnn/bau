@@ -93,6 +93,14 @@ class SearchController extends Controller
             ]);
         }
 
+        $empero = \App\Models\Empero::where('title', 'LIKE', $name)->paginate(15);
+        $empero->appends(['name' => $name]);
+        if (count($empero)) {
+            return view('empero.index', [
+                'products' => $empero,
+            ]);
+        }
+
         return redirect('/not-found-rezults');
     }
 }

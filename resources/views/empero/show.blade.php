@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', $product->Name)
+@section('title', $product->title)
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
