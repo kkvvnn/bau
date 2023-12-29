@@ -87,10 +87,16 @@ class BauserviceDownloadImages extends Command
             if ($file != null) {
                 $manager = new ImageManager(['driver' => 'imagick']);
                 $image = $manager->make($file);
+                $image->orientate();
+//                dd($image->exif());
                 $image->resize(900, 900, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });
+                $exif = $image->exif();
+                if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && ($exif['COMPUTED']['Width'] < $exif['COMPUTED']['Height'])) {
+                    $image->rotate(-90);
+                }
                 Storage::disk('public')->put($name_file, $image->encode());
             }
         }
