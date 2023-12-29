@@ -24,7 +24,7 @@
                         $img = [];
                         foreach ($product->images as $i) {
 //                            $img[] = $i['images-href'];
-                            $img[] = 'https://empero.info/'.mb_substr($i['images-href'], mb_strpos($i['images-href'], 'src=') + 4);
+                            $img[] = Storage::disk('empero')->url(mb_substr($i['images-href'], mb_strpos($i['images-href'], 'src=') + 4));
                         }
 //                        dd($img);
                     @endphp

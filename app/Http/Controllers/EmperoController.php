@@ -42,12 +42,12 @@ class EmperoController extends Controller
 
         $img = [];
         foreach ($product->images as $i) {
-            $img[] = 'https://empero.info/'.mb_substr($i['images-href'], mb_strpos($i['images-href'], 'src=') + 4);
+            $img[] = Storage::disk('empero')->url(mb_substr($i['images-href'], mb_strpos($i['images-href'], 'src=') + 4));
         }
 
         $img_collection = [];
         foreach ($product->img_collection as $i_c) {
-            $img_collection[] = 'https://empero.info/'.mb_substr($i_c['img_collection-src'], mb_strpos($i_c['img_collection-src'], 'src=') + 4);
+            $img_collection[] = Storage::disk('empero')->url(mb_substr($i_c['img_collection-src'], mb_strpos($i_c['img_collection-src'], 'src=') + 4));
         }
 
         $text_color = '';

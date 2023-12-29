@@ -58,6 +58,14 @@ return [
             'throw' => false,
         ],
 
+        'empero' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/empero'),
+            'url' => env('APP_URL').'/storage/images/empero',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'no_image' => [
             'driver' => 'local',
             'root' => storage_path('app/public/'),
