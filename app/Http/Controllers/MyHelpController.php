@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Altacera\AltaceraTovar;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\Kevis;
+use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
 use App\Models\Product;
@@ -71,12 +72,12 @@ class MyHelpController extends Controller
 
     public function price_list_60x60_60x120()
     {
-        $products = Product::where([['Producer_Brand', 'Laparet'],['balance', 1],['Category', 'Керамогранит'],['Lenght', '>=', 59],['Lenght', '<=', 121],['Height', '>=', 59],['Height', '<=', 61]])->orderBy('Lenght')->orderBy('Name')->get();
+        $products = Product::where([['Producer_Brand', 'Laparet'], ['balance', 1], ['Category', 'Керамогранит'], ['Lenght', '>=', 59], ['Lenght', '<=', 121], ['Height', '>=', 59], ['Height', '<=', 61]])->orderBy('Lenght')->orderBy('Name')->get();
 
         echo '<table>';
         foreach ($products as $product) {
             echo '<tr>';
-            echo '<td>'.$product->Name.'</td>'.'<td>'.$product->RMPrice.'</td>';
+            echo '<td>' . $product->Name . '</td>' . '<td>' . $product->RMPrice . '</td>';
             if ($product->RMPriceOld) {
                 echo '<td>Распродажа</td>';
             } else {
@@ -96,25 +97,25 @@ class MyHelpController extends Controller
     {
         $products = NtCeramicNoImgs::all();
 
-        echo "==================NT-CERAMIC============================". '<br>';
+        echo "==================NT-CERAMIC============================" . '<br>';
         foreach ($products as $product) {
-            echo $product->vendor_code.' '.$product->title.'<br>';
+            echo $product->vendor_code . ' ' . $product->title . '<br>';
         }
 
         echo '<br>';
         $products = Primavera::all();
 
-        echo "==================PRIMAVERA============================". '<br>';
+        echo "==================PRIMAVERA============================" . '<br>';
         foreach ($products as $product) {
-            echo $product->vendor_code.' '.str_replace('Керамогранит', '',$product->title_avito).'<br>';
+            echo $product->vendor_code . ' ' . str_replace('Керамогранит', '', $product->title_avito) . '<br>';
         }
 
         echo '<br>';
         $products = \App\Models\Rusplitka\Product::all();
 
-        echo "==================RUSPLITKA============================". '<br>';
+        echo "==================RUSPLITKA============================" . '<br>';
         foreach ($products as $product) {
-            echo $product->name.'<br>';
+            echo $product->name . '<br>';
         }
     }
 
@@ -127,7 +128,7 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             if (strpos($product->Name, 'alacatta') !== false) {
                 echo '<tr>';
-                echo '<td>'.$product->Name.'</td><td>'.$product->RMPrice.'</td>';
+                echo '<td>' . $product->Name . '</td><td>' . $product->RMPrice . '</td>';
                 echo '</tr>';
             }
 
@@ -142,7 +143,7 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             if (strpos($product->tovar, 'alacatta') !== false) {
                 echo '<tr>';
-                echo '<td>'.$product->tovar.'</td><td>'.$product->price->price.'</td>';
+                echo '<td>' . $product->tovar . '</td><td>' . $product->price->price . '</td>';
                 echo '</tr>';
             }
 
@@ -157,7 +158,7 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             if (strpos($product->title, 'alacatta') !== false) {
                 echo '<tr>';
-                echo '<td>'.$product->title.' '.$product->vendor_code.' '.$product->size_cm.'</td><td>'.$product->price.'</td>';
+                echo '<td>' . $product->title . ' ' . $product->vendor_code . ' ' . $product->size_cm . '</td><td>' . $product->price . '</td>';
                 echo '</tr>';
             }
 
@@ -172,7 +173,7 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             if (strpos($product->title, 'alacatta') !== false) {
                 echo '<tr>';
-                echo '<td>'.$product->title.'</td><td>'.$product->price.'</td>';
+                echo '<td>' . $product->title . '</td><td>' . $product->price . '</td>';
                 echo '</tr>';
             }
 
@@ -187,7 +188,7 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             if (strpos($product->title, 'alacatta') !== false) {
                 echo '<tr>';
-                echo '<td>'.$product->title.'</td><td>'.$product->price.'</td>';
+                echo '<td>' . $product->title . '</td><td>' . $product->price . '</td>';
                 echo '</tr>';
             }
 
@@ -202,9 +203,26 @@ class MyHelpController extends Controller
         foreach ($products as $product) {
             if (strpos($product->name, 'alacatta') !== false) {
                 echo '<tr>';
-                echo '<td>'.$product->name.'</td><td>'.$product->price_rozn.'</td>';
+                echo '<td>' . $product->name . '</td><td>' . $product->price_rozn . '</td>';
                 echo '</tr>';
             }
+
+        }
+        echo '</table>';
+        echo '<br>';
+    }
+
+    public function leedo_all()
+    {
+        $products = LeedoProduct::all();
+
+        echo '<table>';
+        echo '<tr><th>Коллекция</th><th>Название</th><th>Цена</th><th>Закупка</th><th>В упаковке штук</th><th>Остаток</th></tr>';
+        foreach ($products as $product) {
+                echo '<tr>';
+                echo '<td>' . $product->Collection.'</td><td>' .$product->Item_name. '</td><td>' . $product->Price_rozn . '</td>';
+                echo '<td>' . $product->Price_OPT.'</td><td>' .$product->Pcs_per_box. '</td><td>' . $product->Sklad_Msk_LeeDo . '</td>';
+                echo '</tr>';
 
         }
         echo '</table>';

@@ -16,7 +16,6 @@
         $footer .= '<p>Более детально по наличию и цене уточняйте в виде сообщения</p>';
         $footer .= '<p>Если вам не хватило, то укажите нужный артикул керамогранита (дату производства, номер партии, тон, калибр), и мы ответим вам по наличию и цене</p>';
         $footer .= '<p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
-        $footer .= '<p>_____________</p>';
         return $footer;
     }
 @endphp
@@ -55,6 +54,10 @@
     @foreach($collections as $collection)
         @php
             $description = '';
+            if($add_description_first != '') {
+                $description .= '<p>'.nl2br($add_description_first).'</p>';
+            }
+
             $__collection_id = $collection->Collection_Id;
             $products = \App\Models\Product::where([['Collection_Id', 'like', "%{$__collection_id}%"], ['GroupProduct', '01 Плитка'],['Producer_Brand', 'Laparet'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%пецэлем%'], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
 
@@ -63,11 +66,6 @@
             $images_collection = []; //container for collection image
             foreach ($img_coll_arr as $i_c) {
                 $images_collection[] = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/collections/', $i_c);
-            }
-
-
-            if($add_description_first != '') {
-                $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
             $description .= avito_header_add('Laparet');
@@ -248,6 +246,11 @@
 
         @php
             $description .= avito_footer_add();
+            if($add_description != '') {
+                        $description .= '<p>'.nl2br($add_description).'</p>';
+            }
+
+            $description .= '<p>_____________</p>';
             $description .= '<p><em>Лапарет '.$collection->Collection_Name.'</em><br>';
             $description .= '<em>Laparet '.$collection->Collection_Name.'</em></p>';
             if($add_description != '') {

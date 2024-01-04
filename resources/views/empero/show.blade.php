@@ -242,7 +242,7 @@
                         @if($product->fat && $product->fat != 0)
                             <tr>
                                 <th scope="row">Толщина</th>
-                                <td>{{$product->fat}} см</td>
+                                <td>{{$product->fat}} мм</td>
                             </tr>
                         @endif
                         @if($product->Package_Weight)
