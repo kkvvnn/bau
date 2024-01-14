@@ -73,10 +73,14 @@
             $collection_first_word = explode(' ',trim($collection->Collection_Name))[0];
 
 //            $title = 'Керамогранит Laparet коллекция '.$collection->Collection_Name;
-            $title = 'Laparet '.$collection->Collection_Name.' керамогранит Лапарет';
+//            $title = 'Laparet '.$collection->Collection_Name.' керамогранит Лапарет';
+            $title = 'Керамогранит '.$collection->Collection_Name.' Laparet';
 
             if (mb_strlen($title) > 50) {
-                $title = str_replace(' Лапарет', '', $title);
+                $title = str_replace(' Laparet', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Керамогранит ', '', $title);
             }
 
             $FinishingType = 'Плитка, керамогранит и мозаика';
