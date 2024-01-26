@@ -123,6 +123,17 @@
                     <p>Актуально на <span
                             class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
 
+
+                    <a title="Whatsapp" href="whatsapp://send?phone=79373209953&text={{$product->Name}}">
+                        <p class="mb-0"><img src="{{asset('w2.svg')}}" alt="Написать в Whatsapp" /></p>
+                    </a>
+
+                    <a title="Telegram" href="tg://resolve?domain=kkvvnn89" target="_blank">
+                        <p><img src="{{asset('t2.svg')}}" alt="Написать в Telegram" /></p>
+                    </a>
+
+{{--                    <a class="link-secondary text-decoration-none" href="tel:+79373209953"><p class="fs-4"><img src="{{asset('telephone.svg')}}" /> +7(937)320-99-53</p></a>--}}
+
                 </div>
             </div>
             <hr>
