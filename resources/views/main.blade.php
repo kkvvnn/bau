@@ -206,11 +206,6 @@
 
     .float:hover{
         background-color:#25d366;
-        color:#FFF;
-        border-radius:50px;
-        text-align:center;
-        font-size:30px;
-        box-shadow: 5px 5px 6px #999;
     }
 
     .my-float{
