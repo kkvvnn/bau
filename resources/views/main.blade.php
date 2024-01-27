@@ -194,13 +194,23 @@
         height:50px;
         bottom:20px;
         right:20px;
-        background-color:#25d366;
+
+        background-color: #05e857;
         color:#FFF;
         border-radius:50px;
         text-align:center;
         font-size:30px;
         box-shadow: 2px 2px 3px #999;
         z-index:100;
+    }
+
+    .float:hover{
+        background-color:#25d366;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+        font-size:30px;
+        box-shadow: 5px 5px 6px #999;
     }
 
     .my-float{
