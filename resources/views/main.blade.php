@@ -204,7 +204,7 @@
     }
 
     .my-float{
-        margin-top:12px;
+        margin-top:11px;
     }
 
   </style>
