@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Empero;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
@@ -62,9 +63,17 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
 //        dd($monparnas[0]->collections[0]->Interior_Pic);
 //      ===========KERAMAMARAZZI-MONPARNAS-END========================
 
+
+        //      ---------------------EMPERO---------------------
+
+        $emperos = Empero::where('title', 'not like', '% 2 %')->get();
+
+        //      ---------------------EMPERO-END---------------------
+
         return view('exports.avito-two', [
             'collections' => $collections_unique,
             'monparnas' => $monparnas,
+            'emperos' => $emperos,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,

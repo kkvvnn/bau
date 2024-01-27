@@ -74,7 +74,7 @@
 
 //            $title = 'Керамогранит Laparet коллекция '.$collection->Collection_Name;
 //            $title = 'Laparet '.$collection->Collection_Name.' керамогранит Лапарет';
-            $title = 'Керамогранит '.$collection->Collection_Name.' Laparet';
+            $title = 'Керамогранит Laparet '.$collection->Collection_Name;
 
             if (mb_strlen($title) > 50) {
                 $title = str_replace(' Laparet', '', $title);
@@ -87,7 +87,7 @@
             $FinishingSubType = 'Керамическая плитка';
 
 
-            $description .= '<p><strong>&#127876; Laparet  '.$collection->Collection_Name . ' коллекция керамогранита и керамической плитки</strong></p>';
+            $description .= '<p><strong>Laparet  '.$collection->Collection_Name . ' коллекция керамогранита и керамической плитки</strong></p>';
 
             $images_products_1 = []; //container for products image Picture1
             $images_products_2 = []; //container for products image Picture2
@@ -100,7 +100,7 @@
             @if(mb_stripos($product->Name, $collection_first_word) !== false)
                 @php
                     $description .= '<p><em>---------------------</em></p>';
-                    $description .= '<p><strong>&#128204; ' . $product->Name . '. '
+                    $description .= '<p><strong>&#128204; ' . $product->Name . ' '
                            . $product->Producer_Brand . '</strong></p>';
 
 
@@ -257,6 +257,7 @@
             $description .= '<p>_____________</p>';
             $description .= '<p><em>Лапарет '.$collection->Collection_Name.'</em><br>';
             $description .= '<em>Laparet '.$collection->Collection_Name.'</em></p>';
+            $description .= '<p><em>керамогранит для пола купить керамогранит 60х120 керамогранит для ванной для кухни керамогранит в ванную керамогранит керамическая плитка купить керамогранит плитка для пола 60*60 керамогранит 60*120 керамогранит со скидкой</em></p>';
             if($add_description != '') {
                 $description .= '<p>'.nl2br($add_description).'</p>';
             }
@@ -510,7 +511,120 @@
         <td>Новое</td>
         <td></td>
     </tr>
-    {{---------------------MONPARNAS----------------------}}
+    {{-----------------MONPARNAS-END--------------------}}
+
+    {{-------------------EMPERO--------------------}}
+    @foreach($emperos as $product)
+        @php
+            $price = $product->price;
+//            $price = round($price * 0.93, -1);
+//                --------------------------
+            $title = 'Керамогранит ' . str_replace(' Универсальная', '', $product->$title);
+//                -----------------------------
+//              ------------------------------------------FOTO-------------------------------------
+
+            $img = [];
+            foreach ($product->images as $i) {
+                $img[] = Storage::disk('empero')->url(mb_substr($i['images-href'], mb_strpos($i['images-href'], 'src=') + 4));
+            }
+
+            $img_collection = [];
+            foreach ($product->img_collection as $i_c) {
+                if ((mb_substr($i_c['img_collection-src'], mb_strpos($i_c['img_collection-src'], 'src=') + 4)) != '/components/com_jshopping/files/img_categories/noimage.gif') {
+                    $img_collection[] = Storage::disk('empero')->url(mb_substr($i_c['img_collection-src'], mb_strpos($i_c['img_collection-src'], 'src=') + 4));
+                }
+            }
+
+
+
+            $img_full_arr = array_merge($img_collection, $img);
+
+            if (count($img_full_arr) <= 10) {
+                $img_ready = implode(' | ', $img_full_arr);
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_ready = implode(' | ', $img_full_arr);
+            }
+            // -------------FOTO-END----------------
+
+            $description = '';
+
+             if($add_description_first != '') {
+                $description .= '<p>'.nl2br($add_description_first).'</p>';
+            }
+
+            $description .= avito_header_add('Empero');
+
+            $FinishingType = 'Плитка, керамогранит и мозаика';
+            $FinishingSubType = 'Керамическая плитка';
+
+            $description .= '<p><em>---------------------</em></p>';
+                    $description .= '<p><strong>&#128204; ' . $product->title . ' '
+                           . $product->brand . '</strong></p>';
+
+
+                        $description .='<ul>';
+                        if($product->price != null) {
+                            $description .= '<li>Цена <em>'. $price .' Р/м2</em></li>';
+                        }
+                        if($product->collection != null) {
+                            $description .= '<li>Коллекция: <em>' . $product->collection . '</em></li>';
+                        }
+                        if($product->size != null) {
+                            $description .= '<li>Размер: <em>' . $product->size . ' см</em></li>';
+                        }
+                        if($product->fat != null) {
+                            $description .= '<li>Толщина: <em>' . $product->fat . ' мм</em></li>';
+                        }
+                        if($product->stock_real != null) {
+                            $description .= '<li>Свободный остаток: '.($product->stock_real * $product->square_one). ' м2 ('. $product->updated_at->format('d.m.Y') .')</em></li>';
+                        }
+//                        if($product->Field_of_Application != null) {
+//                        $description .= '<li>Подходит: <em>' . $product->Field_of_Application . '</em></li>';
+//                        }
+    //                    if($product->PCS_in_Package != null) {
+    //                    $description .= '<li>В упаковке штук: <em>' . $product->PCS_in_Package . '</em></li>';
+    //                    }
+    //                    if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
+    //                    $description .= '<li>В упаковке: <em>' . $product->Package_Value .' '.$product->MainUnit. '</em></li>';
+    //                    }
+                        $description .= '</ul>';
+
+            $description .= avito_footer_add();
+            $description .= '<p>_____________</p>';
+            $description .= '<p><em>Empero '.$product->collection.'</em></p>';
+            $description .= '<p><em>керамогранит для пола купить керамогранит 60х120 керамогранит для ванной для кухни керамогранит в ванную керамогранит керамическая плитка купить керамогранит плитка для пола 60*60 керамогранит 60*120 керамогранит со скидкой</em></p>';
+            if($add_description != '') {
+                $description .= '<p>'.nl2br($add_description).'</p>';
+            }
+            $element_code = $product->vendor_code.'_empero';
+        @endphp
+        <tr>
+            <td></td>
+            <td>{{ $element_code }}</td>
+            <td>{{ $contact_method }}</td>
+            <td>rodioncom@yandex.ru</td>
+            <td>Активно</td>
+            <td>{{ $name }}</td>
+            <td>{{$price}}</td>
+            <td>Керамическая плитка. Керамогранит</td>
+            <td>{{$title}}</td>
+            <td>{{$img_ready}}</td>
+            <td>Отделка</td>
+            <td>Стройматериалы</td>
+            <td>Ремонт и строительство</td>
+            <td>Package</td>
+            <td>{{$FinishingType}}</td>
+            <td>{{ $phone }}</td> <!-- -->
+            <td>{{$description}}</td> <!-- -->
+            <td>{{ $address }}</td>
+            <td>Товар от производителя</td>
+            <td>{{$FinishingSubType}}</td>
+            <td>Новое</td>
+            <td></td>
+        </tr>
+    @endforeach
+    {{-----------------EMPERO-END-------------------}}
 
     </tbody>
 </table>
