@@ -190,10 +190,10 @@
 
     .float{
         position:fixed;
-        width:60px;
-        height:60px;
-        bottom:40px;
-        right:40px;
+        width:50px;
+        height:50px;
+        bottom:20px;
+        right:20px;
         background-color:#25d366;
         color:#FFF;
         border-radius:50px;
@@ -204,7 +204,7 @@
     }
 
     .my-float{
-        margin-top:16px;
+        margin-top:12px;
     }
 
   </style>
