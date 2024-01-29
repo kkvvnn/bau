@@ -12,10 +12,7 @@ class EmperoController extends Controller
 {
     public function import_work(Request $request)
     {
-//        $name = 'import/empero/empero.xlsx';
-
         $file = $request->file('file');
-//        dd($file);
 
         $date = date('Y-m-d_His');
         $name = 'import/empero/';
@@ -32,7 +29,6 @@ class EmperoController extends Controller
     public function index()
     {
         $products = Empero::where('title', 'not like', '% 2 %')->orderBy('length')->paginate(15);
-//        dd($products);
         return view('empero.index', compact('products'));
     }
 

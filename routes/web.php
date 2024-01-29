@@ -21,14 +21,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// ------------------IMPORT_FROM_BAUSERVIS_TO_DATABASE----------------------
+//----- IMPORT-FROM-BAUSERVICE-TO-DATABASE ------
 Route::get('/import_product_from_csv', [ProductController::class, 'import'])->name('import_product_from_csv');
 Route::get('/import_collection_from_csv', [CollectionController::class, 'import'])->name('import_collection_from_csv');
 Route::get('/many', [Controller::class, 'many'])->name('many');
 Route::get('/download_all_collections', [CollectionController::class, 'download_all_collections'])->name('download_all_collections');
 Route::get('/download_all/{pic?}', [ProductController::class, 'download_all'])->name('download_all');
 
-// -----------------------------------------------------------------------------
+//----- BAUSERVICE -----
 Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
 Route::get('/santech', [ProductController::class, 'index_santech'])->name('santech_index');
 Route::get('/min/{count?}', [ProductController::class, 'index_min'])->name('product_min');
@@ -51,23 +51,23 @@ Route::get('/index_collection', [CollectionController::class, 'index'])->name('i
 Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker'])->name('index_ker');
 Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit'])->name('index_plit');
 
-// --------------------CREATE_AVITO_FILE--------------------------------------
+//----- CREATE_AVITO_FILE -----
 Route::get('/avito_export/{foto?}', [AvitoController::class, 'export'])->name('avito-export');
 Route::get('/avito_export_two/{foto?}', [AvitoTwoController::class, 'export'])->name('avito-export-two');
 Route::view('/avito', 'exports.autoload-form');
 Route::view('/avito-two', 'exports.autoload-two-form');
 
-// ----------------------TELEGRAM-------------------------------------------------
+//----- TELEGRAM -----
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');
 
-// -----------------AQUAFLOOR-----------------------
+//----- AQUAFLOOR ------
 Route::get('/aquafloor/import', [AquaFloorController::class, 'import'])->name('aqua_flor_import');
 Route::get('/aquafloor/download_pic', [AquaFloorController::class, 'download_pic']);
 Route::get('/aquafloor/index', [AquaFloorController::class, 'index'])->name('aquafloor_index');
 Route::get('/aquafloor/{id}', [AquaFloorController::class, 'show'])->name('aquafloor.show');
 Route::get('/aquafloor/collection/{name}', [AquaFloorController::class, 'show_collection'])->name('aquafloor.show.collection');
 
-// ----------------HELP_CONTROLLER----------------
+//----- HELP_CONTROLLER -----
 Route::get('/list-all', [MyHelpController::class, 'list']);
 Route::get('/export/nt-primavera-rusplitka', [MyHelpController::class, 'nt_prim_ruspl']);
 Route::get('/laparet-price-list-60x60-60x120', [MyHelpController::class, 'price_list_60x60_60x120']);
@@ -79,10 +79,10 @@ Route::get('/not-found-rezults', [MyHelpController::class, 'not_found_rezults'])
 Route::get('/calacatta-all', [MyHelpController::class, 'calacatta_all']);
 Route::get('/leedo-all', [MyHelpController::class, 'leedo_all']);
 
-//---------------------SEARCH_CONTROLLER---------------
+//----- SEARCH_CONTROLLER -----
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
-//--------------------PRIMAVERA------------------------
+//----- PRIMAVERA -----
 Route::get('/primavera/import', [\App\Http\Controllers\PrimaveraController::class, 'import']);
 Route::get('/primavera', [\App\Http\Controllers\PrimaveraController::class, 'index'])->name('primavera.index');
 Route::get('/primavera/download-pic', [\App\Http\Controllers\PrimaveraController::class, 'download_pic']);
@@ -90,7 +90,7 @@ Route::get('/primavera/{id}', [\App\Http\Controllers\PrimaveraController::class,
 Route::get('/primavera-search', [\App\Http\Controllers\PrimaveraController::class, 'search'])->name('primavera.search');
 Route::view('/primavera-search-form','primavera.search')->name('primavera.search.form');
 
-//-------------------PHOTO------------------------
+//----- PHOTO -----
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
 Route::any('photo-primavera', [\App\Http\Controllers\PhotoController::class, 'store_primavera'])->name('save-foto-primavera');
 Route::any('photo-ntceramic', [\App\Http\Controllers\PhotoController::class, 'store_ntceramic'])->name('save-foto-ntceramic');
@@ -106,7 +106,7 @@ Route::any('photo-delete-absolut_gres', [\App\Http\Controllers\PhotoController::
 Route::any('photo-delete-leedo', [\App\Http\Controllers\PhotoController::class, 'delete_leedo'])->name('photo-leedo.delete');
 Route::any('photo-delete-altacera', [\App\Http\Controllers\PhotoController::class, 'delete_altacera'])->name('photo-altacera.delete');
 
-//------------------- ORDERS ROUTES --------------------
+//----- ORDERS ROUTES -----
 Route::group(['prefix' => 'admin/orders'], function () {
     Route::get('/', \App\Http\Controllers\Adminlte\Order\IndexController::class)->name('order.index');
     Route::get('/create', \App\Http\Controllers\Adminlte\Order\CreateController::class)->name('order.create');
@@ -116,64 +116,54 @@ Route::group(['prefix' => 'admin/orders'], function () {
     Route::patch('/{order}', \App\Http\Controllers\Adminlte\Order\UpdateController::class)->name('order.update');
     Route::delete('/{order}', \App\Http\Controllers\Adminlte\Order\DeleteController::class)->name('order.delete');
 });
-//-------------------- END ORDERS ROUTES -----------------
 Route::get('/admin', \App\Http\Controllers\Adminlte\Main\IndexController::class)->name('main.index');
 
-//-------------------ABSOLUTE GRES-----------------------
+//----- ABSOLUTE-GRES (Import from auto-updated .xml) -----
 Route::get('/absolut-gres-import-from-xml', [\App\Http\Controllers\AbsolutGresController::class, 'import_from_xml']);
 Route::get('/absolut-gres-import-scrap', [\App\Http\Controllers\AbsolutGresController::class, 'import_scrap']);
 Route::get('/absolut-gres', [\App\Http\Controllers\AbsolutGresController::class, 'index'])->name('absolut_gres.index');
 Route::get('/absolut-gres/{id}', [\App\Http\Controllers\AbsolutGresController::class, 'show'])->name('absolut_gres.show');
-//------------------END ABSOLUTE GRES-------------------
 
-//---------------------LEDOO-CARAMELLE---------------------
+//----- LEEDO-CARAMELLE (Import from auto-updated .json) -----
 Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_from_ftp_to_database']);
 Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class, 'download_leedo_img']);
 Route::get('/leedo-index', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
 Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
-//-------------------LEDOO-CARAMELLE-END-------------------
 
-//---------------------ALTACERA---------------------
+//----- ALTACERA (Import from auto-updated .json) -----
 Route::get('/altacera-import-all', [\App\Http\Controllers\AltaceraImportController::class, 'altacera_import_all']);
 Route::get('/altacera-index', [\App\Http\Controllers\AltaceraController::class, 'index'])->name('altacera.index');
 Route::get('/altacera/{id}', [\App\Http\Controllers\AltaceraController::class, 'show'])->name('altacera.show');
 Route::get('/altacera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
-//-------------------ALTACERA-END-------------------
 
-//---------------------PIXMOSAIC---------------------
+//----- PIXMOSAIC -----
 Route::get('/pixmosaic/import', [\App\Http\Controllers\PixmosaicController::class, 'import']);
 Route::get('/pixmosaic', [\App\Http\Controllers\PixmosaicController::class, 'index'])->name('pixmosaic.index');
 Route::get('/pixmosaic/{id}', [\App\Http\Controllers\PixmosaicController::class, 'show'])->name('pixmosaic.show');
-//-------------------PIXMOSAIC-END-------------------
 
-//---------------------NTCERAMIC---------------------
+//----- NTCERAMIC (Import from fixed .xlsx) -----
 Route::get('/ntceramic/import', [\App\Http\Controllers\NtCeramicController::class, 'import']);
 Route::get('/ntceramic', [\App\Http\Controllers\NtCeramicController::class, 'index'])->name('ntceramic.index');
 Route::get('/ntceramic/{id}', [\App\Http\Controllers\NtCeramicController::class, 'show'])->name('ntceramic.show');
-//------------------NTCERAMIC-END---------------------
 
-//--------------------KEVIS------------------------
+//----- KEVIS (Import from fixed .xlsx) -----
 Route::get('/kevis/import', [\App\Http\Controllers\KevisController::class, 'import']);
 Route::get('/kevis', [\App\Http\Controllers\KevisController::class, 'index'])->name('kevis.index');
 Route::get('/kevis/{id}', [\App\Http\Controllers\KevisController::class, 'show'])->name('kevis.show');
-//-------------------KEVIS-END----------------------
 
-//--------------------RUSPLITKA------------------------
+//----- RUSPLITKA (Import from auto-updated .xml) -----
 Route::get('/rusplitka/import', [\App\Http\Controllers\RusplitkaController::class, 'import']);
 Route::get('/rusplitka/test', [\App\Http\Controllers\RusplitkaController::class, 'test']);
 Route::get('/rusplitka', [\App\Http\Controllers\RusplitkaController::class, 'index'])->name('rusplitka.index');
 Route::get('/rusplitka/{id}', [\App\Http\Controllers\RusplitkaController::class, 'show'])->name('rusplitka.show');
-//------------------RUSPLITKA-END----------------------
 
-//--------------------TECHNOTILE------------------------
+//----- TECHNOTILE (Import from auto-updated .xml) -----
 Route::get('/technotile/import', [\App\Http\Controllers\TechnotileController::class, 'import']);
 Route::get('/technotile/index', [\App\Http\Controllers\TechnotileController::class, 'index'])->name('technotile.index');
 Route::get('/technotile/{id}', [\App\Http\Controllers\TechnotileController::class, 'show'])->name('technotile.show');
-//------------------TECHNOTILE-END----------------------
 
-//--------------------EMPERO------------------------
+//----- EMPERO (Import from scrap .xlsx via form) -----
 Route::view('/empero/import', 'empero.import');
 Route::post('/empero/import-work', [\App\Http\Controllers\EmperoController::class, 'import_work'])->name('empero.import-work');
 Route::get('/empero/index', [\App\Http\Controllers\EmperoController::class, 'index'])->name('empero.index');
 Route::get('/empero/{id}', [\App\Http\Controllers\EmperoController::class, 'show'])->name('empero.show');
-//------------------EMPERO-END----------------------
