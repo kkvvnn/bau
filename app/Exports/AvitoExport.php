@@ -54,7 +54,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         set_time_limit(90);
 
         $products_all = Product::where([['GroupProduct', '01 Плитка'],['Producer_Brand', '!=', 'Kerama Marazzi'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%ступен%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
-        $products_cersanit_except = Product::where([['Producer_Brand', 'Cersanit'], ['balanceCount', '<', 2]])->get();
+        $products_cersanit_except = Product::where([['Producer_Brand', 'Cersanit'], ['balanceCount', '<', 1]])->get();
         // dd($products_cersanit_except);
         // dd($products_all);
         $ids_cersanit_except = [];
@@ -69,7 +69,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ==============================================
         $primavera = Primavera::where('country', '!=', 'Киргизия')->get();
 //      ==============================================
-        $absolut_gres = AbsolutGresScrap::all();
+//        $absolut_gres = AbsolutGresScrap::all();
         $absolut_gres = [];
 //      ==============================================
 //        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
