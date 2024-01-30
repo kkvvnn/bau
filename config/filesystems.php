@@ -66,6 +66,14 @@ return [
             'throw' => false,
         ],
 
+        'pixmosaic' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/pixmosaic'),
+            'url' => env('APP_URL').'/storage/images/pixmosaic',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'no_image' => [
             'driver' => 'local',
             'root' => storage_path('app/public/'),

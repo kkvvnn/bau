@@ -33,11 +33,14 @@
                             $text_color = 'text-danger';
                         }
                     @endphp
+                    @php
+                        $img = Storage::disk('pixmosaic')->url(str_replace(' ', '', $product->vendor_code) . '.jpg');
+                    @endphp
 
                     <div class="col">
                         <div class="card h-100">
                             <a href="/pixmosaic-new/{{$product->id}}">
-                                <img src="{{$product->img}}" class="card-img-top" alt="...">
+                                <img src="{{$img}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
                                 <a href="/pixmosaic-new/{{$product->id}}" class="text-decoration-none text-reset">
