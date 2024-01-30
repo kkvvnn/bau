@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Empero')
+@section('title', 'Pixmosaic')
 
 @section('content')
     <div class="album py-5 bg-body-tertiary">
