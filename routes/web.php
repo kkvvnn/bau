@@ -167,3 +167,9 @@ Route::view('/empero/import', 'empero.import');
 Route::post('/empero/import-work', [\App\Http\Controllers\EmperoController::class, 'import_work'])->name('empero.import-work');
 Route::get('/empero/index', [\App\Http\Controllers\EmperoController::class, 'index'])->name('empero.index');
 Route::get('/empero/{id}', [\App\Http\Controllers\EmperoController::class, 'show'])->name('empero.show');
+
+//----- PIXMOSAIC NEW (Import from scrap .xlsx via form) -----
+Route::view('/pixmosaic-new/import', 'pixmosaic-new.import');
+Route::post('/pixmosaic-new/import-work', [\App\Http\Controllers\PixmosaicNewController::class, 'import_work'])->name('pixmosaic-new.import-work');
+Route::get('/pixmosaic-new/index', [\App\Http\Controllers\PixmosaicNewController::class, 'index'])->name('pixmosaic-new.index');
+Route::get('/pixmosaic-new/{id}', [\App\Http\Controllers\PixmosaicNewController::class, 'show'])->name('pixmosaic-new.show');

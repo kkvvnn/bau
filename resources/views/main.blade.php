@@ -288,7 +288,7 @@
                     <a class="nav-link active" aria-current="page" href="{{route('altacera.index')}}">Altacera Delacora New Trend</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('pixmosaic.index')}}">PIX mosaic</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('pixmosaic-new.index')}}">PIX mosaic</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('ntceramic.index')}}">NT Ceramic</a>
