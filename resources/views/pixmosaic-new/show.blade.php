@@ -104,9 +104,8 @@
             <hr>
             @if ($product->props->video_url)
                 <iframe width="315" height="560" src="{{$embed_youtube_url_src}}" title="{{$product->vendor_code}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <hr>
             @endif
-
-            <hr>
         </div>
 
 
