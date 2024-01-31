@@ -53,6 +53,8 @@ class PixmosaicNewController extends Controller
         $img = [];
         $img[] = Storage::disk('pixmosaic')->url(str_replace(' ', '', $product->vendor_code) . '.jpg');
 
-        return view('pixmosaic-new.show', compact('product', 'text_color', 'img'));
+        $embed_youtube_url_src = str_replace('watch?v=', 'embed/', $product->props->video_url);
+
+        return view('pixmosaic-new.show', compact('product', 'text_color', 'img', 'embed_youtube_url_src'));
     }
 }
