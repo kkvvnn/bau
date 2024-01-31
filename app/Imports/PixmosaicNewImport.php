@@ -17,7 +17,7 @@ class PixmosaicNewImport implements ToModel, WithHeadingRow, WithUpserts
     public function model(array $row)
     {
         return new PixmosaicNew([
-            'vendor_code' => $row['vendor_code'],
+            'vendor_code' => str_replace(' ', '', trim($row['vendor_code'])),
             'title' => $row['title'],
             'title2' => $row['title2'],
             'price' => (int) str_replace("\xC2\xA0", '', $row['price']),
