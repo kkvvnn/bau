@@ -443,9 +443,9 @@
                     $price = $product->RMPrice;
                 }
             } elseif ($product->Producer_Brand == 'Vitra') {
-//                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-//                    $price = round($product->RMPrice * 0.90, -1);
-//                } else {
+                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+                    $price = round($product->RMPrice * 0.95, -1);
+                } else {
                     $price = $product->RMPrice;
 //                }
             } else {
