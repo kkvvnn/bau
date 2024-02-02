@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Empero;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -59,24 +60,28 @@ class EmperoDownloadImages extends Command
             return;
         }
 
-        if (Storage::disk('empero')->missing($name)) {
+        try {
+            if (Storage::disk('empero')->missing($name)) {
 
-            $file = file_get_contents('https://empero.info/'.str_replace(' ', '%20', $name));
-            if ($file != null) {
-                $manager = new ImageManager(['driver' => 'imagick']);
-                $image = $manager->make($file);
-                $image->orientate();
+                $file = file_get_contents('https://empero.info/' . str_replace(' ', '%20', $name));
+                if ($file != null) {
+                    $manager = new ImageManager(['driver' => 'imagick']);
+                    $image = $manager->make($file);
+                    $image->orientate();
 //                dd($image->exif());
-                $image->resize(900, 900, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
-                $exif = $image->exif();
-                if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && ($exif['COMPUTED']['Width'] < $exif['COMPUTED']['Height'])) {
-                    $image->rotate(-90);
+                    $image->resize(900, 900, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    });
+                    $exif = $image->exif();
+                    if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && ($exif['COMPUTED']['Width'] < $exif['COMPUTED']['Height'])) {
+                        $image->rotate(-90);
+                    }
+                    Storage::disk('empero')->put($name, $image->encode());
                 }
-                Storage::disk('empero')->put($name, $image->encode());
             }
+        } catch (Exception $e) {
+            echo 'Error: ',  $e->getMessage(), "\n";
         }
     }
 }
