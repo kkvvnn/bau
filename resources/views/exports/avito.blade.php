@@ -447,7 +447,7 @@
                     $price = round($product->RMPrice * 0.95, -1);
                 } else {
                     $price = $product->RMPrice;
-//                }
+                }
             } else {
                 $price = $product->RMPrice;
             }
