@@ -176,4 +176,4 @@ Route::get('/pixmosaic-new/{id}', [\App\Http\Controllers\PixmosaicNewController:
 Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoController::class, 'import']);
 
 //----- AVITO 2 OLD (Import from fixed .xlsx) -----
-Route::get('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoEcxelController::class, 'import']);
+Route::get('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelController::class, 'import']);

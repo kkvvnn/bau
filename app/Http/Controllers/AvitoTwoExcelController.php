@@ -7,7 +7,7 @@ use App\Models\AvitoTwoExcel;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-class AvitoTwoEcxelController extends Controller
+class AvitoTwoExcelController extends Controller
 {
     public function import()
     {
