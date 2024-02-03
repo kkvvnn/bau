@@ -9,6 +9,7 @@ use App\Models\AquaFloor;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Pixmosaic;
+use App\Models\PixmosaicNew;
 use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -77,10 +78,10 @@ class SearchController extends Controller
             ]);
         }
 
-        $pixmosaic = Pixmosaic::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $pixmosaic = PixmosaicNew::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
         $pixmosaic->appends(['name' => $name]);
         if (count($pixmosaic)) {
-            return view('pixmosaic.index', [
+            return view('pixmosaic-new.index', [
                 'products' => $pixmosaic,
             ]);
         }
