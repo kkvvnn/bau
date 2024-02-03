@@ -5,7 +5,7 @@
     function avito_header_add(string $vendor_name): string
     {
         $header = '<p>Добрый день. Мы являемся официальными дилерами производителя '.$vendor_name.'. ';
-        $header .='В нашем шоу-руме вы можете ознакомиться со всеми коллекциями керамогранита и керамической плитки.</p>';
+        $header .='В нашем шоу-руме вы можете ознакомиться со всеми коллекциями керамогранита, керамической плитки, мозаики.</p>';
         return $header;
     }
 
@@ -15,6 +15,16 @@
         $footer .= '<p>Приглашаем вас в наш салон</p>';
         $footer .= '<p>Более детально по наличию и цене уточняйте в виде сообщения</p>';
         $footer .= '<p>Если вам не хватило, то укажите нужный артикул керамогранита (дату производства, номер партии, тон, калибр), и мы ответим вам по наличию и цене</p>';
+        $footer .= '<p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
+        return $footer;
+    }
+
+    function avito_footer_add_mosaic(): string
+    {
+        $footer = '<p>_____________</p>';
+        $footer .= '<p>Приглашаем вас в наш салон</p>';
+        $footer .= '<p>Более детально по наличию и цене уточняйте в виде сообщения</p>';
+        $footer .= '<p>Если вам не хватило, то укажите нужный артикул мозаики, и мы ответим вам по наличию и цене</p>';
         $footer .= '<p>Просим учесть что некоторые позиции заканчиваются или поступление будет в ближайшее время</p>';
         return $footer;
     }
@@ -627,7 +637,117 @@
             <td></td>
         </tr>
     @endforeach
-    {{-----------------EMPERO-END-------------------}}
+    {{----------------EMPERO-END-------------------}}
+
+    {{-----------------PIXMOSAIC--------------------}}
+    @foreach($pixmosaics as $product)
+        @php
+            $price = $product->price;
+//            $price = round($price * 0.93, -1);
+
+//          --------------------------------
+            $title = explode(',', $product->title2)[0];
+            if (stripos($title, 'PIX') === false) {
+                $title = $title . ' ' . $product->vendor_code;
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace(' прокрашенного в массе', '', $title);
+            }
+//          ---------------FOTO--------------
+
+            $img = [];
+            $img[] = Storage::disk('pixmosaic')->url(str_replace(' ', '', $product->vendor_code) . '.jpg');
+
+            $img_full_arr = $img;
+            if (count($img_full_arr) <= 10) {
+                $img_ready = implode(' | ', $img_full_arr);
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_ready = implode(' | ', $img_full_arr);
+            }
+            // -------------FOTO-END----------------
+
+            $description = '';
+
+             if($add_description_first != '') {
+                $description .= '<p>'.nl2br($add_description_first).'</p>';
+            }
+
+            $description .= avito_header_add('Pixmosaic');
+
+            $FinishingType = 'Плитка, керамогранит и мозаика';
+            $FinishingSubType = 'Мозаика';
+
+            $description .= '<p><em>---------------------</em></p>';
+                    $description .= '<p><strong>' . $product->title . '</strong></p>';
+
+            $description .= '<p><em>Цена указана за 1 м.кв.</em></p>';
+
+                        $description .='<ul>';
+//                        if($product->price != null) {
+//                            $description .= '<li>Цена <em>'. $price .' Р/м2</em></li>';
+//                        }
+                        if($product->surface != null) {
+                            $description .= '<li>Поверхность: <em>' . $product->surface . '</em></li>';
+                        }
+                        if($product->material != null) {
+                            $description .= '<li>Материал: <em>' . $product->material . '</em></li>';
+                        }
+                        if($product->osnova != null) {
+                            $description .= '<li>Основа: <em>' . $product->osnova . '</em></li>';
+                        }
+                        if($product->size_tile != null) {
+                            $description .= '<li>Размер листа: <em>' . $product->size_tile . ' мм</em></li>';
+                        }
+                        if($product->size_chip != null) {
+                            $description .= '<li>Размер чипа: <em>' . $product->size_chip . ' мм</em></li>';
+                        }
+                        if($product->fat != null) {
+                            $description .= '<li>Толщина: <em>' . $product->fat . ' мм</em></li>';
+                        }
+                        if($product->square_list != null) {
+                            $description .= '<li>Площадь листа: <em>' . $product->square_list . ' м2</em></li>';
+                        }
+                        if($product->stock != null) {
+                            $description .= '<li>Свободный остаток: ' . $product->stock . ' м2 ('. $product->updated_at->format('d.m.Y') .')</em></li>';
+                        }
+//
+                        $description .= '</ul>';
+
+            $description .= avito_footer_add_mosaic();
+            $description .= '<p>_____________</p>';
+            $description .= '<p><em>pixmosaic pixelmosaic pixel mosaic мозаика для ванной мозайка для пола мозаика со скидкой купить мозаику красивая мозаика недорогая мозаика</em></p>';
+            if($add_description != '') {
+                $description .= '<p>'.nl2br($add_description).'</p>';
+            }
+            $element_code = $product->vendor_code.'_pix';
+        @endphp
+        <tr>
+            <td></td>
+            <td>{{ $element_code }}</td>
+            <td>{{ $contact_method }}</td>
+            <td>rodioncom@yandex.ru</td>
+            <td>Активно</td>
+            <td>{{ $name }}</td>
+            <td>{{$price}}</td>
+            <td>Керамическая плитка. Керамогранит</td>
+            <td>{{$title}}</td>
+            <td>{{$img_ready}}</td>
+            <td>Отделка</td>
+            <td>Стройматериалы</td>
+            <td>Ремонт и строительство</td>
+            <td>Package</td>
+            <td>{{$FinishingType}}</td>
+            <td>{{ $phone }}</td> <!-- -->
+            <td>{{$description}}</td> <!-- -->
+            <td>{{ $address }}</td>
+            <td>Товар от производителя</td>
+            <td>{{$FinishingSubType}}</td>
+            <td>Новое</td>
+            <td>{{$product->props->video_url}}</td>
+        </tr>
+    @endforeach
+    {{-----------------PIXMOSAIC-END-------------------}}
 
     </tbody>
 </table>

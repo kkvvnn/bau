@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Empero;
+use App\Models\PixmosaicNew;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
@@ -66,12 +67,24 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
         $emperos = Empero::where('title', 'not like', '% 2 %')->get();
 
 //      ---------------------PIXMOSAIC---------------------
+//        $pixmosaics = PixmosaicNew::where('vendor_code', 'like', '%из ассортимент%')->get();
+        $pixmosaics_except = PixmosaicNew::whereIn('vendor_code', ['PIX258', 'PIX259', 'PIX750', 'PIX620', 'PIX753'])->get();
+        $pixmosaics_except_id = [];
+        foreach ($pixmosaics_except as $pme) {
+            $pixmosaics_except_id[] = $pme->id;
+        }
 
+        $pixmosaics = PixmosaicNew::where('price', '!=', 0)->get();
+//        $pixmosaics = PixmosaicNew::all();
+        $pixmosaics = $pixmosaics->except($pixmosaics_except_id);
+
+//        dd($pixmosaics);
 
         return view('exports.avito-two', [
             'collections' => $collections_unique,
             'monparnas' => $monparnas,
             'emperos' => $emperos,
+            'pixmosaics' => $pixmosaics,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,
