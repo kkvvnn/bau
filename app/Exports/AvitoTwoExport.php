@@ -57,18 +57,16 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
 
         $collections_unique = Collection::whereIn('Collection_Id', $collections_id)->get();
 
-//      ===================LAPARET-COLLECTIONS-END========================
+
 //      ===========KERAMAMARAZZI-MONPARNAS========================
         $monparnas = Product::where([['GroupProduct', '01 Плитка'], ['Producer_Brand', 'Kerama Marazzi'], ['Name', 'like', '%онпарнас%']])->get();
-//        dd($monparnas[0]->collections[0]->Interior_Pic);
-//      ===========KERAMAMARAZZI-MONPARNAS-END========================
 
 
-        //      ---------------------EMPERO---------------------
-
+//      ---------------------EMPERO---------------------
         $emperos = Empero::where('title', 'not like', '% 2 %')->get();
 
-        //      ---------------------EMPERO-END---------------------
+//      ---------------------PIXMOSAIC---------------------
+
 
         return view('exports.avito-two', [
             'collections' => $collections_unique,
