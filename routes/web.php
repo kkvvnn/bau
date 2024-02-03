@@ -173,7 +173,10 @@ Route::view('/pixmosaic-new/import', 'pixmosaic-new.import');
 Route::post('/pixmosaic-new/import-work', [\App\Http\Controllers\PixmosaicNewController::class, 'import_work'])->name('pixmosaic-new.import-work');
 Route::get('/pixmosaic-new/index', [\App\Http\Controllers\PixmosaicNewController::class, 'index'])->name('pixmosaic-new.index');
 Route::get('/pixmosaic-new/{id}', [\App\Http\Controllers\PixmosaicNewController::class, 'show'])->name('pixmosaic-new.show');
+
+//----- PIXMOSAIC VIDEO YOUTUBE -----
 Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoController::class, 'import']);
 
-//----- AVITO 2 OLD (Import from fixed .xlsx) -----
-Route::get('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelController::class, 'import']);
+//----- AVITO 2 OLD TOVARS (Import via form) -----
+Route::view('/avito-two-old/import', 'avito-2-old.import');
+Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelController::class, 'import'])->name('avito-2-old');
