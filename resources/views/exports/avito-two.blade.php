@@ -643,7 +643,7 @@
     @foreach($pixmosaics as $product)
         @php
 //            $price = $product->price;
-            $price = round($price * 0.93, -1);
+            $price = round($product->price * 0.93, -1);
 
 //          --------------------------------
             $title = explode(',', $product->title2)[0];
