@@ -758,8 +758,8 @@
 
             $description .= avito_footer_add_mosaic();
             $description .= '<p>_____________</p>';
-            $description .= '<p><em>pixmosaic pixelmosaic pixel mosaic мозаика для ванной мозайка для пола '.
-            $description .= 'мозаика со скидкой купить мозаику красивая мозаика недорогая '.
+            $description .= '<p><em>pixmosaic pixelmosaic pixel mosaic мозаика для ванной мозайка для пола ';
+            $description .= 'мозаика со скидкой купить мозаику красивая мозаика недорогая ';
             $description .= $key_words;
             $description .= '</em></p>';
             if($add_description != '') {
