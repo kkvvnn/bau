@@ -642,8 +642,8 @@
     {{-----------------PIXMOSAIC--------------------}}
     @foreach($pixmosaics as $product)
         @php
-            $price = $product->price;
-//            $price = round($price * 0.93, -1);
+//            $price = $product->price;
+            $price = round($price * 0.93, -1);
 
 //          --------------------------------
             $title = explode(',', $product->title2)[0];
@@ -716,7 +716,7 @@
 
             $description .= avito_footer_add_mosaic();
             $description .= '<p>_____________</p>';
-            $description .= '<p><em>pixmosaic pixelmosaic pixel mosaic мозаика для ванной мозайка для пола мозаика со скидкой купить мозаику красивая мозаика недорогая мозаика</em></p>';
+            $description .= '<p><em>pixmosaic pixelmosaic pixel mosaic мозаика для ванной мозайка для пола мозаика со скидкой купить мозаику красивая мозаика недорогая мозаика мозаика для хамам</em></p>';
             if($add_description != '') {
                 $description .= '<p>'.nl2br($add_description).'</p>';
             }
