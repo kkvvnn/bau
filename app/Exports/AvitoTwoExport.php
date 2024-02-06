@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\AvitoTwoExcel;
 use App\Models\Empero;
 use App\Models\PixmosaicNew;
 use Illuminate\Contracts\View\View;
@@ -80,11 +81,17 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
 
 //        dd($pixmosaics);
 
+
+//      ---------------------OLD---------------------
+        $olds = AvitoTwoExcel::all();
+//        dd($olds);
+
         return view('exports.avito-two', [
             'collections' => $collections_unique,
             'monparnas' => $monparnas,
             'emperos' => $emperos,
             'pixmosaics' => $pixmosaics,
+            'olds' => $olds,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,

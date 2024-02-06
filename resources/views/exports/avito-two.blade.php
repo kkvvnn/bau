@@ -794,5 +794,62 @@
     @endforeach
     {{-----------------PIXMOSAIC-END-------------------}}
 
+    {{-----------------OLDS--------------------}}
+    @foreach($olds as $old)
+        @php
+                        $price = '';
+
+            //          --------------------------------
+                        $title = $old->Title;
+            //          ---------------FOTO--------------
+
+                        $img_ready = $old->ImageUrls;
+
+                        // -------------FOTO-END----------------
+
+                        $description = '';
+
+                         if($add_description_first != '') {
+                            $description .= '<p>'.nl2br($add_description_first).'</p>';
+                        }
+
+                        $description .= $old->Description;
+
+                        $FinishingType = 'Плитка, керамогранит и мозаика';
+                        $FinishingSubType = 'Керамогранит';
+
+
+
+                        if($add_description != '') {
+                            $description .= '<p>'.nl2br($add_description).'</p>';
+                        }
+        @endphp
+        <tr>
+            <td>{{ $old->AvitoId }}</td>
+            <td>{{ $old->Id_av }}</td>
+            <td>{{ $contact_method }}</td>
+            <td>rodioncom@yandex.ru</td>
+            <td>Активно</td>
+            <td>{{ $name }}</td>
+            <td>{{$price}}</td>
+            <td>Керамическая плитка. Керамогранит</td>
+            <td>{{$title}}</td>
+            <td>{{$img_ready}}</td>
+            <td>Отделка</td>
+            <td>Стройматериалы</td>
+            <td>Ремонт и строительство</td>
+            <td>Package</td>
+            <td>{{$FinishingType}}</td>
+            <td>{{ $phone }}</td> <!-- -->
+            <td>{{$description}}</td> <!-- -->
+            <td>{{ $address }}</td>
+            <td>Товар от производителя</td>
+            <td>{{$FinishingSubType}}</td>
+            <td>Новое</td>
+            <td>{{$old->VideoUrl}}</td>
+        </tr>
+    @endforeach
+    {{-----------------OLDS-END-------------------}}
+
     </tbody>
 </table>
