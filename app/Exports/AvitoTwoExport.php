@@ -65,7 +65,7 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
 
 
 //      ---------------------EMPERO---------------------
-        $emperos = Empero::where('title', 'not like', '% 2 %')->get();
+        $emperos = Empero::where([['title', 'not like', '% 2 %'], ['price', '!=', 0]])->get();
 
 //      ---------------------PIXMOSAIC---------------------
 //        $pixmosaics = PixmosaicNew::where('vendor_code', 'like', '%из ассортимент%')->get();
