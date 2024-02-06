@@ -815,8 +815,8 @@
 
                         $description .= $old->Description;
 
-                        $FinishingType = 'Плитка, керамогранит и мозаика';
-                        $FinishingSubType = 'Керамогранит';
+                        $FinishingType = $old->FinishingType;
+                        $FinishingSubType = $old->FinishingSubType;
 
 
 
