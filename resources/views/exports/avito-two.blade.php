@@ -110,7 +110,7 @@
             @if(mb_stripos($product->Name, $collection_first_word) !== false)
                 @php
                     $description .= '<p><em>---------------------</em></p>';
-                    $description .= '<p><strong>&#128204; ' . $product->Name . ' '
+                    $description .= '<p><strong>' . $product->Name . ' '
                            . $product->Producer_Brand . '</strong></p>';
 
 
@@ -339,7 +339,7 @@
         $FinishingType = 'Плитка, керамогранит и мозаика';
         $FinishingSubType = 'Керамическая плитка';
 
-        $description .= '<p><strong>&#127876; Kerama Marazzi  '.$collection->Collection_Name . ' коллекция настенной плитки и декоров</strong></p>';
+        $description .= '<p><strong>Kerama Marazzi  '.$collection->Collection_Name . ' коллекция настенной плитки и декоров</strong></p>';
 
         $images_products_1 = []; //container for products image Picture1
         $images_products_2 = []; //container for products image Picture2
@@ -349,7 +349,7 @@
     @foreach($monparnas as $product)
         @php
             $description .= '<p><em>---------------------</em></p>';
-            $description .= '<p><strong>&#128204; ' . $product->Name . '. '
+            $description .= '<p><strong>' . $product->Name . '. '
                    . $product->Producer_Brand . '</strong></p>';
 
 
@@ -572,7 +572,7 @@
             $FinishingSubType = 'Керамическая плитка';
 
             $description .= '<p><em>---------------------</em></p>';
-                    $description .= '<p><strong>&#128204; ' . $product->title . ' '
+                    $description .= '<p><strong>' . $product->title . ' '
                            . $product->brand . '</strong></p>';
 
 
@@ -754,6 +754,9 @@
             if ($product->material == 'Галька') {
                 $key_words .= 'мозаика из гальки мозаика галька мозаика';
             }
+
+            $number_pix = str_replace('PIX', '', $product->vendor_code);
+            $key_words .= ' pix '. $number_pix . ' мозаика';
 //          ------------------
 
             $description .= avito_footer_add_mosaic();
