@@ -153,7 +153,7 @@
     //                    }
                         $date_now = $product->updated_at->format('d.m.Y');
 
-                            if ($product->balanceCount == 0) {
+                            if ($product->balanceCount <= 0) {
                                 $description .= '<li>Свободный остаток: <em>по запросу</em></li>';
                             } elseif ($product->balanceCount > 0 && $product->balanceCount <= 2) {
                                 $description .= '<li>Свободный остаток: <em> до 2 '.$product->MainUnit. ' ('. $date_now .')</em></li>';
