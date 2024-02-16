@@ -92,6 +92,6 @@ class BauserviceImport extends Command
         $this->newLine(3);
 
         $this->call('up');
-        $this->info('The command was successful!');
+        $this->info('Bauservice Moscow update!');
     }
 }

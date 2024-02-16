@@ -212,6 +212,20 @@ return [
             // 'timeout' => 30,
         ],
 
+        'ftp_bau_spb' => [
+            'driver' => 'ftp',
+            'host' => 'piranesi.datastrg.ru',
+            'username' => '1c-ftp',
+            'password' => 'N474pvJUjkCteTQ5BWs5EGJtJJCtwH',
+            'port' => 21,
+            // Optional FTP Settings...
+            // 'port' => env('FTP_PORT', 21),
+            // 'root' => env('FTP_ROOT'),
+            // 'passive' => true,
+            // 'ssl' => true,
+            // 'timeout' => 30,
+        ],
+
         'ftp_leedo' => [
             'driver' => 'ftp',
             'host' => '92.53.96.128',

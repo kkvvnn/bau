@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\MyHelpController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TelegramSendController;
+use App\Http\Controllers\BauserviceSpbController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +42,6 @@ Route::get('/mosaic_index', [ProductController::class, 'index_mosaic'])->name('i
 Route::get('/decor_index', [ProductController::class, 'index_decor'])->name('index_decor');
 //Route::get('/search', [ProductController::class, 'search']);
 Route::get('/size', [ProductController::class, 'index_size'])->name('index_size');
-
 Route::view('/size_form', 'size_form')->name('index_size_form');
 Route::get('/collection/{name}', [ProductController::class, 'collection_name']);
 Route::get('/product/{id?}', [ProductController::class, 'show'])->name('show');
@@ -50,6 +50,9 @@ Route::get('/index/{id?}', [Controller::class, 'index2']);
 Route::get('/index_collection', [CollectionController::class, 'index'])->name('index_collection');
 Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker'])->name('index_ker');
 Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit'])->name('index_plit');
+
+//----- BAUSERVICE-SPB -----
+Route::get('/bauservice-spb', [BauserviceSpbController::class, 'index'])->name('bauservice-spb.index');
 
 //----- CREATE_AVITO_FILE -----
 Route::get('/avito_export/{foto?}', [AvitoController::class, 'export'])->name('avito-export');
