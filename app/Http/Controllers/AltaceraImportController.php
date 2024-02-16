@@ -123,6 +123,7 @@ class AltaceraImportController extends Controller
         $products = json_decode($json, true);
 //        dd($products);
         foreach ($products as $product) {
+            unset($product['is_action']); // 16.02.24 change struct of file tovar.json (add new field 'is_action')
             AltaceraTovar::create($product);
         }
 
