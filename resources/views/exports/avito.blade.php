@@ -401,7 +401,7 @@
             if (mb_strlen($title) > 50) {
             $title = str_replace('Полированный', 'полир.', $title);
             $title = str_replace('полированный', 'полир.', $title);
-            $title = str_replace('ректифицированный', 'полир.', $title);
+            $title = str_replace('ректифицированный', 'ректиф.', $title);
             $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
             $title = preg_replace('/\d\d\d\d-\d\d\d\d/', '', $title);
             $title = preg_replace('/SG\d+R/', '', $title);

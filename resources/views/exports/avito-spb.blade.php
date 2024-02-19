@@ -323,21 +323,21 @@
                 $img_full = $img1;
             }
 
-            if ($img_coll_2 != null) {
-            $img_full .= ' | ' . $img_coll_2;
-            }
+//            if ($img_coll_2 != null) {
+//            $img_full .= ' | ' . $img_coll_2;
+//            }
 
-            if ($img2 != null) {
-            $img_full .= ' | ' . $img2;
-            }
             if ($img3 != null) {
             $img_full .= ' | ' . $img3;
             }
-            if ($img4 != null) {
-            $img_full .= ' | ' . $img4;
+            if ($img2 != null) {
+            $img_full .= ' | ' . $img2;
             }
             if ($img5 != null) {
             $img_full .= ' | ' . $img5;
+            }
+            if ($img4 != null) {
+            $img_full .= ' | ' . $img4;
             }
             if ($img6 != null) {
             $img_full .= ' | ' . $img6;
@@ -347,7 +347,7 @@
             if (mb_strlen($title) > 50) {
             $title = str_replace('Полированный', 'полир.', $title);
             $title = str_replace('полированный', 'полир.', $title);
-            $title = str_replace('ректифицированный', 'полир.', $title);
+            $title = str_replace('ректифицированный', 'ректиф.', $title);
             $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
             $title = preg_replace('/\d\d\d\d-\d\d\d\d/', '', $title);
             $title = preg_replace('/SG\d+R/', '', $title);
@@ -387,7 +387,7 @@
             <td>Активно</td>
             <td>{{ $name }}</td>
             <td>{{$price}}</td>
-            <td>Название компании</td>
+            <td>Гефест</td>
             <td>{{$title}}</td>
             <td>{{$img_full}}</td> <!-- -->
             <td>Отделка</td>
