@@ -12,10 +12,10 @@ class AvitoSpbController extends Controller
     public function export(Request $request, $foto = '')
     {
         set_time_limit(90);
-        $phone = $request->phone??"79999999999";
+        $phone = $request->phone??"79523666692";
         $name = $request->name??"Илья";
         $contact_method = $request->contact_method??"В сообщениях";
-        $address = $request->address??"Санкт-Петербург";
+        $address = $request->address??"Санкт-Петербург, 2 линия, метро Парнас";
         $add_description = $request->add_description??"";
         $add_description_first = $request->add_description_first??"";
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');

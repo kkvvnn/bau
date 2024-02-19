@@ -57,16 +57,16 @@
 //                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
 //                    $description .= '<p>Весь декабрь у нас действует <strong>ЧЕСТНАЯ 15% СКИДКА</strong> на всю линейку керамической плитки от Laparet. Успей оформить заказ!</p>';
 //                }
-                $description .= '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                $description .= '<p>Laparet. Скидки под крупный заказ. Склад в Питере. Оперативная отгрузка в течении 24 часов. Оплата при получении. Есть шоурум, где вы можете подобрать нужную коллекцию. Наши менеджеры с удовольствием ответят Вам по наличию и цене.</p>';
             } elseif ($product->Producer_Brand == 'Cersanit') {
-                $description .= '<p>Керамическая плитка и керамогранит Cersanit , Церсанит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                $description .= '<p></p>';
             } elseif ($product->Producer_Brand == 'Vitra') {
 //                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
 //                    $description .= '<p>Весь декабрь у нас действует <strong>ЧЕСТНАЯ 10% СКИДКА</strong> на всю линейку керамической плитки от Vitra. Успей оформить заказ!</p>';
 //                }
-                $description .= '<p>Керамическая плитка и керамогранит Vitra , Витра. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                $description .= '<p></p>';
             } else {
-                $description .= '<p>Керамическая плитка и керамогранит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                $description .= '<p></p>';
             }
 
             if ($product->Novinka == 1) {
@@ -79,7 +79,7 @@
             $description .= '<p>********************</p>';
             $date = date('d.m.Y');
             if ($product->balanceCount > 0) {
-            $description .= '<p>&#9989; Свободный остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(актуальную информацию уточняйте у менеджера)</em></p>';
+            $description .= '<p>&#9989; '.$date.' свободный остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(актуальную информацию уточняйте у менеджера)</em></p>';
             }
             $description .= '<p>********************</p>';
 
@@ -127,9 +127,7 @@
 
                 $description .= '</ul><br>';
 
-            $description .= '<p></p>';
-            $description .= '<p></p>';
-            $description .= '<p></p>';
+            $description .= '<p>В связи с загруженостью время ответа не более 3 часов. Спасибо за понимание.</p>';
 
             if($add_description != '') {
             $description .= '<p>'.nl2br($add_description).'</p>';
@@ -302,8 +300,8 @@
             $img6 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture6);
             } else {$img6 = null;}
 
-            if (isset($product->collections[0])) {
-            $img_coll_all = $product->collections[0]->Interior_Pic;
+            if (isset($product->msk->collections[0])) {
+            $img_coll_all = $product->msk->collections[0]->Interior_Pic;
             $img_coll_all = explode(', ', $img_coll_all);
             $img_coll = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/collections/', $img_coll_all[0]);
             } else {
@@ -363,7 +361,7 @@
 //--------------------------------------------------------------------------
             if ($product->Producer_Brand == 'Laparet') {
                 if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * 0.9, -1);
+                    $price = round($product->RMPrice * 0.95, -1);
                 } else {
                     $price = $product->RMPrice;
                 }
@@ -378,14 +376,14 @@
             }
 
 //----------------------------------------------------------------------------
-
+            $code = $product->Element_Code . '_spb';
         @endphp
 
         <tr>
             <td></td>
-            <td>{{ $product->Element_Code }}</td>
+            <td>{{ $code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>email@email.com</td>
+            <td>info@skgefest.pro</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
             <td>{{$price}}</td>

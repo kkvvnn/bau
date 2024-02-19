@@ -13,7 +13,7 @@
             <form action="{{route('avito-export-spb')}}">
                 <div class="mb-3">
                     <label for="phone" class="form-label">Телефон</label>
-                    <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp" value="79999999999">
+                    <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp" value="79523666692">
                     <div id="phoneHelp" class="form-text">Телефон будет указан в объявлениях Avito.</div>
                 </div>
                 <div class="mb-3">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Адрес размещения</label>
-                    <input type="text" class="form-control" id="address" name="address" value="Санк-Петербург">
+                    <input type="text" class="form-control" id="address" name="address" value="Санкт-Петербург, 2 линия, метро Парнас">
                 </div>
                 <div class="mb-3">
                     <label for="contact_method" class="form-label">Способ связи</label>
