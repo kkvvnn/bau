@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\AvitoController;
+use App\Http\Controllers\AvitoSpbController;
 use App\Http\Controllers\AvitoTwoController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
@@ -59,6 +60,10 @@ Route::get('/avito_export/{foto?}', [AvitoController::class, 'export'])->name('a
 Route::get('/avito_export_two/{foto?}', [AvitoTwoController::class, 'export'])->name('avito-export-two');
 Route::view('/avito', 'exports.autoload-form');
 Route::view('/avito-two', 'exports.autoload-two-form');
+
+//----- CREATE_AVITO_FILE  SPB  -----
+Route::view('/avito-spb', 'exports.autoload-spb-form');
+Route::get('/avito_export_spb/{foto?}', [AvitoSpbController::class, 'export'])->name('avito-export-spb');
 
 //----- TELEGRAM -----
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');

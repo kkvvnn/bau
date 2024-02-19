@@ -9,8 +9,10 @@
 
             @if($rodion)
                 <div class="text-bg-warning p-3"><h1 class="display-6">Автозагрузка Авито аккаунт Родион</h1></div>
+            @elseif($spb)
+                <div class="text-bg-info p-3"><h1 class="display-6">Автозагрузка Авито аккаунт ПИТЕР</h1></div>
             @else
-                <h1 class="display-6">Автозагрузка Авито</h1>
+                <div class="text-bg-secondary p-3"><h1 class="display-6">Автозагрузка Авито</h1></div>
             @endif
             <hr>
             <h3>{{ $url }}</h3>

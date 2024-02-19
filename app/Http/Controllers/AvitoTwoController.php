@@ -25,6 +25,7 @@ class AvitoTwoController extends Controller
 
         $url = Storage::disk('avito')->url($filename);
         $rodion = true;
-        return view('exports.url', compact('url', 'rodion'));
+        $spb = false;
+        return view('exports.url', compact('url', 'rodion', 'spb'));
     }
 }
