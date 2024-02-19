@@ -33,9 +33,9 @@ class BauSpbImport extends Command
      */
     public function handle()
     {
-        $this->call('down', [
-            '--refresh' => 15
-        ]);
+//        $this->call('down', [
+//            '--refresh' => 15
+//        ]);
 
         $bar = $this->output->createProgressBar(1);
         $bar->start();
@@ -91,9 +91,10 @@ class BauSpbImport extends Command
 //            //        ----------MANY-END-------------
 //        }
         $bar->finish();
-        $this->newLine(3);
+        $this->info(' ----- Bauservice SPB update! [OK]');
 
-        $this->call('up');
-        $this->info('Bauservice SPB update!');
+
+//        $this->call('up');
+
     }
 }

@@ -89,9 +89,23 @@ class BauserviceImport extends Command
             //        ----------MANY-END-------------
         }
         $bar->finish();
-        $this->newLine(3);
+        $this->info(' ----- Bauservice Moscow update! [OK]');
+        $this->newLine(1);
 
+        $this->call('bauservice_spb:import');
+        $this->newLine(1);
+
+        $this->call('bauservice:collections-images');
+        $this->newLine(1);
+
+        for ($i = 1; $i <= 24; $i++) {
+            $this->call('bauservice:products-images', [
+                'number' => $i
+            ]);
+            $this->info(' ----- Picture'.$i.' [OK]');
+        }
+
+        $this->newLine(2);
         $this->call('up');
-        $this->info('Bauservice Moscow update!');
     }
 }

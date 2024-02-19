@@ -119,7 +119,12 @@
                             Распродажа</p>
                     @endif
 
-                    <h5 class="mt-4">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
+                    @if ($stock_spb)
+                        <h5 class="mt-4">Остаток Москва: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}<br>
+                        Остаток СПб: {{$product->spb->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
+                    @else
+                        <h5 class="mt-4">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
+                    @endif
                     <p>Актуально на <span
                             class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
 

@@ -32,9 +32,9 @@ class BauserviceDownloadImages extends Command
     {
         $picture_number_of = $this->argument('number');
 
-        $this->call('down', [
-            '--refresh' => 15
-        ]);
+//        $this->call('down', [
+//            '--refresh' => 15
+//        ]);
 
         try {
             if ($picture_number_of == 1) {
@@ -59,15 +59,14 @@ class BauserviceDownloadImages extends Command
             });
 
             $bar->finish();
-            $this->newLine(3);
 
         } catch (\Illuminate\Database\QueryException $exception) {
             $this->call('up');
             $this->error($exception->getMessage());
         }
 
-        $this->call('up');
-        $this->info('The command was successful!');
+//        $this->call('up');
+//        $this->info('-----[OK]');
     }
 
     private function download_images_to_storage($name): void

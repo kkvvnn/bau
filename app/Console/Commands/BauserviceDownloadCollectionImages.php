@@ -30,27 +30,40 @@ class BauserviceDownloadCollectionImages extends Command
      */
     public function handle()
     {
-        $this->call('down', [
-            '--refresh' => 15
-        ]);
+//        $this->call('down', [
+//            '--refresh' => 15
+//        ]);
 
 //        ---------DOWNLOAD_COLLECTION_IMAGES----------
         $collections_ids = $this->all_collections_array_list();
 
+        $collections_count = Collection::find($collections_ids)->count();
+        $chunk_size = (int) round($collections_count / 100);
+
+        $bar = $this->output->createProgressBar(100);
+        $bar->start();
+
         $collections = Collection::find($collections_ids);
+        $chunks = $collections->chunk($chunk_size);
+//        dd($chunks);
 
-        foreach ($collections as $collection) {
-            $list_pic = $collection->Interior_Pic;
-            $arr_pic = explode(', ', $list_pic);
+        foreach($collections->chunk($chunk_size) as $chunk) {
+            foreach ($chunk as $collection) {
+                $list_pic = $collection->Interior_Pic;
+                $arr_pic = explode(', ', $list_pic);
 
-            foreach ($arr_pic as $pic) {
-                $this->download_collection_images($pic);
+                foreach ($arr_pic as $pic) {
+                    $this->download_collection_images($pic);
+                }
             }
+            $bar->advance();
         }
-//        ---------DOWNLOAD_COLLECTION_IMAGES-END-------
 
-        $this->call('up');
-        $this->info('The command was successful!');
+        $bar->finish();
+
+//        ---------DOWNLOAD_COLLECTION_IMAGES-END-------
+//        $this->call('up');
+        $this->info(' ----- Collections images downloaded! [OK]');
     }
 
     public function all_collections_array_list(): array

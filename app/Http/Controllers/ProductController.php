@@ -304,10 +304,16 @@ class ProductController extends Controller
             $text_color = 'text-danger';
         }
 //        ------------------------------
+        if ($product->spb) {
+            $stock_spb = $product->spb->balanceCount;
+        } else {
+            $stock_spb = null;
+        }
 
         if ($product->GroupProduct != '02 Сантехника') {
             return view('product.show', [
                 'product' => $product,
+                'stock_spb' => $stock_spb,
                 'urls' => $urls_2,
                 // 'url2' => $url2,
                 'collection' => $collection,

@@ -53,6 +53,14 @@
                         } else {
                             $text_color = 'text-danger';
                         }
+//                        -------------------------
+                    if ($product->spb) {
+                        $stock_spb = $product->spb->balanceCount;
+                    } else {
+                        $stock_spb = null;
+                    }
+
+
                     @endphp
 
                     <div class="col">
@@ -81,7 +89,11 @@
                                     <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>                                    <hr>
                                 @endif
 
-                                <p class="fs-5 text-body-secondary">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
+                                @if ($stock_spb)
+                                    <p class="fs-5 text-body-secondary">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} <mark>(СПб: {{$stock_spb}} {{$product->MainUnit}})</mark> {{$vivod}}</p>
+                                @else
+                                    <p class="fs-5 text-body-secondary">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
+                                @endif
                                 <hr>
 
                                 <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>

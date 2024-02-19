@@ -70,36 +70,23 @@
             }
 
             if ($product->Novinka == 1) {
-                $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Name . '. '
-                    . $product->Producer_Brand . ' ('
-                    . $product->Country_of_manufacture . ')</strong></p>';
+                $description .= '<p>&#9889;Новинка&#9889; <strong>'. $product->Producer_Brand .' '. $product->Name .'</strong></p>';
             } else {
-                $description .= '<p><strong>' . $product->Name . '. '
-                    . $product->Producer_Brand . ' ('
-                    . $product->Country_of_manufacture . ')</strong></p>';
+                $description .= '<p><strong>'. $product->Producer_Brand .' '. $product->Name .'</strong></p>';
             }
 
-        if ($product->Name != 'Tiaki Green Керамогранит 60x120 Полированный' && $product->Name != 'Dalim Mint Керамогранит 60x60 Полированный') {
 
-
-            $description .= '<p>--------------------</p>';
+            $description .= '<p>********************</p>';
             $date = date('d.m.Y');
             if ($product->balanceCount > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; Свободный остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(актуальную информацию уточняйте у менеджера)</em></p>';
             }
-            $description .= '<p>--------------------</p>';
-
+            $description .= '<p>********************</p>';
 
             $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
-        } else {
-            $description .= '<p>--------------------</p>';
-            $date = date('d.m.Y');
-            $description .= '<p>&#9989; На утро '.$date. ' - <strong>В НАЛИЧИИ !</strong></p>';
-            $description .= '<p>--------------------</p>';
-        }
 
-            $description .= '<p><strong>Коллекция: </strong>';
-                $collections = $product->collections;
+            $description .= '<p><strong>Название коллекции: </strong>';
+                $collections = $product->msk->collections;
                 foreach ($collections as $collection) {
                 $description .= $collection->Collection_Name;
                 $description .= '. ';
@@ -112,9 +99,6 @@
                 }
                 if($product->Thickness != null && $product->Thickness != 0) {
                 $description .= '<li><strong>Толщина: </strong>' . $product->Thickness . '</li>';
-                }
-                if($product->Place_in_the_Collection != null) {
-                $description .= '<li><strong>Место в коллекции: </strong>' . $product->Place_in_the_Collection . '</li>';
                 }
                 if($product->DesignValue != null) {
                 $description .= '<li><strong>Рисунок: </strong>' . $product->DesignValue . '</li>';
@@ -129,16 +113,13 @@
                 $description .= '<li><strong>Поверхность: </strong>' . $product->Surface . '</li>';
                 }
                 if($product->MainUnit != null) {
-                $description .= '<li><strong>Единица измерения товара: </strong>' . $product->MainUnit . '</li>';
+                $description .= '<li><strong>Единица измерения: </strong>' . $product->MainUnit . '</li>';
                 }
                 if($product->PCS_in_Package != null) {
-                $description .= '<li><strong>Штук в упаковке: </strong>' . $product->PCS_in_Package . '</li>';
+                $description .= '<li><strong>В упаковке штук: </strong>' . $product->PCS_in_Package . '</li>';
                 }
                 if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
-                $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->Package_Value . '</li>';
-                }
-                if($product->Producer_Brand != null) {
-                $description .= '<li><strong>Производитель: </strong>' . $product->Producer_Brand . '</li>';
+                $description .= '<li><strong>В упаковке кв.м: </strong>' . $product->Package_Value . '</li>';
                 }
                 if($product->Country_of_manufacture != null) {
                 $description .= '<li><strong>Страна производства: </strong>' . $product->Country_of_manufacture . '</li>';
@@ -146,9 +127,9 @@
 
                 $description .= '</ul><br>';
 
-            $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
-            $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
-            $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+            $description .= '<p></p>';
+            $description .= '<p></p>';
+            $description .= '<p></p>';
 
             if($add_description != '') {
             $description .= '<p>'.nl2br($add_description).'</p>';
@@ -173,20 +154,6 @@
                 $type = '';
             }
 
-            if((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {
-                $naznachenie = $type . ' для пола, ' . $type . ' для ванной комнаты';
-            }
-            elseif(stripos($product->Field_of_Application, 'пол') !== false) {
-                $naznachenie = $type . ' для пола';
-            }
-            elseif(stripos($product->Field_of_Application, 'ван') !== false) {
-                $naznachenie = $type . ' для ванной комнаты';
-            } else {
-                $naznachenie = '';
-            }
-
-            $keywords .= $naznachenie . ', ';
-
             if(stripos($product->DesignValue, 'Дерев') !== false) {
                 $pod = $type . ' под дерево';
             }
@@ -206,6 +173,22 @@
             }
 
             $keywords .= $pod . ', ';
+
+            if((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {
+                $naznachenie = $type . ' для пола, ' . $type . ' для ванной';
+            }
+            elseif(stripos($product->Field_of_Application, 'пол') !== false) {
+                $naznachenie = $type . ' для пола';
+            }
+            elseif(stripos($product->Field_of_Application, 'ван') !== false) {
+                $naznachenie = $type . ' для ванной';
+            } else {
+                $naznachenie = '';
+            }
+
+            $keywords .= $naznachenie . ', ';
+
+
 
             $lenght = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
             $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);

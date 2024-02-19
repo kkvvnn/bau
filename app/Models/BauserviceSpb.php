@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class BauserviceSpb extends Model
 {
     protected $guarded = false;
 
-    public function collections()
+    public function msk(): BelongsTo
     {
-        return $this->belongsToMany(Collection::class, 'collection_product');
+        return $this->belongsTo(Product::class, 'Element_Code', 'Element_Code');
     }
 }

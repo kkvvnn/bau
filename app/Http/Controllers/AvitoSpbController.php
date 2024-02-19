@@ -13,7 +13,7 @@ class AvitoSpbController extends Controller
     {
         set_time_limit(90);
         $phone = $request->phone??"79999999999";
-        $name = $request->name??"Ильдар";
+        $name = $request->name??"Илья";
         $contact_method = $request->contact_method??"В сообщениях";
         $address = $request->address??"Санкт-Петербург";
         $add_description = $request->add_description??"";

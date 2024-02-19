@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -13,5 +14,10 @@ class Product extends Model
     public function collections()
     {
         return $this->belongsToMany(Collection::class, 'collection_product');
+    }
+
+    public function spb(): HasOne
+    {
+        return $this->hasOne(BauserviceSpb::class, 'Element_Code', 'Element_Code');
     }
 }
