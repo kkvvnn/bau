@@ -19,7 +19,7 @@ class AvitoSpbController extends Controller
         $add_description = $request->add_description??"";
         $add_description_first = $request->add_description_first??"";
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
-        $filename = 'avito-spb/'.$foto.'SPB'.date('Y-m-d_His').'.xlsx';
+        $filename = 'avito-spb/'.$foto.'SPb_'.date('Y-m-d_His').'.xlsx';
         Excel::store(new AvitoSpbExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);

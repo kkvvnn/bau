@@ -76,14 +76,14 @@
             }
 
 
-            $description .= '<p>********************</p>';
+            $description .= '<p>..............</p>';
             $date = date('d.m.Y');
             if ($product->balanceCount > 0) {
-            $description .= '<p>&#9989; '.$date.' свободный остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(актуальную информацию уточняйте у менеджера)</em></p>';
+            $description .= '<p>&#128267; '.$date.' свободный остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(актуальную информацию уточняйте у менеджера)</em></p>';
             }
-            $description .= '<p>********************</p>';
+            $description .= '<p>..............</p>';
 
-            $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
+            $description .= '<p><em>Цена за 1 ' . $product->MainUnit . '</em></p>';
 
             $description .= '<p><strong>Название коллекции: </strong>';
                 $collections = $product->msk->collections;
@@ -95,31 +95,31 @@
                 $description .= '</p><ul>';
 
                 if($product->Height != 0 && $product->Lenght != 0) {
-                $description .= '<li><strong>Размер: </strong>' . $product->Height .'x' . $product->Lenght . '</li>';
+                $description .= '<li><strong>Pазмеp: </strong>' . $product->Height .'x' . $product->Lenght . '</li>';
                 }
                 if($product->Thickness != null && $product->Thickness != 0) {
-                $description .= '<li><strong>Толщина: </strong>' . $product->Thickness . '</li>';
+                $description .= '<li><strong>Тoлщина: </strong>' . $product->Thickness . '</li>';
                 }
                 if($product->DesignValue != null) {
-                $description .= '<li><strong>Рисунок: </strong>' . $product->DesignValue . '</li>';
+                $description .= '<li><strong>Рисунoк: </strong>' . $product->DesignValue . '</li>';
                 }
                 if($product->Color != null) {
-                $description .= '<li><strong>Цвет: </strong>' . $product->Color . '</li>';
+                $description .= '<li><strong>Цвeт: </strong>' . $product->Color . '</li>';
                 }
                 if($product->Cover != null) {
-                $description .= '<li><strong>Покрытие: </strong>' . $product->Cover . '</li>';
+                $description .= '<li><strong>Пoкрытие: </strong>' . $product->Cover . '</li>';
                 }
                 if($product->Surface != null) {
-                $description .= '<li><strong>Поверхность: </strong>' . $product->Surface . '</li>';
+                $description .= '<li><strong>Пoвeрхноcть: </strong>' . $product->Surface . '</li>';
                 }
                 if($product->MainUnit != null) {
-                $description .= '<li><strong>Единица измерения: </strong>' . $product->MainUnit . '</li>';
+                $description .= '<li><strong>Единицa измepeния: </strong>' . $product->MainUnit . '</li>';
                 }
                 if($product->PCS_in_Package != null) {
-                $description .= '<li><strong>В упаковке штук: </strong>' . $product->PCS_in_Package . '</li>';
+                $description .= '<li><strong>В упакoвкe штук: </strong>' . $product->PCS_in_Package . '</li>';
                 }
                 if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
-                $description .= '<li><strong>В упаковке кв.м: </strong>' . $product->Package_Value . '</li>';
+                $description .= '<li><strong>B упaковке кв.м: </strong>' . $product->Package_Value . '</li>';
                 }
                 if($product->Country_of_manufacture != null) {
                 $description .= '<li><strong>Страна производства: </strong>' . $product->Country_of_manufacture . '</li>';
@@ -127,7 +127,7 @@
 
                 $description .= '</ul><br>';
 
-            $description .= '<p>В связи с загруженостью время ответа не более 3 часов. Спасибо за понимание.</p>';
+            $description .= '<p>&#10069;&#10069; В связи с загруженностью время ответа не более 3-х часов. Спасибо за понимание.</p>';
 
             if($add_description != '') {
             $description .= '<p>'.nl2br($add_description).'</p>';
@@ -192,10 +192,7 @@
             $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);
 
             $size = '';
-            $size .= $type . ' ' . $lenght . 'х' . $height . ', ';
-            if ($lenght != $height) {
-                $size .= $type . ' ' . $height . 'х' . $lenght . ', ';
-            }
+
             $size .= $type . ' ' . $lenght . '*' . $height . ', ';
             if ($lenght != $height) {
                 $size .= $type . ' ' . $height . '*' . $lenght . ', ';
