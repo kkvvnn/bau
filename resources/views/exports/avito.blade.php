@@ -452,6 +452,9 @@
                 $price = $product->RMPrice;
             }
 
+
+            $price = $product->RMPrice;
+
 //            if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный' || $product->Name == 'Dalim Mint Керамогранит 60x60 Полированный') {
 //                $price = '';
 //            }

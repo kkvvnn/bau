@@ -120,6 +120,8 @@
                         $price_product = $product->RMPrice;
                     }
 
+                    $price_product = $product->RMPrice;
+
                         if($product->RMPrice != null) {
                         $description .= '<p>Цена <em>'.$price_product .' Р/'. $product->MainUnit . '</em></p>';
                         }
