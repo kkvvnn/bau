@@ -191,3 +191,5 @@ Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelC
 
 //----- NORDA-WIDE -----
 Route::get('/norda-wide', [\App\Http\Controllers\NordaController::class, 'index']);
+Route::get('/norda/shop', [\App\Http\Controllers\NordaController::class, 'shop'])->name('shop');
+Route::get('/norda/show/{id}', [\App\Http\Controllers\NordaController::class, 'show']);
