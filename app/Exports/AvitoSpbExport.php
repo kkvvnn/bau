@@ -56,9 +56,12 @@ class AvitoSpbExport extends DefaultValueBinder implements FromView, WithCustomV
 
         $products = BauserviceSpb::where([['GroupProduct', '01 Плитка'],['Producer_Brand', 'Laparet'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%ступен%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
 
+        $ntceramic = NtCeramicNoImgs::all();
+
         if ($this->foto == '') {
             return view('exports.avito-spb', [
                 'products' => $products,
+                'ntceramic' => $ntceramic,
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,
