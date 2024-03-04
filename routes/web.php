@@ -188,3 +188,6 @@ Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoContr
 //----- AVITO 2 OLD TOVARS (Import via form) -----
 Route::view('/avito-two-old/import', 'avito-2-old.import');
 Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelController::class, 'import'])->name('avito-2-old');
+
+//----- CARVING -----
+Route::get('/carving', [\App\Http\Controllers\CarvingController::class, 'index'])->name('carving.index');
