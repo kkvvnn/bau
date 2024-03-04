@@ -408,7 +408,7 @@
     @foreach($ntceramic as $product)
         @php
             $price = $product->price;
-//            $price = round($price * 0.93, -1);
+            $price = round($price * 0.95, -1);
 //                --------------------------
             $title = $product->referer->title;
 //                -----------------------------
