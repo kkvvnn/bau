@@ -1591,6 +1591,9 @@
     @foreach($rusplitka as $product)
         @php
             $price = $product->price_rozn;
+            if ($price == 0) {
+                $price = '';
+            }
 //            $price = round($price * 0.93, -1);
 //                --------------------------
             $title = $product->svoystvo.' '.$product->brand_name.' '.$product->name;
