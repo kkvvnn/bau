@@ -147,7 +147,7 @@ class RusplitkaController extends Controller
 
     public function export()
     {
-        $date = date('H-i-s');
+        $date = date('Y-m-d_H-i-s');
         return Excel::download(new RusplitkaExcelExport, 'rusplitka-'.$date.'.xlsx');
     }
 }
