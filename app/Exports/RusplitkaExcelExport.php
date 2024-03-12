@@ -105,6 +105,7 @@ class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles, 
         return [
             'D' => 20,
             'E' => 20,
+            'G' => 25,
         ];
     }
 
