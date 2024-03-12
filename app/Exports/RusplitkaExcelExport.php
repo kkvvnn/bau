@@ -103,8 +103,8 @@ class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles, 
     public function columnWidths(): array
     {
         return [
-            'D' => 20,
-            'E' => 20,
+            'D' => 15,
+            'E' => 15,
             'G' => 20,
         ];
     }
