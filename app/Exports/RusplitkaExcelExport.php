@@ -9,8 +9,11 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 
-class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles
+
+class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoSize, WithColumnWidths
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -69,5 +72,12 @@ class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles
         ];
     }
 
+    public function columnWidths(): array
+    {
+        return [
+            'D' => 20,
+            'E' => 20,
+        ];
+    }
 
 }
