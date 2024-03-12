@@ -92,7 +92,7 @@ class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles, 
             1    => ['font' => ['bold' => true]],
 
             // Styling a specific cell by coordinate.
-            'V' => ['font' => ['bold' => true]],
+            'F' => ['font' => ['bold' => true]],
             'E' => ['font' => ['bold' => true]],
 
             // Styling an entire column.
@@ -105,7 +105,7 @@ class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles, 
         return [
             'D' => 20,
             'E' => 20,
-            'G' => 25,
+            'G' => 20,
         ];
     }
 
