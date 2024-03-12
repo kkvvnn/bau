@@ -164,6 +164,7 @@ Route::get('/rusplitka/import', [\App\Http\Controllers\RusplitkaController::clas
 Route::get('/rusplitka/test', [\App\Http\Controllers\RusplitkaController::class, 'test']);
 Route::get('/rusplitka', [\App\Http\Controllers\RusplitkaController::class, 'index'])->name('rusplitka.index');
 Route::get('/rusplitka/{id}', [\App\Http\Controllers\RusplitkaController::class, 'show'])->name('rusplitka.show');
+Route::get('/rusplitka/export/excel', [\App\Http\Controllers\RusplitkaController::class, 'export'])->name('rusplitka.export');
 
 //----- TECHNOTILE (Import from auto-updated .xml) -----
 Route::get('/technotile/import', [\App\Http\Controllers\TechnotileController::class, 'import']);

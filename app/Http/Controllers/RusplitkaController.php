@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\RusplitkaExcelExport;
 use App\Models\Rusplitka\Collection;
 use App\Models\Rusplitka\Product;
 use Illuminate\Http\Request;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RusplitkaController extends Controller
 {
@@ -141,5 +143,11 @@ class RusplitkaController extends Controller
         $img_collection = explode(' | ', $img_collection);
 
         return view('rusplitka.show', compact('product', 'imgs', 'img_collection'));
+    }
+
+    public function export()
+    {
+        $date = date('H-i-s');
+        return Excel::download(new RusplitkaExcelExport, 'rusplitka-'.$date.'.xlsx');
     }
 }
