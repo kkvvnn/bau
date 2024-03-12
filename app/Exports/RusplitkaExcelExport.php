@@ -22,8 +22,8 @@ class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles, 
     {
         $args = [
             'id',
-            'name',
             'articul',
+            'name',
             'price',
             'price_rozn',
             'brand_name',
@@ -56,8 +56,8 @@ class RusplitkaExcelExport implements FromCollection, WithHeadings, WithStyles, 
     {
         return [
             'id',
-            'Название',
             'Артикул',
+            'Название',
             'Цена ОПТ',
             'Цена РРЦ',
             'Бренд',
