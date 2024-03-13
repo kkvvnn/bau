@@ -124,6 +124,7 @@ class AltaceraImportController extends Controller
 //        dd($products);
         foreach ($products as $product) {
             unset($product['is_action']); // 16.02.24 change struct of file tovar.json (add new field 'is_action')
+            unset($product['artikul_diy']); // 13.03.24 change struct of file tovar.json (add new field 'artikul_diy')
             AltaceraTovar::create($product);
         }
 
