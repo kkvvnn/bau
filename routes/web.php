@@ -65,6 +65,9 @@ Route::view('/avito-two', 'exports.autoload-two-form');
 Route::view('/avito-spb', 'exports.autoload-spb-form');
 Route::get('/avito_export_spb/{foto?}', [AvitoSpbController::class, 'export'])->name('avito-export-spb');
 
+//----- CREATE_WOOCOMMERCE_FILE  -----
+Route::get('/woocommerce/export', [\App\Http\Controllers\WoocommerceController::class, 'export'])->name('woocommerce.export');
+
 //----- TELEGRAM -----
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');
 
