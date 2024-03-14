@@ -133,6 +133,16 @@
 
         @endphp
 
+        @php
+            if ($product->RMPriceOld == 0) {
+                $sale_price = '';
+                $price = $product->RMPrice;
+            } else {
+                $sale_price = $product->RMPrice;
+                $price = $product->RMPriceOld;
+            }
+        @endphp
+
         <tr>
             <td>{{ Str::replace('х', '', $product->Element_Code) }}</td>
             <td>simple</td>
@@ -158,8 +168,8 @@
             <td></td>
             <td>1</td>
             <td>Спасибо за покупку!</td>
-            <td>{{ $product->RMPrice }}</td>
-            <td>{{ $product->RMPriceOld }}</td>
+            <td>{{ $sale_price }}</td>
+            <td>{{ $price }}</td>
             <td>Керамогранит > Карвинг</td>
             <td></td>
             <td></td>
