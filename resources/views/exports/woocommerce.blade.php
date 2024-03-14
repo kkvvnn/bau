@@ -158,8 +158,8 @@
             <td></td>
             <td>1</td>
             <td>Спасибо за покупку!</td>
-            <td>{{ $product->RMPriceOld }}</td>
             <td>{{ $product->RMPrice }}</td>
+            <td>{{ $product->RMPriceOld }}</td>
             <td>Керамогранит > Карвинг</td>
             <td></td>
             <td></td>
