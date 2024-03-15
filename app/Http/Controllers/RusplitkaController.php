@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\RusplitkaExcelExport;
+use App\Exports\RusplitkaExcelExport2;
 use App\Models\Rusplitka\Collection;
 use App\Models\Rusplitka\Product;
 use Illuminate\Http\Request;
@@ -148,6 +149,6 @@ class RusplitkaController extends Controller
     public function export()
     {
         $date = date('Y-m-d_H-i-s');
-        return Excel::download(new RusplitkaExcelExport, 'rusplitka-'.$date.'.xlsx');
+        return Excel::download(new RusplitkaExcelExport2, 'rusplitka-'.$date.'.xlsx');
     }
 }
