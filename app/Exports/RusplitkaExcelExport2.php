@@ -26,7 +26,7 @@ class RusplitkaExcelExport2 extends DefaultValueBinder implements FromView, With
 
     public function view(): View
     {
-        $products = \App\Models\Rusplitka\Product::all();
+        $products = \App\Models\Rusplitka\Product::where([['svoystvo', 'Керамогранит']])->get();
 
         return view('exports.rusplitka', [
             'products' => $products,
