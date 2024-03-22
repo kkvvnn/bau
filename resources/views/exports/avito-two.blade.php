@@ -772,6 +772,13 @@
             }
             $element_code = $product->vendor_code.'_pix';
         @endphp
+        @php
+            if (isset($product->props->video_url)) {
+                $video_url = $product->props->video_url;
+            } else {
+                $video_url = '';
+            }
+        @endphp
         <tr>
             <td></td>
             <td>{{ $element_code }}</td>
@@ -794,7 +801,7 @@
             <td>Товар от производителя</td>
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
-            <td>{{$product->props->video_url}}</td>
+            <td>{{$video_url}}</td>
         </tr>
     @endforeach
     {{-----------------PIXMOSAIC-END-------------------}}
