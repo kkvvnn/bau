@@ -47,7 +47,7 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
         set_time_limit(90);
 
 //      =================LAPARET-COLLECTIONS======================
-        $laparets = Product::where([['GroupProduct', '01 Плитка'], ['Producer_Brand', 'Laparet'], ['Name', 'not like', '%ставк%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
+        $laparets = Product::where([['GroupProduct', '01 Плитка'], ['Producer_Brand', 'Laparet'], ['Element_code', '!=', 'х9999286854'], ['Name', 'not like', '%ставк%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
 
         $collections_id = [];
         foreach ($laparets as $laparet) {
