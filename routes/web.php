@@ -68,6 +68,9 @@ Route::get('/avito_export_spb/{foto?}', [AvitoSpbController::class, 'export'])->
 //----- CREATE_WOOCOMMERCE_FILE  -----
 Route::get('/woocommerce/export', [\App\Http\Controllers\WoocommerceController::class, 'export'])->name('woocommerce.export');
 
+//----- CREATE_INSALES_FILE  -----
+Route::get('/insales/export', [\App\Http\Controllers\InsalesController::class, 'export'])->name('insales.export');
+
 //----- TELEGRAM -----
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');
 
