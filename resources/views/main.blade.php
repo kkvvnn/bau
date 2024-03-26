@@ -244,6 +244,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('product_index')}}">Laparet / Cersanit / Vitra</a>
               </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('ceradim.index')}}">Ceradim</a>
+                </li>
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_plitka')}}">Керамическая плитка</a>--}}
 {{--              </li>--}}
