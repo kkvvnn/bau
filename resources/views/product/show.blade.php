@@ -342,7 +342,17 @@
                 </div>
             </div>
         </div>
+        <hr>
+        <div class="row">
+            <div class="col text-center">
+                <div class="card-body">
+                    {!! QrCode::size(300)->generate(url()->current()) !!}
+                </div>
+            </div>
+        </div>
     </div>
+
+
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <a href="whatsapp://send?phone=79151274000&text={{$product->Name}}" class="float" target="_blank">

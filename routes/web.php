@@ -8,6 +8,7 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MyHelpController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TelegramSendController;
 use App\Http\Controllers\BauserviceSpbController;
 use Illuminate\Support\Facades\Route;
@@ -196,3 +197,6 @@ Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelC
 
 //----- CARVING -----
 Route::get('/carving', [\App\Http\Controllers\CarvingController::class, 'index'])->name('carving.index');
+
+//----- QR-CODE -----
+Route::get('/generate-qrcode', [QrCodeController::class, 'index']);
