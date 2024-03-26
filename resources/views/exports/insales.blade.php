@@ -112,13 +112,10 @@
         @endphp
 
         @php
-            if ($product->RMPriceOld == 0) {
-                $sale_price = '';
-                $price = $product->RMPrice;
-            } else {
-                $sale_price = $product->RMPrice;
-                $price = $product->RMPriceOld;
-            }
+            $fat = ($product->Thickness)?$product->Thickness:'';
+
+            $square_in_one = explode(', ', $product->Package_Value)[0] / explode(', ', $product->PCS_in_Package)[0];
+            $balance = floor($product->balanceCount / $square_in_one);
         @endphp
 
         <tr>
@@ -149,7 +146,7 @@
             {{--цена продажи--}}<td>{{ $product->RMPrice }}</td>
             {{--old price--}}<td>{{ $product->RMPriceOld }}</td>
             {{--закупка--}}<td>{{ $product->Price }}</td>
-            {{--остаток--}}<td>{{ $product->balanceCount }}</td>
+            {{--остаток--}}<td>{{ $balance }}</td>
             {{--вес--}}<td></td>
             {{--imgs варианта--}}<td></td>
             {{--Тип цен--}}<td></td>
@@ -158,7 +155,7 @@
             {{--вес без упак--}}<td></td>
             {{--поверхность--}}<td>{{ $product->Surface }}</td>
             {{--коллекция--}}<td></td>
-            {{--fat--}}<td>{{ $product->Thickness }}</td>
+            {{--fat--}}<td>{{ $fat }}</td>
             {{--размер--}}<td>{{$product->Lenght}}x{{$product->Height}}</td>
         </tr>
     @endforeach

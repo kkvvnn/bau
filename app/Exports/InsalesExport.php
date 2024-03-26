@@ -23,7 +23,7 @@ class InsalesExport extends DefaultValueBinder implements FromView, WithCustomVa
 
     public function view(): View
     {
-        $products = Product::where([['Surface', 'Карвинг']])->get();
+        $products = Product::where([['Surface', 'Карвинг'], ['balanceCount', '>=', 0]])->get();
 //        $products = Product::where([['Name', 'like', '%арвин%']])->get();
 //        dd($products);
 
