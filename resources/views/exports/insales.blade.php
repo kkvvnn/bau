@@ -154,7 +154,7 @@
             {{--страна произв--}}<td>{{ $product->Country_of_manufacture }}</td>
             {{--вес без упак--}}<td></td>
             {{--поверхность--}}<td>{{ $product->Surface }}</td>
-            {{--коллекция--}}<td></td>
+            {{--коллекция--}}<td>{{ $product->collections[0]->Collection_Name }}</td>
             {{--fat--}}<td>{{ $fat }}</td>
             {{--размер--}}<td>{{$product->Lenght}}x{{$product->Height}}</td>
         </tr>
