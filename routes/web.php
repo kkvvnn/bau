@@ -8,6 +8,7 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MyHelpController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TelegramSendController;
 use App\Http\Controllers\BauserviceSpbController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,7 @@ Route::get('/download_all/{pic?}', [ProductController::class, 'download_all'])->
 
 //----- BAUSERVICE -----
 Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
+Route::get('/ceradim', [ProductController::class, 'index_ceradim'])->name('ceradim.index');
 Route::get('/santech', [ProductController::class, 'index_santech'])->name('santech_index');
 Route::get('/min/{count?}', [ProductController::class, 'index_min'])->name('product_min');
 Route::get('/sale', [ProductController::class, 'index_sale'])->name('product_sale');
@@ -198,3 +200,6 @@ Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelC
 
 //----- CARVING -----
 Route::get('/carving', [\App\Http\Controllers\CarvingController::class, 'index'])->name('carving.index');
+
+//----- QR-CODE -----
+Route::get('/generate-qrcode', [QrCodeController::class, 'index']);
