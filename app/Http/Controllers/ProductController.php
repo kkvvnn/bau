@@ -121,6 +121,17 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
+    public function index_ceradim()
+    {
+        $type = 'ceradim';
+
+
+         $products = Product::where([['Producer_Brand', 'Ceradim']])->paginate(15);
+//         dd($products);
+
+        return $this->index($products, $type);
+    }
+
     public function index_min($count = 0)
     {
         $type = 'vivod';

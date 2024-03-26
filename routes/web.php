@@ -32,6 +32,7 @@ Route::get('/download_all/{pic?}', [ProductController::class, 'download_all'])->
 
 //----- BAUSERVICE -----
 Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
+Route::get('/ceradim', [ProductController::class, 'index_ceradim'])->name('ceradim.index');
 Route::get('/santech', [ProductController::class, 'index_santech'])->name('santech_index');
 Route::get('/min/{count?}', [ProductController::class, 'index_min'])->name('product_min');
 Route::get('/sale', [ProductController::class, 'index_sale'])->name('product_sale');
