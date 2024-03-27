@@ -20,6 +20,7 @@
         {{--габариты--}}<th>Габариты</th>
         {{--imgs--}}<th>Изображения</th>
         {{--videos--}}<th>Ссылка на видео</th>
+        {{--Свойчтво: 1 уп--}}<th>Свойство: 1 уп.</th>
         {{--id варианта--}}<th>ID варианта</th>
         {{--артикул--}}<th>Артикул</th>
         {{--штрих-код--}}<th>Штрих-код</th>
@@ -80,7 +81,7 @@
 
 
             if ($img_coll != null) {
-                $img_full = $img_coll . ', ' . $img1;
+                $img_full = $img_coll . ' ' . $img1;
             } else {
                 $img_full = $img1;
             }
@@ -94,19 +95,19 @@
 //            }
 
             if ($img2 != null) {
-            $img_full .= ', ' . $img2;
+            $img_full .= ' ' . $img2;
             }
             if ($img3 != null) {
-            $img_full .= ', ' . $img3;
+            $img_full .= ' ' . $img3;
             }
             if ($img4 != null) {
-            $img_full .= ', ' . $img4;
+            $img_full .= ' ' . $img4;
             }
             if ($img5 != null) {
-            $img_full .= ', ' . $img5;
+            $img_full .= ' ' . $img5;
             }
             if ($img6 != null) {
-            $img_full .= ', ' . $img6;
+            $img_full .= ' ' . $img6;
             }
 
         @endphp
@@ -116,6 +117,14 @@
 
             $square_in_one = explode(', ', $product->Package_Value)[0] / explode(', ', $product->PCS_in_Package)[0];
             $balance = floor($product->balanceCount / $square_in_one);
+
+            $old_price = ($product->RMPriceOld)?$product->RMPriceOld:'';
+
+            if ($product->Owner_Article) {
+                $vendor_code = $product->Owner_Article;
+            } else {
+                $vendor_code = Str::replace('х', '', $product->Element_Code);
+            }
         @endphp
 
         <tr>
@@ -130,21 +139,22 @@
             {{--tag title--}}<td></td>
             {{--meta-tag keywords--}}<td></td>
             {{--meta-tag descrip--}}<td></td>
-            {{--place to site--}}<td>Каталог ## Каталог/Carving</td>
+            {{--place to site--}}<td>Каталог ## Каталог/Керамогранит Carving</td>
             {{--весов коэфф--}}<td></td>
             {{--валюта--}}<td>RUR</td>
             {{--ндс--}}<td>Без НДС</td>
             {{--union--}}<td>шт</td>
             {{--габариты--}}<td></td>
-            {{--imgs--}}<td></td>
+            {{--imgs--}}<td>{{ $img_full }}</td>
             {{--videos--}}<td></td>
+            {{--Свойчтво: 1 уп--}}<td>{{ $product->Package_Value }} м2</td>
             {{--id варианта--}}<td></td>
-            {{--артикул--}}<td>{{ $product->Owner_Article }}</td>
+            {{--артикул--}}<td>{{ $vendor_code }}</td>
             {{--штрих-код--}}<td></td>
             {{--id внешний--}}<td>{{ Str::replace('х', '', $product->Element_Code) }}</td>
             {{--габариты варианта--}}<td>{{$product->Lenght}}x{{$product->Height}}x{{$product->Thickness}}</td>
             {{--цена продажи--}}<td>{{ $product->RMPrice }}</td>
-            {{--old price--}}<td>{{ $product->RMPriceOld }}</td>
+            {{--old price--}}<td>{{ $old_price }}</td>
             {{--закупка--}}<td>{{ $product->Price }}</td>
             {{--остаток--}}<td>{{ $balance }}</td>
             {{--вес--}}<td></td>
