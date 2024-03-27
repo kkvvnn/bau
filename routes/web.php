@@ -71,7 +71,8 @@ Route::get('/avito_export_spb/{foto?}', [AvitoSpbController::class, 'export'])->
 Route::get('/woocommerce/export', [\App\Http\Controllers\WoocommerceController::class, 'export'])->name('woocommerce.export');
 
 //----- CREATE_INSALES_FILE  -----
-Route::get('/insales/export', [\App\Http\Controllers\InsalesController::class, 'export'])->name('insales.export');
+Route::get('/insales/export/laparet/carving', [\App\Http\Controllers\InsalesController::class, 'export_laparet_carving'])->name('insales.export.laparet.carving');
+Route::get('/insales/export/laparet/wood', [\App\Http\Controllers\InsalesController::class, 'export_laparet_wood'])->name('insales.export.laparet.wood');
 
 //----- TELEGRAM -----
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');

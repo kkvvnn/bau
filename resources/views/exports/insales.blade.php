@@ -139,7 +139,7 @@
             {{--tag title--}}<td></td>
             {{--meta-tag keywords--}}<td></td>
             {{--meta-tag descrip--}}<td></td>
-            {{--place to site--}}<td>Каталог ## Каталог/Керамогранит Carving</td>
+            {{--place to site--}}<td>{{ $catalog }}</td>
             {{--весов коэфф--}}<td></td>
             {{--валюта--}}<td>RUR</td>
             {{--ндс--}}<td>Без НДС</td>
