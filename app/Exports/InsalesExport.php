@@ -34,10 +34,27 @@ class InsalesExport extends DefaultValueBinder implements FromView, WithCustomVa
     {
         switch ($this->type) {
             case 'laparet-carving':
-                $products = Product::where([['Surface', 'Карвинг'], ['balanceCount', '>=', 0]])->get();
+//                $products = Product::where([['Surface', 'Карвинг'], ['balanceCount', '>=', 0]])->get();
+                $products = Product::where([['GroupProduct', '01 Плитка'],
+                    ['Producer_Brand', '!=', 'Kerama Marazzi'],
+                    ['Surface', 'Карвинг'],['Name', 'not like', '%ставк%'],
+                    ['Name', 'not like', '%ступен%'],
+                    ['Name', 'not like', '%пецэлем%'],
+                    ['balance', 1],
+                    ['RMPrice', '>=', '500'],
+                    ['Picture', '!=', '']])
+                    ->whereColumn('RMPrice', '>', 'Price')
+                    ->get();
                 break;
             case 'laparet-wood':
-                $products = Product::where([['GroupProduct', '01 Плитка'],['Producer_Brand', '!=', 'Kerama Marazzi'], ['DesignValue', 'Дерево'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%ступен%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])
+                $products = Product::where([['GroupProduct', '01 Плитка'],
+                    ['Producer_Brand', '!=', 'Kerama Marazzi'],
+                    ['DesignValue', 'Дерево'],['Name', 'not like', '%ставк%'],
+                    ['Name', 'not like', '%ступен%'],
+                    ['Name', 'not like', '%пецэлем%'],
+                    ['balance', 1],
+                    ['RMPrice', '>=', '500'],
+                    ['Picture', '!=', '']])
                     ->whereColumn('RMPrice', '>', 'Price')
                     ->get();
                 break;
