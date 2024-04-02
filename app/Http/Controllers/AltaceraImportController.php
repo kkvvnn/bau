@@ -70,6 +70,7 @@ class AltaceraImportController extends Controller
         $products = json_decode($json, true);
 //        dd($products);
         foreach ($products as $product) {
+            unset($product['depots']); // 02.04.24 change struct of file territory.json (add new field 'depots')
             AltaceraTerritory::create($product);
         }
 
