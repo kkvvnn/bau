@@ -89,25 +89,29 @@
                     . $product->Country_of_manufacture . ')</strong></p>';
             }
 
-
-        if ($product->Name != 'Tiaki Green Керамогранит 60x120 Полированный' && $product->Name != 'Dalim Mint Керамогранит 60x60 Полированный') {
-
-
-            $description .= '<p>--------------------</p>';
-            $date = date('d.m.Y');
-            if ($product->balanceCount > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            if ($product->Element_Code == 'х9999293160') {
+                $description .= '<p>--------------------</p>';
+                $date = date('d.m.Y');
+                $description .= '<p>&#9989; На утро '.$date.' остаток 12,24 '.$product->MainUnit.'</p>';
+                $description .= '<p>--------------------</p>';
+            } elseif ($product->Element_Code == 'х9999293158') {
+                $description .= '<p>--------------------</p>';
+                $date = date('d.m.Y');
+                $description .= '<p>&#9989; На утро '.$date.' остаток 1,44 '.$product->MainUnit.'</p>';
+                $description .= '<p>--------------------</p>';
+            } else {
+                $description .= '<p>--------------------</p>';
+                $date = date('d.m.Y');
+                if ($product->balanceCount > 0) {
+                    $description .= '<p>&#9989; На утро '.$date.' остаток '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                }
+                $description .= '<p>--------------------</p>';
             }
-            $description .= '<p>--------------------</p>';
+
+
 
 
             $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
-        } else {
-            $description .= '<p>--------------------</p>';
-            $date = date('d.m.Y');
-            $description .= '<p>&#9989; На утро '.$date. ' - <strong>В НАЛИЧИИ !</strong></p>';
-            $description .= '<p>--------------------</p>';
-        }
 
             $description .= '<p><strong>Коллекция: </strong>';
                 $collections = $product->collections;

@@ -54,6 +54,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         set_time_limit(90);
 
         $products_all = Product::where([['GroupProduct', '01 Плитка'],['Producer_Brand', '!=', 'Kerama Marazzi'], ['Element_code', '!=', 'х9999286854'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%ступен%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
+
+        $blaze = Product::where([['Element_Code', 'х9999293160']])->orWhere([['Element_Code', 'х9999293158']])->get();
+//        dd($blaze);
+
         $products_cersanit_except = Product::where([['Producer_Brand', 'Cersanit'], ['balanceCount', '<', 1]])->get();
         // dd($products_cersanit_except);
         // dd($products_all);
@@ -65,6 +69,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         // dd($ids_cersanit_except);
 
         $products = $products_all->except($ids_cersanit_except);
+        $products = $products->merge($blaze);
 
 //      ==============================================
         $primavera = Primavera::where('country', '!=', 'Киргизия')->get();
