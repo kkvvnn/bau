@@ -295,7 +295,7 @@
             <td>Активно</td>
             <td>{{ $name }}</td>
             <td>{{$price}}</td>
-            <td>Керамическая плитка. Керамогранит</td>
+            <td>Laparet-Запад</td>
             <td>{{$title}}</td>
             <td>{{$img_full}}</td>
             <td>Отделка</td>
@@ -507,7 +507,7 @@
         <td>Активно</td>
         <td>{{ $name }}</td>
         <td>{{$price}}</td>
-        <td>Керамическая плитка. Керамогранит</td>
+        <td>Laparet-Запад</td>
         <td>{{$title}}</td>
         <td>{{$img_full}}</td>
         <td>Отделка</td>
@@ -622,7 +622,7 @@
             <td>Активно</td>
             <td>{{ $name }}</td>
             <td>{{$price}}</td>
-            <td>Керамическая плитка. Керамогранит</td>
+            <td>Laparet-Запад</td>
             <td>{{$title}}</td>
             <td>{{$img_ready}}</td>
             <td>Отделка</td>
@@ -787,7 +787,7 @@
             <td>Активно</td>
             <td>{{ $name }}</td>
             <td>{{$price}}</td>
-            <td>Керамическая плитка. Керамогранит</td>
+            <td>Laparet-Запад</td>
             <td>{{$title}}</td>
             <td>{{$img_ready}}</td>
             <td>Отделка</td>
@@ -844,7 +844,7 @@
             <td>Активно</td>
             <td>{{ $name }}</td>
             <td>{{$price}}</td>
-            <td>Керамическая плитка. Керамогранит</td>
+            <td>Laparet-Запад</td>
             <td>{{$title}}</td>
             <td>{{$img_ready}}</td>
             <td>Отделка</td>
