@@ -321,10 +321,17 @@ class ProductController extends Controller
             $stock_spb = null;
         }
 
+        if ($product->kzn) {
+            $stock_kzn = $product->kzn->balanceCount;
+        } else {
+            $stock_kzn = null;
+        }
+
         if ($product->GroupProduct != '02 Сантехника') {
             return view('product.show', [
                 'product' => $product,
                 'stock_spb' => $stock_spb,
+                'stock_kzn' => $stock_kzn,
                 'urls' => $urls_2,
                 // 'url2' => $url2,
                 'collection' => $collection,
