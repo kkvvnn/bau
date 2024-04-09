@@ -57,6 +57,12 @@ Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_pl
 //----- BAUSERVICE-SPB -----
 Route::get('/bauservice-spb', [BauserviceSpbController::class, 'index'])->name('bauservice-spb.index');
 
+//----- BAUSERVICE-NN -----
+Route::get('/bauservice-nn', [\App\Http\Controllers\BauserviceNnController::class, 'index'])->name('bauservice-nn.index');
+
+//----- BAUSERVICE-KAZAN -----
+Route::get('/bauservice-kzn', [\App\Http\Controllers\BauserviceKznController::class, 'index'])->name('bauservice-kzn.index');
+
 //----- CREATE_AVITO_FILE -----
 Route::get('/avito_export/{foto?}', [AvitoController::class, 'export'])->name('avito-export');
 Route::get('/avito_export_two/{foto?}', [AvitoTwoController::class, 'export'])->name('avito-export-two');

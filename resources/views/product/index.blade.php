@@ -60,6 +60,12 @@
                         $stock_spb = null;
                     }
 
+                    if ($product->kzn) {
+                        $stock_kzn = $product->kzn->balanceCount;
+                    } else {
+                        $stock_kzn = null;
+                    }
+
 
                     @endphp
 
@@ -77,22 +83,26 @@
                             <div class="card-footer">
                                 <h5 class="card-title pricing-card-title">{{$product->RMPrice}} <span class="text-muted fw-light">₽/{{$product->MainUnit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h5>
                                 <hr>
-                                @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>
-                                    <hr>
-                                @endif
-                                @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -5% {{round($product->RMPrice * 0.95, -1)}} ₽/{{$product->MainUnit}}</p>
-                                    <hr>
-                                @endif
+{{--                                @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))--}}
+{{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>--}}
+{{--                                    <hr>--}}
+{{--                                @endif--}}
+{{--                                @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))--}}
+{{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -5% {{round($product->RMPrice * 0.95, -1)}} ₽/{{$product->MainUnit}}</p>--}}
+{{--                                    <hr>--}}
+{{--                                @endif--}}
                                 @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
                                     <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>                                    <hr>
                                 @endif
 
+                                <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
+
                                 @if ($stock_spb)
-                                    <p class="fs-5 text-body-secondary">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} <mark>(СПб: {{$stock_spb}} {{$product->MainUnit}})</mark> {{$vivod}}</p>
-                                @else
-                                    <p class="fs-5 text-body-secondary">Остаток: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
+                                    <p class="mb-0 fs-5 text-body-secondary">СПб: {{$stock_spb}} {{$product->MainUnit}} {{$vivod}}</p>
+                                @endif
+
+                                @if ($stock_kzn)
+                                    <p class="mb-0 fs-5 text-body-secondary">Казань: {{$stock_kzn}} {{$product->MainUnit}} {{$vivod}}</p>
                                 @endif
                                 <hr>
 

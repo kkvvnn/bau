@@ -2,31 +2,31 @@
 
 namespace App\Console\Commands;
 
+use App\Imports\BauserviceKznImport;
+use App\Imports\BauserviceNnImport;
 use App\Imports\CollectionsImport;
 use App\Imports\BauserviceSpbImport;
-use App\Models\BauserviceSpb;
-use App\Models\Collection;
-use App\Models\CollectionProduct;
-use App\Models\Product;
+use App\Models\BauserviceKzn;
+use App\Models\BauserviceNn;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
-class BauSpbImport extends Command
+class BauKznImport extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bauservice_spb:import';
+    protected $signature = 'bauservice_kzn:import';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Import and update Bauservice SPB in database';
+    protected $description = 'Import and update Bauservice Kazan in database';
 
     /**
      * Execute the console command.
@@ -41,25 +41,25 @@ class BauSpbImport extends Command
         $bar->start();
         {
             //        ---------IMPORT-PRODUCT---------
-            BauserviceSpb::truncate();    // clear all data in table
+            BauserviceKzn::truncate();    // clear all data in table
 
-            $url = '/spb/content/affiliate_new/Pe0cfkLd.csv';
+            $url = '/kzn/content/affiliate_new/tt0WmChN.csv';
 
             $contents = Storage::disk('ftp_bau_spb')->get($url);
             $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
 
             $date = date('Y-m-d_His');
-            $name = 'import/bauservice_spb/bauservice_spb_'.$date.'.csv';
+            $name = 'import/bauservice_kzn/bauservice_kzn_'.$date.'.csv';
 
             Storage::put($name, $contents);
 
-            Excel::import(new BauserviceSpbImport(), $name);
-            $deleted = BauserviceSpb::where('Picture', null)->delete();
+            Excel::import(new BauserviceKznImport(), $name);
+            $deleted = BauserviceKzn::where('Picture', null)->delete();
             //        ---------IMPORT-PRODUCT-END---------
         }
 
         $bar->finish();
-        $this->info(' ----- Bauservice SPB update! [OK]');
+        $this->info(' ----- Bauservice Kazan update! [OK]');
 
 
 //        $this->call('up');

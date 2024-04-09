@@ -20,4 +20,14 @@ class Product extends Model
     {
         return $this->hasOne(BauserviceSpb::class, 'Element_Code', 'Element_Code');
     }
+
+    public function nn(): HasOne
+    {
+        return $this->hasOne(BauserviceNn::class, 'Element_Code', 'Element_Code');
+    }
+
+    public function kzn(): HasOne
+    {
+        return $this->hasOne(BauserviceKzn::class, 'Element_Code', 'Element_Code');
+    }
 }

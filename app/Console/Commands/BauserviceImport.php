@@ -95,6 +95,12 @@ class BauserviceImport extends Command
         $this->call('bauservice_spb:import');
         $this->newLine(1);
 
+        $this->call('bauservice_nn:import');
+        $this->newLine(1);
+
+        $this->call('bauservice_kzn:import');
+        $this->newLine(1);
+
         $this->call('bauservice:collections-images');
         $this->newLine(1);
 
