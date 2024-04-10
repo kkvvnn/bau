@@ -47,7 +47,18 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
         set_time_limit(90);
 
 //      =================LAPARET-COLLECTIONS======================
-        $laparets = Product::where([['GroupProduct', '01 Плитка'], ['Producer_Brand', 'Laparet'], ['Element_code', '!=', 'х9999286854'], ['Name', 'not like', '%ставк%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
+        $laparets = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Laparet'],
+            ['Element_code', '!=', 'х9999286854'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['balance', 1],
+            ['RMPrice', '>=', '500'],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get();
 
         $collections_id = [];
         foreach ($laparets as $laparet) {
@@ -62,13 +73,13 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
 
 //      ===========KERAMAMARAZZI-MONPARNAS========================
         $monparnas = Product::where([['GroupProduct', '01 Плитка'], ['Producer_Brand', 'Kerama Marazzi'], ['Name', 'like', '%онпарнас%']])->get();
-
+        $monparnas = [];
 
 //      ---------------------EMPERO---------------------
         $emperos = Empero::where([['title', 'not like', '% 2 %'], ['price', '!=', 0]])->get();
+        $emperos = [];
 
 //      ---------------------PIXMOSAIC---------------------
-//        $pixmosaics = PixmosaicNew::where('vendor_code', 'like', '%из ассортимент%')->get();
         $pixmosaics_except = PixmosaicNew::whereIn('vendor_code', ['PIX258', 'PIX259', 'PIX750', 'PIX620', 'PIX753'])->get();
         $pixmosaics_except_id = [];
         foreach ($pixmosaics_except as $pme) {
@@ -76,15 +87,14 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
         }
 
         $pixmosaics = PixmosaicNew::where('price', '!=', 0)->get();
-//        $pixmosaics = PixmosaicNew::all();
         $pixmosaics = $pixmosaics->except($pixmosaics_except_id);
+        $pixmosaics = [];
 
 //        dd($pixmosaics);
 
 
 //      ---------------------OLD---------------------
         $olds = AvitoTwoExcel::all();
-//        dd($olds);
 
         return view('exports.avito-two', [
             'collections' => $collections_unique,

@@ -246,4 +246,73 @@ class MyHelpController extends Controller
             'products' => $products,
         ]);
     }
+
+    public function only_actual2()
+    {
+        $products = Product::where([
+                ['Producer_Brand', 'Laparet'],
+                ['GroupProduct', '01 Плитка'],
+            ])
+//            ->orderByRaw('Lenght * Height DESC')
+            ->get()
+//            ->filter(function (Product $product) {
+//                if (isset($product->kzn)) {
+//                    return $product->balance == 1 || $product->kzn->balance == 1;
+//                } else {
+//                    return $product->balance == 1;
+//                }
+//            })
+            ->filter(function (Product $product) {
+                return isset($product->kzn);
+            })/*
+            ->filter(function (Product $product) {
+                return $product->RMPrice >= 700;
+            })
+            ->filter(function (Product $product) {
+                return $product->Picture != '';
+            })*/;
+
+        dd($products);
+
+//        return view('product.index', [
+//            'products' => $products,
+//        ]);
+    }
+
+    public function only_actual()
+    {
+        $laparet_all_tiles = Product::all()
+            ->filter(function (Product $product) {
+                return $product->Producer_Brand == 'Laparet';
+            })
+            ->filter(function (Product $product) {
+                return $product->GroupProduct == '01 Плитка';
+            });
+
+
+        $available_in_msk_and_kzn = $laparet_all_tiles->filter(function (Product $product) {
+                if (isset($product->kzn)) {
+                    return $product->balance == 1 || $product->kzn->balance == 1;
+                } else {
+                    return $product->balance == 1;
+                }
+            })
+            ->filter(function (Product $product) {
+                $length = (int) $product->Lenght;
+                $height = (int) $product->Height;
+                return $length >= 117 && $height >= 57;
+            })
+            ->filter(function (Product $product) {
+                return $product->RMPrice >= 700;
+            })
+            ->filter(function (Product $product) {
+                return $product->Picture != '';
+            });
+
+//        dd($available_in_msk_and_kzn);
+
+        return view('product.index', [
+            'products' => $available_in_msk_and_kzn,
+        ]);
+    }
 }

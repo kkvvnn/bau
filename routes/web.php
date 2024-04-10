@@ -102,6 +102,7 @@ Route::get('/not-found-rezults', [MyHelpController::class, 'not_found_rezults'])
 Route::get('/calacatta-all', [MyHelpController::class, 'calacatta_all']);
 Route::get('/leedo-all', [MyHelpController::class, 'leedo_all']);
 Route::get('/in-kazan', [MyHelpController::class, 'not_in_moscow']);
+Route::get('/120x60-msk-kzn', [MyHelpController::class, 'only_actual']);
 
 //----- SEARCH_CONTROLLER -----
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
