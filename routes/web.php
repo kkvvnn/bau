@@ -103,7 +103,7 @@ Route::get('/calacatta-all', [MyHelpController::class, 'calacatta_all']);
 Route::get('/leedo-all', [MyHelpController::class, 'leedo_all']);
 Route::get('/in-kazan', [MyHelpController::class, 'not_in_moscow']);
 //Route::get('/laparet/{size?}', [MyHelpController::class, 'laparet']);
-Route::get('/laparet/{size}', [MyHelpController::class, 'laparet2']);
+Route::get('/bauservice/{brand}/{size}', [MyHelpController::class, 'laparet']);
 
 //----- SEARCH_CONTROLLER -----
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
