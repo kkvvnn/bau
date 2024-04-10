@@ -247,39 +247,8 @@ class MyHelpController extends Controller
         ]);
     }
 
-    public function only_actual2()
-    {
-        $products = Product::where([
-                ['Producer_Brand', 'Laparet'],
-                ['GroupProduct', '01 Плитка'],
-            ])
-//            ->orderByRaw('Lenght * Height DESC')
-            ->get()
-//            ->filter(function (Product $product) {
-//                if (isset($product->kzn)) {
-//                    return $product->balance == 1 || $product->kzn->balance == 1;
-//                } else {
-//                    return $product->balance == 1;
-//                }
-//            })
-            ->filter(function (Product $product) {
-                return isset($product->kzn);
-            })/*
-            ->filter(function (Product $product) {
-                return $product->RMPrice >= 700;
-            })
-            ->filter(function (Product $product) {
-                return $product->Picture != '';
-            })*/;
 
-        dd($products);
-
-//        return view('product.index', [
-//            'products' => $products,
-//        ]);
-    }
-
-    public function only_actual()
+    public function laparet($size = '')
     {
         $laparet_all_tiles = Product::all()
             ->filter(function (Product $product) {
@@ -290,29 +259,119 @@ class MyHelpController extends Controller
             });
 
 
-        $available_in_msk_and_kzn = $laparet_all_tiles->filter(function (Product $product) {
-                if (isset($product->kzn)) {
-                    return $product->balance == 1 || $product->kzn->balance == 1;
+        $available_in_msk_kzn_spb = $laparet_all_tiles
+            ->filter(function (Product $product) {
+                if (isset($product->kzn) && isset($product->spb)) {
+                    return $product->balance == 1 || $product->kzn->balance == 1 || $product->spb->balance == 1;
                 } else {
                     return $product->balance == 1;
                 }
-            })
-            ->filter(function (Product $product) {
-                $length = (int) $product->Lenght;
-                $height = (int) $product->Height;
-                return $length >= 117 && $height >= 57;
-            })
+            });
+
+        $laparet_filtered = $available_in_msk_kzn_spb
             ->filter(function (Product $product) {
                 return $product->RMPrice >= 700;
             })
             ->filter(function (Product $product) {
+                return $product->RMPrice > $product->Price;
+            })
+            ->filter(function (Product $product) {
                 return $product->Picture != '';
-            });
+            })
+            ->sortByDesc('RMPrice');
 
-//        dd($available_in_msk_and_kzn);
+        $products = [];
+        if ($size == '') {
+            $products = $laparet_filtered;
+        } elseif ($size == '60x60') {
+            $products = $laparet_filtered
+                ->filter(function (Product $product) {
+                    $length = (int) $product->Lenght;
+                    $height = (int) $product->Height;
+                    return $length >= 59 && $length <= 61 && $height >= 59 && $height <= 61;
+                });
+        } elseif ($size == '60x120') {
+            $products = $laparet_filtered
+                ->filter(function (Product $product) {
+                    $length = (int)$product->Lenght;
+                    $height = (int)$product->Height;
+                    return $length >= 119 && $length <= 121 && $height >= 59 && $height <= 61;
+                });
+        } elseif ($size == '80x80') {
+            $products = $laparet_filtered
+                ->filter(function (Product $product) {
+                    $length = (int)$product->Lenght;
+                    $height = (int)$product->Height;
+                    return $length >= 79 && $length <= 81 && $height >= 79 && $height <= 81;
+                });
+        }
+
+
+
+
+
+//        dd($products);
 
         return view('product.index', [
-            'products' => $available_in_msk_and_kzn,
+            'products' => $products,
+        ]);
+    }
+
+    public function laparet2(string $size)
+    {
+        $size = explode('x', $size);
+        $h = (int)$size[0];
+        $l = (int)$size[1];
+
+//        dd($h, $l);
+
+
+
+        $laparet_all_tiles = Product::all()
+            ->filter(function (Product $product) {
+                return $product->Producer_Brand == 'Laparet';
+            })
+            ->filter(function (Product $product) {
+                return $product->GroupProduct == '01 Плитка';
+            });
+
+
+        $available_in_msk_kzn_spb = $laparet_all_tiles
+            ->filter(function (Product $product) {
+                if (isset($product->kzn) && isset($product->spb)) {
+                    return $product->balance == 1 || $product->kzn->balance == 1 || $product->spb->balance == 1;
+                } else {
+                    return $product->balance == 1;
+                }
+            });
+
+        $laparet_filtered = $available_in_msk_kzn_spb
+            ->filter(function (Product $product) {
+                return $product->RMPrice >= 700;
+            })
+            ->filter(function (Product $product) {
+                return $product->RMPrice > $product->Price;
+            })
+            ->filter(function (Product $product) {
+                return $product->Picture != '';
+            })
+            ->sortByDesc('RMPrice');
+
+        $products = $laparet_filtered
+            ->filter(function (Product $product) use ($l, $h) {
+                $length = (int) $product->Lenght;
+                $height = (int) $product->Height;
+                return $length >= --$l && $length <= ++$l && $height >= --$h && $height <= ++$h;
+            });
+
+
+
+
+
+//        dd($products);
+
+        return view('product.index', [
+            'products' => $products,
         ]);
     }
 }
