@@ -136,5 +136,7 @@
 
         </div>
     </div>
-    {{ $products->links() }}
+    @if(method_exists($products, 'links'))
+        {{ $products->links() }}
+    @endif
 @endsection

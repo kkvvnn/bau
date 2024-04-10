@@ -228,4 +228,22 @@ class MyHelpController extends Controller
         echo '</table>';
         echo '<br>';
     }
+
+    public function not_in_moscow()
+    {
+        $products = Product::where([['Producer_Brand', 'Laparet'], ['GroupProduct', '01 Плитка']])
+            ->orderByRaw('Lenght * Height DESC')
+            ->get()
+            ->reject(function (Product $product) {
+                if (isset($product->kzn)) {
+                    return ($product->balanceCount > 0 || $product->kzn->balanceCount <= 0);
+                } else {
+                    return true;
+                }
+            });
+
+        return view('product.index', [
+            'products' => $products,
+        ]);
+    }
 }

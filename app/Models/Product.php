@@ -30,4 +30,8 @@ class Product extends Model
     {
         return $this->hasOne(BauserviceKzn::class, 'Element_Code', 'Element_Code');
     }
+
+    public function reject(\Closure $param)
+    {
+    }
 }
