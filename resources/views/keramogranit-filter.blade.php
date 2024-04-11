@@ -17,7 +17,13 @@
                     {{--БРЕНД--}}
                     <div class="col">
                         <hr>
-                        <p>Бренд</p>
+                        <h4><small class="text-muted">Бренд</small></h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="brand" id="brand0" value="*">
+                            <label class="form-check-label" for="brand0">
+                                Все
+                            </label>
+                        </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="brand" id="brand1" value="Laparet"
                                    checked>
@@ -25,18 +31,33 @@
                                 Laparet
                             </label>
                         </div>
-                        {{--                <div class="form-check">--}}
-                        {{--                    <input class="form-check-input" type="radio" name="brand" id="brand2" value="Cersanit">--}}
-                        {{--                    <label class="form-check-label" for="brand2">--}}
-                        {{--                        Cersanit--}}
-                        {{--                    </label>--}}
-                        {{--                </div>--}}
-                        {{--                <div class="form-check">--}}
-                        {{--                    <input class="form-check-input" type="radio" name="brand" id="brand3" value="Kerama Marazzi">--}}
-                        {{--                    <label class="form-check-label" for="brand3">--}}
-                        {{--                        Kerama Marazzi--}}
-                        {{--                    </label>--}}
-                        {{--                </div>--}}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="brand" id="brand2" value="Cersanit">
+                            <label class="form-check-label" for="brand2">
+                                Cersanit
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="brand" id="brand3"
+                                   value="Kerama Marazzi">
+                            <label class="form-check-label" for="brand3">
+                                Kerama Marazzi
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="brand" id="brand4"
+                                   value="Vitra">
+                            <label class="form-check-label" for="brand4">
+                                Vitra
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="brand" id="brand5"
+                                   value="Ceradim">
+                            <label class="form-check-label" for="brand5">
+                                Ceradim
+                            </label>
+                        </div>
 
 
                     </div>
@@ -44,7 +65,7 @@
                     {{--НАЛИЧИЕ--}}
                     <div class="col">
                         <hr>
-                        <p>Наличие</p>
+                        <h4><small class="text-muted">Наличие</small></h4>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="in_stock" id="in_stock1" value="1"
                                    checked>
@@ -63,7 +84,7 @@
                     {{--РАЗМЕР--}}
                     <div class="col">
                         <hr>
-                        <p>Размер</p>
+                        <h4><small class="text-muted">Размер</small></h4>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="size" id="size0" value="all" checked>
                             <label class="form-check-label" for="size0">
@@ -143,7 +164,7 @@
                     {{--ПОВЕРХНОСТЬ--}}
                     <div class="col">
                         <hr>
-                        <p>Поверхность</p>
+                        <h4><small class="text-muted">Поверхность</small></h4>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="surface" id="surface0" value="all"
                                    checked>
@@ -194,7 +215,7 @@
                     {{--ДИЗАЙН--}}
                     <div class="col">
                         <hr>
-                        <p>Дизайн</p>
+                        <h4><small class="text-muted">Дизайн</small></h4>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="design" id="design0" value="all" checked>
                             <label class="form-check-label" for="design0">
@@ -245,23 +266,23 @@
                     <div class="col">
                         <hr>
                         <div class="mb-3">
-                            <label for="free-stock" class="form-label">Остаток не менее</label>
+                            <label for="free-stock" class="form-label mb-0"><h4><small class="text-muted">Остаток не менее</small></h4></label>
                             <input type="text" class="form-control" id="free-stock" name="free_stock">
                         </div>
 
 
                         {{--ЦЕНА НЕ БОЛЕЕ--}}
                         <div class="mb-3">
-                            <label for="price-max" class="form-label">Цена не более</label>
+                            <label for="price-max" class="form-label mb-0"><h4><small class="text-muted">Цена не более</small></h4></label>
                             <input type="text" class="form-control" id="price-max" name="price_max">
                         </div>
 
 
                     </div>
-
+                    <hr class="mt-5">
                     <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">Найти</button>
+                        <div class="d-grid gap-2 col-3 mx-auto mt-3">
+                            <button type="submit" class="btn btn-dark btn-lg">Найти</button>
                         </div>
                     </div>
 
