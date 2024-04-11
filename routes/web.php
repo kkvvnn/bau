@@ -103,7 +103,9 @@ Route::get('/calacatta-all', [MyHelpController::class, 'calacatta_all']);
 Route::get('/leedo-all', [MyHelpController::class, 'leedo_all']);
 Route::get('/in-kazan', [MyHelpController::class, 'not_in_moscow']);
 //Route::get('/laparet/{size?}', [MyHelpController::class, 'laparet']);
-Route::get('/bauservice/{brand}/{size}', [MyHelpController::class, 'laparet']);
+Route::get('/bauservice/{brand}/{size}/{surface}/{count?}', [MyHelpController::class, 'laparet']);
+Route::get('keramogranit/filter-2', [MyHelpController::class, 'laparet_filter'])->name('keramogranit.filter');
+Route::get('/keramogranit/filter', [MyHelpController::class, 'keramogranit_filter']);
 
 //----- SEARCH_CONTROLLER -----
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');

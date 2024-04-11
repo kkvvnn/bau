@@ -9,6 +9,7 @@ use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use mysql_xdevapi\Table;
 
@@ -317,7 +318,10 @@ class MyHelpController extends Controller
         ]);
     }
 
-    public function laparet(string $brand, string $size)
+    public function laparet(string $brand,
+                            string $size,
+                            string $surface,
+                            int $count = 0)
     {
         $size = explode('x', $size);
         if (count($size) != 2 || $size[1] == null) {
@@ -327,15 +331,7 @@ class MyHelpController extends Controller
         $l = (int)$size[1];
 
         $brand = ucfirst(strtolower($brand));
-
-
-//        $bau_all_tiles = Product::all()
-//            ->filter(function (Product $product) use ($brand) {
-//                return $product->Producer_Brand == $brand;
-//            })
-//            ->filter(function (Product $product) {
-//                return $product->GroupProduct == '01 Плитка';
-//            });
+        $count = (int) $count;
 
         $bau_all_tiles = Product::where('Producer_Brand', '=', $brand)
             ->where('GroupProduct', '=', '01 Плитка')
@@ -344,8 +340,6 @@ class MyHelpController extends Controller
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
             ->sortByDesc('RMPrice');;
-
-
 
         $available_in_msk_kzn_spb = $bau_all_tiles
             ->filter(function (Product $product) {
@@ -360,24 +354,217 @@ class MyHelpController extends Controller
                 }
             });
 
-
-
         $products = $available_in_msk_kzn_spb
             ->filter(function (Product $product) use ($l, $h) {
                 $length = (int) $product->Lenght;
                 $height = (int) $product->Height;
                 return ($length >= --$l && $length <= ++$l && $height >= --$h && $height <= ++$h)
                     || ($length >= --$h && $length <= ++$h && $height >= --$l && $height <= ++$l);
+            })
+            ->filter(function (Product $product) use ($count) {
+                if (isset($product->kzn) && isset($product->spb)) {
+                    return $product->balanceCount >= $count || $product->kzn->balanceCount >= $count || $product->spb->balanceCount >= $count;
+                } elseif (isset($product->kzn)){
+                    return $product->balanceCount >= $count || $product->kzn->balanceCount >= $count;
+                } elseif (isset($product->spb)){
+                    return $product->balanceCount >= $count || $product->spb->balanceCount >= $count;
+                } else {
+                    return $product->balanceCount >= $count;
+                }
+            })
+            ->filter(function (Product $product) use ($surface) {
+                switch ($surface) {
+                    case 'pol':
+                        return ((stripos($product->Surface, 'олирован') !== false) &&
+                            $product->Surface != 'Неполированная матовая')
+                            || (stripos($product->Surface, 'лянцевая') !== false)
+                            || (stripos($product->Name, 'олирован') !== false);
+                    case 'mat':
+                        return (stripos($product->Surface, 'атов') !== false)
+                            || (stripos($product->Name, 'атов') !== false);
+                    case 'lap':
+                        return (stripos($product->Surface, 'аппатир') !== false)
+                            || (stripos($product->Name, 'аппатир') !== false);
+                    case 'sat':
+                        return (stripos($product->Surface, 'атиниро') !== false)
+                            || (stripos($product->Name, 'атиниро') !== false);
+                    case 'met':
+                        return (stripos($product->Surface, 'еталл') !== false)
+                            || (stripos($product->Name, 'еталл') !== false);
+                    case 'car':
+                        return (stripos($product->Surface, 'арвин') !== false)
+                            || (stripos($product->Name, 'арвин') !== false)
+                            || (stripos($product->Surface, 'arving') !== false)
+                            || (stripos($product->Name, 'arving') !== false);
+//                    case 'd':
+//                        return (stripos($product->DesignValue, 'дерев') !== false)
+//                            || (stripos($product->Name, 'дерев') !== false)
+//                            || (stripos($product->DesignValue, 'wood') !== false)
+//                            || (stripos($product->Name, 'wood') !== false);
+//                    case 'b':
+//                        return (stripos($product->DesignValue, 'етон') !== false)
+//                            || (stripos($product->Name, 'етон') !== false)
+//                            || (stripos($product->DesignValue, 'eton') !== false)
+//                            || (stripos($product->Name, 'eton') !== false);
+                    default:
+                        return true;
+                }
             });
-
-
-
-
 
 //        dd($products);
 
         return view('product.index', [
             'products' => $products,
+            'count' => $products->count(),
+        ]);
+    }
+
+    public function keramogranit_filter()
+    {
+        return view('keramogranit-filter');
+    }
+
+    public function laparet_filter(Request $request)
+    {
+
+//        dd($request);
+        if ($request->size != 'all') {
+            $size = explode('x', $request->size);
+            $h = (int)$size[0];
+            $l = (int)$size[1];
+        } else {
+            $h = 0;
+            $l = 0;
+        }
+
+
+        $brand = ucfirst(strtolower($request->brand));
+        $surface = $request->surface;
+
+        $free_stock = (int) $request->free_stock;
+        $design = $request->design;
+        $price_max = (int) $request->price_max;
+
+        $bau_all_tiles = Product::where('Producer_Brand', '=', $brand)
+            ->where('GroupProduct', '=', '01 Плитка')
+            ->where('RMPrice', '>=', 700)
+            ->where('Picture', '!=', null)
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get()
+            ->sortByDesc('RMPrice');;
+
+        $available_in_msk_kzn_spb = $bau_all_tiles
+            ->filter(function (Product $product) {
+                if (isset($product->kzn) && isset($product->spb)) {
+                    return $product->balance == 1 || $product->kzn->balance == 1 || $product->spb->balance == 1;
+                } elseif (isset($product->kzn)){
+                    return $product->balance == 1 || $product->kzn->balance == 1;
+                } elseif (isset($product->spb)){
+                    return $product->balance == 1 || $product->spb->balance == 1;
+                } else {
+                    return $product->balance == 1;
+                }
+            });
+
+        $products = $available_in_msk_kzn_spb
+            ->filter(function (Product $product) use ($l, $h) {
+                if ($l) {
+                    $length = (int) $product->Lenght;
+                    $height = (int) $product->Height;
+                    return ($length >= --$l && $length <= ++$l && $height >= --$h && $height <= ++$h)
+                        || ($length >= --$h && $length <= ++$h && $height >= --$l && $height <= ++$l);
+                } else {
+                    return true;
+                }
+            })
+            ->filter(function (Product $product) use ($free_stock) {
+                if ($free_stock) {
+                    if (isset($product->kzn) && isset($product->spb)) {
+                        return $product->balanceCount >= $free_stock || $product->kzn->balanceCount >= $free_stock || $product->spb->balanceCount >= $free_stock;
+                    } elseif (isset($product->kzn)){
+                        return $product->balanceCount >= $free_stock || $product->kzn->balanceCount >= $free_stock;
+                    } elseif (isset($product->spb)){
+                        return $product->balanceCount >= $free_stock || $product->spb->balanceCount >= $free_stock;
+                    } else {
+                        return $product->balanceCount >= $free_stock;
+                    }
+                } else {
+                    return true;
+                }
+            })
+            ->filter(function (Product $product) use ($surface) {
+                switch ($surface) {
+                    case 'pol':
+                        return ((stripos($product->Surface, 'олирован') !== false) &&
+                                $product->Surface != 'Неполированная матовая')
+                            || (stripos($product->Surface, 'лянцевая') !== false)
+                            || (stripos($product->Name, 'олирован') !== false);
+                    case 'mat':
+                        return (stripos($product->Surface, 'атов') !== false)
+                            || (stripos($product->Name, 'атов') !== false);
+                    case 'lap':
+                        return (stripos($product->Surface, 'аппатир') !== false)
+                            || (stripos($product->Name, 'аппатир') !== false);
+                    case 'sat':
+                        return (stripos($product->Surface, 'атиниро') !== false)
+                            || (stripos($product->Name, 'атиниро') !== false);
+                    case 'met':
+                        return (stripos($product->Surface, 'еталл') !== false)
+                            || (stripos($product->Name, 'еталл') !== false);
+                    case 'car':
+                        return (stripos($product->Surface, 'арвин') !== false)
+                            || (stripos($product->Name, 'арвин') !== false)
+                            || (stripos($product->Surface, 'arving') !== false)
+                            || (stripos($product->Name, 'arving') !== false);
+                    default:
+                        return true;
+                }
+            })
+            ->filter(function (Product $product) use ($design) {
+                switch ($design) {
+                    case 'derevo':
+                        return (stripos($product->DesignValue, 'дерев') !== false)
+                            || (stripos($product->Name, 'дерев') !== false)
+                            || (stripos($product->DesignValue, 'wood') !== false)
+                            || (stripos($product->Name, 'wood') !== false);
+                    case 'beton':
+                        return (stripos($product->DesignValue, 'етон') !== false)
+                            || (stripos($product->Name, 'етон') !== false)
+                            || (stripos($product->DesignValue, 'eton') !== false)
+                            || (stripos($product->Name, 'eton') !== false);
+                    case 'mramor':
+                        return (stripos($product->DesignValue, 'рамор') !== false)
+                            || (stripos($product->Name, 'рамор') !== false)
+                            || (stripos($product->DesignValue, 'mramor') !== false)
+                            || (stripos($product->Name, 'mramor') !== false);
+                    case 'kamen':
+                        return (stripos($product->DesignValue, 'амень') !== false)
+                            || (stripos($product->Name, 'амень') !== false);
+                    case 'granit':
+                        return (stripos($product->DesignValue, 'ранит') !== false)
+                            || (stripos($product->Name, 'ранит') !== false);
+                    case 'onyx':
+                        return (stripos($product->DesignValue, 'никс') !== false)
+                            || (stripos($product->Name, 'никс') !== false)
+                            || (stripos($product->Name, 'nix') !== false)
+                            || (stripos($product->Name, 'nyx') !== false);
+                    default:
+                        return true;
+                }
+            })
+            ->filter(function (Product $product) use ($price_max) {
+                if ($price_max) {
+                    return $product->RMPrice <= $price_max;
+                } else {
+                    return true;
+                }
+            });
+
+//        dd($products);
+
+        return view('product.index', [
+            'products' => $products,
+            'count' => $products->count(),
         ]);
     }
 }
