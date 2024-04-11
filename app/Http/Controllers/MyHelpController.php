@@ -444,25 +444,30 @@ class MyHelpController extends Controller
         $free_stock = (int) $request->free_stock;
         $design = $request->design;
         $price_max = (int) $request->price_max;
+        $in_stock = (int) $request->in_stock;
 
         $bau_all_tiles = Product::where('Producer_Brand', '=', $brand)
             ->where('GroupProduct', '=', '01 Плитка')
             ->where('RMPrice', '>=', 700)
-            ->where('Picture', '!=', null)
+            ->where('Picture', '!=', '')
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
             ->sortByDesc('RMPrice');;
 
         $available_in_msk_kzn_spb = $bau_all_tiles
-            ->filter(function (Product $product) {
-                if (isset($product->kzn) && isset($product->spb)) {
-                    return $product->balance == 1 || $product->kzn->balance == 1 || $product->spb->balance == 1;
-                } elseif (isset($product->kzn)){
-                    return $product->balance == 1 || $product->kzn->balance == 1;
-                } elseif (isset($product->spb)){
-                    return $product->balance == 1 || $product->spb->balance == 1;
+            ->filter(function (Product $product) use ($in_stock) {
+                if ($in_stock) {
+                    if (isset($product->kzn) && isset($product->spb)) {
+                        return $product->balance == 1 || $product->kzn->balance == 1 || $product->spb->balance == 1;
+                    } elseif (isset($product->kzn)){
+                        return $product->balance == 1 || $product->kzn->balance == 1;
+                    } elseif (isset($product->spb)){
+                        return $product->balance == 1 || $product->spb->balance == 1;
+                    } else {
+                        return $product->balance == 1;
+                    }
                 } else {
-                    return $product->balance == 1;
+                    return true;
                 }
             });
 

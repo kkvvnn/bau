@@ -41,6 +41,25 @@
 
                     </div>
 
+                    {{--НАЛИЧИЕ--}}
+                    <div class="col">
+                        <hr>
+                        <p>Наличие</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="in_stock" id="in_stock1" value="1"
+                                   checked>
+                            <label class="form-check-label" for="in_stock1">
+                                Только в наличии
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="in_stock" id="in_stock2" value="0">
+                            <label class="form-check-label" for="in_stock2">
+                                Все
+                            </label>
+                        </div>
+                    </div>
+
                     {{--РАЗМЕР--}}
                     <div class="col">
                         <hr>
