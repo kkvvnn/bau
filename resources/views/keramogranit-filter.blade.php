@@ -19,7 +19,7 @@
                         <hr>
                         <h4><small class="text-muted">Бренд</small></h4>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="brand" id="brand0" value="*">
+                            <input class="form-check-input" type="radio" name="brand" id="brand0" value="0">
                             <label class="form-check-label" for="brand0">
                                 Все
                             </label>
