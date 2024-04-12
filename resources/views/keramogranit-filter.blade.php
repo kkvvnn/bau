@@ -73,13 +73,13 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type" id="type1" value="ерамогранит">
                             <label class="form-check-label" for="type1">
-                                Только Керамогранит
+                                Керамогранит
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type" id="type2" value="литка">
                             <label class="form-check-label" for="type2">
-                                Только керамическая плитка
+                                Керамическая плитка
                             </label>
                         </div>
 
@@ -93,7 +93,7 @@
                             <input class="form-check-input" type="radio" name="in_stock" id="in_stock1" value="1"
                                    checked>
                             <label class="form-check-label" for="in_stock1">
-                                Только в наличии
+                                В наличии
                             </label>
                         </div>
                         <div class="form-check">
