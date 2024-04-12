@@ -62,6 +62,7 @@
                         <hr>
 
                         {{--ТИП--}}
+                        <h4><small class="text-muted">Тип</small></h4>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="type" id="type0" value="0"
                                    checked>
