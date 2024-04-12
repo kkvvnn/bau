@@ -59,6 +59,28 @@
                             </label>
                         </div>
 
+                        <hr>
+
+                        {{--ТИП--}}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type" id="type0" value="0"
+                                   checked>
+                            <label class="form-check-label" for="type0">
+                                Все
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type" id="type1" value="ерамогранит">
+                            <label class="form-check-label" for="type1">
+                                Только Керамогранит
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="type" id="type2" value="литка">
+                            <label class="form-check-label" for="type2">
+                                Только керамическая плитка
+                            </label>
+                        </div>
 
                     </div>
 
@@ -101,6 +123,12 @@
                             <input class="form-check-input" type="radio" name="size" id="size2" value="15x90">
                             <label class="form-check-label" for="size2">
                                 15x90
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="size" id="size31" value="20x60">
+                            <label class="form-check-label" for="size31">
+                                20x60
                             </label>
                         </div>
                         <div class="form-check">

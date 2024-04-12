@@ -220,10 +220,10 @@ class MyHelpController extends Controller
         echo '<table>';
         echo '<tr><th>Коллекция</th><th>Название</th><th>Цена</th><th>Закупка</th><th>В упаковке штук</th><th>Остаток</th></tr>';
         foreach ($products as $product) {
-                echo '<tr>';
-                echo '<td>' . $product->Collection.'</td><td>' .$product->Item_name. '</td><td>' . $product->Price_rozn . '</td>';
-                echo '<td>' . $product->Price_OPT.'</td><td>' .$product->Pcs_per_box. '</td><td>' . $product->Sklad_Msk_LeeDo . '</td>';
-                echo '</tr>';
+            echo '<tr>';
+            echo '<td>' . $product->Collection . '</td><td>' . $product->Item_name . '</td><td>' . $product->Price_rozn . '</td>';
+            echo '<td>' . $product->Price_OPT . '</td><td>' . $product->Pcs_per_box . '</td><td>' . $product->Sklad_Msk_LeeDo . '</td>';
+            echo '</tr>';
 
         }
         echo '</table>';
@@ -287,8 +287,8 @@ class MyHelpController extends Controller
         } elseif ($size == '60x60') {
             $products = $laparet_filtered
                 ->filter(function (Product $product) {
-                    $length = (int) $product->Lenght;
-                    $height = (int) $product->Height;
+                    $length = (int)$product->Lenght;
+                    $height = (int)$product->Height;
                     return $length >= 59 && $length <= 61 && $height >= 59 && $height <= 61;
                 });
         } elseif ($size == '60x120') {
@@ -308,9 +308,6 @@ class MyHelpController extends Controller
         }
 
 
-
-
-
 //        dd($products);
 
         return view('product.index', [
@@ -321,7 +318,7 @@ class MyHelpController extends Controller
     public function laparet(string $brand,
                             string $size,
                             string $surface,
-                            int $count = 0)
+                            int    $count = 0)
     {
         $size = explode('x', $size);
         if (count($size) != 2 || $size[1] == null) {
@@ -331,7 +328,7 @@ class MyHelpController extends Controller
         $l = (int)$size[1];
 
         $brand = ucfirst(strtolower($brand));
-        $count = (int) $count;
+        $count = (int)$count;
 
         $bau_all_tiles = Product::where('Producer_Brand', '=', $brand)
             ->where('GroupProduct', '=', '01 Плитка')
@@ -345,9 +342,9 @@ class MyHelpController extends Controller
             ->filter(function (Product $product) {
                 if (isset($product->kzn) && isset($product->spb)) {
                     return $product->balance == 1 || $product->kzn->balance == 1 || $product->spb->balance == 1;
-                } elseif (isset($product->kzn)){
+                } elseif (isset($product->kzn)) {
                     return $product->balance == 1 || $product->kzn->balance == 1;
-                } elseif (isset($product->spb)){
+                } elseif (isset($product->spb)) {
                     return $product->balance == 1 || $product->spb->balance == 1;
                 } else {
                     return $product->balance == 1;
@@ -356,17 +353,17 @@ class MyHelpController extends Controller
 
         $products = $available_in_msk_kzn_spb
             ->filter(function (Product $product) use ($l, $h) {
-                $length = (int) $product->Lenght;
-                $height = (int) $product->Height;
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
                 return ($length >= --$l && $length <= ++$l && $height >= --$h && $height <= ++$h)
                     || ($length >= --$h && $length <= ++$h && $height >= --$l && $height <= ++$l);
             })
             ->filter(function (Product $product) use ($count) {
                 if (isset($product->kzn) && isset($product->spb)) {
                     return $product->balanceCount >= $count || $product->kzn->balanceCount >= $count || $product->spb->balanceCount >= $count;
-                } elseif (isset($product->kzn)){
+                } elseif (isset($product->kzn)) {
                     return $product->balanceCount >= $count || $product->kzn->balanceCount >= $count;
-                } elseif (isset($product->spb)){
+                } elseif (isset($product->spb)) {
                     return $product->balanceCount >= $count || $product->spb->balanceCount >= $count;
                 } else {
                     return $product->balanceCount >= $count;
@@ -376,7 +373,7 @@ class MyHelpController extends Controller
                 switch ($surface) {
                     case 'pol':
                         return ((stripos($product->Surface, 'олирован') !== false) &&
-                            $product->Surface != 'Неполированная матовая')
+                                $product->Surface != 'Неполированная матовая')
                             || (stripos($product->Surface, 'лянцевая') !== false)
                             || (stripos($product->Name, 'олирован') !== false);
                     case 'mat':
@@ -418,7 +415,8 @@ class MyHelpController extends Controller
             'count' => $products->count(),
         ]);
     }
-/*==========================================================================================================*/
+
+    /*==========================================================================================================*/
     public function keramogranit_filter()
     {
         return view('keramogranit-filter');
@@ -441,10 +439,11 @@ class MyHelpController extends Controller
         $brand = ucfirst(strtolower($request->brand));
         $surface = $request->surface;
 
-        $free_stock = (int) $request->free_stock;
+        $free_stock = (int)$request->free_stock;
         $design = $request->design;
-        $price_max = (int) $request->price_max;
-        $in_stock = (int) $request->in_stock;
+        $price_max = (int)$request->price_max;
+        $in_stock = (int)$request->in_stock;
+        $type = $request->type;
 
         $bau_all_tiles = Product::where('GroupProduct', '=', '01 Плитка')
             ->where('RMPrice', '>=', 700)
@@ -452,22 +451,29 @@ class MyHelpController extends Controller
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
             ->sortByDesc('RMPrice')
-        ->filter(function (Product $product) use ($brand) {
-            if ($brand) {
-                return $product->Producer_Brand == $brand;
-            } else {
-                return true;
-            }
-        });
+            ->filter(function (Product $product) use ($brand) {
+                if ($brand) {
+                    return $product->Producer_Brand == $brand;
+                } else {
+                    return true;
+                }
+            })
+            ->filter(function (Product $product) use ($type) {
+                if ($type) {
+                    return stripos($product->Name, $type) !== false;
+                } else {
+                    return true;
+                }
+            });
 
         $available_in_msk_kzn_spb = $bau_all_tiles
             ->filter(function (Product $product) use ($in_stock) {
                 if ($in_stock) {
                     if (isset($product->kzn) && isset($product->spb)) {
                         return $product->balance == 1 || $product->kzn->balance == 1 || $product->spb->balance == 1;
-                    } elseif (isset($product->kzn)){
+                    } elseif (isset($product->kzn)) {
                         return $product->balance == 1 || $product->kzn->balance == 1;
-                    } elseif (isset($product->spb)){
+                    } elseif (isset($product->spb)) {
                         return $product->balance == 1 || $product->spb->balance == 1;
                     } else {
                         return $product->balance == 1;
@@ -480,8 +486,8 @@ class MyHelpController extends Controller
         $products = $available_in_msk_kzn_spb
             ->filter(function (Product $product) use ($l, $h) {
                 if ($l) {
-                    $length = (int) $product->Lenght;
-                    $height = (int) $product->Height;
+                    $length = (int)$product->Lenght;
+                    $height = (int)$product->Height;
                     return ($length >= --$l && $length <= ++$l && $height >= --$h && $height <= ++$h)
                         || ($length >= --$h && $length <= ++$h && $height >= --$l && $height <= ++$l);
                 } else {
@@ -492,9 +498,9 @@ class MyHelpController extends Controller
                 if ($free_stock) {
                     if (isset($product->kzn) && isset($product->spb)) {
                         return $product->balanceCount >= $free_stock || $product->kzn->balanceCount >= $free_stock || $product->spb->balanceCount >= $free_stock;
-                    } elseif (isset($product->kzn)){
+                    } elseif (isset($product->kzn)) {
                         return $product->balanceCount >= $free_stock || $product->kzn->balanceCount >= $free_stock;
-                    } elseif (isset($product->spb)){
+                    } elseif (isset($product->spb)) {
                         return $product->balanceCount >= $free_stock || $product->spb->balanceCount >= $free_stock;
                     } else {
                         return $product->balanceCount >= $free_stock;
@@ -583,11 +589,6 @@ class MyHelpController extends Controller
     }
 
 
-
-
-
-
-
     public function laparet_filter2(Request $request)
     {
 
@@ -607,15 +608,15 @@ class MyHelpController extends Controller
 //        dd($brand);
         $surface = $request->surface;
 
-        $free_stock = (int) $request->free_stock;
+        $free_stock = (int)$request->free_stock;
         $design = $request->design;
-        $price_max = (int) $request->price_max;
-        $in_stock = (int) $request->in_stock;
+        $price_max = (int)$request->price_max;
+        $in_stock = (int)$request->in_stock;
 
         $bau_all_tiles = Product::where('GroupProduct', '=', '01 Плитка')
             ->where('RMPrice', '>=', 700)
             ->where('Picture', '!=', '')
-            ->where('Producer_Brand', 'like', '%'.$brand.'%')
+            ->where('Producer_Brand', 'like', '%' . $brand . '%')
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
             ->sortByDesc('RMPrice');
@@ -625,9 +626,9 @@ class MyHelpController extends Controller
                 if ($in_stock) {
                     if (isset($product->kzn) && isset($product->spb)) {
                         return $product->balance == 1 || $product->kzn->balance == 1 || $product->spb->balance == 1;
-                    } elseif (isset($product->kzn)){
+                    } elseif (isset($product->kzn)) {
                         return $product->balance == 1 || $product->kzn->balance == 1;
-                    } elseif (isset($product->spb)){
+                    } elseif (isset($product->spb)) {
                         return $product->balance == 1 || $product->spb->balance == 1;
                     } else {
                         return $product->balance == 1;
@@ -640,8 +641,8 @@ class MyHelpController extends Controller
         $products = $available_in_msk_kzn_spb
             ->filter(function (Product $product) use ($l, $h) {
                 if ($l) {
-                    $length = (int) $product->Lenght;
-                    $height = (int) $product->Height;
+                    $length = (int)$product->Lenght;
+                    $height = (int)$product->Height;
                     return ($length >= --$l && $length <= ++$l && $height >= --$h && $height <= ++$h)
                         || ($length >= --$h && $length <= ++$h && $height >= --$l && $height <= ++$l);
                 } else {
@@ -652,9 +653,9 @@ class MyHelpController extends Controller
                 if ($free_stock) {
                     if (isset($product->kzn) && isset($product->spb)) {
                         return $product->balanceCount >= $free_stock || $product->kzn->balanceCount >= $free_stock || $product->spb->balanceCount >= $free_stock;
-                    } elseif (isset($product->kzn)){
+                    } elseif (isset($product->kzn)) {
                         return $product->balanceCount >= $free_stock || $product->kzn->balanceCount >= $free_stock;
-                    } elseif (isset($product->spb)){
+                    } elseif (isset($product->spb)) {
                         return $product->balanceCount >= $free_stock || $product->spb->balanceCount >= $free_stock;
                     } else {
                         return $product->balanceCount >= $free_stock;
