@@ -88,7 +88,7 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
 
         $pixmosaics = PixmosaicNew::where('price', '!=', 0)->get();
         $pixmosaics = $pixmosaics->except($pixmosaics_except_id);
-        $pixmosaics = [];
+//        $pixmosaics = [];
 
 //        dd($pixmosaics);
 
