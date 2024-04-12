@@ -436,7 +436,7 @@ class MyHelpController extends Controller
         }
 
 
-        $brand = ucfirst(strtolower($request->brand));
+        $brand = $request->brand;
         $surface = $request->surface;
 
         $free_stock = (int)$request->free_stock;
