@@ -414,7 +414,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="color" id="color21" value="ини">
+                            <input class="form-check-input" type="radio" name="color" id="color21" value="иний">
                             <label class="form-check-label" for="color21">
                                 Синий
                             </label>
