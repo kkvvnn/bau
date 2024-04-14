@@ -287,8 +287,168 @@
                                 Оникс
                             </label>
                         </div>
+                    </div>
 
-
+                    {{--ЦВЕТ--}}
+                    <div class="col">
+                        <hr>
+                        <h4><small class="text-muted">Цвет</small></h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color0" value="0" checked>
+                            <label class="form-check-label" for="color0">
+                                Все
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color1" value="нтраци">
+                            <label class="form-check-label" for="color1">
+                                Антрацит
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color2" value="ежевы">
+                            <label class="form-check-label" for="color2">
+                                Бежевый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color3" value="елы">
+                            <label class="form-check-label" for="color3">
+                                Белый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color4" value="ирюзовы">
+                            <label class="form-check-label" for="color4">
+                                Бирюзовый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color5" value="ордовы">
+                            <label class="form-check-label" for="color5">
+                                Бордовый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color7" value="олубо">
+                            <label class="form-check-label" for="color7">
+                                Голубой
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color8" value="рафитовы">
+                            <label class="form-check-label" for="color8">
+                                Графитовый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color9" value="елты">
+                            <label class="form-check-label" for="color9">
+                                Желтый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color10" value="елены">
+                            <label class="form-check-label" for="color10">
+                                Зеленый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color11" value="олото">
+                            <label class="form-check-label" for="color11">
+                                Золотой
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color12" value="оричневы">
+                            <label class="form-check-label" for="color12">
+                                Коричневый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color13" value="расны">
+                            <label class="form-check-label" for="color13">
+                                Красный
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color14" value="ремовы">
+                            <label class="form-check-label" for="color14">
+                                Кремовый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color15" value="ногоцветны">
+                            <label class="form-check-label" for="color15">
+                                Многоцветный
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color16" value="ливковы">
+                            <label class="form-check-label" for="color16">
+                                Оливковый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color17" value="ранжевы">
+                            <label class="form-check-label" for="color17">
+                                Оранжевый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color18" value="азноцветны">
+                            <label class="form-check-label" for="color18">
+                                Разноцветный
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color19" value="озовы">
+                            <label class="form-check-label" for="color19">
+                                Розовый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color20" value="еры">
+                            <label class="form-check-label" for="color20">
+                                Серый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color21" value="ини">
+                            <label class="form-check-label" for="color21">
+                                Синий
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color22" value="иреневы">
+                            <label class="form-check-label" for="color22">
+                                Сиреневый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color222" value="еребряны">
+                            <label class="form-check-label" for="color222">
+                                Серебряный
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color23" value="абачны">
+                            <label class="form-check-label" for="color23">
+                                Табачный
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color233" value="иолетовы">
+                            <label class="form-check-label" for="color233">
+                                Фиолетовый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="color24" value="ерны">
+                            <label class="form-check-label" for="color24">
+                                Черный
+                            </label>
+                        </div>
                     </div>
 
                     {{--СВОБОДНЫЙ ОСТАТОК БОЛЕЕ--}}

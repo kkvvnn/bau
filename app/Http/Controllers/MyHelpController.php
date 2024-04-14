@@ -444,6 +444,9 @@ class MyHelpController extends Controller
         $price_max = (int)$request->price_max;
         $in_stock = (int)$request->in_stock;
         $type = $request->type;
+        $color = $request->color;
+
+//        dd($color);
 
         $bau_all_tiles = Product::where('GroupProduct', '=', '01 Плитка')
             ->where('RMPrice', '>=', 700)
@@ -575,7 +578,15 @@ class MyHelpController extends Controller
                 } else {
                     return true;
                 }
-            });
+            })
+        ->filter(function (Product $product) use ($color) {
+            if ($color) {
+                return (stripos($product->Color, $color) !== false)
+                    || (stripos($product->Name, $color) !== false);
+            }
+
+            return true;
+        });
 
 //        $products = new \Illuminate\Database\Eloquent\Collection($products);
 //        $products = $products::paginate(15);
