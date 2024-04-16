@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\AvitoExport;
+use App\Exports\AvitoLaparetExport;
 use App\Exports\AvitoTwoExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +22,8 @@ class AvitoTwoController extends Controller
         $add_description_first = $request->add_description_first??"";
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
         $filename = 'avito-rodion/'.$foto.'Rodion_'.date('Y-m-d_His').'.xlsx';
-        Excel::store(new AvitoTwoExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first), $filename, 'avito');
+//        Excel::store(new AvitoTwoExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first), $filename, 'avito');
+        Excel::store(new AvitoLaparetExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
         $rodion = true;

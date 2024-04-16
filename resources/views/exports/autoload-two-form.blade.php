@@ -7,7 +7,7 @@
                 <p></p>
             </div>
 
-            <div class="text-bg-warning p-3"><h1 class="display-6">Автозагрузка Авито аккаунт Родион</h1></div>
+            <div class="text-bg-warning p-3"><h1 class="display-6">Автозагрузка Авито аккаунт Laparet-Запад</h1></div>
             <hr>
 
             <form action="{{route('avito-export-two')}}">
