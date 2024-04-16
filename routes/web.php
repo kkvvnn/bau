@@ -106,6 +106,7 @@ Route::get('/in-kazan', [MyHelpController::class, 'not_in_moscow']);
 Route::get('/bauservice/{brand}/{size}/{surface}/{count?}', [MyHelpController::class, 'laparet']);
 Route::get('/bauservice/filter-2', [MyHelpController::class, 'laparet_filter'])->name('keramogranit.filter');
 Route::get('/bauservice/filter', [MyHelpController::class, 'keramogranit_filter'])->name('bauservice.filter');
+Route::get('/images-text', [MyHelpController::class, 'image_text']);
 
 //----- SEARCH_CONTROLLER -----
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');

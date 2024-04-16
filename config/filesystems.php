@@ -58,6 +58,14 @@ return [
             'throw' => false,
         ],
 
+        'collections-text' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/bauservice/collections-text'),
+            'url' => env('APP_URL').'/storage/images/bauservice/collections-text',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'empero' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/empero'),

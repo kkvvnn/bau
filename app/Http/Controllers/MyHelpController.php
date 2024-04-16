@@ -11,6 +11,9 @@ use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
 use mysql_xdevapi\Table;
 
 class MyHelpController extends Controller
@@ -752,5 +755,45 @@ class MyHelpController extends Controller
             'products' => $products,
             'count' => $products->count(),
         ]);
+    }
+
+    public function image_text()
+    {
+        $directory = 'public/images/bauservice/collections';
+        $files = Storage::allFiles($directory);
+
+//        dd($files);
+
+        $count = 0;
+        foreach ($files as $name) {
+            if ($name == null) {
+                return;
+            }
+            $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
+            $name_file = Str::remove($string_for_delete, $name);
+
+            if ($name_file == null) {
+                return;
+            }
+
+            if (Storage::disk('collections-text')->missing($name_file)) {
+
+                $file = Storage::disk('ftp')->get($name_file);
+                if ($file != null) {
+                    $manager = new ImageManager(['driver' => 'imagick']);
+                    $image = $manager->make($file);
+                    $image->resize(900, 900, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    });
+                    Storage::disk('collections-text')->put($name_file, $image->encode());
+                }
+            }
+            $count++;
+            if ($count > 5) {
+                break;
+            }
+        }
+
     }
 }
