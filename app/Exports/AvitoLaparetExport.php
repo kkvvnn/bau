@@ -15,7 +15,7 @@ use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 use App\Models\Product;
 use App\Models\Collection;
 
-class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
+class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
 {
     public $foto = '';
     public $phone = '';
@@ -47,50 +47,34 @@ class AvitoTwoExport extends DefaultValueBinder implements FromView, WithCustomV
         set_time_limit(90);
 
 //      =================LAPARET-COLLECTIONS======================
-        $laparets = Product::where([
-            ['GroupProduct', '01 Плитка'],
-            ['Producer_Brand', 'Laparet'],
-            ['Element_code', '!=', 'х9999286854'],
-            ['Name', 'not like', '%ставк%'],
-            ['Name', 'not like', '%пецэлем%'],
-            ['balance', 1],
-            ['RMPrice', '>=', '500'],
-            ['Picture', '!=', ''],
-        ])
+        $laparets = Product::where('GroupProduct', '=', '01 Плитка')
+            ->where('RMPrice', '>=', 700)
+            ->where('Picture', '!=', '')
+            ->where('Producer_Brand', '=', 'Laparet')
             ->whereColumn('RMPrice', '>', 'Price')
-            ->get();
+            ->get()
+            ->filter(function (Product $product) {
+                return $product->balance == 1
+                    || (isset($product->kzn->balance) && $product->kzn->balance == 1)
+                    || (isset($product->spb->balance) && $product->spb->balance == 1);
+            })
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21);        //20x120
+            });
 
-        $collections_id = [];
-        foreach ($laparets as $laparet) {
-            $temp = explode(', ', $laparet->Collection_Id);
-            $collections_id = array_merge($collections_id, $temp);
-        }
-
-        $collections_id = array_unique($collections_id);
-
-        $collections_unique = Collection::whereIn('Collection_Id', $collections_id)->get();
-
-
-//      ---------------------PIXMOSAIC---------------------
-        $pixmosaics_except = PixmosaicNew::whereIn('vendor_code', ['PIX258', 'PIX259', 'PIX750', 'PIX620', 'PIX753'])->get();
-        $pixmosaics_except_id = [];
-        foreach ($pixmosaics_except as $pme) {
-            $pixmosaics_except_id[] = $pme->id;
-        }
-
-        $pixmosaics = PixmosaicNew::where('price', '!=', 0)->get();
-        $pixmosaics = $pixmosaics->except($pixmosaics_except_id);
-//        $pixmosaics = [];
-
-//        dd($pixmosaics);
-
+//        dd($laparets);
 
 //      ---------------------OLD---------------------
         $olds = AvitoTwoExcel::all();
 
-        return view('exports.avito-two', [
-            'collections' => $collections_unique,
-            'pixmosaics' => $pixmosaics,
+        return view('exports.avito-laparet', [
+            'laparets' => $laparets,
             'olds' => $olds,
             'phone' => $this->phone,
             'name' => $this->name,

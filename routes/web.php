@@ -67,7 +67,7 @@ Route::get('/bauservice-kzn', [\App\Http\Controllers\BauserviceKznController::cl
 Route::get('/avito_export/{foto?}', [AvitoController::class, 'export'])->name('avito-export');
 Route::get('/avito_export_two/{foto?}', [AvitoTwoController::class, 'export'])->name('avito-export-two');
 Route::view('/avito', 'exports.autoload-form');
-Route::view('/avito-two', 'exports.autoload-two-form');
+Route::view('/avito-laparet', 'exports.autoload-two-form');
 
 //----- CREATE_AVITO_FILE  SPB  -----
 Route::view('/avito-spb', 'exports.autoload-spb-form');
