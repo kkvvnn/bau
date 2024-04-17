@@ -62,7 +62,10 @@ class BauserviceDownloadImagesText extends Command
                         || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
                         || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
                         || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
-                        || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21);        //20x120
+                        || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
+                        || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
+                        || ($length >= 89 && $length <= 91 && $height >= 14 && $height <= 16)           //15x90
+                        || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
                 });
             $products_count = $products->count();
 
@@ -118,6 +121,14 @@ class BauserviceDownloadImagesText extends Command
                     if ($product->Height && $product->Lenght) {
                         $lenght = round((float)str_replace(',', '.', $product->Lenght), -1, PHP_ROUND_HALF_EVEN);
                         $height = round((float)str_replace(',', '.', $product->Height), -1, PHP_ROUND_HALF_EVEN);
+                        if (($lenght == 90 && $height == 10) || ($lenght == 90 && $height == 20)) {
+                            $lenght = 90;
+                            $height = 15;
+                        }
+                        if (($lenght == 60 && $height == 10) || ($lenght == 60 && $height == 20)) {
+                            $lenght = 60;
+                            $height = 15;
+                        }
                         $string = $product->Producer_Brand . ' ' . $product->collections[0]->Collection_Name . ' ' . $height . 'x' . $lenght;
                     } else {
                         $string = $product->Producer_Brand . ' ' . $product->collections[0]->Collection_Name;

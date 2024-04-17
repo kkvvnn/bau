@@ -91,12 +91,36 @@ class AvitoIndexController extends Controller
                 return ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21);
             });
 
+        $size_20x80 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21);
+            });
+
+        $size_15x90 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 89 && $length <= 91 && $height >= 14 && $height <= 16);
+            });
+
+        $size_15x60 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);
+            });
+
         return view('avito-index.index', [
             'size_60x120' => $size_60x120,
             'size_60x60' => $size_60x60,
             'size_80x80' => $size_80x80,
             'size_80x160' => $size_80x160,
             'size_20x120' => $size_20x120,
+            'size_20x80' => $size_20x80,
+            'size_15x90' => $size_15x90,
+            'size_15x60' => $size_15x60,
         ]);
     }
 }
