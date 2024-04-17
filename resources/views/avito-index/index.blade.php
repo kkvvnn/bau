@@ -865,14 +865,14 @@
                                                             class="text-muted fw-light">₽/{{$product->MainUnit}}</span> <span
                                                             class="text-muted fw-light"><del>{{$old_price}} </del></span></h5>
                                                 <hr>
-                                                                                @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                                                                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>
-                                                                                    <hr>
-                                                                                @endif
-                                                                                @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                                                                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -5% {{round($product->RMPrice * 0.95, -1)}} ₽/{{$product->MainUnit}}</p>
-                                                                                    <hr>
-                                                                                @endif
+                                                {{--                                @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))--}}
+                                                {{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>--}}
+                                                {{--                                    <hr>--}}
+                                                {{--                                @endif--}}
+                                                {{--                                @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))--}}
+                                                {{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -5% {{round($product->RMPrice * 0.95, -1)}} ₽/{{$product->MainUnit}}</p>--}}
+                                                {{--                                    <hr>--}}
+                                                {{--                                @endif--}}
                                                 @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
                                                     <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">
                                                         Распродажа</p>
@@ -895,16 +895,16 @@
 
                                                 <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}"
                                                                                                           style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
-                                                                                <hr>
-                                                                                @php
-                                                                                    $vendor_code = str_replace('х', '', $product->Element_Code);
-                                                                                    $files = Storage::disk('foto')->files('/'.$vendor_code);
-                                                                                @endphp
-                                                                                @if(count($files))
-                                                                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>
-                                                                                @else
-                                                                                    <p class="h5 text-danger">Нет фото</p>
-                                                                                @endif
+                                                {{--                                <hr>--}}
+                                                {{--                                @php--}}
+                                                {{--                                    $vendor_code = str_replace('х', '', $product->Element_Code);--}}
+                                                {{--                                    $files = Storage::disk('foto')->files('/'.$vendor_code);--}}
+                                                {{--                                @endphp--}}
+                                                {{--                                @if(count($files))--}}
+                                                {{--                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>--}}
+                                                {{--                                @else--}}
+                                                {{--                                    <p class="h5 text-danger">Нет фото</p>--}}
+                                                {{--                                @endif--}}
                                             </div>
 
 
