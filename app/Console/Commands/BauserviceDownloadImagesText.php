@@ -131,14 +131,15 @@ class BauserviceDownloadImagesText extends Command
                             || (stripos($product->Color, 'ерый') !== false)
                             || (stripos($product->Color, 'ежевый') !== false)
                             || (stripos($product->Color, 'ремовый') !== false)
-                            || (stripos($product->Color, 'еталл') !== false)
                             || (stripos($product->Name, 'елый') !== false)
                             || (stripos($product->Name, 'ерый') !== false)
                             || (stripos($product->Name, 'ежевый') !== false)
-                            || (stripos($product->Name, 'ремовый') !== false)
-                            || (stripos($product->Name, 'еталл') !== false)) {
+                            || (stripos($product->Name, 'ремовый') !== false)) {
                             $font->color([0, 0, 0, 0.8]);
                         } else {
+                            $font->color([255, 255, 255, 0.8]);
+                        }
+                        if ((stripos($product->Name, 'еталлизир') !== false)) {
                             $font->color([255, 255, 255, 0.8]);
                         }
 
