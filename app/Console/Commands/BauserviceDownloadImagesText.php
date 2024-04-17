@@ -145,7 +145,8 @@ class BauserviceDownloadImagesText extends Command
                             || (stripos($product->Name, 'елый') !== false)
                             || (stripos($product->Name, 'ерый') !== false)
                             || (stripos($product->Name, 'ежевый') !== false)
-                            || (stripos($product->Name, 'ремовый') !== false)) {
+                            || (stripos($product->Name, 'ремовый') !== false)
+                            || (stripos($product->Name, 'hite') !== false)) {
                             $font->color([0, 0, 0, 0.8]);
                         } else {
                             $font->color([255, 255, 255, 0.8]);
