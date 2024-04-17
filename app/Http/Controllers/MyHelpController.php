@@ -759,32 +759,47 @@ class MyHelpController extends Controller
 
     public function image_text()
     {
-        $directory = 'public/images/bauservice/collections';
-        $files = Storage::allFiles($directory);
+        $product = Product::find(1);
+//        dd($product);
+        $img1 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture);
+
+//        dd($img1);
+
+
+//        $directory = 'public/images/bauservice/collections';
+//        $files = Storage::allFiles($directory);
 
 //        dd($files);
+        $files = [];
+        $files[] = str_replace(config('app.url').'/storage/images/bauservice', '', $img1);
 
         $count = 0;
-        foreach ($files as $name) {
-            if ($name == null) {
-                return;
-            }
-            $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
-            $name_file = Str::remove($string_for_delete, $name);
+        foreach ($files as $name_file) {
+//            dd($name);
+
 
             if ($name_file == null) {
                 return;
             }
+//            dd($name_file);
 
             if (Storage::disk('collections-text')->missing($name_file)) {
 
-                $file = Storage::disk('ftp')->get($name_file);
+                $file = Storage::disk('bauservice')->get($name_file);
+//                dd($file);
                 if ($file != null) {
                     $manager = new ImageManager(['driver' => 'imagick']);
                     $image = $manager->make($file);
-                    $image->resize(900, 900, function ($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
+                    $image->text('Laparet '. $product->collections[0]->Collection_Name, 25, 50, function($font) {
+                        $font->file(public_path('fonts/caviar-dreams.ttf'));
+                        $font->file(public_path('fonts/sfns-display-bold.ttf'));
+                        $font->size(32);
+//                        $font->color('#fdf6e3');
+//                        $font->color('#000000');
+                        $font->color([255, 255, 255, 0.7]);
+//                        $font->align('center');
+//                        $font->valign('top');
+//                        $font->angle(45);
                     });
                     Storage::disk('collections-text')->put($name_file, $image->encode());
                 }

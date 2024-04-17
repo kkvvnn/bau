@@ -49,6 +49,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'public-text' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/bauservice/products-text'),
+            'url' => env('APP_URL').'/storage/images/bauservice/products-text',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
 
         'collections' => [
             'driver' => 'local',
@@ -62,6 +69,14 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public/images/bauservice/collections-text'),
             'url' => env('APP_URL').'/storage/images/bauservice/collections-text',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'bauservice' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/bauservice/'),
+            'url' => env('APP_URL').'/storage/images/bauservice/',
             'visibility' => 'public',
             'throw' => false,
         ],
