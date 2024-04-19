@@ -111,9 +111,6 @@
                 if($product->Color != null) {
                 $description .= '<li><strong>Цвет: </strong>' . $product->Color . '</li>';
                 }
-                if($product->Cover != null) {
-                $description .= '<li><strong>Покрытие: </strong>' . $product->Cover . '</li>';
-                }
                 if($product->Surface != null) {
                 $description .= '<li><strong>Поверхность: </strong>' . $product->Surface . '</li>';
                 }
@@ -125,10 +122,10 @@
                 }
                 if($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
                 $description .= '<li><strong>В упаковке: </strong>' . $product->Package_Value . ' м2</li>';
-                }
+                }/*
                 if($product->Producer_Brand != null) {
                 $description .= '<li><strong>Бренд: </strong>' . $product->Producer_Brand . '</li>';
-                }
+                }*/
                 if($product->Country_of_manufacture != null) {
                 $description .= '<li><strong>Производство: </strong>' . $product->Country_of_manufacture . '</li>';
                 }
@@ -162,20 +159,6 @@
                 $type = '';
             }
 
-            if((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {
-                $naznachenie = $type . ' для пола ' . $type . ' для ванной комнаты';
-            }
-            elseif(stripos($product->Field_of_Application, 'пол') !== false) {
-                $naznachenie = $type . ' для пола';
-            }
-            elseif(stripos($product->Field_of_Application, 'ван') !== false) {
-                $naznachenie = $type . ' для ванной комнаты';
-            } else {
-                $naznachenie = '';
-            }
-
-            $keywords .= $naznachenie . ' ';
-
             if(stripos($product->DesignValue, 'Дерев') !== false) {
                 $pod = $type . ' под дерево';
             }
@@ -195,6 +178,22 @@
             }
 
             $keywords .= $pod . ' ';
+
+            if((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {
+                $naznachenie = $type . ' для пола ' . $type . ' для ванной комнаты';
+            }
+            elseif(stripos($product->Field_of_Application, 'пол') !== false) {
+                $naznachenie = $type . ' для пола';
+            }
+            elseif(stripos($product->Field_of_Application, 'ван') !== false) {
+                $naznachenie = $type . ' для ванной комнаты';
+            } else {
+                $naznachenie = '';
+            }
+
+            $keywords .= $naznachenie . ' ';
+
+
 
             $lenght = round((float)str_replace(',', '.', $product->Lenght), -1, PHP_ROUND_HALF_EVEN);
             $height = round((float)str_replace(',', '.', $product->Height), -1, PHP_ROUND_HALF_EVEN);
@@ -233,17 +232,6 @@
 
             $keywords .= $type . ' ' .mb_strtolower($surf) . ' ';
 
-
-            if(stripos($product->Architectural_surface, 'Стена') !== false) {
-                $keywords .= $type . ' для стен' . ' ';
-            }
-            if(stripos($product->Architectural_surface, 'Пол') !== false) {
-                $keywords .= $type . ' для пола' . ' ';
-            }
-
-
-
-
             $color_baza = $product->Color;
             $color = '';
 
@@ -261,6 +249,15 @@
             }
 
             $keywords .= $type . ' ' .mb_strtolower($color) . ' ';
+
+
+            if(stripos($product->Architectural_surface, 'Стена') !== false) {
+                $keywords .= $type . ' для стен' . ' ';
+            }
+            if(stripos($product->Architectural_surface, 'Пол') !== false) {
+                $keywords .= $type . ' для пола' . ' ';
+            }
+
 
             $keywords .= $product->Producer_Brand . ' ' . $type . ' ';
 
