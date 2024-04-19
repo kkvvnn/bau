@@ -303,8 +303,10 @@
             $keywords .= $type . ' Москва '.$type.' запад '. $type;
 
             $keywords .= ' плитка лапарет плитка laparet фирменный магазин плитки плитка дешево laparet все коллекции лапарет весь ассортимент';
-            $keywords .= ' керамогранит '. $product->collections[0]->Collection_Name;
 
+            if (isset($product->collections[0])) {
+                $keywords .= ' керамогранит '. $product->collections[0]->Collection_Name;
+            }
 
             if ($type != 'декор') {
                 $description .= '<p>________________</p>';
