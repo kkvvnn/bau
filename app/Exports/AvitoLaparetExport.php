@@ -73,7 +73,8 @@ class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCus
 //        dd($laparets);
 
 //      ---------------------OLD---------------------
-        $olds = AvitoTwoExcel::all();
+        $olds = AvitoTwoExcel::where('AvitoId', '=', '2957716643')
+        ->get();
 
         return view('exports.avito-laparet', [
             'laparets' => $laparets,
