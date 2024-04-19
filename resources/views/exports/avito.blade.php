@@ -201,7 +201,7 @@
                 $naznachenie = '';
             }
 
-            $keywords .= $naznachenie . ', ';
+            $keywords .= $naznachenie . ' ';
 
             if(stripos($product->DesignValue, 'Дерев') !== false) {
                 $pod = $type . ' под дерево';
