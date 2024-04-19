@@ -80,12 +80,10 @@
 
 
             if ($product->Novinka == 1) {
-                $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Name . '. '
-                    . $product->Producer_Brand . ' ('
+                $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Producer_Brand . ' ' . $product->Name .  ' ('
                     . $product->Country_of_manufacture . ')</strong></p>';
             } else {
-                $description .= '<p><strong>' . $product->Name . '. '
-                    . $product->Producer_Brand . ' ('
+                $description .= '<p><strong>' . $product->Producer_Brand . ' ' . $product->Name .  ' ('
                     . $product->Country_of_manufacture . ')</strong></p>';
             }
 
@@ -192,7 +190,7 @@
             }
 
             if((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {
-                $naznachenie = $type . ' для пола, ' . $type . ' для ванной комнаты';
+                $naznachenie = $type . ' для пола ' . $type . ' для ванной комнаты';
             }
             elseif(stripos($product->Field_of_Application, 'пол') !== false) {
                 $naznachenie = $type . ' для пола';
@@ -223,19 +221,19 @@
                 $pod = '';
             }
 
-            $keywords .= $pod . ', ';
+            $keywords .= $pod . ' ';
 
             $lenght = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
             $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);
 
             $size = '';
-            $size .= $type . ' ' . $lenght . 'х' . $height . ', ';
+            $size .= $type . ' ' . $lenght . 'х' . $height . ' ';
             if ($lenght != $height) {
-                $size .= $type . ' ' . $height . 'х' . $lenght . ', ';
+                $size .= $type . ' ' . $height . 'х' . $lenght . ' ';
             }
-            $size .= $type . ' ' . $lenght . '*' . $height . ', ';
+            $size .= $type . ' ' . $lenght . '*' . $height . ' ';
             if ($lenght != $height) {
-                $size .= $type . ' ' . $height . '*' . $lenght . ', ';
+                $size .= $type . ' ' . $height . '*' . $lenght . ' ';
             }
 
             if($product->Height != 0 && $product->Lenght != 0) {
@@ -243,9 +241,13 @@
             }
 
             if ($product->Producer_Brand == 'Laparet') {
-                $keywords .= $type . ' лапарет, ';
+                $keywords .= $type . ' лапарет ';
             } elseif ($product->Producer_Brand == 'Cersanit') {
-                $keywords .= $type . ' церсанит, ';
+                $keywords .= $type . ' церсанит ';
+            } elseif ($product->Producer_Brand == 'Vitra') {
+                $keywords .= $type . ' витра ';
+            } elseif ($product->Producer_Brand == 'Ceradim') {
+                $keywords .= $type . ' керадим ';
             }
 
 
@@ -264,14 +266,14 @@
                 }
             }
 
-            $keywords .= $type . ' ' .mb_strtolower($surf) . ', ';
+            $keywords .= $type . ' ' .mb_strtolower($surf) . ' ';
 
 
             if(stripos($product->Architectural_surface, 'Стена') !== false) {
-                $keywords .= $type . ' для стен' . ', ';
+                $keywords .= $type . ' для стен' . ' ';
             }
             if(stripos($product->Architectural_surface, 'Пол') !== false) {
-                $keywords .= $type . ' для пола' . ', ';
+                $keywords .= $type . ' для пола' . ' ';
             }
 
 
@@ -293,31 +295,31 @@
                 }
             }
 
-            $keywords .= $type . ' ' .mb_strtolower($color) . ', ';
+            $keywords .= $type . ' ' .mb_strtolower($color) . ' ';
 
-            $keywords .= $product->Producer_Brand . ' ' . $type . ', ';
+            $keywords .= $product->Producer_Brand . ' ' . $type . ' ';
 
 
             $owner_code = $product->Owner_Article;
 
             if ($owner_code != null) {
-                $keywords .= $type . ' ' . $owner_code . ', ';
+                $keywords .= $type . ' ' . $owner_code . ' ';
             }
 
             $country = $product->Country_of_manufacture;
 
             if ($country != null) {
-                $keywords .= $type . ' ' . $country . ', ';
+                $keywords .= $type . ' ' . $country . ' ';
             }
 
             if ($product->Color == 'Белый' && $product->DesignValue == 'Мрамор') {
-                $keywords .= $type . ' белый мрамор, ';
-                $keywords .= $type . ' под мрамор белый, ';
+                $keywords .= $type . ' белый мрамор ';
+                $keywords .= $type . ' под мрамор белый ';
             }
 
             if ($product->Color == 'Черный' && $product->DesignValue == 'Мрамор') {
-                $keywords .= $type . ' черный мрамор, ';
-                $keywords .= $type . ' под мрамор черный, ';
+                $keywords .= $type . ' черный мрамор ';
+                $keywords .= $type . ' под мрамор черный ';
             }
 
 
