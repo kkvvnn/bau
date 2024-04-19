@@ -34,6 +34,7 @@ Route::get('/download_all/{pic?}', [ProductController::class, 'download_all'])->
 //----- BAUSERVICE -----
 Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
 Route::get('/avito-index', [\App\Http\Controllers\AvitoIndexController::class, 'index_avito']);
+Route::get('/avito-index-no-moscow', [\App\Http\Controllers\AvitoIndexController::class, 'index_avito_not_in_moscow']);
 Route::get('/ceradim', [ProductController::class, 'index_ceradim'])->name('ceradim.index');
 Route::get('/santech', [ProductController::class, 'index_santech'])->name('santech_index');
 Route::get('/min/{count?}', [ProductController::class, 'index_min'])->name('product_min');

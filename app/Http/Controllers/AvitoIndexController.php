@@ -123,4 +123,89 @@ class AvitoIndexController extends Controller
             'size_15x60' => $size_15x60,
         ]);
     }
+
+    public function index_avito_not_in_moscow()
+    {
+        $type = 'all';
+
+        $products = Product::where('GroupProduct', '=', '01 Плитка')
+            ->where('RMPrice', '>=', 700)
+            ->where('Picture', '!=', '')
+            ->where('Producer_Brand', '=', 'Laparet')
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->orderByDesc('RMPrice')
+            ->get()
+            ->filter(function (Product $product) {
+                return ($product->balance == 0 && isset($product->kzn->balance) && $product->kzn->balance == 1)
+                    || ($product->balance == 0 && isset($product->spb->balance) && $product->spb->balance == 1);
+            });
+
+
+        $size_60x120 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61);
+            });
+
+        $size_60x60 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61);
+            });
+
+        $size_80x80 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81);
+            });
+
+        $size_80x160 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81);
+            });
+
+        $size_20x120 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21);
+            });
+
+        $size_20x80 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21);
+            });
+
+        $size_15x90 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 89 && $length <= 91 && $height >= 14 && $height <= 16);
+            });
+
+        $size_15x60 = $products
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);
+            });
+
+        return view('avito-index.index', [
+            'size_60x120' => $size_60x120,
+            'size_60x60' => $size_60x60,
+            'size_80x80' => $size_80x80,
+            'size_80x160' => $size_80x160,
+            'size_20x120' => $size_20x120,
+            'size_20x80' => $size_20x80,
+            'size_15x90' => $size_15x90,
+            'size_15x60' => $size_15x60,
+        ]);
+    }
 }
