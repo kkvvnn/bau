@@ -68,7 +68,7 @@
 //            $description .= '<p>--------------------</p>';
             $date = date('d.m.Y');
 //            if ($product->balanceCount > 0) {
-                $description .= '<p>&#9989; Остаток '.$date.': </p><ul>';
+                $description .= '<p>&#9989;<strong> Свободный остаток </strong>'.$date.': </p><ul>';
                 $description .= '<li>Москва - '.round($product->balanceCount, 2).' '.$product->MainUnit.'</li>';
                 if (isset($product->spb)) {
                     $description .= '<li>СПб - '.round($product->spb->balanceCount, 2).' '.$product->MainUnit.'</li>';
@@ -145,7 +145,8 @@
             $description .= '</ul>';
 
             $description .= '<p>&#127972; <strong>Наш адрес: ТД"Можайский двор" ул.Западная, стр 100</strong></p>';
-            $description .= '<p>&#128345; <strong>Время работы: ежедневно с 10 до 19 ч</strong></p>';
+            $description .= '<p>&#128345; <strong>Время работы шоурума: с 10 до 19 (в выходные дни с 10 до 18)</strong></p>';
+            $description .= '<p>Онлайн отдел отвечает на Ваши вопросы в рабочее время с 10 до 19 (в выходные дни с 10 до 15)</p>';
 //            $description .= '<p>&#127873; Приезжайте в наш шоурум, сообщите менеджеру промокод <strong>"Laparet Avito Запад"</strong>, и Вам предложат специальные условия по цене и дополнительные бонусы</p>';
 
             $description .= '<p>Доставка возможна уже на следующий день после заказа (если заказ был оформлен до 14:00)</p>';
@@ -411,9 +412,13 @@
             }
         @endphp
 
+        @php
+            $code = str_replace('х', '', $product->Element_Code) . '_lz';
+        @endphp
+
         <tr>
             <td></td>
-            <td>{{ $product->Element_Code }}</td>
+            <td>{{ $code }}</td>
             <td>{{ $contact_method }}</td>
             <td>rodioncom@yandex.ru</td>
             <td>Активно</td>
