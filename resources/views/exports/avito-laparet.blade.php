@@ -133,7 +133,22 @@
                 $description .= '</ul><br>';
 
 
-            $description .= '<p>Наличие и актуальные цены уточняйте у менеджера.</p>';
+            $description .= '<p>&#128142; <strong>Наши преимущества:</strong></p><ul>';
+            $description .= '<li>надежная компания - на рынке уже более 15 лет</li>';
+            $description .= '<li>просторный шоурум, где вживую можно посмотреть образцы</li>';
+            $description .= '<li>увеличеный срок возврата товаров - до 25 дней</li>';
+            $description .= '<li>бесплатная замена, если товар в процессе транспортировки пришел в негодность</li>';
+            $description .= '<li>есть пункт самовывоза - поможем с погрузкой</li>';
+            $description .= '<li>доставка по Москве и близлежайшим районам собственным транспортом (так же есть услуги разгрузки и подъема)</li>';
+            $description .= '<li>керамогранит, отсутствующий в Москве, доставляем из других городов (условия уточняйте у менеджера)</li>';
+            $description .= '<li>для постоянных клиентов действуют специальные условия и бонусы</li>';
+            $description .= '</ul>';
+
+            $description .= '<p>&#127972; <strong>Наш адрес: ТД"Можайский двор" ул.Западная, стр 100</strong></p>';
+            $description .= '<p>&#128345; <strong>Время работы: ежедневно с 10 до 19 ч</strong></p>';
+//            $description .= '<p>&#127873; Приезжайте в наш шоурум, сообщите менеджеру промокод <strong>"Laparet Avito Запад"</strong>, и Вам предложат специальные условия по цене и дополнительные бонусы</p>';
+
+            $description .= '<p>Доставка возможна уже на следующий день после заказа (если заказ был оформлен до 14:00)</p>';
 
             if($add_description != '') {
             $description .= '<p>'.nl2br($add_description).'</p>';
@@ -286,9 +301,11 @@
 
             $keywords .= $type . ' Москва '.$type.' запад '. $type;
 
+            $keywords .= ' плитка лапарет плитка laparet фирменный магазин плитки плитка дешево laparet все коллекции лапарет весь ассортимент';
+
 
             if ($type != 'декор') {
-                $description .= '<p>_____________________</p>';
+                $description .= '<p>________________</p>';
                 $description .= '<p><em>' . $keywords . '</em></p>';
             }
         @endphp
@@ -314,6 +331,9 @@
             if (isset($product->Picture7) && $product->Picture7 != null) {
             $img7 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture7);
             } else {$img7 = null;}
+            if (isset($product->Picture8) && $product->Picture8 != null) {
+            $img8 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture8);
+            } else {$img8 = null;}
 
             if (isset($product->collections[0])) {
             $img_coll_all = $product->collections[0]->Interior_Pic;
@@ -331,14 +351,14 @@
             }
 
 
-            if ($img_coll != null) {
-                $img_full = $img_coll . ' | ' . $img1;
+            if ($img_coll_2 != null) {
+                $img_full = $img_coll_2 . ' | ' . $img1;
             } else {
                 $img_full = $img1;
             }
 
-            if ($img_coll_2 != null) {
-            $img_full .= ' | ' . $img_coll_2;
+            if ($img_coll != null) {
+            $img_full .= ' | ' . $img_coll;
             }
 
             if ($img2 != null) {
@@ -358,6 +378,9 @@
             }
             if ($img7 != null) {
             $img_full .= ' | ' . $img7;
+            }
+            if ($img8 != null) {
+            $img_full .= ' | ' . $img8;
             }
 
         @endphp
