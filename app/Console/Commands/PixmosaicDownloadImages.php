@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\PixmosaicNew;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
