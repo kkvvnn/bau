@@ -274,7 +274,7 @@
                 $keywords .= $type . ' для пола' . ' ';
             }
 
-            $keywords .= ' плитка керамическая плитка';
+            $keywords .= ' плитка керамическая плитка ';
 
 
             $color_baza = $product->Color;
