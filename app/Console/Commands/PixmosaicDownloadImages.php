@@ -49,6 +49,7 @@ class PixmosaicDownloadImages extends Command
             return;
         }
 
+        try {
         if (Storage::disk('pixmosaic')->missing($path)) {
 
             $file = file_get_contents($link);
@@ -67,6 +68,9 @@ class PixmosaicDownloadImages extends Command
                 }
                 Storage::disk('pixmosaic')->put($path, $image->encode('jpg'));
             }
+        }
+        } catch (Exception $e) {
+            echo 'Error: ',  $e->getMessage(), "\n";
         }
     }
 }
