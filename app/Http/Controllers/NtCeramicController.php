@@ -18,6 +18,9 @@ class NtCeramicController extends Controller
         $name_no_imgs = 'import/ntceramic/nt-no-imgs.xlsx';
         $name_with_imgs = 'import/ntceramic/nt-with-imgs.xlsx';
 
+        NtCeramicNoImgs::truncate();
+        NtCeramicWithImgs::truncate();
+
         Excel::import(new NtCeramicNoImgsImport(), $name_no_imgs);
         Excel::import(new NtCeramicWithImgsImport(), $name_with_imgs);
 

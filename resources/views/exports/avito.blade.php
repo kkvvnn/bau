@@ -27,11 +27,10 @@
     </tr>
     </thead>
     <tbody>
+
+    {{-----BAUSERVICE-----}}
     @foreach($products as $product)
-
-{{--        ---------------------BAUSERVICE------------------------}}
         @php
-
             if(stripos($product->Name, 'литка') !== false) {
             $FinishingType = 'Плитка, керамогранит и мозаика';
             $FinishingSubType = 'Керамическая плитка';
@@ -47,7 +46,6 @@
             $FinishingType = 'Другое';
             $FinishingSubType = '';
             }
-
         @endphp
 
             <!-- --------------------------------------------------------- -->
@@ -420,51 +418,51 @@
         @endphp
 
         @php
-//            if ($product->Producer_Brand == 'Laparet') {
-//                if ($product->RMPriceOld == 0) {
-//                    $price = round($product->RMPrice * 0.91, -1);
-//                } else {
-//                    $price = $product->RMPrice;
-//                }
-//            } elseif ($product->Producer_Brand == 'Cersanit') {
-//                if ($product->RMPriceOld == 0) {
-//                    $price = round($product->RMPrice * 0.93, -1);
-//                } else {
-//                    $price = $product->RMPrice;
-//                }
-//            } elseif ($product->Producer_Brand == 'Vitra') {
-//                if ($product->RMPriceOld == 0) {
-//                    $price = round($product->RMPrice * 0.93, -1);
-//                } else {
-//                    $price = $product->RMPrice;
-//                }
-//            }
+            //            if ($product->Producer_Brand == 'Laparet') {
+            //                if ($product->RMPriceOld == 0) {
+            //                    $price = round($product->RMPrice * 0.91, -1);
+            //                } else {
+            //                    $price = $product->RMPrice;
+            //                }
+            //            } elseif ($product->Producer_Brand == 'Cersanit') {
+            //                if ($product->RMPriceOld == 0) {
+            //                    $price = round($product->RMPrice * 0.93, -1);
+            //                } else {
+            //                    $price = $product->RMPrice;
+            //                }
+            //            } elseif ($product->Producer_Brand == 'Vitra') {
+            //                if ($product->RMPriceOld == 0) {
+            //                    $price = round($product->RMPrice * 0.93, -1);
+            //                } else {
+            //                    $price = $product->RMPrice;
+            //                }
+            //            }
 
-//--------------------------------------------------------------------------
-//            $price = $product->RMPrice;
-            if ($product->Producer_Brand == 'Laparet') {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * 0.9, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            } elseif ($product->Producer_Brand == 'Vitra') {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * 0.95, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            } else {
-                $price = $product->RMPrice;
-            }
+            //--------------------------------------------------------------------------
+            //            $price = $product->RMPrice;
+                        if ($product->Producer_Brand == 'Laparet') {
+                            if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+                                $price = round($product->RMPrice * 0.9, -1);
+                            } else {
+                                $price = $product->RMPrice;
+                            }
+                        } elseif ($product->Producer_Brand == 'Vitra') {
+                            if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+                                $price = round($product->RMPrice * 0.95, -1);
+                            } else {
+                                $price = $product->RMPrice;
+                            }
+                        } else {
+                            $price = $product->RMPrice;
+                        }
 
 
-            $price = $product->RMPrice;
+                        $price = $product->RMPrice;
 
-//            if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный' || $product->Name == 'Dalim Mint Керамогранит 60x60 Полированный') {
-//                $price = '';
-//            }
-//----------------------------------------------------------------------------
+            //            if ($product->Name == 'Tiaki Green Керамогранит 60x120 Полированный' || $product->Name == 'Dalim Mint Керамогранит 60x60 Полированный') {
+            //                $price = '';
+            //            }
+            //----------------------------------------------------------------------------
 
         @endphp
 
@@ -494,9 +492,9 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----BAUSERVICE-END----}}
 
-{{-----------------------------------END-BAUSERVICE--------------------------}}
-    {{--    ---------------------PRIMAVERA------------------------------}}
+    {{-----PRIMAVERA-----}}
     @foreach($primavera as $product)
         @php
             $price = $product->price;
@@ -709,12 +707,9 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----PRIMAVERA-END----}}
 
-    {{--    -----------------------PRIMAVERA_END----------------------------}}
-
-
-
-    {{--    ---------------------ABSOLUT_GRES------------------------------}}
+    {{-----ABSOLUT_GRES-----}}
     @foreach($absolut_gres as $product)
         @php
             if ($product->price_old == null) {
@@ -887,10 +882,9 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----ABSOLUT_GRES-END----}}
 
-    {{--    -----------------------ABSOLUT_GRES_END----------------------------}}
-
-    {{--    ---------------------LEEDO------------------------------}}
+    {{-----LEEDO-----}}
     @foreach($leedo as $product)
         @php
             $price = $product->Price_rozn;
@@ -1062,12 +1056,9 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----LEEDO-END----}}
 
-    {{--    -----------------------LEEDO_END----------------------------}}
-
-
-
-    {{--    ---------------------ALTACERA------------------------------}}
+    {{-----ALTACERA-----}}
     @foreach($altacera as $product)
         @php
             //        -----------------------------------UNIT--------------------------
@@ -1321,12 +1312,15 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----ALTACERA-END----}}
 
-    {{--    -----------------------ALTACERA_END----------------------------}}
-
-
-    {{--    ---------------------NTCERAMIC------------------------------}}
+    {{-----NTCERAMIC-----}}
     @foreach($ntceramic as $product)
+        @php
+            if (!isset($product->referer)) {
+                continue;
+            }
+        @endphp
         @php
             $price = $product->price;
             $price = round($price * 0.93, -1);
@@ -1486,10 +1480,9 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----NTCERAMIC-END----}}
 
-    {{--    -----------------------NTCERAMIC_END----------------------------}}
-
-    {{--    ---------------------KEVIS------------------------------}}
+    {{-----KEVIS-----}}
     @foreach($kevis as $product)
         @php
             $price = $product->price;
@@ -1590,10 +1583,9 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----KEVIS-END----}}
 
-    {{--    -----------------------KEVIS_END----------------------------}}
-
-    {{--    ---------------------RUSPLITKA------------------------------}}
+    {{-----RUSPLITKA-----}}
     @foreach($rusplitka as $product)
         @php
             $price = $product->price_rozn;
@@ -1705,136 +1697,135 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----RUSPLITKA-END----}}
 
-    {{--    -----------------------RUSPLITKA_END----------------------------}}
-
-    {{--    ---------------------TECHNOTILE------------------------------}}
+    {{-----TECHNOTILE-----}}
     @foreach($technotile as $product)
         @php
-//            $price = $product->price;
-            $price = '';
-//            $price = round($price * 0.93, -1);
-//                --------------------------
-            $title = str_replace('Плитка керамогранит ', '', $product->name).' '.($product->width/10).'x'.($product->length/10);
-            $title = str_replace('полированный', 'полир.', $title);
+            //            $price = $product->price;
+                        $price = '';
+            //            $price = round($price * 0.93, -1);
+            //                --------------------------
+                        $title = str_replace('Плитка керамогранит ', '', $product->name).' '.($product->width/10).'x'.($product->length/10);
+                        $title = str_replace('полированный', 'полир.', $title);
 
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('лаппатирование', 'лаппатир.', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('структурный', 'структ.', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('легкое', '', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('мягкое', '', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('бежевый', 'беж', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('антискользящий', 'антиск.', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('оранжевый', 'оранж.', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('коричневый', 'корич.', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('Тёмный', 'Тём', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('Светлый', 'Свет', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('Светло', 'Св', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('Натуральный', 'Натур.', $title);
-            }
-            if (mb_strlen($title) > 50) {
-                $title = str_replace('Рифленый', 'Рифл.', $title);
-            }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('лаппатирование', 'лаппатир.', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('структурный', 'структ.', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('легкое', '', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('мягкое', '', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('бежевый', 'беж', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('антискользящий', 'антиск.', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('оранжевый', 'оранж.', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('коричневый', 'корич.', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('Тёмный', 'Тём', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('Светлый', 'Свет', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('Светло', 'Св', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('Натуральный', 'Натур.', $title);
+                        }
+                        if (mb_strlen($title) > 50) {
+                            $title = str_replace('Рифленый', 'Рифл.', $title);
+                        }
 
-            if (mb_strlen($title) < 37) {
-                $title = 'Керамогранит ' . $title;
-            }
+                        if (mb_strlen($title) < 37) {
+                            $title = 'Керамогранит ' . $title;
+                        }
 
-//                -----------------------------
-//              ------------------------------------------FOTO-------------------------------------
+            //                -----------------------------
+            //              ------------------------------------------FOTO-------------------------------------
 
-            $img = $product->picture;
+                        $img = $product->picture;
 
-            $img_full_arr = explode(' | ', $img);
+                        $img_full_arr = explode(' | ', $img);
 
-            if (count($img_full_arr) <= 10) {
-                $img_ready = $img;
-            } else {
-                $img_full_arr = array_slice($img_full_arr, 0, 10);
-                $img_ready = implode(' | ', $img_full_arr);
-            }
-//                ---------------------
-            $FinishingType = 'Плитка, керамогранит и мозаика';
-            $FinishingSubType = 'Керамогранит';
-//                ---------------------
-            $description = '';
+                        if (count($img_full_arr) <= 10) {
+                            $img_ready = $img;
+                        } else {
+                            $img_full_arr = array_slice($img_full_arr, 0, 10);
+                            $img_ready = implode(' | ', $img_full_arr);
+                        }
+            //                ---------------------
+                        $FinishingType = 'Плитка, керамогранит и мозаика';
+                        $FinishingSubType = 'Керамогранит';
+            //                ---------------------
+                        $description = '';
 
-            if($add_description_first != '') {
-            $description .= '<p>'.nl2br($add_description_first).'</p>';
-            }
+                        if($add_description_first != '') {
+                        $description .= '<p>'.nl2br($add_description_first).'</p>';
+                        }
 
-            $description .= '<p>Керамогранит '.$product->description.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-            $description .= '<p><strong>'.$product->name.' '.$product->width.'x'
-                    .$product->length.' '.$product->description.' ('
-                    .$product->country.')</strong></p>';
+                        $description .= '<p>Керамогранит '.$product->description.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                        $description .= '<p><strong>'.$product->name.' '.$product->width.'x'
+                                .$product->length.' '.$product->description.' ('
+                                .$product->country.')</strong></p>';
 
-            $description .= '<p>Коллекция: '.$product->collection.'</p>';
-//            $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
+                        $description .= '<p>Коллекция: '.$product->collection.'</p>';
+            //            $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
 
-                $description .= '<ul>';
-                $description .= '<li><strong>Размер: </strong>' . $product->width.'х'.$product->length. ' мм</li>';
-                if($product->fat != null) {
-                $description .= '<li><strong>Толщина: </strong>' . $product->fat . ' мм</li>';
-                }
-                if($product->surface_type != null) {
-                $description .= '<li><strong>Поверхность: </strong>' . $product->surface_type . '</li>';
-                }
-                if($product->surface_faktura != null) {
-                $description .= '<li><strong>Фактура поверхности: </strong>' . $product->surface_faktura . '</li>';
-                }
-                if($product->count_in_box != null) {
-                $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_box . '</li>';
-                }
-                if($product->in_box_m2 != null) {
-                $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->in_box_m2 . '</li>';
-                }
-                if($product->country != null) {
-                $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
-                }
+                            $description .= '<ul>';
+                            $description .= '<li><strong>Размер: </strong>' . $product->width.'х'.$product->length. ' мм</li>';
+                            if($product->fat != null) {
+                            $description .= '<li><strong>Толщина: </strong>' . $product->fat . ' мм</li>';
+                            }
+                            if($product->surface_type != null) {
+                            $description .= '<li><strong>Поверхность: </strong>' . $product->surface_type . '</li>';
+                            }
+                            if($product->surface_faktura != null) {
+                            $description .= '<li><strong>Фактура поверхности: </strong>' . $product->surface_faktura . '</li>';
+                            }
+                            if($product->count_in_box != null) {
+                            $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_box . '</li>';
+                            }
+                            if($product->in_box_m2 != null) {
+                            $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->in_box_m2 . '</li>';
+                            }
+                            if($product->country != null) {
+                            $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
+                            }
 
-                $description .= '</ul><br>';
-
-
-            $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
-            $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
-            $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
-
-            if($add_description != '') {
-            $description .= '<p>'.nl2br($add_description).'</p>';
-            }
-
-//            $description .= '<p>-------------------------</p>';
-//            $description .= '<p>'.$product->code.'</p>';
-
-            $description .= '<p>-------------------------</p>';
-            $description .= '<p><em>'.$product->surface_type.' '.$product->surface_faktura.'<br>';
-            $description .= $product->surface_faktura.' '.$product->surface_type.'<br>';
-            $description .= $product->code.'</em></p>';
+                            $description .= '</ul><br>';
 
 
-            $code = $product->code . 't_tile';
+                        $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+                        $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+                        $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+
+                        if($add_description != '') {
+                        $description .= '<p>'.nl2br($add_description).'</p>';
+                        }
+
+            //            $description .= '<p>-------------------------</p>';
+            //            $description .= '<p>'.$product->code.'</p>';
+
+                        $description .= '<p>-------------------------</p>';
+                        $description .= '<p><em>'.$product->surface_type.' '.$product->surface_faktura.'<br>';
+                        $description .= $product->surface_faktura.' '.$product->surface_type.'<br>';
+                        $description .= $product->code.'</em></p>';
+
+
+                        $code = $product->code . 't_tile';
 
         @endphp
         <tr>
@@ -1862,10 +1853,9 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----TECHNOTILE-END----}}
 
-    {{--    -----------------------TECHNOTILE_END----------------------------}}
-
-    {{--    ---------------------AQUAFLOOR------------------------------}}
+    {{-----AQUAFLOOR-----}}
     @foreach($aquafloor as $product)
         @php
             //            $price = $product->price;
@@ -2013,9 +2003,181 @@
             <td></td>
         </tr>
     @endforeach
+    {{-----AQUAFLOOR-END----}}
 
-    {{--    -----------------------AQUAFLOOR_END----------------------------}}
+    {{-----PIXMOSAIC-----}}
+    @foreach($pixmosaics as $product)
+        @php
 
+            //            ---PRICE---
+            $price = round($product->price * 0.90, -1);
+            //            ---PRICE-END--
 
+            //            ---TITLE-AVITO--
+            $title = explode(',', $product->title2)[0];
+            if (stripos($title, 'PIX') === false) {
+                $title = $title . ' ' . $product->vendor_code;
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace(' прокрашенного в массе', '', $title);
+            }
+            //            ---TITLE-AVITO-END--
+
+            //            ---IMAGES---
+            $img = [];
+            $img[] = Storage::disk('pixmosaic')->url(str_replace(' ', '', $product->vendor_code) . '.jpg');
+
+            $img_full_arr = $img;
+            if (count($img_full_arr) <= 10) {
+                $img_ready = implode(' | ', $img_full_arr);
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_ready = implode(' | ', $img_full_arr);
+            }
+            //            ---IMAGES-END--
+
+            //            ---DESCRIPTION---
+            $description = '';
+
+             if($add_description_first != '') {
+                $description .= '<p>'.nl2br($add_description_first).'</p>';
+            }
+
+            $description .= '<p>Мозаика Pixel mosaic. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+
+            $FinishingType = 'Плитка, керамогранит и мозаика';
+            $FinishingSubType = 'Мозаика';
+
+            $description .= '<p><strong>' . $product->title . '</strong></p>';
+
+            if ($product->stock != null) {
+                $description .= '<p>--------------------</p>';
+                $date = $product->updated_at->format('d.m.Y');
+                $description .= '<p>&#9989; На утро '.$date.' остаток '.$product->stock.' м2 <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                $description .= '<p>--------------------</p>';
+            }
+
+            $description .= '<p><em>Цена указана за 1 м.кв.</em></p>';
+
+            $description .='<ul>';
+            if($product->surface != null) {
+                $description .= '<li>Поверхность: <em>' . $product->surface . '</em></li>';
+            }
+            if($product->material != null) {
+                $description .= '<li>Материал: <em>' . $product->material . '</em></li>';
+            }
+            if($product->osnova != null) {
+                $description .= '<li>Основа: <em>' . $product->osnova . '</em></li>';
+            }
+            if($product->size_tile != null) {
+                $description .= '<li>Размер листа: <em>' . $product->size_tile . ' мм</em></li>';
+            }
+            if($product->size_chip != null) {
+                $description .= '<li>Размер чипа: <em>' . $product->size_chip . ' мм</em></li>';
+            }
+            if($product->fat != null) {
+                $description .= '<li>Толщина: <em>' . $product->fat . ' мм</em></li>';
+            }
+            if($product->square_list != null) {
+                $description .= '<li>Площадь листа: <em>' . $product->square_list . ' м2</em></li>';
+            }
+            if($product->stock != null) {
+                $description .= '<li>Свободный остаток: ' . $product->stock . ' м2 ('. $product->updated_at->format('d.m.Y') .')</em></li>';
+            }
+
+            $description .= '</ul>';
+            //          ------------------
+                        $key_words = '';
+                        if ($product->material == 'Стекло') {
+                            $key_words .= ' мозаика из стекла мозаика стеклянная мозаика стекло мозаика';
+                        }
+                        if ($product->material == 'Керамогранит') {
+                            $key_words .= ' мозаика из керамогранита мозаика керамогранитная мозаика керамогранит мозаика';
+                        }
+                        if ($product->material == 'Перламутр') {
+                            $key_words .= ' мозаика перламутр мозаика из перламутра мозаика';
+                        }
+                        if ($product->material == 'Зеркало') {
+                            $key_words .= ' мозаика из зеркала мозаика зеркальная мозаика зеркало мозаика';
+                        }
+                        if ($product->material == 'Камень и стекло') {
+                            $key_words .= ' мозаика из зеркала мозаика зеркальная мозаика из камня мозаика каменная мозаика камень мозаика стекло мозаика';
+                        }
+                        if ($product->material == 'Стекло и металл') {
+                            $key_words .= ' мозаика из стекла мозаика стеклянная мозаика металлическая мозаика из металла мозаика стекло мозаика камень мозаика';
+                        }
+                        if ($product->material == 'Металл') {
+                            $key_words .= ' мозаика из металла мозаика металлическая мозаика металл мозаика';
+                        }
+                        if ($product->material == 'Мрамор') {
+                            $key_words .= ' мозаика из мрамора мозаика мраморная мозаика мрамор мозаика';
+                        }
+                        if ($product->material == 'Травертин') {
+                            $key_words .= ' мозаика травертин мозаика из травертина мозаика';
+                        }
+                        if ($product->material == 'Сланец') {
+                            $key_words .= ' мозаика сланец мозаика из сланца мозаика';
+                        }
+                        if ($product->material == 'Оникс') {
+                            $key_words .= ' мозаика оникс мозаика из оникса мозаика';
+                        }
+                        if ($product->material == 'Оникс и мрамор') {
+                            $key_words .= ' мозаика из мрамора мозаика из оникса мозаика оникс мозаика мрамор мозаика';
+                        }
+                        if ($product->material == 'Галька') {
+                            $key_words .= ' мозаика галька мозаика из гальки мозаика';
+                        }
+
+                        $number_pix = str_replace('PIX', '', $product->vendor_code);
+                        $key_words .= ' pix '. $number_pix . ' мозаика';
+            //          ------------------
+
+                        $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+                        $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+                        $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+
+                        $description .= '<p>_____________</p>';
+                        $description .= '<p><em>pixmosaic pixelmosaic pixel mosaic мозаика для ванной мозайка для пола ';
+                        $description .= 'мозаика со скидкой купить мозаику купить мозайку красивая мозаика красивая мозайка недорогая ';
+                        $description .= $key_words;
+                        $description .= '</em></p>';
+                        if($add_description != '') {
+                            $description .= '<p>'.nl2br($add_description).'</p>';
+                        }
+                        $element_code = $product->vendor_code.'_pixmosaic';
+        @endphp
+        @php
+            if (isset($product->props->video_url)) {
+                $video_url = $product->props->video_url;
+            } else {
+                $video_url = '';
+            }
+        @endphp
+        <tr>
+            <td></td>
+            <td>{{ $element_code }}</td>
+            <td>{{ $contact_method }}</td>
+            <td>kkvvnn89@gmail.com</td>
+            <td>Активно</td>
+            <td>{{ $name }}</td>
+            <td>{{$price}}</td>
+            <td>Напольные решения</td>
+            <td>{{$title}}</td>
+            <td>{{$img_ready}}</td>
+            <td>Отделка</td>
+            <td>Стройматериалы</td>
+            <td>Ремонт и строительство</td>
+            <td>Package</td>
+            <td>{{$FinishingType}}</td>
+            <td>{{ $phone }}</td> <!-- -->
+            <td>{{$description}}</td> <!-- -->
+            <td>{{ $address }}</td>
+            <td>Товар от производителя</td>
+            <td>{{$FinishingSubType}}</td>
+            <td>Новое</td>
+            <td>{{$video_url}}</td>
+        </tr>
+    @endforeach
+    {{-----PIXMOSAIC-END----}}
     </tbody>
 </table>

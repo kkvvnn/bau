@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class NtCeramicNoImgs extends Model
 {
-    use HasFactory;
     protected $guarded = false;
 
     public function referer(): HasOne

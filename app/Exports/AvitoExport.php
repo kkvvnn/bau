@@ -7,6 +7,7 @@ use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Kevis;
+use App\Models\PixmosaicNew;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
 use App\Models\Technotile\Product as TechnotileProduct;
 use App\Models\LeedoProduct;
@@ -85,6 +86,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $altacera = AltaceraTovarAvailable::where([['artikul', '!=', 'PWU09DLM3'], ['artikul', '!=', 'GFA114CMT07R'], ['artikul', '!=', 'BWA60ALD004'], ['artikul', '!=', 'DWU09BNT017'], ['artikul', '!=', 'GFA57SLC00L'], ['artikul', '!=', 'PWA11ALD1']])->get();
 //      ==============================================
         $ntceramic = NtCeramicNoImgs::all();
+//        $ntceramic = [];
 //      ==============================================
         $kevis = Kevis::all();
 //      ==============================================
@@ -95,6 +97,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $technotile = [];
 //      ==============================================
         $aquafloor = AquaFloor::where('title', 'not like', '%Подложка%')->get();
+
+        //      ---------------------PIXMOSAIC---------------------
+
+        $pixmosaics = PixmosaicNew::where('price', '!=', 0)->get();
 
 
         if ($this->foto == '') {
@@ -110,6 +116,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'rusplitka' => $rusplitka,
                 'technotile' => $technotile,
                 'aquafloor' => $aquafloor,
+                'pixmosaics' => $pixmosaics,
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,
