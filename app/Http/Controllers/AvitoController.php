@@ -20,9 +20,25 @@ class AvitoController extends Controller
         $address = $request->address??"Москва, Филёвская линия, метро Фили";
         $add_description = $request->add_description??"";
         $add_description_first = $request->add_description_first??"";
+
+        $sales = [
+            'laparet' => 100,
+            'cersanit' => 100,
+            'vitra' => 100,
+            'ceradim' => 100,
+            'primavera' => 100,
+            'leedo' => 90,
+            'altacera' => 100,
+            'ntceramic' => 100,
+            'kevis' => 100,
+            'rusplitka' => 100,
+            'aquafloor' => 100,
+            'pixmosaic' => 90,
+        ];
+
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
         $filename = 'avito/'.$foto.date('Y-m-d_His').'.xlsx';
-        Excel::store(new AvitoExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first), $filename, 'avito');
+        Excel::store(new AvitoExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first, $sales), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
         $rodion = false;

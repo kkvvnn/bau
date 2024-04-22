@@ -320,6 +320,10 @@
                 $keywords .= $type . ' под мрамор черный ';
             }
 
+            if (stripos($product->Name, 'alacatta') || stripos($product->Name, 'alacata')) {
+                $keywords .= ' калаката керамогранит калакатта';
+            }
+
 
 
             if ($type != 'декор') {
@@ -2021,6 +2025,9 @@
             if (mb_strlen($title) > 50) {
                 $title = str_replace(' прокрашенного в массе', '', $title);
             }
+            if (stripos($title, 'озаика') === false) {
+                $title .= ' мозаика';
+            }
             //            ---TITLE-AVITO-END--
 
             //            ---IMAGES---
@@ -2081,9 +2088,6 @@
             if($product->square_list != null) {
                 $description .= '<li>Площадь листа: <em>' . $product->square_list . ' м2</em></li>';
             }
-            if($product->stock != null) {
-                $description .= '<li>Свободный остаток: ' . $product->stock . ' м2 ('. $product->updated_at->format('d.m.Y') .')</em></li>';
-            }
 
             $description .= '</ul>';
             //          ------------------
@@ -2132,6 +2136,7 @@
                         $key_words .= ' pix '. $number_pix . ' мозаика';
             //          ------------------
 
+                        $description .= '<p>Под крупный проект сделаем скидку.</p>';
                         $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
                         $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
                         $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';

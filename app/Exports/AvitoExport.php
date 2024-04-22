@@ -30,8 +30,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
     public $address = '';
     public $add_description = '';
     public $add_description_first = '';
+    public $sales = [];
 
-    public function __construct($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first)
+    public function __construct($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first, $sales)
     {
         $this->foto = $foto;
         $this->phone = $phone;
@@ -40,6 +41,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $this->address = $address;
         $this->add_description = $add_description;
         $this->add_description_first = $add_description_first;
+        $this->sales = $sales;
     }
 
     public function bindValue(Cell $cell, $value)
@@ -124,6 +126,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'address' => $this->address,
                 'add_description' => $this->add_description,
                 'add_description_first' => $this->add_description_first,
+                'sales' => $this->sales,
             ]);
         } else {
             return view('exports.avito_foto', [
