@@ -274,7 +274,7 @@
                 $keywords .= $type . ' для пола' . ' ';
             }
 
-
+            $keywords .= ' плитка керамическая плитка';
 
 
             $color_baza = $product->Color;
@@ -321,7 +321,7 @@
             }
 
             if (stripos($product->Name, 'alacatta') || stripos($product->Name, 'alacata')) {
-                $keywords .= ' калаката керамогранит калакатта';
+                $keywords .= ' керамогранит калаката плитка калаката керамогранит калакатта плитка калакатта';
             }
 
 
