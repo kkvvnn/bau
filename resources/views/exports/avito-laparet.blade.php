@@ -69,7 +69,7 @@
 //            $description .= '<p>--------------------</p>';
             $date = date('d.m.Y');
 //            if ($product->balanceCount > 0) {
-                $description .= '<p>&#9989;<strong> Свободный остаток '.$date.': </strong></p><ul>';
+                $description .= '<p>&#9989;<strong> Свободный остаток на '.$date.': </strong></p><ul>';
                 $description .= '<li>Москва - '.round($product->balanceCount, 2).' '.$product->MainUnit.'</li>';
                 if (isset($product->spb)) {
                     $description .= '<li>СПб - '.round($product->spb->balanceCount, 2).' '.$product->MainUnit.'</li>';
