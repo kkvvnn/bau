@@ -57,7 +57,8 @@
             $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
-            $description .= '<p>Официальный шоурум Laparet на западе Москвы.</p>';
+            $description .= '<p>Официальный шоурум Laparet на западе Москвы <br>
+                            О размере персональной скидки уточняйте в чате у менеджера</p>';
 
             if ($product->Novinka == 1) {
                 $description .= '<p>&#9889;Новинка&#9889; <strong>'.$product->Producer_Brand.' '.$product->Name. '  Лапарет </strong></p>';
