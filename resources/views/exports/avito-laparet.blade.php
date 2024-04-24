@@ -58,7 +58,7 @@
             }
 
             $description .= '<p>Официальный шоурум Laparet на западе Москвы <br>
-                            О размере персональной скидки уточняйте в чате у менеджера</p>';
+                            Информацию о размере персональной скидки и актуальные цены уточняйте в чате у менеджера</p>';
 
             if ($product->Novinka == 1) {
                 $description .= '<p>&#9889;Новинка&#9889; <strong>'.$product->Producer_Brand.' '.$product->Name. '  Лапарет </strong></p>';
@@ -410,9 +410,11 @@
         @php
             if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
 //                $price = round($product->RMPrice * 0.9, -1);
-                $price = $product->RMPrice;
+//                $price = $product->RMPrice;
+                $price = '';
             } else {
-                $price = $product->RMPrice;
+//                $price = $product->RMPrice;
+                $price = '';
             }
         @endphp
 
