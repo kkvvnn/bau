@@ -222,5 +222,6 @@ Route::get('/generate-qrcode', [QrCodeController::class, 'index']);
 
 //----- KERABELLEZZA -----
 Route::get('/kerabellezza-import', [\App\Http\Controllers\KerabellezzaController::class, 'import']);
+Route::get('/kerabellezza-import-2', [\App\Http\Controllers\KerabellezzaController::class, 'import2']);
 Route::get('/kerabellezza', [\App\Http\Controllers\KerabellezzaController::class, 'index'])->name('kerabellezza.index');
 Route::get('/kerabellezza/{id}', [\App\Http\Controllers\KerabellezzaController::class, 'show']);

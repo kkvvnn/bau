@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\Kerabellezza2Import;
 use App\Imports\KerabellezzaImport;
 use App\Models\Kerabellezza;
+use App\Models\Kerabellezza2;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -19,18 +21,29 @@ class KerabellezzaController extends Controller
         return redirect('/')->with('success', 'All good!');
     }
 
+    public function import2()
+    {
+        $name = 'import/kerabellezza/kerabellezza2.xlsx';
+
+        Kerabellezza2::truncate();
+        Excel::import(new Kerabellezza2Import(), $name);
+
+        return redirect('/')->with('success', 'All good!');
+    }
+
     public function index()
     {
-        $products = Kerabellezza::paginate(15);
+        $products = Kerabellezza2::where([['color', '!=', ''], ['image', '!=', '']])
+            ->paginate(15);
 
         return view('kerabellezza.index', compact('products'));
     }
 
     public function show($id)
     {
-        $product = Kerabellezza::find($id);
+        $product = Kerabellezza2::find($id);
 
-        $images = $product->images;
+        $images = $product->image;
         $images = explode(' | ', $images);
 
         $text_color = '';

@@ -29,7 +29,7 @@
 
                     <hr>
 
-                    <h1 class="display-6">{{ucfirst(strtolower($product->brand))}}</h1>
+                    <h1 class="display-6">{{ucfirst(strtolower($product->parent->brand))}}</h1>
                     <p class="fs-2">Коллекция: эпоксидные затирки
                     </p>
                     <hr>
@@ -91,7 +91,7 @@
 
                     <h2 class="card-title mt-5 pricing-card-title mb-5">{{$product->price}} ₽</h2>
 
-                    <p class="text-aqua mt-5">{!!nl2br($product->description)!!}</p>
+                    <p class="text-aqua mt-5">{!!nl2br($product->parent->description)!!}</p>
 
                     <br>
 
@@ -123,58 +123,58 @@
                 <div class="col-md-6">
                     <table class="table table-striped mt-3 mb-5">
                         <tbody>
-                        @if($product->vendor_code)
+                        @if($product->parent->vendor_code)
                             <tr>
                                 <th scope="row">Артикул</th>
-                                <td>{{$product->vendor_code}}</td>
+                                <td>{{$product->parent->vendor_code}}</td>
                             </tr>
                         @endif
-                        @if($product->brand)
+                        @if($product->parent->brand)
                             <tr>
                                 <th scope="row">Бренд</th>
-                                <td>{{$product->brand}}</td>
+                                <td>{{$product->parent->brand}}</td>
                             </tr>
                         @endif
-                        @if($product->country)
+                        @if($product->parent->country)
                             <tr>
                                 <th scope="row">Родина бренда</th>
-                                <td>{{$product->country}}</td>
+                                <td>{{$product->parent->country}}</td>
                             </tr>
                         @endif
-                        @if($product->class)
+                        @if($product->parent->class)
                             <tr>
                                 <th scope="row">Класс</th>
-                                <td>{{$product->class}}</td>
+                                <td>{{$product->parent->class}}</td>
                             </tr>
                         @endif
-                        @if($product->shov)
+                        @if($product->parent->shov)
                             <tr>
                                 <th scope="row">Ширина шва</th>
-                                <td>{{$product->shov}}</td>
+                                <td>{{$product->parent->shov}}</td>
                             </tr>
                         @endif
-                        @if($product->massa)
+                        @if($product->parent->massa)
                             <tr>
                                 <th scope="row">Вес</th>
-                                <td>{{$product->massa}}</td>
+                                <td>{{$product->parent->massa}}</td>
                             </tr>
                         @endif
-                        @if($product->froze_resistent)
+                        @if($product->parent->froze_resistent)
                             <tr>
                                 <th scope="row">Морозостойкость</th>
-                                <td>{{$product->froze_resistent}}</td>
+                                <td>{{$product->parent->froze_resistent}}</td>
                             </tr>
                         @endif
-                        @if($product->vid_rabot)
+                        @if($product->parent->vid_rabot)
                             <tr>
                                 <th scope="row">Вид работ</th>
-                                <td>{{$product->vid_rabot}}</td>
+                                <td>{{$product->parent->vid_rabot}}</td>
                             </tr>
                         @endif
-                        @if($product->country_proizv)
+                        @if($product->parent->country_proizv)
                             <tr>
                                 <th scope="row">Страна производства</th>
-                                <td>{{$product->country_proizv}}</td>
+                                <td>{{$product->parent->country_proizv}}</td>
                             </tr>
                         @endif
 

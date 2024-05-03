@@ -24,9 +24,10 @@
                 @foreach($products as $product)
 
                     @php
-                        $images = $product->images;
-                        $images = explode(' | ', $images);
-                        $url1 = $images[0];
+//                        $images = $product->images;
+//                        $images = explode(' | ', $images);
+//                        $url1 = $images[0];
+                        $url1 = $product->image;
                     @endphp
 
                     @php
