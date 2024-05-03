@@ -55,7 +55,7 @@
                             </a>
                             <div class="card-body">
                                 <a href="/kerabellezza/{{$product->id}}" class="text-decoration-none text-reset">
-                                    <h5 class="card-title">{{$product->title}}</h5>
+                                    <h5 class="card-title">{{$product->title}} {{$product->color}}</h5>
                                 </a>
                             </div>
                             <div class="card-footer">

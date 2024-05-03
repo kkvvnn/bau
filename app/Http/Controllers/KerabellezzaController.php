@@ -33,7 +33,10 @@ class KerabellezzaController extends Controller
 
     public function index()
     {
-        $products = Kerabellezza2::where([['color', '!=', ''], ['image', '!=', '']])
+        $products = Kerabellezza2::where([
+            ['type', '!=', 'product'],
+            ['image', '!=', ''],
+            ])
             ->paginate(15);
 
         return view('kerabellezza.index', compact('products'));
