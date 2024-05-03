@@ -89,9 +89,9 @@
                 <div class="col-md-6">
 
 
-                    <h2 class="card-title mt-5 pricing-card-title mb-5">{{$product->price}} ₽</h2>
+                    <h2 class="card-title mt-5 pricing-card-title mb-5">{{$product->price}} ₽/шт</h2>
 
-                    <p class="text-aqua mt-5">{!!nl2br($product->description)!!}</p>
+
 
                     <br>
 
@@ -118,76 +118,97 @@
 
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <table class="table table-striped mt-3 mb-5">
-                        <tbody>
-                        @if($product->vendor_code)
-                            <tr>
-                                <th scope="row">Артикул</th>
-                                <td>{{$product->vendor_code}}</td>
-                            </tr>
-                        @endif
-                        @if($product->brand)
-                            <tr>
-                                <th scope="row">Бренд</th>
-                                <td>{{$product->brand}}</td>
-                            </tr>
-                        @endif
-                        @if($product->country)
-                            <tr>
-                                <th scope="row">Родина бренда</th>
-                                <td>{{$product->country}}</td>
-                            </tr>
-                        @endif
-                        @if($product->class)
-                            <tr>
-                                <th scope="row">Класс</th>
-                                <td>{{$product->class}}</td>
-                            </tr>
-                        @endif
-                        @if($product->shov)
-                            <tr>
-                                <th scope="row">Ширина шва</th>
-                                <td>{{$product->shov}}</td>
-                            </tr>
-                        @endif
-                        @if($product->massa)
-                            <tr>
-                                <th scope="row">Вес</th>
-                                <td>{{$product->massa}}</td>
-                            </tr>
-                        @endif
-                        @if($product->froze_resistent)
-                            <tr>
-                                <th scope="row">Морозостойкость</th>
-                                <td>{{$product->froze_resistent}}</td>
-                            </tr>
-                        @endif
-                        @if($product->vid_rabot)
-                            <tr>
-                                <th scope="row">Вид работ</th>
-                                <td>{{$product->vid_rabot}}</td>
-                            </tr>
-                        @endif
-                        @if($product->country_proizv)
-                            <tr>
-                                <th scope="row">Страна производства</th>
-                                <td>{{$product->country_proizv}}</td>
-                            </tr>
-                        @endif
+        <div class="container mb-5">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Характеристики</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Описание</button>
+                </li>
 
-{{--                        @if($product->PCS_in_Package)--}}
-{{--                            <tr>--}}
-{{--                                <th scope="row">Количество в упаковке</th>--}}
-{{--                                <td>{{$product->PCS_in_Package}}</td>--}}
-{{--                            </tr>--}}
-{{--                        @endif--}}
-                        </tbody>
-                    </table>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table class="table table-striped mt-3 mb-5">
+                                <tbody>
+                                @if($product->vendor_code)
+                                    <tr>
+                                        <th scope="row">Артикул</th>
+                                        <td>{{$product->vendor_code}}</td>
+                                    </tr>
+                                @endif
+                                @if($product->brand)
+                                    <tr>
+                                        <th scope="row">Бренд</th>
+                                        <td>{{ucfirst(strtolower($product->brand))}}</td>
+                                    </tr>
+                                @endif
+                                @if($product->country)
+                                    <tr>
+                                        <th scope="row">Родина бренда</th>
+                                        <td>{{$product->country}}</td>
+                                    </tr>
+                                @endif
+                                @if($product->class)
+                                    <tr>
+                                        <th scope="row">Класс</th>
+                                        <td>{{$product->class}}</td>
+                                    </tr>
+                                @endif
+                                @if($product->shov)
+                                    <tr>
+                                        <th scope="row">Ширина шва</th>
+                                        <td>{{$product->shov}}</td>
+                                    </tr>
+                                @endif
+                                @if($product->massa)
+                                    <tr>
+                                        <th scope="row">Вес</th>
+                                        <td>{{$product->massa}}</td>
+                                    </tr>
+                                @endif
+                                @if($product->froze_resistent)
+                                    <tr>
+                                        <th scope="row">Морозостойкость</th>
+                                        <td>{{$product->froze_resistent}}</td>
+                                    </tr>
+                                @endif
+                                @if($product->vid_rabot)
+                                    <tr>
+                                        <th scope="row">Вид работ</th>
+                                        <td>{{$product->vid_rabot}}</td>
+                                    </tr>
+                                @endif
+                                @if($product->country_proizv)
+                                    <tr>
+                                        <th scope="row">Страна производства</th>
+                                        <td>{{$product->country_proizv}}</td>
+                                    </tr>
+                                @endif
+
+                                {{--                        @if($product->PCS_in_Package)--}}
+                                {{--                            <tr>--}}
+                                {{--                                <th scope="row">Количество в упаковке</th>--}}
+                                {{--                                <td>{{$product->PCS_in_Package}}</td>--}}
+                                {{--                            </tr>--}}
+                                {{--                        @endif--}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-aqua mt-5">{!!nl2br($product->description)!!}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
 
 

@@ -21,7 +21,7 @@ class KerabellezzaController extends Controller
 
     public function index()
     {
-        $products = Kerabellezza::paginate(15);
+        $products = Kerabellezza::orderBy('price')->paginate(15);
 
         return view('kerabellezza.index', compact('products'));
     }
