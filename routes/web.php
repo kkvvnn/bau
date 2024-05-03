@@ -163,9 +163,9 @@ Route::get('/leedo-index', [\App\Http\Controllers\LeedoController::class, 'index
 Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
 
 //----- ALTACERA (Import from auto-updated .json) -----
-Route::get('/altacera-import-all', [\App\Http\Controllers\AltaceraImportController::class, 'altacera_import_all']);
-Route::get('/altacera-index', [\App\Http\Controllers\AltaceraController::class, 'index'])->name('altacera.index');
-Route::get('/altacera/{id}', [\App\Http\Controllers\AltaceraController::class, 'show'])->name('altacera.show');
+Route::get('/altacera-import-all', [\App\Http\Controllers\AltaceraImportController2::class, 'altacera_import_all']);
+Route::get('/altacera-index', [\App\Http\Controllers\AltaceraController2::class, 'index'])->name('altacera.index');
+Route::get('/altacera/{id}', [\App\Http\Controllers\AltaceraController2::class, 'show'])->name('altacera.show');
 Route::get('/altacera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
 
 //----- PIXMOSAIC -----

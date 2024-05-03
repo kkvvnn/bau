@@ -21,8 +21,9 @@
 
                     @php
                         $units = $product->units;
-                        $unit_id = $product->balance->unit_id;
-//                        dd($units);
+                        $unit_id = $product->balance[0]->unit_id;
+//                        $unit_id = $product->balance;
+//                        dd($unit_id);
                         $unit = '';
                         foreach ($units as $u) {
                             if ($u['unit_id'] == $unit_id) {
@@ -68,24 +69,51 @@
                                     <p class="text-body-secondary">Цена: Не указана</p>
                                 @endif
                                 <hr>
-                                @if(str_contains($product->balance->free_balance, '.'))
-                                    <p class="text-body-secondary">
-                                        Остаток: {{rtrim(rtrim($product->balance->free_balance, '0'), '.')}} {{$unit}}</p>
-                                    <hr>
-                                @else
-                                    <p class="text-body-secondary">
-                                        Остаток: {{$product->balance->free_balance}} {{$unit}}</p>
-                                    <hr>
-                                @endif
 
-                                <p class="text-body-secondary">Артикул: {{$product->artikul}}</p>
-                                <hr>
 
-                                @if($unit == 'м2')
-                                    <p class="text-body-secondary">Кв.м. в упаковке: {{$pack_ratio}}; шт в
-                                        упаковке: {{$pack_ratio/$one_count_ratio}}</p>
+
+{{--                                    @if(str_contains($product->balance->free_balance, '.'))--}}
+{{--                                    <p class="text-body-secondary">--}}
+{{--                                        Остаток: {{rtrim(rtrim($product->balance->free_balance, '0'), '.')}} {{$unit}}</p>--}}
+{{--                                    <hr>--}}
+{{--                                @else--}}
+{{--                                    <p class="text-body-secondary">--}}
+{{--                                        Остаток: {{$product->balance->free_balance}} {{$unit}}</p>--}}
+{{--                                    <hr>--}}
+{{--                                @endif--}}
+
+                                    @php
+                                        $balances = $product->balance;
+//                                        dd($balances);
+                                        foreach ($balances as $balance) {
+                                            if ($balance['depot_id'] == '8c279853-d2c9-11e8-80c3-0cc47afc14e9') {
+                                                $balance_moscow = $balance['free_balance'];
+                                            }
+                                            if ($balance['depot_id'] == '64c17eef-42d6-11e8-812c-10feed0262c6') {
+//                                            if ($balance['depot_id'] == 'e36ebb4b-0979-11ec-80f1-00155d5d5700') {
+                                                $balance_krasnodar = $balance['free_balance'];
+                                            }
+                                            if ($balance['depot_id'] == 'd1666584-d536-11ec-80f8-00155d5d5700') {
+                                                $balance_kazan = $balance['free_balance'];
+                                            }
+                                        }
+                                    @endphp
+
+
+                                    <p class="text-body-secondary mb-0">Москва: {{$balance_moscow}} {{$unit}}</p>
+                                    <p class="text-body-secondary mb-0">Краснодар: {{$balance_krasnodar}} {{$unit}}</p>
+                                    <p class="text-body-secondary">Казань: {{$balance_kazan}} {{$unit}}</p>
                                     <hr>
-                                @endif
+
+
+                                    {{--                                <p class="text-body-secondary">Артикул: {{$product->artikul}}</p>--}}
+{{--                                <hr>--}}
+
+{{--                                @if($unit == 'м2')--}}
+{{--                                    <p class="text-body-secondary">Кв.м. в упаковке: {{$pack_ratio}}; шт в--}}
+{{--                                        упаковке: {{$pack_ratio/$one_count_ratio}}</p>--}}
+{{--                                    <hr>--}}
+{{--                                @endif--}}
 
                                 <p class="text-body-secondary">Обновлено: {{$product->updated_at->format('d.m.Y')}}</p>
 {{--                                <hr>--}}

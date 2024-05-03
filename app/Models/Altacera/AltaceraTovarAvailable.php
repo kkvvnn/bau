@@ -4,6 +4,7 @@ namespace App\Models\Altacera;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class AltaceraTovarAvailable extends Model
@@ -31,8 +32,8 @@ class AltaceraTovarAvailable extends Model
         return $this->hasOne(AltaceraCategory::class, 'category_id', 'category_id');
     }
 
-    public function balance(): HasOne
+    public function balance(): HasMany
     {
-        return $this->hasOne(AltaceraBalance::class, 'tovar_id', 'tovar_id');
+        return $this->hasMany(AltaceraBalance::class, 'tovar_id', 'tovar_id');
     }
 }
