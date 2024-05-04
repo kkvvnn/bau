@@ -302,8 +302,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('rusplitka.index')}}">Rusplitka</a>
                 </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link active" aria-current="page" href="{{route('technotile.index')}}">Technotile</a>--}}
+{{--                </li>--}}
+                <hr>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('technotile.index')}}">Technotile</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('kerabellezza.index')}}">Kerabellezza</a>
                 </li>
                 <hr>
                 <li class="nav-item">
