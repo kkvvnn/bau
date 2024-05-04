@@ -2,27 +2,48 @@
 
 @section('title', $product->artikul.' '.$product->category_rel->parent.' '.$product->collection_item.' '.$product->name_for_site)
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+@endsection
+
 @section('content')
 
-    <!-- <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
-      </div>
-    </div>
-  </section> -->
+    @php
+        $units = $product->units;
+        $unit_id = $product->balance[0]->unit_id;
+//                        dd($units);
+        $unit = '';
+        foreach ($units as $u) {
+            if ($u['unit_id'] == $unit_id) {
+                $unit = $u['unit'];
+                break;
+            }
+        }
+//                        dd($unit);
+    @endphp
+
+    @php
+        $balances = $product->balance;
+//                                        dd($balances);
+        foreach ($balances as $balance) {
+            if ($balance['depot_id'] == '8c279853-d2c9-11e8-80c3-0cc47afc14e9') {
+                $balance_moscow = (float)$balance['free_balance'];
+            }
+            if ($balance['depot_id'] == '64c17eef-42d6-11e8-812c-10feed0262c6') {
+//                                            if ($balance['depot_id'] == 'e36ebb4b-0979-11ec-80f1-00155d5d5700') {
+                $balance_krasnodar = (float)$balance['free_balance'];
+            }
+            if ($balance['depot_id'] == 'd1666584-d536-11ec-80f8-00155d5d5700') {
+                $balance_kazan = (float)$balance['free_balance'];
+            }
+            if ($balance['depot_id'] == '2170fa9f-bcdc-11ed-8167-00155d5d5700') {
+                $balance_spb = (float)$balance['free_balance'];
+            }
+        }
+    @endphp
 
     <div class="album py-5 bg-body-tertiary">
-        <div class="container">
-            <div>
-                <p></p>
-            </div>
-
+        <div class="container pt-3">
 
             @if (session('status'))
                 <div class="alert alert-success">
@@ -36,43 +57,41 @@
                 </div>
             @endif
 
-            @php
-                $units = $product->units;
-                $unit_id = $product->balance->unit_id;
-//                        dd($units);
-                $unit = '';
-                foreach ($units as $u) {
-                    if ($u['unit_id'] == $unit_id) {
-                        $unit = $u['unit'];
-                        break;
-                    }
-                }
-//                        dd($unit);
-            @endphp
-
-
             <div class="row">
-
                 <div class="col">
-                    <h2>{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->artikul}}</h2>
+                    <h1 class="display-6">{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->artikul}}</h1>
                     <hr>
-                    <h3>
-                        {{$product->category_rel->parent}}
-                    </h3>
-                    <h4>Коллекция: {{$product->category}}</h4>
+                    <h1 class="display-6">{{$product->category_rel->parent}}</h1>
+                    <p class="fs-2">Коллекция: {{$product->category}}</p>
+                    <hr>
+
+
+
                     <h5>Артикул: {{$product->artikul}}</h5>
                     <h5>
                         Цена: {{$product->price->price}} ₽/{{$unit}}
                         <br>
                     </h5>
                     <hr>
-                    <h5>
-                        @if(str_contains($product->balance->free_balance, '.'))
-                            Остаток: {{rtrim(rtrim($product->balance->free_balance, '0'), '.')}} {{$unit}}
-                        @else
-                            Остаток: {{$product->balance->free_balance}} {{$unit}}
-                        @endif
-                    </h5>
+
+
+
+
+                    @isset($balance_moscow)
+                        <p class="mb-0 fs-5 text-body-secondary">Москва: {{$balance_moscow}} {{$unit}}</p>
+                    @endisset
+                    @isset($balance_spb)
+                        <p class="mb-0 fs-5 text-body-secondary">СПб: {{$balance_spb}} {{$unit}}</p>
+                    @endisset
+                    @isset($balance_krasnodar)
+                        <p class="mb-0 fs-5 text-body-secondary">Краснодар: {{$balance_krasnodar}} {{$unit}}</p>
+                    @endisset
+                    @isset($balance_kazan)
+                        <p class="mb-0 fs-5 text-body-secondary">Казань: {{$balance_kazan}} {{$unit}}</p>
+                    @endisset
+                    <hr>
+
+
                 </div>
             </div>
 

@@ -22,8 +22,6 @@
                     @php
                         $units = $product->units;
                         $unit_id = $product->balance[0]->unit_id;
-//                        $unit_id = $product->balance;
-//                        dd($unit_id);
                         $unit = '';
                         foreach ($units as $u) {
                             if ($u['unit_id'] == $unit_id) {
@@ -32,101 +30,93 @@
                             }
                         }
 
-                                    $pack_ratio = '';
-                                    foreach ($units as $u) {
-                                        if ($u['unit'] == 'Упак') {
-                                            $pack_ratio = $u['unit_ratio'];
-                                            break;
-                                        }
-                                    }
+                        $pack_ratio = '';
+                        foreach ($units as $u) {
+                            if ($u['unit'] == 'Упак') {
+                                $pack_ratio = $u['unit_ratio'];
+                                break;
+                            }
+                        }
 
-                                    $one_count_ratio = '';
-                                    foreach ($units as $u) {
-                                        if ($u['unit'] == 'шт') {
-                                            $one_count_ratio = $u['unit_ratio'];
-                                            break;
-                                        }
-                                    }
+                        $one_count_ratio = '';
+                        foreach ($units as $u) {
+                            if ($u['unit'] == 'шт') {
+                                $one_count_ratio = $u['unit_ratio'];
+                                break;
+                            }
+                        }
+                    @endphp
+
+                    @php
+                        $text_color = '';
+                        $date_now = \Carbon\Carbon::now();
+                        $date_of_update = $product->updated_at;
+                        $diff_days = $date_now->diffInDays($date_of_update);
+
+                        if ($diff_days == 0) {
+                            $text_color = 'text-success';
+                        } elseif ($diff_days <= 7) {
+                            $text_color = 'text-warning';
+                        } else {
+                            $text_color = 'text-danger';
+                        }
                     @endphp
 
                     <div class="col">
                         <div class="card h-100">
-                            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                             <a href="/altacera/{{$product->id}}">
                                 <img src="{{Storage::disk('altacera')->url($product->tovar_id . '.JPEG')}}"
                                      class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
                                 <a href="/altacera/{{$product->id}}" class="text-decoration-none text-reset">
-                                    <h5 class="card-title">{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->artikul}}</h5>
+                                    <h5 class="card-title">{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->height}}x{{$product->width}} {{$product->artikul}}</h5>
                                 </a>
-                                <p class="card-text"></p>
+{{--                                <p class="card-text"></p>--}}
                             </div>
                             <div class="card-footer">
                                 @if($product->price !== null)
-                                    <p class="text-body-secondary">Цена: {{$product->price->price}} ₽/{{$unit}}</p>
+                                    <h5 class="card-title pricing-card-title">{{$product->price->price}} <span class="text-muted fw-light"> ₽/{{$unit}}</span></h5>
                                 @else
-                                    <p class="text-body-secondary">Цена: Не указана</p>
+                                    <h5 class="card-title pricing-card-title">Не указана</h5>
                                 @endif
                                 <hr>
 
-
-
-{{--                                    @if(str_contains($product->balance->free_balance, '.'))--}}
-{{--                                    <p class="text-body-secondary">--}}
-{{--                                        Остаток: {{rtrim(rtrim($product->balance->free_balance, '0'), '.')}} {{$unit}}</p>--}}
-{{--                                    <hr>--}}
-{{--                                @else--}}
-{{--                                    <p class="text-body-secondary">--}}
-{{--                                        Остаток: {{$product->balance->free_balance}} {{$unit}}</p>--}}
-{{--                                    <hr>--}}
-{{--                                @endif--}}
-
                                     @php
                                         $balances = $product->balance;
-//                                        dd($balances);
                                         foreach ($balances as $balance) {
                                             if ($balance['depot_id'] == '8c279853-d2c9-11e8-80c3-0cc47afc14e9') {
-                                                $balance_moscow = $balance['free_balance'];
+                                                $balance_moscow = (float)$balance['free_balance'];
                                             }
                                             if ($balance['depot_id'] == '64c17eef-42d6-11e8-812c-10feed0262c6') {
 //                                            if ($balance['depot_id'] == 'e36ebb4b-0979-11ec-80f1-00155d5d5700') {
-                                                $balance_krasnodar = $balance['free_balance'];
+                                                $balance_krasnodar = (float)$balance['free_balance'];
                                             }
                                             if ($balance['depot_id'] == 'd1666584-d536-11ec-80f8-00155d5d5700') {
-                                                $balance_kazan = $balance['free_balance'];
+                                                $balance_kazan = (float)$balance['free_balance'];
+                                            }
+                                            if ($balance['depot_id'] == '2170fa9f-bcdc-11ed-8167-00155d5d5700') {
+                                                $balance_spb = (float)$balance['free_balance'];
                                             }
                                         }
                                     @endphp
 
-
-                                    <p class="text-body-secondary mb-0">Москва: {{$balance_moscow}} {{$unit}}</p>
-                                    <p class="text-body-secondary mb-0">Краснодар: {{$balance_krasnodar}} {{$unit}}</p>
-                                    <p class="text-body-secondary">Казань: {{$balance_kazan}} {{$unit}}</p>
+                                    @isset($balance_moscow)
+                                        <p class="mb-0 fs-5 text-body-secondary">Москва: {{$balance_moscow}} {{$unit}}</p>
+                                    @endisset
+                                    @isset($balance_spb)
+                                        <p class="mb-0 fs-5 text-body-secondary">СПб: {{$balance_spb}} {{$unit}}</p>
+                                    @endisset
+                                    @isset($balance_krasnodar)
+                                        <p class="mb-0 fs-5 text-body-secondary">Краснодар: {{$balance_krasnodar}} {{$unit}}</p>
+                                    @endisset
+                                    @isset($balance_kazan)
+                                        <p class="mb-0 fs-5 text-body-secondary">Казань: {{$balance_kazan}} {{$unit}}</p>
+                                    @endisset
                                     <hr>
 
+                                    <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
 
-                                    {{--                                <p class="text-body-secondary">Артикул: {{$product->artikul}}</p>--}}
-{{--                                <hr>--}}
-
-{{--                                @if($unit == 'м2')--}}
-{{--                                    <p class="text-body-secondary">Кв.м. в упаковке: {{$pack_ratio}}; шт в--}}
-{{--                                        упаковке: {{$pack_ratio/$one_count_ratio}}</p>--}}
-{{--                                    <hr>--}}
-{{--                                @endif--}}
-
-                                <p class="text-body-secondary">Обновлено: {{$product->updated_at->format('d.m.Y')}}</p>
-{{--                                <hr>--}}
-
-{{--                                @php--}}
-{{--                                    $vendor_code = $product->artikul;--}}
-{{--                                    $files = Storage::disk('foto_altacera')->files('/'.$vendor_code);--}}
-{{--                                @endphp--}}
-{{--                                @if(count($files))--}}
-{{--                                    <p class="h5 text-success">Есть {{ count($files) }} фото</p>--}}
-{{--                                @else--}}
-{{--                                    <p class="h5 text-danger">Нет фото</p>--}}
-{{--                                @endif--}}
                             </div>
 
 

@@ -26,9 +26,7 @@
             <div class="row">
                 <div class="col">
                     <h1 class="display-6">{{$product->Name}}</h1>
-
                     <hr>
-
                     <h1 class="display-6">{{$product->Producer_Brand}}</h1>
                     <p class="fs-2">Коллекция:
                         @foreach ($collection as $one_collection)

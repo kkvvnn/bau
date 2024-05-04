@@ -24,20 +24,30 @@ class AltaceraController2 extends Controller
     {
         $product = AltaceraTovarAvailable::find($id);
 
-        $vendor_code = $product->artikul;
-//        $path_dir = 'storage/Foto/' . $vendor_code;
-//        $directories = Storage::directories('public/Foto');
-        $files = Storage::disk('foto_altacera')->files('/' . $vendor_code);
-//        dd($files);
-        $fotossss = $files;
-        $fotos = [];
-        foreach ($fotossss as $f) {
-            $fotos[] = Storage::disk('foto_altacera')->url($f);
+        if (isset($product->picture->images)) {
+            $images = $product->picture->images;
+        } else {
+            $images = Storage::disk('altacera')->url($product->tovar_id . '.JPEG');
+            $images = explode(' | ', $images);
         }
 
-        return view('altacera.show', [
+        $text_color = '';
+        $date_now = \Carbon\Carbon::now();
+        $date_of_update = $product->updated_at;
+        $diff_days = $date_now->diffInDays($date_of_update);
+
+        if ($diff_days == 0) {
+            $text_color = 'text-success';
+        } elseif ($diff_days <= 7) {
+            $text_color = 'text-warning';
+        } else {
+            $text_color = 'text-danger';
+        }
+
+        return view('altacera.show2', [
             'product' => $product,
-            'fotos' => $fotos,
+            'images' =>$images,
+            'text_color' => $text_color,
         ]);
     }
 }

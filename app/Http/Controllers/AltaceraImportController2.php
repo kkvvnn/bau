@@ -71,12 +71,16 @@ class AltaceraImportController2 extends Controller
         $krasnodar_depot_id = '64c17eef-42d6-11e8-812c-10feed0262c6';
 //        $krasnodar_depot_id = 'e36ebb4b-0979-11ec-80f1-00155d5d5700';
         $kazan_depot_id = 'd1666584-d536-11ec-80f8-00155d5d5700';
+        $spb_depot_id = '2170fa9f-bcdc-11ed-8167-00155d5d5700';
 
         $json = Storage::disk('local')->get('import/altacera/balance/balance.json');
         $products = json_decode($json, true);
 //        dd($products);
         foreach ($products as $product) {
-            if ($product['depot_id'] == $moscow_depot_id || $product['depot_id'] == $krasnodar_depot_id || $product['depot_id'] == $kazan_depot_id) {
+            if ($product['depot_id'] == $moscow_depot_id
+                || $product['depot_id'] == $krasnodar_depot_id
+                || $product['depot_id'] == $kazan_depot_id
+                || $product['depot_id'] == $spb_depot_id) {
                 AltaceraBalance::create($product);
             }
         }
