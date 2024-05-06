@@ -36,9 +36,10 @@ class LeedoController extends Controller
         return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
     }
 
-    public function index()
+    public function index($count = 0)
     {
-        $products = LeedoProduct::paginate(15);
+        $products = LeedoProduct::where([['Sklad_Msk_LeeDo', '>=', $count]])
+            ->paginate(15);
 
         return view('leedo.index2', compact('products'));
     }

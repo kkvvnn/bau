@@ -159,7 +159,7 @@ Route::get('/absolut-gres/{id}', [\App\Http\Controllers\AbsolutGresController::c
 //----- LEEDO-CARAMELLE (Import from auto-updated .json) -----
 Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_from_ftp_to_database']);
 Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class, 'download_leedo_img']);
-Route::get('/leedo-index', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
+Route::get('/leedo-index/{count?}', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
 Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
 
 //----- ALTACERA (Import from auto-updated .json) -----
