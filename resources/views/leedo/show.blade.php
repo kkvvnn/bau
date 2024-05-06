@@ -43,7 +43,7 @@
                     <h2>{{$product->Item_name}}</h2>
                     <hr>
                     <h3>
-                        {{$product->Producer_Brand_name}}
+                        {{$product->Brand_name}}
                     </h3>
                     <h4>Коллекция: {{$product->Collection}}</h4>
                     <h5>

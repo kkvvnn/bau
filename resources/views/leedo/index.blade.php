@@ -35,10 +35,8 @@
                                     <hr>
                                     <!-- <small class="text-body-secondary">Закупка: ₽/</small> -->
                                     <!-- <hr> -->
-                                    <p class="text-body-secondary">Доступно
-                                        Москва: {{$product->Sklad_Msk_LeeDo??0}} {{$product->unit}}</p>
-                                    <p class="text-body-secondary">Доступно
-                                        Санкт-Петербург: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}</p>
+                                    <p class="text-body-secondary">Москва: {{$product->Sklad_Msk_LeeDo??0}} {{$product->unit}}</p>
+                                    <p class="text-body-secondary">СПб: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}</p>
                                     <hr>
                                     <p class="text-body-secondary">
                                         Обновлено: {{$product->updated_at->format('d.m.Y')}}</p>

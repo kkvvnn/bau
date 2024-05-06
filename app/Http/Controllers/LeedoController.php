@@ -40,7 +40,7 @@ class LeedoController extends Controller
     {
         $products = LeedoProduct::paginate(15);
 
-        return view('leedo.index', compact('products'));
+        return view('leedo.index2', compact('products'));
     }
 
     public function download_leedo_img()
@@ -123,6 +123,19 @@ class LeedoController extends Controller
         }
 
 
+        $text_color = '';
+        $date_now = \Carbon\Carbon::now();
+        $date_of_update = $product->updated_at;
+        $diff_days = $date_now->diffInDays($date_of_update);
+
+        if ($diff_days == 0) {
+            $text_color = 'text-success';
+        } elseif ($diff_days <= 7) {
+            $text_color = 'text-warning';
+        } else {
+            $text_color = 'text-danger';
+        }
+
         $vendor_code = $product->System_ID;
 //        $path_dir = 'storage/Foto/' . $vendor_code;
 //        $directories = Storage::directories('public/Foto');
@@ -134,10 +147,11 @@ class LeedoController extends Controller
             $fotos[] = Storage::disk('foto_leedo')->url($f);
         }
 
-        return view('leedo.show', [
+        return view('leedo.show2', [
             'product' => $product,
             'images' => $images,
             'fotos' => $fotos,
+            'text_color' => $text_color,
         ]);
     }
 }
