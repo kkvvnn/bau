@@ -101,7 +101,13 @@ class ProductController extends Controller
     public function index_santech()
     {
         $type = 'santech';
-        $products = Product::where([['GroupProduct', '02 Сантехника'], ['balanceCount', '>=', 0]])->paginate(15);
+        $products = Product::where([['GroupProduct', '02 Сантехника'],
+            ['balanceCount', '>', 0],
+            ['RMPrice', '>', 0],
+            ['Picture', '!=', ''],
+            ])
+            ->orderByDesc('Category')
+            ->paginate(15);
         return $this->index($products, $type);
     }
 
