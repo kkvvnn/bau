@@ -49,12 +49,10 @@
                             </div>
                             <div class="card-footer">
                                 <h5 class="card-title pricing-card-title">{{$product->price}} <span class="text-muted fw-light">₽/м2</span></h5>
-                                <hr>
 
-                                <p class="fs-5 text-body-secondary">Остаток: {{$product->stock}} м2</p>
-                                <hr>
+                                <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->stock}} м2</p>
 
-                                <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
+                                <small class="mb-0 fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
                             </div>
                         </div>
                     </div>

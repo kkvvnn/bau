@@ -52,12 +52,10 @@
                             </div>
                             <div class="card-footer">
                                 <h5 class="card-title pricing-card-title">{{$product->Price_rozn}} <span class="text-muted fw-light">₽/{{$product->unit}}  {{$product->Price_OPT}}</span></h5>
-                                <hr>
 
                                 <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->Sklad_Msk_LeeDo??0}} {{$product->unit}}</p>
                                 <p class="mb-0 fs-5 text-body-secondary">СПб: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}</p>
 
-                                <hr>
 
                                 <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
 {{--                                <hr>--}}

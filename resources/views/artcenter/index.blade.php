@@ -61,7 +61,6 @@
                             </div>
                             <div class="card-footer">
                                 <h5 class="card-title pricing-card-title">{{$product->price}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
-                                <hr>
 
 
                                 @if($product->moscow_stock)
@@ -86,7 +85,6 @@
 {{--                                    <p class="mb-0 fs-5 text-body-secondary">Нет в наличии</p>--}}
 {{--                                @endif--}}
 
-                                <hr>
 
                                 <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
                             </div>

@@ -80,7 +80,6 @@
                                 @else
                                     <h5 class="card-title pricing-card-title">Не указана</h5>
                                 @endif
-                                <hr>
 
                                     @php
                                         $balances = $product->balance;
@@ -113,7 +112,6 @@
                                     @isset($balance_kazan)
                                         <p class="mb-0 fs-5 text-body-secondary">Казань: {{$balance_kazan}} {{$unit}}</p>
                                     @endisset
-                                    <hr>
 
                                     <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
 

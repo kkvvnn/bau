@@ -60,7 +60,6 @@
                             </div>
                             <div class="card-footer">
                                 <h5 class="card-title pricing-card-title">{{$product->price}} ₽/шт</h5>
-                                <hr>
 
                                 <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
 {{--                                <hr>--}}
