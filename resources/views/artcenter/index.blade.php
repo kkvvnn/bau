@@ -43,6 +43,10 @@
                             $text_color = 'text-danger';
                         }
                     @endphp
+                     @php
+                        $title = str_replace('Плитка ', '', $product->title);
+                        $title = str_replace(' (1,44 кв.м.)', '', $title);
+                     @endphp
 
                     <div class="col">
                         <div class="card h-100">
@@ -52,7 +56,7 @@
                             </a>
                             <div class="card-body">
                                 <a href="/artcenter/{{$product->id}}" class="text-decoration-none text-reset">
-                                    <h5 class="card-title">{{$product->title}}</h5>
+                                    <h5 class="card-title">{{$title}}</h5>
                                 </a>
                             </div>
                             <div class="card-footer">

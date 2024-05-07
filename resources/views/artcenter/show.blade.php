@@ -23,9 +23,14 @@
                 </div>
             @endif
 
+            @php
+                $title = str_replace('Плитка ', '', $product->title);
+                $title = str_replace(' (1,44 кв.м.)', '', $title);
+            @endphp
+
             <div class="row">
                 <div class="col">
-                    <h1 class="display-6">{{$product->title}}</h1>
+                    <h1 class="display-6">{{$title}}</h1>
                     <hr>
                     <h1 class="display-6">{{$product->brand}}</h1>
                     <p class="fs-2">Коллекция:
