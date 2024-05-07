@@ -161,6 +161,7 @@ Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, '
 Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class, 'download_leedo_img']);
 Route::get('/leedo-index/{count?}', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
 Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
+Route::get('/leedo/collection/{name}', [\App\Http\Controllers\LeedoController::class, 'collection'])->name('leedo.collection');
 
 //----- ALTACERA (Import from auto-updated .json) -----
 Route::get('/altacera-import-all', [\App\Http\Controllers\AltaceraImportController2::class, 'altacera_import_all']);

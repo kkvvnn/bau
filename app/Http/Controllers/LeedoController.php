@@ -155,4 +155,12 @@ class LeedoController extends Controller
             'text_color' => $text_color,
         ]);
     }
+
+    public function collection($name)
+    {
+        $products = LeedoProduct::where('Collection', 'LIKE', '%'.$name.'%')
+            ->paginate(15);
+
+        return view('leedo.index2', compact('products'));
+    }
 }

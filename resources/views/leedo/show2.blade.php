@@ -28,7 +28,10 @@
                     <h1 class="display-6">{{$product->Item_name}}</h1>
                     <hr>
                     <h1 class="display-6">{{$product->Brand_name}}</h1>
-                    <p class="fs-2">Коллекция: {{$product->Collection}}</p>
+                    <p class="fs-2">Коллекция:
+                        <a href="{{route('leedo.collection', $product->Collection)}}"
+                           class="link-secondary text-decoration-none">{{$product->Collection}}
+                        </a></p>
                     <hr>
 
                 </div>
