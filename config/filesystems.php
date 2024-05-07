@@ -65,6 +65,14 @@ return [
             'throw' => false,
         ],
 
+        'artcenter' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/artcenter'),
+            'url' => env('APP_URL').'/storage/images/artcenter',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'collections-text' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/bauservice/collections-text'),
