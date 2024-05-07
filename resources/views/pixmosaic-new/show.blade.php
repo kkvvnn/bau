@@ -30,10 +30,13 @@
                     <hr>
 
                     <h1 class="display-6">Pixmosaic</h1>
-                    <p class="fs-2">Коллекция: {{$product->material}}</p>
+
+                    <p class="fs-2">Коллекция:
+                        <a href="{{route('pixmosaic-new.collection', $product->material)}}"
+                           class="link-secondary text-decoration-none">{{$product->material}}
+                        </a></p>
+
                     <hr>
-
-
 
                 </div>
             </div>

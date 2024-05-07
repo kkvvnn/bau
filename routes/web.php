@@ -206,6 +206,7 @@ Route::view('/pixmosaic-new/import', 'pixmosaic-new.import');
 Route::post('/pixmosaic-new/import-work', [\App\Http\Controllers\PixmosaicNewController::class, 'import_work'])->name('pixmosaic-new.import-work');
 Route::get('/pixmosaic-new/index', [\App\Http\Controllers\PixmosaicNewController::class, 'index'])->name('pixmosaic-new.index');
 Route::get('/pixmosaic-new/{id}', [\App\Http\Controllers\PixmosaicNewController::class, 'show'])->name('pixmosaic-new.show');
+Route::get('/pixmosaic-new/collection/{name}', [\App\Http\Controllers\PixmosaicNewController::class, 'collection'])->name('pixmosaic-new.collection');
 
 //----- PIXMOSAIC VIDEO YOUTUBE -----
 Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoController::class, 'import']);

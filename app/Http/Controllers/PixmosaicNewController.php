@@ -62,4 +62,12 @@ class PixmosaicNewController extends Controller
 
         return view('pixmosaic-new.show', compact('product', 'text_color', 'img', 'embed_youtube_url_src'));
     }
+
+    public function collection($name)
+    {
+        $products = PixmosaicNew::where('material', 'LIKE', '%'.$name.'%')
+            ->paginate(15);
+
+        return view('pixmosaic-new.index', compact('products'));
+    }
 }
