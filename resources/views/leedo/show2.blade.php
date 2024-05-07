@@ -144,7 +144,7 @@
                         @if($product->Category)
                             <tr>
                                 <th scope="row">Категория</th>
-                                <td>{{$product->Category}}</td>
+                                <td>{{str_replace('_', ' ', $product->Category)}}</td>
                             </tr>
                         @endif
                         @if($product->Material)

@@ -95,7 +95,7 @@
 {{--                                    <hr>--}}
 {{--                                @endif--}}
                                 @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
-                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>                                    <hr>
+                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>
                                 @endif
 
                                 <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
