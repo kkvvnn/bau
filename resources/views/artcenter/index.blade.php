@@ -24,9 +24,9 @@
                 @foreach($products as $product)
 
                     @php
-                        $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
-                        $name_file = Str::remove($string_for_delete, $product->Picture);
-                        $url1 = Storage::disk('public')->url($name_file);
+                        $string_for_delete = 'https://media.artcentre.club/';
+                        $name_file = Str::remove($string_for_delete, $product->image1);
+                        $image1 = Storage::disk('artcenter')->url($name_file);
                     @endphp
 
                     @php
@@ -48,7 +48,7 @@
                         <div class="card h-100">
                             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                             <a href="/artcenter/{{$product->id}}">
-                                <img src="{{$product->image1}}" class="card-img-top" alt="...">
+                                <img src="{{$image1}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
                                 <a href="/artcenter/{{$product->id}}" class="text-decoration-none text-reset">

@@ -6,6 +6,7 @@ use App\Imports\ArtcenterImport;
 use App\Models\Artcenter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ArtcenterController extends Controller
@@ -40,8 +41,9 @@ class ArtcenterController extends Controller
     public function index()
     {
         $products = Artcenter::where([['brand', 'Art Ceramic'],
-            ['moscow_stock', '!=', ''],
+            ['moscow_stock', '>=', 2],
             ['image1', '!=', ''],
+            ['vendor_code', '!=', 'Spenze Gris 60x120'],
             ])
             ->paginate(15);
 
@@ -54,18 +56,19 @@ class ArtcenterController extends Controller
     {
         $product = Artcenter::find($id);
 
+        $string_for_delete = 'https://media.artcentre.club/';
         $images = [];
         if ($product->image1 != '') {
-            $images[] = $product->image1;
+            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image1));
         }
         if ($product->image2 != '') {
-            $images[] = $product->image2;
+            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image2));
         }
         if ($product->image3 != '') {
-            $images[] = $product->image3;
+            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image3));
         }
         if ($product->image4 != '') {
-            $images[] = $product->image4;
+            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image4));
         }
 
         $text_color = '';
