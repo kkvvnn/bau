@@ -6,6 +6,7 @@ use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovar;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
+use App\Models\Artcenter;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Pixmosaic;
@@ -99,6 +100,14 @@ class SearchController extends Controller
         if (count($empero)) {
             return view('empero.index', [
                 'products' => $empero,
+            ]);
+        }
+
+        $artcenter = Artcenter::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $artcenter->appends(['name' => $name]);
+        if (count($artcenter)) {
+            return view('artcenter.index', [
+                'products' => $artcenter,
             ]);
         }
 
