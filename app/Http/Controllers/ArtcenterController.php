@@ -86,4 +86,18 @@ class ArtcenterController extends Controller
 
         return view('artcenter.show', compact('product', 'images', 'text_color'));
     }
+
+    public function collection($name)
+    {
+        $products = Artcenter::where([['collection', 'LIKE', $name],
+//            ['moscow_stock', '>=', 2],
+//            ['image1', '!=', ''],
+//            ['vendor_code', '!=', 'Spenze Gris 60x120'],
+        ])
+            ->paginate(15);
+
+//        dd($products);
+
+        return view('artcenter.index', compact('products'));
+    }
 }

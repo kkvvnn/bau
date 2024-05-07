@@ -230,3 +230,4 @@ Route::get('/kerabellezza/{id}', [\App\Http\Controllers\KerabellezzaController::
 Route::get('/artcenter-import', [\App\Http\Controllers\ArtcenterController::class, 'import']);
 Route::get('/artcenter', [\App\Http\Controllers\ArtcenterController::class, 'index'])->name('artcenter.index');
 Route::get('/artcenter/{id}', [\App\Http\Controllers\ArtcenterController::class, 'show'])->name('artcenter.show');
+Route::get('/artcenter/collection/{name}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');

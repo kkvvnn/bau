@@ -58,14 +58,13 @@
                             <div class="card-footer">
                                 <h5 class="card-title pricing-card-title">{{$product->price}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
                                 <hr>
-                                @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
-                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>                                    <hr>
-                                @endif
+
 
                                 @if($product->moscow_stock)
                                     <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->moscow_stock}} {{$product->unit}}</p>
+                                @else
+                                    <p class="mb-0 fs-5 text-body-secondary">Москва: 0 {{$product->unit}}</p>
                                 @endif
-
 {{--                                @if($product->spb_stock)--}}
 {{--                                    <p class="mb-0 fs-5 text-body-secondary">СПб: {{$product->spb_stock}} {{$product->unit}}</p>--}}
 {{--                                @endif--}}
