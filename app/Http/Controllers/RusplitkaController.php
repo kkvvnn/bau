@@ -128,8 +128,9 @@ class RusplitkaController extends Controller
 
     public function index()
     {
-        $products = Product::paginate(15);
-        return view('rusplitka.index', compact('products'));
+        $products = Product::where('price_rozn', '!=', 0)
+            ->paginate(15);
+        return view('rusplitka.index2', compact('products'));
     }
 
     public function show($id)
@@ -143,12 +144,34 @@ class RusplitkaController extends Controller
         $img_collection = $collection->picture;
         $img_collection = explode(' | ', $img_collection);
 
-        return view('rusplitka.show', compact('product', 'imgs', 'img_collection'));
+        $text_color = '';
+        $date_now = \Carbon\Carbon::now();
+        $date_of_update = $product->updated_at;
+        $diff_days = $date_now->diffInDays($date_of_update);
+
+        if ($diff_days == 0) {
+            $text_color = 'text-success';
+        } elseif ($diff_days <= 7) {
+            $text_color = 'text-warning';
+        } else {
+            $text_color = 'text-danger';
+        }
+
+        return view('rusplitka.show2', compact('product', 'imgs', 'img_collection', 'text_color'));
     }
 
     public function export()
     {
         $date = date('Y-m-d_H-i-s');
         return Excel::download(new RusplitkaExcelExport2, 'rusplitka-'.$date.'.xlsx');
+    }
+
+    public function collection($name)
+    {
+        $products = Product::whereHas('collection', function ($query) use ($name) {
+            $query->where('name', 'LIKE', '%'.$name.'%');
+        })->paginate(15);
+
+        return view('rusplitka.index2', compact('products'));
     }
 }
