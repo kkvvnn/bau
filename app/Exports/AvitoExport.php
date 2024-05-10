@@ -6,6 +6,7 @@ namespace App\Exports;
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
+use App\Models\Artcenter;
 use App\Models\Kevis;
 use App\Models\PixmosaicNew;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
@@ -106,6 +107,16 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->where('stock', '!=', '')
             ->get();
 
+
+        //      ---------------------ARTCENTER---------------------
+
+        $artcenter = Artcenter::where([['brand', 'Art Ceramic'],
+            ['moscow_stock', '>=', 2],
+            ['image1', '!=', ''],
+            ['vendor_code', '!=', 'Spenze Gris 60x120'],
+        ])->get();
+
+
         if ($this->foto == '') {
             return view('exports.avito', [
                 // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
@@ -120,6 +131,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'technotile' => $technotile,
                 'aquafloor' => $aquafloor,
                 'pixmosaics' => $pixmosaics,
+                'artcenter' => $artcenter,
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,

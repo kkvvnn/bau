@@ -34,6 +34,7 @@ class AvitoController extends Controller
             'rusplitka' => 100,
             'aquafloor' => 100,
             'pixmosaic' => 90,
+            'artcenter' => 100,
         ];
 
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');

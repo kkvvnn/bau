@@ -73,7 +73,25 @@ class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCus
 //        dd($laparets);
 
 //      ---------------------OLD---------------------
-        $olds = AvitoTwoExcel::where('AvitoId', '=', '2957716643')
+//        $olds = AvitoTwoExcel::where('AvitoId', '=', '2957716643')
+//        ->get();
+//        $olds = AvitoTwoExcel::all();
+
+        $olds = AvitoTwoExcel::whereIn('AvitoId', [
+            '2925091517',
+            '2797125306',
+            '2764970303',
+            '2765196069',
+            '2765290501',
+            '2924855920',
+            '2957716643',
+            '2829595083',
+            '2765302371',
+            '2797087245',
+            '2765747168',
+            '2765086357',
+            '2797419166',
+        ])
         ->get();
 
         return view('exports.avito-laparet', [
