@@ -246,7 +246,7 @@
                             @if($count_in_pack)
                                 <tr>
                                     <th scope="row">Количество в упаковке</th>
-                                    <td>{{$count_in_pack}} шт</td>
+                                    <td>{{round($count_in_pack)}} шт</td>
                                 </tr>
                             @endif
                         @endif

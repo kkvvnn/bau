@@ -1212,7 +1212,7 @@
                             $description .= '<li><strong>Рельеф: </strong>' . $product->Рельеф . '</li>';
                             }
                             if($unit == 'м2' && $one_count_ratio != 1) {
-                            $description .= '<li><strong>Штук в упаковке: </strong>' . $pack_ratio/$one_count_ratio . '</li>';
+                            $description .= '<li><strong>Штук в упаковке: </strong>' . round($count_in_pack) . '</li>';
                             }
                             if($unit == 'м2' && $one_count_ratio != 1) {
                             $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $pack_ratio . '</li>';
