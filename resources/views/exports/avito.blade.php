@@ -1200,10 +1200,10 @@
 
 
                             if($product->width != 0 && $product->height != 0) {
-                            $description .= '<li><strong>Размер, см: </strong>' . $product->height/10 .'x' . $product->width/10 . '</li>';
+                            $description .= '<li><strong>Размер: </strong>' . $product->height .'x' . $product->width . ' мм</li>';
                             }
                             if($product->thickness != null) {
-                            $description .= '<li><strong>Толщина, мм: </strong>' . $product->thickness . '</li>';
+                            $description .= '<li><strong>Толщина: </strong>' . $product->thickness . ' мм</li>';
                             }
                             if($product->surface_type != null) {
                             $description .= '<li><strong>Поверхность: </strong>' . $product->surface_type . '</li>';
