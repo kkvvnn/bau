@@ -2242,6 +2242,14 @@
 
             $description .= '<p><strong>' . $product->brand . ' ' . $title .  ' (Индия)</strong></p>';
 
+            $title2 = str_replace('Плитка Artceramic', 'Керамогранит Арткерамик', $product->title);
+            $title2 = str_replace(' (1,44 кв.м.)', '', $title2);
+            $title2 = str_replace('High Glossy', 'полированный', $title2);
+            $title2 = str_replace('High Gloss', 'полированный', $title2);
+            $title2 = str_replace('Glossy', 'полированный', $title2);
+            $title2 = str_replace('Matt', 'матовый', $title2);
+            $description .= '<p>' . $title2 .  '</p>';
+
             $description .= '<p>--------------------</p>';
             $date = date('d.m.Y');
             if ($product->moscow_stock > 0) {
@@ -2259,7 +2267,7 @@
 
 
                 if($product->size != null) {
-                $description .= '<li><strong>Размер: </strong>' . $product->size . 'см </li>';
+                $description .= '<li><strong>Размер: </strong>' . $product->size . ' см </li>';
                 }
                 if($product->fat != null && $product->fat != 0) {
                 $description .= '<li><strong>Толщина: </strong>' . $product->fat . '</li>';
