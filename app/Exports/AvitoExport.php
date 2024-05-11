@@ -57,9 +57,20 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
     {
         set_time_limit(90);
 
-        $products_all = Product::where([['GroupProduct', '01 Плитка'],['Producer_Brand', '!=', 'Kerama Marazzi'], ['Element_code', '!=', 'х9999286854'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%ступен%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
+        $products_all = Product::where([['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', '!=', 'Kerama Marazzi'],
+            ['Element_code', '!=', 'х9999286854'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['balance', 1],
+            ['RMPrice', '>=', '500'],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get();
 
-        $blaze = Product::where([['Element_Code', 'х9999293160']])->orWhere([['Element_Code', 'х9999293158']])->get();
+        $blaze = Product::where([['Element_Code', 'х9999293160']])->get();      //blaze silver 60x120
 //        dd($blaze);
 
         $products_cersanit_except = Product::where([['Producer_Brand', 'Cersanit'], ['balanceCount', '<', 1]])->get();
@@ -86,14 +97,23 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //        $leedo = [];
 //        dd($leedo);
 //      ==============================================
-        $altacera = AltaceraTovarAvailable::where([['artikul', '!=', 'PWU09DLM3'], ['artikul', '!=', 'GFA114CMT07R'], ['artikul', '!=', 'BWA60ALD004'], ['artikul', '!=', 'DWU09BNT017'], ['artikul', '!=', 'GFA57SLC00L'], ['artikul', '!=', 'PWA11ALD1']])->get();
+        $altacera = AltaceraTovarAvailable::where([['artikul', '!=', 'PWU09DLM3'],
+            ['artikul', '!=', 'GFA114CMT07R'],
+            ['artikul', '!=', 'BWA60ALD004'],
+            ['artikul', '!=', 'DWU09BNT017'],
+            ['artikul', '!=', 'GFA57SLC00L'],
+            ['artikul', '!=', 'PWA11ALD1'],
+        ])->get();
 //      ==============================================
         $ntceramic = NtCeramicNoImgs::all();
 //        $ntceramic = [];
 //      ==============================================
         $kevis = Kevis::all();
 //      ==============================================
-        $rusplitka = RusplitkaProduct::where([['svoystvo', 'Керамогранит'], ['rest_real_free', '!=', 0], ['price_rozn', '!=', 0]])->get();
+        $rusplitka = RusplitkaProduct::where([['svoystvo', 'Керамогранит'],
+            ['rest_real_free', '!=', 0],
+            ['price_rozn', '!=', 0],
+        ])->get();
 //      ==============================================
 //        $technotile = TechnotileProduct::where('available', 'true')->get();
 //        $technotile = TechnotileProduct::where([['available', 'true'], ['price', '>=', 2000]])->get();
