@@ -60,6 +60,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $products_all = Product::where([['GroupProduct', '01 Плитка'],
             ['Producer_Brand', '!=', 'Kerama Marazzi'],
             ['Element_code', '!=', 'х9999286854'],
+            ['Element_code', '!=', 'х9999221101'],
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
@@ -85,7 +86,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         $products = $products_all->except($ids_cersanit_except);
         $products = $products->merge($blaze);
-
+//        dd($products);
 //      ==============================================
         $primavera = Primavera::where('country', '!=', 'Киргизия')->get();
 //      ==============================================
@@ -93,7 +94,16 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $absolut_gres = [];
 //      ==============================================
 //        $leedo = LeedoProduct::where('Sklad_Msk_LeeDo', '>', 0)->orWhere('Sklad_SPb_LeeDo', '>', 0)->get();
-        $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->orWhere([['Sklad_SPb_LeeDo', '>', 0], ['Category', 'like', 'Мозаика/%'], ['System_ID', '!=', '00-00003849']])->get();
+        $leedo = LeedoProduct::where([['Sklad_Msk_LeeDo', '>', 0],
+            ['Category', 'like', 'Мозаика/%'],
+            ['System_ID', '!=', '00-00003849'],
+            ['System_ID', '!=', '00-00002578'],
+            ])
+            ->orWhere([['Sklad_SPb_LeeDo', '>', 0],
+                ['Category', 'like', 'Мозаика/%'],
+                ['System_ID', '!=', '00-00003849'],
+                ['System_ID', '!=', '00-00002578'],
+                ])->get();
 //        $leedo = [];
 //        dd($leedo);
 //      ==============================================
@@ -103,7 +113,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['artikul', '!=', 'DWU09BNT017'],
             ['artikul', '!=', 'GFA57SLC00L'],
             ['artikul', '!=', 'PWA11ALD1'],
+            ['artikul', '!=', 'BWA60ALD404'],
         ])->get();
+//        dd($altacera);
 //      ==============================================
         $ntceramic = NtCeramicNoImgs::all();
 //        $ntceramic = [];
