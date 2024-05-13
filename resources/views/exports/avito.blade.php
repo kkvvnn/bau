@@ -88,12 +88,7 @@
             if ($product->Element_Code == 'х9999293160') {
                 $description .= '<p>--------------------</p>';
                 $date = date('d.m.Y');
-                $description .= '<p>&#9989; На утро '.$date.' остаток 12,24 '.$product->MainUnit.'</p>';
-                $description .= '<p>--------------------</p>';
-            } elseif ($product->Element_Code == 'х9999293158') {
-                $description .= '<p>--------------------</p>';
-                $date = date('d.m.Y');
-                $description .= '<p>&#9989; На утро '.$date.' остаток 1,44 '.$product->MainUnit.'</p>';
+                $description .= '<p>&#9989; На утро '.$date.' есть в наличии '.$product->MainUnit.'</p>';
                 $description .= '<p>--------------------</p>';
             } else {
                 $description .= '<p>--------------------</p>';
