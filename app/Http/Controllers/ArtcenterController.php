@@ -35,7 +35,8 @@ class ArtcenterController extends Controller
         $name = 'import/artcenter/artcenter_'.$date.'.xlsx';
 
         Excel::import(new ArtcenterImport(), $name);
-        return redirect('/')->with('success', 'All good!');
+//        return redirect('/')->with('success', 'All good!');
+        return redirect()->route('artcenter.index')->with('success', 'Таблица Artcenter обновлена. Ok!');
     }
 
     public function index()
