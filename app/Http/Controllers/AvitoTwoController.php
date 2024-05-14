@@ -14,7 +14,7 @@ class AvitoTwoController extends Controller
     public function export(Request $request, $foto = '')
     {
         set_time_limit(90);
-        $phone = $request->phone??"79151274000";
+        $phone = $request->phone??"+79151274000";
         $name = $request->name??"Родион";
         $contact_method = $request->contact_method??"По телефону и в сообщениях";
         $address = $request->address??"Москва, Арбатско-Покровская линия, метро Славянский бульвар";

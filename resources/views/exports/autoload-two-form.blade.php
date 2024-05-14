@@ -13,7 +13,7 @@
             <form action="{{route('avito-export-two')}}">
                 <div class="mb-3">
                     <label for="phone" class="form-label">Телефон</label>
-                    <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp" value="79151274000">
+                    <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp" value="+79151274000">
                     <div id="phoneHelp" class="form-text">Телефон будет указан в объявлениях Avito.</div>
                 </div>
                 <div class="mb-3">
