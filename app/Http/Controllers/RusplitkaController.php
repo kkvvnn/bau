@@ -115,6 +115,7 @@ class RusplitkaController extends Controller
             ]);
         }
 
+        return redirect()->route('rusplitka.index')->with('success', 'Таблица Rusplitka обновлена. Ok!');
     }
 
     public function test()

@@ -131,8 +131,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //        $technotile = TechnotileProduct::where([['available', 'true'], ['price', '>=', 2000]])->get();
         $technotile = [];
 //      ==============================================
-        $aquafloor = AquaFloor::where('title', 'not like', '%Подложка%')->get();
-
+        $aquafloor = AquaFloor::where([['title', 'not like', '%Подложка%'],
+            ['vendor_code', '!=', 'AF4078NXL'],
+            ])->get();
         //      ---------------------PIXMOSAIC---------------------
 
         $pixmosaics = PixmosaicNew::where('price', '!=', 0)
