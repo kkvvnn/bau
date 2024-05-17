@@ -26,6 +26,7 @@
         <th>FinishingSubType</th>
         <th>Condition</th>
         <th>VideoUrl</th>
+        <th>MixesType</th>
     </tr>
     </thead>
     <tbody>
@@ -90,7 +91,7 @@
             if ($product->Element_Code == 'х9999293160') {
                 $description .= '<p>--------------------</p>';
                 $date = date('d.m.Y');
-                $description .= '<p>&#9989; На утро '.$date.' есть в наличии '.$product->MainUnit.'</p>';
+                $description .= '<p>&#9989; На утро '.$date.' есть в наличии </p>';
                 $description .= '<p>--------------------</p>';
             } else {
                 $description .= '<p>--------------------</p>';
@@ -493,6 +494,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----BAUSERVICE-END----}}
@@ -710,6 +712,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----PRIMAVERA-END----}}
@@ -887,6 +890,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----ABSOLUT_GRES-END----}}
@@ -1063,6 +1067,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----LEEDO-END----}}
@@ -1351,6 +1356,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----ALTACERA-END----}}
@@ -1521,6 +1527,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----NTCERAMIC-END----}}
@@ -1626,6 +1633,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----KEVIS-END----}}
@@ -1742,6 +1750,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----RUSPLITKA-END----}}
@@ -1900,6 +1909,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----TECHNOTILE-END----}}
@@ -2052,6 +2062,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----AQUAFLOOR-END----}}
@@ -2230,6 +2241,7 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td>{{$video_url}}</td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----PIXMOSAIC-END----}}
@@ -2506,8 +2518,152 @@
             <td>{{$FinishingSubType}}</td>
             <td>Новое</td>
             <td></td>
+            <td></td> {{--MixesType--}}
         </tr>
     @endforeach
     {{-----ARTCENTER-END----}}
+
+    {{-----KERABELLEZZA-----}}
+    @foreach($kerabellezza as $product)
+        @php
+            $FinishingType = '';
+            $FinishingSubType = '';
+
+            $description = '';
+
+            if($add_description_first != '') {
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
+            }
+
+            $description .= '<p>Затирка эпоксидная для плитки, керамогранита, мозаики KeraBellezza. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+
+
+//            $title = str_replace('Плитка ', 'Керамогранит ', $product->title);
+//            $title = $product->title;
+            $title = str_replace('кг.', 'кг', $product->title);
+            $title .= ' ' . $product->color;
+
+            $description .= '<p><strong> ' . $title .  ' </strong></p>';
+
+
+//            $description .= '<p>--------------------</p>';
+//            $date = date('d.m.Y');
+//            if ($product->moscow_stock > 0) {
+//                $description .= '<p>&#9989; На утро '.$date.' остаток '.round($product->moscow_stock, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+//            }
+//            $description .= '<p>--------------------</p>';
+
+
+            $description .= '<p><em>Цена указана за 1 шт</em></p>';
+
+                $description .= '<ul>';
+
+                if($product->color != null) {
+                $description .= '<li><strong>Цвет: </strong>' . $product->color . ' </li>';
+                }
+                if($product->parent->massa != null) {
+                $description .= '<li><strong>Вес: </strong>' . $product->parent->massa . ' </li>';
+                }
+                if($product->parent->shov != null) {
+                $description .= '<li><strong>Ширина шва: </strong>' . $product->parent->shov . ' </li>';
+                }
+                if($product->parent->froze_resistant != null) {
+                $description .= '<li><strong>Морозостойкость: </strong>' . $product->parent->froze_resistant . ' </li>';
+                }
+                if($product->parent->vid_rabot != null) {
+                $description .= '<li><strong>Вид работ: </strong>' . $product->parent->vid_rabot . ' </li>';
+                }
+                if($product->parent->country_proizv != null) {
+                $description .= '<li><strong>Страна производства: </strong>' . $product->parent->country_proizv . ' </li>';
+                }
+                if($product->parent->brand != null) {
+                $description .= '<li><strong>Производитель: </strong>' . $product->parent->brand . '</li>';
+                }
+
+                $description .= '</ul><br>';
+
+            $description .= '<p>'. nl2br($product->parent->description) .'</p>';
+
+            $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+            $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, инженерная доска и др.)</p>';
+            $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+
+            if($add_description != '') {
+            $description .= '<p>'.nl2br($add_description).'</p>';
+            }
+
+
+            $keywords = 'эпоксидная затирка для плитки затирка эпоксидная для керамогранита эпоксидная затирка для мозаики эпоксидка затирка эпоксидная недорогая для плитки эпоксидная затирка';
+
+            $description .= '<p>_____________________</p>';
+            $description .= '<p><em>' . $keywords . '</em></p>';
+        @endphp
+
+        @php
+            //    ------------------------------------------FOTO-------------------------------------
+
+                        $img_full = '';
+                        $img_full .= $product->image;
+
+        @endphp
+
+        @php
+            $title = str_replace('кг.', 'кг', $product->title);
+            $title .= ' ' . $product->color;
+
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Design ', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Color Neutral ', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace(' Нейтральный', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('цветная ', '', $title);
+            }
+        @endphp
+
+        @php
+            //--------------------------------------------------------------------------
+//                        $price = round($product->price * 0.90, -1);
+                        $price = $product->price;
+            //----------------------------------------------------------------------------
+
+        $code = $product->parent_code . '_' . $product->color;
+        @endphp
+
+        <tr>
+            <td></td>
+            <td>{{$code}}</td>
+            <td>{{ $contact_method }}</td>
+            <td>Да</td>
+            <td>466694981</td>
+            <td>kkvvnn89@gmail.com</td>
+            <td>Активно</td>
+            <td>{{ $name }}</td>
+            <td>{{$price}}</td>
+            <td>Напольные решения</td>
+            <td>{{$title}}</td>
+            <td>{{$img_full}}</td> <!-- -->
+            <td>Строительные смеси</td>
+            <td>Стройматериалы</td>
+            <td>Ремонт и строительство</td>
+            <td>Package</td>
+            <td>{{$FinishingType}}</td>
+            <td>{{ $phone }}</td> <!-- -->
+            <td>{{$description}}</td> <!-- -->
+            <td>{{ $address }}</td>
+            <td>Товар от производителя</td>
+            <!-- <td>{{$date_next_month}}</td> -->
+            <td>{{$FinishingSubType}}</td>
+            <td>Новое</td>
+            <td></td>
+            <td>Затирки</td> {{--MixesType--}}
+        </tr>
+    @endforeach
+    {{-----KERABELLEZZA-END----}}
+
     </tbody>
 </table>

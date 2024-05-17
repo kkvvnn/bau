@@ -7,6 +7,7 @@ use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
+use App\Models\Kerabellezza2;
 use App\Models\Kevis;
 use App\Models\PixmosaicNew;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
@@ -149,6 +150,15 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['vendor_code', '!=', 'Spenze Gris 60x120'],
         ])->get();
 
+        //      ---------------------KERABELLEZZA---------------------
+
+        $kerabellezza = Kerabellezza2::where([
+            ['type', '!=', 'product'],
+            ['image', '!=', ''],
+            ['parent_code', '!=', '107073'],
+            ['parent_code', '!=', '107072'],
+        ])
+            ->get();
 
         if ($this->foto == '') {
             return view('exports.avito', [
@@ -165,6 +175,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'aquafloor' => $aquafloor,
                 'pixmosaics' => $pixmosaics,
                 'artcenter' => $artcenter,
+                'kerabellezza' => $kerabellezza,
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,
