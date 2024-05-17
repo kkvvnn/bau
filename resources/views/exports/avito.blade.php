@@ -1183,24 +1183,28 @@
                                 if($balance_moscow) {
                                     $description .= '<li>Москва: ' . $balance_moscow . ' ' . $unit . '</li>';
                                 }
+                                continue;
                             }
                             if ($balance['depot_id'] == '64c17eef-42d6-11e8-812c-10feed0262c6') {
                                 $balance_krasnodar = (float)$balance['free_balance'];
                                 if($balance_krasnodar) {
                                     $description .= '<li>Краснодар: ' . $balance_krasnodar . ' ' . $unit . '</li>';
                                 }
+                                continue;
                             }
                             if ($balance['depot_id'] == 'd1666584-d536-11ec-80f8-00155d5d5700') {
                                 $balance_kazan = (float)$balance['free_balance'];
                                 if($balance_kazan) {
                                     $description .= '<li>Казань: ' . $balance_kazan . ' ' . $unit . '</li>';
                                 }
+                                continue;
                             }
                             if ($balance['depot_id'] == '2170fa9f-bcdc-11ed-8167-00155d5d5700') {
                                 $balance_spb = (float)$balance['free_balance'];
                                 if($balance_spb) {
                                     $description .= '<li>СПб: ' . $balance_spb . ' ' . $unit . '</li>';
                                 }
+                                continue;
                             }
                         }
                         $description .= '</ul><p><em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
