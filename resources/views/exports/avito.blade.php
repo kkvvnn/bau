@@ -4,8 +4,8 @@
         <th>AvitoId</th>
         <th>Id</th>
         <th>ContactMethod</th>
-        <th>InternetCalls</th>
-        <th>CallsDevices</th>
+{{--        <th>InternetCalls</th>--}}
+{{--        <th>CallsDevices</th>--}}
         <th>EMail</th>
         <th>AvitoStatus</th>
         <th>ManagerName</th>
@@ -472,8 +472,8 @@
             <td></td>
             <td>{{ $product->Element_Code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -691,8 +691,8 @@
             <td></td>
             <td>{{ $product->vendor_code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -869,8 +869,8 @@
             <td></td>
             <td>{{ $code_avito }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -1046,8 +1046,8 @@
             <td></td>
             <td>{{ $product->System_ID }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -1339,8 +1339,8 @@
             <td></td>
             <td>{{ $code_avito }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -1510,8 +1510,8 @@
             <td></td>
             <td>{{ $product->vendor_code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -1616,8 +1616,8 @@
             <td></td>
             <td>{{ $product->code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -1733,8 +1733,8 @@
             <td></td>
             <td>{{ $code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -1892,8 +1892,8 @@
             <td></td>
             <td>{{ $code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -2045,8 +2045,8 @@
             <td></td>
             <td>{{ $code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -2224,8 +2224,8 @@
             <td></td>
             <td>{{ $element_code }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -2500,8 +2500,8 @@
             <td></td>
             <td>{{ str_replace('ЦБ-', '', $product->code).'_artcenter' }}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
@@ -2642,8 +2642,8 @@
             <td></td>
             <td>{{$code}}</td>
             <td>{{ $contact_method }}</td>
-            <td>Да</td>
-            <td>466694981</td>
+{{--            <td>Да</td>--}}
+{{--            <td>466694981</td>--}}
             <td>kkvvnn89@gmail.com</td>
             <td>Активно</td>
             <td>{{ $name }}</td>
