@@ -410,11 +410,11 @@
         @php
             if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
 //                $price = round($product->RMPrice * 0.9, -1);
-//                $price = $product->RMPrice;
-                $price = '';
+                $price = $product->RMPrice;
+//                $price = '';
             } else {
-//                $price = $product->RMPrice;
-                $price = '';
+                $price = $product->RMPrice;
+//                $price = '';
             }
         @endphp
 
