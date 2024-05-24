@@ -60,13 +60,16 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         $products_all = Product::where([['GroupProduct', '01 Плитка'],
             ['Producer_Brand', '!=', 'Kerama Marazzi'],
+            ['Producer_Brand', '!=', 'Шахтинская плитка'],
+            ['Producer_Brand', '!=', ''],
             ['Element_code', '!=', 'х9999286854'],
             ['Element_code', '!=', 'х9999221101'],
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
             ['balance', 1],
-            ['RMPrice', '>=', '500'],
+            ['RMPrice', '>=', '650'],
+            ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
         ])
             ->whereColumn('RMPrice', '>', 'Price')
