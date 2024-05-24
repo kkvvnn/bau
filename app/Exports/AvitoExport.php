@@ -162,6 +162,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['parent_code', '!=', '107072'],
         ])
             ->get();
+        $kerabellezza = [];
 
         if ($this->foto == '') {
             return view('exports.avito', [
