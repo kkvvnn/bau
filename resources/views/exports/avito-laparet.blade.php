@@ -416,6 +416,9 @@
                 $price = $product->RMPrice;
 //                $price = '';
             }
+
+            $price = $product->RMPrice; //power RRC
+
         @endphp
 
         @php
