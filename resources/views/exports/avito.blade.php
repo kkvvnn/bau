@@ -1684,10 +1684,17 @@
                     .$product->name.' ['.$product->size_b.'x'.$product->size_a.'] ('
                     .$product->collection->country.')</strong></p>';
 
+            $bronnicy_stock = (float)$product->rest_skald_bronnicy - (float)$product->rest_skald_bronnicy_rezerv;
+            $ljubercy_stock = (float)$product->rest_skald_ljubercy - (float)$product->rest_skald_ljubercy_rezerv;
+            $sklad_20t_stock = (float)$product->rest_skald_20t - (float)$product->rest_skald_20t_rezerv;
+            $krasnodar_stock = (float)$product->rest_skald_krasnodar - (float)$product->rest_skald_krasnodar_rezerv;
+
+            $moscow_stock = $bronnicy_stock + $ljubercy_stock + $sklad_20t_stock;
+
             $description .= '<p>--------------------</p>';
             $date = date('d.m.Y');
             if ($product->rest_real_free > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' остаток '.$product->rest_real_free.' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' остаток '.$moscow_stock.' '.$product->unit.' (Москва); '.$krasnodar_stock.' '.$product->unit.' (Краснодар)  <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
             }
             $description .= '<p>--------------------</p>';
 
@@ -1711,8 +1718,8 @@
                 if($product->collection->country != null) {
                 $description .= '<li><strong>Страна производства: </strong>' . $product->collection->country . '</li>';
                 }
-                if($product->artikul != null) {
-                $description .= '<li><strong>Артикул: </strong>' . $product->artikul . '</li>';
+                if($product->articul != null) {
+                $description .= '<li><strong>Артикул: </strong>' . $product->articul . '</li>';
                 }
 
                 $description .= '</ul><br>';

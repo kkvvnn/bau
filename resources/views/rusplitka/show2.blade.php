@@ -95,7 +95,21 @@
                     <br>
 
 
-                    <h5 class="mt-4 mb-0">Остаток {{$product->rest_real_free}} {{$product->unit}}</h5>
+{{--                    <h5 class="mt-4 mb-0">Остаток {{$product->rest_real_free}} {{$product->unit}}</h5>--}}
+
+                    @if($bronnicy_stock)
+                        <p class="mb-0 mt-0 fs-5 text-body-secondary">Бронницы: {{$bronnicy_stock}} {{$product->unit}}</p>
+                    @endif
+                    @if($ljubercy_stock)
+                        <p class="mb-0 mt-0 fs-5 text-body-secondary">Люберцы: {{$ljubercy_stock}} {{$product->unit}}</p>
+                    @endif
+                    @if($sklad_20t_stock)
+                        <p class="mb-0 mt-0 fs-5 text-body-secondary">20T: {{$sklad_20t_stock}} {{$product->unit}}</p>
+                    @endif
+                    @if($krasnodar_stock)
+                        <p class="mb-0 mt-0 fs-5 text-body-secondary">Краснодар: {{$krasnodar_stock}} {{$product->unit}}</p>
+                    @endif
+                    <p class="mt-0 fs-5 text-body-secondary">Общий остаток: {{$product->rest_real_free}} {{$product->unit}}</p>
 
                     <p class="mt-4">Актуально на <span
                             class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>

@@ -38,10 +38,11 @@ class RusplitkaController extends Controller
 
     public function saveXmlFile()
     {
-        $url = "https://opt.rusplitka.ru/opt-feed.xml";
+//        $url = "https://opt.rusplitka.ru/opt-feed.xml";
+        $url = "https://rusplitka.ru/upload/feed/opt-feed.xml";
 
         $contents = file_get_contents($url);
-        $contents = iconv("windows-1251","UTF-8", $contents);
+//        $contents = iconv("windows-1251","UTF-8", $contents);
         Storage::disk('local')->put('import/rusplitka/example.xml', $contents);
 
     }
@@ -49,7 +50,7 @@ class RusplitkaController extends Controller
     public function xml_to_array() : array
     {
         $xmlString = Storage::disk('local')->get('import/rusplitka/example.xml');
-        $xmlString = iconv("UTF-8", "windows-1251", $xmlString);
+//        $xmlString = iconv("UTF-8", "windows-1251", $xmlString);
         $xmlObject = simplexml_load_string($xmlString, null, LIBXML_NOCDATA);
 
         $json = json_encode($xmlObject);
@@ -78,7 +79,7 @@ class RusplitkaController extends Controller
                 'name' => $collection['name'],
                 'country' => $collection['country_of_origin'],
                 'brand' => $collection['brand'],
-                'is_new' => $collection['is_new'],
+                'is_new' => json_encode($collection['is_new']),
             ]);
         }
 
@@ -109,8 +110,12 @@ class RusplitkaController extends Controller
                 'price_rozn' => $product['price_rozn'],
                 'rest_skald_ljubercy' => $product['rest_skald_ljubercy'] ?? null,
                 'rest_skald_ljubercy_rezerv' => $product['rest_skald_ljubercy_rezerv'] ?? null,
-                'rest_skald_bronnicy' => $product['rest_skald_bronnicy'],
+                'rest_skald_bronnicy' => $product['rest_skald_bronnicy'] ?? null,
                 'rest_skald_bronnicy_rezerv' => $product['rest_skald_bronnicy_rezerv'] ?? null,
+                'rest_skald_20t' => $product['rest_skald_20t'] ?? null,
+                'rest_skald_20t_rezerv' => $product['rest_skald_20t_rezerv'] ?? null,
+                'rest_skald_krasnodar' => $product['rest_skald_krasnodar'] ?? null,
+                'rest_skald_krasnodar_rezerv' => $product['rest_skald_krasnodar_rezerv'] ?? null,
                 'rest_real_free' => $product['rest_real_free'] ?? null,
             ]);
         }
@@ -158,7 +163,22 @@ class RusplitkaController extends Controller
             $text_color = 'text-danger';
         }
 
-        return view('rusplitka.show2', compact('product', 'imgs', 'img_collection', 'text_color'));
+        $bronnicy_stock = (float)$product->rest_skald_bronnicy - (float)$product->rest_skald_bronnicy_rezerv;
+        $ljubercy_stock = (float)$product->rest_skald_ljubercy - (float)$product->rest_skald_ljubercy_rezerv;
+        $sklad_20t_stock = (float)$product->rest_skald_20t - (float)$product->rest_skald_20t_rezerv;
+        $krasnodar_stock = (float)$product->rest_skald_krasnodar - (float)$product->rest_skald_krasnodar_rezerv;
+
+//        return view('rusplitka.show2', compact('product', 'imgs', 'img_collection', 'text_color'));
+        return view('rusplitka.show2', [
+            'product' => $product,
+            'imgs' => $imgs,
+            'img_collection' => $img_collection,
+            'text_color' => $text_color,
+            'bronnicy_stock' => $bronnicy_stock,
+            'ljubercy_stock' => $ljubercy_stock,
+            'sklad_20t_stock' => $sklad_20t_stock,
+            'krasnodar_stock' => $krasnodar_stock,
+        ]);
     }
 
     public function export()

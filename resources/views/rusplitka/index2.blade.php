@@ -69,8 +69,27 @@
 {{--                                @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)--}}
 {{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>--}}
 {{--                                @endif--}}
+                                @php
+                                    $bronnicy_stock = (float)$product->rest_skald_bronnicy - (float)$product->rest_skald_bronnicy_rezerv;
+                                    $ljubercy_stock = (float)$product->rest_skald_ljubercy - (float)$product->rest_skald_ljubercy_rezerv;
+                                    $sklad_20t_stock = (float)$product->rest_skald_20t - (float)$product->rest_skald_20t_rezerv;
+                                    $krasnodar_stock = (float)$product->rest_skald_krasnodar - (float)$product->rest_skald_krasnodar_rezerv;
+                                @endphp
 
-                                <p class="mb-0 fs-5 text-body-secondary">Остаток {{$product->rest_real_free}} {{$product->unit}}</p>
+                                @if($bronnicy_stock)
+                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Бронницы: {{$bronnicy_stock}} {{$product->unit}}</p>
+                                @endif
+                                @if($ljubercy_stock)
+                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Люберцы: {{$ljubercy_stock}} {{$product->unit}}</p>
+                                @endif
+                                @if($sklad_20t_stock)
+                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">20T: {{$sklad_20t_stock}} {{$product->unit}}</p>
+                                @endif
+                                @if($krasnodar_stock)
+                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Краснодар: {{$krasnodar_stock}} {{$product->unit}}</p>
+                                @endif
+                                <p class="mt-0 fs-5 text-body-secondary">Общий остаток: {{$product->rest_real_free}} {{$product->unit}}</p>
+
 
 
                                 <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
