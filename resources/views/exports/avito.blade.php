@@ -1188,27 +1188,15 @@
                         foreach ($balances as $balance) {
                             if ($balance['depot_id'] == '8c279853-d2c9-11e8-80c3-0cc47afc14e9') {
                                 $balance_moscow = (float)$balance['free_balance'];
-                                continue;
-                            } else {
-                                $balance_moscow = 0;
                             }
                             if ($balance['depot_id'] == '64c17eef-42d6-11e8-812c-10feed0262c6') {
                                 $balance_krasnodar = (float)$balance['free_balance'];
-                                continue;
-                            } else {
-                                $balance_krasnodar = 0;
                             }
                             if ($balance['depot_id'] == 'd1666584-d536-11ec-80f8-00155d5d5700') {
                                 $balance_kazan = (float)$balance['free_balance'];
-                                continue;
-                            } else {
-                                $balance_kazan = 0;
                             }
                             if ($balance['depot_id'] == '2170fa9f-bcdc-11ed-8167-00155d5d5700') {
                                 $balance_spb = (float)$balance['free_balance'];
-                                continue;
-                            } else {
-                                $balance_spb = 0;
                             }
                         }
 
