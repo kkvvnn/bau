@@ -1176,41 +1176,57 @@
                         $date = date('d.m.Y');
                         $description .= '<p>--------------------</p>';
                         $description .= '<p>&#9989; На утро '.$date.' остаток: </p><ul>';
+
+
                         $balances = $product->balance;
+
+                        $balance_moscow = 0;
+                        $balance_krasnodar = 0;
+                        $balance_kazan = 0;
+                        $balance_spb = 0;
+
                         foreach ($balances as $balance) {
                             if ($balance['depot_id'] == '8c279853-d2c9-11e8-80c3-0cc47afc14e9') {
                                 $balance_moscow = (float)$balance['free_balance'];
-                                if($balance_moscow) {
-                                    $description .= '<li>Москва: ' . $balance_moscow . ' ' . $unit . '</li>';
-                                    $balance_moscow = 0;
-                                }
                                 continue;
+                            } else {
+                                $balance_moscow = 0;
                             }
                             if ($balance['depot_id'] == '64c17eef-42d6-11e8-812c-10feed0262c6') {
                                 $balance_krasnodar = (float)$balance['free_balance'];
-                                if($balance_krasnodar) {
-                                    $description .= '<li>Краснодар: ' . $balance_krasnodar . ' ' . $unit . '</li>';
-                                    $balance_krasnodar = 0;
-                                }
                                 continue;
+                            } else {
+                                $balance_krasnodar = 0;
                             }
                             if ($balance['depot_id'] == 'd1666584-d536-11ec-80f8-00155d5d5700') {
                                 $balance_kazan = (float)$balance['free_balance'];
-                                if($balance_kazan) {
-                                    $description .= '<li>Казань: ' . $balance_kazan . ' ' . $unit . '</li>';
-                                    $balance_kazan = 0;
-                                }
                                 continue;
+                            } else {
+                                $balance_kazan = 0;
                             }
                             if ($balance['depot_id'] == '2170fa9f-bcdc-11ed-8167-00155d5d5700') {
                                 $balance_spb = (float)$balance['free_balance'];
-                                if($balance_spb) {
-                                    $description .= '<li>СПб: ' . $balance_spb . ' ' . $unit . '</li>';
-                                    $balance_spb = 0;
-                                }
                                 continue;
+                            } else {
+                                $balance_spb = 0;
                             }
                         }
+
+                        if($balance_moscow) {
+                            $description .= '<li>Москва: ' . $balance_moscow . ' ' . $unit . '</li>';
+                        }
+                        if($balance_krasnodar) {
+                            $description .= '<li>Краснодар: ' . $balance_krasnodar . ' ' . $unit . '</li>';
+                        }
+                        if($balance_kazan) {
+                            $description .= '<li>Казань: ' . $balance_kazan . ' ' . $unit . '</li>';
+                        }
+                        if($balance_spb) {
+                            $description .= '<li>СПб: ' . $balance_spb . ' ' . $unit . '</li>';
+                        }
+
+
+
                         $description .= '</ul><p><em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
                         $description .= '<p>--------------------</p>';
 
