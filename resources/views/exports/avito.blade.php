@@ -1182,6 +1182,7 @@
                                 $balance_moscow = (float)$balance['free_balance'];
                                 if($balance_moscow) {
                                     $description .= '<li>Москва: ' . $balance_moscow . ' ' . $unit . '</li>';
+                                    $balance_moscow = 0;
                                 }
                                 continue;
                             }
@@ -1189,6 +1190,7 @@
                                 $balance_krasnodar = (float)$balance['free_balance'];
                                 if($balance_krasnodar) {
                                     $description .= '<li>Краснодар: ' . $balance_krasnodar . ' ' . $unit . '</li>';
+                                    $balance_krasnodar = 0;
                                 }
                                 continue;
                             }
@@ -1196,6 +1198,7 @@
                                 $balance_kazan = (float)$balance['free_balance'];
                                 if($balance_kazan) {
                                     $description .= '<li>Казань: ' . $balance_kazan . ' ' . $unit . '</li>';
+                                    $balance_kazan = 0;
                                 }
                                 continue;
                             }
@@ -1203,6 +1206,7 @@
                                 $balance_spb = (float)$balance['free_balance'];
                                 if($balance_spb) {
                                     $description .= '<li>СПб: ' . $balance_spb . ' ' . $unit . '</li>';
+                                    $balance_spb = 0;
                                 }
                                 continue;
                             }
