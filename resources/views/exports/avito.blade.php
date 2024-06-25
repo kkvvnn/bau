@@ -1107,12 +1107,12 @@
             //        --------------------------------------------------------------
                         if($product->price !== null) {
                             if ($product->sale == 0) {
-//                                $price = round($product->price->price * 0.93, -1);
-                                $price = $product->price->price;
+                                $price = round($product->price->price * 0.95, -1);
+//                                $price = $product->price->price;
                             } else {
                                 $price = $product->price->price;
                             }
-                            $price = $product->price->price;
+//                            $price = $product->price->price;
                         } else {
                             $price = '';
                         }
