@@ -71,6 +71,10 @@ Route::get('/avito_export_two/{foto?}', [AvitoTwoController::class, 'export'])->
 Route::view('/avito', 'exports.autoload-form');
 Route::view('/avito-laparet', 'exports.autoload-two-form');
 
+//----- CREATE_AVITO_FILE  KAZAN  -----
+Route::view('/avito-kazan', 'exports.autoload-kazan-form');
+Route::get('/avito_export_kazan/{foto?}', [\App\Http\Controllers\AvitoKazanController::class, 'export'])->name('avito-export-kazan');
+
 //----- CREATE_AVITO_FILE  SPB  -----
 Route::view('/avito-spb', 'exports.autoload-spb-form');
 Route::get('/avito_export_spb/{foto?}', [AvitoSpbController::class, 'export'])->name('avito-export-spb');
