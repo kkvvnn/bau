@@ -346,22 +346,13 @@
             if (mb_strlen($title) < 42) { $title = $product->Producer_Brand . ' ' . $title; }
 
 //--------------------------------------------------------------------------
-            if ($product->Producer_Brand == 'Laparet') {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * 0.90, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            } elseif ($product->Producer_Brand == 'Vitra') {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * 0.90, -1);
-                } else {
-                    $price = $product->RMPrice;
-                }
-            } else {
-                $price = $product->RMPrice;
-            }
+//                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+//                    $price = round($product->RMPrice * 0.90, -1);
+//                } else {
+//                    $price = $product->RMPrice;
+//                }
 
+            $price = $product->RMPrice;
 //----------------------------------------------------------------------------
             $code = $product->Element_Code . '_kzn';
         @endphp
