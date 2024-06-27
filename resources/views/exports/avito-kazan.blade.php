@@ -306,8 +306,8 @@
 //            }
 
             $img_full = $img1;
-            if ($img_coll_1 != null) {
-            $img_full .= ' | ' . $img_coll_1;
+            if ($img_coll != null) {
+            $img_full .= ' | ' . $img_coll;
             }
 
             if ($img4 != null) {
