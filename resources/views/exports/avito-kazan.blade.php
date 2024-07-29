@@ -156,7 +156,7 @@
                 $pod = '';
             }
 
-            $keywords .= $pod . ', ';
+            $keywords .= $pod . ' ';
 
 
             $lenght = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
@@ -164,9 +164,9 @@
 
             $size = '';
 
-            $size .= $type . ' ' . $lenght . '*' . $height . ', ';
+            $size .= $type . ' ' . $lenght . '*' . $height . ' ';
             if ($lenght != $height) {
-                $size .= $type . ' ' . $height . '*' . $lenght . ', ';
+                $size .= $type . ' ' . $height . '*' . $lenght . ' ';
             }
 
             if($product->Height != 0 && $product->Lenght != 0) {
@@ -174,13 +174,13 @@
             }
 
             if ($product->Producer_Brand == 'Laparet') {
-                $keywords .= $type . ' лапарет, ';
+                $keywords .= $type . ' лапарет ';
             } elseif ($product->Producer_Brand == 'Cersanit') {
-                $keywords .= $type . ' церсанит, ';
+                $keywords .= $type . ' церсанит ';
             }
 
              if((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {
-                $naznachenie = $type . ' для пола, ' . $type . ' для ванной';
+                $naznachenie = $type . ' для пола ' . $type . ' для ванной';
             }
             elseif(stripos($product->Field_of_Application, 'пол') !== false) {
                 $naznachenie = $type . ' для пола';
@@ -191,7 +191,7 @@
                 $naznachenie = '';
             }
 
-            $keywords .= $naznachenie . ', ';
+            $keywords .= $naznachenie . ' ';
 
             $surface = $product->Surface;
             $surf = '';
@@ -210,10 +210,10 @@
             $keywords .= $type . ' ' .mb_strtolower($surf) . ', ';
 
             if(stripos($product->Architectural_surface, 'Стена') !== false) {
-                $keywords .= $type . ' для стен' . ', ';
+                $keywords .= $type . ' для стен' . ' ';
             }
             if(stripos($product->Architectural_surface, 'Пол') !== false) {
-                $keywords .= $type . ' для пола' . ', ';
+                $keywords .= $type . ' для пола' . ' ';
             }
 
             $color_baza = $product->Color;
@@ -232,37 +232,38 @@
                 }
             }
 
-            $keywords .= $type . ' ' .mb_strtolower($color) . ', ';
+            $keywords .= $type . ' ' .mb_strtolower($color) . ' ';
 
-            $keywords .= $product->Producer_Brand . ' ' . $type . ', ';
+            $keywords .= $product->Producer_Brand . ' ' . $type . ' ';
 
             $owner_code = $product->Owner_Article;
 
             if ($owner_code != null) {
-                $keywords .= $type . ' ' . $owner_code . ', ';
+                $keywords .= $type . ' ' . $owner_code . ' ';
             }
 
             $country = $product->Country_of_manufacture;
 
             if ($country != null) {
-                $keywords .= $type . ' ' . $country . ', ';
+                $keywords .= $type . ' ' . $country . ' ';
             }
 
             if ($product->Color == 'Белый' && $product->DesignValue == 'Мрамор') {
-                $keywords .= $type . ' белый мрамор, ';
-                $keywords .= $type . ' под мрамор белый, ';
+                $keywords .= $type . ' белый мрамор ';
+                $keywords .= $type . ' под мрамор белый ';
             }
 
             if ($product->Color == 'Черный' && $product->DesignValue == 'Мрамор') {
-                $keywords .= $type . ' черный мрамор, ';
-                $keywords .= $type . ' под мрамор черный, ';
+                $keywords .= $type . ' черный мрамор ';
+                $keywords .= $type . ' под мрамор черный ';
             }
+
+            $keywords .= ' керамическая плитка Казань керамогранит Казань Лапарет Казань ';
 
             if ($type != 'декор') {
                 $description .= '<p>_____________</p>';
                 $description .= '<p><em>' . $keywords . '</em></p>';
             }
-
 
             $img1 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture);
 

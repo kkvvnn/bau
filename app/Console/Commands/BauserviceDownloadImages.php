@@ -43,13 +43,13 @@ class BauserviceDownloadImages extends Command
                 $where_pic = $picture_number_of;
             }
 
-            $products_count = Product::where(('Picture' . $where_pic), '!=', null)->count();
+            $products_count = Product::where(('Picture' . $where_pic), '!=', '')->count();
             $chunk_size = (int) round($products_count / 100);
 
             $bar = $this->output->createProgressBar(100);
             $bar->start();
 
-            Product::where(('Picture' . $where_pic), '!=', null)
+            Product::where(('Picture' . $where_pic), '!=', '')
                 ->chunk($chunk_size, function (Collection $products) use ($where_pic, $bar) {
                     $product_pic = 'Picture' . $where_pic;
                     foreach ($products as $product) {
@@ -61,8 +61,8 @@ class BauserviceDownloadImages extends Command
             $bar->finish();
 
         } catch (\Illuminate\Database\QueryException $exception) {
-            $this->call('up');
             $this->error($exception->getMessage());
+            $this->call('up');
         }
 
 //        $this->call('up');

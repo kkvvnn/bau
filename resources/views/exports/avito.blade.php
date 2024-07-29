@@ -1383,6 +1383,7 @@
         @php
             $price = $product->price;
             $price = round($price * 0.93, -1);
+            $price = '';
 //                --------------------------
             $title = $product->referer->title;
 //                -----------------------------
