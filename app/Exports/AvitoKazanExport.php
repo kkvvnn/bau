@@ -57,7 +57,7 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
 //        $products = BauserviceSpb::where([['GroupProduct', '01 Плитка'],['Producer_Brand', 'Laparet'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%ступен%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
 
         $products = Product::where('GroupProduct', '=', '01 Плитка')
-            ->where('RMPrice', '>=', 500)
+            ->where('RMPrice', '>=', 600)
             ->where('Picture', '!=', '')
             ->where('Producer_Brand', '=', 'Laparet')
             ->whereColumn('RMPrice', '>', 'Price')
