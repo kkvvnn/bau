@@ -119,8 +119,11 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['artikul', '!=', 'PWA11ALD1'],
             ['artikul', '!=', 'BWA60ALD404'],
             ['artikul', '!=', 'WT9VIE11'],
-        ])->get();
-//        dd($altacera[0]->balance);
+        ])->get()
+            ->filter(function (AltaceraTovarAvailable $altaceraTovarAvailable) {
+                return $altaceraTovarAvailable->price != null;
+            });
+//        dd($altacera);
 //      ==============================================
         $ntceramic = NtCeramicNoImgs::all();
 //        $ntceramic = [];

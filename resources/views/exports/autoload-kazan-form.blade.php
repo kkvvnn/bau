@@ -22,13 +22,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Адрес размещения</label>
-                    <input type="text" class="form-control" id="address" name="address" value="Республика Татарстан, Казань, улица Габдуллы Тукая, 57">
+{{--                    <input type="text" class="form-control" id="address" name="address" value="Республика Татарстан, Казань, улица Габдуллы Тукая, 57">--}}
+                    <input type="text" class="form-control" id="address" name="address" value="Республика Татарстан, Казань, улица Каюма Насыри">
                 </div>
                 <div class="mb-3">
                     <label for="contact_method" class="form-label">Способ связи</label>
                     <select class="form-select" id="contact_method" name="contact_method">
-                        <option selected>В сообщениях</option>
-                        <option>По телефону и в сообщениях</option>
+                        <option  selected>По телефону и в сообщениях</option>
+                        <option>В сообщениях</option>
                         <option>По телефону</option>
                     </select>
                 </div>

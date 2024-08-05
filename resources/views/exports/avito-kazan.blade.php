@@ -64,8 +64,16 @@
 
             $description .= '<p>------------------</p>';
             $date = date('d.m.Y');
-            if ($product->balanceCount > 0) {
-            $description .= '<p>&#9193;  '.$date.' свободный остаток в Казани '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.' <em>(актуальную информацию уточняйте у менеджера)</em></p>';
+            if ($product->kzn->balanceCount > 0 && $product->balanceCount <= 0) {
+                $description .= '<p>&#9193;  '.$date.' свободный остаток в Казани '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.' </p>';
+                $description .= '<p><em>(актуальную информацию уточняйте у менеджера)</em></p>';
+            } elseif ($product->kzn->balanceCount > 0 && $product->balanceCount > 0) {
+                $description .= '<p>&#9193;  '.$date.' свободный остаток в Казани '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.' </p>';
+                $description .= '<p>&#9193;  '.$date.' свободный остаток в Москве '.round($product->balanceCount, 2).' '.$product->MainUnit.' </p>';
+                $description .= '<p><em>(актуальную информацию уточняйте у менеджера)</em></p>';
+            } elseif ($product->kzn->balanceCount <= 0 && $product->balanceCount > 0) {
+                $description .= '<p>&#9193;  '.$date.' свободный остаток в Москве '.round($product->balanceCount, 2).' '.$product->MainUnit.' </p>';
+                $description .= '<p><em>(актуальную информацию уточняйте у менеджера)</em></p>';
             }
             $description .= '<p>------------------</p>';
 

@@ -116,8 +116,12 @@
                         $count_in_pack = (float)$pack_ratio / (float)$one_count_ratio;
                     @endphp
 
+                    @if($product->price !== null)
                     <h2 class="card-title mt-5 pricing-card-title">{{$product->price->price}} <small
                                 class="text-muted fw-light">₽/{{$unit}}</small></h2>
+                    @else
+                        <h2 class="card-title mt-5 pricing-card-title">Не указана</h2>
+                    @endif
 
                     <br>
 

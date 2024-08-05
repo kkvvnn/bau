@@ -15,8 +15,9 @@ class AvitoKazanController extends Controller
         set_time_limit(90);
         $phone = $request->phone??"79164900555";
         $name = $request->name??"Родион";
-        $contact_method = $request->contact_method??"В сообщениях";
-        $address = $request->address??"Республика Татарстан, Казань, улица Габдуллы Тукая, 57";
+        $contact_method = $request->contact_method??"По телефону и в сообщениях";
+//        $address = $request->address??"Республика Татарстан, Казань, улица Габдуллы Тукая, 57";
+        $address = $request->address??"Республика Татарстан, Казань, улица Каюма Насыри";
         $add_description = $request->add_description??"";
         $add_description_first = $request->add_description_first??"";
         // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
