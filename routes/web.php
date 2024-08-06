@@ -217,6 +217,13 @@ Route::get('/pixmosaic-new/collection/{name}', [\App\Http\Controllers\PixmosaicN
 //----- PIXMOSAIC VIDEO YOUTUBE -----
 Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoController::class, 'import']);
 
+//----- GLOBAL-TILE (Import from .xls via form) -----
+Route::view('/global-tile/import', 'global-tile.import');
+Route::post('/global-tile/import-work', [\App\Http\Controllers\GlobalTileController::class, 'import_work'])->name('global-tile.import-work');
+Route::get('/global-tile/index', [\App\Http\Controllers\GlobalTileController::class, 'index'])->name('global-tile.index');
+Route::get('/global-tile/{id}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
+Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection');
+
 //----- AVITO 2 OLD TOVARS (Import via form) -----
 Route::view('/avito-two-old/import', 'avito-2-old.import');
 Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelController::class, 'import'])->name('avito-2-old');

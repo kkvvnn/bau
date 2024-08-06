@@ -73,6 +73,14 @@ return [
             'throw' => false,
         ],
 
+        'global-tile' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/global-tile'),
+            'url' => env('APP_URL').'/storage/images/global-tile',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'collections-text' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/bauservice/collections-text'),
