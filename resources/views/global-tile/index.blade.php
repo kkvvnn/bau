@@ -34,8 +34,9 @@
                         }
                     @endphp
                     @php
-//                        $img = Storage::disk('pixmosaic')->url(str_replace(' ', '', $product->vendor_code) . '.jpg');
-                        $img = $product->images[0];
+
+                        $string_for_delete = 'https://gallery.vogtrade.ru/wp-content/uploads/images/';
+                        $img = Storage::disk('global-tile')->url(Str::remove($string_for_delete, $product->images[0]));
                     @endphp
 
                     <div class="col">

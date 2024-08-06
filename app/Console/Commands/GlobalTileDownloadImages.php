@@ -46,8 +46,6 @@ class GlobalTileDownloadImages extends Command
         foreach ($products as $product) {
             $this->download_images($product->image_collection, false);
             $bar->advance();
-
-            break;
         }
 
         $bar->finish();
