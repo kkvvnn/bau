@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\GlobalTile;
+use App\Models\GlobalTileNew;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
@@ -19,7 +20,7 @@ class GlobalTileImport implements ToModel, WithHeadingRow, WithUpserts
     */
     public function model(array $row)
     {
-        return new GlobalTile([
+        return new GlobalTileNew([
             'code' => $row['Код'],
             'title' => $row['Наименование'],
             'vn_id' => $row['ID'],

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\GlobalTileImport;
 use App\Models\GlobalTile;
+use App\Models\GlobalTileNew;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -21,7 +22,7 @@ class GlobalTileController extends Controller
         Storage::putFileAs($name, $file,'global-tile_'.$date.'.xls' );
 
         $name_uploaded_file = 'import/global-tile/global-tile_'.$date.'.xls';
-        GlobalTile::truncate();
+        GlobalTileNew::truncate();
         Excel::import(new GlobalTileImport(), $name_uploaded_file);
 
         return redirect()->route('global-tile.index')->with('success', 'Global Tile обновлено!');
