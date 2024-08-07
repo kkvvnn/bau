@@ -7,6 +7,7 @@ use App\Models\Altacera\AltaceraTovar;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
+use App\Models\GlobalTileNew;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Pixmosaic;
@@ -108,6 +109,14 @@ class SearchController extends Controller
         if (count($artcenter)) {
             return view('artcenter.index', [
                 'products' => $artcenter,
+            ]);
+        }
+
+        $global_tile = GlobalTileNew::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $global_tile->appends(['name' => $name]);
+        if (count($global_tile)) {
+            return view('global-tile.index', [
+                'products' => $global_tile,
             ]);
         }
 

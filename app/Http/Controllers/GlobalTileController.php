@@ -30,11 +30,13 @@ class GlobalTileController extends Controller
 
     public function index()
     {
-        $products = GlobalTile::where([
-            ['brand', 'GlobalTile'],
+        $products = GlobalTileNew::where([
+//            ['brand', 'GlobalTile'],
+            ['Picture', '!=', null],
         ])
             ->orderByRaw('length * width DESC')
             ->paginate(15);
+//        ->get();
 
 //        dd($products);
 
@@ -43,7 +45,37 @@ class GlobalTileController extends Controller
 
     public function show($id)
     {
-        $product = GlobalTile::find($id);
+        $product = GlobalTileNew::find($id);
+
+        $string_for_delete = 'https://gallery.vogtrade.ru/wp-content/uploads/images/';
+        $img = Storage::disk('global-tile')->url(Str::remove($string_for_delete, $product->Picture));
+
+//        -----------------------------
+        $urls_c = [];
+        if ($product->image_collection != '') {
+            $urls_c[] = Storage::disk('global-tile')->url(Str::remove($string_for_delete, $product->image_collection));
+        } else {
+            $urls_c[] = Storage::disk('no_image')->url('no_image.jpg');
+        }
+//        -----------------------------------
+
+        $name_files = [];
+        for ($pic = 1; $pic <= 24; $pic++) {
+            if ($pic == 1) {
+                $name = 'Picture';
+            } else {
+                $name = 'Picture'.$pic;
+            }
+            if ($product->$name != null) {
+                $name_files[$name] = Str::remove($string_for_delete, $product->$name);
+            }
+        }
+
+        $urls_2 = [];
+        foreach ($name_files as $key => $value) {
+            $urls_2[] = Storage::disk('global-tile')->url($value);
+        }
+//        ------------------------------------
 
         $text_color = '';
         $date_now = \Carbon\Carbon::now();
@@ -58,6 +90,25 @@ class GlobalTileController extends Controller
             $text_color = 'text-danger';
         }
 
-        return view('pixmosaic-new.show', compact('product', 'text_color'));
+        $vivod = '';
+
+//        return view('pixmosaic-new.show', compact('product', 'text_color', 'urls_c'));
+        return view('global-tile.show', [
+            'product' => $product,
+            'urls' => $urls_2,
+            // 'url2' => $url2,
+//            'collection' => $collection,
+            'url_collection' => $urls_c,
+            'vivod' => $vivod,
+            'text_color' => $text_color,
+        ]);
+    }
+
+    public function collection($name)
+    {
+        $products = GlobalTileNew::where('collection', 'LIKE', '%'.$name.'%')
+            ->paginate(15);
+
+        return view('global-tile.index', compact('products'));
     }
 }

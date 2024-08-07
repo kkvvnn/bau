@@ -91,38 +91,26 @@
                 <div class="col-md-6">
 
                     @php
-                        if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice) {
-                            $old_price = $product->RMPriceOld;
-                        } else {
+
                             $old_price = '';
-                        }
                     @endphp
 
-                    <h2 class="card-title mt-5 pricing-card-title">{{$product->RMPrice}} <small
-                            class="text-muted fw-light">₽/{{$product->MainUnit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price}} <small
+                            class="text-muted fw-light">₽/{{$product->unit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
 
                     <br>
 
-                    @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
                         <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                            Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>
-                    @endif
-                    @if($product->Producer_Brand == 'Vitra' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))
-                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                            Цена -5% {{round($product->RMPrice * 0.95, -1)}} ₽/{{$product->MainUnit}}</p>
-                    @endif
-                    @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
-                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">
-                            Распродажа</p>
-                    @endif
+                            Цена -10% {{round($product->price * 0.90, -1)}} ₽/{{$product->unit}}</p>
 
-                    <h5 class="mt-4 mb-0">Москва: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</h5>
-                    @if ($stock_spb)
-                        <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->MainUnit}} {{$vivod}}</h5>
-                    @endif
-                    @if ($stock_kzn)
-                        <h5 class="mt-0 mb-0">Казань: {{$stock_kzn}} {{$product->MainUnit}} {{$vivod}}</h5>
-                    @endif
+
+                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>
+{{--                    @if ($stock_spb)--}}
+{{--                        <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->unit}} {{$vivod}}</h5>--}}
+{{--                    @endif--}}
+{{--                    @if ($stock_kzn)--}}
+{{--                        <h5 class="mt-0 mb-0">Казань: {{$stock_kzn}} {{$product->unit}} {{$vivod}}</h5>--}}
+{{--                    @endif--}}
                     <p class="mt-4">Актуально на <span
                             class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
 
@@ -200,112 +188,118 @@
                 <div class="col-md-6">
                     <table class="table table-striped">
                         <tbody>
-                        @if($product->Owner_Article)
+                        @if($product->vendor_code)
                             <tr>
                                 <th scope="row">Артикул</th>
-                                <td>{{$product->Owner_Article}}</td>
+                                <td>{{$product->vendor_code}}</td>
                             </tr>
                         @endif
-                        @if($product->Producer_Brand)
+                        @if($product->brand)
                             <tr>
                                 <th scope="row">Бренд</th>
-                                <td>{{$product->Producer_Brand}}</td>
+                                <td>{{$product->brand}}</td>
                             </tr>
                         @endif
-                        @if($product->Country_of_manufacture)
+                        @if($product->country)
                             <tr>
                                 <th scope="row">Страна производства</th>
-                                <td>{{$product->Country_of_manufacture}}</td>
+                                <td>{{$product->country}}</td>
                             </tr>
                         @endif
-                        @if($product->Category)
+                        @if($product->type)
                             <tr>
                                 <th scope="row">Категория</th>
-                                <td>{{$product->Category}}</td>
+                                <td>{{$product->type}}</td>
                             </tr>
                         @endif
-                        @if($product->Place_in_the_Collection)
-                            <tr>
-                                <th scope="row">Место в коллекции</th>
-                                <td>{{$product->Place_in_the_Collection}}</td>
-                            </tr>
-                        @endif
-                        @if($product->DesignValue)
+{{--                        @if($product->Place_in_the_Collection)--}}
+{{--                            <tr>--}}
+{{--                                <th scope="row">Место в коллекции</th>--}}
+{{--                                <td>{{$product->Place_in_the_Collection}}</td>--}}
+{{--                            </tr>--}}
+{{--                        @endif--}}
+                        @if($product->design)
                             <tr>
                                 <th scope="row">Дизайн</th>
-                                <td>{{$product->DesignValue}}</td>
+                                <td>{{$product->design}}</td>
                             </tr>
                         @endif
-                        @if($product->Color)
+                        @if($product->color)
                             <tr>
                                 <th scope="row">Цвет</th>
-                                <td>{{$product->Color}}</td>
+                                <td>{{$product->color}}</td>
                             </tr>
                         @endif
-                        @if($product->Surface)
+                        @if($product->surface)
                             <tr>
                                 <th scope="row">Поверхность</th>
-                                <td>{{$product->Surface}}</td>
+                                <td>{{$product->surface}}</td>
                             </tr>
                         @endif
-                        @if($product->Cover)
-                            <tr>
-                                <th scope="row">Покрытие</th>
-                                <td>{{$product->Cover}}</td>
-                            </tr>
-                        @endif
-                        @if($product->FrostResistance)
+{{--                        @if($product->Cover)--}}
+{{--                            <tr>--}}
+{{--                                <th scope="row">Покрытие</th>--}}
+{{--                                <td>{{$product->Cover}}</td>--}}
+{{--                            </tr>--}}
+{{--                        @endif--}}
+                        @if($product->frost_resistance)
                             <tr>
                                 <th scope="row">Морозоустойчивость</th>
-                                <td>{{$product->FrostResistance}}</td>
+                                <td>{{$product->frost_resistance}}</td>
                             </tr>
                         @endif
-                        @if($product->Rectified)
+                        @if($product->rectificat)
                             <tr>
                                 <th scope="row">Ректифицированная</th>
-                                <td>{{$product->Rectified}}</td>
+                                <td>{{$product->rectificat}}</td>
                             </tr>
                         @endif
-                        @if($product->Lenght)
+                        @if($product->relief)
+                            <tr>
+                                <th scope="row">Рельеф</th>
+                                <td>{{$product->relief}}</td>
+                            </tr>
+                        @endif
+                        @if($product->length)
                             <tr>
                                 <th scope="row">Длина</th>
-                                <td>{{$product->Lenght}} см</td>
+                                <td>{{$product->length * 100}} см</td>
                             </tr>
                         @endif
-                        @if($product->Height)
+                        @if($product->width)
                             <tr>
                                 <th scope="row">Ширина</th>
-                                <td>{{$product->Height}} см</td>
+                                <td>{{$product->width * 100}} см</td>
                             </tr>
                         @endif
-                        @if($product->Thickness && $product->Thickness != 0)
+                        @if($product->fat * 3 && $product->fat * 3 != 0)
                             <tr>
                                 <th scope="row">Толщина</th>
-                                <td>{{$product->Thickness}} см</td>
+                                <td>{{$product->fat * 100}} см</td>
                             </tr>
                         @endif
-                        @if($product->Package_Weight)
+                        @if($product->massa_pack)
                             <tr>
                                 <th scope="row">Вес упаковки</th>
-                                <td>{{$product->Package_Weight}} кг</td>
+                                <td>{{$product->massa_pack}} кг</td>
                             </tr>
                         @endif
-                        @if($product->Durability)
-                            <tr>
-                                <th scope="row">Стойкость к истиранию</th>
-                                <td>{{$product->Durability}}</td>
-                            </tr>
-                        @endif
-                        @if($product->Package_Value)
+{{--                        @if($product->Durability)--}}
+{{--                            <tr>--}}
+{{--                                <th scope="row">Стойкость к истиранию</th>--}}
+{{--                                <td>{{$product->Durability}}</td>--}}
+{{--                            </tr>--}}
+{{--                        @endif--}}
+                        @if($product->meters_in_pack)
                             <tr>
                                 <th scope="row">Кв.м в упаковке</th>
-                                <td>{{$product->Package_Value}}</td>
+                                <td>{{$product->meters_in_pack}}</td>
                             </tr>
                         @endif
-                        @if($product->PCS_in_Package)
+                        @if($product->count_in_pack)
                             <tr>
                                 <th scope="row">Количество в упаковке</th>
-                                <td>{{$product->PCS_in_Package}}</td>
+                                <td>{{$product->count_in_pack}}</td>
                             </tr>
                         @endif
                         </tbody>
@@ -353,7 +347,7 @@
 
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <a href="whatsapp://send?phone=79151274000&text={{$product->Name}}" class="float" target="_blank">
+        <a href="whatsapp://send?phone=79151274000&text={{$product->title}}" class="float" target="_blank">
             <i class="fa fa-whatsapp my-float"></i>
         </a>
 
