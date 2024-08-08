@@ -39,6 +39,14 @@ class GlobalTileController extends Controller
 //        ->get();
 
 //        dd($products);
+//
+//        $products = GlobalTileNew::where([
+//            ['brand', 'GlobalTile'],
+//            ['Picture', '!=', null],
+//            ['balance', '>=', 0],
+//        ])
+//            ->orderByRaw('length * width DESC')
+//            ->paginate(15);
 
         return view('global-tile.index', compact('products'));
     }

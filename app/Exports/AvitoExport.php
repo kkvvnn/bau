@@ -7,6 +7,7 @@ use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
+use App\Models\GlobalTileNew;
 use App\Models\Kerabellezza2;
 use App\Models\Kevis;
 use App\Models\PixmosaicNew;
@@ -157,6 +158,16 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['vendor_code', '!=', 'Spenze Gris 60x120'],
         ])->get();
 
+        //      ---------------------GLOBAL TILE---------------------
+
+        $globaltile = GlobalTileNew::where([
+            ['brand', 'GlobalTile'],
+            ['Picture', '!=', null],
+            ['balance', '>=', 0],
+        ])->get();
+
+//        dd($globaltile);
+
         //      ---------------------KERABELLEZZA---------------------
 
         $kerabellezza = Kerabellezza2::where([
@@ -183,6 +194,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'aquafloor' => $aquafloor,
                 'pixmosaics' => $pixmosaics,
                 'artcenter' => $artcenter,
+                'globaltile' => $globaltile,
                 'kerabellezza' => $kerabellezza,
                 'phone' => $this->phone,
                 'name' => $this->name,
