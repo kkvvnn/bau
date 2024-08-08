@@ -13,7 +13,7 @@ class AvitoController extends Controller
 {
     public function export(Request $request, $foto = '')
     {
-        set_time_limit(90);
+        set_time_limit(180);
         $phone = $request->phone??"89197697802";
         $name = $request->name??"Владимир";
         $contact_method = $request->contact_method??"В сообщениях";
