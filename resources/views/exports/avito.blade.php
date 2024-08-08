@@ -563,10 +563,10 @@
 
 
                 if($product->length != 0 && $product->width != 0) {
-                $description .= '<li><strong>Размер: </strong>' . $product->length*100 .'x' . $product->width*100 . 'см </li>';
+                $description .= '<li><strong>Размер: </strong>' . $product->length*100 .'x' . $product->width*100 . ' см </li>';
                 }
                 if($product->fat != null && $product->fat != 0) {
-                $description .= '<li><strong>Толщина: </strong>' . $product->fat*100 . 'см </li>';
+                $description .= '<li><strong>Толщина: </strong>' . $product->fat*100 . ' см </li>';
                 }
                 if($product->type != null) {
                 $description .= '<li><strong>Место в коллекции: </strong>' . $product->type . '</li>';
@@ -687,7 +687,7 @@
                 $size .= $type . ' ' . $height . '*' . $lenght . ' ';
             }
 
-            if($product->Height != 0 && $product->Lenght != 0) {
+            if($product->length != 0 && $product->width != 0) {
             $keywords .= $size;
             }
 
