@@ -224,6 +224,13 @@ Route::get('/global-tile/index', [\App\Http\Controllers\GlobalTileController::cl
 Route::get('/global-tile/{id}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
 Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection');
 
+//----- PRIMAVERA-NEW (Import from .xls via form) -----
+Route::view('/primavera-new/import', 'primavera-new.import');
+Route::post('/primavera-new/import-work', [\App\Http\Controllers\PrimaveraNewController::class, 'import_work'])->name('primavera-new.import-work');
+Route::get('/primavera-new/index', [\App\Http\Controllers\PrimaveraNewController::class, 'index'])->name('primavera-new.index');
+Route::get('/primavera-new/{id}', [\App\Http\Controllers\PrimaveraNewController::class, 'show'])->name('primavera-new.show');
+Route::get('/primavera-new/collection/{name}', [\App\Http\Controllers\PrimaveraNewController::class, 'collection'])->name('primavera-new.collection');
+
 //----- AVITO 2 OLD TOVARS (Import via form) -----
 Route::view('/avito-two-old/import', 'avito-2-old.import');
 Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelController::class, 'import'])->name('avito-2-old');
