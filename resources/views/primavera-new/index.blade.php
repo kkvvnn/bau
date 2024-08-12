@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Global Tile')
+@section('title', 'Primavera')
 
 @section('content')
     <div class="album py-5 bg-body-tertiary">
@@ -35,24 +35,29 @@
                     @endphp
                     @php
 
-                        $string_for_delete = 'https://gallery.vogtrade.ru/wp-content/uploads/images/';
-                        $img = Storage::disk('global-tile')->url(Str::remove($string_for_delete, $product->Picture));
+//                        $string_for_delete = 'https://gallery.vogtrade.ru/wp-content/uploads/images/';
+//                        $img = Storage::disk('global-tile')->url(Str::remove($string_for_delete, $product->Picture));
+
+//                    $img = $product->images[0];
+                    $img = $product->image_collection;
                     @endphp
 
                     <div class="col">
                         <div class="card h-100">
-                            <a href="/global-tile/{{$product->id}}">
+                            <a href="/primavera-new/{{$product->id}}">
                                 <img src="{{$img}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <a href="/global-tile/{{$product->id}}" class="text-decoration-none text-reset">
+                                <a href="/primavera-new/{{$product->id}}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->title}}</h5>
                                 </a>
                             </div>
                             <div class="card-footer">
-                                <h5 class="card-title pricing-card-title">{{$product->price}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
+{{--                                <h5 class="card-title pricing-card-title">{{$product->price}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>--}}
+                                <h5 class="card-title pricing-card-title">Price <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
 
-                                <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->balance}} {{$product->unit}}</p>
+{{--                                <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->balance}} {{$product->unit}}</p>--}}
+                                <p class="mb-0 fs-5 text-body-secondary">Остаток: Balance {{$product->unit}}</p>
 
                                 <small class="mb-0 fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
                             </div>

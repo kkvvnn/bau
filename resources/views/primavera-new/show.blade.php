@@ -95,16 +95,18 @@
                             $old_price = '';
                     @endphp
 
-                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price}} <small
+{{--                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price}} <small--}}
+                    <h2 class="card-title mt-5 pricing-card-title">Price <small
                             class="text-muted fw-light">₽/{{$product->unit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
 
                     <br>
 
-                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                            Цена -10% {{round($product->price * 0.90, -1)}} ₽/{{$product->unit}}</p>
+{{--                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">--}}
+{{--                            Цена -10% {{round($product->price * 0.90, -1)}} ₽/{{$product->unit}}</p>--}}
 
 
-                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>
+{{--                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>--}}
+                    <h5 class="mt-4 mb-0">Москва: Balance {{$product->unit}} {{$vivod}}</h5>
 {{--                    @if ($stock_spb)--}}
 {{--                        <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->unit}} {{$vivod}}</h5>--}}
 {{--                    @endif--}}
@@ -263,19 +265,19 @@
                         @if($product->length)
                             <tr>
                                 <th scope="row">Длина</th>
-                                <td>{{$product->length * 100}} см</td>
+                                <td>{{$product->length}} см</td>
                             </tr>
                         @endif
                         @if($product->width)
                             <tr>
                                 <th scope="row">Ширина</th>
-                                <td>{{$product->width * 100}} см</td>
+                                <td>{{$product->width}} см</td>
                             </tr>
                         @endif
                         @if($product->fat * 3 && $product->fat * 3 != 0)
                             <tr>
                                 <th scope="row">Толщина</th>
-                                <td>{{$product->fat * 100}} см</td>
+                                <td>{{$product->fat}} мм</td>
                             </tr>
                         @endif
                         @if($product->massa_pack)
@@ -290,10 +292,10 @@
 {{--                                <td>{{$product->Durability}}</td>--}}
 {{--                            </tr>--}}
 {{--                        @endif--}}
-                        @if($product->meters_in_pack)
+                        @if($product->square_in_pack)
                             <tr>
                                 <th scope="row">Кв.м в упаковке</th>
-                                <td>{{$product->meters_in_pack}}</td>
+                                <td>{{$product->square_in_pack}}</td>
                             </tr>
                         @endif
                         @if($product->count_in_pack)

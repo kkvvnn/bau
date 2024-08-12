@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrimaveraNew extends Model
 {
-    use HasFactory;
+    protected $guarded = false;
+
+    protected $casts = [
+        'images' => 'array',
+        'for_room' => 'array',
+    ];
 }

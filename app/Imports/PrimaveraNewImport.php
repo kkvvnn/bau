@@ -2,15 +2,15 @@
 
 namespace App\Imports;
 
-use App\Models\GlobalTile;
-use App\Models\GlobalTileNew;
+use App\Models\PrimaveraNew;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 
 HeadingRowFormatter::default('none');
-class PrimaveraNewImport implements ToModel, WithHeadingRow, WithUpserts
+class PrimaveraNewImport implements ToModel, WithUpserts, WithStartRow
 {
 
     /**
@@ -20,91 +20,52 @@ class PrimaveraNewImport implements ToModel, WithHeadingRow, WithUpserts
     */
     public function model(array $row)
     {
-        return new GlobalTileNew([
-            'code' => $row['Код'],
-            'title' => $row['Наименование'],
-            'vn_id' => $row['ID'],
-            'vendor_code' => $row['Артикул'],
-            'brand' => $row['Бренд'],
-            'collection' => $row['Коллекция'],
-            'length' => $row['Длина'],
-            'width' => $row['Ширина'],
-            'frost_resistance' => $row['Морозостойкость'],
-            'count_in_pack' => $row['ШтукВКоробке'],
-            'meters_in_pack' => $row['МетровКвадратныхВКоробке'],
-            'material' => $row['Материал'],
-            'for' => $row['Назначение'],
-            'type' => $row['НаименованиеЭлемента'],
-            'design' => $row['Рисунок'],
-            'format_collection' => $row['ФорматКоллекции'],
-            'country' => $row['СтранаПроизводства'],
-            'surface' => $row['ТипПоверхности'],
-            'unit' => $row['БазоваяЕдиница'],
-            'massa_pack' => $row['ВесКоробки'],
-            'fat' => $row['Толщина'],
-            'color' => str_replace('!', '', $row['Цвет']),
-            'balance' => $row['ОстатокОсновной'],
-            'price' => $row['ЦенаРРЦ'],
-            'status' => $row['Статус'],
-            'effects' => $row['Эффекты'],
-            'rectificat' => $row['Ректификация'],
-            'relief' => $row['Рельеф'],
-            'image_collection' => $row['РисунокКоллекция'],
-//            'images' => array_filter(array(
-//                $row['РисунокНомкенклатуры_1'],
-//                $row['РисунокНомкенклатуры_2'],
-//                $row['РисунокНомкенклатуры_3'],
-//                $row['РисунокНомкенклатуры_4'],
-//                $row['РисунокНомкенклатуры_5'],
-//                $row['РисунокНомкенклатуры_6'],
-//                $row['РисунокНомкенклатуры_7'],
-//                $row['РисунокНомкенклатуры_8'],
-//                $row['РисунокНомкенклатуры_9'],
-//                $row['РисунокНомкенклатуры_10'],
-//                $row['РисунокНомкенклатуры_11'],
-//                $row['РисунокНомкенклатуры_12'],
-//                $row['РисунокНомкенклатуры_13'],
-//                $row['РисунокНомкенклатуры_14'],
-//                $row['РисунокНомкенклатуры_15'],
-//                $row['РисунокНомкенклатуры_16'],
-//                $row['РисунокНомкенклатуры_17'],
-//                $row['РисунокНомкенклатуры_18'],
-//                $row['РисунокНомкенклатуры_19'],
-//                $row['РисунокНомкенклатуры_20'],
-//                $row['РисунокНомкенклатуры_21'],
-//                $row['РисунокНомкенклатуры_22'],
-//                $row['РисунокНомкенклатуры_23'],
-//                $row['РисунокНомкенклатуры_24'],
-//                )),
-            'Picture' => $row['РисунокНомкенклатуры_1'],
-            'Picture2' => $row['РисунокНомкенклатуры_2'],
-            'Picture3' => $row['РисунокНомкенклатуры_3'],
-            'Picture4' => $row['РисунокНомкенклатуры_4'],
-            'Picture5' => $row['РисунокНомкенклатуры_5'],
-            'Picture6' => $row['РисунокНомкенклатуры_6'],
-            'Picture7' => $row['РисунокНомкенклатуры_7'],
-            'Picture8' => $row['РисунокНомкенклатуры_8'],
-            'Picture9' => $row['РисунокНомкенклатуры_9'],
-            'Picture10' => $row['РисунокНомкенклатуры_10'],
-            'Picture11' => $row['РисунокНомкенклатуры_11'],
-            'Picture12' => $row['РисунокНомкенклатуры_12'],
-            'Picture13' => $row['РисунокНомкенклатуры_13'],
-            'Picture14' => $row['РисунокНомкенклатуры_14'],
-            'Picture15' => $row['РисунокНомкенклатуры_15'],
-            'Picture16' => $row['РисунокНомкенклатуры_16'],
-            'Picture17' => $row['РисунокНомкенклатуры_17'],
-            'Picture18' => $row['РисунокНомкенклатуры_18'],
-            'Picture19' => $row['РисунокНомкенклатуры_19'],
-            'Picture20' => $row['РисунокНомкенклатуры_20'],
-            'Picture21' => $row['РисунокНомкенклатуры_21'],
-            'Picture22' => $row['РисунокНомкенклатуры_22'],
-            'Picture23' => $row['РисунокНомкенклатуры_23'],
-            'Picture24' => $row['РисунокНомкенклатуры_24'],
+        return new PrimaveraNew([
+            'category' => $row[0],
+            'type' => $row[1],
+            'title' => $row[2],
+            'brand' => $row[3],
+            'collection' => $row[4],
+            'vendor_code' => $row[5],
+            'color' => $row[6],
+            'image_collection' => $row[7],
+            'images' => explode(';', $row[8]),
+            'for_room' => explode(';', $row[9]),
+            'fat' => $row[10],
+            'factura' => $row[11],
+            'for' => $row[12],
+            'unit' => $row[13],
+            'class_stoikost' => $row[14],
+            'surface' => $row[15],
+            'cover' => $row[16],
+            'design' => $row[17],
+            'country' => $row[18],
+            'description' => $row[19],
+            'shtrikhkod' => $row[20],
+            'form' => $row[21],
+            'rectificat' => $row[22],
+            'size_format' => $row[23],
+            'length' => $row[24],
+            'width' => $row[25],
+            'massa_pack' => $row[26],
+            'count_in_pack' => (int)$row[27],
+            'length_pack' => $row[28],
+            'width_pack' => $row[29],
+            'fat_pack' => $row[30],
+            'square_in_pack' => $row[31],
         ]);
     }
 
     public function uniqueBy()
     {
         return 'vendor_code';
+    }
+
+    /**
+     * @return int
+     */
+    public function startRow(): int
+    {
+        return 2;
     }
 }

@@ -81,6 +81,14 @@ return [
             'throw' => false,
         ],
 
+        'primavera-new' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/primavera-new'),
+            'url' => env('APP_URL').'/storage/images/primavera-new',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'collections-text' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/bauservice/collections-text'),
