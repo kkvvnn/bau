@@ -95,8 +95,7 @@
                             $old_price = '';
                     @endphp
 
-{{--                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price}} <small--}}
-                    <h2 class="card-title mt-5 pricing-card-title">Price <small
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price->price??'Не указана'}} <small
                             class="text-muted fw-light">₽/{{$product->unit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
 
                     <br>

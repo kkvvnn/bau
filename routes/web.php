@@ -231,6 +231,10 @@ Route::get('/primavera-new/index', [\App\Http\Controllers\PrimaveraNewController
 Route::get('/primavera-new/{id}', [\App\Http\Controllers\PrimaveraNewController::class, 'show'])->name('primavera-new.show');
 Route::get('/primavera-new/collection/{name}', [\App\Http\Controllers\PrimaveraNewController::class, 'collection'])->name('primavera-new.collection');
 
+//----- PRIMAVERA-PRICE-LIST (Import from .xls via form) -----
+Route::view('/primavera-price-list-import', 'primavera-new.import-price-list');
+Route::post('/primavera-import-work-price-list', [\App\Http\Controllers\PrimaveraPriceListController::class, 'import_work_price_list'])->name('primavera-new.import-work-price-list');
+
 //----- AVITO 2 OLD TOVARS (Import via form) -----
 Route::view('/avito-two-old/import', 'avito-2-old.import');
 Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelController::class, 'import'])->name('avito-2-old');
