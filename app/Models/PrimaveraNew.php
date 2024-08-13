@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class PrimaveraNew extends Model
@@ -18,5 +19,10 @@ class PrimaveraNew extends Model
     public function price(): HasOne
     {
         return $this->hasOne(PrimaveraPriceList::class, 'vendor_code', 'vendor_code');
+    }
+
+    public function balance(): HasMany
+    {
+        return $this->hasMany(PrimaveraNewStock::class, 'vendor_code', 'vendor_code');
     }
 }
