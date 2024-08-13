@@ -7,18 +7,14 @@
                 <p></p>
             </div>
 
-            <h1 class="display-6">Primavera обновление остатков</h1>
+            <h1 class="display-6">Primavera обновление Прайс листа</h1>
             <hr>
 
-            <form action="{{route('primavera-new.import-stocks')}}" enctype="multipart/form-data" method="post">
+            <form action="{{route('primavera-new.import-work-price-list')}}" enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="mb-3">
-                    <label for="file" class="form-label">Excel Primavera остатки Керамогранит</label>
+                    <label for="file" class="form-label">Excel Primavera Прайс лист</label>
                     <input type="file" class="form-control" id="file" name="file" required>
-                </div>
-                <div class="mb-3">
-                    <label for="file2" class="form-label">Excel Primavera остатки Керамическая плитка</label>
-                    <input type="file" class="form-control" id="file2" name="file2" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Обновить информацию</button>

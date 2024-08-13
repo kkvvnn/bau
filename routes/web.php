@@ -236,7 +236,7 @@ Route::view('/primavera-price-list-import', 'primavera-new.import-price-list');
 Route::post('/primavera-import-work-price-list', [\App\Http\Controllers\PrimaveraPriceListController::class, 'import_work_price_list'])->name('primavera-new.import-work-price-list');
 
 //----- PRIMAVERA-STOCKS (Import from .xls via form) -----
-Route::view('/primavera-stocks-import', 'primavera-new.import-price-list');
+Route::view('/primavera-stocks-import', 'primavera-new.import-stocks');
 Route::post('/primavera-import-work-stocks', [\App\Http\Controllers\PrimaveraNewStockController::class, 'import'])->name('primavera-new.import-stocks');
 
 //----- AVITO 2 OLD TOVARS (Import via form) -----
