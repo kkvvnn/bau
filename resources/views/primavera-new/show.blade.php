@@ -104,8 +104,15 @@
 {{--                            Цена -10% {{round($product->price * 0.90, -1)}} ₽/{{$product->unit}}</p>--}}
 
 
-{{--                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>--}}
-                    <h5 class="mt-4 mb-0">Москва: Balance {{$product->unit}} {{$vivod}}</h5>
+                    @php
+                        $stocks = $product->balance;
+//                                    dd($stocks);
+                        $balance = 0;
+                        foreach ($stocks as $st) {
+                            $balance +=  $st->balance;
+                        }
+                    @endphp
+                    <h5 class="mt-4 mb-0">Москва: {{$balance}} {{$product->unit}} {{$vivod}}</h5>
 {{--                    @if ($stock_spb)--}}
 {{--                        <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->unit}} {{$vivod}}</h5>--}}
 {{--                    @endif--}}
@@ -113,7 +120,7 @@
 {{--                        <h5 class="mt-0 mb-0">Казань: {{$stock_kzn}} {{$product->unit}} {{$vivod}}</h5>--}}
 {{--                    @endif--}}
                     <p class="mt-4">Актуально на <span
-                            class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
+                            class="{{$text_color}} fw-bolder">{{$product->balance[0]->updated_at->format('d.m.Y')}}</span></p>
 
 
                     {{--                    <a title="Whatsapp" href="whatsapp://send?phone=79373209953&text={{$product->Name}}">--}}
@@ -222,7 +229,7 @@
                         @if($product->design)
                             <tr>
                                 <th scope="row">Дизайн</th>
-                                <td>{{$product->design}}</td>
+                                <td>{{Str::replace(';', ' ', $product->design)}}</td>
                             </tr>
                         @endif
                         @if($product->color)

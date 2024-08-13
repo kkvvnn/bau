@@ -29,11 +29,10 @@ class PrimaveraNewController extends Controller
 
     public function index()
     {
-        $products = PrimaveraNew::where([
-        ])
+        $products = PrimaveraNew::whereHas('balance')
+            ->whereHas('price')
             ->orderByRaw('length * width DESC')
             ->paginate(15);
-
 
         return view('primavera-new.index', compact('products'));
     }
@@ -74,7 +73,7 @@ class PrimaveraNewController extends Controller
 
         $text_color = '';
         $date_now = \Carbon\Carbon::now();
-        $date_of_update = $product->updated_at;
+        $date_of_update = $product->balance[0]->updated_at;
         $diff_days = $date_now->diffInDays($date_of_update);
 
         if ($diff_days == 0) {
