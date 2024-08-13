@@ -13,6 +13,7 @@ use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Pixmosaic;
 use App\Models\PixmosaicNew;
 use App\Models\Primavera;
+use App\Models\PrimaveraNew;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -40,13 +41,13 @@ class SearchController extends Controller
             ]);
         }
 
-        $primavera = Primavera::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
-        $primavera->appends(['name' => $name]);
-        if (count($primavera)) {
-            return view('primavera.index', [
-                'products' => $primavera,
-            ]);
-        }
+//        $primavera = Primavera::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+//        $primavera->appends(['name' => $name]);
+//        if (count($primavera)) {
+//            return view('primavera.index', [
+//                'products' => $primavera,
+//            ]);
+//        }
 
         $ntceramic = NtCeramicNoImgs::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
         $ntceramic->appends(['name' => $name]);
@@ -117,6 +118,13 @@ class SearchController extends Controller
         if (count($global_tile)) {
             return view('global-tile.index', [
                 'products' => $global_tile,
+            ]);
+        }
+        $primavera_new = PrimaveraNew::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $primavera_new->appends(['name' => $name]);
+        if (count($primavera_new)) {
+            return view('primavera-new.index', [
+                'products' => $primavera_new,
             ]);
         }
 

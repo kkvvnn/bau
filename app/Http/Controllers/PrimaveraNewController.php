@@ -98,4 +98,12 @@ class PrimaveraNewController extends Controller
             'text_color' => $text_color,
         ]);
     }
+
+    public function collection($name)
+    {
+        $products = PrimaveraNew::where('collection', 'LIKE', '%'.$name.'%')
+            ->paginate(15);
+
+        return view('primavera-new.index', compact('products'));
+    }
 }

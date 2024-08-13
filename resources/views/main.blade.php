@@ -276,7 +276,7 @@
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_size_form')}}">По размеру</a>--}}
 {{--              </li>--}}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('primavera.index')}}">PrimaVera</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('primavera-new.index')}}">PrimaVera</a>
                 </li>
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link active" aria-current="page" href="{{route('primavera.search.form')}}">PrimaVera Поиск</a>--}}

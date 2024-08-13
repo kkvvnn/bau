@@ -39,13 +39,15 @@ class PrimaveraNewDownloadImages extends Command
 
 //        ---------DOWNLOAD_COLLECTION_IMAGES----------
 
+        $errors = [];
+
         $bar = $this->output->createProgressBar(PrimaveraNew::count());
         $bar->start();
 
         $products = PrimaveraNew::get();
 
         foreach ($products as $product) {
-            $this->download_images($product->image_collection, false);
+            $this->download_images($product->image_collection, false, $errors);
             $bar->advance();
         }
 
@@ -63,7 +65,7 @@ class PrimaveraNewDownloadImages extends Command
         foreach ($products as $product) {
             $images_array = $product->images;
             foreach ($images_array as $img) {
-                $this->download_images($img);
+                $this->download_images($img, true, $errors);
             }
             $bar->advance();
         }
@@ -71,6 +73,8 @@ class PrimaveraNewDownloadImages extends Command
         $bar->finish();
         $this->info(' ----- Images downloaded! [OK]');
 
+//        $this->newLine(2);
+//        dd($errors);
 //       -------------------------------------------------
 
 
@@ -78,7 +82,7 @@ class PrimaveraNewDownloadImages extends Command
     }
 
 
-    public function download_images($name, $rotate = true): void
+    public function download_images($name, $rotate = true, &$err = false): void
     {
         if ($name == null) {
             return;
@@ -116,6 +120,12 @@ class PrimaveraNewDownloadImages extends Command
             }
         } catch (Exception $e) {
 //            echo 'Error: ', $e->getMessage(), "\n";
+            $err[] = $name;
+//            $image_not_found = PrimaveraNew::query()
+//                ->whereJsonContains('images', 'https://domix-club.ru/upload/iblock/24d/bsmu34qohhpk67uinb2feer939dsvu09/keramogranit_primavera_golden_black_grit_granula_60x120_sm_gg203.jpg')
+//                ->get();
+
+//            dd($image_not_found);
         }
     }
 }

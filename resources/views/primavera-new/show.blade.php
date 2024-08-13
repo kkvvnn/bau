@@ -30,7 +30,7 @@
                     <h1 class="display-6">{{$product->brand}}</h1>
 
                     <p class="fs-2">Коллекция:
-                        <a href="{{route('global-tile.collection', $product->collection)}}"
+                        <a href="{{route('primavera-new.collection', $product->collection)}}"
                            class="link-secondary text-decoration-none">{{$product->collection}}
                         </a></p>
 
@@ -229,7 +229,7 @@
                         @if($product->color)
                             <tr>
                                 <th scope="row">Цвет</th>
-                                <td>{{$product->color}}</td>
+                                <td>{{Str::replace(';', ' ', $product->color)}}</td>
                             </tr>
                         @endif
                         @if($product->surface)
