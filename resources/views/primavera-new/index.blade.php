@@ -50,7 +50,7 @@
                                 </a>
                             </div>
                             <div class="card-footer">
-                                <h5 class="card-title pricing-card-title">{{$product->price->price??''}} <span class="text-muted fw-light">{{$product->price->price_opt??''}} ₽/{{$product->unit}}</span></h5>
+                                <h5 class="card-title pricing-card-title">{{$product->price->price??''}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
 
                                 @php
                                     $stocks = $product->balance;
