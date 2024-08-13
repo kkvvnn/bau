@@ -53,7 +53,7 @@
                                 </a>
                             </div>
                             <div class="card-footer">
-                                <h5 class="card-title pricing-card-title">{{$product->price->price??'Не указана'}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
+                                <h5 class="card-title pricing-card-title">{{$product->price->price??''}} <span class="text-muted fw-light">{{$product->price->price_opt??''}} ₽/{{$product->unit}}</span></h5>
 
 {{--                                <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->balance}} {{$product->unit}}</p>--}}
                                 <p class="mb-0 fs-5 text-body-secondary">Остаток: Balance {{$product->unit}}</p>
