@@ -35,11 +35,8 @@
                     @endphp
                     @php
 
-//                        $string_for_delete = 'https://gallery.vogtrade.ru/wp-content/uploads/images/';
-//                        $img = Storage::disk('global-tile')->url(Str::remove($string_for_delete, $product->Picture));
-
-//                    $img = $product->images[0];
-                    $img = $product->image_collection;
+                    $string_for_delete = 'https://domix-club.ru/upload/iblock/';
+                    $img = Storage::disk('primavera-new')->url(Str::remove($string_for_delete, $product->image_collection));
                     @endphp
 
                     <div class="col">
