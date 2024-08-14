@@ -57,6 +57,7 @@ class RusplitkaController extends Controller
         $phpArray = json_decode($json, true);
 
 //        dd($phpArray['shop']['offers']['offer']);
+//        dd($phpArray['shop']['offers']['offer']);
 
         return $phpArray;
     }
@@ -106,8 +107,8 @@ class RusplitkaController extends Controller
                 'surface' => $product['surface'] ?? null,
                 'country_of_origin' => $product['country_of_origin'] ?? null,
                 'brand_name' => $product['brand_name'] ?? null,
-                'price' => $product['price'],
-                'price_rozn' => $product['price_rozn'],
+                'price' => $product['price'] ?? null,
+                'price_rozn' => $product['price_rozn'] ?? null,
                 'rest_skald_ljubercy' => $product['rest_skald_ljubercy'] ?? null,
                 'rest_skald_ljubercy_rezerv' => $product['rest_skald_ljubercy_rezerv'] ?? null,
                 'rest_skald_bronnicy' => $product['rest_skald_bronnicy'] ?? null,
