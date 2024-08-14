@@ -11,6 +11,7 @@ use App\Models\GlobalTileNew;
 use App\Models\Kerabellezza2;
 use App\Models\Kevis;
 use App\Models\PixmosaicNew;
+use App\Models\PrimaveraNew;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
 use App\Models\Technotile\Product as TechnotileProduct;
 use App\Models\LeedoProduct;
@@ -57,7 +58,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
     public function view(): View
     {
-        set_time_limit(90);
+        set_time_limit(180);
 
         $products_all = Product::where([['GroupProduct', '01 Плитка'],
             ['Producer_Brand', '!=', 'Kerama Marazzi'],
@@ -93,7 +94,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $products = $products->merge($blaze);
 //        dd($products);
 //      ==============================================
-        $primavera = Primavera::where('country', '!=', 'Киргизия')->get();
+        $primavera = PrimaveraNew::whereHas('balance')
+            ->whereHas('price')
+            ->get();
+//        dd($primavera);
 //      ==============================================
 //        $absolut_gres = AbsolutGresScrap::all();
         $absolut_gres = [];
@@ -181,7 +185,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         if ($this->foto == '') {
             return view('exports.avito', [
-                // 'products' => Product::where([['balanceCount', '>=', 2], ['RMPrice', '>=', '500']])->whereColumn('RMPrice', '>', 'Price')->get()
                 'products' => $products,
                 'primavera' => $primavera,
                 'absolut_gres' => $absolut_gres,

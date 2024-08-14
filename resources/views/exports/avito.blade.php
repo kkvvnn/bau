@@ -911,29 +911,29 @@
     {{-----PRIMAVERA-----}}
     @foreach($primavera as $product)
         @php
-            $price = $product->price;
-            $price = round($price * 0.95, -1);
+            $price = $product->price->price;
+            $price = round($price * 0.85, -1);
 //                --------------------------
-            $title = $product->title_avito;
 //                -----------------------------
 //              ------------------------------------------FOTO-------------------------------------
 
-            $img = $product->img1;
-            $imgs_2 = $product->img2;
-            $imgs_2 = explode("\n", $imgs_2);
-            foreach ($imgs_2 as $i) {
-                $img .= ' | '.$i;
+            $string_for_delete = 'https://domix-club.ru/upload/iblock/';
+
+            $img_full_arr = [];
+            if ($product->image_collection != '') {
+                $img_full_arr[] = Storage::disk('primavera-new')->url(Str::remove($string_for_delete, $product->image_collection));
+            }
+            foreach ($product->images as $key => $value) {
+                $img_full_arr[] = Storage::disk('primavera-new')->url(Str::remove($string_for_delete, $value));
             }
 
-            $img_full_arr = explode(' | ', $img);
-
-            if (count($img_full_arr) <= 10) {
-                $img_ready = $img;
-            } else {
+            if (count($img_full_arr) > 10) {
                 $img_full_arr = array_slice($img_full_arr, 0, 10);
-                $img_ready = implode(' | ', $img_full_arr);
             }
+
+            $img_ready = implode(' | ', $img_full_arr);
 //                ---------------------
+
             if(stripos($product->title, 'литка') !== false) {
             $FinishingType = 'Плитка, керамогранит и мозаика';
             $FinishingSubType = 'Керамическая плитка';
@@ -957,42 +957,59 @@
             $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
-            $description .= '<p>Керамическая плитка и керамогранит Primavera , Примавера. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+            $description .= '<p>Керамическая плитка и керамогранит '.$product->brand.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             $description .= '<p><strong>' . $product->title . '. '
                     . $product->brand . ' ('
                     . $product->country . ')</strong></p>';
-            $description .= '<p><em>Цена указана за 1 м.кв.</em></p><ul>';
+
+
+            $description .= '<p>--------------------</p>';
+            $date = date('d.m.Y');
+            $stocks = $product->balance;
+            $balance = 0;
+            foreach ($stocks as $st) {
+                $balance +=  $st->balance;
+            }
+            if ($balance >= 0) {
+                $description .= '<p>&#9989; На утро '.$date.' остаток '.round($balance, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            }
+            $description .= '<p>--------------------</p>';
+
+
+            $description .= '<p><em>Цена указана за 1 ' . $product->unit . '</em></p>';
+
+            $description .= '<p><strong>Коллекция: </strong>'. $product->collection .'</p><ul>';
 
 
                 if($product->width != 0 && $product->length != 0) {
-                $description .= '<li><strong>Размер: </strong>' . $product->length .'x' . $product->width . '</li>';
+                $description .= '<li><strong>Размер: </strong>' . $product->length .'x' . $product->width . ' см</li>';
                 }
                 if($product->fat != null && $product->fat != 0) {
-                $description .= '<li><strong>Толщина: </strong>' . $product->fat . '</li>';
+                $description .= '<li><strong>Толщина: </strong>' . $product->fat . ' мм</li>';
                 }
-                if($product->format != null) {
-                $description .= '<li><strong>Формат: </strong>' . $product->format . '</li>';
+//                if($product->format != null) {
+//                $description .= '<li><strong>Формат: </strong>' . $product->format . '</li>';
+//                }
+                if($product->design != null) {
+                $description .= '<li><strong>Рисунок: </strong>' . $product->design . '</li>';
                 }
-                if($product->decor != null) {
-                $description .= '<li><strong>Рисунок: </strong>' . $product->decor . '</li>';
+                if($product->color != null) {
+                $description .= '<li><strong>Цвет: </strong>' . str_replace(';', ' ', $product->color) . '</li>';
                 }
-                if($product->color_name != null) {
-                $description .= '<li><strong>Цвет: </strong>' . $product->color_name . '</li>';
-                }
-                if($product->poverhnost != null) {
-                $description .= '<li><strong>Поверхность: </strong>' . $product->poverhnost . '</li>';
+                if($product->surface != null) {
+                $description .= '<li><strong>Поверхность: </strong>' . $product->surface . '</li>';
                 }
                 if($product->count_in_pack != null) {
                 $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_pack . '</li>';
                 }
-                if($product->meters_in_pack != null) {
-                $description .= '<li><strong>Кв. метров в упаковке: </strong>' . str_replace(',', '.', $product->meters_in_pack) . '</li>';
+                if($product->square_in_pack != null) {
+                $description .= '<li><strong>Кв. метров в упаковке: </strong>' . str_replace(',', '.', $product->square_in_pack) . '</li>';
                 }
                 if($product->country != null) {
                 $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
                 }
                 if($product->for != null) {
-                $description .= '<li><strong>Назначение: </strong>' . $product->for . '</li>';
+                $description .= '<li><strong>Назначение: </strong>' . str_replace(';', ' ', $product->for) . '</li>';
                 }
                 if($product->vendor_code != null) {
                 $description .= '<li><strong>Артикул: </strong>' . $product->vendor_code . '</li>';
@@ -1013,34 +1030,82 @@
             $keywords = '';
 
 
+            if(stripos($product->title, 'екор') !== false) {
+            $type = 'декор';
+            }
+            elseif(stripos($product->title, 'озаика') !== false) {
+            $type = 'мозаика';
+            }
+            elseif(stripos($product->title, 'литка') !== false) {
+            $type = 'керамическая плитка';
+            }
+            elseif(stripos($product->title, 'ерамогранит') !== false) {
             $type = 'керамогранит';
-            $pod = $type . ' ' . mb_strtolower($product->decor);
+            }
+            else {
+                $type = '';
+            }
 
 
-            $keywords .= $pod . ', ';
+            $naznachenie = '';
+            foreach ($product->for_room as $fr) {
+                $naznachenie .= $type . ' ' . mb_strtolower($fr) . ' ';
+            }
+            $for = explode(';', mb_strtolower($product->for));
+            foreach ($for as $f) {
+                $naznachenie .= $type . ' ' . mb_strtolower($f) . ' ';
+            }
+            $keywords .= $naznachenie . ' ';
 
-            $lenght = round((float)str_replace(',', '.', $product->length), 0, PHP_ROUND_HALF_EVEN);
-            $height = round((float)str_replace(',', '.', $product->width), 0, PHP_ROUND_HALF_EVEN);
+
+            if(stripos($product->design, 'Дерев') !== false) {
+                $pod = $type . ' под дерево';
+            }
+            elseif(stripos($product->design, 'рамор') !== false) {
+                $pod = $type . ' под мрамор';
+            }
+            elseif(stripos($product->design, 'амен') !== false) {
+                $pod = $type . ' под камень';
+            }
+            elseif(stripos($product->design, 'етон') !== false) {
+                $pod = $type . ' под бетон';
+            }
+            elseif(stripos($product->design, 'никс') !== false) {
+                $pod = $type . ' под оникс';
+            } else {
+                $pod = '';
+            }
+
+            $keywords .= $pod . ' ';
+
+//            $lenght = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
+//            $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);
+            $lenght = $product->length;
+            $height = $product->width;
 
             $size = '';
-            $size .= $type . ' ' . $lenght . 'х' . $height . ', ';
+            $size .= $type . ' ' . $lenght . 'х' . $height . ' ';
             if ($lenght != $height) {
-                $size .= $type . ' ' . $height . 'х' . $lenght . ', ';
+                $size .= $type . ' ' . $height . 'х' . $lenght . ' ';
             }
-            $size .= $type . ' ' . $lenght . '*' . $height . ', ';
+            $size .= $type . ' ' . $lenght . '*' . $height . ' ';
             if ($lenght != $height) {
-                $size .= $type . ' ' . $height . '*' . $lenght . ', ';
+                $size .= $type . ' ' . $height . '*' . $lenght . ' ';
             }
 
-            if($product->width != 0 && $product->length != 0) {
+            if($product->length != 0 && $product->width != 0) {
             $keywords .= $size;
             }
 
+            if ($product->brand == 'Primavera') {
+                $keywords .= $type . ' примавера ';
+            } elseif ($product->brand == 'Тянь-Шань') {
+                $keywords .= $type . ' Тянь-Шань ';
+            }
 
-            $keywords .= $type . ' примавера, ';
 
 
-            $surface = $product->poverhnost;
+            $surface = $product->surface;
             $surf = '';
 
             if ($surface != null) {
@@ -1054,10 +1119,13 @@
                 }
             }
 
-            $keywords .= $type . ' ' .mb_strtolower($surf) . ', ';
+            $keywords .= $type . ' ' .mb_strtolower($surf) . ' ';
 
 
-            $color_baza = $product->color;
+            $keywords .= ' плитка керамическая плитка ';
+
+
+            $color_baza = str_replace(';', ' ', mb_strtolower($product->color));
             $color = '';
 
             if ($color_baza != null) {
@@ -1073,27 +1141,92 @@
                 }
             }
 
-            $keywords .= $type . ' ' .mb_strtolower($color) . ', ';
+            $keywords .= $type . ' ' .mb_strtolower($color) . ' ';
 
-            $keywords .= $product->brand . ' ' . $type . ', ';
+            $keywords .= $product->brand . ' ' . $type . ' ';
 
 
             $owner_code = $product->vendor_code;
 
             if ($owner_code != null) {
-                $keywords .= $type . ' ' . $owner_code . ', ';
+                $keywords .= $type . ' ' . $owner_code . ' ';
             }
 
             $country = $product->country;
 
             if ($country != null) {
-                $keywords .= $type . ' ' . $country;
+                $keywords .= $type . ' ' . $country . ' ';
             }
-//---
+
+            $keywords .= $type . ' купить ';
+
+            if (stripos($product->color, 'Белый') !== false && stripos($product->design, 'Мрамор') !== false) {
+                $keywords .= $type . ' белый мрамор ';
+                $keywords .= $type . ' под мрамор белый ';
+            }
+
+            if (stripos($product->color, 'Черный') !== false && stripos($product->design, 'Мрамор') !== false) {
+                $keywords .= $type . ' черный мрамор ';
+                $keywords .= $type . ' под мрамор черный ';
+            }
+
+            if (stripos($product->title, 'alacatta') || stripos($product->title, 'alacata')) {
+                $keywords .= ' керамогранит калаката плитка калаката керамогранит калакатта плитка калакатта';
+            }
+
+
+
             if ($type != 'декор') {
                 $description .= '<p>_____________________</p>';
                 $description .= '<p><em>' . $keywords . '</em></p>';
             }
+
+//            -----------------------------------------------------------
+
+            $title = $product->title;
+            $title = str_replace('см (', '', $title);
+            $title = str_replace(')', '', $title);
+
+
+            if (mb_strlen($title) > 50) {
+                $title = str_replace(' настенный', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Primavera ', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Тянь-Шань ', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace(' настенная', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace(' напольная', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace(' напольный', '', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Серый', 'Сер.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('серый', 'сер.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Бежевый', 'Беж.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('бежевый', 'беж.', $title);
+            }
+            if (mb_strlen($title) > 50) {
+                $title = str_replace('Керамогранит ', '', $title);
+            }
+
+
+            if (mb_strlen($title) < 40) { $title = $product->brand . ' ' . $title; }
+
+//            $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
+
 
         @endphp
         <tr>

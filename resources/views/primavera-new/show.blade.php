@@ -313,6 +313,10 @@
                         </tbody>
                     </table>
                 </div>
+{{--                <div class="col-md-6">--}}
+{{--                    {!! $product->description !!}--}}
+{{--                    {{ $product->description }}--}}
+{{--                </div>--}}
             </div>
         </div>
 
