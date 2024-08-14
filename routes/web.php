@@ -8,6 +8,7 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MyHelpController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PrimaveraNewController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TelegramSendController;
 use App\Http\Controllers\BauserviceSpbController;
@@ -224,20 +225,26 @@ Route::get('/global-tile/index', [\App\Http\Controllers\GlobalTileController::cl
 Route::get('/global-tile/{id}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
 Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection');
 
-//----- PRIMAVERA-NEW (Import from .xls via form) -----
-Route::view('/primavera-new/import', 'primavera-new.import');
-Route::post('/primavera-new/import-work', [\App\Http\Controllers\PrimaveraNewController::class, 'import_work'])->name('primavera-new.import-work');
-Route::get('/primavera-new/index', [\App\Http\Controllers\PrimaveraNewController::class, 'index'])->name('primavera-new.index');
-Route::get('/primavera-new/{id}', [\App\Http\Controllers\PrimaveraNewController::class, 'show'])->name('primavera-new.show');
-Route::get('/primavera-new/collection/{name}', [\App\Http\Controllers\PrimaveraNewController::class, 'collection'])->name('primavera-new.collection');
+Route::name('primavera-new.')->group(function () {
+    //----- PRIMAVERA-NEW (Import from .xls via form) -----
+    Route::controller(PrimaveraNewController::class)->group(function () {
+        Route::view('/primavera-new/import', 'primavera-new.import');
+        Route::post('/primavera-new/import-work', 'import_work')->name('import-work');
+        Route::get('/primavera-new/index', 'index')->name('index');
+        Route::get('/primavera-new/{id}', 'show')->name('show');
+        Route::get('/primavera-new/collection/{name}', 'collection')->name('collection');
+    });
 
-//----- PRIMAVERA-PRICE-LIST (Import from .xls via form) -----
-Route::view('/primavera-price-list-import', 'primavera-new.import-price-list');
-Route::post('/primavera-import-work-price-list', [\App\Http\Controllers\PrimaveraPriceListController::class, 'import_work_price_list'])->name('primavera-new.import-work-price-list');
+    //----- PRIMAVERA-PRICE-LIST (Import from .xls via form) -----
+    Route::view('/primavera-price-list-import', 'primavera-new.import-price-list');
+    Route::post('/primavera-import-work-price-list', [\App\Http\Controllers\PrimaveraPriceListController::class, 'import_work_price_list'])->name('import-work-price-list');
 
-//----- PRIMAVERA-STOCKS (Import from .xls via form) -----
-Route::view('/primavera-stocks-import', 'primavera-new.import-stocks');
-Route::post('/primavera-import-work-stocks', [\App\Http\Controllers\PrimaveraNewStockController::class, 'import'])->name('primavera-new.import-stocks');
+    //----- PRIMAVERA-STOCKS (Import from .xls via form) -----
+    Route::view('/primavera-stocks-import', 'primavera-new.import-stocks');
+    Route::post('/primavera-import-work-stocks', [\App\Http\Controllers\PrimaveraNewStockController::class, 'import'])->name('import-stocks');
+});
+
+
 
 //----- AVITO 2 OLD TOVARS (Import via form) -----
 Route::view('/avito-two-old/import', 'avito-2-old.import');
