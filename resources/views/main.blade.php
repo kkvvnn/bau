@@ -308,6 +308,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('global-tile.index')}}">Global Tile</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('kerranova.index')}}">Kerranova</a>
+                </li>
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link active" aria-current="page" href="{{route('technotile.index')}}">Technotile</a>--}}
 {{--                </li>--}}

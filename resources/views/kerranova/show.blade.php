@@ -27,10 +27,10 @@
                 <div class="col">
                     <h1 class="display-6">{{$product->title}}</h1>
                     <hr>
-                    <h1 class="display-6">{{ucfirst(strtolower($product->brand))}}</h1>
+                    <h1 class="display-6">{{$product->brand}}</h1>
 
                     <p class="fs-2">Коллекция:
-                        <a href="{{route('kerranova.collection', $product->collection)}}"
+                        <a href="{{route('primavera-new.collection', $product->collection)}}"
                            class="link-secondary text-decoration-none">{{$product->collection}}
                         </a></p>
 
@@ -43,15 +43,15 @@
         <div class="container-md">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="fs-5">Изображения лиц</p>
-                    <div id="carouselExample" class="carousel slide carousel-dark">
+                    {{--                    <p class="fs-5">Интерьер</p>--}}
+                    <div id="carouselExample_collection" class="carousel slide carousel-dark pt-3">
                         <div class="carousel-indicators">
                             @php
                                 $n_slide = 0;
                                 $class_slide = 'class="active" aria-current="true"';
                             @endphp
-                            @foreach($urls as $url_slide)
-                                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{$n_slide}}" {!!$class_slide!!} aria-label="Slide {{++$n_slide}}"></button>
+                            @foreach($url_collection as $url_slide_collection)
+                                <button type="button" data-bs-target="#carouselExample_collection" data-bs-slide-to="{{$n_slide}}" {!!$class_slide!!} aria-label="Slide {{++$n_slide}}"></button>
                                 @php
                                     $class_slide = '';
                                 @endphp
@@ -60,32 +60,33 @@
                         <div class="carousel-inner">
                             @php
                                 $active_slider = 'active';
-                                $nn = 0;
-                                $nn_all = count($urls);
+                                $nn_c = 0;
+                                $nn_c_all = count($url_collection);
                             @endphp
-                            @foreach($urls as $url)
-                                <div class="carousel-item {{$active_slider}}">
-                                    <a href="{{$url}}" data-fancybox="gallery" data-caption="Лицо {{++$nn}} из {{$nn_all}}">
-                                        <img src="{{$url}}" class="d-block w-100" alt="...">
-                                    </a>
-                                </div>
+                            @foreach($url_collection as $url_z)
+                                @if ($url_z)
+                                    <div class="carousel-item {{$active_slider}}">
+                                        <a href="{{$url_z}}" data-fancybox="gallery_collection" data-caption="Интерьер {{++$nn_c}} из {{$nn_c_all}}">
+                                            <img src="{{$url_z}}" class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                @endif
                                 @php
                                     $active_slider = '';
                                 @endphp
                             @endforeach
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample_collection"
                                 data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample_collection"
                                 data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-
                 </div>
                 <div class="col-md-6">
 
@@ -94,7 +95,7 @@
                             $old_price = '';
                     @endphp
 
-                    <h2 class="card-title mt-5 pricing-card-title">{{$product->props->price??'Не указана'}} <small
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price->price??'Не указана'}} <small
                             class="text-muted fw-light">₽/{{$product->unit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
 
                     <br>
@@ -103,7 +104,15 @@
 {{--                            Цена -10% {{round($product->price * 0.90, -1)}} ₽/{{$product->unit}}</p>--}}
 
 
-                    <h5 class="mt-4 mb-0">Москва: {{$product->props->balance}} {{$product->unit}} {{$vivod}}</h5>
+                    @php
+                        $stocks = $product->balance;
+//                                    dd($stocks);
+                        $balance = 0;
+                        foreach ($stocks as $st) {
+                            $balance +=  $st->balance;
+                        }
+                    @endphp
+                    <h5 class="mt-4 mb-0">Москва: {{$balance}} {{$product->unit}} {{$vivod}}</h5>
 {{--                    @if ($stock_spb)--}}
 {{--                        <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->unit}} {{$vivod}}</h5>--}}
 {{--                    @endif--}}
@@ -111,7 +120,7 @@
 {{--                        <h5 class="mt-0 mb-0">Казань: {{$stock_kzn}} {{$product->unit}} {{$vivod}}</h5>--}}
 {{--                    @endif--}}
                     <p class="mt-4">Актуально на <span
-                            class="{{$text_color}} fw-bolder">{{$product->props->updated_at->format('d.m.Y')}}</span></p>
+                            class="{{$text_color}} fw-bolder">{{$product->balance[0]->updated_at->format('d.m.Y')}}</span></p>
 
 
                     {{--                    <a title="Whatsapp" href="whatsapp://send?phone=79373209953&text={{$product->Name}}">--}}
@@ -127,7 +136,57 @@
                 </div>
             </div>
             <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="fs-5">Изображения лиц</p>
+                        <div id="carouselExample" class="carousel slide carousel-dark">
+                            <div class="carousel-indicators">
+                                @php
+                                    $n_slide = 0;
+                                    $class_slide = 'class="active" aria-current="true"';
+                                @endphp
+                                @foreach($urls as $url_slide)
+                                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{$n_slide}}" {!!$class_slide!!} aria-label="Slide {{++$n_slide}}"></button>
+                                    @php
+                                        $class_slide = '';
+                                    @endphp
+                                @endforeach
+                            </div>
+                            <div class="carousel-inner">
+                                @php
+                                    $active_slider = 'active';
+                                    $nn = 0;
+                                    $nn_all = count($urls);
+                                @endphp
+                                @foreach($urls as $url)
+                                    <div class="carousel-item {{$active_slider}}">
+                                        <a href="{{$url}}" data-fancybox="gallery" data-caption="Лицо {{++$nn}} из {{$nn_all}}">
+                                            <img src="{{$url}}" class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                    @php
+                                        $active_slider = '';
+                                    @endphp
+                                @endforeach
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
 
+                    </div>
+
+                </div>
+            </div>
+            <hr>
         </div>
 
 
@@ -212,16 +271,16 @@
                         @if($product->length)
                             <tr>
                                 <th scope="row">Длина</th>
-                                <td>{{$product->length / 10}} см</td>
+                                <td>{{$product->length}} см</td>
                             </tr>
                         @endif
                         @if($product->width)
                             <tr>
                                 <th scope="row">Ширина</th>
-                                <td>{{$product->width / 10}} см</td>
+                                <td>{{$product->width}} см</td>
                             </tr>
                         @endif
-                        @if($product->fat && $product->fat != 0)
+                        @if($product->fat * 3 && $product->fat * 3 != 0)
                             <tr>
                                 <th scope="row">Толщина</th>
                                 <td>{{$product->fat}} мм</td>

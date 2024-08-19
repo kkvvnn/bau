@@ -244,6 +244,20 @@ Route::name('primavera-new.')->group(function () {
     Route::post('/primavera-import-work-stocks', [\App\Http\Controllers\PrimaveraNewStockController::class, 'import'])->name('import-stocks');
 });
 
+//----- KERRANOVA -----
+Route::name('kerranova.')->group(function () {
+    Route::controller(\App\Http\Controllers\KerranovaController::class)->group(function () {
+        Route::view('/kerranova/import', 'kerranova.import');
+        Route::post('/kerranova/import-work', 'import_work')->name('import-work');
+        Route::get('/kerranova/index', 'index')->name('index');
+        Route::get('/kerranova/{id}', 'show')->name('show');
+        Route::get('/kerranova/collection/{name}', 'collection')->name('collection');
+    });
+
+    //----- KERRANOVA-PRICE-LIST-AND-STOCKS (Import from .xls via form) -----
+    Route::view('/kerranova-price-stock-import', 'kerranova.import-price-stock');
+    Route::post('/kerranova-import-work-price-stock', [\App\Http\Controllers\KerranovaController::class, 'import_work_price_stock'])->name('import-work-price-stock');
+});
 
 
 //----- AVITO 2 OLD TOVARS (Import via form) -----

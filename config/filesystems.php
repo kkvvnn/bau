@@ -89,6 +89,14 @@ return [
             'throw' => false,
         ],
 
+        'kerranova' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/kerranova'),
+            'url' => env('APP_URL').'/storage/images/kerranova',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'collections-text' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/bauservice/collections-text'),
