@@ -8,6 +8,7 @@ use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
 use App\Models\GlobalTileNew;
+use App\Models\Kerranova;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Pixmosaic;
@@ -105,6 +106,14 @@ class SearchController extends Controller
             ]);
         }
 
+        $kerranova = Kerranova::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $kerranova->appends(['name' => $name]);
+        if (count($kerranova)) {
+            return view('kerranova.index', [
+                'products' => $kerranova,
+            ]);
+        }
+
         $artcenter = Artcenter::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
         $artcenter->appends(['name' => $name]);
         if (count($artcenter)) {
@@ -120,6 +129,7 @@ class SearchController extends Controller
                 'products' => $global_tile,
             ]);
         }
+
         $primavera_new = PrimaveraNew::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
         $primavera_new->appends(['name' => $name]);
         if (count($primavera_new)) {
@@ -127,6 +137,7 @@ class SearchController extends Controller
                 'products' => $primavera_new,
             ]);
         }
+
 
         return redirect('/not-found-rezults');
     }
