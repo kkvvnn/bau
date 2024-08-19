@@ -106,7 +106,10 @@ class SearchController extends Controller
             ]);
         }
 
-        $kerranova = Kerranova::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $kerranova = Kerranova::where('title', 'LIKE', $name)
+            ->orWhere('vendor_code', 'LIKE', $name)
+            ->orWhere('collection', 'LIKE', $name)
+            ->paginate(15);
         $kerranova->appends(['name' => $name]);
         if (count($kerranova)) {
             return view('kerranova.index', [
