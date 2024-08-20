@@ -93,7 +93,7 @@ class KerranovaController extends Controller
         $vivod = '';
 
 //        return view('pixmosaic-new.show', compact('product', 'text_color', 'urls_c'));
-        return view('primavera-new.show', [
+        return view('kerranova.show', [
             'product' => $product,
             'urls' => $urls_2,
             // 'url2' => $url2,
