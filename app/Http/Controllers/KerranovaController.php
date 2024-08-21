@@ -64,7 +64,7 @@ class KerranovaController extends Controller
 
 //        -----------------------------
         $urls_c = [];
-        if ($product->images == '') {
+        if ($product->images != '') {
             $urls_c[] = Storage::disk('kerranova')->url(Str::remove($string_for_delete, $product->images[0]));
         } else {
             $urls_c[] = Storage::disk('no_image')->url('no_image.jpg');

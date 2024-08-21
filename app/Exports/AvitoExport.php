@@ -9,6 +9,7 @@ use App\Models\AquaFloor;
 use App\Models\Artcenter;
 use App\Models\GlobalTileNew;
 use App\Models\Kerabellezza2;
+use App\Models\Kerranova;
 use App\Models\Kevis;
 use App\Models\PixmosaicNew;
 use App\Models\PrimaveraNew;
@@ -172,6 +173,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //        dd($globaltile);
 
+        //      ---------------------KERRANOVA---------------------
+        $kerranova = Kerranova::whereHas('props')->get();
+
+
         //      ---------------------KERABELLEZZA---------------------
 
         $kerabellezza = Kerabellezza2::where([
@@ -198,7 +203,25 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'pixmosaics' => $pixmosaics,
                 'artcenter' => $artcenter,
                 'globaltile' => $globaltile,
+                'kerranova' => $kerranova,
                 'kerabellezza' => $kerabellezza,
+
+//                'products' => [],
+//                'primavera' => [],
+//                'absolut_gres' => [],
+//                'leedo' => [],
+//                'altacera' => [],
+//                'ntceramic' => [],
+//                'kevis' => [],
+//                'rusplitka' => [],
+//                'technotile' => [],
+//                'aquafloor' => [],
+//                'pixmosaics' => [],
+//                'artcenter' => [],
+//                'globaltile' => [],
+//                'kerranova' => $kerranova,
+//                'kerabellezza' => [],
+
                 'phone' => $this->phone,
                 'name' => $this->name,
                 'contact_method' => $this->contact_method,
