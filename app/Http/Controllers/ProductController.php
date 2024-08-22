@@ -137,7 +137,11 @@ class ProductController extends Controller
         $type = 'ceradim';
 
 
-         $products = Product::where([['Producer_Brand', 'Ceradim']])->paginate(15);
+         $products = Product::where([
+             ['Producer_Brand', 'Ceradim'],
+             ['Picture', '!=', ''],
+             ])
+             ->paginate(15);
 //         dd($products);
 
         return $this->index($products, $type);
