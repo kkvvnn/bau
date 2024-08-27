@@ -180,6 +180,7 @@ class AltaceraImportController extends Controller
 
     public function download_img()
     {
+        set_time_limit(200);
         $products = AltaceraTovarAvailable::all();
         $tovar_ids_arr = [];
         foreach ($products as $product) {

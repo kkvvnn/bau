@@ -211,13 +211,13 @@
                         @if($product->width)
                             <tr>
                                 <th scope="row">Длина</th>
-                                <td>{{$product->width}} см</td>
+                                <td>{{$product->width / 10}} см</td>
                             </tr>
                         @endif
                         @if($product->height)
                             <tr>
                                 <th scope="row">Ширина</th>
-                                <td>{{$product->height}} см</td>
+                                <td>{{$product->height / 10}} см</td>
                             </tr>
                         @endif
                         @if($product->thickness && $product->thickness != 0)
