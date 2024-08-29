@@ -20,7 +20,8 @@ class PixmosaicNewImport implements ToModel, WithHeadingRow, WithUpserts
             'vendor_code' => str_replace(' ', '', trim($row['vendor_code'])),
             'title' => $row['title'],
             'title2' => $row['title2'],
-            'price' => (int) str_replace("\xC2\xA0", '', $row['price']),
+//            'price' => (int) str_replace("\xC2\xA0", '', $row['price']),
+            'price' => (int) str_replace("\xC2\xA0", '', str_replace(" руб.", '', $row['price'])),
             'stock' => str_replace(' м2', '', $row['stock']),
             'size_tile' => $row['size_tile'],
             'size_chip' => $row['size_chip'],
@@ -28,7 +29,7 @@ class PixmosaicNewImport implements ToModel, WithHeadingRow, WithUpserts
             'osnova' => $row['osnova'],
             'material' => $row['material'],
             'surface' => $row['surface'],
-            'square_list' => $row['square_list'],
+            'square_list' => str_replace(',', '.', $row['square_list']),
             'img' => 'https://pixmosaic.ru'.$row['img'],
         ]);
     }
