@@ -14,7 +14,9 @@
         ym(98191201, "init", {
             clickmap:true,
             trackLinks:true,
-            accurateTrackBounce:true
+            accurateTrackBounce:true,
+            webvisor:true,
+            ecommerce:"dataLayer"
         });
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/98191201" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
