@@ -53,7 +53,7 @@
             $description .= '<p>'.nl2br($add_description_first).'</p>';
             }
 
-            $description .= '<p>Добрый день. Мы являемся официальным Авито магазином бренда Laparet в Казани. У нас Вы всегда можете увидеть актуальные коллекции керамогранита и керамической плитки Laparet и узнать актуальные остатки.</p>';
+            $description .= '<p>Добрый день. Мы являемся официальным Авито магазином бренда '.$product->Producer_Brand.' в Казани. У нас Вы всегда можете увидеть актуальные коллекции керамогранита и керамической плитки Laparet и узнать актуальные остатки.</p>';
 
             if ($product->Novinka == 1) {
                 $description .= '<p>&#9889;Новинка&#9889; <strong>'. $product->Producer_Brand .' '. $product->Name .'</strong></p>';
@@ -70,7 +70,7 @@
             } else {
                 $description .= '<p>&#9193;  '.$date.' свободный остаток в Казани 0 '.$product->MainUnit.' </p>';
             }
-            $description .= '<p>&#9193;  '.$date.' свободный остаток в Москве '.round($product->balanceCount, 2).' '.$product->MainUnit.' </p>';
+            $description .= '<p>&#9193;  Свободный остаток в Москве '.round($product->balanceCount, 2).' '.$product->MainUnit.' </p>';
             $description .= '<p><em>(актуальную информацию уточняйте у менеджера)</em></p>';
             $description .= '<p>------------------</p>';
 
@@ -91,6 +91,7 @@
                 if($product->Thickness != null && $product->Thickness != 0) {
                 $description .= '<li><strong>Тoлщина: </strong>' . $product->Thickness . '</li>';
                 }
+
                 if($product->DesignValue != null) {
                 $description .= '<li><strong>Рисунoк: </strong>' . $product->DesignValue . '</li>';
                 }
@@ -180,8 +181,8 @@
 
             if ($product->Producer_Brand == 'Laparet') {
                 $keywords .= $type . ' лапарет ';
-            } elseif ($product->Producer_Brand == 'Cersanit') {
-                $keywords .= $type . ' церсанит ';
+            } elseif ($product->Producer_Brand == 'Ceradim') {
+                $keywords .= $type . ' керадим ';
             }
 
              if((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {

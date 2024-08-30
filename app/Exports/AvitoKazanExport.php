@@ -15,6 +15,7 @@ use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
@@ -52,14 +53,14 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
 
     public function view(): View
     {
-        set_time_limit(90);
+        set_time_limit(120);
 
-//        $products = BauserviceSpb::where([['GroupProduct', '01 Плитка'],['Producer_Brand', 'Laparet'],['Name', 'not like', '%ставк%'], ['Name', 'not like', '%ступен%'], ['Name', 'not like', '%пецэлем%'], ['balance', 1], ['RMPrice', '>=', '500'], ['Picture', '!=', '']])->whereColumn('RMPrice', '>', 'Price')->get();
-
-        $products = Product::where('GroupProduct', '=', '01 Плитка')
-            ->where('RMPrice', '>=', 600)
-            ->where('Picture', '!=', '')
-            ->where('Producer_Brand', '=', 'Laparet')
+        $products = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Laparet'],
+            ['Picture', '!=', ''],
+            ['RMPrice', '>=', '600'],
+        ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
             ->filter(function (Product $product) {
@@ -75,8 +76,28 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
                     || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
                     || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
                     || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
+                    || ($length >= 59 && $length <= 61 && $height >= 29 && $height <= 31)           //30x60
+                    || ($length >= 49 && $length <= 51 && $height >= 24 && $height <= 36)           //25x50
+                    || ($length >= 74 && $length <= 76 && $height >= 24 && $height <= 36)           //25x75
+                    || ($length >= 59 && $length <= 61 && $height >= 19 && $height <= 21)           //20x60
+                    || ($length >= 39 && $length <= 41 && $height >= 19 && $height <= 21)           //20x40
                     || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
             });
+
+//        dd($products);
+
+        $ceradim = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Ceradim'],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get()
+            ->filter(function (Product $product) {
+                return isset($product->kzn->balance) && $product->kzn->balance == 1;
+            });
+
+        $products = $products->merge($ceradim);
 
 //        dd($products);
 
