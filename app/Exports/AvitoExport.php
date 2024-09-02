@@ -95,6 +95,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $products = $products->merge($blaze);
 //        dd($products);
 //      ==============================================
+        $golitsyno_duplicate = ['х9999275874'];
+//      ==============================================
         $primavera = PrimaveraNew::whereHas('balance')
             ->whereHas('price')
             ->get();
@@ -191,6 +193,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         if ($this->foto == '') {
             return view('exports.avito', [
                 'products' => $products,
+                'golitsyno_duplicate' => $golitsyno_duplicate,
                 'primavera' => $primavera,
                 'absolut_gres' => $absolut_gres,
                 'leedo' => $leedo,
@@ -206,7 +209,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 'kerranova' => $kerranova,
                 'kerabellezza' => $kerabellezza,
 
-//                'products' => [],
+//                'products' => $products,
+//                'golitsyno_duplicate' => $golitsyno_duplicate,
 //                'primavera' => [],
 //                'absolut_gres' => [],
 //                'leedo' => [],
@@ -219,7 +223,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //                'pixmosaics' => [],
 //                'artcenter' => [],
 //                'globaltile' => [],
-//                'kerranova' => $kerranova,
+//                'kerranova' => [],
 //                'kerabellezza' => [],
 
                 'phone' => $this->phone,

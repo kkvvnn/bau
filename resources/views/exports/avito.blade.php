@@ -496,6 +496,38 @@
             <td></td>
             <td></td> {{--MixesType--}}
         </tr>
+
+        // duplicate in Golitsyno
+        @if (in_array($product->Element_Code, $golitsyno_duplicate))
+            <tr>
+                <td></td>
+                <td>{{ $product->Element_Code .'_golitsyno' }}</td>
+                <td>{{ $contact_method }}</td>
+                {{--            <td>Да</td>--}}
+                {{--            <td>466694981</td>--}}
+                <td>kkvvnn89@gmail.com</td>
+                <td>Активно</td>
+                <td>{{ $name }}</td>
+                <td>{{$price}}</td>
+                <td>Напольные решения</td>
+                <td>{{$title}}</td>
+                <td>{{$img_full}}</td> <!-- -->
+                <td>Отделка</td>
+                <td>Стройматериалы</td>
+                <td>Ремонт и строительство</td>
+                <td>Package</td>
+                <td>{{$FinishingType}}</td>
+                <td>{{ $phone }}</td> <!-- -->
+                <td>{{$description}}</td> <!-- -->
+                <td>Московская область, Одинцовский городской округ, Голицыно</td>
+                <td>Товар от производителя</td>
+                <!-- <td>{{$date_next_month}}</td> -->
+                <td>{{$FinishingSubType}}</td>
+                <td>Новое</td>
+                <td></td>
+                <td></td> {{--MixesType--}}
+            </tr>
+        @endif
     @endforeach
     {{-----BAUSERVICE-END----}}
 
