@@ -442,21 +442,21 @@
 
             //--------------------------------------------------------------------------
             //            $price = $product->RMPrice;
-                        if ($product->Producer_Brand == 'Laparet') {
-                            if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                                $price = round($product->RMPrice * 0.9, -1);
-                            } else {
-                                $price = $product->RMPrice;
-                            }
-                        } elseif ($product->Producer_Brand == 'Vitra') {
-                            if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                                $price = round($product->RMPrice * 0.95, -1);
-                            } else {
-                                $price = $product->RMPrice;
-                            }
-                        } else {
-                            $price = $product->RMPrice;
-                        }
+//                        if ($product->Producer_Brand == 'Laparet') {
+//                            if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+//                                $price = round($product->RMPrice * 0.9, -1);
+//                            } else {
+//                                $price = $product->RMPrice;
+//                            }
+//                        } elseif ($product->Producer_Brand == 'Vitra') {
+//                            if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+//                                $price = round($product->RMPrice * 0.95, -1);
+//                            } else {
+//                                $price = $product->RMPrice;
+//                            }
+//                        } else {
+//                            $price = $product->RMPrice;
+//                        }
 
 
                         $price = $product->RMPrice;
@@ -1940,19 +1940,24 @@
 
                                     $count_in_pack = (float)$pack_ratio / (float)$one_count_ratio;
             //        --------------------------------------------------------------
-                        if($product->price !== null) {
-                            if ($product->sale == 0) {
-                                $price = round($product->price->price * 0.95, -1);
+//                        if($product->price !== null) {
+//                            if ($product->sale == 0) {
+//                                $price = round($product->price->price * 0.95, -1);
+////                                $price = $product->price->price;
+//                            } else {
 //                                $price = $product->price->price;
-                            } else {
-                                $price = $product->price->price;
-                            }
-//                            $price = $product->price->price;
+//                            }
+////                            $price = $product->price->price;
+//                        } else {
+//                            $price = '';
+//                        }
+
+//                        $price = 1;
+                        if($product->price !== null) {
+                            $price = $product->price->price;
                         } else {
                             $price = '';
                         }
-
-                        $price = 1;
             //                --------------------------
                         $code_avito = $product->artikul;
             //                --------------------------
