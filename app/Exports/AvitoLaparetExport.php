@@ -49,6 +49,7 @@ class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCus
 //      =================LAPARET-COLLECTIONS======================
         $laparets = Product::where('GroupProduct', '=', '01 Плитка')
             ->where('RMPrice', '>=', 700)
+            ->where('Element_Code', '!=', 'х9999278638')
             ->where('Picture', '!=', '')
             ->where('Producer_Brand', '=', 'Laparet')
             ->whereColumn('RMPrice', '>', 'Price')
