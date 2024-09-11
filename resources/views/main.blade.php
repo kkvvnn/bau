@@ -262,10 +262,10 @@
 
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('product_index')}}">Laparet / Cersanit / Vitra</a>
+                <a class="nav-link active" aria-current="page" href="{{route('product_index')}}">LAPARET / CERSANIT / VITRA</a>
               </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('ceradim.index')}}">Ceradim</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('ceradim.index')}}">CERADIM</a>
                 </li>
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_plitka')}}">Керамическая плитка</a>--}}
@@ -286,50 +286,50 @@
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_plit')}}">Плитка деш</a>--}}
 {{--              </li>--}}
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('empero.index')}}">Empero</a>
-                </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('aquafloor_index')}}">AquaFloor</a>
-              </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link active" aria-current="page" href="{{route('empero.index')}}">Empero</a>--}}
+{{--                </li>--}}
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link active" aria-current="page" href="{{route('index_size_form')}}">По размеру</a>--}}
 {{--              </li>--}}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('primavera-new.index')}}">PrimaVera</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('primavera-new.index')}}">PRIMAVERA</a>
                 </li>
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link active" aria-current="page" href="{{route('primavera.search.form')}}">PrimaVera Поиск</a>--}}
 {{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link active" aria-current="page" href="{{route('absolut_gres.index')}}">Absolut Gres</a>--}}
+{{--                </li>--}}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('absolut_gres.index')}}">Absolut Gres</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('altacera.index')}}">ARTKERA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('leedo.index')}}">Leedo</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('ntceramic.index')}}">NT CERAMIC</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('altacera.index')}}">Altacera Delacora New Trend</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('kevis.index')}}">KEVIS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('pixmosaic-new.index')}}">PIX mosaic</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('rusplitka.index')}}">RUSPLITKA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('ntceramic.index')}}">NT Ceramic</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('artcenter.index')}}">ART CENTRE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('kevis.index')}}">Kevis</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('global-tile.index')}}">GLOBAL TILE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('rusplitka.index')}}">Rusplitka</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('kerranova.index')}}">KERRANOVA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('artcenter.index')}}">ArtCenter</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('leedo.index')}}">LEEDO мозаика</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('global-tile.index')}}">Global Tile</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('pixmosaic-new.index')}}">PIX мозаика</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('kerranova.index')}}">Kerranova</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('aquafloor_index')}}">AQUAFLOOR кварцвинил</a>
                 </li>
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link active" aria-current="page" href="{{route('technotile.index')}}">Technotile</a>--}}
