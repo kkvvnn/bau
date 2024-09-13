@@ -46,7 +46,7 @@
                             </a>
                             <div class="card-body">
                                 <a href="/keramopro/{{$product->id}}" class="text-decoration-none text-reset">
-                                    <h5 class="card-title">{{$product->title}}</h5>
+                                    <h5 class="card-title">{{$product->title}} (толщина 2 см)</h5>
                                 </a>
                             </div>
                             <div class="card-footer">
