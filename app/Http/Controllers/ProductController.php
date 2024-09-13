@@ -147,6 +147,35 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
+    public function index_kerama_marazzi()
+    {
+        $type = 'kerama_marazzi';
+
+
+//         $products = Product::where([
+//             ['Producer_Brand', 'Kerama Marazzi'],
+//             ['Picture', '!=', ''],
+//             ])
+//             ->paginate(15);
+//         dd($products);
+
+        $products = Product::where([['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', '=', 'Kerama Marazzi'],
+//            ['Name', 'not like', '%ставк%'],
+//            ['Name', 'not like', '%ступен%'],
+//            ['Name', 'not like', '%пецэлем%'],
+            ['balance', 1],
+//            ['RMPrice', '>=', '650'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->orderByRaw('Lenght * Height DESC')
+            ->paginate(15);
+
+        return $this->index($products, $type);
+    }
+
     public function index_min($count = 0)
     {
         $type = 'vivod';

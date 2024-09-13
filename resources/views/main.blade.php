@@ -264,6 +264,9 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('product_index')}}">LAPARET / CERSANIT / VITRA</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('kerama-marazzi.index')}}">KERAMA MARAZZI</a>
+              </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('ceradim.index')}}">CERADIM</a>
                 </li>
