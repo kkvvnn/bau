@@ -70,6 +70,8 @@
                 $description .= '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             } elseif ($product->Producer_Brand == 'Cersanit') {
                 $description .= '<p>Керамическая плитка и керамогранит Cersanit , Церсанит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+            } elseif ($product->Producer_Brand == 'Kerama Marazzi') {
+                $description .= '<p>Керамическая плитка и керамогранит Kerama Marazzi , Керама Марацци. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
             } elseif ($product->Producer_Brand == 'Vitra') {
 //                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
 //                    $description .= '<p>Весь декабрь у нас действует <strong>ЧЕСТНАЯ 10% СКИДКА</strong> на всю линейку керамической плитки от Vitra. Успей оформить заказ!</p>';
@@ -244,6 +246,8 @@
                 $keywords .= $type . ' витра ';
             } elseif ($product->Producer_Brand == 'Ceradim') {
                 $keywords .= $type . ' керадим ';
+            } elseif ($product->Producer_Brand == 'Kerama Marazzi') {
+                $keywords .= $type . ' керама марацци ';
             }
 
 

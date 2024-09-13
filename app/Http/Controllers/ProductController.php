@@ -161,11 +161,11 @@ class ProductController extends Controller
 
         $products = Product::where([['GroupProduct', '01 Плитка'],
             ['Producer_Brand', '=', 'Kerama Marazzi'],
-//            ['Name', 'not like', '%ставк%'],
-//            ['Name', 'not like', '%ступен%'],
-//            ['Name', 'not like', '%пецэлем%'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
             ['balance', 1],
-//            ['RMPrice', '>=', '650'],
+            ['RMPrice', '>=', '650'],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
         ])

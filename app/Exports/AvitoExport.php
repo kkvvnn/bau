@@ -95,7 +95,25 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         $products = $products_all->except($ids_cersanit_except);
         $products = $products->merge($blaze);
+
+
+        $kerama_marazzi = Product::where([['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', '=', 'Kerama Marazzi'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['balance', 1],
+            ['RMPrice', '>=', '650'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get();
+//        dd($kerama_marazzi);
+        $products = $products->merge($kerama_marazzi);
+
 //        dd($products);
+
 //      ==============================================
         $golitsyno_duplicate = ['х9999275874'];
 //      ==============================================
