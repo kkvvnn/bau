@@ -97,6 +97,14 @@ return [
             'throw' => false,
         ],
 
+        'keramopro' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/keramopro'),
+            'url' => env('APP_URL').'/storage/images/keramopro',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'collections-text' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/bauservice/collections-text'),
