@@ -323,6 +323,9 @@
                     <a class="nav-link active" aria-current="page" href="{{route('kerranova.index')}}">KERRANOVA</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('keramopro.index')}}">NOVIN CERAM</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('leedo.index')}}">LEEDO мозаика</a>
                 </li>
                 <li class="nav-item">

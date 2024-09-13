@@ -46,7 +46,7 @@
                             </a>
                             <div class="card-body">
                                 <a href="/keramopro/{{$product->id}}" class="text-decoration-none text-reset">
-                                    <h5 class="card-title">{{$product->name}}</h5>
+                                    <h5 class="card-title">{{$product->title}}</h5>
                                 </a>
                             </div>
                             <div class="card-footer">
@@ -60,7 +60,7 @@
 //                                        $balance +=  $st->balance;
 //                                    }
                                 @endphp
-                                <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->stock??''}} {{$product->unit}}</p>
+                                <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->balance??''}} {{$product->unit}}</p>
 {{--                                <p class="mb-0 fs-5 text-body-secondary">Остаток: Balance {{$product->unit}}</p>--}}
 
                                 <small class="mb-0 fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>

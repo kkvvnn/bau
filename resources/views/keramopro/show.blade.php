@@ -30,7 +30,7 @@
                     <h1 class="display-6">{{ucfirst(strtolower($product->brand))}}</h1>
 
                     <p class="fs-2">Коллекция:
-                        <a href="{{route('kerranova.collection', $product->collection)}}"
+                        <a href="{{route('keramopro.collection', $product->collection)}}"
                            class="link-secondary text-decoration-none">{{$product->collection}}
                         </a></p>
 
@@ -43,7 +43,7 @@
         <div class="container-md">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="fs-5">Изображения лиц</p>
+{{--                    <p class="fs-5">Изображения лиц</p>--}}
                     <div id="carouselExample" class="carousel slide carousel-dark">
                         <div class="carousel-indicators">
                             @php
@@ -94,7 +94,7 @@
                         $old_price = '';
                     @endphp
 
-                    <h2 class="card-title mt-5 pricing-card-title">{{$product->props->price??'Не указана'}} <small
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price??'Не указана'}} <small
                             class="text-muted fw-light">₽/{{$product->unit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
 
                     <br>
@@ -104,7 +104,7 @@
 
 
 
-                    <h5 class="mt-4 mb-0">Москва: {{$product->props->balance}} {{$product->unit}} {{$vivod}}</h5>
+                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>
                     {{--                    @if ($stock_spb)--}}
                     {{--                        <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->unit}} {{$vivod}}</h5>--}}
                     {{--                    @endif--}}
@@ -112,7 +112,7 @@
                     {{--                        <h5 class="mt-0 mb-0">Казань: {{$stock_kzn}} {{$product->unit}} {{$vivod}}</h5>--}}
                     {{--                    @endif--}}
                     <p class="mt-4">Актуально на <span
-                            class="{{$text_color}} fw-bolder">{{$product->props->updated_at->format('d.m.Y')}}</span></p>
+                            class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
 
 
                     {{--                    <a title="Whatsapp" href="whatsapp://send?phone=79373209953&text={{$product->Name}}">--}}
@@ -213,19 +213,19 @@
                         @if($product->length)
                             <tr>
                                 <th scope="row">Длина</th>
-                                <td>{{$product->length / 10}} см</td>
+                                <td>{{$product->length}} см</td>
                             </tr>
                         @endif
                         @if($product->width)
                             <tr>
                                 <th scope="row">Ширина</th>
-                                <td>{{$product->width / 10}} см</td>
+                                <td>{{$product->width}} см</td>
                             </tr>
                         @endif
                         @if($product->fat && $product->fat != 0)
                             <tr>
                                 <th scope="row">Толщина</th>
-                                <td>{{$product->fat}} мм</td>
+                                <td>{{$product->fat / 10}} см</td>
                             </tr>
                         @endif
                         @if($product->massa_pack)

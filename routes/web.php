@@ -206,6 +206,7 @@ Route::get('/technotile/{id}', [\App\Http\Controllers\TechnotileController::clas
 Route::get('/keramopro/import', [\App\Http\Controllers\KeramoproController::class, 'import']);
 Route::get('/keramopro/index', [\App\Http\Controllers\KeramoproController::class, 'index'])->name('keramopro.index');
 Route::get('/keramopro/{id}', [\App\Http\Controllers\KeramoproController::class, 'show'])->name('keramopro.show');
+Route::get('/keramopro/collection/{name}', [\App\Http\Controllers\KeramoproController::class, 'collection'])->name('keramopro.collection');
 
 //----- EMPERO (Import from scrap .xlsx via form) -----
 Route::view('/empero/import', 'empero.import');
