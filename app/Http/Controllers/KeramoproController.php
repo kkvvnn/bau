@@ -79,9 +79,9 @@ class KeramoproController extends Controller
                     'length' => $product['param'][0],
                     'width' => $product['param'][1],
                     'fat' => 20,
-                    'surface' => ucfirst($product['param'][6]),
-                    'color' => ucfirst($product['param'][7]),
-                    'design' => ucfirst($product['param'][8]),
+                    'surface' => ucfirst_rus($product['param'][6]),
+                    'color' => ucfirst_rus($product['param'][7]),
+                    'design' => ucfirst_rus($product['param'][8]),
                     'main_image' => $product['param'][10] ?? null,
                     'images' => $this->images_to_array($product['picture']),
                 ]);
