@@ -109,8 +109,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->get();
-//        dd($kerama_marazzi);
-        $products = $products->merge($kerama_marazzi);
+
+//        $products = $products->merge($kerama_marazzi);  // KERAMA-MARAZZI NO/OFF
 
 //        dd($products);
 
