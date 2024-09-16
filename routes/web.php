@@ -50,8 +50,8 @@ Route::get('/decor_index', [ProductController::class, 'index_decor'])->name('ind
 //Route::get('/search', [ProductController::class, 'search']);
 Route::get('/size', [ProductController::class, 'index_size'])->name('index_size');
 Route::view('/size_form', 'size_form')->name('index_size_form');
-Route::get('/collection/{name}', [ProductController::class, 'collection_name']);
-Route::get('/product/{id?}', [ProductController::class, 'show'])->name('show');
+Route::get('/collection/{name:slug}', [ProductController::class, 'collection_name']);
+Route::get('/product/{slug:slug}', [ProductController::class, 'show'])->name('show');
 Route::get('/ddooww/{id?}', [Controller::class, 'down'])->name('img_url');
 Route::get('/index/{id?}', [Controller::class, 'index2']);
 Route::get('/index_collection', [CollectionController::class, 'index'])->name('index_collection');

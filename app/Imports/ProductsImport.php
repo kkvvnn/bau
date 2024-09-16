@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -20,6 +21,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithUpserts, WithChunkR
             'Element_Code' => $row['element_code'],
             'Owner_Article' => $row['owner_article'],
             'Name' => $row['name'],
+            'slug' => STR::slug($row['producer_brand'].'-'.$row['name']),
             'Price' => $row['price'],
             'RMPrice' => $row['rmprice'],
             'RMPriceOld' => $row['rmpriceold'],

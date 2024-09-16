@@ -265,16 +265,19 @@ class ProductController extends Controller
         //
     }
 
-    public function collection_name($id)
+    public function collection_name($slug)
     {
         $type = 'collection_name';
 
-        $products = Product::where([
-            ['Collection_Id', 'LIKE', $id],
-            // ['Category', 'LIKE', '%керамогранит%'],
-            // ['Lenght', 80],
-            // ['Height', 80],
-        ])->orderByDesc('Height')->paginate(15);
+//        $products = Product::where([
+//            ['Collection_Id', 'LIKE', $id],
+//        ])->orderByDesc('Height')->paginate(15);
+
+        $products = Product::whereHas('collections', function ($query) use ($slug) {
+            $query->whereSlug($slug);
+        })
+            ->orderByDesc('Height')
+            ->paginate(15);
 
         return $this->index($products, $type);
     }
@@ -282,11 +285,14 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id = 1)
+    public function show($slug): View
     {
+//        dd($slug);
         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
 
-        $product = Product::findOrFail($id);
+//        $product = Product::findOrFail($slug);
+        $product = Product::whereSlug($slug)->first();
+//        dd($product);
         $collection = $product->collections;
 
         if (count($collection)) {

@@ -9,13 +9,7 @@ class Collection extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'Collection_Id',
-        'Collection_Name',
-        'Interior_Pic',
-    ];
-
-    // protected $guarded = true;
+     protected $guarded = false;
 
     public function products()
     {

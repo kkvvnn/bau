@@ -30,7 +30,7 @@
                     <h1 class="display-6">{{$product->Producer_Brand}}</h1>
                     <p class="fs-2">Коллекция:
                         @foreach ($collection as $one_collection)
-                            <a href="/collection/{{$one_collection->Collection_Id}}"
+                            <a href="/collection/{{$one_collection->slug}}"
                                class="link-secondary text-decoration-none">{{$one_collection->Collection_Name}}
                                 . </a>
                         @endforeach
