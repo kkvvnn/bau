@@ -20,9 +20,9 @@ class AltaceraController2 extends Controller
 
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $product = AltaceraTovarAvailable::find($id);
+        $product = AltaceraTovarAvailable::whereSlug($slug)->firstOrFail();
 
         if (isset($product->picture->images)) {
             $images = $product->picture->images;
@@ -49,5 +49,13 @@ class AltaceraController2 extends Controller
             'images' =>$images,
             'text_color' => $text_color,
         ]);
+    }
+
+    public function collection($name)
+    {
+        $products = AltaceraTovarAvailable::where('category', 'LIKE', '%'.$name.'%')
+            ->paginate(15);
+
+        return view('altacera.index', compact('products'));
     }
 }

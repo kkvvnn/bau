@@ -28,7 +28,11 @@
                     <h1 class="display-6">{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->height}}x{{$product->width}} {{$product->artikul}}</h1>
                     <hr>
                     <h1 class="display-6">{{$product->category_rel->parent}}</h1>
-                    <p class="fs-2">Коллекция: {{$product->category}}</p>
+{{--                    <p class="fs-2">Коллекция: {{$product->category}}</p>--}}
+                    <p class="fs-2">Коллекция:
+                        <a href="{{route('artkera.collection', $product->category)}}"
+                           class="link-secondary text-decoration-none">{{$product->category}}
+                        </a></p>
                     <hr>
                 </div>
             </div>

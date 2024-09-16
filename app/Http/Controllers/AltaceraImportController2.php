@@ -12,6 +12,7 @@ use App\Models\AltaceraPriceList;
 use App\Models\Altacera\AltaceraTovar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use ZipArchive;
 
 class AltaceraImportController2 extends Controller
@@ -157,6 +158,22 @@ class AltaceraImportController2 extends Controller
         AltaceraTovarAvailable::truncate();
 
         foreach ($tovars as $tovar) {
+            $brand = AltaceraTovar::find($tovar['id']);
+//            $tovar['slug'] = Str::slug($brand->category_rel->parent.'-'.$tovar['tovar']);
+            $tovar['slug'] = Str::slug(
+                $brand->category_rel->parent
+                .'-'
+                .$tovar['collection_item']
+                .'-'
+                .$tovar['name_for_site']
+                .'-'
+                .$tovar['height']
+                .'x'
+                .$tovar['width']
+                .'-'
+                .$tovar['artikul']
+            );
+
             AltaceraTovarAvailable::create($tovar);
         }
     }

@@ -169,11 +169,12 @@ Route::get('/leedo-index/{count?}', [\App\Http\Controllers\LeedoController::clas
 Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
 Route::get('/leedo/collection/{name}', [\App\Http\Controllers\LeedoController::class, 'collection'])->name('leedo.collection');
 
-//----- ALTACERA (Import from auto-updated .json) -----
-Route::get('/altacera-import-all', [\App\Http\Controllers\AltaceraImportController2::class, 'altacera_import_all']);
-Route::get('/altacera-index', [\App\Http\Controllers\AltaceraController2::class, 'index'])->name('altacera.index');
-Route::get('/altacera/{id}', [\App\Http\Controllers\AltaceraController2::class, 'show'])->name('altacera.show');
-Route::get('/altacera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
+//----- ARTKERA (Import from auto-updated .json) -----
+Route::get('/artkera-import-all', [\App\Http\Controllers\AltaceraImportController2::class, 'altacera_import_all']);
+Route::get('/artkera-index', [\App\Http\Controllers\AltaceraController2::class, 'index'])->name('altacera.index');
+Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\AltaceraController2::class, 'show'])->name('altacera.show');
+Route::get('/artkera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
+Route::get('/artkera/collection/{name}', [\App\Http\Controllers\AltaceraController2::class, 'collection'])->name('artkera.collection');
 
 //----- PIXMOSAIC -----
 Route::get('/pixmosaic/import', [\App\Http\Controllers\PixmosaicController::class, 'import']);

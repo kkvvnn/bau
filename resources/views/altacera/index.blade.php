@@ -64,12 +64,12 @@
 
                     <div class="col">
                         <div class="card h-100">
-                            <a href="/altacera/{{$product->id}}">
+                            <a href="/artkera/{{$product->slug}}">
                                 <img src="{{Storage::disk('altacera')->url($product->tovar_id . '.JPEG')}}"
                                      class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <a href="/altacera/{{$product->id}}" class="text-decoration-none text-reset">
+                                <a href="/artkera/{{$product->slug}}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->category_rel->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->height}}x{{$product->width}} {{$product->artikul}}</h5>
                                 </a>
 {{--                                <p class="card-text"></p>--}}

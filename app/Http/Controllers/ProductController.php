@@ -291,7 +291,7 @@ class ProductController extends Controller
         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
 
 //        $product = Product::findOrFail($slug);
-        $product = Product::whereSlug($slug)->first();
+        $product = Product::whereSlug($slug)->firstOrFail();
 //        dd($product);
         $collection = $product->collections;
 
