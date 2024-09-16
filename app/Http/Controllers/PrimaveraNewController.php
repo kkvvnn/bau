@@ -37,9 +37,10 @@ class PrimaveraNewController extends Controller
         return view('primavera-new.index', compact('products'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $product = PrimaveraNew::find($id);
+//        $product = PrimaveraNew::find($id);
+        $product = PrimaveraNew::whereSlug($slug)->first();
 
         $string_for_delete = 'https://domix-club.ru/upload/iblock/';
         $img = Storage::disk('primavera-new')->url(Str::remove($string_for_delete, $product->Picture));

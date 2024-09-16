@@ -238,7 +238,7 @@ Route::name('primavera-new.')->group(function () {
         Route::view('/primavera-new/import', 'primavera-new.import');
         Route::post('/primavera-new/import-work', 'import_work')->name('import-work');
         Route::get('/primavera-new/index', 'index')->name('index');
-        Route::get('/primavera-new/{id}', 'show')->name('show');
+        Route::get('/primavera-new/{slug:slug}', 'show')->name('show');
         Route::get('/primavera-new/collection/{name}', 'collection')->name('collection');
     });
 
