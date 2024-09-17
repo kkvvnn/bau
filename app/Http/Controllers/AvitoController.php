@@ -6,6 +6,8 @@ use App\Exports\AvitoExport;
 use App\Exports\AvitoKazanExport;
 use App\Exports\AvitoLaparetExport;
 use App\Exports\AvitoSpbExport;
+use App\Imports\AvitoTwoExcelImport;
+use App\Models\AvitoTwoExcel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -76,5 +78,21 @@ class AvitoController extends Controller
         $url = Storage::disk('avito')->url($filename);
         $type = 'laparet-spb';
         return view('exports.url', compact('url', 'type'));
+    }
+
+    public function import_old_ads(Request $request)
+    {
+        $file = $request->file('file');
+
+        $date = date('Y-m-d_His');
+        $name = 'import/avito-2-old/';
+
+        Storage::putFileAs($name, $file,'avito-2-old_'.$date.'.xlsx' );
+
+        $name_uploaded_file = 'import/avito-2-old/avito-2-old_'.$date.'.xlsx';
+        AvitoTwoExcel::truncate();
+        Excel::import(new AvitoTwoExcelImport(), $name_uploaded_file);
+
+        return redirect()->route('product_index')->with('success', 'Avito 2 old обновлено!');
     }
 }

@@ -86,7 +86,7 @@ Route::prefix('avito')->name('avito.')->group(function () {
 
     //----- AVITO LAPARET-MOSCOW OLD TOVARS (Import via form) -----
     Route::view('/laparet-moscow/import-old-ads', 'exports.avito.old-laparet-moscow');
-    Route::post('/laparet-moscow/import-old-ads', [AvitoTwoExcelController::class, 'import'])->name('laparet-moscow-old');
+    Route::post('/laparet-moscow/import-old-ads', [AvitoController::class, 'import_old_ads'])->name('laparet-moscow-old');
 });
 
 
