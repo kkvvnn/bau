@@ -22,7 +22,7 @@ class AvitoController extends Controller
     {
         $data = $request->except(['_token']);
 
-        $filename = 'avito/main/'.date('Y-m-d_His').'.xlsx';
+        $filename = 'avito/main/MAIN-'.date('Y-m-d_His').'.xlsx';
         Excel::store(new AvitoExport($data), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
@@ -38,7 +38,7 @@ class AvitoController extends Controller
     {
         $data = $request->except(['_token']);
 
-        $filename = 'avito/laparet-moscow/'.date('Y-m-d_His').'.xlsx';
+        $filename = 'avito/laparet-moscow/MOSCOW-'.date('Y-m-d_His').'.xlsx';
         Excel::store(new AvitoLaparetExport($data), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
@@ -54,7 +54,7 @@ class AvitoController extends Controller
     {
         $data = $request->except(['_token']);
 
-        $filename = 'avito/laparet-kazan/'.date('Y-m-d_His').'.xlsx';
+        $filename = 'avito/laparet-kazan/KAZAN-'.date('Y-m-d_His').'.xlsx';
         Excel::store(new AvitoKazanExport($data), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
@@ -70,7 +70,7 @@ class AvitoController extends Controller
     {
         $data = $request->except(['_token']);
 
-        $filename = 'avito/laparet-spb/'.date('Y-m-d_His').'.xlsx';
+        $filename = 'avito/laparet-spb/SPB-'.date('Y-m-d_His').'.xlsx';
         Excel::store(new AvitoSpbExport($data), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
