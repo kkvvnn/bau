@@ -3,50 +3,21 @@
 namespace App\Exports;
 
 use App\Models\AvitoTwoExcel;
-use App\Models\Empero;
-use App\Models\PixmosaicNew;
+use App\Traits\Avito\ExportConstruct;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
-use PhpOffice\PhpSpreadsheet\Cell\Cell;
-use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
-
 use App\Models\Product;
-use App\Models\Collection;
 
 class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
 {
-    public $foto = '';
-    public $phone = '';
-    public $name = '';
-    public $contact_method = '';
-    public $address = '';
-    public $add_description = '';
-    public $add_description_first = '';
-
-    public function __construct($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first)
-    {
-        $this->foto = $foto;
-        $this->phone = $phone;
-        $this->name = $name;
-        $this->contact_method = $contact_method;
-        $this->address = $address;
-        $this->add_description = $add_description;
-        $this->add_description_first = $add_description_first;
-    }
-
-    public function bindValue(Cell $cell, $value): bool
-    {
-        $cell->setValueExplicit($value, DataType::TYPE_STRING);
-        return true;
-    }
+    use ExportConstruct;
 
     public function view(): View
     {
         set_time_limit(90);
 
-//      =================LAPARET-COLLECTIONS======================
         $laparets = Product::where('GroupProduct', '=', '01 Плитка')
             ->where('RMPrice', '>=', 700)
             ->where('Element_Code', '!=', 'х9999278638')
@@ -71,13 +42,7 @@ class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCus
                     || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
             });
 
-//        dd($laparets);
-
-//      ---------------------OLD---------------------
-//        $olds = AvitoTwoExcel::where('AvitoId', '=', '2957716643')
-//        ->get();
-//        $olds = AvitoTwoExcel::all();
-
+//  ===========================OLD=================================
         $olds = AvitoTwoExcel::whereIn('AvitoId', [
             '2925091517',
             '2797125306',
@@ -102,8 +67,8 @@ class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCus
             'name' => $this->name,
             'contact_method' => $this->contact_method,
             'address' => $this->address,
-            'add_description' => $this->add_description,
             'add_description_first' => $this->add_description_first,
+            'add_description' => $this->add_description_last,
         ]);
     }
 }

@@ -3,47 +3,78 @@
 namespace App\Http\Controllers;
 
 use App\Exports\AvitoExport;
+use App\Exports\AvitoKazanExport;
+use App\Exports\AvitoLaparetExport;
+use App\Exports\AvitoSpbExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
-
-// use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Exception;
 
 class AvitoController extends Controller
 {
-    public function export(Request $request, $foto = '')
+    /**
+     * @throws Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function export_main(Request $request): View
     {
-        set_time_limit(180);
-        $phone = $request->phone??"89197697802";
-        $name = $request->name??"Владимир";
-        $contact_method = $request->contact_method??"В сообщениях";
-        $address = $request->address??"Москва, Филёвская линия, метро Фили";
-        $add_description = $request->add_description??"";
-        $add_description_first = $request->add_description_first??"";
+        $data = $request->except(['_token']);
 
-        $sales = [
-            'laparet' => 100,
-            'cersanit' => 100,
-            'vitra' => 100,
-            'ceradim' => 100,
-            'primavera' => 100,
-            'leedo' => 90,
-            'altacera' => 100,
-            'ntceramic' => 100,
-            'kevis' => 100,
-            'rusplitka' => 100,
-            'aquafloor' => 100,
-            'pixmosaic' => 90,
-            'artcenter' => 100,
-        ];
-
-        // return Excel::download(new AvitoExport, date("Y-m-d_His").'.xlsx');
-        $filename = 'avito/'.$foto.date('Y-m-d_His').'.xlsx';
-        Excel::store(new AvitoExport($foto, $phone, $name, $contact_method, $address, $add_description, $add_description_first, $sales), $filename, 'avito');
+        $filename = 'avito/main/'.date('Y-m-d_His').'.xlsx';
+        Excel::store(new AvitoExport($data), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
-        $rodion = false;
-        $spb = false;
-        return view('exports.url', compact('url', 'rodion', 'spb'));
+        $type = 'main';
+        return view('exports.url', compact('url', 'type'));
+    }
+
+    /**
+     * @throws Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function export_laparet_moscow(Request $request): View
+    {
+        $data = $request->except(['_token']);
+
+        $filename = 'avito/laparet-moscow/'.date('Y-m-d_His').'.xlsx';
+        Excel::store(new AvitoLaparetExport($data), $filename, 'avito');
+
+        $url = Storage::disk('avito')->url($filename);
+        $type = 'laparet-moscow';
+        return view('exports.url', compact('url', 'type'));
+    }
+
+    /**
+     * @throws Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function export_laparet_kazan(Request $request): View
+    {
+        $data = $request->except(['_token']);
+
+        $filename = 'avito/laparet-kazan/'.date('Y-m-d_His').'.xlsx';
+        Excel::store(new AvitoKazanExport($data), $filename, 'avito');
+
+        $url = Storage::disk('avito')->url($filename);
+        $type = 'laparet-kazan';
+        return view('exports.url', compact('url', 'type'));
+    }
+
+    /**
+     * @throws Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function export_laparet_spb(Request $request): View
+    {
+        $data = $request->except(['_token']);
+
+        $filename = 'avito/laparet-spb/'.date('Y-m-d_His').'.xlsx';
+        Excel::store(new AvitoSpbExport($data), $filename, 'avito');
+
+        $url = Storage::disk('avito')->url($filename);
+        $type = 'laparet-spb';
+        return view('exports.url', compact('url', 'type'));
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\AvitoSpbController;
 use App\Http\Controllers\AvitoTwoController;
+use App\Http\Controllers\AvitoTwoExcelController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MyHelpController;
@@ -67,19 +68,28 @@ Route::get('/bauservice-nn', [\App\Http\Controllers\BauserviceNnController::clas
 //----- BAUSERVICE-KAZAN -----
 Route::get('/bauservice-kzn', [\App\Http\Controllers\BauserviceKznController::class, 'index'])->name('bauservice-kzn.index');
 
-//----- CREATE_AVITO_FILE -----
-Route::get('/avito_export/{foto?}', [AvitoController::class, 'export'])->name('avito-export');
-Route::get('/avito_export_two/{foto?}', [AvitoTwoController::class, 'export'])->name('avito-export-two');
-Route::view('/avito', 'exports.autoload-form');
-Route::view('/avito-laparet', 'exports.autoload-two-form');
 
-//----- CREATE_AVITO_FILE  KAZAN  -----
-Route::view('/avito-kazan', 'exports.autoload-kazan-form');
-Route::get('/avito_export_kazan/{foto?}', [\App\Http\Controllers\AvitoKazanController::class, 'export'])->name('avito-export-kazan');
+//------------ AVITO ------------
+Route::prefix('avito')->name('avito.')->group(function () {
 
-//----- CREATE_AVITO_FILE  SPB  -----
-Route::view('/avito-spb', 'exports.autoload-spb-form');
-Route::get('/avito_export_spb/{foto?}', [AvitoSpbController::class, 'export'])->name('avito-export-spb');
+    Route::post('/main', [AvitoController::class, 'export_main'])->name('main');
+    Route::view('/main', 'exports.avito.main');
+
+    Route::post('/laparet-moscow', [AvitoController::class, 'export_laparet_moscow'])->name('laparet-moscow');
+    Route::view('/laparet-moscow', 'exports.avito.laparet-moscow');
+
+    Route::post('/laparet-kazan', [AvitoController::class, 'export_laparet_kazan'])->name('laparet-kazan');
+    Route::view('/laparet-kazan', 'exports.avito.laparet-kazan');
+
+    Route::post('/laparet-spb', [AvitoController::class, 'export_laparet_spb'])->name('laparet-spb');
+    Route::view('/laparet-spb', 'exports.avito.laparet-spb');
+
+    //----- AVITO LAPARET-MOSCOW OLD TOVARS (Import via form) -----
+    Route::view('/laparet-moscow/import-old-ads', 'exports.avito.old-laparet-moscow');
+    Route::post('/laparet-moscow/import-old-ads', [AvitoTwoExcelController::class, 'import'])->name('laparet-moscow-old');
+});
+
+
 
 //----- CREATE_WOOCOMMERCE_FILE  -----
 Route::get('/woocommerce/export', [\App\Http\Controllers\WoocommerceController::class, 'export'])->name('woocommerce.export');
@@ -268,9 +278,6 @@ Route::name('kerranova.')->group(function () {
 });
 
 
-//----- AVITO 2 OLD TOVARS (Import via form) -----
-Route::view('/avito-two-old/import', 'avito-2-old.import');
-Route::post('/avito-two-old-excel-import', [\App\Http\Controllers\AvitoTwoExcelController::class, 'import'])->name('avito-2-old');
 
 //----- CARVING -----
 Route::get('/carving', [\App\Http\Controllers\CarvingController::class, 'index'])->name('carving.index');
