@@ -93,7 +93,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 ['Category', 'like', 'Мозаика/%'],
                 ['System_ID', '!=', '00-00003849'],
                 ['System_ID', '!=', '00-00002578'],
-                ])->get();
+                ])
+            ->get();
 
 //      ====================ARTKERA===================
         $altacera = AltaceraTovarAvailable::where([
@@ -105,7 +106,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['artikul', '!=', 'PWA11ALD1'],
             ['artikul', '!=', 'BWA60ALD404'],
             ['artikul', '!=', 'WT9VIE11'],
-        ])->get()
+        ])
+            ->get()
             ->filter(function (AltaceraTovarAvailable $altaceraTovarAvailable) {
                 return $altaceraTovarAvailable->price != null;
             });
@@ -121,7 +123,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['svoystvo', 'Керамогранит'],
             ['rest_real_free', '!=', 0],
             ['price_rozn', '!=', 0],
-        ])->get();
+        ])
+            ->get();
 
 //      ==================TECHNOTILE===================
 //        $technotile = TechnotileProduct::where('available', 'true')->get();
@@ -131,7 +134,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $aquafloor = AquaFloor::where([
             ['title', 'not like', '%Подложка%'],
             ['vendor_code', '!=', 'AF4078NXL'],
-            ])
+        ])
             ->get();
 
 //      ===================PIXMOSAIC====================

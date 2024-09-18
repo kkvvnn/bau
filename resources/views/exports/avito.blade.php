@@ -25,6 +25,8 @@
         <!-- <th>AvitoDateEnd</th> -->
         <th>FinishingSubType</th>
         <th>Condition</th>
+        <th>FinishingMaterialsType</th>
+        <th>CeramicPorcelainTilesSubType</th>
         <th>VideoUrl</th>
         <th>MixesType</th>
     </tr>
