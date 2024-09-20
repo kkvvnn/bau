@@ -21,9 +21,6 @@
         <th>GoodsSubType</th>
         <th>FinishingMaterialsType</th>
         <th>CeramicPorcelainTilesSubType</th>
-        <th>FlooringMaterialsSubType</th>
-        <th>ExteriorFinishingDecorativeStoneSubType</th>
-
     </tr>
     </thead>
     <tbody>
@@ -36,25 +33,20 @@
                 $GoodsSubType = 'Отделка';
                 $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                 $CeramicPorcelainTilesSubType = 'Керамическая плитка';
-                $FlooringMaterialsSubType = '';
-                $ExteriorFinishingDecorativeStoneSubType = '';
             }
             elseif(stripos($product->Name, 'озаика') !== false) {
                 $GoodsSubType = 'Другое';
                 $FinishingMaterialsType = '';
                 $CeramicPorcelainTilesSubType = '';
-                $FlooringMaterialsSubType = '';
-                $ExteriorFinishingDecorativeStoneSubType = '';
             }
             elseif(stripos($product->Name, 'ерамогранит') !== false) {
                 $GoodsSubType = 'Отделка';
                 $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                 $CeramicPorcelainTilesSubType = 'Керамогранит';
-                $FlooringMaterialsSubType = '';
-                $ExteriorFinishingDecorativeStoneSubType = '';
             } else {
-                $FinishingType = 'Другое';
-                $FinishingSubType = '';
+                $GoodsSubType = 'Другое';
+                $FinishingMaterialsType = '';
+                $CeramicPorcelainTilesSubType = '';
             }
         @endphp
 
@@ -441,28 +433,24 @@
         @endphp
 
         <tr>
-            <td></td>
-            <td>{{ $code }}</td>
-            <td>{{ $contact_method }}</td>
-            <td>rodioncom@yandex.ru</td>
-            <td>Активно</td>
-            <td>{{ $name }}</td>
-            <td>{{ $price }}</td>
-            <td>Laparet-Запад</td>
-            <td>{{ $title }}</td>
-            <td>{{ $img_full }}</td>
-            <td>Отделка</td>
-            <td>Стройматериалы</td>
-            <td>Ремонт и строительство</td>
-            <td>Package</td>
-            <td>{{ $FinishingType }}</td>
-            <td>{{ $phone }}</td> <!-- -->
-            <td>{{ $description }}</td> <!-- -->
-            <td>{{ $address }}</td>
-            <td>Товар от производителя</td>
-            <td>{{ $FinishingSubType }}</td>
-            <td>Новое</td>
-            <td></td>
+            <td>{{ $code }}</td>                            {{-- Id--}}
+            <td></td>                                       {{-- AvitoID--}}
+            <td>{{ $name }}</td>                            {{-- ManagerName--}}
+            <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
+            <td>{{ $address }}</td>                         {{-- Address--}}
+            <td>{{ $title }}</td>                           {{-- Title--}}
+            <td>{{ $description }}</td>                     {{-- Description--}}
+            <td>{{ $price }}</td>                           {{-- Price--}}
+            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
+            <td></td>                                       {{-- VideoURL--}}
+            <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
+            <td>Ремонт и строительство</td>                 {{-- Category--}}
+            <td>Стройматериалы</td>                         {{-- GoodsType--}}
+            <td>Товар от производителя</td>                 {{-- AdType--}}
+            <td>Новое</td>                                  {{-- Condition--}}
+            <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType--}}
+            <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType--}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType--}}
         </tr>
     @endforeach
     {{------------------END-BAUSERVICE--------------------}}
@@ -483,38 +471,35 @@
 
             $description .= $old->Description;
 
-            $FinishingType = $old->FinishingType;
-            $FinishingSubType = $old->FinishingSubType;
-
-
 
             if($add_description != '') {
                 $description .= '<p>'.nl2br($add_description).'</p>';
             }
+
+            $GoodsSubType = 'Отделка';
+            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+            $CeramicPorcelainTilesSubType = 'Керамогранит';
         @endphp
         <tr>
-            <td>{{ $old->AvitoId }}</td>
-            <td>{{ $old->Id_av }}</td>
-            <td>{{ $contact_method }}</td>
-            <td>rodioncom@yandex.ru</td>
-            <td>Активно</td>
-            <td>{{ $name }}</td>
-            <td>{{$price}}</td>
-            <td>Laparet-Запад</td>
-            <td>{{$title}}</td>
-            <td>{{$img_ready}}</td>
-            <td>Отделка</td>
-            <td>Стройматериалы</td>
-            <td>Ремонт и строительство</td>
-            <td>Package</td>
-            <td>{{$FinishingType}}</td>
-            <td>{{ $phone }}</td> <!-- -->
-            <td>{{$description}}</td> <!-- -->
-            <td>{{ $address }}</td>
-            <td>Товар от производителя</td>
-            <td>{{$FinishingSubType}}</td>
-            <td>Новое</td>
-            <td>{{$old->VideoUrl}}</td>
+            <td>{{ $old->Id_av }}</td>                      {{-- Id--}}
+            <td>{{ $old->AvitoId }}</td>                    {{-- AvitoID--}}
+            <td>{{ $name }}</td>                            {{-- ManagerName--}}
+            <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
+            <td>{{ $address }}</td>                         {{-- Address--}}
+            <td>{{ $title }}</td>                           {{-- Title--}}
+            <td>{{ $description }}</td>                     {{-- Description--}}
+            <td>{{ $price }}</td>                           {{-- Price--}}
+            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
+            <td>{{$old->VideoUrl}}</td>                     {{-- VideoURL--}}
+            <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
+            <td>Ремонт и строительство</td>                 {{-- Category--}}
+            <td>Стройматериалы</td>                         {{-- GoodsType--}}
+            <td>Товар от производителя</td>                 {{-- AdType--}}
+            <td>Новое</td>                                  {{-- Condition--}}
+            <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType--}}
+            <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType--}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType--}}
+
         </tr>
     @endforeach
     {{-----------------OLDS-END-------------------}}
