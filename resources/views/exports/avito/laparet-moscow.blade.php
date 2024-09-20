@@ -461,7 +461,7 @@
             $price = '';
             $title = $old->Title;
 
-            $img_ready = $old->ImageUrls;
+            $img_full = $old->ImageUrls;
 
             $description = '';
 
