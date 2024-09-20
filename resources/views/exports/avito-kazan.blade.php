@@ -75,6 +75,7 @@
             $description .= '<p>------------------</p>';
 
             $description .= '<p><em>Цена в объявлении указана за 1 ' . $product->MainUnit . '</em></p>';
+            $description .= '<p><em>* Цена в объявлении актуальна при отгрузке со склада в Казани. При отгрузке со складов в других городах цена может отличаться от указанной.</em></p>';
 
             $description .= '<p><strong>Название коллекции: </strong>';
                 $collections = $product->collections;
@@ -356,8 +357,13 @@
             if (mb_strlen($title) < 42) { $title = $product->Producer_Brand . ' ' . $title; }
 
 //--------------------------------------------------------------------------
+
                 if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * 0.90, -1);
+                    if ($product->Producer_Brand != 'Ceradim') {
+                        $price = round($product->RMPrice * 0.90, -1);
+                    } else {
+                        $price = $product->RMPrice;
+                    }
                 } else {
                     $price = $product->RMPrice;
                 }
