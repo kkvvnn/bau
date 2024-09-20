@@ -3,16 +3,16 @@
 <table>
     <thead>
     <tr>
-        <th>Id</th>
         <th>AvitoId</th>
+        <th>Id</th>
         <th>ManagerName</th>
         <th>ContactPhone</th>
         <th>Address</th>
         <th>Title</th>
         <th>Description</th>
         <th>Price</th>
-        <th>ImageUrls</th>
         <th>VideoUrl</th>
+        <th>ImageUrls</th>
         <th>ContactMethod</th>
         <th>Category</th>
         <th>GoodsType</th>
@@ -433,16 +433,16 @@
         @endphp
 
         <tr>
-            <td>{{ $code }}</td>                            {{-- Id--}}
             <td></td>                                       {{-- AvitoID--}}
+            <td>{{ $code }}</td>                            {{-- Id--}}
             <td>{{ $name }}</td>                            {{-- ManagerName--}}
             <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
             <td>{{ $address }}</td>                         {{-- Address--}}
             <td>{{ $title }}</td>                           {{-- Title--}}
             <td>{{ $description }}</td>                     {{-- Description--}}
             <td>{{ $price }}</td>                           {{-- Price--}}
-            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
             <td></td>                                       {{-- VideoURL--}}
+            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
             <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
             <td>Ремонт и строительство</td>                 {{-- Category--}}
             <td>Стройматериалы</td>                         {{-- GoodsType--}}
@@ -481,16 +481,16 @@
             $CeramicPorcelainTilesSubType = 'Керамогранит';
         @endphp
         <tr>
-            <td>{{ $old->Id_av }}</td>                      {{-- Id--}}
             <td>{{ $old->AvitoId }}</td>                    {{-- AvitoID--}}
+            <td>{{ $old->Id_av }}</td>                      {{-- Id--}}
             <td>{{ $name }}</td>                            {{-- ManagerName--}}
             <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
             <td>{{ $address }}</td>                         {{-- Address--}}
             <td>{{ $title }}</td>                           {{-- Title--}}
             <td>{{ $description }}</td>                     {{-- Description--}}
             <td>{{ $price }}</td>                           {{-- Price--}}
-            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
             <td>{{$old->VideoUrl}}</td>                     {{-- VideoURL--}}
+            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
             <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
             <td>Ремонт и строительство</td>                 {{-- Category--}}
             <td>Стройматериалы</td>                         {{-- GoodsType--}}
