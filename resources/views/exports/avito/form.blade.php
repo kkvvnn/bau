@@ -7,23 +7,23 @@
                 <p></p>
             </div>
 
-            <div class="text-bg-secondary p-3"><h1 class="display-6">Автозагрузка Авито Напольные Решения</h1></div>
+            <div class="{{ $data['color'] }} p-3"><h1 class="display-6">{{ $data['title'] }}</h1></div>
             <hr>
 
-            <form method="POST" action="{{route('avito.main')}}">
+            <form method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="phone" class="form-label">Телефон</label>
-                    <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp" value="89197697802">
+                    <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp" value="{{ $data['phone'] }}">
                     <div id="phoneHelp" class="form-text">Телефон будет указан в объявлениях Avito.</div>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Контактное лицо</label>
-                    <input type="text" class="form-control" id="name" name="name"  value="Владимир">
+                    <input type="text" class="form-control" id="name" name="name"  value="{{ $data['manager_name'] }}">
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Адрес размещения</label>
-                    <input type="text" class="form-control" id="address" name="address" value="Москва, Филёвская линия, метро Фили">
+                    <input type="text" class="form-control" id="address" name="address" value="{{ $data['address'] }}">
                 </div>
                 <div class="mb-3">
                     <label for="contact_method" class="form-label">Способ связи</label>

@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 use App\Models\Product;
 
-class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
+class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
 {
     use ExportConstruct;
 
@@ -60,7 +60,7 @@ class AvitoLaparetExport extends DefaultValueBinder implements FromView, WithCus
         ])
         ->get();
 
-        return view('exports.avito-laparet', [
+        return view('exports.avito.laparet-moscow', [
             'laparets' => $laparets,
             'olds' => $olds,
             'phone' => $this->phone,

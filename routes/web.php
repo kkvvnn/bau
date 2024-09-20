@@ -72,17 +72,11 @@ Route::get('/bauservice-kzn', [\App\Http\Controllers\BauserviceKznController::cl
 //------------ AVITO ------------
 Route::prefix('avito')->name('avito.')->group(function () {
 
-    Route::post('/main', [AvitoController::class, 'export_main'])->name('main');
-    Route::view('/main', 'exports.avito.main');
-
-    Route::post('/laparet-moscow', [AvitoController::class, 'export_laparet_moscow'])->name('laparet-moscow');
-    Route::view('/laparet-moscow', 'exports.avito.laparet-moscow');
-
-    Route::post('/laparet-kazan', [AvitoController::class, 'export_laparet_kazan'])->name('laparet-kazan');
-    Route::view('/laparet-kazan', 'exports.avito.laparet-kazan');
-
-    Route::post('/laparet-spb', [AvitoController::class, 'export_laparet_spb'])->name('laparet-spb');
-    Route::view('/laparet-spb', 'exports.avito.laparet-spb');
+    Route::get('/{account}', [AvitoController::class, 'form']);
+    Route::post('/main', [AvitoController::class, 'export_main']);
+    Route::post('/laparet-moscow', [AvitoController::class, 'export_laparet_moscow']);
+    Route::post('/laparet-kazan', [AvitoController::class, 'export_laparet_kazan']);
+    Route::post('/laparet-spb', [AvitoController::class, 'export_laparet_spb']);
 
     //----- AVITO LAPARET-MOSCOW OLD TOVARS (Import via form) -----
     Route::view('/laparet-moscow/import-old-ads', 'exports.avito.old-laparet-moscow');
