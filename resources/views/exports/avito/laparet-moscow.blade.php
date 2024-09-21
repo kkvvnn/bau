@@ -433,24 +433,24 @@
         @endphp
 
         <tr>
-            <td></td>                                       {{-- AvitoID--}}
-            <td>{{ $code }}</td>                            {{-- Id--}}
-            <td>{{ $name }}</td>                            {{-- ManagerName--}}
-            <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
-            <td>{{ $address }}</td>                         {{-- Address--}}
-            <td>{{ $title }}</td>                           {{-- Title--}}
-            <td>{{ $description }}</td>                     {{-- Description--}}
-            <td>{{ $price }}</td>                           {{-- Price--}}
-            <td></td>                                       {{-- VideoURL--}}
-            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
-            <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
-            <td>Ремонт и строительство</td>                 {{-- Category--}}
-            <td>Стройматериалы</td>                         {{-- GoodsType--}}
-            <td>Товар от производителя</td>                 {{-- AdType--}}
-            <td>Новое</td>                                  {{-- Condition--}}
-            <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType--}}
-            <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType--}}
-            <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType--}}
+            <td></td>                                       {{-- AvitoID --}}
+            <td>{{ $code }}</td>                            {{-- Id --}}
+            <td>{{ $name }}</td>                            {{-- ManagerName --}}
+            <td>{{ $phone }}</td>                           {{-- ContactPhone --}}
+            <td>{{ $address }}</td>                         {{-- Address --}}
+            <td>{{ $title }}</td>                           {{-- Title --}}
+            <td>{{ $description }}</td>                     {{-- Description --}}
+            <td>{{ $price }}</td>                           {{-- Price --}}
+            <td></td>                                       {{-- VideoURL --}}
+            <td>{{ $img_full }}</td>                        {{-- ImageUrls --}}
+            <td>{{ $contact_method }}</td>                  {{-- ContactMethod --}}
+            <td>Ремонт и строительство</td>                 {{-- Category --}}
+            <td>Стройматериалы</td>                         {{-- GoodsType --}}
+            <td>Товар от производителя</td>                 {{-- AdType --}}
+            <td>Новое</td>                                  {{-- Condition --}}
+            <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType --}}
+            <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType --}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType --}}
         </tr>
     @endforeach
     {{------------------END-BAUSERVICE--------------------}}
@@ -481,24 +481,24 @@
             $CeramicPorcelainTilesSubType = 'Керамогранит';
         @endphp
         <tr>
-            <td>{{ $old->AvitoId }}</td>                    {{-- AvitoID--}}
-            <td>{{ $old->Id_av }}</td>                      {{-- Id--}}
-            <td>{{ $name }}</td>                            {{-- ManagerName--}}
-            <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
-            <td>{{ $address }}</td>                         {{-- Address--}}
-            <td>{{ $title }}</td>                           {{-- Title--}}
-            <td>{{ $description }}</td>                     {{-- Description--}}
-            <td>{{ $price }}</td>                           {{-- Price--}}
-            <td>{{$old->VideoUrl}}</td>                     {{-- VideoURL--}}
-            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
-            <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
-            <td>Ремонт и строительство</td>                 {{-- Category--}}
-            <td>Стройматериалы</td>                         {{-- GoodsType--}}
-            <td>Товар от производителя</td>                 {{-- AdType--}}
-            <td>Новое</td>                                  {{-- Condition--}}
-            <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType--}}
-            <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType--}}
-            <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType--}}
+            <td>{{ $old->AvitoId }}</td>                    {{-- AvitoID --}}
+            <td>{{ $old->Id_av }}</td>                      {{-- Id --}}
+            <td>{{ $name }}</td>                            {{-- ManagerName --}}
+            <td>{{ $phone }}</td>                           {{-- ContactPhone --}}
+            <td>{{ $address }}</td>                         {{-- Address --}}
+            <td>{{ $title }}</td>                           {{-- Title --}}
+            <td>{{ $description }}</td>                     {{-- Description --}}
+            <td>{{ $price }}</td>                           {{-- Price --}}
+            <td>{{$old->VideoUrl}}</td>                     {{-- VideoURL --}}
+            <td>{{ $img_full }}</td>                        {{-- ImageUrls --}}
+            <td>{{ $contact_method }}</td>                  {{-- ContactMethod --}}
+            <td>Ремонт и строительство</td>                 {{-- Category --}}
+            <td>Стройматериалы</td>                         {{-- GoodsType --}}
+            <td>Товар от производителя</td>                 {{-- AdType --}}
+            <td>Новое</td>                                  {{-- Condition --}}
+            <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType --}}
+            <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType --}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType --}}
 
         </tr>
     @endforeach
