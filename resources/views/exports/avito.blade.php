@@ -21,6 +21,8 @@
             <th>CeramicPorcelainTilesSubType</th>
             <th>FlooringMaterialsSubType</th>
             <th>ExteriorFinishingDecorativeStoneSubType</th>
+            <th>WallPanelsSlatsDecorativeElementsSubType</th>
+            <th>MixesType</th>
         </tr>
     </thead>
     <tbody>
@@ -49,6 +51,8 @@
             }
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             $description = '';
@@ -429,33 +433,41 @@
                 <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
                 <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
                 <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+                <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+                <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
             </tr>
 
         // duplicate in Golitsyno
         @if (in_array($product->Element_Code, $golitsyno_duplicate))
             @php
                 $address_golitsyno = 'Московская область, Одинцовский городской округ, Голицыно';
+                $code = $product->Element_Code . '_golitsyno';
+                $video = '';
             @endphp
 
             <tr>
-                <td></td>                                       {{-- AvitoID--}}
-                <td>{{ $code .'_golitsyno' }}</td>              {{-- Id--}}
-                <td>{{ $name }}</td>                            {{-- ManagerName--}}
-                <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
-                <td>{{ $address_golitsyno }}</td>               {{-- Address--}}
-                <td>{{ $title }}</td>                           {{-- Title--}}
-                <td>{{ $description }}</td>                     {{-- Description--}}
-                <td>{{ $price }}</td>                           {{-- Price--}}
-                <td>{{ $video }}</td>                           {{-- VideoURL--}}
-                <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
-                <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
-                <td>Ремонт и строительство</td>                 {{-- Category--}}
-                <td>Стройматериалы</td>                         {{-- GoodsType--}}
-                <td>Товар от производителя</td>                 {{-- AdType--}}
-                <td>Новое</td>                                  {{-- Condition--}}
-                <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType--}}
-                <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType--}}
-                <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType--}}
+                <td></td>                                                   {{-- AvitoID --}}
+                <td>{{ $code }}</td>                                        {{-- Id --}}
+                <td>{{ $name }}</td>                                        {{-- ManagerName --}}
+                <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
+                <td>{{ $address_golitsyno }}</td>                           {{-- Address --}}
+                <td>{{ $title }}</td>                                       {{-- Title --}}
+                <td>{{ $description }}</td>                                 {{-- Description --}}
+                <td>{{ $price }}</td>                                       {{-- Price --}}
+                <td>{{ $video }}</td>                                       {{-- VideoURL --}}
+                <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
+                <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
+                <td>Ремонт и строительство</td>                             {{-- Category --}}
+                <td>Стройматериалы</td>                                     {{-- GoodsType --}}
+                <td>Товар от производителя</td>                             {{-- AdType --}}
+                <td>Новое</td>                                              {{-- Condition --}}
+                <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
+                <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
+                <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
+                <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
+                <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+                <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+                <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
             </tr>
         @endif
     @endforeach
@@ -485,6 +497,8 @@
             }
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
 
@@ -836,6 +850,7 @@
             $price = round($product->price * 0.9, -1);
 
             $code = $product->vendor_code;
+            $video = '';
 
         @endphp
 
@@ -860,6 +875,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----GLOBAL-TILE-END----}}
@@ -872,6 +889,8 @@
             $CeramicPorcelainTilesSubType = 'Керамическая плитка';
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             $description = '';
@@ -1088,6 +1107,7 @@
               $price = $product->props->price;
 
               $code = str_replace('/', '-', $product->vendor_code);
+              $video = '';
 
 //----------------------------------------------------------------------------
 
@@ -1114,6 +1134,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----KERRANOVA-END----}}
@@ -1126,6 +1148,8 @@
             $CeramicPorcelainTilesSubType = '';
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = 'Тротуарная плитка';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             $description = '';
@@ -1337,30 +1361,35 @@
               $price = $product->price;
 
               $code = $product->vendor_code . '_keramopro';
+              $video = '';
 
 //----------------------------------------------------------------------------
 
         @endphp
 
         <tr>
-            <td></td>                                       {{-- AvitoID--}}
-            <td>{{ $code }}</td>                            {{-- Id--}}
-            <td>{{ $name }}</td>                            {{-- ManagerName--}}
-            <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
-            <td>{{ $address_golitsyno }}</td>               {{-- Address--}}
-            <td>{{ $title }}</td>                           {{-- Title--}}
-            <td>{{ $description }}</td>                     {{-- Description--}}
-            <td>{{ $price }}</td>                           {{-- Price--}}
-            <td>{{ $video }}</td>                           {{-- VideoURL--}}
-            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
-            <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
-            <td>Ремонт и строительство</td>                 {{-- Category--}}
-            <td>Стройматериалы</td>                         {{-- GoodsType--}}
-            <td>Товар от производителя</td>                 {{-- AdType--}}
-            <td>Новое</td>                                  {{-- Condition--}}
-            <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType--}}
-            <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType--}}
-            <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType--}}
+            <td></td>                                                   {{-- AvitoID --}}
+            <td>{{ $code }}</td>                                        {{-- Id --}}
+            <td>{{ $name }}</td>                                        {{-- ManagerName --}}
+            <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
+            <td>{{ $address_golitsyno }}</td>                           {{-- Address --}}
+            <td>{{ $title }}</td>                                       {{-- Title --}}
+            <td>{{ $description }}</td>                                 {{-- Description --}}
+            <td>{{ $price }}</td>                                       {{-- Price --}}
+            <td>{{ $video }}</td>                                       {{-- VideoURL --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
+            <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
+            <td>Ремонт и строительство</td>                             {{-- Category --}}
+            <td>Стройматериалы</td>                                     {{-- GoodsType --}}
+            <td>Товар от производителя</td>                             {{-- AdType --}}
+            <td>Новое</td>                                              {{-- Condition --}}
+            <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
+            <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
+            <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
+            <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----KERAMOPRO-END----}}
@@ -1389,6 +1418,8 @@
             }
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             $price = $product->price->price;
@@ -1692,6 +1723,7 @@
 //            $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
 
             $code = $product->vendor_code;
+            $video = '';
 
         @endphp
 
@@ -1716,6 +1748,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----PRIMAVERA-END----}}
@@ -1744,6 +1778,8 @@
             }
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             if ($product->price_old == null) {
@@ -1751,9 +1787,7 @@
             } else {
                 $price = $product->price_from_xml;
             }
-//                --------------------------
-            $code = str_replace(' ', '', $product->vendor_code);
-//                --------------------------
+
             $title = $product->title_avito;
 //                -----------------------------
 //              ------------------------------------------FOTO-------------------------------------
@@ -1873,6 +1907,9 @@
                 $description .= '<p><em>' . $keywords . '</em></p>';
             }
 
+            $code = str_replace(' ', '', $product->vendor_code);
+            $video = '';
+
         @endphp
 
         <tr>
@@ -1896,6 +1933,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----ABSOLUT_GRES-END----}}
@@ -1924,6 +1963,8 @@
             }
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             $price = $product->Price_rozn;
@@ -2054,6 +2095,7 @@
             }
 
             $code = $product->System_ID;
+            $video = '';
         @endphp
 
         <tr>
@@ -2077,6 +2119,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----LEEDO-END----}}
@@ -2105,6 +2149,8 @@
             }
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             //        -----------------------------------UNIT--------------------------
@@ -2155,9 +2201,7 @@
                         } else {
                             $price = '';
                         }
-            //                --------------------------
-                        $code = $product->artikul;
-            //                --------------------------
+
                         $title = $product->category_rel->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul;
                         $title = str_replace('Архив', '', $title);
             //                -----------------------------
@@ -2365,6 +2409,8 @@
 
                         $description = str_replace('Архив', '', $description);
 
+                        $code = $product->artikul;
+                        $video = '';
         @endphp
 
         <tr>
@@ -2388,6 +2434,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----ALTACERA-END----}}
@@ -2400,6 +2448,8 @@
             $CeramicPorcelainTilesSubType = 'Керамогранит';
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             if (!isset($product->referer)) {
@@ -2535,7 +2585,8 @@
             }
 
 
-        $code = $product->vendor_code;
+            $code = $product->vendor_code;
+            $video = '';
 
         @endphp
 
@@ -2560,6 +2611,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----NTCERAMIC-END----}}
@@ -2572,6 +2625,8 @@
             $CeramicPorcelainTilesSubType = 'Керамогранит';
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
 
         @php
@@ -2642,7 +2697,8 @@
             }
 
 
-        $code = $product->code;
+            $code = $product->code;
+            $video = '';
 
         @endphp
 
@@ -2667,6 +2723,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----KEVIS-END----}}
@@ -2679,6 +2737,8 @@
             $CeramicPorcelainTilesSubType = 'Керамогранит';
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             $price = $product->price_rozn;
@@ -2768,6 +2828,7 @@
 
 
             $code = $product->external_id . 'RusPL';
+            $video = '';
 
         @endphp
 
@@ -2792,6 +2853,8 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----RUSPLITKA-END----}}
@@ -2804,6 +2867,8 @@
             $CeramicPorcelainTilesSubType = 'Керамогранит';
             $FlooringMaterialsSubType = '';
             $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
         @php
             //            $price = $product->price;
@@ -2927,6 +2992,7 @@
 
 
                         $code = $product->code . 't_tile';
+                        $video = '';
 
         @endphp
 
@@ -2951,12 +3017,37 @@
             <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
             <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----TECHNOTILE-END----}}
 
     {{-----AQUAFLOOR-----}}
     @foreach($aquafloor as $product)
+        @php
+            if(stripos($product->title, 'варцвинил') !== false) {
+                $GoodsSubType = 'Отделка';
+                $FinishingMaterialsType = 'Напольные покрытия';
+                $FlooringMaterialsSubType = 'Кварц-винил';
+                $WallPanelsSlatsDecorativeElementsSubType = '';
+
+            } elseif(stripos($product->title, 'теновые пане') !== false) {
+                $GoodsSubType = 'Отделка';
+                $FinishingMaterialsType = 'Стеновые панели, рейки и элементы декора';
+                $FlooringMaterialsSubType = '';
+                $WallPanelsSlatsDecorativeElementsSubType = 'Стеновые панели';
+            } else {
+                $GoodsSubType = 'Другое';
+                $FinishingMaterialsType = '';
+                $FlooringMaterialsSubType = '';
+                $WallPanelsSlatsDecorativeElementsSubType = '';
+            }
+            $CeramicPorcelainTilesSubType = '';
+            $ExteriorFinishingDecorativeStoneSubType = '';
+            $MixesType = '';
+
+        @endphp
         @php
             //            $price = $product->price;
                         $price = '';
@@ -2988,12 +3079,12 @@
                         $img_full_arr = explode(' | ', $img);
 
                         if (count($img_full_arr) <= 10) {
-                            $img_ready = $img;
+                            $img_full = $img;
                         } else {
                             $img_full_arr = array_slice($img_full_arr, 0, 10);
-                            $img_ready = implode(' | ', $img_full_arr);
+                            $img_full = implode(' | ', $img_full_arr);
                         }
-           
+
                         $description = '';
 
                         if($add_description_first != '') {
@@ -3065,40 +3156,47 @@
                         $description .= '<p><em>кварцвинил кварцвиниловая плитка виниловый ламинат spc ламинат аквафлор ламинат аквафлур</em></p>';
 
                         $code = str_replace(' ', '_',$product->vendor_code) . '_af';
+                        $video = '';
 
         @endphp
         <tr>
-            <td></td>
-            <td>{{ $code }}</td>
-            <td>{{ $contact_method }}</td>
-{{--            <td>Да</td>--}}
-{{--            <td>466694981</td>--}}
-            <td>kkvvnn89@gmail.com</td>
-            <td>Активно</td>
-            <td>{{ $name }}</td>
-            <td>{{$price}}</td>
-            <td>Напольные решения</td>
-            <td>{{$title}}</td>
-            <td>{{$img_ready}}</td> <!-- -->
-            <td>Отделка</td>
-            <td>Стройматериалы</td>
-            <td>Ремонт и строительство</td>
-            <td>Package</td>
-            <td>{{$FinishingType}}</td>
-            <td>{{ $phone }}</td> <!-- -->
-            <td>{{$description}}</td> <!-- -->
-            <td>{{ $address }}</td>
-            <td>Товар от производителя</td>
-            <td>{{$FinishingSubType}}</td>
-            <td>Новое</td>
-            <td></td>
-            <td></td> {{--MixesType--}}
+            <td></td>                                                   {{-- AvitoID --}}
+            <td>{{ $code }}</td>                                        {{-- Id --}}
+            <td>{{ $name }}</td>                                        {{-- ManagerName --}}
+            <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
+            <td>{{ $address }}</td>                                     {{-- Address --}}
+            <td>{{ $title }}</td>                                       {{-- Title --}}
+            <td>{{ $description }}</td>                                 {{-- Description --}}
+            <td>{{ $price }}</td>                                       {{-- Price --}}
+            <td>{{ $video }}</td>                                       {{-- VideoURL --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
+            <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
+            <td>Ремонт и строительство</td>                             {{-- Category --}}
+            <td>Стройматериалы</td>                                     {{-- GoodsType --}}
+            <td>Товар от производителя</td>                             {{-- AdType --}}
+            <td>Новое</td>                                              {{-- Condition --}}
+            <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
+            <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
+            <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
+            <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----AQUAFLOOR-END----}}
 
     {{-----PIXMOSAIC-----}}
     @foreach($pixmosaics as $product)
+        @php
+            $GoodsSubType = 'Другое';
+            $FinishingMaterialsType = '';
+            $CeramicPorcelainTilesSubType = '';
+            $FlooringMaterialsSubType = '';
+            $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
+        @endphp
         @php
 
             //            ---PRICE---
@@ -3124,10 +3222,10 @@
 
             $img_full_arr = $img;
             if (count($img_full_arr) <= 10) {
-                $img_ready = implode(' | ', $img_full_arr);
+                $img_full = implode(' | ', $img_full_arr);
             } else {
                 $img_full_arr = array_slice($img_full_arr, 0, 10);
-                $img_ready = implode(' | ', $img_full_arr);
+                $img_full = implode(' | ', $img_full_arr);
             }
             //            ---IMAGES-END--
 
@@ -3139,9 +3237,6 @@
             }
 
             $description .= '<p>Мозаика Pixel mosaic. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-
-            $FinishingType = 'Плитка, керамогранит и мозаика';
-            $FinishingSubType = 'Мозаика';
 
             $description .= '<p><strong>' . $product->title . '</strong></p>';
 
@@ -3237,41 +3332,40 @@
                         if($add_description != '') {
                             $description .= '<p>'.nl2br($add_description).'</p>';
                         }
-                        $element_code = $product->vendor_code.'_pixmosaic';
+
         @endphp
         @php
             if (isset($product->props->video_url)) {
-                $video_url = $product->props->video_url;
+                $video = $product->props->video_url;
             } else {
-                $video_url = '';
+                $video = '';
             }
+
+            $code = $product->vendor_code.'_pixmosaic';
         @endphp
         <tr>
-            <td></td>
-            <td>{{ $element_code }}</td>
-            <td>{{ $contact_method }}</td>
-{{--            <td>Да</td>--}}
-{{--            <td>466694981</td>--}}
-            <td>kkvvnn89@gmail.com</td>
-            <td>Активно</td>
-            <td>{{ $name }}</td>
-            <td>{{$price}}</td>
-            <td>Напольные решения</td>
-            <td>{{$title}}</td>
-            <td>{{$img_ready}}</td>
-            <td>Отделка</td>
-            <td>Стройматериалы</td>
-            <td>Ремонт и строительство</td>
-            <td>Package</td>
-            <td>{{$FinishingType}}</td>
-            <td>{{ $phone }}</td> <!-- -->
-            <td>{{$description}}</td> <!-- -->
-            <td>{{ $address }}</td>
-            <td>Товар от производителя</td>
-            <td>{{$FinishingSubType}}</td>
-            <td>Новое</td>
-            <td>{{$video_url}}</td>
-            <td></td> {{--MixesType--}}
+            <td></td>                                                   {{-- AvitoID --}}
+            <td>{{ $code }}</td>                                        {{-- Id --}}
+            <td>{{ $name }}</td>                                        {{-- ManagerName --}}
+            <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
+            <td>{{ $address }}</td>                                     {{-- Address --}}
+            <td>{{ $title }}</td>                                       {{-- Title --}}
+            <td>{{ $description }}</td>                                 {{-- Description --}}
+            <td>{{ $price }}</td>                                       {{-- Price --}}
+            <td>{{ $video }}</td>                                       {{-- VideoURL --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
+            <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
+            <td>Ремонт и строительство</td>                             {{-- Category --}}
+            <td>Стройматериалы</td>                                     {{-- GoodsType --}}
+            <td>Товар от производителя</td>                             {{-- AdType --}}
+            <td>Новое</td>                                              {{-- Condition --}}
+            <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
+            <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
+            <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
+            <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----PIXMOSAIC-END----}}
@@ -3279,12 +3373,14 @@
     {{-----ARTCENTER-----}}
     @foreach($artcenter as $product)
         @php
-            $FinishingType = 'Плитка, керамогранит и мозаика';
-            $FinishingSubType = 'Керамогранит';
+            $GoodsSubType = 'Отделка';
+            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+            $CeramicPorcelainTilesSubType = 'Керамогранит';
+            $FlooringMaterialsSubType = '';
+            $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
         @endphp
-
-            <!-- --------------------------------------------------------- -->
-
         @php
             $description = '';
 
@@ -3520,35 +3616,33 @@
                         $price = round($product->price * 0.85, -1);
             //----------------------------------------------------------------------------
 
+            $code = str_replace('ЦБ-', '', $product->code).'_artcenter';
+            $video = '';
         @endphp
 
         <tr>
-            <td></td>
-            <td>{{ str_replace('ЦБ-', '', $product->code).'_artcenter' }}</td>
-            <td>{{ $contact_method }}</td>
-{{--            <td>Да</td>--}}
-{{--            <td>466694981</td>--}}
-            <td>kkvvnn89@gmail.com</td>
-            <td>Активно</td>
-            <td>{{ $name }}</td>
-            <td>{{$price}}</td>
-            <td>Напольные решения</td>
-            <td>{{$title}}</td>
-            <td>{{$img_full}}</td> <!-- -->
-            <td>Отделка</td>
-            <td>Стройматериалы</td>
-            <td>Ремонт и строительство</td>
-            <td>Package</td>
-            <td>{{$FinishingType}}</td>
-            <td>{{ $phone }}</td> <!-- -->
-            <td>{{$description}}</td> <!-- -->
-            <td>{{ $address }}</td>
-            <td>Товар от производителя</td>
-            <!-- <td>{{$date_next_month}}</td> -->
-            <td>{{$FinishingSubType}}</td>
-            <td>Новое</td>
-            <td></td>
-            <td></td> {{--MixesType--}}
+            <td></td>                                                   {{-- AvitoID --}}
+            <td>{{ $code }}</td>                                        {{-- Id --}}
+            <td>{{ $name }}</td>                                        {{-- ManagerName --}}
+            <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
+            <td>{{ $address }}</td>                                     {{-- Address --}}
+            <td>{{ $title }}</td>                                       {{-- Title --}}
+            <td>{{ $description }}</td>                                 {{-- Description --}}
+            <td>{{ $price }}</td>                                       {{-- Price --}}
+            <td>{{ $video }}</td>                                       {{-- VideoURL --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
+            <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
+            <td>Ремонт и строительство</td>                             {{-- Category --}}
+            <td>Стройматериалы</td>                                     {{-- GoodsType --}}
+            <td>Товар от производителя</td>                             {{-- AdType --}}
+            <td>Новое</td>                                              {{-- Condition --}}
+            <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
+            <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
+            <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
+            <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----ARTCENTER-END----}}
@@ -3556,9 +3650,15 @@
     {{-----KERABELLEZZA-----}}
     @foreach($kerabellezza as $product)
         @php
-            $FinishingType = '';
-            $FinishingSubType = '';
-
+            $GoodsSubType = 'Строительные смеси';
+            $FinishingMaterialsType = '';
+            $CeramicPorcelainTilesSubType = '';
+            $FlooringMaterialsSubType = '';
+            $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = 'Затирки';
+        @endphp
+        @php
             $description = '';
 
             if($add_description_first != '') {
@@ -3662,35 +3762,32 @@
             //----------------------------------------------------------------------------
 
         $code = $product->parent_code . '_' . $product->color;
+        $video = '';
         @endphp
 
         <tr>
-            <td></td>
-            <td>{{$code}}</td>
-            <td>{{ $contact_method }}</td>
-{{--            <td>Да</td>--}}
-{{--            <td>466694981</td>--}}
-            <td>kkvvnn89@gmail.com</td>
-            <td>Активно</td>
-            <td>{{ $name }}</td>
-            <td>{{$price}}</td>
-            <td>Напольные решения</td>
-            <td>{{$title}}</td>
-            <td>{{$img_full}}</td> <!-- -->
-            <td>Строительные смеси</td>
-            <td>Стройматериалы</td>
-            <td>Ремонт и строительство</td>
-            <td>Package</td>
-            <td>{{$FinishingType}}</td>
-            <td>{{ $phone }}</td> <!-- -->
-            <td>{{$description}}</td> <!-- -->
-            <td>{{ $address }}</td>
-            <td>Товар от производителя</td>
-            <!-- <td>{{$date_next_month}}</td> -->
-            <td>{{$FinishingSubType}}</td>
-            <td>Новое</td>
-            <td></td>
-            <td>Затирки</td> {{--MixesType--}}
+            <td></td>                                                   {{-- AvitoID --}}
+            <td>{{ $code }}</td>                                        {{-- Id --}}
+            <td>{{ $name }}</td>                                        {{-- ManagerName --}}
+            <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
+            <td>{{ $address }}</td>                                     {{-- Address --}}
+            <td>{{ $title }}</td>                                       {{-- Title --}}
+            <td>{{ $description }}</td>                                 {{-- Description --}}
+            <td>{{ $price }}</td>                                       {{-- Price --}}
+            <td>{{ $video }}</td>                                       {{-- VideoURL --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
+            <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
+            <td>Ремонт и строительство</td>                             {{-- Category --}}
+            <td>Стройматериалы</td>                                     {{-- GoodsType --}}
+            <td>Товар от производителя</td>                             {{-- AdType --}}
+            <td>Новое</td>                                              {{-- Condition --}}
+            <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
+            <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
+            <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
+            <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
+            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
+            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
         </tr>
     @endforeach
     {{-----KERABELLEZZA-END----}}
