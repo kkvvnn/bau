@@ -176,7 +176,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->get();
         $kerabellezza = [];
 
-        return view('exports.avito', [
+        return view('exports.avito.main', [
             'products' => $products,
             'golitsyno_duplicate' => $golitsyno_duplicate,
             'primavera' => $primavera,

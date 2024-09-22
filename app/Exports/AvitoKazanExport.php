@@ -60,7 +60,7 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
 
         $products = $products->merge($ceradim);
 
-        return view('exports.avito-kazan', [
+        return view('exports.avito.laparet-kazan', [
             'products' => $products,
             'phone' => $this->phone,
             'name' => $this->name,

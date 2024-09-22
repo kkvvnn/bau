@@ -343,37 +343,38 @@
                 $img_coll = null;
             }
 
+
             if (isset($img_coll_all[1])) {
                 $img_coll_2 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/collections/', $img_coll_all[1]);
             } else {
                 $img_coll_2 = null;
             }
 
-            $img_arr = [];
+//    ------------------------------------------FOTO-------------------------------------
+
             if ($img_coll != null) {
-                $img_arr[] = $img_coll;
+                $img_full = $img_coll . ' | ' . $img1;
+            } else {
+                $img_full = $img1;
             }
-            $img_arr[] = $img1;
             if ($img_coll_2 != null) {
-                $img_arr[] = $img_coll_2;
+                $img_full .= ' | ' . $img_coll_2;
             }
             if ($img2 != null) {
-                $img_arr[] = $img2;
+                $img_full .= ' | ' . $img2;
             }
             if ($img3 != null) {
-                $img_arr[] = $img3;
+                $img_full .= ' | ' . $img3;
             }
             if ($img4 != null) {
-                $img_arr[] = $img4;
+                $img_full .= ' | ' . $img4;
             }
             if ($img5 != null) {
-                $img_arr[] = $img5;
+                $img_full .= ' | ' . $img5;
             }
             if ($img6 != null) {
-                $img_arr[] = $img6;
+                $img_full .= ' | ' . $img6;
             }
-
-            $image_urls = avito_images_urls($img_arr);
 
         @endphp
 
@@ -421,7 +422,7 @@
                 <td>{{ $description }}</td>                                 {{-- Description --}}
                 <td>{{ $price }}</td>                                       {{-- Price --}}
                 <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-                <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+                <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
                 <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
                 <td>Ремонт и строительство</td>                             {{-- Category --}}
                 <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -454,7 +455,7 @@
                 <td>{{ $description }}</td>                                 {{-- Description --}}
                 <td>{{ $price }}</td>                                       {{-- Price --}}
                 <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-                <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+                <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
                 <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
                 <td>Ремонт и строительство</td>                             {{-- Category --}}
                 <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -788,37 +789,39 @@
             $img_coll = str_replace('https://gallery.vogtrade.ru/wp-content/uploads/images/', config('app.url').'/storage/images/global-tile/', $product->image_collection);
             } else {$img_coll = null;}
 
-            $img_arr = [];
-            $img_arr[] = $img1;
+//    ------------------------------------------FOTO-------------------------------------
+
+    //          -----------------------------------------------------------------------------------
+
+           $img_full = $img1;
             if ($img_coll != null) {
-                $img_arr[] = $img_coll;
-            }
-            if ($img2 != null) {
-                $img_arr[] = $img2;
-            }
-            if ($img3 != null) {
-                $img_arr[] = $img3;
-            }
-            if ($img4 != null) {
-                $img_arr[] = $img4;
-            }
-            if ($img5 != null) {
-                $img_arr[] = $img5;
-            }
-            if ($img6 != null) {
-                $img_arr[] = $img6;
-            }
-            if ($img7 != null) {
-                $img_arr[] = $img7;
-            }
-            if ($img8 != null) {
-                $img_arr[] = $img8;
-            }
-            if ($img9 != null) {
-                $img_arr[] = $img9;
+            $img_full .= ' | ' . $img_coll;
             }
 
-            $image_urls = avito_images_urls($img_arr);
+            if ($img2 != null) {
+            $img_full .= ' | ' . $img2;
+            }
+            if ($img3 != null) {
+            $img_full .= ' | ' . $img3;
+            }
+            if ($img4 != null) {
+            $img_full .= ' | ' . $img4;
+            }
+            if ($img5 != null) {
+            $img_full .= ' | ' . $img5;
+            }
+            if ($img6 != null) {
+            $img_full .= ' | ' . $img6;
+            }
+            if ($img7 != null) {
+            $img_full .= ' | ' . $img7;
+            }
+            if ($img8 != null) {
+            $img_full .= ' | ' . $img8;
+            }
+            if ($img9 != null) {
+            $img_full .= ' | ' . $img9;
+            }
 
         @endphp
 
@@ -861,7 +864,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -1073,12 +1076,16 @@
         @php
             $string_for_delete = 'https://lk.kerranova.ru/storage/images/products/';
 
-            $img_arr = [];
+            $img_full_arr = [];
             foreach ($product->images as $key => $value) {
-                $img_arr[] = Storage::disk('kerranova')->url(Str::remove($string_for_delete, $value));
+                $img_full_arr[] = Storage::disk('kerranova')->url(Str::remove($string_for_delete, $value));
             }
 
-            $image_urls = avito_images_urls($img_arr);
+            if (count($img_full_arr) > 10) {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+            }
+
+            $img_full = implode(' | ', $img_full_arr)
         @endphp
 
         @php
@@ -1116,7 +1123,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -1313,12 +1320,16 @@
         @php
             $string_for_delete = 'https://keramoproshop.ru/wp-content/';
 
-            $img_arr = [];
+            $img_full_arr = [];
             foreach ($product->images as $key => $value) {
-                $img_arr[] = Storage::disk('keramopro')->url(Str::remove($string_for_delete, $value));
+                $img_full_arr[] = Storage::disk('keramopro')->url(Str::remove($string_for_delete, $value));
             }
 
-            $image_urls = avito_images_urls($img_arr);
+            if (count($img_full_arr) > 10) {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+            }
+
+            $img_full = implode(' | ', $img_full_arr)
         @endphp
 
         @php
@@ -1366,7 +1377,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -1419,16 +1430,19 @@
 
             $string_for_delete = 'https://domix-club.ru/upload/iblock/';
 
-            $img_arr = [];
+            $img_full_arr = [];
             if ($product->image_collection != '') {
-                $img_arr[] = Storage::disk('primavera-new')->url(Str::remove($string_for_delete, $product->image_collection));
+                $img_full_arr[] = Storage::disk('primavera-new')->url(Str::remove($string_for_delete, $product->image_collection));
             }
             foreach ($product->images as $key => $value) {
-                $img_arr[] = Storage::disk('primavera-new')->url(Str::remove($string_for_delete, $value));
+                $img_full_arr[] = Storage::disk('primavera-new')->url(Str::remove($string_for_delete, $value));
             }
 
+            if (count($img_full_arr) > 10) {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+            }
 
-            $image_urls = avito_images_urls($img_arr);
+            $img_full = implode(' | ', $img_full_arr);
 
 
 
@@ -1723,7 +1737,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -1778,10 +1792,7 @@
 //                -----------------------------
 //              ------------------------------------------FOTO-------------------------------------
 
-            $img_arr = [];
-            $img_arr[] = $product->picture;
-
-            $image_urls = avito_images_urls($img_arr);
+            $img_full = $product->picture;
 
             $description = '';
 
@@ -1911,7 +1922,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -1980,37 +1991,43 @@
 //                -----------------------------
 //              ------------------------------------------FOTO-------------------------------------
 
-            $img_arr = [];
-            $img_arr[] = $product->Basic_pic;
+            $img = $product->Basic_pic;
             if ($product->Picture1 != null) {
-                $img_arr[] = $product->Picture1;
+                $img .= ' | ' . $product->Picture1;
             }
             if ($product->Picture2 != null) {
-                $img_arr[] = $product->Picture2;
+                $img .= ' | ' . $product->Picture2;
             }
             if ($product->Picture3 != null) {
-                $img_arr[] = $product->Picture3;
+                $img .= ' | ' . $product->Picture3;
             }
             if ($product->Picture4 != null) {
-                $img_arr[] = $product->Picture4;
+                $img .= ' | ' . $product->Picture4;
             }
             if ($product->Picture5 != null) {
-                $img_arr[] = $product->Picture5;
+                $img .= ' | ' . $product->Picture5;
             }
             if ($product->Picture6 != null) {
-                $img_arr[] = $product->Picture6;
+                $img .= ' | ' . $product->Picture6;
             }
             if ($product->Picture7 != null) {
-                $img_arr[] = $product->Picture7;
+                $img .= ' | ' . $product->Picture7;
             }
 
-            foreach ($img_arr as &$i) {
+            $img_full_arr = explode(' | ', $img);
+
+            foreach ($img_full_arr as &$i) {
                 if (!str_starts_with($i, 'http')) {
                     $i = str_replace('www.leedo.ru', 'https://www.leedo.ru', $i);
                 }
             }
 
-            $image_urls = avito_images_urls($img_arr);
+            if (count($img_full_arr) <= 10) {
+                $img_full = implode(' | ', $img_full_arr);
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_full = implode(' | ', $img_full_arr);
+            }
 
             $description = '';
 
@@ -2091,7 +2108,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -2190,14 +2207,24 @@
             //                -----------------------------
             //              ------------------------------------------FOTO-------------------------------------
 
-                        $img_arr = [];
                         if (isset($product->picture->images)) {
-                            $img_arr = $product->picture->images;
+                            $imgs = $product->picture->images;
+                            $imgs = implode(' | ', $imgs);
                         } else {
-                            $img_arr[] = config('app.url').Storage::disk('altacera')->url($product->tovar_id . '.JPEG');
+                            $imgs = config('app.url').Storage::disk('altacera')->url($product->tovar_id . '.JPEG');
                         }
 
-                        $image_urls = avito_images_urls($img_arr);
+//                        $imgs = config('app.url').Storage::disk('altacera')->url($product->tovar_id . '.JPEG');
+
+
+                        $img_full_arr = explode(' | ', $imgs);
+
+                        if (count($img_full_arr) <= 10) {
+                            $img_full = $imgs;
+                        } else {
+                            $img_full_arr = array_slice($img_full_arr, 0, 10);
+                            $img_full = implode(' | ', $img_full_arr);
+                        }
 
             $description = '';
 
@@ -2396,7 +2423,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -2441,66 +2468,73 @@
             $img = $product->referer->img1;
 
 
-        $img_arr = [];
+
         if ($product->referer->img2 != null) {
-            $img_arr[] = $product->referer->img2;
+            $img .= ' | '.$product->referer->img2;
         }
         if ($product->referer->img3 != null) {
-            $img_arr[] = $product->referer->img3;
+            $img .= ' | '.$product->referer->img3;
         }
         if ($product->referer->img4 != null) {
-            $img_arr[] = $product->referer->img4;
+            $img .= ' | '.$product->referer->img4;
         }
         if ($product->referer->img5 != null) {
-            $img_arr[] = $product->referer->img5;
+            $img .= ' | '.$product->referer->img5;
         }
         if ($product->referer->img6 != null) {
-            $img_arr[] = $product->referer->img6;
+            $img .= ' | '.$product->referer->img6;
         }
         if ($product->referer->img7 != null) {
-            $img_arr[] = $product->referer->img7;
+            $img .= ' | '.$product->referer->img7;
         }
         if ($product->referer->img8 != null) {
-            $img_arr[] = $product->referer->img8;
+            $img .= ' | '.$product->referer->img8;
         }
         if ($product->referer->img9 != null) {
-            $img_arr[] = $product->referer->img9;
+            $img .= ' | '.$product->referer->img9;
         }
         if ($product->referer->img10 != null) {
-            $img_arr[] = $product->referer->img10;
+            $img .= ' | '.$product->referer->img10;
         }
         if ($product->referer->img11 != null) {
-            $img_arr[] = $product->referer->img11;
+            $img .= ' | '.$product->referer->img11;
         }
         if ($product->referer->img12 != null) {
-            $img_arr[] = $product->referer->img12;
+            $img .= ' | '.$product->referer->img12;
         }
         if ($product->referer->img13 != null) {
-            $img_arr[] = $product->referer->img13;
+            $img .= ' | '.$product->referer->img13;
         }
         if ($product->referer->img14 != null) {
-            $img_arr[] = $product->referer->img14;
+            $img .= ' | '.$product->referer->img14;
         }
         if ($product->referer->img15 != null) {
-            $img_arr[] = $product->referer->img15;
+            $img .= ' | '.$product->referer->img15;
         }
         if ($product->referer->img16 != null) {
-            $img_arr[] = $product->referer->img16;
+            $img .= ' | '.$product->referer->img16;
         }
         if ($product->referer->img17 != null) {
-            $img_arr[] = $product->referer->img17;
+            $img .= ' | '.$product->referer->img17;
         }
         if ($product->referer->img18 != null) {
-            $img_arr[] = $product->referer->img18;
+            $img .= ' | '.$product->referer->img18;
         }
         if ($product->referer->img19 != null) {
-            $img_arr[] = $product->referer->img19;
+            $img .= ' | '.$product->referer->img19;
         }
         if ($product->referer->img20 != null) {
-            $img_arr[] = $product->referer->img20;
+            $img .= ' | '.$product->referer->img20;
         }
 
-        $image_urls = avito_images_urls($img_arr);
+            $img_full_arr = explode(' | ', $img);
+
+            if (count($img_full_arr) <= 10) {
+                $img_full = $img;
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_full = implode(' | ', $img_full_arr);
+            }
 //
             $description = '';
 
@@ -2566,7 +2600,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
@@ -2603,10 +2637,16 @@
 //                -----------------------------
 //              ------------------------------------------FOTO-------------------------------------
 
-            $img_arr = [];
-            $img_arr[] = $product->images;
+            $img = $product->images;
 
-            $image_urls = avito_images_urls($img_arr);
+            $img_full_arr = explode(' | ', $img);
+
+            if (count($img_full_arr) <= 10) {
+                $img_full = $img;
+            } else {
+                $img_full_arr = array_slice($img_full_arr, 0, 10);
+                $img_full = implode(' | ', $img_full_arr);
+            }
 
             $description = '';
 
@@ -2672,7 +2712,7 @@
             <td>{{ $description }}</td>                                 {{-- Description --}}
             <td>{{ $price }}</td>                                       {{-- Price --}}
             <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
+            <td>{{ $img_full }}</td>                                    {{-- ImageUrls --}}
             <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
             <td>Ремонт и строительство</td>                             {{-- Category --}}
             <td>Стройматериалы</td>                                     {{-- GoodsType --}}
