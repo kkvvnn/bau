@@ -2,9 +2,6 @@
 
 use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\AvitoController;
-use App\Http\Controllers\AvitoSpbController;
-use App\Http\Controllers\AvitoTwoController;
-use App\Http\Controllers\AvitoTwoExcelController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MyHelpController;
@@ -13,6 +10,7 @@ use App\Http\Controllers\PrimaveraNewController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TelegramSendController;
 use App\Http\Controllers\BauserviceSpbController;
+use App\Http\Middleware\BasicAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,13 +23,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-//----- IMPORT-FROM-BAUSERVICE-TO-DATABASE ------
-Route::get('/import_product_from_csv', [ProductController::class, 'import'])->name('import_product_from_csv');
-Route::get('/import_collection_from_csv', [CollectionController::class, 'import'])->name('import_collection_from_csv');
-Route::get('/many', [Controller::class, 'many'])->name('many');
-Route::get('/download_all_collections', [CollectionController::class, 'download_all_collections'])->name('download_all_collections');
-Route::get('/download_all/{pic?}', [ProductController::class, 'download_all'])->name('download_all');
 
 //----- BAUSERVICE -----
 Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
@@ -72,6 +63,7 @@ Route::get('/bauservice-kzn', [\App\Http\Controllers\BauserviceKznController::cl
 //------------ AVITO ------------
 Route::prefix('avito')
     ->name('avito.')
+    ->middleware(BasicAuthMiddleware::class)
     ->group(function () {
 
     Route::get('/{account}', [AvitoController::class, 'form']);

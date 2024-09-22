@@ -91,25 +91,6 @@ class CollectionController extends Controller
         //
     }
 
-    // IMPORT COLLECTIONS
-    public function import()
-    {
-        Collection::truncate();
-        set_time_limit(120);
-        $url = 'http://catalog.bauservice.ru/affiliate_new/nCatg0d8.csv';
-        $contents = file_get_contents($url);
-        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
-
-        $date = date('Y-m-d_His');
-        $name = 'import/collections/collection_'.$date.'.csv';
-
-        Storage::put($name, $contents);
-
-        Excel::import(new CollectionsImport, $name);
-
-        return redirect('/')->with('success', 'Таблица Collection обновлена. Ok!');
-    }
-
     public function mydown($name)
     {
         set_time_limit(60);
@@ -140,45 +121,5 @@ class CollectionController extends Controller
                 Storage::disk('collections')->put($name_file, $file);
             }
         }
-    }
-
-    public function download_all_collections()
-    {
-
-        // $name_file = 'small_img/' . $name_file;
-        // $products = Product::where([['id', '<=', 400], ['id', '!=', 226], ['Picture2', '!=', null]])->get();
-        // $products = Product::where([['id', '<', 2000], ['Picture2', '!=', null]])->get();
-        // $products = Product::where('Picture3', '!=', null)->get();
-        // dd($products);
-
-        $cols = $this->all_collections_list();
-
-        $collections = Collection::find($cols);
-        // dd($collections);
-
-        foreach ($collections as $collection) {
-            $list_pic = $collection->Interior_Pic;
-            $arr_pic = explode(', ', $list_pic);
-
-            // dd($arr_pic[1]);
-
-            foreach ($arr_pic as $pic) {
-                // dd($pic);
-                $this->mydown($pic);
-            }
-            // $this->mydown($arr_pic[1]);
-        }
-
-        // $url = Storage::url($name_file);
-        // $url_small = Storage::url('small_img/' . $name_file);
-        // // $url = Storage::url($name_file);
-
-        // // use Illuminate\Support\Str;
-
-        // $url_small = Str::swap([
-        //   '.jpeg' => '.jpg',
-        //   '.png' => '.jpg',
-        //   // 'great' => 'fantastic',
-        // ], $url_small);
     }
 }

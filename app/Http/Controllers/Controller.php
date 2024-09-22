@@ -50,20 +50,4 @@ class Controller extends BaseController
         return $this->down($id);
     }
 
-    public function many()
-    {
-        CollectionProduct::truncate();
-        $products = Product::all();
-
-        foreach ($products as $product) {
-
-            $collection_number = explode(', ', $product->Collection_Id);
-            $collections = Collection::whereIn('Collection_Id', $collection_number)->get();
-
-            foreach ($collections as $collection) {
-                $product->collections()->attach($collection->id);
-            }
-        }
-        return redirect('/')->with('success', 'Таблицы Product и Collection связаны. Ok!');
-    }
 }

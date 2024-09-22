@@ -431,27 +431,6 @@ class ProductController extends Controller
         //
     }
 
-    // IMPORT PRODUCTS
-    public function import()
-    {
-        Product::truncate();    // clear all data in table
-
-        set_time_limit(120);
-        $url = 'http://catalog.bauservice.ru/affiliate_new/xQ0ZYpzr.csv';
-        $contents = file_get_contents($url);
-        $contents = mb_convert_encoding($contents, 'UTF-8', 'WINDOWS-1251');
-
-        $date = date('Y-m-d_His');
-        $name = 'import/products/product_'.$date.'.csv';
-
-        Storage::put($name, $contents);
-
-        Excel::import(new ProductsImport, $name);
-        $deleted = Product::where('Picture', null)->delete();
-
-        return redirect('/')->with('success', 'Таблица Product обновлена. Ok!');
-    }
-
     public function mydown($name, $public_n)
     {
         set_time_limit(600);
@@ -472,25 +451,5 @@ class ProductController extends Controller
                 Storage::disk('public')->put($public_n.'/'.$name_file, $file);
             }
         }
-    }
-
-    public function download_all($disk = 1)
-    {
-        if ($disk == 1) {
-            $where_pic = '';
-        } else {
-            $where_pic = $disk;
-        }
-
-        $products = Product::where(('Picture'.$where_pic), '!=', null)->get();
-
-        $product_pic = 'Picture'.$where_pic;
-
-        set_time_limit(600);
-
-        foreach ($products as $product) {
-            $this->mydown($product->$product_pic, $product_pic);
-        }
-
     }
 }
