@@ -63,7 +63,7 @@ Route::get('/bauservice-kzn', [\App\Http\Controllers\BauserviceKznController::cl
 //------------ AVITO ------------
 Route::prefix('avito')
     ->name('avito.')
-    ->middleware(BasicAuthMiddleware::class)
+//    ->middleware(BasicAuthMiddleware::class)
     ->group(function () {
 
     Route::get('/{account}', [AvitoController::class, 'form']);
