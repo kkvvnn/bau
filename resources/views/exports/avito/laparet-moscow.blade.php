@@ -27,7 +27,6 @@
 
     {{---------------------BAUSERVICE--------------------------}}
     @foreach($laparets as $product)
-
         @php
             if(stripos($product->Name, 'литка') !== false) {
                 $GoodsSubType = 'Отделка';

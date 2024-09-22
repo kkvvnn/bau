@@ -70,7 +70,9 @@ Route::get('/bauservice-kzn', [\App\Http\Controllers\BauserviceKznController::cl
 
 
 //------------ AVITO ------------
-Route::prefix('avito')->name('avito.')->group(function () {
+Route::prefix('avito')
+    ->name('avito.')
+    ->group(function () {
 
     Route::get('/{account}', [AvitoController::class, 'form']);
     Route::post('/main', [AvitoController::class, 'export_main']);

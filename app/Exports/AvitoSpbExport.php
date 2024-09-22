@@ -43,11 +43,9 @@ class AvitoSpbExport extends DefaultValueBinder implements FromView, WithCustomV
             ->whereColumn('RMPrice', '>', 'Price')
             ->get();
 
-        $ntceramic = NtCeramicNoImgs::all();
 
-        return view('exports.avito-spb', [
+        return view('exports.avito.laparet-spb', [
             'products' => $products,
-            'ntceramic' => $ntceramic,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,
