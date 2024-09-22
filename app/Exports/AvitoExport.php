@@ -106,6 +106,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['artikul', '!=', 'PWA11ALD1'],
             ['artikul', '!=', 'BWA60ALD404'],
             ['artikul', '!=', 'WT9VIE11'],
+            ['artikul', '!=', 'TWU93MGC07R'],
+            ['artikul', '!=', 'GFA114TRZ07L'],
+            ['artikul', '!=', 'TWU93SNH04R'],
         ])
             ->get()
             ->filter(function (AltaceraTovarAvailable $altaceraTovarAvailable) {
