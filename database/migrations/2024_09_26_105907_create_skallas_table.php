@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('slug');
             $table->string('slug_collection');
             $table->text('description')->nullable();
-            $table->boolean('new')->nullable();
-            $table->boolean('sale')->nullable();
-            $table->integer('price_opt')->nullable();
-            $table->integer('price');
-            $table->integer('price_old')->nullable();
+//            $table->boolean('new')->nullable();
+//            $table->boolean('sale')->nullable();
+//            $table->integer('price_opt')->nullable();
+//            $table->integer('price');
+//            $table->integer('price_old')->nullable();
             $table->string('unit');
             $table->integer('length');
             $table->integer('width');

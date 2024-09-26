@@ -90,14 +90,14 @@
                 <div class="col-md-6">
 
                     @php
-                        if ($product->price_old) {
-                            $old_price = $product->price_old;
+                        if ($product->price->price_old) {
+                            $old_price = $product->price->price_old;
                         } else {
                             $old_price = '';
                         }
                     @endphp
 
-                    <h2 class="card-title pricing-card-title">{{$product->price??''}} <span class="text-muted fw-light">₽/{{$product->unit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
+                    <h2 class="card-title pricing-card-title">{{$product->price->price??''}} <span class="text-muted fw-light">₽/{{$product->unit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
                     {{--                                <h5 class="card-title pricing-card-title">Price <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>--}}
 
                     @if($product->sale)
@@ -107,18 +107,8 @@
 
                     <br>
 
-                    {{--                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">--}}
-                    {{--                            Цена -10% {{round($product->price * 0.90, -1)}} ₽/{{$product->unit}}</p>--}}
+{{--                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>--}}
 
-
-
-                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>
-                    {{--                    @if ($stock_spb)--}}
-                    {{--                        <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->unit}} {{$vivod}}</h5>--}}
-                    {{--                    @endif--}}
-                    {{--                    @if ($stock_kzn)--}}
-                    {{--                        <h5 class="mt-0 mb-0">Казань: {{$stock_kzn}} {{$product->unit}} {{$vivod}}</h5>--}}
-                    {{--                    @endif--}}
                     <p class="mt-4">Актуально на <span
                             class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
 

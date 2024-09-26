@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Imports\SkallaImport;
+use App\Imports\SkallaPriceListImport;
 use App\Models\Skalla;
+use App\Models\SkallaPriceList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -27,9 +29,27 @@ class SkallaController extends Controller
         return redirect()->route('skalla.index')->with('success', 'Skalla контент залит!');
     }
 
+    public function price_list(Request $request)
+    {
+        $file = $request->file('file');
+
+        $date = date('Y-m-d_His');
+        $name = 'import/skalla/price/';
+
+        Storage::putFileAs($name, $file,'skalla_price_'.$date.'.xlsx' );
+
+        $name_uploaded_file = 'import/skalla/price/skalla_price_'.$date.'.xlsx';
+        SkallaPriceList::truncate();
+        Excel::import(new SkallaPriceListImport(), $name_uploaded_file);
+
+        return redirect()->route('skalla.index')->with('success', 'Skalla Price обновлен!');
+    }
+
     public function index()
     {
-        $products = Skalla::paginate(15);
+//        $products = Skalla::paginate(15);
+        $products = Skalla::whereHas('price')
+            ->paginate(15);
 
         return view('skalla.index', compact('products'));
     }
@@ -88,7 +108,8 @@ class SkallaController extends Controller
 //        $products = Skalla::where('collection', 'LIKE', '%'.$name.'%')
 //            ->paginate(15);
 
-        $products = Skalla::whereSlugCollection($slug)
+        $products = Skalla::whereHas('price')
+            ->whereSlugCollection($slug)
             ->paginate(15);
 
         return view('skalla.index', compact('products'));

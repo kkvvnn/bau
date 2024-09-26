@@ -38,8 +38,8 @@
                         $string_for_delete = 'https://static.tildacdn.com/';
                         $img = Storage::disk('skalla')->url(Str::remove($string_for_delete, $product->images[0]));
 
-                        if ($product->price_old) {
-                            $old_price = $product->price_old;
+                        if ($product->price->price_old) {
+                            $old_price = $product->price->price_old;
                         } else {
                             $old_price = '';
                         }
@@ -59,7 +59,7 @@
 
 
 
-                                <h5 class="card-title pricing-card-title">{{$product->price??''}} <span class="text-muted fw-light">₽/{{$product->unit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h5>
+                                <h5 class="card-title pricing-card-title">{{$product->price->price??''}} <span class="text-muted fw-light">₽/{{$product->unit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h5>
 {{--                                <h5 class="card-title pricing-card-title">Price <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>--}}
 
                                 @if($product->sale)

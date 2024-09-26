@@ -278,6 +278,9 @@ Route::name('skalla.')->group(function () {
         Route::get('/skalla/index', 'index')->name('index');
         Route::get('/skalla/{slug:slug}', 'show')->name('show');
         Route::get('/skalla/collection/{name:slug}', 'collection')->name('collection');
+
+        Route::view('/skalla-price-list-import', 'skalla.import-price-list');
+        Route::post('/skalla-price-list-import', 'price_list');
     });
 });
 
