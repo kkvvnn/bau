@@ -16,6 +16,7 @@ use App\Models\PixmosaicNew;
 use App\Models\Primavera;
 use App\Models\PrimaveraNew;
 use App\Models\Product;
+use App\Models\Skalla;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -138,6 +139,14 @@ class SearchController extends Controller
         if (count($primavera_new)) {
             return view('primavera-new.index', [
                 'products' => $primavera_new,
+            ]);
+        }
+
+        $skalla = Skalla::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $skalla->appends(['name' => $name]);
+        if (count($skalla)) {
+            return view('skalla.index', [
+                'products' => $skalla,
             ]);
         }
 

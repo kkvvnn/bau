@@ -97,6 +97,14 @@ return [
             'throw' => false,
         ],
 
+        'skalla' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/skalla'),
+            'url' => env('APP_URL').'/storage/images/skalla',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'keramopro' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/keramopro'),

@@ -4,10 +4,12 @@ use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\KerranovaController;
 use App\Http\Controllers\MyHelpController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PrimaveraNewController;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\SkallaController;
 use App\Http\Controllers\TelegramSendController;
 use App\Http\Controllers\BauserviceSpbController;
 use App\Http\Middleware\BasicAuthMiddleware;
@@ -252,7 +254,7 @@ Route::name('primavera-new.')->group(function () {
 
 //----- KERRANOVA -----
 Route::name('kerranova.')->group(function () {
-    Route::controller(\App\Http\Controllers\KerranovaController::class)->group(function () {
+    Route::controller(KerranovaController::class)->group(function () {
         Route::view('/kerranova/import', 'kerranova.import');
         Route::post('/kerranova/import-work', 'import_work')->name('import-work');
         Route::get('/kerranova/index', 'index')->name('index');
@@ -262,9 +264,19 @@ Route::name('kerranova.')->group(function () {
 
     //----- KERRANOVA-PRICE-LIST-AND-STOCKS (Import from .xls via form) -----
     Route::view('/kerranova-price-stock-import', 'kerranova.import-price-stock');
-    Route::post('/kerranova-import-work-price-stock', [\App\Http\Controllers\KerranovaController::class, 'import_work_price_stock'])->name('import-work-price-stock');
+    Route::post('/kerranova-import-work-price-stock', [KerranovaController::class, 'import_work_price_stock'])->name('import-work-price-stock');
 });
 
+//----- SKALLA -----
+Route::name('skalla.')->group(function () {
+    Route::controller(SkallaController::class)->group(function () {
+        Route::view('/skalla/import', 'skalla.import');
+        Route::post('/skalla/import', 'import');
+        Route::get('/skalla/index', 'index')->name('index');
+        Route::get('/skalla/{slug:slug}', 'show')->name('show');
+        Route::get('/skalla/collection/{name:slug}', 'collection')->name('collection');
+    });
+});
 
 
 //----- CARVING -----
