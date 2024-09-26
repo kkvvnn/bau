@@ -19,8 +19,13 @@ class ProductController extends Controller
      */
     public function index($products, $type): View
     {
+        if (!$type) {
+            $type = config('app.name');
+        }
+
         return view('product.index', [
             'products' => $products,
+            'type' => $type,
         ]);
     }
 
@@ -88,7 +93,7 @@ class ProductController extends Controller
 
     public function index_all()
     {
-        $type = 'all';
+        $type = config('app.name');
 
         $products = Product::where([['GroupProduct', '01 Плитка'],
             ['balanceCount', '>=', 0],
@@ -96,10 +101,58 @@ class ProductController extends Controller
             ])
             ->orderByRaw('Lenght * Height DESC')
             ->paginate(15);
-//        $products = Product::where([['GroupProduct', '01 Плитка'], ['balanceCount', '>=', 0]])->orderByRaw('Lenght * Height DESC')->paginate(15);
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
-        // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
+
+        return $this->index($products, $type);
+    }
+
+    public function laparet()
+    {
+        $type = 'Laparet';
+
+        $products = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Laparet'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->orderByRaw('Lenght * Height DESC')
+            ->paginate(15);
+
+        return $this->index($products, $type);
+    }
+
+    public function cersanit()
+    {
+        $type = 'Cersanit';
+
+        $products = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Cersanit'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->orderByRaw('Lenght * Height DESC')
+            ->paginate(15);
+
+        return $this->index($products, $type);
+    }
+
+    public function vitra()
+    {
+        $type = 'Vitra';
+
+        $products = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Vitra'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->orderByRaw('Lenght * Height DESC')
+            ->paginate(15);
+
         return $this->index($products, $type);
     }
 
@@ -134,7 +187,7 @@ class ProductController extends Controller
 
     public function index_ceradim()
     {
-        $type = 'ceradim';
+        $type = 'Ceradim';
 
 
          $products = Product::where([
@@ -149,7 +202,7 @@ class ProductController extends Controller
 
     public function index_kerama_marazzi()
     {
-        $type = 'kerama_marazzi';
+        $type = 'Kerama Marazzi';
 
 
 //         $products = Product::where([

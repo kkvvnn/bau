@@ -28,6 +28,9 @@ use Illuminate\Support\Facades\Route;
 
 //----- BAUSERVICE -----
 Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
+Route::get('/laparet', [ProductController::class, 'laparet'])->name('laparet.index');
+Route::get('/cersanit', [ProductController::class, 'cersanit'])->name('cersanit.index');
+Route::get('/vitra', [ProductController::class, 'vitra'])->name('vitra.index');
 Route::get('/avito-index', [\App\Http\Controllers\AvitoIndexController::class, 'index_avito']);
 Route::get('/avito-index-no-moscow', [\App\Http\Controllers\AvitoIndexController::class, 'index_avito_not_in_moscow']);
 Route::get('/ceradim', [ProductController::class, 'index_ceradim'])->name('ceradim.index');

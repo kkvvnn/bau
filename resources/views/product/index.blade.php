@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', config('app.name'))
+@section('title', $type??config('app.name'))
 
 @section('content')
     <div class="album py-5 bg-body-tertiary">
