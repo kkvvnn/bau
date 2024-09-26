@@ -321,6 +321,7 @@ class ProductController extends Controller
     public function collection_name($slug)
     {
         $type = 'collection_name';
+        $type = config('app.name');
 
 //        $products = Product::where([
 //            ['Collection_Id', 'LIKE', $id],

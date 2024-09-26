@@ -97,7 +97,7 @@
                         }
                     @endphp
 
-                    <h2 class="card-title pricing-card-title">{{$product->price->price??''}} <span class="text-muted fw-light">₽/{{$product->unit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price->price??''}} <span class="text-muted fw-light">₽/{{$product->unit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
                     {{--                                <h5 class="card-title pricing-card-title">Price <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>--}}
 
                     @if($product->sale)
