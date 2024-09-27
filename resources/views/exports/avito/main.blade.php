@@ -2184,24 +2184,22 @@
 
                                     $count_in_pack = (float)$pack_ratio / (float)$one_count_ratio;
             //        --------------------------------------------------------------
-//                        if($product->price !== null) {
-//                            if ($product->sale == 0) {
-//                                $price = round($product->price->price * 0.95, -1);
-////                                $price = $product->price->price;
-//                            } else {
-//                                $price = $product->price->price;
-//                            }
-////                            $price = $product->price->price;
-//                        } else {
-//                            $price = '';
-//                        }
-
-//                        $price = 1;
                         if($product->price !== null) {
-                            $price = $product->price->price;
+                            if ($product->sale == 0) {
+                                $price = round($product->price->price * 0.90, -1);
+                            } else {
+                                $price = $product->price->price;
+                            }
                         } else {
                             $price = '';
                         }
+
+//                        $price = 1;
+//                        if($product->price !== null) {
+//                            $price = $product->price->price;
+//                        } else {
+//                            $price = '';
+//                        }
 
                         $title = $product->category_rel->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul;
                         $title = str_replace('Архив', '', $title);
