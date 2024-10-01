@@ -76,23 +76,6 @@
     @endphp
 
     @php
-        $price = $product->price;
-        list('discount' => $discount, 'additional' => $additional) = $discounts['Kevis'];
-
-        if ($additional == 'По умолчанию') {
-            if ($discount) {
-                $price = round($product->price * (100 - $discount)/100, -1);
-            }
-        }
-
-        if ($additional == 'Не указывать цену') {
-            $price = '';
-        }
-
-        if ($additional == 'Цена 1 рубль') {
-            $price = 1;
-        }
-
         $price_rrc = $product->price;
         $price_old = 0;
         $brand = 'Kevis';
