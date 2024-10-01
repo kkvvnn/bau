@@ -14,6 +14,7 @@ use App\Models\Kevis;
 use App\Models\PixmosaicNew;
 use App\Models\PrimaveraNew;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
+use App\Models\Skalla;
 use App\Models\Technotile\Product as TechnotileProduct;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
@@ -180,6 +181,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->get();
         $kerabellezza = [];
 
+        //==================SKALLA==================
+        $skalla = Skalla::whereHas('price')
+            ->get();
+
 //      ===================DISCOUNTS==================
 
         $discounts = Discount::whereAccount('Напольные решения')->get();
@@ -206,6 +211,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'kerranova' => $kerranova,
             'keramopro' => $keramopro,
             'kerabellezza' => $kerabellezza,
+            'skalla' => $skalla,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,

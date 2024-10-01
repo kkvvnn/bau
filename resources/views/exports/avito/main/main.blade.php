@@ -43,6 +43,7 @@
         @include('exports.avito.main.pixmosaic')
         @include('exports.avito.main.artcenter')
         @include('exports.avito.main.kerabellezza')
+        @include('exports.avito.main.skalla')
 
     </tbody>
 </table>
