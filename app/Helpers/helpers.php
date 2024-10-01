@@ -59,3 +59,19 @@ if (!function_exists('avito_price')) {
         return $price;
     }
 }
+
+if (!function_exists('avito_show_discount')) {
+    /**
+     * @param string $brand
+     * @param array $discounts
+     * @return string|bool
+     */
+    function avito_show_discount(string $brand, array $discounts): string|bool
+    {
+        $size_discount = (int) $discounts[$brand]['discount'];
+        if ($size_discount && $discounts[$brand]['additional'] == 'По умолчанию') {
+            return '<p>#'.$size_discount.'</p>';
+        }
+        return false;
+    }
+}

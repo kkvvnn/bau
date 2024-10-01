@@ -264,6 +264,10 @@
         $price_old = $product->sale;
         $brand = 'Artkera';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
+
+        if ($show_discount = avito_show_discount($brand, $discounts)) {
+            $description .= $show_discount;
+        }
     @endphp
 
     <tr>

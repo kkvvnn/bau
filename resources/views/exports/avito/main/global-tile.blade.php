@@ -392,6 +392,10 @@
         $price_old = 0;
         $brand = 'Global Tile';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
+
+        if ($show_discount = avito_show_discount($brand, $discounts)) {
+            $description .= $show_discount;
+        }
     @endphp
 
     @php
