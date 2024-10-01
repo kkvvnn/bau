@@ -97,23 +97,11 @@
         $video = '';
     @endphp
 
-    @php //---PRICE---
-        $price = $product->price;
-        list('discount' => $discount, 'additional' => $additional) = $discounts['Kerabellezza'];
-
-        if ($additional == 'По умолчанию') {
-            if ($discount) {
-                $price = round($product->price * (100 - $discount)/100, -1);
-            }
-        }
-
-        if ($additional == 'Не указывать цену') {
-            $price = '';
-        }
-
-        if ($additional == 'Цена 1 рубль') {
-            $price = 1;
-        }
+    @php
+        $price_rrc = $product->price;
+        $price_old = 0;
+        $brand = 'Kerabellezza';
+        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
     <tr>

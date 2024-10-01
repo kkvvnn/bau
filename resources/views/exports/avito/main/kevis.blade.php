@@ -92,6 +92,11 @@
         if ($additional == 'Цена 1 рубль') {
             $price = 1;
         }
+
+        $price_rrc = $product->price;
+        $price_old = 0;
+        $brand = 'Kevis';
+        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
     <tr>

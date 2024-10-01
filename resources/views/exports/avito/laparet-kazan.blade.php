@@ -359,17 +359,11 @@
 
 //--------------------------------------------------------------------------
 
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    if ($product->Producer_Brand != 'Ceradim') {
-                        $price = round($product->RMPrice * 0.90, -1);
-                    } else {
-                        $price = $product->RMPrice;
-                    }
-                } else {
-                    $price = $product->RMPrice;
-                }
+            $price_rrc = $product->RMPrice;
+            $price_old = $product->RMPriceOld ?? 0;
+            $brand = $product->Producer_Brand;
+            $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
-//            $price = $product->RMPrice;
 //----------------------------------------------------------------------------
             $code = $product->Element_Code . '_kzn';
         @endphp

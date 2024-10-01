@@ -369,24 +369,10 @@
     @endphp
 
     @php
-        $price = $product->RMPrice;
-        list('discount' => $discount, 'additional' => $additional) = $discounts[$product->Producer_Brand];
-
-        if ($additional == 'По умолчанию') {
-            if ($discount) {
-                if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                    $price = round($product->RMPrice * (100 - $discount)/100, -1);
-                }
-            }
-        }
-
-        if ($additional == 'Не указывать цену') {
-            $price = '';
-        }
-
-        if ($additional == 'Цена 1 рубль') {
-            $price = 1;
-        }
+        $price_rrc = $product->RMPrice;
+        $price_old = $product->RMPriceOld;
+        $brand = $product->Producer_Brand;
+        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
     @php

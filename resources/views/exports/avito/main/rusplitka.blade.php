@@ -92,26 +92,10 @@
     @endphp
 
     @php
-        $price = $product->price_rozn;
-        list('discount' => $discount, 'additional' => $additional) = $discounts['Rusplitka'];
-
-        if ($additional == 'По умолчанию') {
-            if ($discount) {
-                $price = round($product->price_rozn * (100 - $discount)/100, -1);
-            }
-        }
-
-        if ($price == 0) {
-            $price = '';
-        }
-
-        if ($additional == 'Не указывать цену') {
-            $price = '';
-        }
-
-        if ($additional == 'Цена 1 рубль') {
-            $price = 1;
-        }
+        $price_rrc = $product->price_rozn;
+        $price_old = 0;
+        $brand = 'Rusplitka';
+        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
     <tr>

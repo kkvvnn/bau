@@ -151,22 +151,10 @@
     @endphp
 
     @php
-        $price = $product->Price_rozn;
-        list('discount' => $discount, 'additional' => $additional) = $discounts['Leedo'];
-
-        if ($additional == 'По умолчанию') {
-            if ($discount) {
-                $price = round($product->Price_rozn * (100 - $discount)/100, -1);
-            }
-        }
-
-        if ($additional == 'Не указывать цену') {
-            $price = '';
-        }
-
-        if ($additional == 'Цена 1 рубль') {
-            $price = 1;
-        }
+        $price_rrc = $product->Price_rozn;
+        $price_old = 0;
+        $brand = 'Leedo';
+        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
     <tr>

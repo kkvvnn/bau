@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Discount;
 use App\Models\Product;
 use App\Traits\Avito\ExportConstruct;
 use Illuminate\Contracts\View\View;
@@ -60,6 +61,14 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
 
         $products = $products->merge($ceradim);
 
+        //      ===================DISCOUNTS==================
+
+        $discounts = Discount::whereAccount('Laparet-Казань')->get();
+        $discounts_all = [];
+        foreach ($discounts as $discount) {
+            $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
+        }
+
         return view('exports.avito.laparet-kazan', [
             'products' => $products,
             'phone' => $this->phone,
@@ -68,6 +77,7 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
             'address' => $this->address,
             'add_description' => $this->add_description_last,
             'add_description_first' => $this->add_description_first,
+            'discounts' => $discounts_all,
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\AvitoTwoExcel;
+use App\Models\Discount;
 use App\Traits\Avito\ExportConstruct;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -60,6 +61,14 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
         ])
         ->get();
 
+        //      ===================DISCOUNTS==================
+
+        $discounts = Discount::whereAccount('Laparet-Запад')->get();
+        $discounts_all = [];
+        foreach ($discounts as $discount) {
+            $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
+        }
+
         return view('exports.avito.laparet-moscow', [
             'laparets' => $laparets,
             'olds' => $olds,
@@ -69,6 +78,7 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
             'address' => $this->address,
             'add_description_first' => $this->add_description_first,
             'add_description' => $this->add_description_last,
+            'discounts' => $discounts_all,
         ]);
     }
 }

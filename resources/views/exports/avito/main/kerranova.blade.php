@@ -226,6 +226,11 @@
         if ($additional == 'Цена 1 рубль') {
             $price = 1;
         }
+
+        $price_rrc = $product->props->price;
+        $price_old = 0;
+        $brand = 'Kerranova';
+        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
     @php

@@ -29,10 +29,10 @@ if (!function_exists('avito_price')) {
      * @param int $price_rrc
      * @param string $brand
      * @param array $discounts
-     * @param int $old_price
+     * @param int $price_old
      * @return int|string
      */
-    function avito_price(int $price_rrc, string $brand, array $discounts, int $old_price = 0): int|string
+    function avito_price(int $price_rrc, string $brand, array $discounts, int $price_old = 0): int|string
     {
         $price = $price_rrc;
 
@@ -50,12 +50,12 @@ if (!function_exists('avito_price')) {
         }
         if ($additional == 'По умолчанию') {
             if ($discount) {
-                if ($old_price == 0 || $old_price == $price) {
+                if ($price_old == 0 || $price_old == $price) {
                     return round($price * (100 - $discount) / 100, -1);
                 }
             }
         }
 
-        return '';
+        return $price;
     }
 }

@@ -412,19 +412,10 @@
         @endphp
 
         @php
-            if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-                $price = round($product->RMPrice * 0.9, -1);
-//                $price = $product->RMPrice;
-//                $price = '';
-            } else {
-                $price = $product->RMPrice;
-//                $price = '';
-            }
-
-//            $price = $product->RMPrice;
-
-        $price = 1;
-
+            $price_rrc = $product->RMPrice;
+            $price_old = $product->RMPriceOld;
+            $brand = $product->Producer_Brand;
+            $price = avito_price($price_rrc, $brand, $discounts, $price_old);
         @endphp
 
         @php
