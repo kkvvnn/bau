@@ -34,7 +34,7 @@ class StoreDiscountRequest extends FormRequest
                     ->where(fn (Builder $query) => $query->where('account', $this->account)),
             ],
             'discount' => 'required|integer|min:0|max:100',
-            'price_not_specified' => 'required|boolean',
+            'additional' => 'required|string',
         ];
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->enum('account', ['Напольные решения', 'Laparet-Запад', 'Laparet-Казань'])->default('Напольные решения');
             $table->string('name');
             $table->integer('discount')->default(0);
-            $table->boolean('price_not_specified')->default(false);
+            $table->enum('additional', ['По умолчанию', 'Не указывать цену', 'Цена 1 рубль'])->default('По умолчанию');
             $table->timestamps();
         });
     }

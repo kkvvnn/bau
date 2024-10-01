@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Name:</strong></label>
+                        <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Бренд:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $discount->name }}
                         </div>
@@ -38,9 +38,9 @@
                     </div>
 
                     <div class="row">
-                        <label for="price" class="col-md-4 col-form-label text-md-end text-start"><strong>Цена не указана:</strong></label>
+                        <label for="price" class="col-md-4 col-form-label text-md-end text-start"><strong>Дополнительно:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            {{ $discount->price_not_specified }}
+                            {{ $discount->additional }}
                         </div>
                     </div>
 

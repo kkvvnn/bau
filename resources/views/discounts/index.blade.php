@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">Цены на Avito</div>
                 <div class="card-body">
-                    <a href="{{ route('discounts.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Добавить</a>
+                    <a href="{{ route('discounts.create') }}" class="btn btn-outline-success mb-3"><i class="bi bi-plus-circle"></i> Добавить</a>
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>
@@ -22,7 +22,7 @@
                             <th scope="col">Avito аккаунт</th>
                             <th scope="col">Бренд</th>
                             <th scope="col">Размер скидки % (0-100)</th>
-                            <th scope="col">Цена не указана</th>
+{{--                            <th scope="col">Дополнительно</th>--}}
                             <th scope="col"></th>
                         </tr>
                         </thead>
@@ -30,20 +30,43 @@
                         @forelse ($discounts as $discount)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $discount->account }}</td>
+                                @if($discount->account == 'Напольные решения')
+                                    <td class="text-bg-light p-3">{{ $discount->account }}</td>
+                                @endif
+                                @if($discount->account == 'Laparet-Запад')
+                                    <td class="text-bg-success p-3">{{ $discount->account }}</td>
+                                @endif
+                                @if($discount->account == 'Laparet-Казань')
+                                    <td class="text-bg-info p-3">{{ $discount->account }}</td>
+                                @endif
+
                                 <td>{{ $discount->name }}</td>
-                                <td>{{ $discount->discount }}</td>
-                                <td>{{ $discount->price_not_specified }}</td>
+
+                                @if($discount->additional == 'По умолчанию')
+                                    @if($discount->discount)
+                                        <td class="text-bg-success p-3">{{ $discount->discount }}</td>
+                                    @else
+                                        <td>РРЦ</td>
+                                   @endif
+                                @else
+                                    <td class="text-bg-danger p-3">{{ $discount->additional }}</td>
+                                @endif
+
+{{--                                @if($discount->additional == 'Не указывать цену' || $discount->additional == 'Цена 1 рубль')--}}
+{{--                                    <td class="text-bg-danger p-3">{{ $discount->additional }}</td>--}}
+{{--                                @else--}}
+{{--                                    <td>{{ $discount->additional }}</td>--}}
+{{--                                @endif--}}
                                 <td>
                                     <form action="{{ route('discounts.destroy', $discount->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
 
-                                        <a href="{{ route('discounts.show', $discount->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Подробнее</a>
+{{--                                        <a href="{{ route('discounts.show', $discount->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Подробнее</a>--}}
 
-                                        <a href="{{ route('discounts.edit', $discount->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Изменить</a>
+                                        <a href="{{ route('discounts.edit', $discount->id) }}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i> Изменить</a>
 
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this discount?');"><i class="bi bi-trash"></i> Удалить</button>
+                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Удалить?');"><i class="bi bi-trash"></i> Удалить</button>
                                     </form>
                                 </td>
                             </tr>

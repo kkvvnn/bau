@@ -16,7 +16,7 @@ class DiscountController extends Controller
     public function index(): View
     {
         return view('discounts.index', [
-            'discounts' => Discount::latest()->paginate(15)
+            'discounts' => Discount::orderBy('account')->paginate(50)
         ]);
     }
 
@@ -66,7 +66,7 @@ class DiscountController extends Controller
     {
         $discount->update($request->all());
 
-        return redirect()->back()
+        return redirect()->route('discounts.index')
             ->withSuccess('Успешно обновлено.');
     }
 

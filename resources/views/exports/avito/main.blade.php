@@ -398,13 +398,31 @@
         @endphp
 
         @php
-//            if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
-//                $price = round($product->RMPrice * 0.90, -1);
-//            } else {
-//                $price = $product->RMPrice;
-//            }
-
             $price = $product->RMPrice;
+            list('discount' => $discount, 'additional' => $additional) = $discounts[$product->Producer_Brand];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    if ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice) {
+                        $price = round($product->RMPrice * (100 - $discount)/100, -1);
+                    } else {
+                        $price = $product->RMPrice;
+                    }
+                } else {
+                    $price = $product->RMPrice;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
+
+        @php
 
             $code = $product->Element_Code;
             $video = '';
@@ -862,11 +880,29 @@
         @endphp
 
         @php
-            $price = round($product->price * 0.9, -1);
+            $price = $product->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Global Tile'];
 
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
+
+        @php
             $code = $product->vendor_code;
             $video = '';
-
         @endphp
 
         <tr>
@@ -1105,23 +1141,32 @@
             if (mb_strlen($title) > 50) {
                 $title = str_replace(' Керамогранит', '', $title);
             }
-
-
-//            $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
-//            if (mb_strlen($title) < 42) { $title = $product->Producer_Brand . ' ' . $title; }
         @endphp
 
         @php
+            $price = $product->props->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Kerranova'];
 
-//            $price = round($product->props->price * 0.9, -1);
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->props->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->props->price;
+                }
+            }
 
-              $price = $product->props->price;
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
 
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
+
+        @php
               $code = str_replace('/', '-', $product->vendor_code);
               $video = '';
-
-//----------------------------------------------------------------------------
-
         @endphp
 
         <tr>
@@ -1362,16 +1407,29 @@
         @endphp
 
         @php
+            $price = $product->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Novin Ceram'];
 
-//            $price = round($product->props->price * 0.9, -1);
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price;
+                }
+            }
 
-              $price = $product->price;
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
 
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
+
+        @php
               $code = $product->vendor_code . '_keramopro';
               $video = '';
-
-//----------------------------------------------------------------------------
-
         @endphp
 
         <tr>
@@ -1429,12 +1487,6 @@
             $MixesType = '';
         @endphp
         @php
-            $price = $product->price->price;
-            $price = round($price * 0.90, -1);
-//                --------------------------
-//                -----------------------------
-//              ------------------------------------------FOTO-------------------------------------
-
             $string_for_delete = 'https://domix-club.ru/upload/iblock/';
 
             $img_arr = [];
@@ -1730,6 +1782,26 @@
             $video = '';
 
         @endphp
+        @php
+            $price = $product->price->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Primavera'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price->price;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
 
         <tr>
             <td></td>                                                   {{-- AvitoID --}}
@@ -1974,8 +2046,7 @@
             $MixesType = '';
         @endphp
         @php
-            $price = $product->Price_rozn;
-            $price = round($price * 0.90, -1);
+
 //                --------------------------
             $title = '';
             if (stripos($product->Category, 'Декор') != false) {
@@ -2099,6 +2170,27 @@
             $video = '';
         @endphp
 
+        @php
+            $price = $product->Price_rozn;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Leedo'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->Price_rozn * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->Price_rozn;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
+
         <tr>
             <td></td>                                                   {{-- AvitoID --}}
             <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -2184,22 +2276,7 @@
 
                                     $count_in_pack = (float)$pack_ratio / (float)$one_count_ratio;
             //        --------------------------------------------------------------
-//                        if($product->price !== null) {
-//                            if ($product->sale == 0) {
-//                                $price = round($product->price->price * 0.90, -1);
-//                            } else {
-//                                $price = $product->price->price;
-//                            }
-//                        } else {
-//                            $price = '';
-//                        }
 
-//                        $price = 1;
-                        if($product->price !== null) {
-                            $price = $product->price->price;
-                        } else {
-                            $price = '';
-                        }
 
                         $title = $product->category_rel->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul;
                         $title = str_replace('Архив', '', $title);
@@ -2402,6 +2479,35 @@
                         $video = '';
         @endphp
 
+        @php
+            $price = $product->price->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Artkera'];
+
+            if ($product->price !== null) {
+                if ($additional == 'По умолчанию') {
+                    if ($discount) {
+                        if ($product->sale == 0) {
+                            $price = round($product->price->price * (100 - $discount)/100, -1);
+                        } else {
+                            $price = $product->price->price;
+                        }
+                    } else {
+                        $price = $product->price->price;
+                    }
+                }
+            } else {
+                $price = '';
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
+
         <tr>
             <td></td>                                                   {{-- AvitoID --}}
             <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -2446,9 +2552,7 @@
             }
         @endphp
         @php
-            $price = $product->price;
-            $price = round($price * 0.93, -1);
-            $price = '';
+
 //                --------------------------
             $title = $product->referer->title;
 //                -----------------------------
@@ -2569,7 +2673,27 @@
 
             $code = $product->vendor_code;
             $video = '';
+        @endphp
 
+        @php
+            $price = $product->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['NT Ceramic'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
         @endphp
 
         <tr>
@@ -2612,8 +2736,7 @@
         @endphp
 
         @php
-            $price = $product->price;
-//            $price = round($price * 0.93, -1);
+
 //                --------------------------
             $title = $product->category.' '.$product->brand.' '.$product->title;
 //                -----------------------------
@@ -2675,7 +2798,27 @@
 
             $code = $product->code;
             $video = '';
+        @endphp
 
+        @php
+            $price = $product->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Kevis'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
         @endphp
 
         <tr>
@@ -2717,12 +2860,7 @@
             $MixesType = '';
         @endphp
         @php
-            $price = $product->price_rozn;
-            $price = round($price * 0.90, -1);
 
-            if ($price == 0) {
-                $price = '';
-            }
 //                --------------------------
             $title = $product->svoystvo.' '.$product->brand_name.' '.$product->name;
 //                -----------------------------
@@ -2801,7 +2939,31 @@
 
             $code = $product->external_id . 'RusPL';
             $video = '';
+        @endphp
 
+        @php
+            $price = $product->price_rozn;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Rusplitka'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price_rozn * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price_rozn;
+                }
+            }
+
+            if ($price == 0) {
+                $price = '';
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
         @endphp
 
         <tr>
@@ -3017,9 +3179,7 @@
 
         @endphp
         @php
-            //            $price = $product->price;
-                        $price = '';
-            //            $price = round($price * 0.93, -1);
+
             //                --------------------------
                         $title = $product->title;
 
@@ -3121,8 +3281,29 @@
 
                         $code = str_replace(' ', '_',$product->vendor_code) . '_af';
                         $video = '';
-
         @endphp
+
+        @php
+            $price = $product->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Aquafloor'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
+
         <tr>
             <td></td>                                                   {{-- AvitoID --}}
             <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -3163,9 +3344,7 @@
         @endphp
         @php
 
-            //            ---PRICE---
-            $price = round($product->price * 0.90, -1);
-            //            ---PRICE-END--
+
 
             //            ---TITLE-AVITO--
             $title = explode(',', $product->title2)[0];
@@ -3301,6 +3480,28 @@
 
             $code = $product->vendor_code.'_pixmosaic';
         @endphp
+
+        @php
+            $price = $product->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Pixmosaic'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
+        @endphp
+
         <tr>
             <td></td>                                                   {{-- AvitoID --}}
             <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -3569,12 +3770,29 @@
         @endphp
 
         @php
-            //--------------------------------------------------------------------------
-                        $price = round($product->price * 0.85, -1);
-            //----------------------------------------------------------------------------
-
             $code = str_replace('ЦБ-', '', $product->code).'_artcenter';
             $video = '';
+        @endphp
+
+        @php
+            $price = $product->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Art Centre'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
         @endphp
 
         <tr>
@@ -3722,6 +3940,27 @@
 
         $code = $product->parent_code . '_' . $product->color;
         $video = '';
+        @endphp
+
+        @php
+            $price = $product->price;
+            list('discount' => $discount, 'additional' => $additional) = $discounts['Kerabellezza'];
+
+            if ($additional == 'По умолчанию') {
+                if ($discount) {
+                    $price = round($product->price * (100 - $discount)/100, -1);
+                } else {
+                    $price = $product->price;
+                }
+            }
+
+            if ($additional == 'Не указывать цену') {
+                $price = '';
+            }
+
+            if ($additional == 'Цена 1 рубль') {
+                $price = 1;
+            }
         @endphp
 
         <tr>

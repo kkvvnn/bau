@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
+use App\Models\Discount;
 use App\Models\GlobalTileNew;
 use App\Models\Kerabellezza2;
 use App\Models\Keramopro;
@@ -179,7 +180,15 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->get();
         $kerabellezza = [];
 
-        return view('exports.avito.main', [
+//      ===================DISCOUNTS==================
+
+        $discounts = Discount::whereAccount('Напольные решения')->get();
+        $discounts_all = [];
+        foreach ($discounts as $discount) {
+            $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
+        }
+
+        return view('exports.avito.main.main', [
             'products' => $products,
             'golitsyno_duplicate' => $golitsyno_duplicate,
             'primavera' => $primavera,
@@ -197,29 +206,13 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'kerranova' => $kerranova,
             'keramopro' => $keramopro,
             'kerabellezza' => $kerabellezza,
-//               'products' => [],
-//               'golitsyno_duplicate' => [],
-//               'primavera' => [],
-//               'absolut_gres' => [],
-//               'leedo' => [],
-//               'altacera' => [],
-//               'ntceramic' => [],
-//               'kevis' => [],
-//               'rusplitka' => [],
-//               'technotile' => [],
-//               'aquafloor' => [],
-//               'pixmosaics' => [],
-//               'artcenter' => [],
-//               'globaltile' => [],
-//               'kerranova' => [],
-//               'keramopro' => $keramopro,
-//               'kerabellezza' => [],
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,
             'address' => $this->address,
             'add_description_first' => $this->add_description_first,
             'add_description' => $this->add_description_last,
+            'discounts' => $discounts_all,
         ]);
     }
 }
