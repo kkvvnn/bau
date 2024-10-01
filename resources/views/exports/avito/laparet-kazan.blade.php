@@ -364,6 +364,10 @@
             $brand = $product->Producer_Brand;
             $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
+            if ($show_discount = avito_show_discount($brand, $discounts)) {
+                $description .= $show_discount;
+            }
+
 //----------------------------------------------------------------------------
             $code = $product->Element_Code . '_kzn';
         @endphp
