@@ -16,7 +16,9 @@ class DiscountController extends Controller
     public function index(): View
     {
         return view('discounts.index', [
-            'discounts' => Discount::orderBy('account')->paginate(50)
+            'discounts' => Discount::orderBy('account')
+                ->orderBy('name')
+                ->paginate(50)
         ]);
     }
 
