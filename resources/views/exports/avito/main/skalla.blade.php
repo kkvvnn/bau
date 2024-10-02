@@ -98,7 +98,7 @@
 
     @php
         $price_rrc = $product->price->price;
-        $price_old = 0;
+        $price_old = (int) $product->price->sale;
         $brand = 'Skalla';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
