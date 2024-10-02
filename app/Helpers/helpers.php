@@ -48,11 +48,9 @@ if (!function_exists('avito_price')) {
         if ($additional == 'Цена 1 рубль') {
             return 1;
         }
-        if ($additional == 'По умолчанию') {
-            if ($discount) {
-                if ($price_old == 0 || $price_old == $price) {
-                    return round($price * (100 - $discount) / 100, -1);
-                }
+        if ($discount && $additional == 'По умолчанию') {
+            if ($price_old == 0 || $price_old == $price) {
+                return round($price * (100 - $discount) / 100, -1);
             }
         }
 
@@ -62,16 +60,23 @@ if (!function_exists('avito_price')) {
 
 if (!function_exists('avito_show_discount')) {
     /**
+     * @param int $price
      * @param string $brand
      * @param array $discounts
+     * @param int $price_old
      * @return string|bool
      */
-    function avito_show_discount(string $brand, array $discounts): string|bool
+    function avito_show_discount(int $price, string $brand, array $discounts, int $price_old = 0): string
     {
-        $size_discount = (int) $discounts[$brand]['discount'];
-        if ($size_discount && $discounts[$brand]['additional'] == 'По умолчанию') {
-            return '<p>#'.$size_discount.'</p>';
+        list('discount' => $discount, 'additional' => $additional) = $discounts[$brand];
+        if ($discount && $additional == 'По умолчанию') {
+            if ($price_old == 0 || $price_old == $price) {
+                return '<p>#'.$discount.'</p>';
+            } else {
+                return '<p>#Распродажа</p>';
+            }
         }
-        return false;
+
+        return '';
     }
 }
