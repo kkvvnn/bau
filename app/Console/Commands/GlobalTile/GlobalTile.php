@@ -23,7 +23,7 @@ class GlobalTile extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $this->call('down', [
             '--refresh' => 15
