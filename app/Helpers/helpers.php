@@ -64,7 +64,7 @@ if (!function_exists('avito_show_discount')) {
      * @param string $brand
      * @param array $discounts
      * @param int $price_old
-     * @return string|bool
+     * @return string
      */
     function avito_show_discount(int $price, string $brand, array $discounts, int $price_old = 0): string
     {
@@ -78,5 +78,38 @@ if (!function_exists('avito_show_discount')) {
         }
 
         return '';
+    }
+}
+
+if (!function_exists('avito_tile_type')) {
+    /**
+     * @param string $name
+     * @return string|bool
+     */
+    function avito_tile_type(string $name): string|bool
+    {
+        if (stripos($name, 'литка') !== false) {
+            return 'Плитка';
+        }
+        if (stripos($name, 'озаика') !== false) {
+            return 'Мозаика';
+        }
+        if (stripos($name, 'анно') !== false) {
+            return 'Панно';
+        }
+        if (stripos($name, 'ставка') !== false) {
+            return 'Вставка';
+        }
+        if (stripos($name, 'ордюр') !== false) {
+            return 'Бордюр';
+        }
+        if (stripos($name, 'голок') !== false) {
+            return 'Уголок';
+        }
+        if (stripos($name, 'линтус') !== false) {
+            return 'Плинтус';
+        }
+
+        return false;
     }
 }

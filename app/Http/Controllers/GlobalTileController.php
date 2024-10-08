@@ -32,7 +32,7 @@ class GlobalTileController extends Controller
     {
         $products = GlobalTileNew::where([
 //            ['brand', 'GlobalTile'],
-            ['Picture', '!=', null],
+            ['Picture', '!=', ''],
         ])
             ->orderByRaw('length * width DESC')
             ->paginate(15);

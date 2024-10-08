@@ -1,30 +1,64 @@
 {{-----BAUSERVICE-----}}
 @foreach($products as $product)
+
     @php
-        if(stripos($product->Name, 'литка') !== false) {
+        $title_name = $product->Name;
+        if(stripos($title_name, 'литка') !== false
+            || stripos($title_name, 'озаика') !== false
+            || stripos($title_name, 'анно') !== false
+            || stripos($title_name, 'ставка') !== false
+            || stripos($title_name, 'ордюр') !== false
+            || stripos($title_name, 'голок') !== false
+            || stripos($title_name, 'линтус') !== false
+        ) {
             $GoodsSubType = 'Отделка';
             $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
             $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+            $Brand = $product->Producer_Brand;
+            $TileType = avito_tile_type($title_name);
+            $SpaceType = 'Балкон | Ванная | Крыльцо | Кухня | Общественное помещение | Ступени | Терасса | Туалет | Улица | Фартук | Фасад';
+            $InstallationType = 'На пол | На стену';
+            $Width = 'Ширина';
+            $Length = 'Длина';
+            $Height = '';
+            $Pattern = $product->DesignValue;
+            $Color = $product->Color;
         }
-        elseif(stripos($product->Name, 'озаика') !== false) {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
-        }
-        elseif(stripos($product->Name, 'ерамогранит') !== false) {
+        elseif(stripos($title_name, 'ерамогранит') !== false) {
             $GoodsSubType = 'Отделка';
             $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
             $CeramicPorcelainTilesSubType = 'Керамогранит';
+            $Brand = '';
+            $TileType = '';
+            $SpaceType = '';
+            $InstallationType = 'На пол | На стену';
+            $Width = 'Ширина';
+            $Length = 'Длина';
+            $Height = 'Толщина';
+            $Pattern = $product->DesignValue;
+            $Color = $product->Color;
         } else {
             $GoodsSubType = 'Другое';
             $FinishingMaterialsType = '';
             $CeramicPorcelainTilesSubType = '';
+            $Brand = '';
+            $TileType = '';
+            $SpaceType = '';
+            $InstallationType = '';
+            $Width = '';
+            $Length = '';
+            $Height = '';
+            $Pattern = '';
+            $Color = '';
         }
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
         $MixesType = '';
+        $Material = '';
+        $OutsideUsage = '';
     @endphp
+
     @php
         $description = '';
 
@@ -384,6 +418,8 @@
 
     @endphp
 
+
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -407,6 +443,17 @@
         <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
         <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
         <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+        <td>{{ $Width }}</td>                                       {{-- Width --}}
+        <td>{{ $Length }}</td>                                      {{-- Length --}}
+        <td>{{ $Height }}</td>                                      {{-- Height --}}
+        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+        <td>{{ $Color }}</td>                                       {{-- Color --}}
+        <td>{{ $Material }}</td>                                    {{-- Material --}}
+        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 
     // duplicate in Golitsyno
@@ -440,6 +487,17 @@
             <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
             <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
             <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+            <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+            <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+            <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+            <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+            <td>{{ $Width }}</td>                                       {{-- Width --}}
+            <td>{{ $Length }}</td>                                      {{-- Length --}}
+            <td>{{ $Height }}</td>                                      {{-- Height --}}
+            <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+            <td>{{ $Color }}</td>                                       {{-- Color --}}
+            <td>{{ $Material }}</td>                                    {{-- Material --}}
+            <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
         </tr>
     @endif
 @endforeach
