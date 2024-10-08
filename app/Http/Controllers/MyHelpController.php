@@ -456,7 +456,7 @@ class MyHelpController extends Controller
             ->where('Picture', '!=', '')
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
-            ->sortByDesc('RMPrice')
+            ->sortBy('RMPrice')
             ->filter(function (Product $product) use ($brand) {
                 if ($brand) {
                     return $product->Producer_Brand == $brand;
