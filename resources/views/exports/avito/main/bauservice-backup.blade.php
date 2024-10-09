@@ -2,52 +2,57 @@
 @foreach($products as $product)
 
     @php
-        $product_type = avito_type($product->Name);
-
-        switch ($product_type) {
-            case 'Керамогранит':
-                $GoodsSubType = 'Отделка';
-                $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-                $CeramicPorcelainTilesSubType = 'Керамогранит';
-                $Brand = '';
-                $TileType = '';
-                $SpaceType = '';
-                $InstallationType = avito_bauservice_for($product->Architectural_surface);
-                $Width = avito_bauservice_width($product->Height, 5, 200);
-                $Length = avito_bauservice_length($product->Lenght, 5, 400);
-                $Height = avito_bauservice_height($product->Thickness, 2, 30);
-                $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
-                $Color = avito_bauservice_color($product->Color);
-                break;
-            case 'Керамическая плитка':
-                $GoodsSubType = 'Отделка';
-                $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-                $CeramicPorcelainTilesSubType = 'Керамическая плитка';
-                $Brand = $product->Producer_Brand;
-                $TileType = avito_tile_type($product->Name);
-                $SpaceType = avito_bauservice_space_type($product->Field_of_Application);
-                $InstallationType = avito_bauservice_for($product->Architectural_surface);
-                $Width = avito_bauservice_width($product->Height, 0, 150);
-                $Length = avito_bauservice_length($product->Lenght, 1, 400);
-                $Height = '';
-                $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
-                $Color = avito_bauservice_color($product->Color);
-                break;
-            case 'Другое':
-                $GoodsSubType = 'Другое';
-                $FinishingMaterialsType = '';
-                $CeramicPorcelainTilesSubType = '';
-                $Brand = '';
-                $TileType = '';
-                $SpaceType = '';
-                $InstallationType = '';
-                $Width = '';
-                $Length = '';
-                $Height = '';
-                $Pattern = '';
-                $Color = '';
-                break;
+        $title_name = $product->Name;
+        if(stripos($title_name, 'литка') !== false
+            || stripos($title_name, 'озаика') !== false
+            || stripos($title_name, 'анно') !== false
+            || stripos($title_name, 'ставка') !== false
+            || stripos($title_name, 'ордюр') !== false
+            || stripos($title_name, 'голок') !== false
+            || stripos($title_name, 'линтус') !== false
+        ) {
+            $GoodsSubType = 'Отделка';
+            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+            $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+            $Brand = $product->Producer_Brand;
+            $TileType = avito_tile_type($title_name);
+            $SpaceType = 'Балкон | Ванная | Крыльцо | Кухня | Общественное помещение | Ступени | Терасса | Туалет | Улица | Фартук | Фасад';
+            $InstallationType = 'На пол | На стену';
+            $Width = 'Ширина';
+            $Length = 'Длина';
+            $Height = '';
+            $Pattern = $product->DesignValue;
+            $Color = $product->Color;
         }
+        elseif(stripos($title_name, 'ерамогранит') !== false) {
+            $GoodsSubType = 'Отделка';
+            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+            $CeramicPorcelainTilesSubType = 'Керамогранит';
+            $Brand = '';
+            $TileType = '';
+            $SpaceType = '';
+            $InstallationType = 'На пол | На стену';
+            $Width = 'Ширина';
+            $Length = 'Длина';
+            $Height = 'Толщина';
+            $Pattern = $product->DesignValue;
+            $Color = $product->Color;
+        } else {
+            $GoodsSubType = 'Другое';
+            $FinishingMaterialsType = '';
+            $CeramicPorcelainTilesSubType = '';
+            $Brand = '';
+            $TileType = '';
+            $SpaceType = '';
+            $InstallationType = '';
+            $Width = '';
+            $Length = '';
+            $Height = '';
+            $Pattern = '';
+            $Color = '';
+        }
+
+
 
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
