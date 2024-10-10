@@ -138,47 +138,82 @@ if (!function_exists('avito_type')) {
     }
 }
 
-if (!function_exists('avito_bauservice_width')) {
+if (!function_exists('size_by_name')) {
     /**
-     * @param string|null $width
+     * @param string $title
+     * @param $width_or_length
+     * @return float|string
+     */
+    function size_by_name(string $title, $width_or_length): float|string
+    {
+        $result = preg_match('/[0-9]+[.,]?[0-9]+[xх][0-9]+[.,]?[0-9]+/u', $title, $found); // one of x - cyrillic
+        if ($result) {
+//            return $found[0];
+            $size = preg_replace('/х/', 'x', $found[0]); // first x - cyrillic
+            $size = str_replace(',', '.', $size);
+
+//            return $size;
+
+            $size = explode('x', $size);
+
+            list($a, $b) = $size;
+
+            $a = (float) $a;
+            $b = (float) $b;
+
+            if ($a > $b) {
+                $length = $a;
+                $width = $b;
+            } else {
+                $length = $b;
+                $width = $a;
+            }
+
+            if ($width_or_length == 'width') {
+                return $width;
+            }
+            if ($width_or_length == 'length') {
+                return $length;
+            }
+
+            return 2222222;
+        }
+        return 50505050;
+    }
+}
+
+if (!function_exists('avito_bauservice_size')) {
+    /**
+     * @param string|null $size
      * @param float $from
      * @param float $to
-     * @return float
+     * @param string $title
+     * @param string $width_or_length
+     * @return float|string
      */
-    function avito_bauservice_width(string|null $width, float $from, float $to): float
+    function avito_bauservice_size(string|null $size, float $from, float $to, string $title, string $width_or_length): float|string
     {
-        $width = str_replace(',', '.', $width);
-        $width = (float) $width;
+        if (!$size) {
+            return size_by_name($title, $width_or_length);
+        }
 
-        if ($width >= $from && $width <= $to) {
-            return $width;
+        $size = str_replace(',', '.', $size);
+        $size = (float) $size;
+
+        if ($size >= $from && $size <= $to) {
+            return $size;
         } else {
-            return 6666666;
+            return 444444;
         }
     }
 }
 
-if (!function_exists('avito_bauservice_length')) {
-    /**
-     * @param string|null $length
-     * @return float
-     */
-    function avito_bauservice_length(string|null $length, float $from, float $to): float
-    {
-        $length = str_replace(',', '.', $length);
-        $length = (float) $length;
-
-        if ($length >= $from && $length <= $to) {
-            return $length;
-        } else {
-            return 1212121212;
-        }
-    }
-}
 
 if (!function_exists('avito_bauservice_height')) {
     /**
      * @param string|null $height
+     * @param float $from
+     * @param float $to
      * @return float
      */
     function avito_bauservice_height(string|null $height, float $from, float $to): float
