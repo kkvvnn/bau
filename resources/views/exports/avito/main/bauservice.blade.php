@@ -13,8 +13,8 @@
                 $TileType = '';
                 $SpaceType = '';
                 $InstallationType = avito_bauservice_for($product->Architectural_surface);
-                $Width = avito_bauservice_size($product->Height, 5, 200, $product->Name, 'width');
-                $Length = avito_bauservice_size($product->Lenght, 5, 400, $product->Name, 'lenght');
+                $Width = avito_bauservice_size($product->Height, 5, 200, $product->Name, 'W');
+                $Length = avito_bauservice_size($product->Lenght, 5, 400, $product->Name, 'L');
                 $Height = avito_bauservice_height($product->Thickness, 2, 30);
                 $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                 $Color = avito_bauservice_color($product->Color);
@@ -27,8 +27,8 @@
                 $TileType = avito_tile_type($product->Name);
                 $SpaceType = avito_bauservice_space_type($product->Field_of_Application);
                 $InstallationType = avito_bauservice_for($product->Architectural_surface);
-                $Width = avito_bauservice_size($product->Height, 0, 150, $product->Name, 'width');
-                $Length = avito_bauservice_size($product->Lenght, 1, 400, $product->Name, 'length');
+                $Width = avito_bauservice_size($product->Height, 0, 150, $product->Name, 'W');
+                $Length = avito_bauservice_size($product->Lenght, 1, 400, $product->Name, 'L');
                 $Height = '';
                 $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                 $Color = avito_bauservice_color($product->Color);

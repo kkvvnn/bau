@@ -148,11 +148,8 @@ if (!function_exists('size_by_name')) {
     {
         $result = preg_match('/[0-9]+[.,]?[0-9]+[xх][0-9]+[.,]?[0-9]+/u', $title, $found); // one of x - cyrillic
         if ($result) {
-//            return $found[0];
             $size = preg_replace('/х/', 'x', $found[0]); // first x - cyrillic
             $size = str_replace(',', '.', $size);
-
-//            return $size;
 
             $size = explode('x', $size);
 
@@ -169,16 +166,17 @@ if (!function_exists('size_by_name')) {
                 $width = $a;
             }
 
-            if ($width_or_length == 'width') {
+
+            if ($width_or_length == 'W') {
                 return $width;
             }
-            if ($width_or_length == 'length') {
+            if ($width_or_length == 'L') {
                 return $length;
             }
 
-            return 2222222;
+            return 'ERROR-1';
         }
-        return 50505050;
+        return 'ERROR-2';
     }
 }
 
@@ -203,7 +201,7 @@ if (!function_exists('avito_bauservice_size')) {
         if ($size >= $from && $size <= $to) {
             return $size;
         } else {
-            return 444444;
+            return 'ERROR-OUT-OF-RANGE';
         }
     }
 }
@@ -219,13 +217,12 @@ if (!function_exists('avito_bauservice_height')) {
     function avito_bauservice_height(string|null $height, float $from, float $to): float
     {
         $height = str_replace(',', '.', $height);
-        $height = (float) $height;
-        $height = $height * 10;
+        $height =((float) $height) * 10;
 
         if ($height >= $from && $height <= $to) {
             return $height;
         } else {
-            return 111111;
+            return 9;  //if not specified
         }
     }
 }
@@ -316,7 +313,7 @@ if (!function_exists('avito_bauservice_space_type')) {
      */
     function avito_bauservice_space_type(string|null $for): string
     {
-        $a = [
+        $available = [
             'Балкон',
             'Ванная',
             'Крыльцо',
@@ -348,7 +345,7 @@ if (!function_exists('avito_bauservice_space_type')) {
             'Для пола, Общественные помещения, Строительная плитка' => 'Балкон | Ванная | Крыльцо | Кухня | Туалет | Общественное помещение | Фасад',
             'Для фасада' => 'Фасад',
             'Общественные помещения' => 'Общественное помещение',
-            default => 'default',
+            default => 'Ванная | Кухня | Туалет',
         };
     }
 }
