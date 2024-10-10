@@ -75,7 +75,10 @@
             $description .= '<p><em>(актуальную информацию уточняйте у менеджера)</em></p>';
             $description .= '<p>------------------</p>';
 
-            $description .= '<p><em>Цена в объявлении указана за 1 ' . $product->MainUnit . '</em></p>';
+            if ($product->Producer_Brand != 'Laparet') {
+                $description .= '<p><em>Цена в объявлении указана за 1 ' . $product->MainUnit . '</em></p>';
+            }
+
             $description .= '<p><em>* Цена в объявлении актуальна при отгрузке со склада в Казани. При отгрузке со складов в других городах цена может отличаться от указанной.</em></p>';
 
             $description .= '<p><strong>Название коллекции: </strong>';
