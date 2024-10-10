@@ -212,12 +212,13 @@ if (!function_exists('avito_bauservice_height')) {
      * @param string|null $height
      * @param float $from
      * @param float $to
-     * @return float
+     * @return int
      */
-    function avito_bauservice_height(string|null $height, float $from, float $to): float
+    function avito_bauservice_height(string|null $height, float $from, float $to): int
     {
         $height = str_replace(',', '.', $height);
         $height =((float) $height) * 10;
+        $height = round($height);
 
         if ($height >= $from && $height <= $to) {
             return $height;
