@@ -90,7 +90,7 @@
 
 
                     <h2 class="card-title mt-5 pricing-card-title">{{$product->Price_rozn}} <small
-                            class="text-muted fw-light">₽/{{$product->unit}}  {{$product->Price_OPT}}</small></h2>
+                            class="text-muted fw-light">₽/{{$product->unit}}  {{--{{$product->Price_OPT}}--}}</small></h2>
 
                     <br>
 
