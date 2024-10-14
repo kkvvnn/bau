@@ -23,6 +23,7 @@ class AvitoController extends Controller
      */
     public function export_main(Request $request): View
     {
+        set_time_limit(300);
         $data = $request->except(['_token']);
 
         $filename = 'avito/main/MAIN-'.date('Y-m-d_His').'.xlsx';

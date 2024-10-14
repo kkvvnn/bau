@@ -31,7 +31,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
     public function view(): View
     {
-        set_time_limit(180);
+        set_time_limit(300);
 
 //      ==================BAUSERVIS====================
         $products = Product::where([
