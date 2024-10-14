@@ -23,7 +23,7 @@
                 $GoodsSubType = 'Отделка';
                 $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                 $CeramicPorcelainTilesSubType = 'Керамическая плитка';
-                $Brand = $product->brand;
+                $Brand = 'Primavera';
                 $TileType = avito_tile_type($product->title);
                 $SpaceType = avito_bauservice_space_type('default');
                 $InstallationType = avito_bauservice_for('Стена');

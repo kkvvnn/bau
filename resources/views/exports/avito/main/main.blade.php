@@ -1,3 +1,7 @@
+@php
+    set_time_limit(300);
+@endphp
+
 <table>
     <thead>
         <tr>

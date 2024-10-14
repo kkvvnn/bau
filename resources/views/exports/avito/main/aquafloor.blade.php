@@ -1,7 +1,7 @@
 {{-----AQUAFLOOR-----}}
 @foreach($aquafloor as $product)
     @php
-        if(stripos($product->title, 'варцвинил') !== false) {
+        if(stripos($product->title, 'варцвинил') !== false || stripos($product->title, 'варц-винил') !== false) {
             $GoodsSubType = 'Отделка';
             $FinishingMaterialsType = 'Напольные покрытия';
             $FlooringMaterialsSubType = 'Кварц-винил';
