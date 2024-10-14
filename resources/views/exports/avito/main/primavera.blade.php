@@ -1,30 +1,62 @@
 {{-----PRIMAVERA-----}}
 @foreach($primavera as $product)
+
     @php
-        if(stripos($product->title, 'литка') !== false) {
-            $GoodsSubType = 'Отделка';
-            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-            $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+        $product_type = avito_type($product->title);
+
+        switch ($product_type) {
+            case 'Керамогранит':
+                $GoodsSubType = 'Отделка';
+                $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+                $CeramicPorcelainTilesSubType = 'Керамогранит';
+                $Brand = '';
+                $TileType = '';
+                $SpaceType = '';
+                $InstallationType = avito_bauservice_for('На пол | На стену');
+                $Width = avito_bauservice_size($product->width, 5, 200, $product->title, 'W');
+                $Length = avito_bauservice_size($product->length, 5, 400, $product->title, 'L');
+                $Height = avito_bauservice_height($product->fat, 2, 30);
+                $Pattern = avito_bauservice_pattern($product->title, $product->design);
+                $Color = avito_bauservice_color($product->color);
+                break;
+            case 'Керамическая плитка':
+                $GoodsSubType = 'Отделка';
+                $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+                $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+                $Brand = $product->brand;
+                $TileType = avito_tile_type($product->title);
+                $SpaceType = avito_bauservice_space_type('default');
+                $InstallationType = avito_bauservice_for('Стена');
+                $Width = avito_bauservice_size($product->width, 0, 150, $product->title, 'W');
+                $Length = avito_bauservice_size($product->length, 1, 400, $product->title, 'L');
+                $Height = '';
+                $Pattern = avito_bauservice_pattern($product->title, $product->design);
+                $Color = avito_bauservice_color($product->color);
+                break;
+            case 'Другое':
+                $GoodsSubType = 'Другое';
+                $FinishingMaterialsType = '';
+                $CeramicPorcelainTilesSubType = '';
+                $Brand = '';
+                $TileType = '';
+                $SpaceType = '';
+                $InstallationType = '';
+                $Width = '';
+                $Length = '';
+                $Height = '';
+                $Pattern = '';
+                $Color = '';
+                break;
         }
-        elseif(stripos($product->title, 'озаика') !== false) {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
-        }
-        elseif(stripos($product->title, 'ерамогранит') !== false) {
-            $GoodsSubType = 'Отделка';
-            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-            $CeramicPorcelainTilesSubType = 'Керамогранит';
-        } else {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
-        }
+
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
         $MixesType = '';
+        $Material = '';
+        $OutsideUsage = '';
     @endphp
+
     @php
         $string_for_delete = 'https://domix-club.ru/upload/iblock/';
 
@@ -353,6 +385,17 @@
         <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
         <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
         <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+        <td>{{ $Width }}</td>                                       {{-- Width --}}
+        <td>{{ $Length }}</td>                                      {{-- Length --}}
+        <td>{{ $Height }}</td>                                      {{-- Height --}}
+        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+        <td>{{ $Color }}</td>                                       {{-- Color --}}
+        <td>{{ $Material }}</td>                                    {{-- Material --}}
+        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
 {{-----PRIMAVERA-END----}}

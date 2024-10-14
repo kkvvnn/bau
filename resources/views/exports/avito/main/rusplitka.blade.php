@@ -4,10 +4,34 @@
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
         $CeramicPorcelainTilesSubType = 'Керамогранит';
+        $Brand = '';
+        $TileType = '';
+        $SpaceType = '';
+        $InstallationType = avito_bauservice_for('На пол | На стену');
+
+        $size_a = $product->size_a;
+        $size_b = $product->size_b;
+
+        if($size_a > $size_b) {
+            $wid_ruspl = $size_b;
+            $len_ruspl = $size_a;
+        } else {
+            $wid_ruspl = $size_a;
+            $len_ruspl = $size_b;
+        }
+
+        $Width = avito_bauservice_size($wid_ruspl, 5, 200, $product->name, 'W');
+        $Length = avito_bauservice_size($len_ruspl, 5, 400, $product->name, 'L');
+        $Height = avito_bauservice_height($product->thickness, 2, 30);
+        $Pattern = avito_bauservice_pattern($product->name, '');
+        $Color = avito_bauservice_color('');
+
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
         $MixesType = '';
+        $Material = '';
+        $OutsideUsage = '';
     @endphp
     @php
 
@@ -123,6 +147,17 @@
         <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
         <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
         <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+        <td>{{ $Width }}</td>                                       {{-- Width --}}
+        <td>{{ $Length }}</td>                                      {{-- Length --}}
+        <td>{{ $Height }}</td>                                      {{-- Height --}}
+        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+        <td>{{ $Color }}</td>                                       {{-- Color --}}
+        <td>{{ $Material }}</td>                                    {{-- Material --}}
+        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
 {{-----RUSPLITKA-END----}}

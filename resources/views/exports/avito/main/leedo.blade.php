@@ -1,30 +1,28 @@
 {{-----LEEDO-----}}
 @foreach($leedo as $product)
+
     @php
-        if(stripos($product->Category, 'литка') !== false) {
-            $GoodsSubType = 'Отделка';
-            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-            $CeramicPorcelainTilesSubType = 'Керамическая плитка';
-        }
-        elseif(stripos($product->Category, 'озаика') !== false) {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
-        }
-        elseif(stripos($product->Category, 'ерамогранит') !== false) {
-            $GoodsSubType = 'Отделка';
-            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-            $CeramicPorcelainTilesSubType = 'Керамогранит';
-        } else {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
-        }
+        $GoodsSubType = 'Другое';
+        $FinishingMaterialsType = '';
+        $CeramicPorcelainTilesSubType = '';
+        $Brand = '';
+        $TileType = '';
+        $SpaceType = '';
+        $InstallationType = '';
+        $Width = '';
+        $Length = '';
+        $Height = '';
+        $Pattern = '';
+        $Color = '';
+
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
         $MixesType = '';
+        $Material = '';
+        $OutsideUsage = '';
     @endphp
+
     @php
 
         //                --------------------------
@@ -182,6 +180,17 @@
         <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
         <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
         <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+        <td>{{ $Width }}</td>                                       {{-- Width --}}
+        <td>{{ $Length }}</td>                                      {{-- Length --}}
+        <td>{{ $Height }}</td>                                      {{-- Height --}}
+        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+        <td>{{ $Color }}</td>                                       {{-- Color --}}
+        <td>{{ $Material }}</td>                                    {{-- Material --}}
+        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
 {{-----LEEDO-END----}}

@@ -4,10 +4,26 @@
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
         $CeramicPorcelainTilesSubType = 'Керамогранит';
+        $Brand = '';
+        $TileType = '';
+        $SpaceType = '';
+        $InstallationType = avito_bauservice_for('На пол | На стену');
+
+        $size = $product->size_cm;
+        list($wid_nt, $len_nt) = explode('x', $size);
+
+        $Width = avito_bauservice_size($wid_nt, 5, 200, '', 'W');
+        $Length = avito_bauservice_size($len_nt, 5, 400, '', 'L');
+        $Height = avito_bauservice_height($product->fat, 2, 30);
+        $Pattern = avito_bauservice_pattern('', 'Другой');
+        $Color = avito_bauservice_color($product->referer->color??'');
+
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
         $MixesType = '';
+        $Material = '';
+        $OutsideUsage = '';
     @endphp
     @php
         if (!isset($product->referer)) {
@@ -170,6 +186,17 @@
         <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
         <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
         <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+        <td>{{ $Width }}</td>                                       {{-- Width --}}
+        <td>{{ $Length }}</td>                                      {{-- Length --}}
+        <td>{{ $Height }}</td>                                      {{-- Height --}}
+        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+        <td>{{ $Color }}</td>                                       {{-- Color --}}
+        <td>{{ $Material }}</td>                                    {{-- Material --}}
+        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
 {{-----NTCERAMIC-END----}}

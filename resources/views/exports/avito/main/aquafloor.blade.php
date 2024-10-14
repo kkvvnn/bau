@@ -6,21 +6,37 @@
             $FinishingMaterialsType = 'Напольные покрытия';
             $FlooringMaterialsSubType = 'Кварц-винил';
             $WallPanelsSlatsDecorativeElementsSubType = '';
-
+            $Material = '';
+            $SpaceType = '';
+            $OutsideUsage = '';
         } elseif(stripos($product->title, 'теновые пане') !== false) {
             $GoodsSubType = 'Отделка';
             $FinishingMaterialsType = 'Стеновые панели, рейки и элементы декора';
             $FlooringMaterialsSubType = '';
             $WallPanelsSlatsDecorativeElementsSubType = 'Стеновые панели';
+            $Material = 'SPC';
+            $SpaceType = 'Стены | Потолок | Двери';
+            $OutsideUsage = 'Да';
         } else {
             $GoodsSubType = 'Другое';
             $FinishingMaterialsType = '';
             $FlooringMaterialsSubType = '';
             $WallPanelsSlatsDecorativeElementsSubType = '';
+            $Material = '';
+            $SpaceType = '';
+            $OutsideUsage = '';
         }
         $CeramicPorcelainTilesSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $MixesType = '';
+        $Brand = '';
+        $TileType = '';
+        $InstallationType = '';
+        $Width = '';
+        $Length = '';
+        $Height = '';
+        $Pattern = '';
+        $Color = '';
 
     @endphp
     @php
@@ -160,6 +176,17 @@
         <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
         <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
         <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+        <td>{{ $Width }}</td>                                       {{-- Width --}}
+        <td>{{ $Length }}</td>                                      {{-- Length --}}
+        <td>{{ $Height }}</td>                                      {{-- Height --}}
+        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+        <td>{{ $Color }}</td>                                       {{-- Color --}}
+        <td>{{ $Material }}</td>                                    {{-- Material --}}
+        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
 {{-----AQUAFLOOR-END----}}

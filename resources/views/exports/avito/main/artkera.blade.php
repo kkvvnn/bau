@@ -1,30 +1,72 @@
 {{-----ARTKERA-----}}
 @foreach($altacera as $product)
+
     @php
-        if(stripos($product->collection_item, 'литка') !== false) {
-            $GoodsSubType = 'Отделка';
-            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-            $CeramicPorcelainTilesSubType = 'Керамическая плитка';
-        }
-        elseif(stripos($product->collection_item, 'озаика') !== false) {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
-        }
-        elseif(stripos($product->collection_item, 'ерамогранит') !== false) {
-            $GoodsSubType = 'Отделка';
-            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-            $CeramicPorcelainTilesSubType = 'Керамогранит';
+        $product_type = avito_type($product->collection_item);
+
+        $wid_artkera_temp = $product->width/10;
+        $len_artkera_temp = $product->height/10;
+        if ($wid_artkera_temp > $len_artkera_temp) {
+            $wid_artkera = $len_artkera_temp;
+            $len_artkera = $wid_artkera_temp;
         } else {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
+            $wid_artkera = $wid_artkera_temp;
+            $len_artkera = $len_artkera_temp;
         }
+
+        switch ($product_type) {
+            case 'Керамогранит':
+                $GoodsSubType = 'Отделка';
+                $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+                $CeramicPorcelainTilesSubType = 'Керамогранит';
+                $Brand = '';
+                $TileType = '';
+                $SpaceType = '';
+                $InstallationType = avito_bauservice_for('На пол | На стену');
+                $Width = avito_bauservice_size($wid_artkera, 5, 200, $product->tovar??'', 'W');
+                $Length = avito_bauservice_size($len_artkera, 5, 400, $product->tovar??'', 'L');
+                $Height = avito_bauservice_height($product->thickness, 2, 30);
+                $Pattern = avito_bauservice_pattern($product->tovar, '');
+                $Color = avito_bauservice_color('');
+                break;
+            case 'Керамическая плитка':
+                $GoodsSubType = 'Отделка';
+                $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+                $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+                $Brand = $product->brand;
+                $TileType = avito_tile_type($product->collection_item);
+                $SpaceType = avito_bauservice_space_type('default');
+                $InstallationType = avito_bauservice_for('Стена');
+                $Width = avito_bauservice_size($wid_artkera, 0, 150, $product->title??'', 'W');
+                $Length = avito_bauservice_size($len_artkera, 1, 400, $product->title??'', 'L');
+                $Height = '';
+                $Pattern = avito_bauservice_pattern($product->tovar, '');
+                $Color = avito_bauservice_color('');
+                break;
+            case 'Другое':
+                $GoodsSubType = 'Другое';
+                $FinishingMaterialsType = '';
+                $CeramicPorcelainTilesSubType = '';
+                $Brand = '';
+                $TileType = '';
+                $SpaceType = '';
+                $InstallationType = '';
+                $Width = '';
+                $Length = '';
+                $Height = '';
+                $Pattern = '';
+                $Color = '';
+                break;
+        }
+
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
         $MixesType = '';
+        $Material = '';
+        $OutsideUsage = '';
     @endphp
+
     @php
         //        -----------------------------------UNIT--------------------------
                                 $units = $product->units;
@@ -291,6 +333,17 @@
         <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
         <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
         <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+        <td>{{ $Width }}</td>                                       {{-- Width --}}
+        <td>{{ $Length }}</td>                                      {{-- Length --}}
+        <td>{{ $Height }}</td>                                      {{-- Height --}}
+        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+        <td>{{ $Color }}</td>                                       {{-- Color --}}
+        <td>{{ $Material }}</td>                                    {{-- Material --}}
+        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
 {{-----ARTKERA-END----}}

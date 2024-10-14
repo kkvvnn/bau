@@ -1,30 +1,68 @@
 {{-----GLOBAL-TILE-----}}
 @foreach($globaltile as $product)
+
     @php
-        if(stripos($product->type, 'литка') !== false) {
-            $GoodsSubType = 'Отделка';
-            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-            $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+        $product_type = avito_type($product->type);
+
+        switch ($product_type) {
+            case 'Керамогранит':
+                $GoodsSubType = 'Отделка';
+                $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+                $CeramicPorcelainTilesSubType = 'Керамогранит';
+                $Brand = '';
+                $TileType = '';
+                $SpaceType = '';
+                $InstallationType = avito_bauservice_for('На пол | На стену');
+                $Width = avito_bauservice_size($product->width*100, 5, 200, $product->title, 'W');
+                $Length = avito_bauservice_size($product->length*100, 5, 400, $product->title, 'L');
+
+                $gb_fat = $product->fat*1000;
+                if ($gb_fat > 30) {
+                    $gb_fat = $gb_fat / 10;
+                }
+
+                $Height = avito_bauservice_height($gb_fat, 2, 30);
+                $Pattern = avito_bauservice_pattern($product->title, $product->design);
+                $Color = avito_bauservice_color($product->color);
+                break;
+            case 'Керамическая плитка':
+                $GoodsSubType = 'Отделка';
+                $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+                $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+                $Brand = 'Global Tile';
+                $TileType = avito_tile_type($product->title);
+                $SpaceType = avito_bauservice_space_type('default');
+                $InstallationType = avito_bauservice_for('Стена');
+                $Width = avito_bauservice_size($product->width*100, 0, 150, $product->title, 'W');
+                $Length = avito_bauservice_size($product->length*100, 1, 400, $product->title, 'L');
+                $Height = '';
+                $Pattern = avito_bauservice_pattern($product->title, $product->design);
+                $Color = avito_bauservice_color($product->color);
+                break;
+            case 'Другое':
+                $GoodsSubType = 'Другое';
+                $FinishingMaterialsType = '';
+                $CeramicPorcelainTilesSubType = '';
+                $Brand = '';
+                $TileType = '';
+                $SpaceType = '';
+                $InstallationType = '';
+                $Width = '';
+                $Length = '';
+                $Height = '';
+                $Pattern = '';
+                $Color = '';
+                break;
         }
-        elseif(stripos($product->type, 'озаика') !== false) {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
-        }
-        elseif(stripos($product->type, 'ерамогранит') !== false) {
-            $GoodsSubType = 'Отделка';
-            $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
-            $CeramicPorcelainTilesSubType = 'Керамогранит';
-        } else {
-            $GoodsSubType = 'Другое';
-            $FinishingMaterialsType = '';
-            $CeramicPorcelainTilesSubType = '';
-        }
+
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
         $MixesType = '';
+        $Material = '';
+        $OutsideUsage = '';
     @endphp
+
     @php
 
         $description = '';
@@ -424,6 +462,17 @@
         <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
         <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
         <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
+        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
+        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
+        <td>{{ $Width }}</td>                                       {{-- Width --}}
+        <td>{{ $Length }}</td>                                      {{-- Length --}}
+        <td>{{ $Height }}</td>                                      {{-- Height --}}
+        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
+        <td>{{ $Color }}</td>                                       {{-- Color --}}
+        <td>{{ $Material }}</td>                                    {{-- Material --}}
+        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
 {{-----GLOBAL-TILE-END----}}

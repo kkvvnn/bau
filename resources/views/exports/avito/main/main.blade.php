@@ -38,23 +38,23 @@
     </thead>
     <tbody>
 
-        @include('exports.avito.main.bauservice')
-{{--        @include('exports.avito.main.global-tile')--}}
-{{--        @include('exports.avito.main.kerranova')--}}
-{{--        @include('exports.avito.main.keramopro')--}}
-{{--        @include('exports.avito.main.primavera')--}}
-{{--        @include('exports.avito.main.absolut-gres')--}}
-{{--        @include('exports.avito.main.leedo')--}}
-{{--        @include('exports.avito.main.artkera')--}}
-{{--        @include('exports.avito.main.nt-ceramic')--}}
-{{--        @include('exports.avito.main.kevis')--}}
-{{--        @include('exports.avito.main.rusplitka')--}}
-{{--        @include('exports.avito.main.technotile')--}}
-{{--        @include('exports.avito.main.aquafloor')--}}
-{{--        @include('exports.avito.main.pixmosaic')--}}
-{{--        @include('exports.avito.main.artcenter')--}}
-{{--        @include('exports.avito.main.kerabellezza')--}}
-{{--        @include('exports.avito.main.skalla')--}}
+        @include('exports.avito.main.bauservice')  //READY
+        @include('exports.avito.main.global-tile') //READY
+        @include('exports.avito.main.kerranova') //READY
+        @include('exports.avito.main.keramopro') //READY
+        @include('exports.avito.main.primavera') //READY
+{{--        @include('exports.avito.main.absolut-gres') // NOT USE--}}
+        @include('exports.avito.main.leedo') //READY
+        @include('exports.avito.main.artkera') //READY
+        @include('exports.avito.main.nt-ceramic') //READY
+{{--        @include('exports.avito.main.kevis') //READY  NOT USE--}}
+        @include('exports.avito.main.rusplitka') //READY
+{{--        @include('exports.avito.main.technotile') // NOT USE--}}
+        @include('exports.avito.main.aquafloor') //READY
+        @include('exports.avito.main.pixmosaic') //READY
+        @include('exports.avito.main.artcenter') //READY
+{{--        @include('exports.avito.main.kerabellezza') // NOT USE--}}
+        @include('exports.avito.main.skalla') //READY
 
     </tbody>
 </table>
