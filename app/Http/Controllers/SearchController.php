@@ -70,7 +70,7 @@ class SearchController extends Controller
         $leedo = LeedoProduct::where('Item_name', 'LIKE', $name)->paginate(15);
         $leedo->appends(['name' => $name]);
         if (count($leedo)) {
-            return view('leedo.index', [
+            return view('leedo.index2', [
                 'products' => $leedo,
             ]);
         }
