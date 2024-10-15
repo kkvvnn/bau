@@ -30,6 +30,21 @@
                         }
                     @endphp
 
+                @php
+                    $text_color = '';
+                        $date_now = \Carbon\Carbon::now();
+                        $date_of_update = $product->updated_at;
+                        $diff_days = $date_now->diffInDays($date_of_update);
+
+                        if ($diff_days == 0) {
+                            $text_color = 'text-success';
+                        } elseif ($diff_days <= 7) {
+                            $text_color = 'text-warning';
+                        } else {
+                            $text_color = 'text-danger';
+                        }
+                @endphp
+
                     <div class="col">
                         <div class="card h-100">
                             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
@@ -43,11 +58,8 @@
                                 <p class="card-text"></p>
                             </div>
                             <div class="card-footer">
-                                <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}}    <small class="text-muted"><del>{{$product->RMPriceOld}} </del></small>  ₽/{{$product->MainUnit}}</p>
-                                <hr>
-                                <p class="fs-5 text-body-secondary">-{{100*round(($product->RMPriceOld-$product->RMPrice)/$product->RMPriceOld, 2)}}%</p>
-                                <hr>
-                                <p class="fs-5 text-body-secondary">Доступно: {{$product->balanceCount}} {{$product->MainUnit}}</p>
+                                <p class="fs-5 text-body-secondary">Цена: {{$product->RMPrice}}    <small class="text-muted"><del>{{$product->RMPriceOld}} </del></small>  ₽/{{$product->MainUnit}} <span class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">-{{100*round(($product->RMPriceOld-$product->RMPrice)/$product->RMPriceOld, 2)}}%</span></p>
+                                <p class="mb-0 fs-5 text-body-secondary">Доступно: {{$product->balanceCount}} {{$product->MainUnit}}</p>
 {{--                                <hr>--}}
 
 {{--                                <p class="text-body-secondary"> Дата обновления: {{$product->updated_at->toDateString()}}</p>--}}
@@ -61,6 +73,7 @@
 {{--                                @else--}}
 {{--                                    <p class="h5 text-danger">Нет фото</p>--}}
 {{--                                @endif--}}
+                                <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
                             </div>
 
 

@@ -420,7 +420,7 @@
                     {{--                    </li>--}}
                     <hr>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{route('product_sale')}}">Распродажа</a>
+                        <a class="nav-link" aria-current="page" href="{{route('product_sale')}}">РАСПРОДАЖА</a>
                     </li>
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="#">Link</a>--}}
