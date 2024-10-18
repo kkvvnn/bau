@@ -42,7 +42,7 @@
                 $Brand = $brand_artkera_tile;
                 $TileType = avito_tile_type($product->collection_item);
                 $SpaceType = avito_bauservice_space_type('default');
-                $InstallationType = avito_bauservice_for($product->title??'');
+                $InstallationType = avito_bauservice_for($product->collection_item??'');
                 $Width = avito_bauservice_size($wid_artkera, 0, 150, $product->title??'', 'W');
                 $Length = avito_bauservice_size($len_artkera, 1, 400, $product->title??'', 'L');
                 $Height = '';

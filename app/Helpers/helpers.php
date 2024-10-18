@@ -275,6 +275,9 @@ if (!function_exists('avito_bauservice_for')) {
         if (stripos($for, 'настенн') !== false) {
             return 'На стену';
         }
+        if (stripos($for, 'екор') !== false) {
+            return 'На стену';
+        }
 
         return match ($for) {
             'Пол', 'Лестница, Пол' => 'На пол',
