@@ -33,7 +33,13 @@
                 $GoodsSubType = 'Отделка';
                 $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                 $CeramicPorcelainTilesSubType = 'Керамическая плитка';
-                $Brand = $product->category_rel->parent;
+
+                $brand_artkera_tile = $product->category_rel->parent;
+                if ($brand_artkera_tile == 'Delacora') {
+                    $brand_artkera_tile = 'AltaCera';
+                }
+
+                $Brand = $brand_artkera_tile;
                 $TileType = avito_tile_type($product->collection_item);
                 $SpaceType = avito_bauservice_space_type('default');
                 $InstallationType = avito_bauservice_for('Стена');
