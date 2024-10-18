@@ -128,6 +128,7 @@ if (!function_exists('avito_type')) {
             || stripos($name, 'ордюр') !== false
             || stripos($name, 'голок') !== false
             || stripos($name, 'линтус') !== false
+            || stripos($name, 'екор') !== false
         ) {
             return 'Керамическая плитка';
         } elseif (stripos($name, 'ерамогранит') !== false) {
