@@ -26,7 +26,7 @@
                 $Brand = 'Primavera';
                 $TileType = avito_tile_type($product->title);
                 $SpaceType = avito_bauservice_space_type('default');
-                $InstallationType = avito_bauservice_for('Стена');
+                $InstallationType = avito_bauservice_for($product->title);
                 $Width = avito_bauservice_size($product->width, 0, 150, $product->title, 'W');
                 $Length = avito_bauservice_size($product->length, 1, 400, $product->title, 'L');
                 $Height = '';

@@ -269,6 +269,13 @@ if (!function_exists('avito_bauservice_for')) {
      */
     function avito_bauservice_for(string|null $for): string
     {
+        if (stripos($for, 'напольн') !== false) {
+            return 'На пол';
+        }
+        if (stripos($for, 'настенн') !== false) {
+            return 'На стену';
+        }
+
         return match ($for) {
             'Пол', 'Лестница, Пол' => 'На пол',
             'Стена' => 'На стену',
