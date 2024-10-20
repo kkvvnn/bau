@@ -103,11 +103,11 @@
             $date = date('d.m.Y');
 
             if (isset($product->kzn)) {
-                $description .= '<p>&#9193;  '.$date.' свободный остаток в Казани '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.' </p>';
+                $description .= '<p>&#9193;  '.$date.' склад Казань '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.' </p>';
             } else {
-                $description .= '<p>&#9193;  '.$date.' свободный остаток в Казани 0 '.$product->MainUnit.' </p>';
+                $description .= '<p>&#9193;  '.$date.' склад Казань 0 '.$product->MainUnit.' </p>';
             }
-            $description .= '<p>&#9193;  Свободный остаток в Москве '.round($product->balanceCount, 2).' '.$product->MainUnit.' </p>';
+            $description .= '<p>&#9193;  склад Москва '.round($product->balanceCount, 2).' '.$product->MainUnit.' </p>';
             $description .= '<p><em>(актуальную информацию уточняйте у менеджера)</em></p>';
             $description .= '<p>------------------</p>';
 

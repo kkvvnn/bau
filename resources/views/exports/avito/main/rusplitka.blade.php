@@ -71,7 +71,7 @@
                     $description .= '<p>--------------------</p>';
                     $date = date('d.m.Y');
                     if ($product->rest_real_free > 0) {
-                    $description .= '<p>&#9989; На утро '.$date.' остаток '.$moscow_stock.' '.$product->unit.' (Москва); '.$krasnodar_stock.' '.$product->unit.' (Краснодар)  <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                    $description .= '<p>&#9989; На утро '.$date.' склад Москва '.$moscow_stock.' '.$product->unit.' (Москва); '.$krasnodar_stock.' '.$product->unit.' (Краснодар)  <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
                     }
                     $description .= '<p>--------------------</p>';
 

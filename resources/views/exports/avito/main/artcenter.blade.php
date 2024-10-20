@@ -50,7 +50,7 @@
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
         if ($product->moscow_stock > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' остаток '.round($product->moscow_stock, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->moscow_stock, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
         }
         $description .= '<p>--------------------</p>';
 
