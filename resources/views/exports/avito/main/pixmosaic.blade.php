@@ -1,19 +1,18 @@
 {{-----PIXMOSAIC-----}}
 @foreach($pixmosaics as $product)
     @php
-        $GoodsSubType = 'Другое';
-        $FinishingMaterialsType = '';
-        $CeramicPorcelainTilesSubType = '';
-        $Brand = '';
-        $TileType = '';
-        $SpaceType = '';
-        $InstallationType = '';
-        $Width = '';
-        $Length = '';
+        $GoodsSubType = 'Отделка';
+        $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+        $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+        $Brand = 'Pixel Mosaic';
+        $TileType = 'Мозаика';
+        $SpaceType = avito_bauservice_space_type('default');
+        $InstallationType = ($product->fat >= 5)?'На пол | На стену':'На стену';
+        $Width = avito_bauservice_size('', 0, 150, str_replace('*', 'x', $product->size_tile), 'W') / 10;
+        $Length = avito_bauservice_size('', 1, 400, str_replace('*', 'x', $product->size_tile), 'L') / 10;
         $Height = '';
-        $Pattern = '';
-        $Color = '';
-
+        $Pattern = avito_bauservice_pattern('', 'Другой');
+        $Color = avito_bauservice_color('Другой');
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
