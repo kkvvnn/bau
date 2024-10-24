@@ -10,7 +10,7 @@
                 <div class="col">
                     <a class="link-dark link-underline-light" href="tel:+79151274000">+7-915-127-4000</a>
                     <hr>
-                    <a class="link-dark link-underline-light" href="https://yandex.ru/maps/-/CDdTIJzQ">
+                    <a class="link-dark link-underline-light" href="https://maps.yandex.ru/maps/-/CDdTIJzQ">
                         <figure>
                             <blockquote class="blockquote">
                                 <p>Точка на карте</p>
