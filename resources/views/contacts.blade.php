@@ -8,17 +8,10 @@
             <h1 class="display-3">Контакты</h1>
             <div class="row mt-5">
                 <div class="col">
-                    <a class="link-dark link-underline-light" href="tel:+79151274000">+7-915-127-4000</a>
+                    <a class="link-dark link-underline-light" href="tel:+79151274000"><span class="h3">+7-915-127-4000</span></a>
                     <hr>
                     <a class="link-dark link-underline-light" href="https://maps.yandex.ru/maps/-/CDdTIJzQ">
-                        <figure>
-                            <blockquote class="blockquote">
-                                <p>Точка на карте</p>
-                            </blockquote>
-                            <figcaption class="blockquote-footer">
-                                для навигатора
-                            </figcaption>
-                        </figure>
+                        <span class="h3">Точка на карте</span>
                     </a>
                     <hr>
                 </div>
