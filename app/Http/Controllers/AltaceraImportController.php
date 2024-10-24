@@ -191,7 +191,7 @@ class AltaceraImportController extends Controller
             $name_file = $arr . '.JPEG';
             if (Storage::disk('altacera')->missing($name_file)) {
 
-                $file = file_get_contents('https://zakaz.altacera.ru/pics/'.$arr.'.JPEG');
+                $file = @file_get_contents('https://zakaz.altacera.ru/pics/'.$arr.'.JPEG');
                 if ($file != null) {
                     Storage::disk('altacera')->put($name_file, $file);
                 }

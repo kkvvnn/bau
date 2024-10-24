@@ -304,3 +304,5 @@ Route::get('/artcenter-import', [\App\Http\Controllers\ArtcenterController::clas
 Route::get('/artcenter', [\App\Http\Controllers\ArtcenterController::class, 'index'])->name('artcenter.index');
 Route::get('/artcenter/{id}', [\App\Http\Controllers\ArtcenterController::class, 'show'])->name('artcenter.show');
 Route::get('/artcenter/collection/{name}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');
+
+Route::view('/contacts', 'contacts');
