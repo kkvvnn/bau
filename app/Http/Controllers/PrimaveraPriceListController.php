@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PrimaveraPriceListController extends Controller
 {
-    public function import_work_price_list(Request $request)
+    public function import_price_list(Request $request)
     {
         $file = $request->file('file');
 

@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\PrimaveraNew;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -24,6 +25,7 @@ class PrimaveraNewImport implements ToModel, WithUpserts, WithStartRow
             'category' => $row[0],
             'type' => $row[1],
             'title' => $row[2],
+            'slug' => STR::slug($row[3].'-'.$row[2]),
             'brand' => $row[3],
             'collection' => $row[4],
             'vendor_code' => $row[5],

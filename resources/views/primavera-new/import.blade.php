@@ -7,10 +7,10 @@
                 <p></p>
             </div>
 
-            <h1 class="display-6">Primavera заливка контента</h1>
+            <h1 class="display-6">Primavera заливка контента!</h1>
             <hr>
 
-            <form action="{{route('primavera-new.import-work')}}" enctype="multipart/form-data" method="post">
+            <form enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="mb-3">
                     <label for="file" class="form-label">Excel Primavera контент</label>

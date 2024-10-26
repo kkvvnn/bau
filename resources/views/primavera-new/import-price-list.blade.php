@@ -10,7 +10,7 @@
             <h1 class="display-6">Primavera обновление Прайс листа</h1>
             <hr>
 
-            <form action="{{route('primavera-new.import-work-price-list')}}" enctype="multipart/form-data" method="post">
+            <form enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="mb-3">
                     <label for="file" class="form-label">Excel Primavera Прайс лист</label>

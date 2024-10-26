@@ -242,7 +242,7 @@ Route::name('primavera-new.')->group(function () {
     //----- PRIMAVERA-NEW (Import from .xls via form) -----
     Route::controller(PrimaveraNewController::class)->group(function () {
         Route::view('/primavera-new/import', 'primavera-new.import');
-        Route::post('/primavera-new/import-work', 'import_work')->name('import-work');
+        Route::post('/primavera-new/import', 'import')->name('import');
         Route::get('/primavera-new/index', 'index')->name('index');
         Route::get('/primavera-new/{slug:slug}', 'show')->name('show');
         Route::get('/primavera-new/collection/{name}', 'collection')->name('collection');
@@ -250,11 +250,11 @@ Route::name('primavera-new.')->group(function () {
 
     //----- PRIMAVERA-PRICE-LIST (Import from .xls via form) -----
     Route::view('/primavera-price-list-import', 'primavera-new.import-price-list');
-    Route::post('/primavera-import-work-price-list', [\App\Http\Controllers\PrimaveraPriceListController::class, 'import_work_price_list'])->name('import-work-price-list');
+    Route::post('/primavera-price-list-import', [\App\Http\Controllers\PrimaveraPriceListController::class, 'import_price_list'])->name('import-price-list');
 
     //----- PRIMAVERA-STOCKS (Import from .xls via form) -----
     Route::view('/primavera-stocks-import', 'primavera-new.import-stocks');
-    Route::post('/primavera-import-work-stocks', [\App\Http\Controllers\PrimaveraNewStockController::class, 'import'])->name('import-stocks');
+    Route::post('/primavera-stocks-import', [\App\Http\Controllers\PrimaveraNewStockController::class, 'import'])->name('import-stocks');
 });
 
 //----- KERRANOVA -----
