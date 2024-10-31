@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Global Tile')
+@section('title', $search_name??'Global Tile')
 
 @section('content')
     <div class="album py-5 bg-body-tertiary">

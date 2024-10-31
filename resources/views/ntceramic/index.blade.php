@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'NT Ceramic')
+@section('title', $search_name??'NT Ceramic')
 
 @section('content')
     <div class="album py-5 bg-body-tertiary">

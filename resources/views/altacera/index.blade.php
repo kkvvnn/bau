@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Altacera Delacora NewTrend AlmaCeramica')
+@section('title', $search_name??'Altacera Delacora NewTrend AlmaCeramica')
 
 @section('content')
     <div class="album py-5 bg-body-tertiary">

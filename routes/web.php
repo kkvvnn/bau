@@ -238,6 +238,7 @@ Route::get('/global-tile/index', [\App\Http\Controllers\GlobalTileController::cl
 Route::get('/global-tile/{id}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
 Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection');
 
+//----- PRIMAVERA -----
 Route::name('primavera-new.')->group(function () {
     //----- PRIMAVERA-NEW (Import from .xls via form) -----
     Route::controller(PrimaveraNewController::class)->group(function () {

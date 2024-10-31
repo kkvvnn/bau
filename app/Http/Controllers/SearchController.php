@@ -24,6 +24,7 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $name = $request->input('name');
+        $search_name = $name;
         $name = '%'.$name.'%';
 
         $products = Product::where('Name', 'LIKE', $name)->paginate(15);
@@ -32,6 +33,7 @@ class SearchController extends Controller
         if (count($products)) {
             return view('product.index', [
                 'products' => $products,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -40,6 +42,7 @@ class SearchController extends Controller
         if (count($altacera)) {
             return view('altacera.index', [
                 'products' => $altacera,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -56,6 +59,7 @@ class SearchController extends Controller
         if (count($ntceramic)) {
             return view('ntceramic.index', [
                 'products' => $ntceramic,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -64,6 +68,7 @@ class SearchController extends Controller
         if (count($absolut_gres)) {
             return view('absolut_gres.index', [
                 'products' => $absolut_gres,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -72,6 +77,7 @@ class SearchController extends Controller
         if (count($leedo)) {
             return view('leedo.index2', [
                 'products' => $leedo,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -80,6 +86,7 @@ class SearchController extends Controller
         if (count($aquafloor)) {
             return view('aquafloor.index', [
                 'products' => $aquafloor,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -88,6 +95,7 @@ class SearchController extends Controller
         if (count($pixmosaic)) {
             return view('pixmosaic-new.index', [
                 'products' => $pixmosaic,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -96,6 +104,7 @@ class SearchController extends Controller
         if (count($rusplitka)) {
             return view('rusplitka.index', [
                 'products' => $rusplitka,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -104,6 +113,7 @@ class SearchController extends Controller
         if (count($empero)) {
             return view('empero.index', [
                 'products' => $empero,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -115,6 +125,7 @@ class SearchController extends Controller
         if (count($kerranova)) {
             return view('kerranova.index', [
                 'products' => $kerranova,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -123,6 +134,7 @@ class SearchController extends Controller
         if (count($artcenter)) {
             return view('artcenter.index', [
                 'products' => $artcenter,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -131,6 +143,7 @@ class SearchController extends Controller
         if (count($global_tile)) {
             return view('global-tile.index', [
                 'products' => $global_tile,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -139,6 +152,7 @@ class SearchController extends Controller
         if (count($primavera_new)) {
             return view('primavera-new.index', [
                 'products' => $primavera_new,
+                'search_name' => $search_name,
             ]);
         }
 
@@ -147,6 +161,7 @@ class SearchController extends Controller
         if (count($skalla)) {
             return view('skalla.index', [
                 'products' => $skalla,
+                'search_name' => $search_name,
             ]);
         }
 
