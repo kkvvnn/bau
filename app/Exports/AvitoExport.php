@@ -37,6 +37,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $products = Product::where([
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', '!=', 'Kerama Marazzi'],
+            ['Producer_Brand', '!=', 'Cersanit'],
             ['Producer_Brand', '!=', 'Шахтинская плитка'],
             ['Producer_Brand', '!=', ''],
             ['Element_code', '!=', 'х9999286854'],
@@ -62,18 +63,18 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         $blaze = Product::where([['Element_Code', 'х9999293160']])->get();      //blaze silver 60x120
 
-        $kerama_marazzi = Product::where([['GroupProduct', '01 Плитка'],
-            ['Producer_Brand', '=', 'Kerama Marazzi'],
-            ['Name', 'not like', '%ставк%'],
-            ['Name', 'not like', '%ступен%'],
-            ['Name', 'not like', '%пецэлем%'],
-            ['balance', 1],
-            ['RMPrice', '>=', '650'],
-            ['RMPrice', '!=', ''],
-            ['Picture', '!=', ''],
-        ])
-            ->whereColumn('RMPrice', '>', 'Price')
-            ->get();
+//        $kerama_marazzi = Product::where([['GroupProduct', '01 Плитка'],
+//            ['Producer_Brand', '=', 'Kerama Marazzi'],
+//            ['Name', 'not like', '%ставк%'],
+//            ['Name', 'not like', '%ступен%'],
+//            ['Name', 'not like', '%пецэлем%'],
+//            ['balance', 1],
+//            ['RMPrice', '>=', '650'],
+//            ['RMPrice', '!=', ''],
+//            ['Picture', '!=', ''],
+//        ])
+//            ->whereColumn('RMPrice', '>', 'Price')
+//            ->get();
 
 //        $products = $products->merge($kerama_marazzi);  // KERAMA-MARAZZI NO/OFF
         $products = $products->merge($blaze);
