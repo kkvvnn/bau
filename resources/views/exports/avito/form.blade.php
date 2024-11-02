@@ -28,8 +28,8 @@
                 <div class="mb-3">
                     <label for="contact_method" class="form-label">Способ связи</label>
                     <select class="form-select" id="contact_method" name="contact_method">
-                        <option selected>По телефону и в сообщениях</option>
-                        <option>В сообщениях</option>
+                        <option>По телефону и в сообщениях</option>
+                        <option selected>В сообщениях</option>
                         <option>По телефону</option>
                     </select>
                 </div>
