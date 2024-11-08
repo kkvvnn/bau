@@ -30,7 +30,7 @@ class AltaceraImportController2 extends Controller
 
         function my_unzip($value)
         {
-            $url = "http://zakaz.altacera.ru/load/" . $value . "_json.zip";
+            $url = "https://zakaz.altacera.ru/load/" . $value . "_json.zip";
             $contents = file_get_contents($url);
 
             $date = date("Y-m-d_His");
@@ -205,7 +205,6 @@ class AltaceraImportController2 extends Controller
         $this->altacera_unzip();
 //        $this->json_territory_to_database();
         $this->json_balance_to_database();
-//        dd(1);
         $this->json_price_to_database();
         $this->json_tovar_to_database();
         $this->json_category_to_database();
