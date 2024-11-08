@@ -107,6 +107,11 @@ class AvitoController extends Controller
                 $data['phone'] = '89197697802';
                 $data['manager_name'] = 'Владимир';
                 $data['address'] = 'Москва, Филёвская линия, метро Фили';
+                $data['communication'] = [
+                    'phone_and_message' => 'selected',
+                    'only_message' => '',
+                    'only_phone' => '',
+                ];
                 break;
             case 'laparet-moscow':
                 $data['color'] = 'text-bg-warning';
@@ -114,13 +119,23 @@ class AvitoController extends Controller
                 $data['phone'] = '89151274000';
                 $data['manager_name'] = 'Родион';
                 $data['address'] = 'Москва, Арбатско-Покровская линия, метро Славянский бульвар';
+                $data['communication'] = [
+                    'phone_and_message' => 'selected',
+                    'only_message' => '',
+                    'only_phone' => '',
+                ];
                 break;
             case 'laparet-kazan':
                 $data['color'] = 'text-bg-info';
                 $data['title'] = 'Автозагрузка Авито КАЗАНЬ';
-                $data['phone'] = '89164900555';
+                $data['phone'] = '89150072659';
                 $data['manager_name'] = 'Родион';
-                $data['address'] = 'Республика Татарстан, Казань, улица Каюма Насыри';
+                $data['address'] = 'Республика Татарстан (Татарстан), Казань, улица Габдуллы Тукая, 57';
+                $data['communication'] = [
+                    'phone_and_message' => '',
+                    'only_message' => 'selected',
+                    'only_phone' => '',
+                ];
                 break;
             case 'laparet-spb':
                 $data['color'] = 'text-bg-info';
@@ -128,6 +143,11 @@ class AvitoController extends Controller
                 $data['phone'] = '89999999999';
                 $data['manager_name'] = 'Имя';
                 $data['address'] = 'Санкт-Петербург';
+                $data['communication'] = [
+                    'phone_and_message' => '',
+                    'only_message' => 'selected',
+                    'only_phone' => '',
+                ];
                 break;
             default:
                 abort(404);

@@ -28,9 +28,9 @@
                 <div class="mb-3">
                     <label for="contact_method" class="form-label">Способ связи</label>
                     <select class="form-select" id="contact_method" name="contact_method">
-                        <option>По телефону и в сообщениях</option>
-                        <option selected>В сообщениях</option>
-                        <option>По телефону</option>
+                        <option {{ $data['communication']['phone_and_message'] }}>По телефону и в сообщениях</option>
+                        <option {{ $data['communication']['only_message'] }}>В сообщениях</option>
+                        <option {{ $data['communication']['only_phone'] }}>По телефону</option>
                     </select>
                 </div>
                 <div class="mb-3">
