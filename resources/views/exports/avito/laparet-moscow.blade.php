@@ -525,7 +525,7 @@
             $InstallationType = 'На пол | На стену';
             $Width = 60;
             $Length = 120;
-            $Height = 9;
+            $Height = '';
             $Pattern = 'Другой';
             $Color = 'Другой';
         @endphp
