@@ -54,6 +54,6 @@ class ArtkeraTerritory extends Command
         }
 
         $bar->finish();
-        $this->info(' ----- Artkera update territory [OK]');
+        $this->info(' ----- Artkera update Territory [OK]');
     }
 }

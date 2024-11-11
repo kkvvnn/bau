@@ -4,42 +4,44 @@ namespace App\Console\Commands\Artkera;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Artkera\ArtkeraCategory as Category;
+use App\Models\Artkera\ArtkeraBalance as Balance;
 
-class ArtkeraCategory extends Command
+class ArtkeraBalance extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'artkera:category';
+    protected $signature = 'artkera:balance';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Artkera category';
+    protected $description = 'Artkera balance';
 
     /**
      * Execute the console command.
      */
     public function handle(): void
     {
-        $bar = $this->output->createProgressBar(1);
-        $bar->start();
+        Balance::truncate();
 
-        Category::truncate();
-
-        $json = Storage::disk('local')->get('import/altacera/category/category.json');
+        $json = Storage::disk('local')->get('import/altacera/balance/balance.json');
         $products = json_decode($json, true);
 
+        $bar = $this->output->createProgressBar(count($products));
+        $bar->start();
+
         foreach ($products as $product) {
-                Category::create($product);
+                Balance::create($product);
+
+                $bar->advance();
         }
 
         $bar->finish();
-        $this->info(' ----- Artkera update Category [OK]');
+        $this->info(' ----- Artkera update Balance [OK]');
     }
 }
