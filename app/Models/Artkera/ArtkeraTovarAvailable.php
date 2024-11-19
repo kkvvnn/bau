@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class ArtkeraTovar extends Model
+class ArtkeraTovarAvailable extends Model
 {
     protected $guarded = false;
 
@@ -29,6 +29,11 @@ class ArtkeraTovar extends Model
     public function units_r(): HasMany
     {
         return $this->hasMany(ArtkeraUnit::class, 'tovar_id', 'tovar_id');
+    }
+
+    public function price(): HasOne
+    {
+        return $this->hasOne(ArtkeraPrice::class, 'tovar_id', 'tovar_id');
     }
 
     public function images(): HasOne

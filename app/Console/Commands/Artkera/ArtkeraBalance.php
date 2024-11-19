@@ -27,6 +27,8 @@ class ArtkeraBalance extends Command
      */
     public function handle(): void
     {
+
+
         Balance::truncate();
 
         $json = Storage::disk('local')->get('import/altacera/balance/balance.json');
@@ -36,9 +38,11 @@ class ArtkeraBalance extends Command
         $bar->start();
 
         foreach ($products as $product) {
+            if ($product['balance'] || $product['reserve'] || $product['free_balance'] || $product['balance_way']) {
                 Balance::create($product);
+            }
 
-                $bar->advance();
+            $bar->advance();
         }
 
         $bar->finish();

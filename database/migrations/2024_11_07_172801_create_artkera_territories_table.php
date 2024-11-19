@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('artkera_territories', function (Blueprint $table) {
             $table->id();
-            $table->string('price_list');
+            $table->string('price_list')->unique();
             $table->string('type_price');
             $table->string('type_price_id');
-            $table->string('depot');
-            $table->string('depot_id');
-            $table->string('depot_adress');
             $table->timestamps();
         });
     }

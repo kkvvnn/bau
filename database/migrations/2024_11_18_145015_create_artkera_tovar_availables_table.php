@@ -11,22 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('artkera_tovars', function (Blueprint $table) {
+        Schema::create('artkera_tovar_availables', function (Blueprint $table) {
             $table->id();
             $table->string('category');
             $table->string('tovar');
+            $table->string('slug')->unique();
+            $table->string('unit');
             $table->string('category_id');
             $table->string('tovar_id');
             $table->string('artikul');
             $table->json('artikul_diy');
-            $table->boolean('deleted');
-            $table->boolean('archive');
+            $table->string('deleted');
+            $table->string('archive');
             $table->string('action');
             $table->string('status');
-            $table->boolean('not_unload');
-            $table->boolean('not_unload_site');
+            $table->string('not_unload');
+            $table->string('not_unload_site');
             $table->string('collection_item');
-            $table->integer('number_of_patterns');
+            $table->string('number_of_patterns');
             $table->string('country');
             $table->string('surface_type');
             $table->integer('height');
@@ -36,10 +38,10 @@ return new class extends Migration
             $table->string('Рельеф');
             $table->string('Ректификация');
             $table->string('Износостойкость');
-            $table->boolean('is_Delacora_Big_Format');
-            $table->boolean('sale');
-            $table->boolean('balance_zero');
-            $table->boolean('is_small_amount');
+            $table->string('is_Delacora_Big_Format');
+            $table->string('sale');
+            $table->string('balance_zero');
+            $table->string('is_small_amount');
             $table->boolean('is_action');
             $table->integer('packing');
             $table->json('units');
@@ -52,6 +54,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('artkera_tovars');
+        Schema::dropIfExists('artkera_tovar_availables');
     }
 };

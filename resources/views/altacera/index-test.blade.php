@@ -1,0 +1,171 @@
+@extends('main')
+
+@section('title', $search_name??'ARTKERA КАЗАНЬ')
+
+@section('content')
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div>
+                <p></p>
+            </div>
+
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                @foreach($products as $product)
+                    @php
+                        $text_color = '';
+                        $date_now = \Carbon\Carbon::now();
+                        $date_of_update = $product->updated_at;
+                        $diff_days = $date_now->diffInDays($date_of_update);
+
+                        if ($diff_days == 0) {
+                            $text_color = 'text-success';
+                        } elseif ($diff_days <= 7) {
+                            $text_color = 'text-warning';
+                        } else {
+                            $text_color = 'text-danger';
+                        }
+                    @endphp
+                @php
+                    $img = Storage::disk('artkera')->url($product->images->images[0]);
+
+//                    dd($product->price->price);
+
+
+
+                @endphp
+
+                    <div class="col">
+                        <div class="card h-100">
+                            <a href="/artkera-kazan/{{$product->slug}}">
+                                <img src="{{$img}}"
+                                     class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <a href="/artkera-kazan/{{$product->slug}}" class="text-decoration-none text-reset">
+                                    <h6 class="text-muted fw-light">{{$product->status}}</h6>
+                                    <h5 class="card-title">{{$product->category_r->parent}} {{$product->collection_item}} {{$product->name_for_site}} {{$product->height}}x{{$product->width}} {{$product->artikul}}</h5>
+                                </a>
+{{--                                <p class="card-text"></p>--}}
+                            </div>
+                            <div class="card-footer">
+                                @if($product->price->price !== null)
+                                    <h5 class="card-title pricing-card-title">
+                                        {{$product->price->price}} <span class="text-muted fw-light"> ₽/{{$product->unit}}</span>
+                                        @if($product->is_action)
+                                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Акция</p>
+                                        @endif
+                                    </h5>
+                                @else
+                                    <h5 class="card-title pricing-card-title">Не указана</h5>
+                                @endif
+
+                                    @php
+                                        unset(
+                                            $balance_kazan,
+                                            $balance_kazan_reserve,
+                                            $balance_kazan_way,
+                                            $balance_kazan_sale,
+
+                                            $balance_moscow,
+                                            $balance_moscow_reserve,
+                                            $balance_moscow_way,
+                                            $balance_moscow_sale,
+                                            $balance_moscow_depot_reservnuy,
+                                        );
+                                    @endphp
+
+                                    @php
+                                        $balances = $product->balance;
+
+                                        foreach ($balances as $balance) {
+//                                            KAZAN
+                                            if ($balance['depot_id'] == $depots['Склад Казань']) {
+                                                $balance_kazan = (float)$balance['free_balance'];
+                                                $balance_kazan_reserve = (float)$balance['reserve'];
+                                            }
+                                            if ($balance['depot_id'] == $depots['Товары в пути (на Казань)']) {
+                                                $balance_kazan_way = (float)$balance['free_balance'];
+                                            }
+                                            if ($balance['depot_id'] == $depots['Склад КазаньРАСПРОДАЖА']) {
+                                                $balance_kazan_sale = (float)$balance['free_balance'];
+                                            }
+//                                            MOSCOW
+                                            if ($balance['depot_id'] == $depots['Склад Балашиха']) {
+                                                $balance_moscow = (float)$balance['free_balance'];
+                                                $balance_moscow_reserve = (float)$balance['reserve'];
+                                            }
+                                            if ($balance['depot_id'] == $depots['Товары в пути (на Балашиху)']) {
+                                                $balance_moscow_way = (float)$balance['free_balance'];
+                                            }
+                                            if ($balance['depot_id'] == $depots['Склад Балашиха РАСПРОДАЖА']) {
+                                                $balance_moscow_sale = (float)$balance['free_balance'];
+                                            }
+                                            if ($balance['depot_id'] == $depots['Склад Балашиха РЕЗЕРВНЫЙ']) {
+                                                $balance_moscow_depot_reservnuy = (float)$balance['free_balance'];
+                                            }
+                                        }
+                                    @endphp
+
+                                    @php
+//                                        dd($product->balance);
+//                                        dd($depots);
+                                    @endphp
+
+                                    @isset($balance_moscow)
+                                        <p class="mb-0 fs-5 text-body-secondary">
+                                            Москва: {{$balance_moscow}} {{$product->unit}}
+                                            @if($balance_moscow_reserve && $balance_moscow_reserve!= 0)
+                                                (+{{$balance_moscow_reserve}} резерв)
+                                            @endif
+                                        </p>
+                                    @endisset
+                                    @isset($balance_moscow_way)
+                                        <p class="mb-0 fs-5 text-body-secondary">Москва(в пути): {{$balance_moscow_way}} {{$product->unit}}</p>
+                                    @endisset
+                                    @isset($balance_moscow_sale)
+                                        <p class="mb-0 fs-5 text-body-secondary">Москва Распродажа: {{$balance_moscow_sale}} {{$product->unit}}</p>
+                                    @endisset
+                                    @isset($balance_moscow_depot_reservnuy)
+                                        <p class="mb-0 fs-5 text-body-secondary">Москва РЕЗЕРВНЫЙ: {{$balance_moscow_depot_reservnuy}} {{$product->unit}}</p>
+                                    @endisset
+
+                                    @isset($balance_kazan)
+                                        <p class="mb-0 fs-5 text-body-secondary">
+                                            Казань: {{$balance_kazan}} {{$product->unit}}
+                                            @if($balance_kazan_reserve && $balance_kazan_reserve!= 0)
+                                                (+{{$balance_kazan_reserve}} резерв)
+                                            @endif
+                                        </p>
+                                    @endisset
+                                    @isset($balance_kazan_way)
+                                        <p class="mb-0 fs-5 text-body-secondary">Казань(в пути): {{$balance_kazan_way}} {{$product->unit}}</p>
+                                    @endisset
+                                    @isset($balance_kazan_sale)
+                                        <p class="mb-0 fs-5 text-body-secondary">Казань Распродажа: {{$balance_kazan_sale}} {{$product->unit}}</p>
+                                    @endisset
+
+
+                                    <small class="fs-5 text-body-secondary"><span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
+
+{{--                                <p>{{ $product->tovar_id }}</p>--}}
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+    {{ $products->links() }}
+@endsection

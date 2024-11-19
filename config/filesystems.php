@@ -97,6 +97,14 @@ return [
             'throw' => false,
         ],
 
+        'artkera' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/artkera'),
+            'url' => env('APP_URL').'/storage/images/artkera',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'skalla' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/skalla'),

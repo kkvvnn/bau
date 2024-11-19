@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('depot_id');
             $table->string('tovar_id');
             $table->string('unit_id');
+            $table->index(['depot_id', 'tovar_id']);
             $table->float('balance', 10, 4);
             $table->float('reserve', 10, 4);
             $table->float('free_balance', 10, 4);

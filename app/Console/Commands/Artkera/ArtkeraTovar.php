@@ -4,23 +4,23 @@ namespace App\Console\Commands\Artkera;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Artkera\ArtkeraPicture as Picture;
+use App\Models\Artkera\ArtkeraTovar as Tovar;
 
-class ArtkeraPicture extends Command
+class ArtkeraTovar extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'artkera:picture';
+    protected $signature = 'artkera:tovar';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Artkera picture';
+    protected $description = 'Artkera tovar';
 
     /**
      * Execute the console command.
@@ -30,17 +30,18 @@ class ArtkeraPicture extends Command
         $bar = $this->output->createProgressBar(1);
         $bar->start();
 
-        Picture::truncate();
+        Tovar::truncate();
 
-        $json = Storage::disk('local')->get('import/altacera/picture/picture.json');
+        $json = Storage::disk('local')->get('import/altacera/tovar/tovar.json');
         $products = json_decode($json, true);
 
         foreach ($products as $product) {
-            $product['images'] = str_replace('https://artkera.ru/', '', $product['images']);
-            Picture::create($product);
+//            if (!$product['balance_zero'] && (!$product['not_unload'] && !$product['not_unload_site'])) {
+                Tovar::create($product);
+//            }
         }
 
         $bar->finish();
-        $this->info(' ----- Artkera update Picture [OK]');
+        $this->info(' ----- Artkera update Tovar [OK]');
     }
 }

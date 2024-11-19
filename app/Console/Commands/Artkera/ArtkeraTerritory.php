@@ -40,17 +40,16 @@ class ArtkeraTerritory extends Command
         $json = Storage::disk('local')->get('import/altacera/territory/territory.json');
         $products = json_decode($json, true);
 
+        $depots = [
+            '',
+        ];
+
         foreach ($products as $product) {
-            foreach ($product['depots'] as $depot) {
-                Territory::create([
-                   'price_list' => $product['price_list'],
-                   'type_price' => $product['type_price'],
-                   'type_price_id' => $product['type_price_id'],
-                   'depot' => $depot['depot'],
-                   'depot_id' => $depot['depot_id'],
-                   'depot_adress' => $depot['depot_adress'],
-                ]);
-            }
+            Territory::create([
+                'price_list' => $product['price_list'],
+                'type_price' => $product['type_price'],
+                'type_price_id' => $product['type_price_id'],
+            ]);
         }
 
         $bar->finish();

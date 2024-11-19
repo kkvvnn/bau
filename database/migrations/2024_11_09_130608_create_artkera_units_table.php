@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('artkera_units', function (Blueprint $table) {
             $table->id();
+//            $table->string('tovar_id');
+//            $table->string('category_id');
+//            $table->string('artikul');
             $table->string('tovar_id');
-            $table->string('category_id');
-            $table->string('artikul');
             $table->string('unit');
-            $table->string('unit_id')->unique();
+            $table->string('unit_id');
             $table->float('unit_kg', 10,4);
             $table->float('unit_ratio', 10,4);
             $table->string('unit_code');

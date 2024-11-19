@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('parent');
             $table->string('category');
             $table->string('parent_id');
-            $table->string('category_id');
+            $table->string('category_id')->unique();
             $table->boolean('deleted');
             $table->boolean('archive');
             $table->boolean('is_folder');

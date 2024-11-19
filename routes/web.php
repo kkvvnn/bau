@@ -307,3 +307,9 @@ Route::get('/artcenter/{id}', [\App\Http\Controllers\ArtcenterController::class,
 Route::get('/artcenter/collection/{name}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');
 
 Route::view('/contacts', 'contacts');
+
+//----- ARTKERA-NEW -----
+Route::get('/artkera-all', [\App\Http\Controllers\ArtkeraController::class, 'index_test']);
+Route::get('/artkera-index-new', [\App\Http\Controllers\ArtkeraController::class, 'index_new']);
+
+Route::get('/artkera-index-2', [\App\Http\Controllers\ArtkeraController::class, 'index']);

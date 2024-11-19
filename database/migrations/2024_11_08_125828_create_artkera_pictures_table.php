@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('artkera_pictures', function (Blueprint $table) {
             $table->id();
-            $table->string('uid');
+            $table->string('uid')->unique();
             $table->json('images');
             $table->timestamps();
         });
