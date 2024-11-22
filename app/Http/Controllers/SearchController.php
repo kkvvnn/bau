@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovar;
-use App\Models\Altacera\AltaceraTovarAvailable;
+use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
 use App\Models\GlobalTileNew;
@@ -37,10 +37,13 @@ class SearchController extends Controller
             ]);
         }
 
-        $altacera = AltaceraTovarAvailable::where('tovar', 'LIKE', $name)->orWhere('artikul', 'LIKE', $name)->paginate(15);
+        $altacera = ArtkeraTovarAvailable::where('tovar', 'LIKE', $name)
+            ->orWhere('artikul', 'LIKE', $name)
+            ->orWhere('title', 'LIKE', $name)
+            ->paginate(15);
         $altacera->appends(['name' => $name]);
         if (count($altacera)) {
-            return view('altacera.index', [
+            return view('artkera.index', [
                 'products' => $altacera,
                 'search_name' => $search_name,
             ]);

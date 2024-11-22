@@ -31,8 +31,8 @@ class ArtkeraTest extends Command
      */
     public function handle(): void
     {
-        $products = TovarAvailable::whereSale(true)->get();
+        $file = file_get_contents('https://artkera.ru/sites/default/files/faces/GFU57STK07L/GFU57STK07L_01.jpg');
 
-        dd($products);
+        dd($file);
     }
 }

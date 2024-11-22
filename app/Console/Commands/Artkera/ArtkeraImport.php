@@ -27,6 +27,10 @@ class ArtkeraImport extends Command
      */
     public function handle(): void
     {
+        $this->call('down', [
+            '--refresh' => 15
+        ]);
+
         $this->info(' ----- Artkera import ALL [START...]');
 
         $this->call('artkera:unzip');
@@ -42,5 +46,7 @@ class ArtkeraImport extends Command
         $this->call('artkera:download-images');
 
         $this->info(' ----- Artkera import ALL [OK]');
+
+        $this->call('up');
     }
 }

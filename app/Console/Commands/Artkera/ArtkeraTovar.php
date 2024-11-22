@@ -36,9 +36,7 @@ class ArtkeraTovar extends Command
         $products = json_decode($json, true);
 
         foreach ($products as $product) {
-//            if (!$product['balance_zero'] && (!$product['not_unload'] && !$product['not_unload_site'])) {
-                Tovar::create($product);
-//            }
+            Tovar::create($product);
         }
 
         $bar->finish();

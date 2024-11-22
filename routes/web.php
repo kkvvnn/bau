@@ -174,12 +174,7 @@ Route::get('/leedo-index/{count?}', [\App\Http\Controllers\LeedoController::clas
 Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
 Route::get('/leedo/collection/{name}', [\App\Http\Controllers\LeedoController::class, 'collection'])->name('leedo.collection');
 
-//----- ARTKERA (Import from auto-updated .json) -----
-Route::get('/artkera-import-all', [\App\Http\Controllers\AltaceraImportController2::class, 'altacera_import_all']);
-Route::get('/artkera-index', [\App\Http\Controllers\AltaceraController2::class, 'index'])->name('altacera.index');
-Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\AltaceraController2::class, 'show'])->name('altacera.show');
-Route::get('/artkera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
-Route::get('/artkera/collection/{name}', [\App\Http\Controllers\AltaceraController2::class, 'collection'])->name('artkera.collection');
+
 
 //----- PIXMOSAIC -----
 Route::get('/pixmosaic/import', [\App\Http\Controllers\PixmosaicController::class, 'import']);
@@ -308,8 +303,14 @@ Route::get('/artcenter/collection/{name}', [\App\Http\Controllers\ArtcenterContr
 
 Route::view('/contacts', 'contacts');
 
-//----- ARTKERA-NEW -----
-Route::get('/artkera-all', [\App\Http\Controllers\ArtkeraController::class, 'index_test']);
-Route::get('/artkera-index-new', [\App\Http\Controllers\ArtkeraController::class, 'index_new']);
+//----- ARTKERA (Import from auto-updated .json) -----
+//Route::get('/artkera-import-all', [\App\Http\Controllers\AltaceraImportController2::class, 'altacera_import_all']);
+//Route::get('/artkera-index', [\App\Http\Controllers\AltaceraController2::class, 'index'])->name('altacera.index');
+//Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\AltaceraController2::class, 'show'])->name('altacera.show');
+//Route::get('/artkera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
+//Route::get('/artkera/collection/{name}', [\App\Http\Controllers\AltaceraController2::class, 'collection'])->name('artkera.collection');
 
-Route::get('/artkera-index-2', [\App\Http\Controllers\ArtkeraController::class, 'index']);
+//----- ARTKERA-NEW -----
+Route::get('/artkera', [\App\Http\Controllers\ArtkeraController::class, 'index'])->name('artkera.index');
+Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\ArtkeraController::class, 'show'])->name('artkera.show');
+Route::get('/artkera/collection/{name}', [\App\Http\Controllers\ArtkeraController::class, 'collection'])->name('artkera.collection');

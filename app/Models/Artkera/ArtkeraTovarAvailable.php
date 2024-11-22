@@ -40,4 +40,9 @@ class ArtkeraTovarAvailable extends Model
     {
         return $this->hasOne(ArtkeraPicture::class, 'uid', 'tovar_id');
     }
+
+    public function images_collection(): HasOne
+    {
+        return $this->hasOne(ArtkeraPicture::class, 'uid', 'category_id');
+    }
 }
