@@ -77,7 +77,7 @@ Route::prefix('avito')
     Route::post('/main', [AvitoController::class, 'export_main']);
     Route::post('/laparet-moscow', [AvitoController::class, 'export_laparet_moscow']);
     Route::post('/laparet-kazan', [AvitoController::class, 'export_laparet_kazan']);
-    Route::post('/laparet-spb', [AvitoController::class, 'export_laparet_spb']);
+    Route::post('/millennium', [AvitoController::class, 'export_millennium']);
 
     //----- AVITO LAPARET-MOSCOW OLD TOVARS (Import via form) -----
     Route::view('/laparet-moscow/import-old-ads', 'exports.avito.old-laparet-moscow');

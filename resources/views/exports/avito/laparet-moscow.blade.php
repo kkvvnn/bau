@@ -45,7 +45,7 @@
                     $GoodsSubType = 'Отделка';
                     $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                     $CeramicPorcelainTilesSubType = 'Керамогранит';
-                    $Brand = '';
+                    $Brand = $product->Producer_Brand;
                     $TileType = '';
                     $SpaceType = '';
                     $InstallationType = avito_bauservice_for($product->Architectural_surface);

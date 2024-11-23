@@ -68,35 +68,51 @@
     @endphp
 
     @php
+        //        -----------------------------------UNIT--------------------------
+                                $units = $product->units;
+                                $unit_id = $product->balance[0]->unit_id;
+        //                        dd($units);
+                                $unit = '';
+                                foreach ($units as $u) {
+                                    if ($u['unit_id'] == $unit_id) {
+                                        $unit = $u['unit'];
+                                        break;
+                                    }
+                                }
+
+                                $pack_ratio = '';
+                                foreach ($units as $u2) {
+                                    if ($u2['unit'] == 'Упак') {
+                                        $pack_ratio = $u2['unit_ratio'];
+                                        break;
+                                    }
+                                }
+
+                                $one_count_ratio = '';
+                                foreach ($units as $u3) {
+                                    if ($u3['unit'] == 'шт') {
+                                        $one_count_ratio = $u3['unit_ratio'];
+                                        break;
+                                    }
+                                }
+
+                                $count_in_pack = (float)$pack_ratio / (float)$one_count_ratio;
+        //        --------------------------------------------------------------
+
 
                     $title = $product->category_r->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul;
                     $title = str_replace('Архив', '', $title);
-
+        //                -----------------------------
         //              ------------------------------------------FOTO-------------------------------------
-                    $images = [];
-                    if (isset($product->images->images)) {
-                        foreach ($product->images->images as $img) {
-                            $images[] = Storage::disk('artkera')->url($img);
-                        }
+
+                    $img_arr = [];
+                    if (isset($product->picture->images)) {
+                        $img_arr = $product->picture->images;
+                    } else {
+                        $img_arr[] = config('app.url').Storage::disk('altacera')->url($product->tovar_id . '.JPEG');
                     }
 
-                    $images_collection = [];
-                    if (isset($product->images_collection->images)) {
-                        foreach ($product->images_collection->images as $img) {
-                            $images_collection[] = Storage::disk('artkera')->url($img);
-                        }
-                    }
-
-                    if (count($images_collection)) {
-                        $images = array_merge(array_slice( $images, 0, 1 ),
-                            [ $images_collection[0] ],
-                            array_slice( $images, 1 )
-                        );
-                        $images = array_merge($images, $images_collection);
-                    }
-
-
-                    $image_urls = avito_images_urls($images);
+                    $image_urls = avito_images_urls($img_arr);
 
         $description = '';
 
@@ -115,16 +131,40 @@
                     $description .= '<p>--------------------</p>';
                     $description .= '<p>&#9989; На утро '.$date.' остаток: </p><ul>';
 
-                    $description .= '<li>Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve) . ' ' . $product->unit . '</li>';
 
-                    if($product->moscow_way) {
-                        $description .= '<li>Москва (в пути): ' . $product->moscow_way . ' ' . $product->unit . '</li>';
+                    $balances = $product->balance;
+
+                    $balance_moscow = 0;
+                    $balance_krasnodar = 0;
+                    $balance_kazan = 0;
+                    $balance_spb = 0;
+
+                    foreach ($balances as $balance) {
+                        if ($balance['depot_id'] == '8c279853-d2c9-11e8-80c3-0cc47afc14e9') {
+                            $balance_moscow = (float)$balance['free_balance'];
+                        }
+                        if ($balance['depot_id'] == '64c17eef-42d6-11e8-812c-10feed0262c6') {
+                            $balance_krasnodar = (float)$balance['free_balance'];
+                        }
+                        if ($balance['depot_id'] == 'd1666584-d536-11ec-80f8-00155d5d5700') {
+                            $balance_kazan = (float)$balance['free_balance'];
+                        }
+                        if ($balance['depot_id'] == '2170fa9f-bcdc-11ed-8167-00155d5d5700') {
+                            $balance_spb = (float)$balance['free_balance'];
+                        }
                     }
 
-                    $description .= '<li>Казань: ' . $product->kazan + $product->kazan_sale . ' ' . $product->unit . '</li>';
-
-                    if($product->kazan_way) {
-                        $description .= '<li>Казань (в пути): ' . $product->kazan_way . ' ' . $product->unit . '</li>';
+                    if($balance_moscow) {
+                        $description .= '<li>Москва: ' . $balance_moscow . ' ' . $unit . '</li>';
+                    }
+                    if($balance_krasnodar) {
+                        $description .= '<li>Краснодар: ' . $balance_krasnodar . ' ' . $unit . '</li>';
+                    }
+                    if($balance_kazan) {
+                        $description .= '<li>Казань: ' . $balance_kazan . ' ' . $unit . '</li>';
+                    }
+                    if($balance_spb) {
+                        $description .= '<li>СПб: ' . $balance_spb . ' ' . $unit . '</li>';
                     }
 
 
@@ -134,12 +174,12 @@
                     $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от одной упаковки.<br>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже 1 упаковку. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
                     $description .= '<p>--------------------</p>';
 
-//                        $description .= '<p><em>Цена указана за 1 '.$product->unit.'.</em></p><ul>';
+//                        $description .= '<p><em>Цена указана за 1 '.$unit.'.</em></p><ul>';
                     $description .= '<p><em>Цена зависит от количества, формы оплаты, даты доставки (срочности), адреса доставки и подъема. Более детально по вашему заказу можем ответить после получения всех вводных данных.</em></p><ul>';
 
 
                         if($product->width != 0 && $product->height != 0) {
-                        $description .= '<li><strong>Размер: </strong>' . $product->height/10 .'x' . $product->width/10 . ' см</li>';
+                        $description .= '<li><strong>Размер: </strong>' . $product->height .'x' . $product->width . ' мм</li>';
                         }
                         if($product->thickness != null) {
                         $description .= '<li><strong>Толщина: </strong>' . $product->thickness . ' мм</li>';
@@ -150,14 +190,11 @@
                         if($product->Рельеф != null) {
                         $description .= '<li><strong>Рельеф: </strong>' . $product->Рельеф . '</li>';
                         }
-                        if($product->packing) {
-                        $description .= '<li><strong>Штук в упаковке: </strong>' . $product->packing . '</li>';
+                        if($unit == 'м2' && $one_count_ratio != 1) {
+                        $description .= '<li><strong>Штук в упаковке: </strong>' . round($count_in_pack) . '</li>';
                         }
-                        if($product->square_in_pack) {
-                        $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->square_in_pack . '</li>';
-                        }
-                        if($product->massa_pack) {
-                        $description .= '<li><strong>Вес упаковки: </strong>' . $product->massa_pack . '</li>';
+                        if($unit == 'м2' && $one_count_ratio != 1) {
+                        $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $pack_ratio . '</li>';
                         }
                         if($product->country != null) {
                         $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';

@@ -27,15 +27,15 @@
 
         //                --------------------------
                     $title = '';
-                    if (stripos($product->Category, 'Декор') != false) {
+                    if (stripos($product->Category, 'Декор') !== false) {
                         $title = 'Декор ';
-                    } elseif (stripos($product->Category, 'Бордюр') != false) {
+                    } elseif (stripos($product->Category, 'Бордюр') !== false) {
                         $title = 'Бордюр ';
-                    } elseif (stripos($product->Category, 'Керамическая_плитка') != false) {
+                    } elseif (stripos($product->Category, 'Керамическая_плитка') !== false) {
                         $title = 'Керамическая плитка ';
-                    } elseif (stripos($product->Category, 'Керамический_гранит') != false) {
+                    } elseif (stripos($product->Category, 'Керамический_гранит') !== false) {
                         $title = 'Керамогранит ';
-                    } elseif (stripos($product->Category, 'заика') != false) {
+                    } elseif (stripos($product->Category, 'заика') !== false) {
                         $title = 'Мозаика ';
                     }
 

@@ -4,7 +4,13 @@
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
         $CeramicPorcelainTilesSubType = 'Керамогранит';
-        $Brand = '';
+
+        $rusplitka_brand_name = $product->brand_name;
+        if ($rusplitka_brand_name == 'Ragno Marazzi') {
+            $rusplitka_brand_name = 'Ragno';
+        }
+
+        $Brand = $rusplitka_brand_name;
         $TileType = '';
         $SpaceType = '';
         $InstallationType = avito_bauservice_for('На пол | На стену');

@@ -20,6 +20,9 @@ if (!function_exists('avito_images_urls')) {
     {
         $arr = array_unique($arr);
         $arr = array_slice($arr, 0, 10);
+        foreach ($arr as &$a) {
+            $a = str_replace(' ', '%20', $a);
+        }
         return implode(' | ', $arr);
     }
 }

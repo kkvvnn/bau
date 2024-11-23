@@ -31,8 +31,8 @@ class ArtkeraTest extends Command
      */
     public function handle(): void
     {
-        $file = file_get_contents('https://artkera.ru/sites/default/files/faces/GFU57STK07L/GFU57STK07L_01.jpg');
+        $url = 'https://service-plitka.ru/storage/images/bauservice/products/Nomenclature/0a485ef5-9e4a-4900-80ad-332a989907a9/___v8_205B_30a8b.jpeg';
 
-        dd($file);
+        dd(urlencode($url));
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\AvitoExport;
 use App\Exports\AvitoKazanExport;
 use App\Exports\AvitoLaparetMoscowExport;
-use App\Exports\AvitoSpbExport;
+use App\Exports\AvitoMillenniumExport;
 use App\Imports\AvitoTwoExcelImport;
 use App\Models\AvitoTwoExcel;
 use Illuminate\Http\Request;
@@ -70,15 +70,15 @@ class AvitoController extends Controller
      * @throws Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
-    public function export_laparet_spb(Request $request): View
+    public function export_millennium(Request $request): View
     {
         $data = $request->except(['_token']);
 
-        $filename = 'avito/laparet-spb/SPB-'.date('Y-m-d_His').'.xlsx';
-        Excel::store(new AvitoSpbExport($data), $filename, 'avito');
+        $filename = 'avito/millennium/MILLENNIUM-'.date('Y-m-d_His').'.xlsx';
+        Excel::store(new AvitoMillenniumExport($data), $filename, 'avito');
 
         $url = Storage::disk('avito')->url($filename);
-        $type = 'laparet-spb';
+        $type = 'millennium';
         return view('exports.avito.url', compact('url', 'type'));
     }
 
@@ -132,17 +132,17 @@ class AvitoController extends Controller
                 $data['manager_name'] = 'Родион';
                 $data['address'] = 'Республика Татарстан (Татарстан), Казань, улица Габдуллы Тукая, 57';
                 $data['communication'] = [
-                    'phone_and_message' => '',
-                    'only_message' => 'selected',
+                    'phone_and_message' => 'selected',
+                    'only_message' => '',
                     'only_phone' => '',
                 ];
                 break;
-            case 'laparet-spb':
-                $data['color'] = 'text-bg-info';
-                $data['title'] = 'Автозагрузка Авито';
+            case 'millennium':
+                $data['color'] = 'text-bg-success';
+                $data['title'] = 'Автозагрузка Авито Миллениум';
                 $data['phone'] = '89999999999';
                 $data['manager_name'] = 'Имя';
-                $data['address'] = 'Санкт-Петербург';
+                $data['address'] = 'Казань';
                 $data['communication'] = [
                     'phone_and_message' => '',
                     'only_message' => 'selected',

@@ -17,8 +17,8 @@
                 @case('laparet-kazan')
                     <div class="text-bg-info p-3"><h1 class="display-6">Автозагрузка Авито Laparet-Казань</h1></div>
                     @break
-                @case('laparet-spb')
-                    <div class="text-bg-info p-3"><h1 class="display-6">Автозагрузка Авито Laparet Санкт-Петербург</h1></div>
+                @case('millennium')
+                    <div class="text-bg-success p-3"><h1 class="display-6">Автозагрузка Авито Миллениум</h1></div>
                     @break
                 @default
                     <div class="text-bg-warning p-3"><h1 class="display-6">Автозагрузка Авито</h1></div>
