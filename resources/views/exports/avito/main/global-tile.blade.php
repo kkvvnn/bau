@@ -9,7 +9,7 @@
                 $GoodsSubType = 'Отделка';
                 $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                 $CeramicPorcelainTilesSubType = 'Керамогранит';
-                $Brand = 'Global Tile';
+                $Brand = 'GlobalTile';
                 $TileType = '';
                 $SpaceType = '';
                 $InstallationType = avito_bauservice_for('На пол | На стену');
