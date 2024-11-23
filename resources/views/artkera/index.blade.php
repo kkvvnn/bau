@@ -81,7 +81,7 @@
 {{--                                        <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Москва Распродажа: {{$product->moscow_sale}} {{$product->unit}} (+{{$product->moscow_sale_reserve}} резерв)</span></p>--}}
 {{--                                    @endif--}}
                                     @if($product->moscow_depot_reserve || $product->moscow_depot_reserve_reserve)
-                                        <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Москва РЕЗЕРВНЫЙ: {{$product->moscow_depot_reserve}} {{$product->unit}} (+{{$product->moscow_depot_reserve_reserve}} резерв)</span></p>
+                                        <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Москва РЕЗЕРВНЫЙ: {{$product->moscow_depot_reserve}} {{$product->unit}}</span></p>
                                     @endif
 
 
