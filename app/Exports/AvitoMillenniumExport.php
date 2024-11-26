@@ -6,6 +6,7 @@ namespace App\Exports;
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
+use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\BauserviceSpb;
 use App\Models\Kevis;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
@@ -28,6 +29,25 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
     public function view(): View
     {
+        $artkera = ArtkeraTovarAvailable::all();
 
+        $discounts_all = [
+            'Artkera' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
+        ];
+
+        return view('exports.avito.millennium.millennium', [
+
+            'artkera' => $artkera,
+            'phone' => $this->phone,
+            'name' => $this->name,
+            'contact_method' => $this->contact_method,
+            'address' => $this->address,
+            'add_description_first' => $this->add_description_first,
+            'add_description' => $this->add_description_last,
+            'discounts' => $discounts_all,
+        ]);
     }
 }

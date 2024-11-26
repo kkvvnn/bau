@@ -314,3 +314,6 @@ Route::view('/contacts', 'contacts');
 Route::get('/artkera', [\App\Http\Controllers\ArtkeraController::class, 'index'])->name('artkera.index');
 Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\ArtkeraController::class, 'show'])->name('artkera.show');
 Route::get('/artkera/collection/{name}', [\App\Http\Controllers\ArtkeraController::class, 'collection'])->name('artkera.collection');
+
+
+Route::get('/artkera-millennium', [\App\Http\Controllers\ArtkeraController::class, 'index_millennium'])->name('artkera.index');

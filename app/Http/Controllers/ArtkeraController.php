@@ -20,6 +20,16 @@ class ArtkeraController extends Controller
         ]);
     }
 
+    public function index_millennium()
+    {
+        $products = ArtkeraTovarAvailable::orderByRaw('width * height DESC')
+            ->paginate(15);
+
+        return view('artkera.index-millennium', [
+            'products' => $products,
+        ]);
+    }
+
     public function show($slug)
     {
         $product = ArtkeraTovarAvailable::whereSlug($slug)->firstOrFail();

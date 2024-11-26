@@ -140,9 +140,9 @@ class AvitoController extends Controller
             case 'millennium':
                 $data['color'] = 'text-bg-success';
                 $data['title'] = 'Автозагрузка Авито Миллениум';
-                $data['phone'] = '89999999999';
-                $data['manager_name'] = 'Имя';
-                $data['address'] = 'Казань';
+                $data['phone'] = '89150057544';
+                $data['manager_name'] = 'Наиль';
+                $data['address'] = 'Республика Татарстан (Татарстан), Казань, улица Журналистов, 102Г';
                 $data['communication'] = [
                     'phone_and_message' => '',
                     'only_message' => 'selected',
