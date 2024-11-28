@@ -106,14 +106,14 @@
             $date = date('d.m.Y');
 //            if ($product->balanceCount > 0) {
                 $description .= '<p>&#9989;<strong> '.$date.': </strong></p><ul>';
-                $description .= '<li>Москва - '.round($product->balanceCount, 2).' '.$product->MainUnit.'</li>';
+                $description .= '<li>Москва: '.round($product->balanceCount, 2).' '.$product->MainUnit.'</li>';
                 if (isset($product->spb)) {
-                    $description .= '<li>СПб - '.round($product->spb->balanceCount, 2).' '.$product->MainUnit.'</li>';
+                    $description .= '<li>СПб: '.round($product->spb->balanceCount, 2).' '.$product->MainUnit.'</li>';
                 }
                 if (isset($product->kzn)) {
-                    $description .= '<li>Казань - '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.'</li>';
+                    $description .= '<li>Казань: '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.'</li>';
                 }
-                $description .= '<li>Нижний Новгород - по запросу</li>';
+                $description .= '<li>Нижний Новгород: по запросу</li>';
                 $description .= '</ul>';
 //            }
             $description .= '<p>--------------------</p>';
