@@ -51,7 +51,7 @@
                                 </a>
                             </div>
                             <div class="card-footer">
-                                <h5 class="card-title pricing-card-title">{{$product->Price_rozn}} <span class="text-muted fw-light">₽/{{$product->unit}}  {{$product->Price_OPT}}</span></h5>
+                                <h5 class="card-title pricing-card-title">{{$product->Price_rozn}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
 
                                 <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->Sklad_Msk_LeeDo??0}} {{$product->unit}}</p>
                                 <p class="mb-0 fs-5 text-body-secondary">СПб: {{$product->Sklad_SPb_LeeDo??0}} {{$product->unit}}</p>
