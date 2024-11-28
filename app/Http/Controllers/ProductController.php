@@ -95,11 +95,14 @@ class ProductController extends Controller
     {
         $type = config('app.name');
 
-        $products = Product::where([['GroupProduct', '01 Плитка'],
-            ['balanceCount', '>=', 0],
+        $products = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Laparet'],
+            ['balanceCount', '>', 0],
             ['Picture', '!=', ''],
             ])
             ->orderByRaw('Lenght * Height DESC')
+            ->orderBy('RMPrice')
             ->paginate(15);
 
         return $this->index($products, $type);

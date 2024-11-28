@@ -103,37 +103,27 @@
         if($add_description_first != '') {
         $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
-//                    $description .= '<p>Керамическая плитка и керамогранит '.$product->category_r->parent.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
                     $description .= '<p><strong>' . $product->title . '</strong></p>';
                     $description .= '<p><strong>Коллекция: </strong>'.$product->category_r->parent.' - '.$product->category. '</p>';
 
 
 
                     $date = date('d.m.Y');
-//                    $description .= '<p>--------------------</p>';
-//                    $description .= '<p>&#9989; На утро '.$date.' остаток: </p><ul>';
-                    $description .= '<p>На '.$date.' доступно: </p><ul>';
+                    $description .= '<p>На '.$date.' доступно: </p>';
+                    $description .= '<ul>';
+                        $description .= '<li>Склад Казань: ' . $product->kazan + $product->kazan_sale . ' ' . $product->unit . '</li>';
+                        $description .= '<li>Склад Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve + $product->moscow_way) . ' ' . $product->unit . '</li>';
+                        if($product->kazan_way) {
+                            $description .= '<li>Казань (в пути): ' . $product->kazan_way . ' ' . $product->unit . '</li>';
+                        }
+                    $description .= '</ul>';
+                    $description .= '<p><em>(актуальную информацию о наличии уточняйте у менеджера)</em></p>';
 
-
-                    $description .= '<li>Склад Казань: ' . $product->kazan + $product->kazan_sale . ' ' . $product->unit . '</li>';
-                    $description .= '<li>Склад Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve + $product->moscow_way) . ' ' . $product->unit . '</li>';
-
-                    if($product->kazan_way) {
-                        $description .= '<li>Казань (в пути): ' . $product->kazan_way . ' ' . $product->unit . '</li>';
-                    }
-
-
-
-                    $description .= '</ul><p><em>(актуальную информацию о наличии уточняйте у менеджера)</em></p>';
-//                    $description .= '<p>--------------------</p>';
-//                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от одной упаковки.<br>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже 1 упаковку. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
-//                    $description .= '<p>--------------------</p>';
+                    $description .= '<br>';
 
                     $description .= '<p><em>Цена в объявлении указана за 1 '.$product->unit.'.</em></p>';
-//                    $description .= '<p><em>Цена зависит от количества, формы оплаты, даты доставки (срочности), адреса доставки и подъема. Более детально по вашему заказу можем ответить после получения всех вводных данных.</em></p><ul>';
 
-
-
+                    $description .= '<ul>';
                         if($product->artikul != null) {
                         $description .= '<li><strong>Артикул: </strong>' . $product->artikul . '</li>';
                         }
@@ -161,21 +151,17 @@
                         if($product->country != null) {
                         $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
                         }
+                    $description .= '</ul>';
 
-                        $description .= '</ul>';
-
+                    $description .= '<br>';
 
                     $description .= '<p>Под крупный проект действуют специальные условия и скидки.</p>';
-//                    $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
-//                    $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
                     if($add_description != '') {
                     $description .= '<p>'.nl2br($add_description).'</p>';
                     }
 
-
                     $keywords = '';
-
 
                     if(stripos($product->collection_item, 'екор') !== false) {
                         $type = 'декор';
