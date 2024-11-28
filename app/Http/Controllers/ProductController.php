@@ -115,6 +115,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', 'Laparet'],
+            ['balanceCount', '>', 0],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
         ])
@@ -132,6 +133,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', 'Cersanit'],
+            ['balanceCount', '>', 0],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
         ])
@@ -149,6 +151,7 @@ class ProductController extends Controller
         $products = Product::where([
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', 'Vitra'],
+            ['balanceCount', '>', 0],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
         ])
