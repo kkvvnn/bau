@@ -39,16 +39,74 @@ class ArtcenterController extends Controller
         return redirect()->route('artcenter.index')->with('success', 'Таблица Artcenter обновлена. Ok!');
     }
 
-    public function index()
+    public function index_artcenter()
     {
-        $products = Artcenter::where([['brand', 'Art Ceramic'],
-            ['moscow_stock', '>=', 2],
+        $products = Artcenter::where([
+            ['brand', 'Art Ceramic'],
+//            ['moscow_stock', '>', 0],
             ['image1', '!=', ''],
             ['vendor_code', '!=', 'Spenze Gris 60x120'],
             ])
             ->paginate(15);
 
 //        dd($products);
+
+        return view('artcenter.index', compact('products'));
+    }
+
+    public function index_atlas_concorde_italy()
+    {
+        $products = Artcenter::where([
+            ['brand', 'Atlas Concorde Italy'],
+            ['image1', '!=', ''],
+        ])
+            ->paginate(15);
+
+        return view('artcenter.index', compact('products'));
+    }
+
+    public function index_atlas_concorde_russia()
+    {
+        $products = Artcenter::where([
+            ['brand', 'Atlas Concorde Russia'],
+            ['image1', '!=', ''],
+        ])
+            ->paginate(15);
+
+        return view('artcenter.index', compact('products'));
+    }
+
+    public function index_basconi_home()
+    {
+        $products = Artcenter::where([
+            ['brand', 'Basconi Home'],
+            ['image1', '!=', ''],
+        ])
+            ->paginate(15);
+
+        return view('artcenter.index', compact('products'));
+    }
+
+
+    public function index_cube_ceramica()
+    {
+        $products = Artcenter::where([
+            ['brand', 'Cube Ceramica'],
+            ['image1', '!=', ''],
+        ])
+            ->paginate(15);
+
+        return view('artcenter.index', compact('products'));
+    }
+
+
+    public function index_kerranova()
+    {
+        $products = Artcenter::where([
+            ['brand', 'Kerranova'],
+            ['image1', '!=', ''],
+        ])
+            ->paginate(15);
 
         return view('artcenter.index', compact('products'));
     }

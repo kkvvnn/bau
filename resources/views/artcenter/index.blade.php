@@ -63,30 +63,31 @@
                                 <h5 class="card-title pricing-card-title">{{$product->price}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
 
 
-                                @if($product->moscow_stock)
-                                    <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->moscow_stock}} {{$product->unit}}</p>
+                                @if(!$product->moscow_stock && !$product->spb_stock && !$product->kazan_stock && !$product->nn_stock && !$product->samara_stock)
+                                    <p class="mb-0 fs-5 text-body-secondary">Нет в наличии</p>
                                 @else
-                                    <p class="mb-0 fs-5 text-body-secondary">Москва: 0 {{$product->unit}}</p>
+                                    @if($product->moscow_stock)
+                                        <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->moscow_stock}} {{$product->unit}}</p>
+                                    @else
+                                        <p class="mb-0 fs-5 text-body-secondary">Москва: 0 {{$product->unit}}</p>
+                                    @endif
+
+                                    @if($product->spb_stock)
+                                        <p class="mb-0 fs-5 text-body-secondary">СПб: {{$product->spb_stock}} {{$product->unit}}</p>
+                                    @endif
+                                    @if($product->kazan_stock)
+                                        <p class="mb-0 fs-5 text-body-secondary">Казань: {{$product->kazan_stock}} {{$product->unit}}</p>
+                                    @endif
+                                    @if($product->nn_stock)
+                                        <p class="mb-0 fs-5 text-body-secondary">Нижний Новгород: {{$product->nn_stock}} {{$product->unit}}</p>
+                                    @endif
+                                    @if($product->samara_stock)
+                                        <p class="mb-0 fs-5 text-body-secondary">Самара: {{$product->samara_stock}} {{$product->unit}}</p>
+                                    @endif
                                 @endif
-{{--                                @if($product->spb_stock)--}}
-{{--                                    <p class="mb-0 fs-5 text-body-secondary">СПб: {{$product->spb_stock}} {{$product->unit}}</p>--}}
-{{--                                @endif--}}
-{{--                                @if($product->kazan_stock)--}}
-{{--                                    <p class="mb-0 fs-5 text-body-secondary">Казань: {{$product->kazan_stock}} {{$product->unit}}</p>--}}
-{{--                                @endif--}}
-{{--                                @if($product->nn_stock)--}}
-{{--                                    <p class="mb-0 fs-5 text-body-secondary">Нижний Новгород: {{$product->nn_stock}} {{$product->unit}}</p>--}}
-{{--                                @endif--}}
-{{--                                @if($product->samara_stock)--}}
-{{--                                    <p class="mb-0 fs-5 text-body-secondary">Самара: {{$product->samara_stock}} {{$product->unit}}</p>--}}
-{{--                                @endif--}}
-
-{{--                                @if(!$product->moscow_stock && !$product->spb_stock && !$product->kazan_stock && !$product->nn_stock && !$product->samara_stock)--}}
-{{--                                    <p class="mb-0 fs-5 text-body-secondary">Нет в наличии</p>--}}
-{{--                                @endif--}}
 
 
-                                <small class="fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
+                                <small class="fs-5 text-body-secondary"><span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
                             </div>
 
                         </div>

@@ -36,40 +36,32 @@ class ArtcenterDownloadImages extends Command
 //        ]);
 
 //        ---------DOWNLOAD_COLLECTION_IMAGES----------
-        $count = Artcenter::where('brand', 'Art Ceramic')
-            ->orWhere('brand', 'Prime Ceramics')
-            ->count();
-//        dd($count);
-        $chunk_size = (int)round($count / 10);
+        $products = Artcenter::where('brand', 'Art Ceramic')
+            ->orWhere('brand', 'Basconi Home')
+            ->orWhere('brand', 'Cube Ceramica')
+            ->orWhere('brand', 'Kerranova')
+//            ->orWhere('brand', 'Atlas Concorde Russia')
+            ->get();
 
-        $bar = $this->output->createProgressBar($count);
+
+        $bar = $this->output->createProgressBar($products->count());
         $bar->start();
 
-        $product = Artcenter::where('brand', 'Art Ceramic')
-            ->orWhere('brand', 'Prime Ceramics')
-            ->get();
-        $chunks = $product->chunk($chunk_size);
-//        dd($chunks);
-
-        foreach ($product->chunk($chunk_size) as $chunk) {
-            foreach ($chunk as $pr) {
-                $images = [];
-                if ($pr->image1 != '') {
-                    $images[] = $pr->image1;
-                }
-                if ($pr->image2 != '') {
-                    $images[] = $pr->image2;
-                }
-                if ($pr->image3 != '') {
-                    $images[] = $pr->image3;
-                }
-                if ($pr->image4 != '') {
-                    $images[] = $pr->image4;
-                }
-                foreach ($images as $i) {
-                    $this->download_images($i);
-                }
+        foreach ($products as $pr) {
+            $images = [];
+            if ($pr->image1 != '') {
+                $this->download_images($pr->image1);
             }
+            if ($pr->image2 != '') {
+                $this->download_images($pr->image2);
+            }
+            if ($pr->image3 != '') {
+                $this->download_images($pr->image3);
+            }
+            if ($pr->image4 != '') {
+                $this->download_images($pr->image4);
+            }
+
             $bar->advance();
         }
 
@@ -115,7 +107,8 @@ class ArtcenterDownloadImages extends Command
                 }
             }
         } catch (Exception $e) {
-            echo 'Error: ', $e->getMessage(), "\n";
+//            echo 'ERROR DOWNLOAD'."\n";
+//            echo 'Error: ', $e->getMessage(), "\n";
         }
     }
 }

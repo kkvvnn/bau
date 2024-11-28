@@ -297,7 +297,12 @@ Route::get('/kerabellezza/{id}', [\App\Http\Controllers\KerabellezzaController::
 
 //----- ARTCENTER -----
 Route::get('/artcenter-import', [\App\Http\Controllers\ArtcenterController::class, 'import']);
-Route::get('/artcenter', [\App\Http\Controllers\ArtcenterController::class, 'index'])->name('artcenter.index');
+Route::get('/artcenter', [\App\Http\Controllers\ArtcenterController::class, 'index_artcenter'])->name('artcenter.index');
+Route::get('/atlas-concorde-italy', [\App\Http\Controllers\ArtcenterController::class, 'index_atlas_concorde_italy'])->name('atlas-concorde-italy.index');
+Route::get('/atlas-concorde-russia', [\App\Http\Controllers\ArtcenterController::class, 'index_atlas_concorde_russia'])->name('atlas-concorde-russia.index');
+Route::get('/basconi-home', [\App\Http\Controllers\ArtcenterController::class, 'index_basconi_home'])->name('basconi-home.index');
+Route::get('/cube-ceramica', [\App\Http\Controllers\ArtcenterController::class, 'index_cube_ceramica'])->name('cube-ceramica.index');
+Route::get('/artcenter-kerranova', [\App\Http\Controllers\ArtcenterController::class, 'index_kerranova'])->name('artcenter-kerranova.index');
 Route::get('/artcenter/{id}', [\App\Http\Controllers\ArtcenterController::class, 'show'])->name('artcenter.show');
 Route::get('/artcenter/collection/{name}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');
 
