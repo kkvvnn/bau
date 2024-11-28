@@ -302,7 +302,7 @@
                                         <li><a class="nav-link" href="{{ route('artkera.index') }}">ARTKERA</a></li>
                                         <li><a class="nav-link" href="{{ route('ntceramic.index') }}">NT CERAMIC</a>
                                         </li>
-                                        <li><a class="nav-link" href="{{ route('kevis.index') }}">KEVIS</a></li>
+{{--                                        <li><a class="nav-link" href="{{ route('kevis.index') }}">KEVIS</a></li>--}}
                                         <li><a class="nav-link" href="{{ route('rusplitka.index') }}">RUSPLITKA</a></li>
                                         <li><a class="nav-link" href="{{ route('artcenter.index') }}">ART CENTRE</a>
                                         </li>
