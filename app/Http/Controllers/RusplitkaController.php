@@ -136,6 +136,7 @@ class RusplitkaController extends Controller
     public function index()
     {
         $products = Product::where('price_rozn', '!=', 0)
+            ->orderBy('size_a')
             ->paginate(15);
         return view('rusplitka.index2', compact('products'));
     }
