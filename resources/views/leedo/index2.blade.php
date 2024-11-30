@@ -39,14 +39,17 @@
 //                        -------------------------
                     @endphp
 
+                @php
+                    $img = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Basic_pic));
+                @endphp
+
                     <div class="col">
                         <div class="card h-100">
-                            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                            <a href="/leedo/show/{{$product->id}}">
-                                <img src="{{$product->Basic_pic}}" class="card-img-top" alt="...">
+                            <a href="{{ route('leedo.show', $product->id) }}">
+                                <img src="{{$img}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <a href="/leedo/show/{{$product->id}}" class="text-decoration-none text-reset">
+                                <a href="{{ route('leedo.show', $product->id) }}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->Brand_name}} {{$product->Item_name}}</h5>
                                 </a>
                             </div>

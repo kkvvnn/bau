@@ -30,10 +30,6 @@ class ArtkeraDownloadImages extends Command
      */
     public function handle(): void
     {
-//        $this->call('down', [
-//            '--refresh' => 15
-//        ]);
-
         $bar = $this->output->createProgressBar(Picture::count());
         $bar->start();
 
@@ -48,8 +44,6 @@ class ArtkeraDownloadImages extends Command
 
         $bar->finish();
         $this->info(' ----- Images downloaded! [OK]');
-
-//        $this->call('up');
     }
 
     public function download_images($name, $rotate = true): void

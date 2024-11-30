@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\LeedoProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class LeedoController extends Controller
 {
@@ -36,9 +37,9 @@ class LeedoController extends Controller
         return redirect()->route('leedo.index')->with('success', 'Таблица Leedo обновлена. Ok!');
     }
 
-    public function index($count = 0)
+    public function index()
     {
-        $products = LeedoProduct::where([['Sklad_Msk_LeeDo', '>=', $count]])
+        $products = LeedoProduct::where([['Sklad_Msk_LeeDo', '>=', 0]])
             ->paginate(15);
 
         return view('leedo.index2', compact('products'));
@@ -99,28 +100,28 @@ class LeedoController extends Controller
         $images = [];
 
         if ($product->Basic_pic != null) {
-            $images[] = $product->Basic_pic;
+            $images[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Basic_pic));
         }
         if ($product->Picture1 != null) {
-            $images[] = $product->Picture1;
+            $images[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture1));
         }
         if ($product->Picture2 != null) {
-            $images[] = $product->Picture2;
+            $images[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture2));
         }
         if ($product->Picture3 != null) {
-            $images[] = $product->Picture3;
+            $images[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture3));
         }
         if ($product->Picture4 != null) {
-            $images[] = $product->Picture4;
+            $images[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture4));
         }
         if ($product->Picture5 != null) {
-            $images[] = $product->Picture5;
+            $images[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture5));
         }
         if ($product->Picture6 != null) {
-            $images[] = $product->Picture6;
+            $images[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture6));
         }
         if ($product->Picture7 != null) {
-            $images[] = $product->Picture7;
+            $images[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture7));
         }
 
 

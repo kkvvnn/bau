@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use DateTimeZone;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,6 +14,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+         $schedule->command('bauservice:import')->dailyAt('05:00');
+         $schedule->command('artkera:import')->dailyAt('05:30');
     }
 
     /**
@@ -23,5 +26,13 @@ class Kernel extends ConsoleKernel
         $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
+    }
+
+    /**
+     * Get the timezone that should be used by default for scheduled events.
+     */
+    protected function scheduleTimezone(): DateTimeZone|string|null
+    {
+        return 'Europe/Moscow';
     }
 }

@@ -73,6 +73,14 @@ return [
             'throw' => false,
         ],
 
+        'leedo-images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/leedo'),
+            'url' => env('APP_URL').'/storage/images/leedo',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'global-tile' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/global-tile'),

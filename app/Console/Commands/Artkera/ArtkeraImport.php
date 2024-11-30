@@ -20,7 +20,7 @@ class ArtkeraImport extends Command
      *
      * @var string
      */
-    protected $description = 'Artkera import all to database';
+    protected $description = 'Artkera import all and download images';
 
     /**
      * Execute the console command.

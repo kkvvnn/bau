@@ -167,12 +167,6 @@ Route::get('/absolut-gres-import-scrap', [\App\Http\Controllers\AbsolutGresContr
 Route::get('/absolut-gres', [\App\Http\Controllers\AbsolutGresController::class, 'index'])->name('absolut_gres.index');
 Route::get('/absolut-gres/{id}', [\App\Http\Controllers\AbsolutGresController::class, 'show'])->name('absolut_gres.show');
 
-//----- LEEDO-CARAMELLE (Import from auto-updated .json) -----
-Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_from_ftp_to_database']);
-Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class, 'download_leedo_img']);
-Route::get('/leedo-index/{count?}', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
-Route::get('/leedo/show/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
-Route::get('/leedo/collection/{name}', [\App\Http\Controllers\LeedoController::class, 'collection'])->name('leedo.collection');
 
 
 
@@ -321,4 +315,12 @@ Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\ArtkeraController::cla
 Route::get('/artkera/collection/{name}', [\App\Http\Controllers\ArtkeraController::class, 'collection'])->name('artkera.collection');
 
 
-Route::get('/artkera-millennium', [\App\Http\Controllers\ArtkeraController::class, 'index_millennium'])->name('artkera.index');
+//Route::get('/artkera-millennium', [\App\Http\Controllers\ArtkeraController::class, 'index_millennium'])->name('artkera-millennium.index');
+
+
+//----- LEEDO-CARAMELLE (Import from auto-updated .json) -----
+//Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_from_ftp_to_database']);
+//Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class, 'download_leedo_img']);
+Route::get('/leedo', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
+Route::get('/leedo/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
+Route::get('/leedo/collection/{name}', [\App\Http\Controllers\LeedoController::class, 'collection'])->name('leedo.collection');
