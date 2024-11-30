@@ -55,6 +55,32 @@ class LeedoImport extends Command
         $json = Storage::disk('local')->get('import/leedo/price.json');
         $products = json_decode($json, true);
         foreach ($products as $product) {
+
+            if (isset($product['Basic_pic'])) {
+                $product['Basic_pic'] = str_replace('https://leedo.ru', 'https://www.leedo.ru', $product['Basic_pic']);
+            }
+            if (isset($product['Picture1'])) {
+                $product['Picture1'] = str_replace('https://leedo.ru', 'https://www.leedo.ru', $product['Picture1']);
+            }
+            if (isset($product['Picture2'])) {
+                $product['Picture2'] = str_replace('https://leedo.ru', 'https://www.leedo.ru', $product['Picture2']);
+            }
+            if (isset($product['Picture3'])) {
+                $product['Picture3'] = str_replace('https://leedo.ru', 'https://www.leedo.ru', $product['Picture3']);
+            }
+            if (isset($product['Picture4'])) {
+                $product['Picture4'] = str_replace('https://leedo.ru', 'https://www.leedo.ru', $product['Picture4']);
+            }
+            if (isset($product['Picture5'])) {
+                $product['Picture5'] = str_replace('https://leedo.ru', 'https://www.leedo.ru', $product['Picture5']);
+            }
+            if (isset($product['Picture6'])) {
+                $product['Picture6'] = str_replace('https://leedo.ru', 'https://www.leedo.ru', $product['Picture6']);
+            }
+            if (isset($product['Picture7'])) {
+                $product['Picture7'] = str_replace('https://leedo.ru', 'https://www.leedo.ru', $product['Picture7']);
+            }
+
             LeedoProduct::create($product);
         }
 
