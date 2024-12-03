@@ -78,7 +78,7 @@ class SkallaController extends Controller
 
         $text_color = '';
         $date_now = \Carbon\Carbon::now();
-        $date_of_update = $product->updated_at;
+        $date_of_update = $product->price->updated_at;
         $diff_days = $date_now->diffInDays($date_of_update);
 
         if ($diff_days == 0) {

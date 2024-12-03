@@ -110,7 +110,7 @@
 {{--                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>--}}
 
                     <p class="mt-4">Актуально на <span
-                            class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
+                            class="{{$text_color}} fw-bolder">{{$product->price->updated_at->format('d.m.Y')}}</span></p>
 
 
                     {{--                    <a title="Whatsapp" href="whatsapp://send?phone=79373209953&text={{$product->Name}}">--}}
