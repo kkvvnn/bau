@@ -113,6 +113,14 @@ return [
             'throw' => false,
         ],
 
+        'rusplitka' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/rusplitka'),
+            'url' => env('APP_URL').'/storage/images/rusplitka',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'skalla' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/skalla'),

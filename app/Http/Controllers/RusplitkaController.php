@@ -144,13 +144,11 @@ class RusplitkaController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        $img = $product->picture;
-        $imgs = explode(' | ', $img);
+        $imgs = $product->picture;
 //        dd($product);
 
         $collection = $product->collection;
         $img_collection = $collection->picture;
-        $img_collection = explode(' | ', $img_collection);
 
         $text_color = '';
         $date_now = \Carbon\Carbon::now();

@@ -1,68 +1,67 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Rusplitka;
 
-use App\Models\Artcenter;
+use App\Models\Rusplitka\Collection;
+use App\Models\Rusplitka\Product;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
-use Exception;
 
-class ArtcenterDownloadImages extends Command
+class RusplitkaDownloadImages extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'artcenter:download-images';
+    protected $signature = 'rusplitka:download-images';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Download images from ArtCenter';
+    protected $description = 'Rusplitka download images';
 
     /**
      * Execute the console command.
      */
-    public function handle(): void
+    public function handle()
     {
-        $products = Artcenter::where('brand', 'Art Ceramic')
-            ->orWhere('brand', 'Basconi Home')
-            ->orWhere('brand', 'Cube Ceramica')
-            ->orWhere('brand', 'Kerranova')
-//            ->orWhere('brand', 'Atlas Concorde Russia')
-            ->get();
+        $products = Product::get();
 
         $bar = $this->output->createProgressBar($products->count());
         $bar->start();
 
-        foreach ($products as $pr) {
-            if ($pr->image1 != '') {
-                $this->download_images($pr->image1, 'https://media.artcentre.club/', 'artcenter');
+        foreach ($products as $product) {
+            foreach ($product->picture as $img) {
+                $this->download_images($img, 'https://www.rusplitka.ru/upload/iblock/', 'rusplitka');
             }
-            if ($pr->image2 != '') {
-                $this->download_images($pr->image2, 'https://media.artcentre.club/', 'artcenter');
-            }
-            if ($pr->image3 != '') {
-                $this->download_images($pr->image3, 'https://media.artcentre.club/', 'artcenter');
-            }
-            if ($pr->image4 != '') {
-                $this->download_images($pr->image4, 'https://media.artcentre.club/', 'artcenter');
-            }
-
             $bar->advance();
         }
 
         $bar->finish();
-
         $this->info(' ----- Images downloaded! [OK]');
-    }
 
+
+        //        ---COLLECTION---
+        $products = Collection::get();
+
+        $bar = $this->output->createProgressBar($products->count());
+        $bar->start();
+
+        foreach ($products as $product) {
+            foreach ($product->picture as $img) {
+                $this->download_images($img, 'https://www.rusplitka.ru/upload/iblock/', 'rusplitka');
+            }
+            $bar->advance();
+        }
+
+        $bar->finish();
+        $this->info(' ----- Images Collection downloaded! [OK]');
+    }
 
     public function download_images(string $name, string $string_for_delete, string $disk): void
     {

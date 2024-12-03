@@ -24,9 +24,7 @@
                 @foreach($products as $product)
 
                     @php
-                        $img = $product->picture;
-                        $img = explode(' | ', $img);
-                        $url1 = $img[0];
+                        $img = Storage::disk('rusplitka')->url(Str::remove('https://www.rusplitka.ru/upload/iblock/', $product->picture[0]));
                     @endphp
 
                     @php
@@ -49,7 +47,7 @@
                         <div class="card h-100">
                             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                             <a href="/rusplitka/{{$product->id}}">
-                                <img src="{{$url1}}" class="card-img-top" alt="...">
+                                <img src="{{$img}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
                                 <a href="/rusplitka/{{$product->id}}" class="text-decoration-none text-reset">
