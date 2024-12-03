@@ -45,9 +45,11 @@ class ArtkeraTerritory extends Command
         ];
 
         foreach ($products as $product) {
-            if (Territory::wherePriceList($product['price_list'])->exists()) {
+
+            if ($product['type_price_id'] != '5945b787-12b2-11eb-80eb-00155d5d5700') {
                 continue;
             }
+
             Territory::create([
                 'price_list' => $product['price_list'],
                 'type_price' => $product['type_price'],
