@@ -45,6 +45,9 @@ class ArtkeraTerritory extends Command
         ];
 
         foreach ($products as $product) {
+            if (Territory::wherePriceList($product['price_list'])->exists()) {
+                continue;
+            }
             Territory::create([
                 'price_list' => $product['price_list'],
                 'type_price' => $product['type_price'],

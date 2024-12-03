@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Artkera;
 
+use App\Models\Artkera\ArtkeraTerritory as Territory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Artkera\ArtkeraDepot as Depot;
@@ -36,18 +37,21 @@ class ArtkeraDepot extends Command
         $products = json_decode($json, true);
 
         foreach ($products as $product) {
-                foreach ($product['depots'] as $depot) {
-                    Depot::create([
-                        'price_list' => $product['price_list'],
-                        'depot' => $depot['depot'],
-                        'depot_id' => $depot['depot_id'],
-                        'depot_adress' => $depot['depot_adress'],
-                        'depot_display' => $depot['depot_display'],
-                        'depot_lat' => $depot['depot_lat'],
-                        'depot_lon' => $depot['depot_lon'],
-                        'depot_deletion_mark' => $depot['depot_deletion_mark'],
-                    ]);
-                }
+            if (Territory::wherePriceList($product['price_list'])->exists()) {
+                continue;
+            }
+            foreach ($product['depots'] as $depot) {
+                Depot::create([
+                    'price_list' => $product['price_list'],
+                    'depot' => $depot['depot'],
+                    'depot_id' => $depot['depot_id'],
+                    'depot_adress' => $depot['depot_adress'],
+                    'depot_display' => $depot['depot_display'],
+                    'depot_lat' => $depot['depot_lat'],
+                    'depot_lon' => $depot['depot_lon'],
+                    'depot_deletion_mark' => $depot['depot_deletion_mark'],
+                ]);
+            }
         }
 
         $bar->finish();
