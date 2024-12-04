@@ -19,7 +19,8 @@
         "phpoffice/phpspreadsheet": "^1.29",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "symfony/http-foundation": "^6.2",
-        "ext-zip": "*"
+        "ext-zip": "*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",

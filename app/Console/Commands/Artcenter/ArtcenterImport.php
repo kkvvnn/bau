@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Artcenter;
 
 use App\Models\Artcenter;
+use App\Models\ArtCentreNew;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -32,7 +33,7 @@ class ArtcenterImport extends Command
 
         $bar = $this->output->createProgressBar(1);
 
-        Artcenter::truncate();
+        ArtCentreNew::truncate();
         $url = 'https://rdp.tpv.one/files/msk2474/Msk2474%20(XLSX).xlsx';
         $contents = file_get_contents($url);
 

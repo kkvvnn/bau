@@ -178,9 +178,9 @@ if (!function_exists('size_by_name')) {
                 return $length;
             }
 
-            return 'ERROR-1';
+            return 0;
         }
-        return 'ERROR-2';
+        return 0;
     }
 }
 
