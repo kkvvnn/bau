@@ -17,6 +17,10 @@ class Collection extends Model
 //        'picture' => 'array'
 //    ];
 
+    protected $casts = [
+        'picture' => 'array'
+    ];
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class, 'collection_id', 'code');

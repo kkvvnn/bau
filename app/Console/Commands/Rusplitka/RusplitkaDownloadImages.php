@@ -83,13 +83,13 @@ class RusplitkaDownloadImages extends Command
                         $constraint->upsize();
                     });
                     $exif = $image->exif();
-                    if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && ($exif['COMPUTED']['Width'] < $exif['COMPUTED']['Height'])) {
+                    if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && (($exif['COMPUTED']['Width'] / $exif['COMPUTED']['Height']) < 0.65)) {
                         $image->rotate(90);
                     }
-                    Storage::disk($disk)->put($file_name, $image->encode());
+                    Storage::disk($disk)->put(str_replace('.webp', '.jpg', $file_name), $image->encode());
                 }
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
 
         }
     }
