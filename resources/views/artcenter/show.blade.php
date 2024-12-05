@@ -103,25 +103,24 @@
                     <br>
 
 
-                    @if($product->moscow_stock)
-                        <h5 class="mb-0">Москва: {{$product->moscow_stock}} {{$product->unit}}</h5>
+                    @if($product->moscow)
+                        <h5 class="mb-0">Москва: {{$product->moscow}} {{$product->unit}}</h5>
                     @endif
-                    {{--                    @if($product->spb_stock)--}}
-                    {{--                        <h5 class="mb-0">СПб: {{$product->spb_stock}} {{$product->unit}}</h5>--}}
-                    {{--                    @endif--}}
-                    {{--                    @if($product->kazan_stock)--}}
-                    {{--                        <h5 class="mb-0">Казань: {{$product->kazan_stock}} {{$product->unit}}</h5>--}}
-                    {{--                    @endif--}}
-                    {{--                    @if($product->nn_stock)--}}
-                    {{--                        <h5 class="mb-0">Нижний Новгород: {{$product->nn_stock}} {{$product->unit}}</h5>--}}
-                    {{--                    @endif--}}
-                    {{--                    @if($product->samara_stock)--}}
-                    {{--                        <h5 class="mb-0">Самара: {{$product->samara_stock}} {{$product->unit}}</h5>--}}
-                    {{--                    @endif--}}
-
-                    {{--                    @if(!$product->moscow_stock && !$product->spb_stock && !$product->kazan_stock && !$product->nn_stock && !$product->samara_stock)--}}
-                    {{--                        <h5 class="mb-0">Нет в наличии</h5>--}}
-                    {{--                    @endif--}}
+                    @if($product->spb)
+                        <h5 class="mb-0">СПб: {{$product->spb}} {{$product->unit}}</h5>
+                    @endif
+                    @if($product->kazan)
+                        <h5 class="mb-0">Казань: {{$product->kazan}} {{$product->unit}}</h5>
+                    @endif
+                    @if($product->nn)
+                        <h5 class="mb-0">Нижний Новгород: {{$product->nn}} {{$product->unit}}</h5>
+                    @endif
+                    @if($product->samara)
+                        <h5 class="mb-0">Самара: {{$product->samara}} {{$product->unit}}</h5>
+                    @endif
+                    @if(!$product->moscow && !$product->spb && !$product->kazan && !$product->nn && !$product->samara)
+                        <h5 class="mb-0">Нет в наличии</h5>
+                    @endif
 
 
                     <p class="mt-4">Актуально на <span

@@ -46,15 +46,9 @@
         //                -----------------------------
         //              ------------------------------------------FOTO-------------------------------------
 
-                    $img = $product->picture;
-                    $img_collection = $product->collection->picture;
+                    $img = array_merge($product->picture, $product->collection->picture);
 
-                    $img = $img . ' | ' . $img_collection;
-
-                    $img_arr = [];
-                    $img_arr = explode(' | ', $img);
-
-                    $image_urls = avito_images_urls($img_arr);
+                    $image_urls = avito_images_urls($img);
 
                     $description = '';
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\ArtcenterImport;
 use App\Models\Artcenter;
+use App\Models\ArtCentreNew;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -41,10 +42,9 @@ class ArtcenterController extends Controller
 
     public function index_artcenter()
     {
-        $products = Artcenter::where([
+        $products = ArtCentreNew::where([
             ['brand', 'Art Ceramic'],
 //            ['moscow_stock', '>', 0],
-            ['image1', '!=', ''],
             ['vendor_code', '!=', 'Spenze Gris 60x120'],
             ])
             ->paginate(15);
@@ -102,9 +102,9 @@ class ArtcenterController extends Controller
 
     public function index_kerranova()
     {
-        $products = Artcenter::where([
+        $products = ArtCentreNew::where([
             ['brand', 'Kerranova'],
-            ['image1', '!=', ''],
+//            ['images', '!=', ''],
         ])
             ->paginate(15);
 
@@ -113,22 +113,15 @@ class ArtcenterController extends Controller
 
     public function show($id)
     {
-        $product = Artcenter::find($id);
+        $product = ArtCentreNew::find($id);
 
         $string_for_delete = 'https://media.artcentre.club/';
         $images = [];
-        if ($product->image1 != '') {
-            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image1));
+
+        foreach ($product->images as $img) {
+            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $img));
         }
-        if ($product->image2 != '') {
-            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image2));
-        }
-        if ($product->image3 != '') {
-            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image3));
-        }
-        if ($product->image4 != '') {
-            $images[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image4));
-        }
+
 
         $text_color = '';
         $date_now = \Carbon\Carbon::now();
@@ -148,7 +141,7 @@ class ArtcenterController extends Controller
 
     public function collection($name)
     {
-        $products = Artcenter::where([['collection', 'LIKE', $name],
+        $products = ArtCentreNew::where([['collection', 'LIKE', $name],
 //            ['moscow_stock', '>=', 2],
 //            ['image1', '!=', ''],
 //            ['vendor_code', '!=', 'Spenze Gris 60x120'],

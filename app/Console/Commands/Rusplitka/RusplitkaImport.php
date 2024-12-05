@@ -6,6 +6,7 @@ use App\Models\Rusplitka\Collection;
 use App\Models\Rusplitka\Product;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RusplitkaImport extends Command
 {
@@ -62,6 +63,8 @@ class RusplitkaImport extends Command
         foreach ($products as $product) {
             Product::create([
                 'code' => $product['@attributes']['id'],
+//                'slug' => str_replace('https://www.rusplitka.ru/products/', '', $product['url']),
+                'slug' => Str::slug($product['brand_name'].' '.$product['name'].' '.($product['articul'] ?? '')),
                 'collection_id' => $product['collection_id'],
 //                'picture' => is_array($product['picture']) ? implode(' | ', $product['picture']) : $product['picture'],
                 'picture' => is_array($product['picture']) ? $product['picture'] : array($product['picture']),

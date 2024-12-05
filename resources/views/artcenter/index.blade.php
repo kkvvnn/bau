@@ -25,7 +25,14 @@
 
                     @php
                         $string_for_delete = 'https://media.artcentre.club/';
-                        $name_file = Str::remove($string_for_delete, $product->image1);
+
+                        if (isset($product->images[0])) {
+                            $name_file = Str::remove($string_for_delete, $product->images[0]);
+                        } else {
+                            $name_file = '';
+                        }
+
+//                        $name_file = Str::remove($string_for_delete, $product->images[0]);
                         $image1 = Storage::disk('artcenter')->url($name_file);
                     @endphp
 
@@ -63,26 +70,26 @@
                                 <h5 class="card-title pricing-card-title">{{$product->price}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
 
 
-                                @if(!$product->moscow_stock && !$product->spb_stock && !$product->kazan_stock && !$product->nn_stock && !$product->samara_stock)
+                                @if(!$product->moscow && !$product->spb && !$product->kazan && !$product->nn && !$product->samara)
                                     <p class="mb-0 fs-5 text-body-secondary">Нет в наличии</p>
                                 @else
-                                    @if($product->moscow_stock)
-                                        <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->moscow_stock}} {{$product->unit}}</p>
+                                    @if($product->moscow)
+                                        <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->moscow}} {{$product->unit}}</p>
                                     @else
                                         <p class="mb-0 fs-5 text-body-secondary">Москва: 0 {{$product->unit}}</p>
                                     @endif
 
-                                    @if($product->spb_stock)
-                                        <p class="mb-0 fs-5 text-body-secondary">СПб: {{$product->spb_stock}} {{$product->unit}}</p>
+                                    @if($product->spb)
+                                        <p class="mb-0 fs-5 text-body-secondary">СПб: {{$product->spb}} {{$product->unit}}</p>
                                     @endif
-                                    @if($product->kazan_stock)
-                                        <p class="mb-0 fs-5 text-body-secondary">Казань: {{$product->kazan_stock}} {{$product->unit}}</p>
+                                    @if($product->kazan)
+                                        <p class="mb-0 fs-5 text-body-secondary">Казань: {{$product->kazan}} {{$product->unit}}</p>
                                     @endif
-                                    @if($product->nn_stock)
-                                        <p class="mb-0 fs-5 text-body-secondary">Нижний Новгород: {{$product->nn_stock}} {{$product->unit}}</p>
+                                    @if($product->nn)
+                                        <p class="mb-0 fs-5 text-body-secondary">Нижний Новгород: {{$product->nn}} {{$product->unit}}</p>
                                     @endif
-                                    @if($product->samara_stock)
-                                        <p class="mb-0 fs-5 text-body-secondary">Самара: {{$product->samara_stock}} {{$product->unit}}</p>
+                                    @if($product->samara)
+                                        <p class="mb-0 fs-5 text-body-secondary">Самара: {{$product->samara}} {{$product->unit}}</p>
                                     @endif
                                 @endif
 

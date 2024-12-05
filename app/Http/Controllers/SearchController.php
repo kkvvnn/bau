@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovar;
+use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
@@ -93,7 +94,9 @@ class SearchController extends Controller
             ]);
         }
 
-        $pixmosaic = PixmosaicNew::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $pixmosaic = PixmosaicNew::where('title', 'LIKE', $name)
+            ->orWhere('vendor_code', 'LIKE', $name)
+            ->paginate(15);
         $pixmosaic->appends(['name' => $name]);
         if (count($pixmosaic)) {
             return view('pixmosaic-new.index', [
@@ -102,10 +105,12 @@ class SearchController extends Controller
             ]);
         }
 
-        $rusplitka = \App\Models\Rusplitka\Product::where('name', 'LIKE', $name)->paginate(15);
+        $rusplitka = \App\Models\Rusplitka\Product::where('name', 'LIKE', $name)
+            ->orWhere('articul', 'LIKE', $name)
+            ->paginate(15);
         $rusplitka->appends(['name' => $name]);
         if (count($rusplitka)) {
-            return view('rusplitka.index', [
+            return view('rusplitka.index2', [
                 'products' => $rusplitka,
                 'search_name' => $search_name,
             ]);
@@ -132,7 +137,7 @@ class SearchController extends Controller
             ]);
         }
 
-        $artcenter = Artcenter::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $artcenter = ArtCentreNew::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
         $artcenter->appends(['name' => $name]);
         if (count($artcenter)) {
             return view('artcenter.index', [
