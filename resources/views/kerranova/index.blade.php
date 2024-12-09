@@ -41,11 +41,11 @@
 
                     <div class="col">
                         <div class="card h-100">
-                            <a href="/kerranova/{{$product->id}}">
+                            <a href="/kerranova/{{$product->slug}}">
                                 <img src="{{$img}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <a href="/kerranova/{{$product->id}}" class="text-decoration-none text-reset">
+                                <a href="/kerranova/{{$product->slug}}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->title}}</h5>
                                 </a>
                             </div>

@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Kerranova;
 use App\Models\PrimaveraNew;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -28,6 +29,7 @@ class KerranovaImport implements ToModel, WithHeadingRow, WithUpserts
             'brand' => $row['brand'],
             'collection' => $row['collection'],
             'title' => ucfirst(strtolower($row['brand'])) . ' ' . $row['collection'] . ' ' . $row['title'] . ' ' . str_replace('ая', 'ый', $row['surface']),
+            'slug' => Str::slug($row['brand'].' '.$row['collection'].' '.str_replace('/', '-', $row['title'])),
             'format' => $row['format'],
             'length' => (int) $row['length'],
             'width' => (int) $row['width'],

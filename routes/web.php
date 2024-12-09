@@ -245,8 +245,8 @@ Route::name('kerranova.')->group(function () {
     Route::controller(KerranovaController::class)->group(function () {
         Route::view('/kerranova/import', 'kerranova.import');
         Route::post('/kerranova/import-work', 'import_work')->name('import-work');
-        Route::get('/kerranova/index', 'index')->name('index');
-        Route::get('/kerranova/{id}', 'show')->name('show');
+        Route::get('/kerranova', 'index')->name('index');
+        Route::get('/kerranova/{slug:slug}', 'show')->name('show');
         Route::get('/kerranova/collection/{name}', 'collection')->name('collection');
     });
 

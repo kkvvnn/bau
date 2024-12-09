@@ -55,9 +55,9 @@ class KerranovaController extends Controller
         return view('kerranova.index', compact('products'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $product = Kerranova::find($id);
+        $product = Kerranova::whereSlug($slug)->firstOrFail();
 
         $string_for_delete = 'https://lk.kerranova.ru/storage/images/products/';
         $img = Storage::disk('kerranova')->url(Str::remove($string_for_delete, $product->images[0]));
