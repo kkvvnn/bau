@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
+            DB::statement('truncate table products');
             $table->text('Collection_Id')->nullable()->change();
         });
     }
@@ -22,6 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
+            DB::statement('truncate table products');
             $table->string('Collection_Id')->nullable()->change();
         });
     }
