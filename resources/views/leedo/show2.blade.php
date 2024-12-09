@@ -23,14 +23,19 @@
                 </div>
             @endif
 
+
+                @php
+                    $first_word = explode(' ', $product->Item_name)[0];
+                @endphp
+
             <div class="row">
                 <div class="col">
                     <h1 class="display-6">{{$product->Item_name}}</h1>
                     <hr>
                     <h1 class="display-6">{{$product->Brand_name}}</h1>
                     <p class="fs-2">Коллекция:
-                        <a href="{{route('leedo.collection', $product->Collection)}}"
-                           class="link-secondary text-decoration-none">{{$product->Collection}}
+                        <a href="{{route('leedo.collection', $first_word)}}"
+                           class="link-secondary text-decoration-none">{{$first_word}}
                         </a></p>
                     <hr>
 

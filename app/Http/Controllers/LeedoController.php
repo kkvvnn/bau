@@ -49,9 +49,9 @@ class LeedoController extends Controller
         return view('leedo.index2', compact('products'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $product = LeedoProduct::find($id);
+        $product = LeedoProduct::whereSlug($slug)->firstOrFail();
 
         $images = [];
 
@@ -102,7 +102,7 @@ class LeedoController extends Controller
 
     public function collection($name)
     {
-        $products = LeedoProduct::where('Collection', 'LIKE', '%'.$name.'%')
+        $products = LeedoProduct::where('Item_name', 'LIKE', $name.'%')
             ->paginate(15);
 
         return view('leedo.index2', compact('products'));

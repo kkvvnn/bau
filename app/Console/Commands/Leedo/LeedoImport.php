@@ -57,6 +57,8 @@ class LeedoImport extends Command
 
         foreach ($products as $product) {
 
+            $product['slug'] = Str::slug('leedo-'.$product['Item_name']);
+
             if (isset($product['Basic_pic'])) {
                 if (!str_starts_with($product['Basic_pic'], 'http')) {
                     $product['Basic_pic'] = str_replace('www.leedo.ru', 'https://www.leedo.ru', $product['Basic_pic']);

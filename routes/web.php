@@ -300,7 +300,7 @@ Route::get('/artkera/collection/{name}', [\App\Http\Controllers\ArtkeraControlle
 
 //----- LEEDO-CARAMELLE (Import from auto-updated .json) -----
 Route::get('/leedo', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
-Route::get('/leedo/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
+Route::get('/leedo/{slug:slug}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
 Route::get('/leedo/collection/{name}', [\App\Http\Controllers\LeedoController::class, 'collection'])->name('leedo.collection');
 
 
