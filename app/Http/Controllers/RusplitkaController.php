@@ -2,16 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\RusplitkaExcelExport;
-use App\Exports\RusplitkaExcelExport2;
-use App\Models\Rusplitka\Collection;
 use App\Models\Rusplitka\Product;
-use Illuminate\Http\Request;
-
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Maatwebsite\Excel\Facades\Excel;
 
 class RusplitkaController extends Controller
 {
@@ -30,7 +23,6 @@ class RusplitkaController extends Controller
         foreach ($product->picture as $img) {
             $imgs[] = Storage::disk('rusplitka')->url(Str::remove('https://www.rusplitka.ru/upload/iblock/', $img));
         }
-//        dd($product);
 
         $collection = $product->collection;
         $img_collection = [];
@@ -38,7 +30,6 @@ class RusplitkaController extends Controller
             $img_collection[] = Storage::disk('rusplitka')->url(Str::remove('https://www.rusplitka.ru/upload/iblock/', $img));
         }
 
-        $text_color = '';
         $date_now = \Carbon\Carbon::now();
         $date_of_update = $product->updated_at;
         $diff_days = $date_now->diffInDays($date_of_update);
@@ -56,7 +47,6 @@ class RusplitkaController extends Controller
         $sklad_20t_stock = (float)$product->rest_skald_20t - (float)$product->rest_skald_20t_rezerv;
         $krasnodar_stock = (float)$product->rest_skald_krasnodar - (float)$product->rest_skald_krasnodar_rezerv;
 
-//        return view('rusplitka.show2', compact('product', 'imgs', 'img_collection', 'text_color'));
         return view('rusplitka.show2', [
             'product' => $product,
             'imgs' => $imgs,
@@ -67,12 +57,6 @@ class RusplitkaController extends Controller
             'sklad_20t_stock' => $sklad_20t_stock,
             'krasnodar_stock' => $krasnodar_stock,
         ]);
-    }
-
-    public function export()
-    {
-        $date = date('Y-m-d_H-i-s');
-        return Excel::download(new RusplitkaExcelExport2, 'rusplitka-'.$date.'.xlsx');
     }
 
     public function collection($name)

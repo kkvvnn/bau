@@ -298,33 +298,19 @@ Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\ArtkeraController::cla
 Route::get('/artkera/collection/{name}', [\App\Http\Controllers\ArtkeraController::class, 'collection'])->name('artkera.collection');
 
 
-//Route::get('/artkera-millennium', [\App\Http\Controllers\ArtkeraController::class, 'index_millennium'])->name('artkera-millennium.index');
-
-
 //----- LEEDO-CARAMELLE (Import from auto-updated .json) -----
-//Route::get('/leedo-import-ftp', [\App\Http\Controllers\LeedoController::class, 'import_from_ftp_to_database']);
-//Route::get('/leedo-download-img', [\App\Http\Controllers\LeedoController::class, 'download_leedo_img']);
 Route::get('/leedo', [\App\Http\Controllers\LeedoController::class, 'index'])->name('leedo.index');
 Route::get('/leedo/{id}', [\App\Http\Controllers\LeedoController::class, 'show'])->name('leedo.show');
 Route::get('/leedo/collection/{name}', [\App\Http\Controllers\LeedoController::class, 'collection'])->name('leedo.collection');
 
 
 //----- ARTCENTER -----
-//Route::get('/artcenter-import', [\App\Http\Controllers\ArtcenterController::class, 'import']);
-//Route::get('/atlas-concorde-italy', [\App\Http\Controllers\ArtcenterController::class, 'index_atlas_concorde_italy'])->name('atlas-concorde-italy.index');
-//Route::get('/atlas-concorde-russia', [\App\Http\Controllers\ArtcenterController::class, 'index_atlas_concorde_russia'])->name('atlas-concorde-russia.index');
-//Route::get('/basconi-home', [\App\Http\Controllers\ArtcenterController::class, 'index_basconi_home'])->name('basconi-home.index');
-//Route::get('/cube-ceramica', [\App\Http\Controllers\ArtcenterController::class, 'index_cube_ceramica'])->name('cube-ceramica.index');
-//Route::get('/artcenter-kerranova', [\App\Http\Controllers\ArtcenterController::class, 'index_kerranova'])->name('artcenter-kerranova.index');
 Route::get('/artcenter', [\App\Http\Controllers\ArtcenterController::class, 'index_artcenter'])->name('artcenter.index');
-Route::get('/artcenter/{id}', [\App\Http\Controllers\ArtcenterController::class, 'show'])->name('artcenter.show');
+Route::get('/artcenter/{slug:slug}', [\App\Http\Controllers\ArtcenterController::class, 'show'])->name('artcenter.show');
 Route::get('/artcenter/collection/{name}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');
 
 
 //----- RUSPLITKA (Import from auto-updated .xml) -----
-//Route::get('/rusplitka/import', [\App\Http\Controllers\RusplitkaController::class, 'import']);
-//Route::get('/rusplitka/test', [\App\Http\Controllers\RusplitkaController::class, 'test']);
 Route::get('/rusplitka', [\App\Http\Controllers\RusplitkaController::class, 'index'])->name('rusplitka.index');
 Route::get('/rusplitka/{slug:slug}', [\App\Http\Controllers\RusplitkaController::class, 'show'])->name('rusplitka.show');
 Route::get('/rusplitka/collection/{name}', [\App\Http\Controllers\RusplitkaController::class, 'collection'])->name('rusplitka.collection');
-//Route::get('/rusplitka/export/excel', [\App\Http\Controllers\RusplitkaController::class, 'export'])->name('rusplitka.export');

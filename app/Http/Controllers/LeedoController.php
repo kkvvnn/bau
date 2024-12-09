@@ -39,58 +39,14 @@ class LeedoController extends Controller
 
     public function index()
     {
-        $products = LeedoProduct::where([['Sklad_Msk_LeeDo', '>=', 0]])
+        $products = LeedoProduct::where([
+            ['Category', 'like', 'Мозаика%'],
+            ['Sklad_Msk_LeeDo', '>=', 0],
+        ])
+
             ->paginate(15);
 
         return view('leedo.index2', compact('products'));
-    }
-
-    public function download_leedo_img()
-    {
-        set_time_limit(60);
-
-        $products = LeedoProduct::all();
-
-        $imgs = [];
-
-        foreach ($products as $product) {
-            if ($product->Basic_pic != null) {
-                $imgs[] = $product->Basic_pic;
-            }
-            if ($product->Picture1 != null) {
-                $imgs[] = $product->Picture1;
-            }
-            if ($product->Picture2 != null) {
-                $imgs[] = $product->Picture2;
-            }
-            if ($product->Picture3 != null) {
-                $imgs[] = $product->Picture3;
-            }
-            if ($product->Picture4 != null) {
-                $imgs[] = $product->Picture4;
-            }
-            if ($product->Picture5 != null) {
-                $imgs[] = $product->Picture5;
-            }
-            if ($product->Picture6 != null) {
-                $imgs[] = $product->Picture6;
-            }
-            if ($product->Picture7 != null) {
-                $imgs[] = $product->Picture7;
-            }
-        }
-//        dd($imgs);
-
-        foreach ($imgs as $img) {
-            if (Storage::disk('leedo')->missing($img)) {
-
-                $file = file_get_contents($img);
-                if ($file != null) {
-                    $str = substr($img, strrpos($img, '/') + 1);
-                    Storage::disk('leedo')->put($str, $file);
-                }
-            }
-        }
     }
 
     public function show($id)
@@ -125,7 +81,6 @@ class LeedoController extends Controller
         }
 
 
-        $text_color = '';
         $date_now = \Carbon\Carbon::now();
         $date_of_update = $product->updated_at;
         $diff_days = $date_now->diffInDays($date_of_update);
@@ -138,21 +93,9 @@ class LeedoController extends Controller
             $text_color = 'text-danger';
         }
 
-        $vendor_code = $product->System_ID;
-//        $path_dir = 'storage/Foto/' . $vendor_code;
-//        $directories = Storage::directories('public/Foto');
-        $files = Storage::disk('foto_leedo')->files('/' . $vendor_code);
-//        dd($files);
-        $fotossss = $files;
-        $fotos = [];
-        foreach ($fotossss as $f) {
-            $fotos[] = Storage::disk('foto_leedo')->url($f);
-        }
-
         return view('leedo.show2', [
             'product' => $product,
             'images' => $images,
-            'fotos' => $fotos,
             'text_color' => $text_color,
         ]);
     }

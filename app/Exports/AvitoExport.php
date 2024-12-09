@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Altacera\AltaceraTovarAvailable;
+use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
@@ -96,14 +97,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $leedo = LeedoProduct::where([
             ['Sklad_Msk_LeeDo', '>', 0],
             ['Category', 'like', 'Мозаика/%'],
-            ['System_ID', '!=', '00-00003849'],
-            ['System_ID', '!=', '00-00002578'],
             ])
             ->orWhere([
                 ['Sklad_SPb_LeeDo', '>', 0],
                 ['Category', 'like', 'Мозаика/%'],
-                ['System_ID', '!=', '00-00003849'],
-                ['System_ID', '!=', '00-00002578'],
                 ])
             ->get();
 
@@ -162,11 +159,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->get();
 
 //      ===================ARTCENTER====================
-        $artcenter = Artcenter::where([
+        $artcenter = ArtCentreNew::where([
             ['brand', 'Art Ceramic'],
-            ['moscow_stock', '>=', 2],
-            ['image1', '!=', ''],
-            ['vendor_code', '!=', 'Spenze Gris 60x120'],
+            ['moscow', '>=', 4],
         ])
             ->get();
 

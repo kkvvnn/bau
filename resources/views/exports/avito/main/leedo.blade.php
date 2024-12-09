@@ -48,33 +48,27 @@
         //              ------------------------------------------FOTO-------------------------------------
 
                     $img_arr = [];
-                    $img_arr[] = $product->Basic_pic;
+                    $img_arr[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Basic_pic));
                     if ($product->Picture1 != null) {
-                        $img_arr[] = $product->Picture1;
+                        $img_arr[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture1));
                     }
                     if ($product->Picture2 != null) {
-                        $img_arr[] = $product->Picture2;
+                        $img_arr[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture2));
                     }
                     if ($product->Picture3 != null) {
-                        $img_arr[] = $product->Picture3;
+                        $img_arr[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture3));
                     }
                     if ($product->Picture4 != null) {
-                        $img_arr[] = $product->Picture4;
+                        $img_arr[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture4));
                     }
                     if ($product->Picture5 != null) {
-                        $img_arr[] = $product->Picture5;
+                        $img_arr[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture5));
                     }
                     if ($product->Picture6 != null) {
-                        $img_arr[] = $product->Picture6;
+                        $img_arr[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture6));
                     }
                     if ($product->Picture7 != null) {
-                        $img_arr[] = $product->Picture7;
-                    }
-
-                    foreach ($img_arr as &$i) {
-                        if (!str_starts_with($i, 'http')) {
-                            $i = str_replace('www.leedo.ru', 'https://www.leedo.ru', $i);
-                        }
+                        $img_arr[] = Storage::disk('leedo-images')->url(Str::remove('https://www.leedo.ru/pictures/', $product->Picture7));
                     }
 
                     $image_urls = avito_images_urls($img_arr);

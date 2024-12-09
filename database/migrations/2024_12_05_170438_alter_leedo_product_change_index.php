@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('rusplitka_products', function (Blueprint $table) {
-            $table->dropUnique('rusplitka_products_code_unique');
-            $table->string('slug')->unique()->after('code');
+        Schema::table('leedo_products', function (Blueprint $table) {
+            $table->dropUnique(['System_ID']);
+            $table->string('slug')->unique()->after('System_ID');
         });
     }
 
@@ -22,10 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('rusplitka_products', function (Blueprint $table) {
+        Schema::table('leedo_products', function (Blueprint $table) {
 //            $table->dropUnique('slug');
             $table->dropColumn('slug');
-            $table->string('code')->unique()->change();
+            $table->string('System_ID')->unique()->change();
         });
     }
 };

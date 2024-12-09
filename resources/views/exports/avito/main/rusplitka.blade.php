@@ -46,9 +46,29 @@
         //                -----------------------------
         //              ------------------------------------------FOTO-------------------------------------
 
-                    $img = array_merge($product->picture, $product->collection->picture);
+                    $images = [];
+                    if (isset($product->picture)) {
+                        foreach ($product->picture as $img) {
+                            $images[] = Storage::disk('rusplitka')->url(Str::remove('https://www.rusplitka.ru/upload/iblock/', $img));
+                        }
+                    }
 
-                    $image_urls = avito_images_urls($img);
+                    $images_collection = [];
+                    if (isset($product->collection->picture)) {
+                        foreach ($product->collection->picture as $img) {
+                            $images_collection[] = Storage::disk('rusplitka')->url(Str::remove('https://www.rusplitka.ru/upload/iblock/', $img));
+                        }
+                    }
+
+                    if (count($images_collection)) {
+                        $images = array_merge(array_slice( $images, 0, 1 ),
+                            [ $images_collection[0] ],
+                            array_slice( $images, 1 )
+                        );
+                        $images = array_merge($images, $images_collection);
+                    }
+                    $image_urls = avito_images_urls($images);
+
 
                     $description = '';
 

@@ -49,8 +49,8 @@
 
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
-        if ($product->moscow_stock > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->moscow_stock, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+        if ($product->moscow > 0) {
+            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->moscow, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
         }
         $description .= '<p>--------------------</p>';
         $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от одной упаковки.<br>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже 1 упаковку. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
@@ -192,41 +192,10 @@
     @php
         $string_for_delete = 'https://media.artcentre.club/';
 
-        if ($product->image1 != '') {
-            $artcenter_img1 = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image1));
-        } else {
-            $artcenter_img1 = null;
-        }
-
-        if ($product->image2 != '') {
-            $artcenter_img2 = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image2));
-        } else {
-            $artcenter_img2 = null;
-        }
-
-        if ($product->image3 != '') {
-            $artcenter_img3 = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image3));
-        } else {
-            $artcenter_img3 = null;
-        }
-
-        if ($product->image4 != '') {
-            $artcenter_img4 = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $product->image4));
-        } else {
-            $artcenter_img4 = null;
-        }
-
         $img_arr = [];
-        $img_arr[] = $artcenter_img1;
 
-        if (isset($artcenter_img2) && $artcenter_img2 != null) {
-        $img_arr[] = $artcenter_img2;
-        }
-        if (isset($artcenter_img3) && $artcenter_img3 != null) {
-        $img_arr[] = $artcenter_img3;
-        }
-        if (isset($artcenter_img4) && $artcenter_img4 != null) {
-        $img_arr[] = $artcenter_img4;
+        foreach ($product->images as $img) {
+            $img_arr[] = Storage::disk('artcenter')->url(Str::remove($string_for_delete, $img));
         }
 
         $image_urls = avito_images_urls($img_arr);
