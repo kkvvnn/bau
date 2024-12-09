@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PixmosaicNewController extends Controller
 {
-    public function import_work(Request $request)
+    public function import(Request $request)
     {
         $file = $request->file('file');
 

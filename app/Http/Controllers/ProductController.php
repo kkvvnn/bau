@@ -29,67 +29,6 @@ class ProductController extends Controller
         ]);
     }
 
-    public function index_size(Request $request)
-    {
-        $type = '';
-
-        $products = Product::where([
-            ['Name', 'LIKE', '%керамогранит%'],
-            // ['Category', 'LIKE', '%керамогранит%'],
-            ['Lenght', $request->lenght],
-            ['Height', $request->height],
-            // ['Lenght', 80],
-            // ['Height', 80],
-        ])->orderByDesc('balanceCount')->paginate(15);
-
-        $products->appends(['lenght' => $request->lenght, 'height' => $request->height]);
-
-        // dd($request->height);
-
-        return $this->index($products, $type);
-    }
-
-    public function index_plitka()
-    {
-        $type = 'plitka';
-
-        $products = Product::where([
-            ['Name', 'LIKE', '%плитка%'],
-            ['Category', 'LIKE', '%плитка%'],
-            // ['Lenght', 80],
-            // ['Height', 80],
-        ])->orderByDesc('Height')->paginate(15);
-
-        return $this->index($products, $type);
-    }
-
-    public function index_mosaic()
-    {
-        $type = 'mosaic';
-
-        $products = Product::where([
-            ['Name', 'LIKE', '%мозаика%'],
-            ['Category', 'LIKE', '%мозаика%'],
-            // ['Lenght', 80],
-            // ['Height', 80],
-        ])->orderByDesc('Height')->paginate(15);
-
-        return $this->index($products, $type);
-    }
-
-    public function index_decor()
-    {
-        $type = 'decor';
-
-        $products = Product::where([
-            ['Name', 'LIKE', '%декор%'],
-            // ['Category', 'LIKE', '%мозаика%'],
-            // ['Lenght', 80],
-            // ['Height', 80],
-        ])->orderByDesc('Height')->paginate(15);
-
-        return $this->index($products, $type);
-    }
 
     public function index_all()
     {
@@ -175,21 +114,6 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
-    public function index_vivod()
-    {
-        $type = 'vivod';
-
-        $products = Product::where([['balanceCount', '>', 0], ['Vivod', 1], ['Lenght', '>=', 57], ['Height', '>=', 57]])->orderByRaw('balanceCount DESC')->paginate(15);
-//        $products = Product::where([['balanceCount', '>=', 0], ['Vivod', 1], ['Lenght', '>=', 60], ['Height', '>=', 60]])->orderByRaw('Lenght * Height DESC')->orderByRaw('balanceCount DESC')->get();
-//        dd($products);
-//        foreach ($products as $product) {
-//            echo $product->Name.'<br>';
-//        }
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
-        // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
-        return $this->index($products, $type);
-    }
 
     public function index_ceradim()
     {
@@ -235,32 +159,6 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
-    public function index_min($count = 0)
-    {
-        $type = 'vivod';
-
-        $products = Product::where([['balanceCount', '>', 0], ['Lenght', '>=', 60], ['Height', '>=', 60], ['balanceCount', '>=', $count]])->orderByRaw('RMPrice')->paginate(15);
-//        $products = Product::where([['balanceCount', '>=', 0], ['Vivod', 1], ['Lenght', '>=', 60], ['Height', '>=', 60]])->orderByRaw('Lenght * Height DESC')->orderByRaw('balanceCount DESC')->get();
-//        dd($products);
-//        foreach ($products as $product) {
-//            echo $product->Name.'<br>';
-//        }
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
-        // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
-        return $this->index($products, $type);
-    }
-
-    public function index_no_vivod()
-    {
-        $type = 'vivod';
-
-        $products = Product::where([['balanceCount', '>=', 0], ['Vivod', null]])->orderByRaw('Lenght * Height DESC')->orderByRaw('balanceCount DESC')->paginate(15);
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 500], ['Name', 'LIKE', '%литка%']])->paginate(15);
-        // $products = Product::where('balanceCount', '>', 20)->orderByRaw('(RMPrice - Price) DESC')->paginate(15);
-        return $this->index($products, $type);
-    }
 
     public function index_sale()
     {
@@ -280,24 +178,6 @@ class ProductController extends Controller
         ]);
     }
 
-    public function index_ker($price = 800, $count = 10)
-    {
-        $type = 'all';
-
-        // $products = Product::where([['balanceCount', '>', 30], ['Price', '<', 800], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
-        $products = Product::where([['balanceCount', '>', $count], ['Price', '<', $price], ['Name', 'LIKE', '%ерамогранит%']])->paginate(15);
-
-        return $this->index($products, $type);
-    }
-
-    public function index_plit($price = 500, $count = 10)
-    {
-        $type = 'all';
-
-        $products = Product::where([['balanceCount', '>', $count], ['Price', '<', $price], ['Name', 'LIKE', '%литка%']])->paginate(15);
-
-        return $this->index($products, $type);
-    }
 
     public function search(Request $request)
     {
@@ -494,27 +374,5 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-    }
-
-    public function mydown($name, $public_n)
-    {
-        set_time_limit(600);
-        if ($name == null) {
-            return;
-        }
-        $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
-        $name_file = Str::remove($string_for_delete, $name);
-
-        if ($name_file == null) {
-            return;
-        }
-
-        if (Storage::disk('public')->missing($public_n.'/'.$name_file)) {
-
-            $file = Storage::disk('ftp')->get($name_file);
-            if ($file != null) {
-                Storage::disk('public')->put($public_n.'/'.$name_file, $file);
-            }
-        }
     }
 }

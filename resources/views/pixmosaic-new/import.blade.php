@@ -10,7 +10,7 @@
             <h1 class="display-6">Pixmosaic обновление остатков</h1>
             <hr>
 
-            <form action="{{route('pixmosaic-new.import-work')}}" enctype="multipart/form-data" method="post">
+            <form action="" enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="mb-3">
                     <label for="file" class="form-label">Excel файл с остатками Pixmosaic</label>

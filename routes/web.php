@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\AvitoController;
-use App\Http\Controllers\CollectionController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\KerranovaController;
 use App\Http\Controllers\MyHelpController;
 use App\Http\Controllers\ProductController;
@@ -11,8 +9,6 @@ use App\Http\Controllers\PrimaveraNewController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\SkallaController;
 use App\Http\Controllers\TelegramSendController;
-use App\Http\Controllers\BauserviceSpbController;
-use App\Http\Middleware\BasicAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,38 +29,15 @@ Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
 Route::get('/laparet', [ProductController::class, 'laparet'])->name('laparet.index');
 Route::get('/cersanit', [ProductController::class, 'cersanit'])->name('cersanit.index');
 Route::get('/vitra', [ProductController::class, 'vitra'])->name('vitra.index');
-Route::get('/avito-index', [\App\Http\Controllers\AvitoIndexController::class, 'index_avito']);
-Route::get('/avito-index-no-moscow', [\App\Http\Controllers\AvitoIndexController::class, 'index_avito_not_in_moscow']);
 Route::get('/ceradim', [ProductController::class, 'index_ceradim'])->name('ceradim.index');
 Route::get('/kerama-marazzi', [ProductController::class, 'index_kerama_marazzi'])->name('kerama-marazzi.index');
+
 Route::get('/santech', [ProductController::class, 'index_santech'])->name('santech_index');
-Route::get('/min/{count?}', [ProductController::class, 'index_min'])->name('product_min');
+
 Route::get('/sale', [ProductController::class, 'index_sale'])->name('product_sale');
-Route::get('/vivod', [ProductController::class, 'index_vivod'])->name('product_vivod');
-Route::get('/no-vivod', [ProductController::class, 'index_no_vivod'])->name('product_no_vivod');
-Route::get('/keramogranit_index', [ProductController::class, 'index_keramogranit'])->name('index_keramogranit');
-Route::get('/plitka_index', [ProductController::class, 'index_plitka'])->name('index_plitka');
-Route::get('/mosaic_index', [ProductController::class, 'index_mosaic'])->name('index_mosaic');
-Route::get('/decor_index', [ProductController::class, 'index_decor'])->name('index_decor');
-//Route::get('/search', [ProductController::class, 'search']);
-Route::get('/size', [ProductController::class, 'index_size'])->name('index_size');
-Route::view('/size_form', 'size_form')->name('index_size_form');
+
 Route::get('/collection/{name:slug}', [ProductController::class, 'collection_name']);
 Route::get('/product/{slug:slug}', [ProductController::class, 'show'])->name('show');
-Route::get('/ddooww/{id?}', [Controller::class, 'down'])->name('img_url');
-Route::get('/index/{id?}', [Controller::class, 'index2']);
-Route::get('/index_collection', [CollectionController::class, 'index'])->name('index_collection');
-Route::get('/index_ker/{price?}/{count?}', [ProductController::class, 'index_ker'])->name('index_ker');
-Route::get('/index_plit/{price?}/{count?}', [ProductController::class, 'index_plit'])->name('index_plit');
-
-//----- BAUSERVICE-SPB -----
-Route::get('/bauservice-spb', [BauserviceSpbController::class, 'index'])->name('bauservice-spb.index');
-
-//----- BAUSERVICE-NN -----
-Route::get('/bauservice-nn', [\App\Http\Controllers\BauserviceNnController::class, 'index'])->name('bauservice-nn.index');
-
-//----- BAUSERVICE-KAZAN -----
-Route::get('/bauservice-kzn', [\App\Http\Controllers\BauserviceKznController::class, 'index'])->name('bauservice-kzn.index');
 
 
 //------------ AVITO ------------
@@ -125,14 +98,6 @@ Route::view('/text', 'av');
 //----- SEARCH_CONTROLLER -----
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
-//----- PRIMAVERA -----
-Route::get('/primavera/import', [\App\Http\Controllers\PrimaveraController::class, 'import']);
-Route::get('/primavera', [\App\Http\Controllers\PrimaveraController::class, 'index'])->name('primavera.index');
-Route::get('/primavera/download-pic', [\App\Http\Controllers\PrimaveraController::class, 'download_pic']);
-Route::get('/primavera/{id}', [\App\Http\Controllers\PrimaveraController::class, 'show'])->name('primavera.show');
-Route::get('/primavera-search', [\App\Http\Controllers\PrimaveraController::class, 'search'])->name('primavera.search');
-Route::view('/primavera-search-form','primavera.search')->name('primavera.search.form');
-
 //----- PHOTO -----
 Route::any('photo', [\App\Http\Controllers\PhotoController::class, 'store'])->name('save-foto');
 Route::any('photo-primavera', [\App\Http\Controllers\PhotoController::class, 'store_primavera'])->name('save-foto-primavera');
@@ -168,13 +133,6 @@ Route::get('/absolut-gres', [\App\Http\Controllers\AbsolutGresController::class,
 Route::get('/absolut-gres/{id}', [\App\Http\Controllers\AbsolutGresController::class, 'show'])->name('absolut_gres.show');
 
 
-
-
-//----- PIXMOSAIC -----
-Route::get('/pixmosaic/import', [\App\Http\Controllers\PixmosaicController::class, 'import']);
-Route::get('/pixmosaic', [\App\Http\Controllers\PixmosaicController::class, 'index'])->name('pixmosaic.index');
-Route::get('/pixmosaic/{id}', [\App\Http\Controllers\PixmosaicController::class, 'show'])->name('pixmosaic.show');
-
 //----- NTCERAMIC (Import from fixed .xlsx) -----
 Route::get('/ntceramic/import', [\App\Http\Controllers\NtCeramicController::class, 'import']);
 Route::get('/ntceramic', [\App\Http\Controllers\NtCeramicController::class, 'index'])->name('ntceramic.index');
@@ -205,7 +163,7 @@ Route::get('/empero/{id}', [\App\Http\Controllers\EmperoController::class, 'show
 
 //----- PIXMOSAIC NEW (Import from scrap .xlsx via form) -----
 Route::view('/pixmosaic-new/import', 'pixmosaic-new.import');
-Route::post('/pixmosaic-new/import-work', [\App\Http\Controllers\PixmosaicNewController::class, 'import_work'])->name('pixmosaic-new.import-work');
+Route::post('/pixmosaic-new/import', [\App\Http\Controllers\PixmosaicNewController::class, 'import'])->name('pixmosaic-new.import');
 Route::get('/pixmosaic-new/index', [\App\Http\Controllers\PixmosaicNewController::class, 'index'])->name('pixmosaic-new.index');
 Route::get('/pixmosaic-new/{id}', [\App\Http\Controllers\PixmosaicNewController::class, 'show'])->name('pixmosaic-new.show');
 Route::get('/pixmosaic-new/collection/{name}', [\App\Http\Controllers\PixmosaicNewController::class, 'collection'])->name('pixmosaic-new.collection');
@@ -215,7 +173,7 @@ Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoContr
 
 //----- GLOBAL-TILE (Import from .xls via form) -----
 Route::view('/global-tile/import', 'global-tile.import');
-Route::post('/global-tile/import-work', [\App\Http\Controllers\GlobalTileController::class, 'import_work'])->name('global-tile.import-work');
+Route::post('/global-tile/import', [\App\Http\Controllers\GlobalTileController::class, 'import'])->name('global-tile.import');
 Route::get('/global-tile/index', [\App\Http\Controllers\GlobalTileController::class, 'index'])->name('global-tile.index');
 Route::get('/global-tile/{id}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
 Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection');
@@ -285,12 +243,6 @@ Route::get('/kerabellezza/{id}', [\App\Http\Controllers\KerabellezzaController::
 
 //Route::view('/contacts', 'contacts');
 
-//----- ARTKERA (Import from auto-updated .json) -----
-//Route::get('/artkera-import-all', [\App\Http\Controllers\AltaceraImportController2::class, 'altacera_import_all']);
-//Route::get('/artkera-index', [\App\Http\Controllers\AltaceraController2::class, 'index'])->name('altacera.index');
-//Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\AltaceraController2::class, 'show'])->name('altacera.show');
-//Route::get('/artkera-download-img', [\App\Http\Controllers\AltaceraImportController::class, 'download_img']);
-//Route::get('/artkera/collection/{name}', [\App\Http\Controllers\AltaceraController2::class, 'collection'])->name('artkera.collection');
 
 //----- ARTKERA-NEW -----
 Route::get('/artkera', [\App\Http\Controllers\ArtkeraController::class, 'index'])->name('artkera.index');
