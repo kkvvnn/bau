@@ -9,6 +9,7 @@ use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
 use App\Models\GlobalTileNew;
+use App\Models\Keramopro;
 use App\Models\Kerranova;
 use App\Models\LeedoProduct;
 use App\Models\NTCeramic\NtCeramicNoImgs;
@@ -169,6 +170,15 @@ class SearchController extends Controller
         if (count($skalla)) {
             return view('skalla.index', [
                 'products' => $skalla,
+                'search_name' => $search_name,
+            ]);
+        }
+
+        $keramopro = Keramopro::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $keramopro->appends(['name' => $name]);
+        if (count($keramopro)) {
+            return view('keramopro.index', [
+                'products' => $keramopro,
                 'search_name' => $search_name,
             ]);
         }

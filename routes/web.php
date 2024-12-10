@@ -150,9 +150,8 @@ Route::get('/technotile/index', [\App\Http\Controllers\TechnotileController::cla
 Route::get('/technotile/{id}', [\App\Http\Controllers\TechnotileController::class, 'show'])->name('technotile.show');
 
 //----- KERAMOPRO (Import from auto-updated .xml) -----
-Route::get('/keramopro/import', [\App\Http\Controllers\KeramoproController::class, 'import']);
-Route::get('/keramopro/index', [\App\Http\Controllers\KeramoproController::class, 'index'])->name('keramopro.index');
-Route::get('/keramopro/{id}', [\App\Http\Controllers\KeramoproController::class, 'show'])->name('keramopro.show');
+Route::get('/keramopro', [\App\Http\Controllers\KeramoproController::class, 'index'])->name('keramopro.index');
+Route::get('/keramopro/{slug:slug}', [\App\Http\Controllers\KeramoproController::class, 'show'])->name('keramopro.show');
 Route::get('/keramopro/collection/{name}', [\App\Http\Controllers\KeramoproController::class, 'collection'])->name('keramopro.collection');
 
 //----- EMPERO (Import from scrap .xlsx via form) -----

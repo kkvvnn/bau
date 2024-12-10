@@ -1,18 +1,13 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Keramopro;
 
-use App\Models\Artcenter;
-use App\Models\GlobalTile;
 use App\Models\Keramopro;
-use App\Models\Kerranova;
-use App\Models\PrimaveraNew;
+use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
-use Exception;
 
 class KeramoproDownloadImages extends Command
 {

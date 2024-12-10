@@ -41,11 +41,11 @@
 
                     <div class="col">
                         <div class="card h-100">
-                            <a href="/keramopro/{{$product->id}}">
+                            <a href="/keramopro/{{$product->slug}}">
                                 <img src="{{$img}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <a href="/keramopro/{{$product->id}}" class="text-decoration-none text-reset">
+                                <a href="/keramopro/{{$product->slug}}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->title}} (толщина 2 см)</h5>
                                 </a>
                             </div>

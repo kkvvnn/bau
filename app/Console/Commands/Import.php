@@ -30,5 +30,6 @@ class Import extends Command
         $this->call('leedo:import');
         $this->call('artcenter:import');
         $this->call('rusplitka:import');
+        $this->call('keramopro:import');
     }
 }
