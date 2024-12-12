@@ -6,6 +6,7 @@ namespace App\Exports;
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\AquaFloor;
+use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\BauserviceSpb;
 use App\Models\Kevis;
@@ -17,6 +18,7 @@ use App\Models\Primavera;
 use App\Models\Product;
 use App\Traits\Avito\ExportConstruct;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
@@ -29,10 +31,36 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
     public function view(): View
     {
+
+//        ----- ARTKERA -----
         $artkera = ArtkeraTovarAvailable::all();
+
+//        $artkera = [];
+
+//        ----- ART CERAMIC -----
+
+        $artCeramic = ArtCentreNew::where('brand', 'Art Ceramic')
+//            ->where('vendor_code', '!=', 'Spenze Gris 60x120')
+            ->where(column: function (Builder $query) {
+                $stock = 1;
+                $query->orWhere('moscow', '>', $stock);
+                $query->orWhere('kazan', '>', $stock);
+                $query->orWhere('nn', '>', $stock);
+                $query->orWhere('samara', '>', $stock);
+                $query->orWhere('spb', '>', $stock);
+            })
+            ->whereJsonLength('images', '>', 0)
+            ->get();
+
+//        dd($artCeramic);
+
 
         $discounts_all = [
             'Artkera' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
+            'Art Ceramic' => [
                 'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
@@ -41,6 +69,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
         return view('exports.avito.millennium.millennium', [
 
             'artkera' => $artkera,
+            'artCeramic' => $artCeramic,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,

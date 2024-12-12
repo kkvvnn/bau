@@ -43,6 +43,7 @@
     <tbody>
 
         @include('exports.avito.millennium.artkera') //READY
+{{--        @include('exports.avito.millennium.artCeramic')--}}
 
     </tbody>
 </table>
