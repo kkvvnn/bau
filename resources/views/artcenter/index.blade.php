@@ -53,6 +53,7 @@
                      @php
                         $title = str_replace('Плитка ', '', $product->title);
                         $title = str_replace(' (1,44 кв.м.)', '', $title);
+                        $title = str_replace($product->brand, '', $title);
                      @endphp
 
                     <div class="col">
@@ -63,7 +64,7 @@
                             </a>
                             <div class="card-body">
                                 <a href="/artcenter/{{$product->slug}}" class="text-decoration-none text-reset">
-                                    <h5 class="card-title">{{$title}}</h5>
+                                    <h5 class="card-title">{{$product->brand.' '.$title}}</h5>
                                 </a>
                             </div>
                             <div class="card-footer">
@@ -75,8 +76,8 @@
                                 @else
                                     @if($product->moscow)
                                         <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->moscow}} {{$product->unit}}</p>
-                                    @else
-                                        <p class="mb-0 fs-5 text-body-secondary">Москва: 0 {{$product->unit}}</p>
+{{--                                    @else--}}
+{{--                                        <p class="mb-0 fs-5 text-body-secondary">Москва: 0 {{$product->unit}}</p>--}}
                                     @endif
 
                                     @if($product->spb)

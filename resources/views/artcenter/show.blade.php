@@ -34,7 +34,7 @@
                     <hr>
                     <h1 class="display-6">{{$product->brand}}</h1>
                     <p class="fs-2">Коллекция:
-                        <a href="{{route('artcenter.collection', $product->collection)}}"
+                        <a href="{{route('artcenter.collection', [$product->collection, $product->brand])}}"
                            class="link-secondary text-decoration-none">{{$product->collection}}
                             </a></p>
                     <hr>

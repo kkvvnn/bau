@@ -255,13 +255,13 @@ Route::get('/leedo/{slug:slug}', [\App\Http\Controllers\LeedoController::class, 
 Route::get('/leedo/collection/{name}', [\App\Http\Controllers\LeedoController::class, 'collection'])->name('leedo.collection');
 
 
-//----- ARTCENTER -----
-Route::get('/artcenter', [\App\Http\Controllers\ArtcenterController::class, 'index_artcenter'])->name('artcenter.index');
-Route::get('/artcenter/{slug:slug}', [\App\Http\Controllers\ArtcenterController::class, 'show'])->name('artcenter.show');
-Route::get('/artcenter/collection/{name}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');
-
-
 //----- RUSPLITKA (Import from auto-updated .xml) -----
 Route::get('/rusplitka', [\App\Http\Controllers\RusplitkaController::class, 'index'])->name('rusplitka.index');
 Route::get('/rusplitka/{slug:slug}', [\App\Http\Controllers\RusplitkaController::class, 'show'])->name('rusplitka.show');
 Route::get('/rusplitka/collection/{name}', [\App\Http\Controllers\RusplitkaController::class, 'collection'])->name('rusplitka.collection');
+
+
+//----- ARTCENTER -----
+Route::get('/artcenter/brand/{brand}', [\App\Http\Controllers\ArtcenterController::class, 'artcenter'])->name('artcenter.index');
+Route::get('/artcenter/{slug:slug}', [\App\Http\Controllers\ArtcenterController::class, 'show'])->name('artcenter.show');
+Route::get('/artcenter/collection/{name}/{brand}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');

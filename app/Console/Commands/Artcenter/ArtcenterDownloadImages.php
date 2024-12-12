@@ -83,10 +83,29 @@ class ArtcenterDownloadImages extends Command
                             $constraint->upsize();
                         });
                         $exif = $image->exif();
-                        if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && (($exif['COMPUTED']['Width'] / $exif['COMPUTED']['Height']) < 0.65)) {
+                        if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && (($exif['COMPUTED']['Width'] / $exif['COMPUTED']['Height']) < 0.55)) {
                             $image->rotate(90);
                         }
-                        Storage::disk($disk)->put(str_replace('.webp', '.jpg', $file_name), $image->encode());
+                        if (str_contains($file_name, '.webp')) {
+                            Storage::disk($disk)->put(str_replace('.webp', '.jpg', $file_name), $image->encode());
+
+                            $changes_webp = ArtCentreNew::whereJsonContains('images', $file_name)->get();
+                            foreach ($changes_webp as &$change_w) {
+                                $images_all = $change_w->images;
+
+                                foreach ($images_all as &$img_all) {
+                                    $img_all = str_replace('.webp', '.jpg', $img_all);
+                                }
+
+//                                dd($images_all[array_search($file_name, $images_all)]);
+
+                                $change_w->images = $images_all;
+                                $change_w->save();
+                            }
+                        } else {
+                            Storage::disk($disk)->put($file_name, $image->encode());
+                        }
+
                     }
                 } else {
                     $changes = ArtCentreNew::whereJsonContains('images', $file_name)->get();

@@ -2,23 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\ArtcenterImport;
-use App\Models\Artcenter;
 use App\Models\ArtCentreNew;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ArtcenterController extends Controller
 {
-    public function index_artcenter()
+    public function artcenter($brand)
     {
-        $products = ArtCentreNew::where([
-            ['brand', 'Art Ceramic'],
-//            ['moscow_stock', '>', 0],
-            ['vendor_code', '!=', 'Spenze Gris 60x120'],
-            ])
+        $brand = str_replace('-', ' ', $brand);
+
+        $products = ArtCentreNew::where('brand', $brand)
+            ->where('vendor_code', '!=', 'Spenze Gris 60x120')
+            ->where(column: function (Builder $query) {
+                $stock = 1;
+                $query->orWhere('moscow', '>', $stock);
+                $query->orWhere('kazan', '>', $stock);
+                $query->orWhere('nn', '>', $stock);
+                $query->orWhere('samara', '>', $stock);
+                $query->orWhere('spb', '>', $stock);
+            })
+            ->whereJsonLength('images', '>', 0)
+            ->orderByRaw('width * length DESC')
+            ->orderByDesc('moscow')
+            ->orderByDesc('kazan')
             ->paginate(15);
 
 //        dd($products);
@@ -52,10 +60,11 @@ class ArtcenterController extends Controller
         return view('artcenter.show', compact('product', 'images', 'text_color'));
     }
 
-    public function collection($name)
+    public function collection($name, $brand)
     {
         $products = ArtCentreNew::where([
             ['collection', 'LIKE', '%'.$name.'%'],
+            ['brand', 'LIKE', '%'.$brand.'%'],
         ])
             ->paginate(15);
 

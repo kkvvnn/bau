@@ -89,6 +89,7 @@ class ArtcenterImport implements ToModel, WithUpserts, SkipsEmptyRows
         $arr = [];
         foreach ($columns as $column) {
             $row[$column] = str_replace('#NULL!', '', $row[$column]);
+            $row[$column] = str_replace('\\', '/', $row[$column]);
             if ($row[$column] != '') {
                 $arr[] = str_replace($string_for_delete, '', $row[$column]);
             }
