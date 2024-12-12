@@ -77,7 +77,17 @@
                         <div class="card h-100">
                             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                             <a href="/product/{{$product->slug}}">
-                                <img src="{{$url1}}" class="card-img-top" alt="...">
+                                @if($product->Novinka)
+                                <span class="bag-image">
+                                    <img src="{{$url1}}" class="card-img-top" alt="...">
+                                </span>
+                                @elseif($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
+                                    <span class="bag-image-sale">
+                                    <img src="{{$url1}}" class="card-img-top" alt="...">
+                                </span>
+                                @else
+                                    <img src="{{$url1}}" class="card-img-top" alt="...">
+                                @endif
                             </a>
                             <div class="card-body">
                                 <a href="/product/{{$product->slug}}" class="text-decoration-none text-reset">
@@ -94,9 +104,19 @@
 {{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -5% {{round($product->RMPrice * 0.95, -1)}} ₽/{{$product->MainUnit}}</p>--}}
 {{--                                    <hr>--}}
 {{--                                @endif--}}
-                                @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)
-                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>
-                                @endif
+
+
+
+{{--                                @if($product->Novinka)--}}
+{{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2 text-uppercase">Новинка</p>--}}
+{{--                                @endif--}}
+
+{{--                                @if($product->RMPriceOld && $product->RMPriceOld != $product->RMPrice)--}}
+{{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">Распродажа</p>--}}
+{{--                                @endif--}}
+
+
+
 
                                 <p class="mb-0 fs-5 text-body-secondary">Москва: {{$product->balanceCount}} {{$product->MainUnit}} {{$vivod}}</p>
 

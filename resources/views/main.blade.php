@@ -57,6 +57,33 @@
 
 
     <style>
+
+        .bag-image{
+            text-align:center;
+        }
+        .bag-image::before{
+            content: 'НОВИНКА';
+            border-radius: 1px;
+            background: rgba(0, 0, 255, 0.6);
+            display: inline-block;
+            position: absolute;
+            color: #fff;
+            padding: 3px;
+        }
+
+        .bag-image-sale{
+            text-align:center;
+        }
+        .bag-image-sale::before{
+            content: 'РАСПРОДАЖА';
+            border-radius: 1px;
+            background: rgba(0, 128, 0, 0.6);
+            display: inline-block;
+            position: absolute;
+            color: #fff;
+            padding: 3px;
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('leedo_products', function (Blueprint $table) {
-//            $table->dropUnique(['System_ID']);
+            $table->dropUnique(['System_ID']);
             $table->string('slug')->unique()->after('System_ID');
         });
     }
