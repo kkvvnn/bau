@@ -163,7 +163,7 @@
             $keywords .= $type . ' ' . $owner_code . ' ';
         }
 
-        $country = 'Индия';
+        $country = 'Россия';
 
         if ($country != null) {
             $keywords .= $type . ' ' . $country . ' ';
