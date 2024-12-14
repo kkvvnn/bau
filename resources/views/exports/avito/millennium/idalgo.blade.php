@@ -10,7 +10,7 @@
         $InstallationType = avito_bauservice_for('На пол | На стену');
         $Width = avito_bauservice_size(null, 5, 200, $product->title, 'W');
         $Length = avito_bauservice_size(null, 5, 400, $product->title, 'L');
-        $Height = avito_bauservice_height((float)$product->fat * 10, 2, 30);
+        $Height = avito_bauservice_height($product->fat, 2, 30);
         $Pattern = avito_bauservice_pattern($product->title, '');
         $Color = avito_bauservice_color($product->color??'');
 
