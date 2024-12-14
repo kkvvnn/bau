@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\PixmosaicNew;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
@@ -20,6 +21,7 @@ class PixmosaicNewImport implements ToModel, WithHeadingRow, WithUpserts
             'vendor_code' => str_replace(' ', '', trim($row['vendor_code'])),
             'title' => $row['title'],
             'title2' => $row['title2'],
+            'slug' => Str::slug('pixmosaic'.'-'.$row['title2']),
 //            'price' => (int) str_replace("\xC2\xA0", '', $row['price']),
             'price' => (int) str_replace("\xC2\xA0", '', str_replace(" руб.", '', $row['price'])),
             'stock' => str_replace(' м2', '', $row['stock']),

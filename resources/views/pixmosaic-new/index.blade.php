@@ -39,11 +39,11 @@
 
                     <div class="col">
                         <div class="card h-100">
-                            <a href="/pixmosaic-new/{{$product->id}}">
+                            <a href="/pixmosaic/{{$product->slug}}">
                                 <img src="{{$img}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <a href="/pixmosaic-new/{{$product->id}}" class="text-decoration-none text-reset">
+                                <a href="/pixmosaic/{{$product->slug}}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->title2}}</h5>
                                 </a>
                             </div>

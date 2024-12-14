@@ -161,11 +161,11 @@ Route::get('/empero/index', [\App\Http\Controllers\EmperoController::class, 'ind
 Route::get('/empero/{id}', [\App\Http\Controllers\EmperoController::class, 'show'])->name('empero.show');
 
 //----- PIXMOSAIC NEW (Import from scrap .xlsx via form) -----
-Route::view('/pixmosaic-new/import', 'pixmosaic-new.import');
-Route::post('/pixmosaic-new/import', [\App\Http\Controllers\PixmosaicNewController::class, 'import'])->name('pixmosaic-new.import');
-Route::get('/pixmosaic-new/index', [\App\Http\Controllers\PixmosaicNewController::class, 'index'])->name('pixmosaic-new.index');
-Route::get('/pixmosaic-new/{id}', [\App\Http\Controllers\PixmosaicNewController::class, 'show'])->name('pixmosaic-new.show');
-Route::get('/pixmosaic-new/collection/{name}', [\App\Http\Controllers\PixmosaicNewController::class, 'collection'])->name('pixmosaic-new.collection');
+Route::view('/pixmosaic/import', 'pixmosaic-new.import');
+Route::post('/pixmosaic/import', [\App\Http\Controllers\PixmosaicNewController::class, 'import'])->name('pixmosaic-new.import');
+Route::get('/pixmosaic', [\App\Http\Controllers\PixmosaicNewController::class, 'index'])->name('pixmosaic-new.index');
+Route::get('/pixmosaic/{slug:slug}', [\App\Http\Controllers\PixmosaicNewController::class, 'show'])->name('pixmosaic-new.show');
+Route::get('/pixmosaic/collection/{name}', [\App\Http\Controllers\PixmosaicNewController::class, 'collection'])->name('pixmosaic-new.collection');
 
 //----- PIXMOSAIC VIDEO YOUTUBE -----
 Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoController::class, 'import']);
@@ -173,19 +173,19 @@ Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoContr
 //----- GLOBAL-TILE (Import from .xls via form) -----
 Route::view('/global-tile/import', 'global-tile.import');
 Route::post('/global-tile/import', [\App\Http\Controllers\GlobalTileController::class, 'import'])->name('global-tile.import');
-Route::get('/global-tile/index', [\App\Http\Controllers\GlobalTileController::class, 'index'])->name('global-tile.index');
-Route::get('/global-tile/{id}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
+Route::get('/global-tile', [\App\Http\Controllers\GlobalTileController::class, 'index'])->name('global-tile.index');
+Route::get('/global-tile/{slug:slug}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
 Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection');
 
 //----- PRIMAVERA -----
 Route::name('primavera-new.')->group(function () {
     //----- PRIMAVERA-NEW (Import from .xls via form) -----
     Route::controller(PrimaveraNewController::class)->group(function () {
-        Route::view('/primavera-new/import', 'primavera-new.import');
-        Route::post('/primavera-new/import', 'import')->name('import');
-        Route::get('/primavera-new/index', 'index')->name('index');
-        Route::get('/primavera-new/{slug:slug}', 'show')->name('show');
-        Route::get('/primavera-new/collection/{name}', 'collection')->name('collection');
+        Route::view('/primavera/import', 'primavera-new.import');
+        Route::post('/primavera/import', 'import')->name('import');
+        Route::get('/primavera', 'index')->name('index');
+        Route::get('/primavera/{slug:slug}', 'show')->name('show');
+        Route::get('/primavera/collection/{name}', 'collection')->name('collection');
     });
 
     //----- PRIMAVERA-PRICE-LIST (Import from .xls via form) -----
@@ -217,7 +217,7 @@ Route::name('skalla.')->group(function () {
     Route::controller(SkallaController::class)->group(function () {
         Route::view('/skalla/import', 'skalla.import');
         Route::post('/skalla/import', 'import');
-        Route::get('/skalla/index', 'index')->name('index');
+        Route::get('/skalla', 'index')->name('index');
         Route::get('/skalla/{slug:slug}', 'show')->name('show');
         Route::get('/skalla/collection/{name:slug}', 'collection')->name('collection');
 

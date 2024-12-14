@@ -332,6 +332,12 @@
 {{--                                        <li><a class="nav-link" href="{{ route('kevis.index') }}">KEVIS</a></li>--}}
                                         <li><a class="nav-link" href="{{ route('rusplitka.index') }}">RUSPLITKA</a></li>
 
+                                        <li><a class="nav-link" href="{{ route('global-tile.index') }}">GLOBAL TILE</a>
+                                        </li>
+                                        <li><a class="nav-link" href="{{ route('kerranova.index') }}">KERRANOVA</a></li>
+                                        <li><a class="nav-link" href="{{ route('keramopro.index') }}">NOVIN CERAM</a>
+                                        </li>
+
                                         <div class="border">
                                             <li><a class="nav-link" href="{{ route('artcenter.index', 'Art-Ceramic') }}">ART CERAMIC</a>
                                             </li>
@@ -375,11 +381,7 @@
 
 
 
-                                        <li><a class="nav-link" href="{{ route('global-tile.index') }}">GLOBAL TILE</a>
-                                        </li>
-                                        <li><a class="nav-link" href="{{ route('kerranova.index') }}">KERRANOVA</a></li>
-                                        <li><a class="nav-link" href="{{ route('keramopro.index') }}">NOVIN CERAM</a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>

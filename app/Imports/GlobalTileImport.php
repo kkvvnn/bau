@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\GlobalTile;
 use App\Models\GlobalTileNew;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
@@ -23,6 +24,7 @@ class GlobalTileImport implements ToModel, WithHeadingRow, WithUpserts
         return new GlobalTileNew([
             'code' => $row['Код'],
             'title' => $row['Наименование'],
+            'slug' => Str::slug($row['Бренд'].' '.$row['Наименование']),
             'vn_id' => $row['ID'],
             'vendor_code' => $row['Артикул'],
             'brand' => $row['Бренд'],

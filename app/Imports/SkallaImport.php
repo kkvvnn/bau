@@ -23,7 +23,7 @@ class SkallaImport implements ToModel, WithHeadingRow, WithUpserts
             'collection' => $row['collection'],
             'brand' => 'SKALLA',
             'title' => $row['title'],
-            'slug' => Str::slug($row['title']),
+            'slug' => Str::slug('skalla'.' '.$row['title']),
             'slug_collection' => Str::slug($row['collection']),
             'description' => $row['description'],
 //            'new' => (bool) $row['new'],

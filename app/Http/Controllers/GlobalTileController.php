@@ -51,9 +51,9 @@ class GlobalTileController extends Controller
         return view('global-tile.index', compact('products'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $product = GlobalTileNew::find($id);
+        $product = GlobalTileNew::whereSlug($slug)->firstOrFail();
 
         $string_for_delete = 'https://gallery.vogtrade.ru/wp-content/uploads/images/';
         $img = Storage::disk('global-tile')->url(Str::remove($string_for_delete, $product->Picture));

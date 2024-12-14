@@ -33,9 +33,9 @@ class PixmosaicNewController extends Controller
         return view('pixmosaic-new.index', compact('products'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $product = PixmosaicNew::find($id);
+        $product = PixmosaicNew::whereSlug($slug)->firstOrFail();
 
         $text_color = '';
         $date_now = \Carbon\Carbon::now();

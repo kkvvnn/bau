@@ -26,20 +26,13 @@ class One extends Command
      */
     public function handle()
     {
-        $products = ArtCentreNew::get()->groupBy('brand')->toArray();
+        $ch = curl_init(str_replace(' ', '%20', 'https://media.artcentre.club/pictures/atlas-concorde/atlas-concorde-russia/Symphonyx/Gold/Symphonyx_Gold_120x278_1.jpg'));
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+        curl_exec($ch);
 
-        dd(array_keys($products));
+        $http_code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+        curl_close($ch);
 
-        $products = ArtCentreNew::whereBrand('Art Ceramic')
-            ->whereJsonLength('images', '>', 0)
-            ->get();
-
-//        foreach ($products as $product) {
-//            if ($product->images === array()) {
-//                echo 22;
-//            }
-//        }
-
-        dd($products->count());
+        dd($http_code);
     }
 }
