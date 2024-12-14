@@ -29,19 +29,24 @@ class PixmosaicDownloadImages extends Command
      */
     public function handle()
     {
-        $this->call('down', [
-            '--refresh' => 15
-        ]);
+        $this->info('Pixmosaic images [START...]');
 
         $products = PixmosaicNew::all();
+
+        $bar = $this->output->createProgressBar($products->count());
+        $bar->start();
+
         foreach ($products as $product) {
             $link = $product->img;
             $path = str_replace(' ', '', $product->vendor_code) . '.jpg';
             $this->download_images($link, $path);
         }
 
-        $this->call('up');
-        $this->info('The command was successful!');
+        $bar->finish();
+
+        $this->newLine(1);
+        $this->info('Pixmosaic images downloaded! [OK]');
+        $this->newLine(1);
     }
 
     public function download_images($link, $path): void

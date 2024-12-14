@@ -31,6 +31,8 @@ class GlobalTileNewDownloadCollectionImages extends Command
      */
     public function handle(): void
     {
+        $this->info('Global-Tile images collections [START...]');
+
         $products_count = GlobalTileNew::where('image_collection', '!=', '')->count();
         $chunk_size = (int) round($products_count / 100);
 
@@ -47,9 +49,8 @@ class GlobalTileNewDownloadCollectionImages extends Command
 
         $bar->finish();
 
-
-//        $this->call('up');
-//        $this->info('-----[OK]');
+        $this->newLine(1);
+        $this->info('Global-Tile images collections downloaded! [OK]');
     }
 
     private function download_images_to_storage($name): void

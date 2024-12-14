@@ -25,12 +25,11 @@ class GlobalTile extends Command
      */
     public function handle(): void
     {
-        $this->call('down', [
-            '--refresh' => 15
-        ]);
 
         $this->call('global-tile:download-collection-images');
         $this->newLine(1);
+
+        $this->info('Global-Tile images [START...]');
 
         for ($i = 1; $i <= 24; $i++) {
             $this->call('global-tile:products-images', [
@@ -39,7 +38,7 @@ class GlobalTile extends Command
             $this->info(' ----- Picture'.$i.' [OK]');
         }
 
-        $this->newLine(2);
-        $this->call('up');
+        $this->info('Global-Tile images downloaded! [OK]');
+        $this->newLine(1);
     }
 }

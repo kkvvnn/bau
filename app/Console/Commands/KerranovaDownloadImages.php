@@ -34,36 +34,26 @@ class KerranovaDownloadImages extends Command
      */
     public function handle()
     {
-        $this->call('down', [
-            '--refresh' => 15
-        ]);
-
-//        ---------DOWNLOAD_COLLECTION_IMAGES----------
-
+        $this->info('Kerranova images [START...]');
         $errors = [];
-
-        $bar = $this->output->createProgressBar(Kerranova::count());
-        $bar->start();
 
         $products = Kerranova::get();
 
+        $bar = $this->output->createProgressBar($products->count());
+        $bar->start();
+
         foreach ($products as $product) {
             foreach ($product->images as $img) {
-//                dd($img);
                 $this->download_images($img, true, $errors);
             }
             $bar->advance();
         }
 
         $bar->finish();
-        $this->info(' ----- Images downloaded! [OK]');
 
-//        $this->newLine(2);
-//        dd($errors);
-//       -------------------------------------------------
-
-
-        $this->call('up');
+        $this->newLine(1);
+        $this->info('Kerranova images downloaded! [OK]');
+        $this->newLine(1);
     }
 
 

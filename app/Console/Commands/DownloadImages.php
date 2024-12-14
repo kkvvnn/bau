@@ -26,11 +26,12 @@ class DownloadImages extends Command
     public function handle()
     {
         $this->info('Download Images [START...]');
+        $this->info('--------------------------');
+        $this->newLine(1);
 
         $this->call('pixmosaic:download-images');
         $this->call('kerranova:download-images');
         $this->call('global-tile:download-images');
-        $this->call('global-tile:download-collection-images');
 
         $this->info('Download Images [OK]');
     }
