@@ -1,10 +1,10 @@
-{{-----ARTCENTER-MILLENNIUM-----}}
-@foreach($artCeramic as $product)
+{{-----CUBE-CERAMICA-MILLENNIUM-----}}
+@foreach($cubeCeramica as $product)
     @php
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
         $CeramicPorcelainTilesSubType = 'Керамогранит';
-        $Brand = 'Art Ceramic';
+        $Brand = 'Cube Ceramica';
         $TileType = '';
         $SpaceType = '';
         $InstallationType = avito_bauservice_for('На пол | На стену');
@@ -46,7 +46,7 @@
         $description .= '<p><strong>' . $product->brand . ' ' . $title .  '</strong></p>';
 
 
-        $title2 = str_replace('Плитка Artceramic', 'Керамогранит Арткерамик', $product->title);
+        $title2 = str_replace('Плитка', 'Керамогранит ', $product->title);
         $title2 = str_replace(' (1,44 кв.м.)', '', $title2);
         $title2 = str_replace('High Glossy', 'полированный', $title2);
         $title2 = str_replace('High Gloss', 'полированный', $title2);
@@ -111,15 +111,9 @@
 
         $keywords .= $size;
 
-        if ($product->brand == 'Art Ceramic') {
-            $keywords .= $type . ' арт керамик ';
-            $keywords .= $type . ' арткерамик ';
-        } elseif ($product->brand == 'Cersanit') {
-            $keywords .= $type . ' церсанит ';
-        } elseif ($product->brand == 'Vitra') {
-            $keywords .= $type . ' витра ';
-        } elseif ($product->brand == 'Ceradim') {
-            $keywords .= $type . ' керадим ';
+        if ($product->brand == 'Cube Ceramica') {
+            $keywords .= $type . ' куб керамика ';
+            $keywords .= $type . ' кубкерамика ';
         }
 
 
@@ -207,7 +201,7 @@
         $title = str_replace('Matt', 'матовый', $title);
 
         if (mb_strlen($title) > 50) {
-            $title = str_replace('Artceramic ', '', $title);
+            $title = str_replace('Cube Ceramica ', '', $title);
         }
         if (mb_strlen($title) > 50) {
             $title = str_replace('Полированный', 'полиров', $title);
@@ -218,14 +212,14 @@
     @endphp
 
     @php
-        $code = str_replace('ЦБ-', '', $product->code).'_art_ceramic_millennium';
+        $code = str_replace('ЦБ-', '', $product->code).'_cube_ceramica_millennium';
         $video = '';
     @endphp
 
     @php
         $price_rrc = $product->price;
         $price_old = 0;
-        $brand = 'Art Ceramic';
+        $brand = 'Cube Ceramica';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
@@ -267,4 +261,4 @@
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
-{{-----ARTCENTER-MILLENNIUM-END----}}
+{{-----CUBE-CERAMICA-MILLENNIUM-END----}}

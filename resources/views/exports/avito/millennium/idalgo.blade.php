@@ -1,16 +1,16 @@
-{{-----ARTCENTER-MILLENNIUM-----}}
-@foreach($artCeramic as $product)
+{{-----IDALGO-MILLENNIUM-----}}
+@foreach($idalgo as $product)
     @php
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
         $CeramicPorcelainTilesSubType = 'Керамогранит';
-        $Brand = 'Art Ceramic';
+        $Brand = 'Idalgo';
         $TileType = '';
         $SpaceType = '';
         $InstallationType = avito_bauservice_for('На пол | На стену');
         $Width = avito_bauservice_size(null, 5, 200, $product->title, 'W');
         $Length = avito_bauservice_size(null, 5, 400, $product->title, 'L');
-        $Height = avito_bauservice_height($product->fat*10, 2, 30);
+        $Height = avito_bauservice_height((float)$product->fat * 10, 2, 30);
         $Pattern = avito_bauservice_pattern($product->title, '');
         $Color = avito_bauservice_color($product->color??'');
 
@@ -46,7 +46,7 @@
         $description .= '<p><strong>' . $product->brand . ' ' . $title .  '</strong></p>';
 
 
-        $title2 = str_replace('Плитка Artceramic', 'Керамогранит Арткерамик', $product->title);
+        $title2 = str_replace('Плитка', 'Керамогранит', $product->title);
         $title2 = str_replace(' (1,44 кв.м.)', '', $title2);
         $title2 = str_replace('High Glossy', 'полированный', $title2);
         $title2 = str_replace('High Gloss', 'полированный', $title2);
@@ -91,7 +91,7 @@
 
             $description .= '<br>';
 
-            $description .= '<p>Под крупный проект действуют специальные условия и скидки.</p>';
+        $description .= '<p>Под крупный проект действуют специальные условия и скидки.</p>';
 
         if($add_description != '') {
         $description .= '<p>'.nl2br($add_description).'</p>';
@@ -111,15 +111,9 @@
 
         $keywords .= $size;
 
-        if ($product->brand == 'Art Ceramic') {
-            $keywords .= $type . ' арт керамик ';
-            $keywords .= $type . ' арткерамик ';
-        } elseif ($product->brand == 'Cersanit') {
-            $keywords .= $type . ' церсанит ';
-        } elseif ($product->brand == 'Vitra') {
-            $keywords .= $type . ' витра ';
-        } elseif ($product->brand == 'Ceradim') {
-            $keywords .= $type . ' керадим ';
+        if ($product->brand == 'Idalgo') {
+            $keywords .= $type . ' idalgo ';
+            $keywords .= $type . ' идальго ';
         }
 
 
@@ -207,7 +201,7 @@
         $title = str_replace('Matt', 'матовый', $title);
 
         if (mb_strlen($title) > 50) {
-            $title = str_replace('Artceramic ', '', $title);
+            $title = str_replace('Idalgo ', '', $title);
         }
         if (mb_strlen($title) > 50) {
             $title = str_replace('Полированный', 'полиров', $title);
@@ -215,17 +209,29 @@
         if (mb_strlen($title) > 50) {
             $title = str_replace('полированный', 'полиров', $title);
         }
+        if (mb_strlen($title) > 50) {
+            $title = str_replace('Керамогранит', '', $title);
+        }
+        if (mb_strlen($title) > 50) {
+            $title = str_replace('Идальго Хоум', 'Idalgo', $title);
+        }
+        if (mb_strlen($title) > 50) {
+            $title = str_replace('Идальго Граните', 'Idalgo', $title);
+        }
+        if (mb_strlen($title) > 50) {
+            $title = str_replace('Idalgo Граните', 'Idalgo', $title);
+        }
     @endphp
 
     @php
-        $code = str_replace('ЦБ-', '', $product->code).'_art_ceramic_millennium';
+        $code = str_replace('ЦБ-', '', $product->code).'_idalgo_millennium';
         $video = '';
     @endphp
 
     @php
         $price_rrc = $product->price;
         $price_old = 0;
-        $brand = 'Art Ceramic';
+        $brand = 'Idalgo';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
@@ -267,4 +273,4 @@
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
-{{-----ARTCENTER-MILLENNIUM-END----}}
+{{-----IDALGO-MILLENNIUM-END----}}

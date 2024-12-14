@@ -38,9 +38,11 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 //        $artkera = [];
 
 //        ----- ART CERAMIC -----
+        $price_min = 1000;
 
         $artCeramic = ArtCentreNew::where('brand', 'Art Ceramic')
 //            ->where('vendor_code', '!=', 'Spenze Gris 60x120')
+            ->where('price', '>=', $price_min)
             ->where(column: function (Builder $query) {
                 $stock = 1;
                 $query->orWhere('moscow', '>', $stock);
@@ -52,7 +54,31 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ->whereJsonLength('images', '>', 0)
             ->get();
 
-//        dd($artCeramic);
+        $cubeCeramica = ArtCentreNew::where('brand', 'Cube Ceramica')
+            ->where('price', '>=', $price_min)
+            ->where(column: function (Builder $query) {
+                $stock = 1;
+                $query->orWhere('moscow', '>', $stock);
+                $query->orWhere('kazan', '>', $stock);
+                $query->orWhere('nn', '>', $stock);
+                $query->orWhere('samara', '>', $stock);
+                $query->orWhere('spb', '>', $stock);
+            })
+            ->whereJsonLength('images', '>', 0)
+            ->get();
+
+        $idalgo = ArtCentreNew::where('brand', 'Idalgo')
+            ->where('price', '>=', $price_min)
+            ->where(column: function (Builder $query) {
+                $stock = 1;
+                $query->orWhere('moscow', '>', $stock);
+                $query->orWhere('kazan', '>', $stock);
+                $query->orWhere('nn', '>', $stock);
+                $query->orWhere('samara', '>', $stock);
+                $query->orWhere('spb', '>', $stock);
+            })
+            ->whereJsonLength('images', '>', 0)
+            ->get();
 
 
         $discounts_all = [
@@ -64,12 +90,22 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
+            'Cube Ceramica' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
+            'Idalgo' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
         ];
 
         return view('exports.avito.millennium.millennium', [
 
             'artkera' => $artkera,
             'artCeramic' => $artCeramic,
+            'cubeCeramica' => $cubeCeramica,
+            'idalgo' => $idalgo,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,

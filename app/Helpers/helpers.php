@@ -14,14 +14,18 @@ if (!function_exists('ucfirst_rus')) {
 if (!function_exists('avito_images_urls')) {
     /**
      * @param array $arr
+     * @param bool $shuffle
      * @return string
      */
-    function avito_images_urls(array $arr): string
+    function avito_images_urls(array $arr, bool $shuffle = false): string
     {
         $arr = array_unique($arr);
         $arr = array_slice($arr, 0, 10);
         foreach ($arr as &$a) {
             $a = str_replace(' ', '%20', $a);
+        }
+        if ($shuffle) {
+            shuffle($arr);
         }
         return implode(' | ', $arr);
     }

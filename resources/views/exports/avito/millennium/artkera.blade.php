@@ -103,23 +103,26 @@
         if($add_description_first != '') {
         $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
+
+        $date = date('d.m.Y');
+        $description .= '<p><strong>На '.$date.' доступно: </strong></p>';
+        $description .= '<ul>';
+        $description .= '<li>Склад Казань: ' . $product->kazan + $product->kazan_sale . ' ' . $product->unit . '</li>';
+        $description .= '<li>Склад Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve + $product->moscow_way) . ' ' . $product->unit . '</li>';
+        if($product->kazan_way) {
+            $description .= '<li>Казань (в пути): ' . $product->kazan_way . ' ' . $product->unit . '</li>';
+        }
+        $description .= '</ul>';
+        $description .= '<p><em>(актуальную информацию о наличии уточняйте у менеджера)</em></p>';
+
+        $description .= '<br>';
+
                     $description .= '<p><strong>' . $product->title . '</strong></p>';
                     $description .= '<p><strong>Коллекция: </strong>'.$product->category_r->parent.' - '.$product->category. '</p>';
 
 
 
-                    $date = date('d.m.Y');
-                    $description .= '<p>На '.$date.' доступно: </p>';
-                    $description .= '<ul>';
-                        $description .= '<li>Склад Казань: ' . $product->kazan + $product->kazan_sale . ' ' . $product->unit . '</li>';
-                        $description .= '<li>Склад Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve + $product->moscow_way) . ' ' . $product->unit . '</li>';
-                        if($product->kazan_way) {
-                            $description .= '<li>Казань (в пути): ' . $product->kazan_way . ' ' . $product->unit . '</li>';
-                        }
-                    $description .= '</ul>';
-                    $description .= '<p><em>(актуальную информацию о наличии уточняйте у менеджера)</em></p>';
 
-                    $description .= '<br>';
 
                     $description .= '<p><em>Цена в объявлении указана за 1 '.$product->unit.'.</em></p>';
 
