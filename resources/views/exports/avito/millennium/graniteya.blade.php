@@ -1,15 +1,15 @@
-{{-----ARTCENTER-MILLENNIUM-----}}
-@foreach($artCeramic as $product)
+{{-----GRANITEYA-MILLENNIUM-----}}
+@foreach($graniteya as $product)
     @php
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
         $CeramicPorcelainTilesSubType = 'Керамогранит';
-        $Brand = 'Art Ceramic';
+        $Brand = 'Гранитея';
         $TileType = '';
         $SpaceType = '';
         $InstallationType = avito_bauservice_for('На пол | На стену');
-        $Width = avito_bauservice_size(null, 5, 200, $product->title, 'W');
-        $Length = avito_bauservice_size(null, 5, 400, $product->title, 'L');
+        $Width = avito_bauservice_size(null, 5, 200, $product->title, 'W') / 10;
+        $Length = avito_bauservice_size(null, 5, 400, $product->title, 'L') / 10;
         $Height = avito_bauservice_height($product->fat, 2, 30);
         $Pattern = avito_bauservice_pattern($product->title, '');
         $Color = avito_bauservice_color($product->color??'');
@@ -27,8 +27,6 @@
         if($add_description_first != '') {
         $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
-
-//        $description .= '<p>Керамическая плитка и керамогранит Art Ceramic , Арткерамик. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
 
         $title = str_replace('Плитка ', 'Керамогранит ', $product->title);
         $title = str_replace(' (1,44 кв.м.)', '', $title);
@@ -59,7 +57,7 @@
         $description .= '<p><strong>' . $product->brand . ' ' . $title .  '</strong></p>';
 
 
-        $title2 = str_replace('Плитка Artceramic', 'Керамогранит Арткерамик', $product->title);
+        $title2 = str_replace('Плитка Гранитея', 'Гранитея', $product->title);
         $title2 = str_replace(' (1,44 кв.м.)', '', $title2);
         $title2 = str_replace('High Glossy', 'полированный', $title2);
         $title2 = str_replace('High Gloss', 'полированный', $title2);
@@ -124,16 +122,8 @@
 
         $keywords .= $size;
 
-        if ($product->brand == 'Art Ceramic') {
-            $keywords .= $type . ' арт керамик ';
-            $keywords .= $type . ' арткерамик ';
-        } elseif ($product->brand == 'Cersanit') {
-            $keywords .= $type . ' церсанит ';
-        } elseif ($product->brand == 'Vitra') {
-            $keywords .= $type . ' витра ';
-        } elseif ($product->brand == 'Ceradim') {
-            $keywords .= $type . ' керадим ';
-        }
+            $keywords .= $type . ' Гранитея ';
+            $keywords .= $type . ' Graniteya ';
 
 
 
@@ -182,11 +172,9 @@
             $keywords .= $type . ' ' . $owner_code . ' ';
         }
 
-        $country = 'Индия';
+        $country = 'Россия';
 
-        if ($country != null) {
-            $keywords .= $type . ' ' . $country . ' ';
-        }
+        $keywords .= $type . ' ' . $country . ' ';
 
         if (stripos($product->title, 'alacatta') || stripos($product->title, 'alacata')) {
             $keywords .= ' керамогранит калаката плитка калаката керамогранит калакатта плитка калакатта';
@@ -220,7 +208,13 @@
         $title = str_replace('Matt', 'матовый', $title);
 
         if (mb_strlen($title) > 50) {
-            $title = str_replace('Artceramic ', '', $title);
+            $title = str_replace(' (2,16 кв.м.)', '', $title);
+        }
+        if (mb_strlen($title) > 50) {
+            $title = str_replace(' (1,44 кв.м)', '', $title);
+        }
+        if (mb_strlen($title) > 50) {
+            $title = str_replace('Керамогранит ', '', $title);
         }
         if (mb_strlen($title) > 50) {
             $title = str_replace('Полированный', 'полиров', $title);
@@ -231,14 +225,14 @@
     @endphp
 
     @php
-        $code = str_replace('ЦБ-', '', $product->code).'_art_ceramic_millennium';
+        $code = str_replace('ЦБ-', '', $product->code).'_graniteya_millennium';
         $video = '';
     @endphp
 
     @php
         $price_rrc = $product->price;
         $price_old = 0;
-        $brand = 'Art Ceramic';
+        $brand = 'ГРАНИТЕЯ';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
@@ -280,4 +274,4 @@
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
-{{-----ARTCENTER-MILLENNIUM-END----}}
+{{-----GRANITEYA-MILLENNIUM-END----}}

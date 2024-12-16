@@ -1,10 +1,10 @@
-{{-----ARTCENTER-MILLENNIUM-----}}
-@foreach($artCeramic as $product)
+{{-----QUA-MILLENNIUM-----}}
+@foreach($qua as $product)
     @php
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
         $CeramicPorcelainTilesSubType = 'Керамогранит';
-        $Brand = 'Art Ceramic';
+        $Brand = 'QUA';
         $TileType = '';
         $SpaceType = '';
         $InstallationType = avito_bauservice_for('На пол | На стену');
@@ -27,8 +27,6 @@
         if($add_description_first != '') {
         $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
-
-//        $description .= '<p>Керамическая плитка и керамогранит Art Ceramic , Арткерамик. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
 
         $title = str_replace('Плитка ', 'Керамогранит ', $product->title);
         $title = str_replace(' (1,44 кв.м.)', '', $title);
@@ -59,7 +57,7 @@
         $description .= '<p><strong>' . $product->brand . ' ' . $title .  '</strong></p>';
 
 
-        $title2 = str_replace('Плитка Artceramic', 'Керамогранит Арткерамик', $product->title);
+        $title2 = str_replace('Плитка Qua', 'Qua', $product->title);
         $title2 = str_replace(' (1,44 кв.м.)', '', $title2);
         $title2 = str_replace('High Glossy', 'полированный', $title2);
         $title2 = str_replace('High Gloss', 'полированный', $title2);
@@ -124,16 +122,8 @@
 
         $keywords .= $size;
 
-        if ($product->brand == 'Art Ceramic') {
-            $keywords .= $type . ' арт керамик ';
-            $keywords .= $type . ' арткерамик ';
-        } elseif ($product->brand == 'Cersanit') {
-            $keywords .= $type . ' церсанит ';
-        } elseif ($product->brand == 'Vitra') {
-            $keywords .= $type . ' витра ';
-        } elseif ($product->brand == 'Ceradim') {
-            $keywords .= $type . ' керадим ';
-        }
+            $keywords .= $type . ' QUA ';
+            $keywords .= $type . ' Qua ';
 
 
 
@@ -182,11 +172,9 @@
             $keywords .= $type . ' ' . $owner_code . ' ';
         }
 
-        $country = 'Индия';
+        $country = 'Турция';
 
-        if ($country != null) {
-            $keywords .= $type . ' ' . $country . ' ';
-        }
+        $keywords .= $type . ' ' . $country . ' ';
 
         if (stripos($product->title, 'alacatta') || stripos($product->title, 'alacata')) {
             $keywords .= ' керамогранит калаката плитка калаката керамогранит калакатта плитка калакатта';
@@ -231,14 +219,14 @@
     @endphp
 
     @php
-        $code = str_replace('ЦБ-', '', $product->code).'_art_ceramic_millennium';
+        $code = str_replace('ЦБ-', '', $product->code).'_qua_millennium';
         $video = '';
     @endphp
 
     @php
         $price_rrc = $product->price;
         $price_old = 0;
-        $brand = 'Art Ceramic';
+        $brand = 'Qua';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
@@ -280,4 +268,4 @@
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
-{{-----ARTCENTER-MILLENNIUM-END----}}
+{{-----QUA-MILLENNIUM-END----}}

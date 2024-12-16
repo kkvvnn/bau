@@ -36,8 +36,21 @@
         $date = date('d.m.Y');
         $description .= '<p><strong>На '.$date.' доступно: </strong></p>';
         $description .= '<ul>';
-            $description .= '<li>Склад Казань: ' . round($product->kazan, 2).' '.$product->unit. '</li>';
-            $description .= '<li>Склад Москва: ' . round($product->moscow, 2).' '.$product->unit. '</li>';
+            if ($product->kazan) {
+                $description .= '<li>Склад Казань: ' . round($product->kazan, 2).' '.$product->unit. '</li>';
+            }
+            if ($product->moscow) {
+                $description .= '<li>Склад Москва: ' . round($product->moscow, 2).' '.$product->unit. '</li>';
+            }
+            if ($product->samara) {
+                $description .= '<li>Склад Самара: ' . round($product->samara, 2).' '.$product->unit. '</li>';
+            }
+            if ($product->nn) {
+                $description .= '<li>Склад Нижний Новгород: ' . round($product->nn, 2).' '.$product->unit. '</li>';
+            }
+            if ($product->spb) {
+                $description .= '<li>Склад СПб: ' . round($product->spb, 2).' '.$product->unit. '</li>';
+            }
         $description .= '</ul>';
         $description .= '<p><em>(актуальную информацию о наличии уточняйте у менеджера)</em></p>';
 

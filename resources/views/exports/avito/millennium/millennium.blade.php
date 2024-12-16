@@ -46,6 +46,9 @@
         @include('exports.avito.millennium.artCeramic') //READY
         @include('exports.avito.millennium.CubeCeramica')
         @include('exports.avito.millennium.idalgo')
+        @include('exports.avito.millennium.qua')
+        @include('exports.avito.millennium.dako')
+        @include('exports.avito.millennium.graniteya')
 
     </tbody>
 </table>
