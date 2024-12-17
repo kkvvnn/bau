@@ -122,31 +122,31 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
         $discounts_all = [
             'Artkera' => [
-                'discount' => 0,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
             'Art Ceramic' => [
-                'discount' => 0,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
             'Cube Ceramica' => [
-                'discount' => 0,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
             'Idalgo' => [
-                'discount' => 0,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
             'Qua' => [
-                'discount' => 0,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
             'DAKO' => [
-                'discount' => 0,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
             'ГРАНИТЕЯ' => [
-                'discount' => 0,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
         ];
