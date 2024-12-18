@@ -59,8 +59,8 @@
                                 @if($product->price->price !== null)
                                     <h5 class="card-title pricing-card-title">
                                         {{$product->price->price}} <span class="text-muted fw-light"> ₽/{{$product->unit}}</span>
-                                        @if($product->is_action)
-                                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Акция</p>
+                                        @if($product->is_action || $product->sale)
+                                            <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Распродажа</p>
                                         @endif
                                     </h5>
                                 @else

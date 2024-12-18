@@ -116,15 +116,18 @@
                     $description .= '<p>&#9989; На утро '.$date.' остаток: </p><ul>';
 
                     $description .= '<li>Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve) . ' ' . $product->unit . '</li>';
-
                     if($product->moscow_way) {
                         $description .= '<li>Москва (в пути): ' . $product->moscow_way . ' ' . $product->unit . '</li>';
                     }
 
                     $description .= '<li>Казань: ' . $product->kazan + $product->kazan_sale . ' ' . $product->unit . '</li>';
-
                     if($product->kazan_way) {
                         $description .= '<li>Казань (в пути): ' . $product->kazan_way . ' ' . $product->unit . '</li>';
+                    }
+
+                    $description .= '<li>СПб: ' . $product->spb + $product->spb_sale . ' ' . $product->unit . '</li>';
+                    if($product->spb_way) {
+                        $description .= '<li>СПб (в пути): ' . $product->spb_way . ' ' . $product->unit . '</li>';
                     }
 
 
@@ -268,7 +271,7 @@
 
     @php
         $price_rrc = $product->price->price;
-        $price_old = (int) $product->sale;
+        $price_old = intval($product->sale || $product->is_action);
         $brand = 'Artkera';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 

@@ -107,9 +107,9 @@
                     <br>
 
 
-                        @if($product->is_action)
+                        @if($product->is_action || $product->sale)
                             <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2 text-uppercase">
-                                Акция</p>
+                                Распродажа</p>
                         @endif
 
 {{--                        MOSCOW-STOCK--}}

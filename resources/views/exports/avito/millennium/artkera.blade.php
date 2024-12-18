@@ -253,7 +253,7 @@
 
     @php
         $price_rrc = $product->price->price;
-        $price_old = (int) $product->sale;
+        $price_old = intval($product->sale || $product->is_action);
         $brand = 'Artkera';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
