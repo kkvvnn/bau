@@ -43,6 +43,8 @@
     <tbody>
 
         @include('exports.avito.millennium.artkera') //READY
+
+        @include('exports.avito.millennium.artkera-spb')
         @include('exports.avito.millennium.artCeramic') //READY
         @include('exports.avito.millennium.CubeCeramica')
         @include('exports.avito.millennium.idalgo')
