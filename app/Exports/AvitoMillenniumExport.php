@@ -119,6 +119,19 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ->whereJsonLength('images', '>', 0)
             ->get();
 
+        $primeCeramics = ArtCentreNew::where('brand', 'Prime Ceramics')
+            ->where('price', '>=', $price_min)
+            ->where(column: function (Builder $query) {
+                $stock = 1;
+                $query->orWhere('moscow', '>', $stock);
+                $query->orWhere('kazan', '>', $stock);
+                $query->orWhere('nn', '>', $stock);
+                $query->orWhere('samara', '>', $stock);
+                $query->orWhere('spb', '>', $stock);
+            })
+            ->whereJsonLength('images', '>', 0)
+            ->get();
+
 
         $discounts_all = [
             'Artkera' => [
@@ -149,6 +162,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
+            'Prime Ceramics' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
         ];
 
         return view('exports.avito.millennium.millennium', [
@@ -160,6 +177,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             'qua' => $qua,
             'dako' => $dako,
             'graniteya' => $graniteya,
+            'primeCeramics' => $primeCeramics,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,

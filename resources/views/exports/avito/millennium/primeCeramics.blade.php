@@ -1,15 +1,15 @@
-{{-----ART-CERAMIC-MILLENNIUM-----}}
-@foreach($artCeramic as $product)
+{{-----PRIME-CERAMICS-MILLENNIUM-----}}
+@foreach($primeCeramics as $product)
     @php
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
         $CeramicPorcelainTilesSubType = 'Керамогранит';
-        $Brand = 'Art Ceramic';
+        $Brand = 'Prime Ceramics';
         $TileType = '';
         $SpaceType = '';
         $InstallationType = avito_bauservice_for('На пол | На стену');
-        $Width = avito_bauservice_size(null, 5, 200, $product->title, 'W');
-        $Length = avito_bauservice_size(null, 5, 400, $product->title, 'L');
+        $Width = avito_bauservice_size(null, 5, 200, $product->title, 'W') / 10;
+        $Length = avito_bauservice_size(null, 5, 400, $product->title, 'L') / 10;
         $Height = avito_bauservice_height($product->fat, 2, 30);
         $Pattern = avito_bauservice_pattern($product->title, '');
         $Color = avito_bauservice_color($product->color??'');
@@ -124,15 +124,9 @@
 
         $keywords .= $size;
 
-        if ($product->brand == 'Art Ceramic') {
-            $keywords .= $type . ' арт керамик ';
-            $keywords .= $type . ' арткерамик ';
-        } elseif ($product->brand == 'Cersanit') {
-            $keywords .= $type . ' церсанит ';
-        } elseif ($product->brand == 'Vitra') {
-            $keywords .= $type . ' витра ';
-        } elseif ($product->brand == 'Ceradim') {
-            $keywords .= $type . ' керадим ';
+        if ($product->brand == 'Prime Ceramics') {
+            $keywords .= $type . ' prime ceramics ';
+            $keywords .= $type . ' прайм керамикс ';
         }
 
 
@@ -182,7 +176,7 @@
             $keywords .= $type . ' ' . $owner_code . ' ';
         }
 
-        $country = 'Индия';
+        $country = 'Узбекистан';
 
         if ($country != null) {
             $keywords .= $type . ' ' . $country . ' ';
@@ -213,14 +207,17 @@
 
     @php
         $title = str_replace('Плитка ', 'Керамогранит ', $product->title);
-        $title = str_replace(' (1,44 кв.м.)', '', $title);
+        $title = str_replace('(1,44 кв.м.)', '', $title);
         $title = str_replace('High Glossy', 'полированный', $title);
         $title = str_replace('High Gloss', 'полированный', $title);
         $title = str_replace('Glossy', 'полированный', $title);
         $title = str_replace('Matt', 'матовый', $title);
 
         if (mb_strlen($title) > 50) {
-            $title = str_replace('Artceramic ', '', $title);
+            $title = str_replace('Керамогранит ', '', $title);
+        }
+        if (mb_strlen($title) > 50) {
+            $title = str_replace('ректификат ', '', $title);
         }
         if (mb_strlen($title) > 50) {
             $title = str_replace('Полированный', 'полиров', $title);
@@ -231,14 +228,14 @@
     @endphp
 
     @php
-        $code = str_replace('ЦБ-', '', $product->code).'_art_ceramic_millennium';
+        $code = str_replace('ЦБ-', '', $product->code).'_prime_ceramics_millennium';
         $video = '';
     @endphp
 
     @php
         $price_rrc = $product->price;
         $price_old = 0;
-        $brand = 'Art Ceramic';
+        $brand = 'Prime Ceramics';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
@@ -280,4 +277,4 @@
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
 @endforeach
-{{-----ART-CERAMIC-MILLENNIUM-END----}}
+{{-----PRIME-CERAMICS-MILLENNIUM-END----}}

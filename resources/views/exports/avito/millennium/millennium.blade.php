@@ -49,6 +49,7 @@
         @include('exports.avito.millennium.qua')
         @include('exports.avito.millennium.dako')
         @include('exports.avito.millennium.graniteya')
+        @include('exports.avito.millennium.primeCeramics')
 
     </tbody>
 </table>

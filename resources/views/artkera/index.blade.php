@@ -85,18 +85,49 @@
                                     @endif
 
 
-
+                                    @if($product->kazan + $product->kazan_sale)
                                         <p class="mb-0 fs-5 text-body-secondary">
                                             Казань: {{$product->kazan + $product->kazan_sale}} {{$product->unit}}
 {{--                                            @if($product->kazan_reserve)--}}
 {{--                                                <span class="text-muted fw-light">(+{{$product->kazan_reserve}} резерв)</span>--}}
 {{--                                            @endif--}}
                                         </p>
+                                    @endif
                                     @if($product->kazan_way)
                                         <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Казань(в пути): {{$product->kazan_way}} {{$product->unit}}</span></p>
                                     @endif
 {{--                                    @if($product->kazan_sale || $product->kazan_sale_reserve)--}}
 {{--                                        <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Казань Распродажа: {{$product->kazan_sale}} {{$product->unit}} (+{{$product->kazan_sale_reserve}} резерв)</span></p>--}}
+{{--                                    @endif--}}
+
+                                    @if($product->spb + $product->spb_sale)
+                                        <p class="mb-0 fs-5 text-body-secondary">
+                                            СПб: {{$product->spb + $product->spb_sale}} {{$product->unit}}
+{{--                                            @if($product->spb_reserve)--}}
+{{--                                                <span class="text-muted fw-light">(+{{$product->spb_reserve}} резерв)</span>--}}
+{{--                                            @endif--}}
+                                        </p>
+                                    @endif
+                                    @if($product->spb_way)
+                                        <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">СПб(в пути): {{$product->spb_way}} {{$product->unit}}</span></p>
+                                    @endif
+{{--                                    @if($product->spb_sale || $product->spb_sale_reserve)--}}
+{{--                                        <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Казань Распродажа: {{$product->spb_sale}} {{$product->unit}} (+{{$product->spb_sale_reserve}} резерв)</span></p>--}}
+{{--                                    @endif--}}
+
+                                    @if($product->samara + $product->samara_sale)
+                                        <p class="mb-0 fs-5 text-body-secondary">
+                                            Самара: {{$product->samara + $product->samara_sale}} {{$product->unit}}
+{{--                                            @if($product->samara_reserve)--}}
+{{--                                                <span class="text-muted fw-light">(+{{$product->samara_reserve}} резерв)</span>--}}
+{{--                                            @endif--}}
+                                        </p>
+                                    @endif
+                                    @if($product->samara_way)
+                                        <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Самара(в пути): {{$product->samara_way}} {{$product->unit}}</span></p>
+                                    @endif
+{{--                                    @if($product->samara_sale || $product->samara_sale_reserve)--}}
+{{--                                        <p class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Казань Распродажа: {{$product->samara_sale}} {{$product->unit}} (+{{$product->samara_sale_reserve}} резерв)</span></p>--}}
 {{--                                    @endif--}}
 
 

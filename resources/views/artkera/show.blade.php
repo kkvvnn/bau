@@ -112,15 +112,17 @@
                                 Акция</p>
                         @endif
 
-                        <h5 class="mt-4 mb-0">
-                            Москва: {{$product->moscow}} {{$product->unit}}
-                            @if($product->moscow_reserve)
-                                <span class="text-muted fw-light">(+{{$product->moscow_reserve}} резерв)</span>
-                            @endif
-                        </h5>
-{{--                        @if ($stock_spb)--}}
-{{--                            <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->MainUnit}}</h5>--}}
-{{--                        @endif--}}
+{{--                        MOSCOW-STOCK--}}
+
+                        @if($product->moscow)
+                            <h5 class="mt-4 mb-0">
+                                Москва: {{$product->moscow}} {{$product->unit}}
+                                @if($product->moscow_reserve)
+                                    <span class="text-muted fw-light">(+{{$product->moscow_reserve}} резерв)</span>
+                                @endif
+                            </h5>
+                        @endif
+
                         @if($product->moscow_way)
                             <h5 class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Москва(в пути): {{$product->moscow_way}} {{$product->unit}}</span></h5>
                         @endif
@@ -131,17 +133,55 @@
                             <h5 class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Москва РЕЗЕРВНЫЙ: {{$product->moscow_depot_reserve}} {{$product->unit}} (+{{$product->moscow_depot_reserve_reserve}} резерв)</span></h5>
                         @endif
 
-                        <h5 class="mb-0 fs-5 text-body-secondary">
-                            Казань: {{$product->kazan}} {{$product->unit}}
-                            @if($product->kazan_reserve)
-                                <span class="text-muted fw-light">(+{{$product->kazan_reserve}} резерв)</span>
-                            @endif
-                        </h5>
+{{--                        KAZAN-STOCK--}}
+
+                        @if($product->kazan)
+                            <h5 class="mb-0 fs-5 text-body-secondary">
+                                Казань: {{$product->kazan}} {{$product->unit}}
+                                @if($product->kazan_reserve)
+                                    <span class="text-muted fw-light">(+{{$product->kazan_reserve}} резерв)</span>
+                                @endif
+                            </h5>
+                        @endif
                         @if($product->kazan_way)
                             <h5 class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Казань(в пути): {{$product->kazan_way}} {{$product->unit}}</span></h5>
                         @endif
                         @if($product->kazan_sale || $product->kazan_sale_reserve)
                             <h5 class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Казань Распродажа: {{$product->kazan_sale}} {{$product->unit}} (+{{$product->kazan_sale_reserve}} резерв)</span></h5>
+                        @endif
+
+{{--                        SPB-STOCK--}}
+
+                        @if($product->spb)
+                            <h5 class="mb-0 fs-5 text-body-secondary">
+                                СПб: {{$product->spb}} {{$product->unit}}
+                                @if($product->spb_reserve)
+                                    <span class="text-muted fw-light">(+{{$product->spb_reserve}} резерв)</span>
+                                @endif
+                            </h5>
+                        @endif
+                        @if($product->spb_way)
+                            <h5 class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">СПб(в пути): {{$product->spb_way}} {{$product->unit}}</span></h5>
+                        @endif
+                        @if($product->spb_sale || $product->spb_sale_reserve)
+                            <h5 class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">СПб Распродажа: {{$product->spb_sale}} {{$product->unit}} (+{{$product->spb_sale_reserve}} резерв)</span></h5>
+                        @endif
+
+{{--                        SAMARA-STOCK--}}
+
+                        @if($product->samara)
+                            <h5 class="mb-0 fs-5 text-body-secondary">
+                                Самара: {{$product->samara}} {{$product->unit}}
+                                @if($product->samara_reserve)
+                                    <span class="text-muted fw-light">(+{{$product->samara_reserve}} резерв)</span>
+                                @endif
+                            </h5>
+                        @endif
+                        @if($product->samara_way)
+                            <h5 class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Самара(в пути): {{$product->samara_way}} {{$product->unit}}</span></h5>
+                        @endif
+                        @if($product->samara_sale || $product->samara_sale_reserve)
+                            <h5 class="mb-0 fs-5 text-body-secondary"><span class="text-muted fw-light">Самара Распродажа: {{$product->samara_sale}} {{$product->unit}} (+{{$product->samara_sale_reserve}} резерв)</span></h5>
                         @endif
 
                     <p class="mt-4">Актуально на <span

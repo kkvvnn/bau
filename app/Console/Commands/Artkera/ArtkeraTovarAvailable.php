@@ -38,9 +38,9 @@ class ArtkeraTovarAvailable extends Command
         $use_territory = [
             'Москва',
             'Казань',
-//            'Санкт-Петербург',
+            'Санкт-Петербург',
 //            'Краснодар',
-//            'Самара',
+            'Самара',
 //            'Ростов-на-Дону',
 //            'Новосибирск',
 //            'Крым',
@@ -52,7 +52,10 @@ class ArtkeraTovarAvailable extends Command
         $depots_list = [];
         foreach ($depots_of_territories as $territory) {
             foreach ($territory->depots as $depot) {
-                if (!str_contains($depot->depot, 'Некондиция')) {
+                if (!str_contains($depot->depot, 'Некондиция')
+                    && !str_contains($depot->depot, 'Оборудование')
+                    && !str_contains($depot->depot, 'Стенды')
+                ) {
                     $depots_list[$depot->depot] = $depot->depot_id;
                 }
             }
@@ -152,6 +155,18 @@ class ArtkeraTovarAvailable extends Command
             $balance_moscow_depot_reservnuy = 0;
             $balance_moscow_depot_reservnuy_reserve = 0;
 
+            $balance_spb = 0;
+            $balance_spb_reserve = 0;
+            $balance_spb_way = 0;
+            $balance_spb_sale = 0;
+            $balance_spb_sale_reserve = 0;
+
+            $balance_samara = 0;
+            $balance_samara_reserve = 0;
+            $balance_samara_way = 0;
+            $balance_samara_sale = 0;
+            $balance_samara_sale_reserve = 0;
+
             $balances = $tovar->balance;
 
             foreach ($balances as $balance) {
@@ -183,6 +198,32 @@ class ArtkeraTovarAvailable extends Command
                     $balance_moscow_depot_reservnuy = (float)$balance['free_balance'];
                     $balance_moscow_depot_reservnuy_reserve = (float)$balance['reserve'];
                 }
+
+//                                            SPB
+                if ($balance['depot_id'] == $depots_list['Склад СанктПетербург']) {
+                    $balance_spb = (float)$balance['free_balance'];
+                    $balance_spb_reserve = (float)$balance['reserve'];
+                }
+                if ($balance['depot_id'] == $depots_list['Товары в пути (на СанктПетербург)']) {
+                    $balance_spb_way = (float)$balance['free_balance'];
+                }
+                if ($balance['depot_id'] == $depots_list['Склад СанктПетербургРАСПРОДАЖА']) {
+                    $balance_spb_sale = (float)$balance['free_balance'];
+                    $balance_spb_sale_reserve = (float)$balance['reserve'];
+                }
+
+//                                            SAMARA
+                if ($balance['depot_id'] == $depots_list['Склад Самара']) {
+                    $balance_samara = (float)$balance['free_balance'];
+                    $balance_samara_reserve = (float)$balance['reserve'];
+                }
+                if ($balance['depot_id'] == $depots_list['Товары в пути (на Самару)']) {
+                    $balance_samara_way = (float)$balance['free_balance'];
+                }
+                if ($balance['depot_id'] == $depots_list['Склад СамараРАСПРОДАЖА']) {
+                    $balance_samara_sale = (float)$balance['free_balance'];
+                    $balance_samara_sale_reserve = (float)$balance['reserve'];
+                }
             }
 
             $product['kazan'] = $balance_kazan;
@@ -190,6 +231,7 @@ class ArtkeraTovarAvailable extends Command
             $product['kazan_way'] = $balance_kazan_way;
             $product['kazan_sale'] = $balance_kazan_sale;
             $product['kazan_sale_reserve'] = $balance_kazan_sale_reserve;
+
             $product['moscow'] = $balance_moscow;
             $product['moscow_reserve'] = $balance_moscow_reserve;
             $product['moscow_way'] = $balance_moscow_way;
@@ -197,6 +239,18 @@ class ArtkeraTovarAvailable extends Command
             $product['moscow_sale_reserve'] = $balance_moscow_sale_reserve;
             $product['moscow_depot_reserve'] = $balance_moscow_depot_reservnuy;
             $product['moscow_depot_reserve_reserve'] = $balance_moscow_depot_reservnuy_reserve;
+
+            $product['spb'] = $balance_spb;
+            $product['spb_reserve'] = $balance_spb_reserve;
+            $product['spb_way'] = $balance_spb_way;
+            $product['spb_sale'] = $balance_spb_sale;
+            $product['spb_sale_reserve'] = $balance_spb_sale_reserve;
+
+            $product['samara'] = $balance_samara;
+            $product['samara_reserve'] = $balance_samara_reserve;
+            $product['samara_way'] = $balance_samara_way;
+            $product['samara_sale'] = $balance_samara_sale;
+            $product['samara_sale_reserve'] = $balance_samara_sale_reserve;
 //            -----BALANCE-END-----
 
             TovarAvailable::create($product);
