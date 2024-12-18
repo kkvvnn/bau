@@ -1,9 +1,5 @@
 {{-----ARTKERA-----}}
 
-@php
-    $i = 0;
-@endphp
-
 @foreach($artkera as $product)
 
     @php
@@ -300,14 +296,6 @@
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
     </tr>
-
-    @php
-        $i++;
-
-        if ($i > 10) {
-            break;
-        }
-    @endphp
 
 @endforeach
 {{-----ARTKERA-END----}}
