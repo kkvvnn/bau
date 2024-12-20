@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Imports\ProductsImport;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -58,6 +59,30 @@ class ProductController extends Controller
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
         ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->orderByRaw('Lenght * Height DESC')
+            ->paginate(15);
+
+        return $this->index($products, $type);
+    }
+
+    public function index_spb()
+    {
+        $type = 'SPB';
+
+        $products = Product::with('spb')
+            ->whereHas('spb', function ($spb) {
+                $spb->where('balanceCount', '>', 1);
+            })
+            ->where(function (Builder $query) {
+                $query->where('Producer_Brand', 'Laparet');
+                $query->orWhere('Producer_Brand', 'Ceradim');
+            })
+            ->where([
+                ['GroupProduct', '01 Плитка'],
+                ['RMPrice', '>=', '900'],
+                ['Picture', '!=', ''],
+            ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->orderByRaw('Lenght * Height DESC')
             ->paginate(15);

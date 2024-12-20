@@ -42,18 +42,19 @@
     </thead>
     <tbody>
 
-        @include('exports.avito.millennium.artkera') //READY
-        @include('exports.avito.millennium.artCeramic') //READY
-        @include('exports.avito.millennium.CubeCeramica')
-        @include('exports.avito.millennium.idalgo')
-        @include('exports.avito.millennium.qua')
-        @include('exports.avito.millennium.dako')
-        @include('exports.avito.millennium.graniteya')
-        @include('exports.avito.millennium.primeCeramics')
+{{--        @include('exports.avito.millennium.artkera')--}}
+{{--        @include('exports.avito.millennium.artCeramic')--}}
+{{--        @include('exports.avito.millennium.CubeCeramica')--}}
+{{--        @include('exports.avito.millennium.idalgo')--}}
+{{--        @include('exports.avito.millennium.qua')--}}
+{{--        @include('exports.avito.millennium.dako')--}}
+{{--        @include('exports.avito.millennium.graniteya')--}}
+{{--        @include('exports.avito.millennium.primeCeramics')--}}
 
 
 {{--        SPB         --}}
-        @include('exports.avito.millennium.artkera-spb')
+{{--        @include('exports.avito.millennium.artkera-spb')--}}
+        @include('exports.avito.millennium.bauservice-spb')
 
     </tbody>
 </table>

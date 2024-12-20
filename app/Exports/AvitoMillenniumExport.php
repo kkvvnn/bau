@@ -31,6 +31,22 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
     public function view(): View
     {
+//       ----- BAUSERVICE-SPB -----
+        $bauservice_spb = Product::with('spb')
+            ->whereHas('spb', function ($spb) {
+                $spb->where('balanceCount', '>', 1);
+            })
+            ->where(function (Builder $query) {
+                $query->where('Producer_Brand', 'Laparet');
+                $query->orWhere('Producer_Brand', 'Ceradim');
+            })
+            ->where([
+                ['GroupProduct', '01 Плитка'],
+                ['RMPrice', '>=', '900'],
+                ['Picture', '!=', ''],
+            ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get();
 
 //        ----- ARTKERA -----
         $artkera = ArtkeraTovarAvailable::all();
@@ -166,6 +182,15 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
+
+            'Laparet' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
+            'Ceradim' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
         ];
 
         return view('exports.avito.millennium.millennium', [
@@ -178,6 +203,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             'dako' => $dako,
             'graniteya' => $graniteya,
             'primeCeramics' => $primeCeramics,
+            'bauservice_spb' => $bauservice_spb,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,
