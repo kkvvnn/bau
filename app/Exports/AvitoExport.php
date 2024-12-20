@@ -123,7 +123,12 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //                return $altaceraTovarAvailable->price != null;
 //            });
 
-        $altacera = ArtkeraTovarAvailable::all();
+        $altacera = ArtkeraTovarAvailable::where([
+            ['artikul', '!=', 'DW11VST00'],
+            ['artikul', '!=', 'TWU2550MLN10'],
+            ['artikul', '!=', 'TWU2550MLN30'],
+        ])
+            ->get();
 
 //        dd($altacera);
 
