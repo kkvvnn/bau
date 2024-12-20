@@ -49,7 +49,14 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ->get();
 
 //        ----- ARTKERA -----
-        $artkera = ArtkeraTovarAvailable::all();
+        $artkera = ArtkeraTovarAvailable::where([
+            ['artikul', '!=', 'DW11VST00'],
+            ['artikul', '!=', 'TWU2550MLN10'],
+            ['artikul', '!=', 'TWU2550MLN20'],
+            ['artikul', '!=', 'TWU2550MLN30'],
+            ['artikul', '!=', 'WT15EXT00R'],
+        ])
+            ->get();
 
 //        $artkera = [];
 
