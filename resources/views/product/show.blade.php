@@ -1,5 +1,13 @@
 @extends('main')
 
+@section('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{url()->full()}}">
+    <meta property="og:title" content="{{$product->Name}}">
+    <meta property="og:description" content="Описание {{$product->Name}}">
+    <meta property="og:image" content="{{$urls[0]}}">
+@endsection
+
 @section('title', $product->Name)
 
 @section('styles')
@@ -354,7 +362,7 @@
 
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <a href="whatsapp://send?phone=79151274000&text={{$product->Name}}" class="float" target="_blank">
+        <a href="whatsapp://send?phone=79151274000&text={{url()->full()}}" class="float" target="_blank">
             <i class="fa fa-whatsapp my-float"></i>
         </a>
 

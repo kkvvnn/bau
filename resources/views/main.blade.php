@@ -39,6 +39,9 @@
     <meta name="description" content="">
     <meta name="author" content="kkvvnn">
     <meta name="generator" content="Hugo 0.111.3">
+
+    @yield('meta')
+
     <title>@yield('title')</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -286,7 +289,7 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('product_index') }}">На главную
-            <img class="img-fluid" src="{{asset('new-year.svg')}}" alt="" width="30" height="20">
+            <img class="img-fluid" src="{{asset('new-year.svg')}}" alt="" width="30" height="30">
         </a>
 
 
