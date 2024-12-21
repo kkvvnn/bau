@@ -1,5 +1,13 @@
 @extends('main')
 
+@section('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{url()->full()}}">
+    <meta property="og:title" content="{{$product->title}}">
+    <meta property="og:description" content="Коллекция {{$product->Item_name.' '.explode(' ', $product->Item_name)[0]}}">
+    <meta property="og:image" content="{{$images[0]}}">
+@endsection
+
 @section('title', $product->Item_name)
 
 @section('styles')
