@@ -3,7 +3,7 @@
 @section('meta')
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{url()->full()}}">
-    <meta property="og:title" content="{{$product->Name.' '.$product->RMPrice.' р/'.$product->MainUnit}}">
+    <meta property="og:title" content="{{$product->Name}}">
     <meta property="og:description" content="Коллекция {{$product->Producer_Brand.' '.$collection[0]->Collection_Name}}">
     <meta property="og:image" content="{{$urls[0]}}">
 @endsection
