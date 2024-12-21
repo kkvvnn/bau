@@ -136,8 +136,8 @@
                             class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
 
 
-                    <script src="https://yastatic.net/share2/share.js"></script>
-                    <div class="ya-share2" data-curtain data-shape="round" data-services="vkontakte,telegram,whatsapp"></div>
+{{--                    <script src="https://yastatic.net/share2/share.js"></script>--}}
+{{--                    <div class="ya-share2" data-curtain data-shape="round" data-services="vkontakte,telegram,whatsapp"></div>--}}
 
 
 {{--                    <a title="Whatsapp" href="whatsapp://send?phone=79373209953&text={{$product->Name}}">--}}
