@@ -49,6 +49,14 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
+        'public2' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images'),
+            'url' => env('APP_URL').'/storage/images',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         'public-text' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/bauservice/products-text'),

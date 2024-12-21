@@ -1,5 +1,13 @@
 @extends('main')
 
+@section('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{url()->full()}}">
+    <meta property="og:title" content="Мультибрендовый магазин">
+    <meta property="og:description" content="Керамогранит, плитка, мозаика, ламинат и др. в Москве, СПб, Казани">
+    <meta property="og:image" content="{{Storage::disk('public2')->url('millennium.jpg')}}">
+@endsection
+
 @section('title', $type??$search_name??config('app.name'))
 
 @section('content')
