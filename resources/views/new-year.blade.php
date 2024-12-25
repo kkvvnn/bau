@@ -22,20 +22,23 @@
                 <p></p>
             </div>
 
+            <br>
 
         <h1 class="display-6">График работы в Новый Год</h1>
 
+            <br>
+
             <ul>
-                <li>This is a list.</li>
-                <li>It appears completely unstyled.</li>
-                <li>Structurally, it's still a list.</li>
-                <li>However, this style only applies to immediate child elements.</li>
-                <li>Nested lists:
-                    <ul>
-                        <li>and have appropriate left margin</li>
-                    </ul>
-                </li>
-                <li>This may still come in handy in some situations.</li>
+                <li>30 декабря - 3 января выходные дни (магазин не работает).</li>
+                <li>С 4 по 8 января работа в ограниченном режиме (возможен прием заявок на дату после 9 января).</li>
+                <li>С 10 января работа в штатном режиме.</li>
+{{--                <li>However, this style only applies to immediate child elements.</li>--}}
+{{--                <li>Nested lists:--}}
+{{--                    <ul>--}}
+{{--                        <li>and have appropriate left margin</li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li>This may still come in handy in some situations.</li>--}}
             </ul>
 
 
