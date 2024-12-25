@@ -267,3 +267,5 @@ Route::get('/rusplitka/collection/{name}', [\App\Http\Controllers\RusplitkaContr
 Route::get('/artcenter/brand/{brand}', [\App\Http\Controllers\ArtcenterController::class, 'artcenter'])->name('artcenter.index');
 Route::get('/artcenter/{slug:slug}', [\App\Http\Controllers\ArtcenterController::class, 'show'])->name('artcenter.show');
 Route::get('/artcenter/collection/{name}/{brand}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');
+
+Route::view('/grafik-new-year-2025', 'new-year');
