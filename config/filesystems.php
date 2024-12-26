@@ -114,6 +114,14 @@ return [
             'throw' => false,
         ],
 
+        'images-hand' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images-hand'),
+            'url' => env('APP_URL').'/storage/images-hand',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'rusplitka' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/rusplitka'),
