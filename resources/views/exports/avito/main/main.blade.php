@@ -42,19 +42,24 @@
     </thead>
     <tbody>
 
-        @include('exports.avito.main.bauservice')  //READY
-        @include('exports.avito.main.global-tile') //READY
-        @include('exports.avito.main.kerranova') //READY
-        @include('exports.avito.main.primavera') //READY
-        @include('exports.avito.main.leedo') //READY
-        @include('exports.avito.main.artkera') //READY
+{{--        @include('exports.avito.main.bauservice')  //READY--}}
+{{--        @include('exports.avito.main.global-tile') //READY--}}
+{{--        @include('exports.avito.main.kerranova') //READY--}}
+{{--        @include('exports.avito.main.primavera') //READY--}}
+{{--        @include('exports.avito.main.leedo') //READY--}}
+{{--        @include('exports.avito.main.artkera') //READY--}}
 
-        @include('exports.avito.main.rusplitka') //READY
-        @include('exports.avito.main.aquafloor') //READY
-        @include('exports.avito.main.pixmosaic') //READY
-        @include('exports.avito.main.artcenter') //READY
-        @include('exports.avito.main.skalla') //READY
+{{--        @include('exports.avito.main.rusplitka') //READY--}}
+{{--        @include('exports.avito.main.aquafloor') //READY--}}
+{{--        @include('exports.avito.main.pixmosaic') //READY--}}
+{{--        @include('exports.avito.main.artcenter') //READY--}}
+{{--        @include('exports.avito.main.skalla') //READY--}}
         @include('exports.avito.main.nt-ceramic-hand')
+        @include('exports.avito.main.primavera-hand')
+        @include('exports.avito.main.primavera-hand-2')
+        @include('exports.avito.main.primavera-hand-3')
+        @include('exports.avito.main.rusplitka-hand-1')
+        @include('exports.avito.main.rusplitka-hand-2')
 
 
 {{--        @include('exports.avito.main.keramopro') //READY NOT USE--}}
