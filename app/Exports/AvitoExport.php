@@ -167,8 +167,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $artcenter = ArtCentreNew::where([
             ['brand', 'Art Ceramic'],
             ['moscow', '>=', 4],
+            ['code', '!=', 'ЦБ-00043906'],
         ])
             ->get();
+
 
 //      ===================GLOBAL-TILE====================
         $globaltile = GlobalTileNew::where([
