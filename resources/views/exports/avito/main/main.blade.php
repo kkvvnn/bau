@@ -60,6 +60,8 @@
         @include('exports.avito.main.primavera-hand-3')
         @include('exports.avito.main.rusplitka-hand-1')
         @include('exports.avito.main.rusplitka-hand-2')
+        @include('exports.avito.main.aquafloor-hand-1')
+        @include('exports.avito.main.aquafloor-hand-2')
 
 
 {{--        @include('exports.avito.main.keramopro') //READY NOT USE--}}
