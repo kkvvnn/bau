@@ -44,6 +44,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 ['GroupProduct', '01 Плитка'],
                 ['RMPrice', '>=', '900'],
                 ['Picture', '!=', ''],
+                ['Element_code', '!=', 'х9999294554'],
             ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->get();
@@ -152,6 +153,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 $query->orWhere('samara', '>', $stock);
                 $query->orWhere('spb', '>', $stock);
             })
+            ->where('vendor_code', '!=', 'GRP6060OC-MJ')
             ->whereJsonLength('images', '>', 0)
             ->get();
 
