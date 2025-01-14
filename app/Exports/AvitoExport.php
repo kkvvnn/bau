@@ -52,6 +52,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['Element_code', '!=', 'х9999308148'],
             ['Element_code', '!=', 'х9999308149'],
             ['Element_code', '!=', 'х9999308150'],
+            ['Element_code', '!=', 'х9999213203'],
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
