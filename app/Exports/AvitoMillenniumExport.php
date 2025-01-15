@@ -10,6 +10,7 @@ use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\BauserviceSpb;
 use App\Models\Kevis;
+use App\Models\PrimaveraNew;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
 use App\Models\Technotile\Product as TechnotileProduct;
 use App\Models\LeedoProduct;
@@ -157,6 +158,11 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ->whereJsonLength('images', '>', 0)
             ->get();
 
+//      ==================PRIMAVERA====================
+        $primavera = PrimaveraNew::whereHas('balance')
+            ->whereHas('price')
+            ->get();
+
 
         $discounts_all = [
             'Artkera' => [
@@ -200,6 +206,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
+            'Primavera' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
         ];
 
         return view('exports.avito.millennium.millennium', [
@@ -213,6 +223,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             'graniteya' => $graniteya,
             'primeCeramics' => $primeCeramics,
             'bauservice_spb' => $bauservice_spb,
+            'primavera' => $primavera,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,
