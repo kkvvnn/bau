@@ -50,6 +50,7 @@
         @include('exports.avito.millennium.dako')
         @include('exports.avito.millennium.graniteya')
         @include('exports.avito.millennium.primeCeramics')
+        @include('exports.avito.millennium.primavera')
 
 
 {{--        SPB         --}}
