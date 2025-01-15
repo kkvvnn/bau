@@ -289,7 +289,7 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('product_index') }}">На главную
-            <img class="img-fluid" src="{{asset('new-year.svg')}}" alt="" width="30" height="30">
+{{--            <img class="img-fluid" src="{{asset('new-year.svg')}}" alt="" width="30" height="30">--}}
         </a>
 
 
