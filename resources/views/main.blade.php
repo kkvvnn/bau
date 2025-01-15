@@ -67,7 +67,7 @@
         .bag-image::before{
             content: 'НОВИНКА';
             border-radius: 1px;
-            background: rgba(0, 0, 255, 0.6);
+            background: rgba(0, 0, 255, 0.3);
             display: inline-block;
             position: absolute;
             color: #fff;
@@ -80,7 +80,7 @@
         .bag-image-sale::before{
             content: 'РАСПРОДАЖА';
             border-radius: 1px;
-            background: rgba(0, 128, 0, 0.6);
+            background: rgba(0, 128, 0, 0.3);
             display: inline-block;
             position: absolute;
             color: #fff;
