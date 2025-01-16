@@ -31,6 +31,7 @@ Route::get('/cersanit', [ProductController::class, 'cersanit'])->name('cersanit.
 Route::get('/vitra', [ProductController::class, 'vitra'])->name('vitra.index');
 Route::get('/ceradim', [ProductController::class, 'index_ceradim'])->name('ceradim.index');
 Route::get('/kerama-marazzi', [ProductController::class, 'index_kerama_marazzi'])->name('kerama-marazzi.index');
+Route::get('/kerama-marazzi/test', [ProductController::class, 'kerama_marazzi_test']);
 
 Route::get('/bauservice-spb', [ProductController::class, 'index_spb']);
 

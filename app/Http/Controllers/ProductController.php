@@ -184,6 +184,72 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
+    public function kerama_marazzi_test()
+    {
+        $type = 'Kerama Marazzi';
+
+        $kerama_marazzi = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Kerama Marazzi'],
+            ['Picture', '!=', ''],
+            ['RMPrice', '>=', '500'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+
+//            ['Element_Code', '!=', 'х9999999999'],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get()
+
+            ->filter(function (Product $product) {
+                $length = (float)$product->Lenght;
+                $height = (float)$product->Height;
+
+                if ($length < $height) {
+                    $temp = $length;
+                    $length = $height;
+                    $height = $temp;
+                }
+
+                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
+                    || ($length >= 119 && $length <= 121 && $height >= 39 && $height <= 41)         //20x120
+                    || ($length == 15 && $height == 7.4);
+            });
+
+        $monparnas = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Kerama Marazzi'],
+            ['Picture', '!=', ''],
+            ['Name', 'like', '%онпарнас%'],
+        ])
+            ->get();
+
+        $vitrasz = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', 'Kerama Marazzi'],
+            ['Picture', '!=', ''],
+            ['Name', 'like', '%Витраж%'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['Name', 'not like', '%ордюр%'],
+        ])
+            ->get();
+
+        $kerama_marazzi = $kerama_marazzi->merge($monparnas);
+        $kerama_marazzi = $kerama_marazzi->merge($vitrasz);
+
+//        dd($vitrasz);
+//        dd($kerama_marazzi);
+
+        return $this->index($kerama_marazzi, $type);
+    }
+
 
     public function index_sale()
     {
