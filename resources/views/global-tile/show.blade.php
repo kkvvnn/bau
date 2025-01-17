@@ -108,9 +108,6 @@
 
                     <br>
 
-                        <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
-                            Цена -10% {{round($product->price * 0.90, -1)}} ₽/{{$product->unit}}</p>
-
 
                     <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>
 {{--                    @if ($stock_spb)--}}
