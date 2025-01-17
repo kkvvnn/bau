@@ -173,8 +173,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
-
-//            ['Element_Code', '!=', 'х9999999999'],
+            ['Element_Code', '!=', 'х9999210537'],
         ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()

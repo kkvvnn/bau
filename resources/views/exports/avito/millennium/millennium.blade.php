@@ -42,6 +42,7 @@
     </thead>
     <tbody>
 
+{{--        KAZAN         --}}
         @include('exports.avito.millennium.artkera')
         @include('exports.avito.millennium.artCeramic')
         @include('exports.avito.millennium.CubeCeramica')
@@ -51,6 +52,7 @@
         @include('exports.avito.millennium.graniteya')
         @include('exports.avito.millennium.primeCeramics')
         @include('exports.avito.millennium.primavera')
+        @include('exports.avito.millennium.kerama-marazzi-kazan')
 
 
 {{--        SPB         --}}
