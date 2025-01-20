@@ -167,7 +167,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 //      ============KERAMA-MARAZZI================
         $kerama_marazzi = Product::where([
             ['GroupProduct', '01 Плитка'],
-            ['Producer_Brand', 'Kerama Marazzi'],
+//            ['Producer_Brand', 'Kerama Marazzi'],
             ['Picture', '!=', ''],
             ['RMPrice', '>=', '500'],
             ['Name', 'not like', '%ставк%'],
@@ -175,6 +175,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ['Name', 'not like', '%пецэлем%'],
             ['Element_Code', '!=', 'х9999210537'],
         ])
+            ->where(function (Builder $query) {
+                $query->where('Producer_Brand', 'Kerama Marazzi');
+                $query->orWhere('Producer_Brand', 'Vitra');
+            })
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
 
@@ -219,7 +223,6 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
         $kerama_marazzi = $kerama_marazzi->merge($monparnas);
         $kerama_marazzi = $kerama_marazzi->merge($vitrasz);
-
 
 
         $discounts_all = [
@@ -269,6 +272,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'additional' => 'По умолчанию',
             ],
             'Kerama Marazzi' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
+            'Vitra' => [
                 'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
