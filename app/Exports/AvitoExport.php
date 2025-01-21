@@ -106,32 +106,12 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->get();
 
 //      ====================ARTKERA===================
-//        $altacera = AltaceraTovarAvailable::where([
-//            ['artikul', '!=', 'PWU09DLM3'],
-//            ['artikul', '!=', 'GFA114CMT07R'],
-//            ['artikul', '!=', 'BWA60ALD004'],
-//            ['artikul', '!=', 'DWU09BNT017'],
-//            ['artikul', '!=', 'GFA57SLC00L'],
-//            ['artikul', '!=', 'PWA11ALD1'],
-//            ['artikul', '!=', 'BWA60ALD404'],
-//            ['artikul', '!=', 'WT9VIE11'],
-//            ['artikul', '!=', 'TWU93MGC07R'],
-//            ['artikul', '!=', 'GFA114TRZ07L'],
-//            ['artikul', '!=', 'TWU93SNH04R'],
-//        ])
-//            ->get()
-//            ->filter(function (AltaceraTovarAvailable $altaceraTovarAvailable) {
-//                return $altaceraTovarAvailable->price != null;
-//            });
-
         $altacera = ArtkeraTovarAvailable::where([
             ['artikul', '!=', 'DW11VST00'],
             ['artikul', '!=', 'TWU2550MLN10'],
             ['artikul', '!=', 'TWU2550MLN30'],
         ])
             ->get();
-
-//        dd($altacera);
 
 //      =================NT-CERAMIC==================
         $ntceramic = NtCeramicNoImgs::all();
@@ -171,7 +151,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['code', '!=', 'ЦБ-00043906'],
         ])
             ->get();
-
 
 //      ===================GLOBAL-TILE====================
         $globaltile = GlobalTileNew::where([

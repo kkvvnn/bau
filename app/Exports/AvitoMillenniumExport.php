@@ -225,6 +225,14 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
         $kerama_marazzi = $kerama_marazzi->merge($vitrasz);
 
 
+//      ===================AQUAFLOOR====================
+        $aquafloor = AquaFloor::where([
+            ['title', 'not like', '%Подложка%'],
+            ['vendor_code', '!=', 'AF4078NXL'],
+        ])
+            ->get();
+
+
         $discounts_all = [
             'Artkera' => [
                 'discount' => 5,
@@ -279,6 +287,11 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
+
+            'Aquafloor' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
         ];
 
         return view('exports.avito.millennium.millennium', [
@@ -294,6 +307,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             'bauservice_spb' => $bauservice_spb,
             'primavera' => $primavera,
             'kerama_marazzi' => $kerama_marazzi,
+            'aquafloor' => $aquafloor,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,
