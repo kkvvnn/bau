@@ -174,6 +174,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
             ['Element_Code', '!=', 'х9999210537'],
+            ['balanceCount', '>=', 2],
         ])
             ->where(function (Builder $query) {
                 $query->where('Producer_Brand', 'Kerama Marazzi');
