@@ -13,7 +13,9 @@ class AquaFloorController extends Controller
     public function import()
     {
         // $name = Storage::get('aquafloor/import/aquafloor_all.xlsx');
-        $name = 'import/aquafloor/aquafloor_new.xlsx';
+        $name = 'import/aquafloor/aquafloor_new_28_01_25.xlsx';
+
+        AquaFloor::truncate();
 
         Excel::import(new AquaFloorImport, $name);
 
