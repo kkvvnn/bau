@@ -45,12 +45,12 @@
 {{--        KAZAN         --}}
         @include('exports.avito.millennium.artkera')
         @include('exports.avito.millennium.artCeramic')
-        @include('exports.avito.millennium.CubeCeramica')
-        @include('exports.avito.millennium.idalgo')
-        @include('exports.avito.millennium.qua')
-        @include('exports.avito.millennium.dako')
-        @include('exports.avito.millennium.graniteya')
-        @include('exports.avito.millennium.primeCeramics')
+{{--        @include('exports.avito.millennium.CubeCeramica')--}}
+{{--        @include('exports.avito.millennium.idalgo')--}}
+{{--        @include('exports.avito.millennium.qua')--}}
+{{--        @include('exports.avito.millennium.dako')--}}
+{{--        @include('exports.avito.millennium.graniteya')--}}
+{{--        @include('exports.avito.millennium.primeCeramics')--}}
         @include('exports.avito.millennium.primavera')
         @include('exports.avito.millennium.kerama-marazzi-kazan')
 
