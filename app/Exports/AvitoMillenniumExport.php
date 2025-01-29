@@ -9,6 +9,7 @@ use App\Models\AquaFloor;
 use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\BauserviceSpb;
+use App\Models\GlobalTileNew;
 use App\Models\Kevis;
 use App\Models\PrimaveraNew;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
@@ -233,6 +234,13 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
         ])
             ->get();
 
+//      ===================GLOBAL-TILE====================
+        $globaltile = GlobalTileNew::where([
+            ['brand', 'GlobalTile'],
+            ['Picture', '!=', ''],
+            ['balance', '>=', 0],
+        ])
+            ->get();
 
         $discounts_all = [
             'Artkera' => [
@@ -293,6 +301,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
+            'Global Tile' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
         ];
 
         return view('exports.avito.millennium.millennium', [
@@ -309,6 +321,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             'primavera' => $primavera,
             'kerama_marazzi' => $kerama_marazzi,
             'aquafloor' => $aquafloor,
+            'globaltile' => $globaltile,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,

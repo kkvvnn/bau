@@ -1,4 +1,4 @@
-{{-----ARTKERA-----}}
+{{-----ARTKERA-SPB-----}}
 
 @foreach($artkera as $product)
 
@@ -298,4 +298,4 @@
     </tr>
 
 @endforeach
-{{-----ARTKERA-END----}}
+{{-----ARTKERA-SPB-END----}}

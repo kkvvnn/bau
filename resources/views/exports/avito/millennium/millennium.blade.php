@@ -53,6 +53,7 @@
 {{--        @include('exports.avito.millennium.primeCeramics')--}}
         @include('exports.avito.millennium.primavera')
         @include('exports.avito.millennium.kerama-marazzi-kazan')
+        @include('exports.avito.millennium.global-tile')
 
 
 {{--        SPB         --}}
@@ -60,6 +61,7 @@
         @include('exports.avito.millennium.bauservice-spb')
         @include('exports.avito.millennium.primavera-spb')
         @include('exports.avito.millennium.kerama-marazzi-spb')
+        @include('exports.avito.millennium.global-tile-spb')
         @include('exports.avito.millennium.aquafloor')
 
     </tbody>
