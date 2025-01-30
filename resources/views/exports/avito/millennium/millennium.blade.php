@@ -63,6 +63,7 @@
         @include('exports.avito.millennium.kerama-marazzi-spb')
         @include('exports.avito.millennium.global-tile-spb')
         @include('exports.avito.millennium.aquafloor')
+        @include('exports.avito.millennium.nt-ceramic-spb-hand')
 
     </tbody>
 </table>
