@@ -124,6 +124,11 @@
         $title = 'Керамогранит Velsaa все коллекции';
     @endphp
 
+    @php
+        $PackagingType = 'Упаковка';
+        $PackageQuantity = '1.44';
+    @endphp
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -158,5 +163,7 @@
         <td>{{ $Color }}</td>                                       {{-- Color --}}
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
+        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 {{-----PRIMAVERA-END-HAND----}}

@@ -157,6 +157,18 @@
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
+    @php
+    $PackagingType = '';
+
+        if ($FlooringMaterialsSubType == 'Кварц-винил') {
+            $square_in_pack = ((float)$product->dlina / 1000) * ((float)$product->shirina / 1000) * (int)$product->count_in_box;
+            $square_in_pack = round($square_in_pack, 2);
+            $PackageQuantity = avito_package_quantity(round($square_in_pack, 2));
+        } else {
+            $PackageQuantity = '';
+        }
+    @endphp
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -191,6 +203,8 @@
         <td>{{ $Color }}</td>                                       {{-- Color --}}
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
+        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 @endforeach
 {{-----AQUAFLOOR-END----}}

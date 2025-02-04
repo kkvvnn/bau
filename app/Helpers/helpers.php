@@ -368,3 +368,37 @@ if (!function_exists('avito_bauservice_space_type')) {
         };
     }
 }
+
+if (!function_exists('avito_packaging_type')) {
+    /**
+     * @param string|null $unit
+     * @return string
+     */
+    function avito_packaging_type(string|null $unit): string
+    {
+        $available = [
+            'Штучно',
+            'Упаковка',
+        ];
+
+        return match ($unit) {
+            'шт' => 'Штучно',
+            default => 'Упаковка',
+        };
+    }
+}
+
+if (!function_exists('avito_package_quantity')) {
+    /**
+     * @param string|null $square_in_pack
+     * @return string
+     */
+    function avito_package_quantity(string|null $square_in_pack): string
+    {
+        if ((float)$square_in_pack > 5) {
+            return '1';
+        }
+
+        return (string)((float)$square_in_pack);
+    }
+}

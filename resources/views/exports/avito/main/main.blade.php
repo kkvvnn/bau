@@ -38,6 +38,8 @@
             <th>Color</th>
             <th>Material</th>
             <th>OutsideUsage</th>
+            <th>PackagingType</th>
+            <th>PackageQuantity</th>
         </tr>
     </thead>
     <tbody>
@@ -48,12 +50,12 @@
         @include('exports.avito.main.primavera') //READY
         @include('exports.avito.main.leedo') //READY
         @include('exports.avito.main.artkera') //READY
-
         @include('exports.avito.main.rusplitka') //READY
         @include('exports.avito.main.aquafloor') //READY
         @include('exports.avito.main.pixmosaic') //READY
         @include('exports.avito.main.artcenter') //READY
         @include('exports.avito.main.skalla') //READY
+
         @include('exports.avito.main.nt-ceramic-hand')
         @include('exports.avito.main.primavera-hand')
         @include('exports.avito.main.primavera-hand-2')

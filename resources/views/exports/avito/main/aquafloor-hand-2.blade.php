@@ -242,6 +242,11 @@
         $title = 'Кварц-винил Aquafloor все коллекции - 2';
     @endphp
 
+    @php
+        $PackagingType = '';
+        $PackageQuantity = '2.07';
+    @endphp
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -276,5 +281,7 @@
         <td>{{ $Color }}</td>                                       {{-- Color --}}
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
+        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 {{-----AQUAFLOOR-END-HAND----}}

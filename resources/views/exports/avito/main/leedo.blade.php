@@ -1,20 +1,41 @@
 {{-----LEEDO-----}}
 @foreach($leedo as $product)
 
-    @php
-        $GoodsSubType = 'Другое';
-        $FinishingMaterialsType = '';
-        $CeramicPorcelainTilesSubType = '';
-        $Brand = '';
-        $TileType = '';
-        $SpaceType = '';
-        $InstallationType = '';
-        $Width = '';
-        $Length = '';
-        $Height = '';
-        $Pattern = '';
-        $Color = '';
+{{--    @php--}}
+{{--        $GoodsSubType = 'Другое';--}}
+{{--        $FinishingMaterialsType = '';--}}
+{{--        $CeramicPorcelainTilesSubType = '';--}}
+{{--        $Brand = '';--}}
+{{--        $TileType = '';--}}
+{{--        $SpaceType = '';--}}
+{{--        $InstallationType = '';--}}
+{{--        $Width = '';--}}
+{{--        $Length = '';--}}
+{{--        $Height = '';--}}
+{{--        $Pattern = '';--}}
+{{--        $Color = '';--}}
 
+{{--        $FlooringMaterialsSubType = '';--}}
+{{--        $ExteriorFinishingDecorativeStoneSubType = '';--}}
+{{--        $WallPanelsSlatsDecorativeElementsSubType = '';--}}
+{{--        $MixesType = '';--}}
+{{--        $Material = '';--}}
+{{--        $OutsideUsage = '';--}}
+{{--    @endphp--}}
+
+    @php
+        $GoodsSubType = 'Отделка';
+        $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
+        $CeramicPorcelainTilesSubType = 'Керамическая плитка';
+        $Brand = 'LeeDo Ceramica';
+        $TileType = 'Мозаика';
+        $SpaceType = avito_bauservice_space_type('default');
+        $InstallationType = ($product->Thickness_mm >= 5)?'На пол | На стену':'На стену';
+        $Width = avito_bauservice_size('', 0, 150, str_replace('*', 'x', $product->Tile_size_cm), 'W');
+        $Length = avito_bauservice_size('', 1, 400, str_replace('*', 'x', $product->Tile_size_cm), 'L');
+        $Height = '';
+        $Pattern = avito_bauservice_pattern('', 'Другой');
+        $Color = avito_bauservice_color($product->Color);
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
@@ -153,6 +174,16 @@
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
+    @php
+        if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
+            $PackagingType = avito_packaging_type('шт');
+            $PackageQuantity = avito_package_quantity(round($product->Sq_m_per_box, 2));
+        } else {
+            $PackagingType = '';
+            $PackageQuantity = '';
+        }
+    @endphp
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -187,6 +218,8 @@
         <td>{{ $Color }}</td>                                       {{-- Color --}}
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
+        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 @endforeach
 {{-----LEEDO-END----}}

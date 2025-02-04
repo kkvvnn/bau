@@ -441,6 +441,16 @@
         $video = '';
     @endphp
 
+    @php
+        if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
+            $PackagingType = avito_packaging_type('м2');
+            $PackageQuantity = avito_package_quantity(round($product->meters_in_pack, 2));
+        } else {
+            $PackagingType = '';
+            $PackageQuantity = '';
+        }
+    @endphp
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -475,6 +485,8 @@
         <td>{{ $Color }}</td>                                       {{-- Color --}}
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
+        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 @endforeach
 {{-----GLOBAL-TILE-END----}}

@@ -9,6 +9,9 @@
         if ($rusplitka_brand_name == 'Ragno Marazzi') {
             $rusplitka_brand_name = 'Ragno';
         }
+        if ($rusplitka_brand_name == 'Duna') {
+            $rusplitka_brand_name = 'Dune';
+        }
 
         $Brand = $rusplitka_brand_name;
         $TileType = '';
@@ -146,6 +149,16 @@
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
+    @php
+        if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
+            $PackagingType = avito_packaging_type($product->unit);
+            $PackageQuantity = avito_package_quantity(round($product->in_pack_m2, 2));
+        } else {
+            $PackagingType = '';
+            $PackageQuantity = '';
+        }
+    @endphp
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -180,6 +193,8 @@
         <td>{{ $Color }}</td>                                       {{-- Color --}}
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
+        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 @endforeach
 {{-----RUSPLITKA-END----}}
