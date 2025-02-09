@@ -9,6 +9,11 @@
             $Material = '';
             $SpaceType = '';
             $OutsideUsage = '';
+
+            $Brand = 'Aquamax';
+            $InstallationType = avito_kvartz_vinil_installation_type($product->tip_soedineniya);
+            $Width = round((float)str_replace(' мм', '', $product->shirina));
+            $Length = round((float)str_replace(' мм', '', $product->dlina));
         } elseif(stripos($product->title, 'теновые пане') !== false) {
             $GoodsSubType = 'Отделка';
             $FinishingMaterialsType = 'Стеновые панели, рейки и элементы декора';
@@ -17,6 +22,11 @@
             $Material = 'SPC';
             $SpaceType = 'Стены | Потолок | Двери';
             $OutsideUsage = 'Да';
+
+            $Brand = '';
+            $InstallationType = '';
+            $Width = '';
+            $Length = '';
         } else {
             $GoodsSubType = 'Другое';
             $FinishingMaterialsType = '';
@@ -25,15 +35,16 @@
             $Material = '';
             $SpaceType = '';
             $OutsideUsage = '';
+
+            $Brand = '';
+            $InstallationType = '';
+            $Width = '';
+            $Length = '';
         }
         $CeramicPorcelainTilesSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $MixesType = '';
-        $Brand = '';
         $TileType = '';
-        $InstallationType = '';
-        $Width = '';
-        $Length = '';
         $Height = '';
         $Pattern = '';
         $Color = '';
@@ -154,6 +165,18 @@
 //        $price = '';
     @endphp
 
+    @php
+        $PackagingType = '';
+
+            if ($FlooringMaterialsSubType == 'Кварц-винил') {
+                $square_in_pack = ((float)$product->dlina / 1000) * ((float)$product->shirina / 1000) * (int)$product->count_in_box;
+                $square_in_pack = round($square_in_pack, 2);
+                $PackageQuantity = avito_package_quantity(round($square_in_pack, 2));
+            } else {
+                $PackageQuantity = '';
+            }
+    @endphp
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -188,6 +211,8 @@
         <td>{{ $Color }}</td>                                       {{-- Color --}}
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
+        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 @endforeach
 {{-----AQUAFLOOR-MILLENNIUM-SPB-END----}}

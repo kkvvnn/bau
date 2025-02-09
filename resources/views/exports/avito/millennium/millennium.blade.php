@@ -38,6 +38,8 @@
             <th>Color</th>
             <th>Material</th>
             <th>OutsideUsage</th>
+            <th>PackagingType</th>
+            <th>PackageQuantity</th>
         </tr>
     </thead>
     <tbody>

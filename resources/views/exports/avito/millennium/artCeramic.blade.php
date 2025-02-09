@@ -244,6 +244,16 @@
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
+    @php
+        if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
+            $PackagingType = avito_packaging_type($product->unit);
+            $PackageQuantity = avito_package_quantity(round(1.44, 2));
+        } else {
+            $PackagingType = '';
+            $PackageQuantity = '';
+        }
+    @endphp
+
     <tr>
         <td></td>                                                   {{-- AvitoID --}}
         <td>{{ $code }}</td>                                        {{-- Id --}}
@@ -278,6 +288,8 @@
         <td>{{ $Color }}</td>                                       {{-- Color --}}
         <td>{{ $Material }}</td>                                    {{-- Material --}}
         <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
+        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 @endforeach
 {{-----ART-CERAMIC-MILLENNIUM-END----}}
