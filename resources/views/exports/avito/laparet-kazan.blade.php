@@ -28,6 +28,8 @@
         <th>Height</th>
         <th>Pattern</th>
         <th>Color</th>
+        <th>PackagingType</th>
+        <th>PackageQuantity</th>
     </tr>
     </thead>
     <tbody>
@@ -406,6 +408,21 @@
             $code = $product->Element_Code . '_kzn';
         @endphp
 
+        @php
+            if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
+                $PackagingType = avito_packaging_type('м2');
+
+                $square_in_pack = $product->Package_Value;
+                if ($product->Package_Value == $product->PCS_in_Package) {
+                    $square_in_pack = ((float)$Length / 100) * ((float)$Width / 100) * (int)$product->PCS_in_Package;
+                }
+                $PackageQuantity = avito_package_quantity(round((float)$square_in_pack, 2));
+            } else {
+                $PackagingType = '';
+                $PackageQuantity = '';
+            }
+        @endphp
+
         <tr>
             <td></td>                                       {{-- AvitoID--}}
             <td>{{ $code }}</td>                            {{-- Id--}}
@@ -434,6 +451,8 @@
             <td>{{ $Height }}</td>                          {{-- Height --}}
             <td>{{ $Pattern }}</td>                         {{-- Pattern --}}
             <td>{{ $Color }}</td>                           {{-- Color --}}
+            <td>{{ $PackagingType }}</td>                   {{-- PackagingType --}}
+            <td>{{ $PackageQuantity }}</td>                 {{-- PackageQuantity --}}
         </tr>
     @endforeach
 
