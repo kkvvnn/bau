@@ -12,8 +12,8 @@
 
             $Brand = 'Aquamax';
             $InstallationType = avito_kvartz_vinil_installation_type($product->tip_soedineniya);
-            $Width = str_replace(' мм', '', $product->shirina);
-            $Length = str_replace(' мм', '', $product->dlina);
+            $Width = round((float)str_replace(' мм', '', $product->shirina));
+            $Length = round((float)str_replace(' мм', '', $product->dlina));
         } elseif(stripos($product->title, 'теновые пане') !== false) {
             $GoodsSubType = 'Отделка';
             $FinishingMaterialsType = 'Стеновые панели, рейки и элементы декора';

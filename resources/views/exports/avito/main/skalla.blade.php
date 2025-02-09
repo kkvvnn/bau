@@ -11,8 +11,8 @@
         $TileType = '';
         $SpaceType = '';
         $InstallationType = 'Замковый';
-        $Width = $product->width;
-        $Length = $product->length;
+        $Width = round($product->width);
+        $Length = round($product->length);
         $Height = '';
         $Pattern = '';
         $Color = '';
