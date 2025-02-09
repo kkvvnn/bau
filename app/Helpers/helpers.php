@@ -411,12 +411,12 @@ if (!function_exists('avito_kvartz_vinil_installation_type')) {
     {
         $available = [
             'Замковый',
-            'Клеевое',
+            'Клеевой',
             'Самоклеящийся',
         ];
 
         return match ($tip_soedineniya) {
-            'Клеевое' => 'Клеевое',
+            'Клеевое' => 'Клеевой',
             default => 'Замковый',
         };
     }
