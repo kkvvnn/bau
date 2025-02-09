@@ -42,6 +42,13 @@
         $MixesType = '';
         $Material = '';
         $OutsideUsage = '';
+
+        if ($Width == 0) {
+            $Width = 30;
+        }
+        if ($Length == 0) {
+            $Length = 30;
+        }
     @endphp
 
     @php

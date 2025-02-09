@@ -402,3 +402,22 @@ if (!function_exists('avito_package_quantity')) {
         return (string)((float)$square_in_pack);
     }
 }
+if (!function_exists('avito_kvartz_vinil_installation_type')) {
+    /**
+     * @param string|null $tip_soedineniya
+     * @return string
+     */
+    function avito_kvartz_vinil_installation_type(string|null $tip_soedineniya): string
+    {
+        $available = [
+            'Замковый',
+            'Клеевое',
+            'Самоклеящийся',
+        ];
+
+        return match ($tip_soedineniya) {
+            'Клеевое' => 'Клеевое',
+            default => 'Замковый',
+        };
+    }
+}

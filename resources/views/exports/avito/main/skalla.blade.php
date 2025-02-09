@@ -7,12 +7,12 @@
         $WallPanelsSlatsDecorativeElementsSubType = '';
         $CeramicPorcelainTilesSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
-        $Brand = '';
+        $Brand = 'Skalla';
         $TileType = '';
         $SpaceType = '';
-        $InstallationType = '';
-        $Width = '';
-        $Length = '';
+        $InstallationType = 'Замковый';
+        $Width = $product->width;
+        $Length = $product->length;
         $Height = '';
         $Pattern = '';
         $Color = '';

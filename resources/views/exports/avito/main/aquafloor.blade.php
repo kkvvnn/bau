@@ -9,6 +9,11 @@
             $Material = '';
             $SpaceType = '';
             $OutsideUsage = '';
+
+            $Brand = 'Aquafloor';
+            $InstallationType = avito_kvartz_vinil_installation_type($product->tip_soedineniya);
+            $Width = str_replace(' мм', '', $product->shirina);
+            $Length = str_replace(' мм', '', $product->dlina);
         } elseif(stripos($product->title, 'теновые пане') !== false) {
             $GoodsSubType = 'Отделка';
             $FinishingMaterialsType = 'Стеновые панели, рейки и элементы декора';
@@ -17,6 +22,11 @@
             $Material = 'SPC';
             $SpaceType = 'Стены | Потолок | Двери';
             $OutsideUsage = 'Да';
+
+            $Brand = '';
+            $InstallationType = '';
+            $Width = '';
+            $Length = '';
         } else {
             $GoodsSubType = 'Другое';
             $FinishingMaterialsType = '';
@@ -25,15 +35,16 @@
             $Material = '';
             $SpaceType = '';
             $OutsideUsage = '';
+
+            $Brand = '';
+            $InstallationType = '';
+            $Width = '';
+            $Length = '';
         }
         $CeramicPorcelainTilesSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $MixesType = '';
-        $Brand = '';
         $TileType = '';
-        $InstallationType = '';
-        $Width = '';
-        $Length = '';
         $Height = '';
         $Pattern = '';
         $Color = '';

@@ -24,6 +24,7 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
             ['Picture', '!=', ''],
             ['RMPrice', '>=', '600'],
             ['Element_Code', '!=', 'х9999278638'],
+            ['Element_Code', '!=', 'х9999299093'],
         ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()

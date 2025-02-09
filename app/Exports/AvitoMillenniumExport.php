@@ -47,6 +47,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 ['RMPrice', '>=', '900'],
                 ['Picture', '!=', ''],
                 ['Element_code', '!=', 'х9999294554'],
+                ['Element_code', '!=', 'х9999299093'],
             ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->get();

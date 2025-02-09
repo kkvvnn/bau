@@ -10,11 +10,11 @@
         $CeramicPorcelainTilesSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $MixesType = '';
-        $Brand = '';
+        $Brand = 'Aquafloor';
         $TileType = '';
-        $InstallationType = '';
-        $Width = '';
-        $Length = '';
+        $InstallationType = 'Клеевое';
+        $Width = 228;
+        $Length = 1524;
         $Height = '';
         $Pattern = '';
         $Color = '';
