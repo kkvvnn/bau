@@ -10,7 +10,7 @@
             $SpaceType = '';
             $OutsideUsage = '';
 
-            $Brand = 'Aquamax';
+            $Brand = 'Aquafloor';
             $InstallationType = avito_kvartz_vinil_installation_type($product->tip_soedineniya);
             $Width = round((float)str_replace(' мм', '', $product->shirina));
             $Length = round((float)str_replace(' мм', '', $product->dlina));
