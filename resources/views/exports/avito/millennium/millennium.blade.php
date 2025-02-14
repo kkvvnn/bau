@@ -55,7 +55,7 @@
 {{--        @include('exports.avito.millennium.primeCeramics')--}}
         @include('exports.avito.millennium.primavera')
 {{--        @include('exports.avito.millennium.kerama-marazzi-kazan')--}}
-        @include('exports.avito.millennium.global-tile')
+{{--        @include('exports.avito.millennium.global-tile') POWER OFF --}}
 
 
 {{--        SPB         --}}
@@ -63,7 +63,7 @@
         @include('exports.avito.millennium.bauservice-spb')
         @include('exports.avito.millennium.primavera-spb')
 {{--        @include('exports.avito.millennium.kerama-marazzi-spb')--}}
-        @include('exports.avito.millennium.global-tile-spb')
+{{--        @include('exports.avito.millennium.global-tile-spb') POWER OFF --}}
         @include('exports.avito.millennium.aquafloor')
         @include('exports.avito.millennium.nt-ceramic-spb-hand')
 
