@@ -11,6 +11,7 @@ use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\BauserviceSpb;
 use App\Models\GlobalTileNew;
 use App\Models\Kevis;
+use App\Models\PixmosaicNew;
 use App\Models\PrimaveraNew;
 use App\Models\Rusplitka\Product as RusplitkaProduct;
 use App\Models\Technotile\Product as TechnotileProduct;
@@ -243,6 +244,22 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
         ])
             ->get();
 
+        //      ===================LEEDO===================
+        $leedo = LeedoProduct::where([
+            ['Sklad_Msk_LeeDo', '>', 0],
+            ['Category', 'like', 'Мозаика/%'],
+        ])
+            ->orWhere([
+                ['Sklad_SPb_LeeDo', '>', 0],
+                ['Category', 'like', 'Мозаика/%'],
+            ])
+            ->get();
+
+        //      ===================PIXMOSAIC====================
+        $pixmosaics = PixmosaicNew::where('price', '!=', 0)
+            ->where('stock', '!=', '')
+            ->get();
+
         $discounts_all = [
             'Artkera' => [
                 'discount' => 5,
@@ -306,6 +323,14 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
+            'Leedo' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
+            'Pixmosaic' => [
+                'discount' => 0,
+                'additional' => 'По умолчанию',
+            ],
         ];
 
         return view('exports.avito.millennium.millennium', [
@@ -323,6 +348,8 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             'kerama_marazzi' => $kerama_marazzi,
             'aquafloor' => $aquafloor,
             'globaltile' => $globaltile,
+            'leedo' => $leedo,
+            'pixmosaics' => $pixmosaics,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,

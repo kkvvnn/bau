@@ -56,6 +56,8 @@
         @include('exports.avito.millennium.primavera')
 {{--        @include('exports.avito.millennium.kerama-marazzi-kazan')--}}
 {{--        @include('exports.avito.millennium.global-tile') POWER OFF --}}
+        @include('exports.avito.millennium.leedo-kazan')
+        @include('exports.avito.millennium.pixmosaic-kazan')
 
 
 {{--        SPB         --}}
@@ -66,6 +68,8 @@
 {{--        @include('exports.avito.millennium.global-tile-spb') POWER OFF --}}
         @include('exports.avito.millennium.aquafloor')
         @include('exports.avito.millennium.nt-ceramic-spb-hand')
+        @include('exports.avito.millennium.leedo-spb')
+        @include('exports.avito.millennium.pixmosaic-spb')
 
     </tbody>
 </table>

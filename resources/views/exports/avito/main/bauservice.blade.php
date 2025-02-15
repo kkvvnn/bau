@@ -410,6 +410,10 @@
         $brand = $product->Producer_Brand;
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
+        if ($product->Element_Code == 'х9999309479' || $product->Element_Code == 'х9999309441') {
+            $price = round($product->RMPrice * 0.9, -1);
+        }
+
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
