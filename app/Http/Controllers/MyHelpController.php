@@ -811,4 +811,121 @@ class MyHelpController extends Controller
         }
 
     }
+
+    public function avito_napolnye_resheniya_laparet()
+    {
+//      ==================BAUSERVIS====================
+        $products = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', '!=', 'Kerama Marazzi'],
+            ['Producer_Brand', '!=', 'Cersanit'],
+            ['Producer_Brand', '!=', 'Шахтинская плитка'],
+            ['Producer_Brand', '!=', ''],
+            ['Element_code', '!=', 'х9999286854'],
+            ['Element_code', '!=', 'х9999221101'],
+            ['Element_code', '!=', 'х9999278638'],
+            ['Element_code', '!=', 'х9999213228'],
+            ['Element_code', '!=', 'х9999308135'],
+            ['Element_code', '!=', 'х9999308136'],
+            ['Element_code', '!=', 'х9999308143'],
+            ['Element_code', '!=', 'х9999308148'],
+            ['Element_code', '!=', 'х9999308149'],
+            ['Element_code', '!=', 'х9999308150'],
+            ['Element_code', '!=', 'х9999213203'],
+            ['Element_code', '!=', 'х9999299093'],
+            ['Element_code', '!=', 'х9999213204'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['balance', 1],
+            ['RMPrice', '>=', '650'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->orderByRaw('Lenght * Height DESC')
+            ->paginate(15);
+
+//        dd($products);
+
+        $laparets = Product::where('GroupProduct', '=', '01 Плитка')
+            ->where('RMPrice', '>=', 700)
+            ->where('Element_Code', '!=', 'х9999278638')
+            ->where('Element_Code', '!=', 'х9999299093')
+            ->where('Picture', '!=', '')
+            ->where('Producer_Brand', '=', 'Laparet')
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get()
+            ->filter(function (Product $product) {
+                return $product->balance == 1
+                    || (isset($product->kzn->balance) && $product->kzn->balance == 1)
+                    || (isset($product->spb->balance) && $product->spb->balance == 1);
+            })
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
+                    || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
+                    || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
+            });
+
+//        dd($laparets);
+        $id_s = [];
+        foreach ($laparets as $lap) {
+            $id_s[] = $lap->Element_Code;
+        }
+
+        return view('product.index', [
+            'products' => $products,
+            'type' => 'Laparet-Напольные-Решения',
+            'id_s' => $id_s,
+        ]);
+    }
+
+    public function avito_laparet_zapad()
+    {
+        $laparets = Product::where('GroupProduct', '=', '01 Плитка')
+            ->where('RMPrice', '>=', 700)
+            ->where('Element_Code', '!=', 'х9999278638')
+            ->where('Element_Code', '!=', 'х9999299093')
+            ->where('Picture', '!=', '')
+            ->where('Producer_Brand', '=', 'Laparet')
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get()
+            ->filter(function (Product $product) {
+                return $product->balance == 1
+                    || (isset($product->kzn->balance) && $product->kzn->balance == 1)
+                    || (isset($product->spb->balance) && $product->spb->balance == 1);
+            })
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
+                    || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
+                    || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
+            });
+
+//        dd($laparets);
+        $id_s = [];
+        foreach ($laparets as $lap) {
+            $id_s[] = $lap->Element_Code;
+        }
+
+        $products = Product::whereIn('Element_Code', $id_s)
+            ->orderByRaw('Lenght * Height DESC')
+            ->paginate(15);
+
+        return view('product.index', [
+            'products' => $products,
+            'type' => 'Laparet-Запад',
+        ]);
+    }
 }

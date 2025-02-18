@@ -36,37 +36,37 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         set_time_limit(300);
 
 //      ==================BAUSERVIS====================
-        $products = Product::where([
-            ['GroupProduct', '01 Плитка'],
-            ['Producer_Brand', '!=', 'Kerama Marazzi'],
-            ['Producer_Brand', '!=', 'Cersanit'],
-            ['Producer_Brand', '!=', 'Шахтинская плитка'],
-            ['Producer_Brand', '!=', ''],
-            ['Element_code', '!=', 'х9999286854'],
-            ['Element_code', '!=', 'х9999221101'],
-            ['Element_code', '!=', 'х9999278638'],
-            ['Element_code', '!=', 'х9999213228'],
-            ['Element_code', '!=', 'х9999308135'],
-            ['Element_code', '!=', 'х9999308136'],
-            ['Element_code', '!=', 'х9999308143'],
-            ['Element_code', '!=', 'х9999308148'],
-            ['Element_code', '!=', 'х9999308149'],
-            ['Element_code', '!=', 'х9999308150'],
-            ['Element_code', '!=', 'х9999213203'],
-            ['Element_code', '!=', 'х9999299093'],
-            ['Element_code', '!=', 'х9999213204'],
-            ['Name', 'not like', '%ставк%'],
-            ['Name', 'not like', '%ступен%'],
-            ['Name', 'not like', '%пецэлем%'],
-            ['balance', 1],
-            ['RMPrice', '>=', '650'],
-            ['RMPrice', '!=', ''],
-            ['Picture', '!=', ''],
-        ])
-            ->whereColumn('RMPrice', '>', 'Price')
-            ->get();
+//        $products = Product::where([
+//            ['GroupProduct', '01 Плитка'],
+//            ['Producer_Brand', '!=', 'Kerama Marazzi'],
+//            ['Producer_Brand', '!=', 'Cersanit'],
+//            ['Producer_Brand', '!=', 'Шахтинская плитка'],
+//            ['Producer_Brand', '!=', ''],
+//            ['Element_code', '!=', 'х9999286854'],
+//            ['Element_code', '!=', 'х9999221101'],
+//            ['Element_code', '!=', 'х9999278638'],
+//            ['Element_code', '!=', 'х9999213228'],
+//            ['Element_code', '!=', 'х9999308135'],
+//            ['Element_code', '!=', 'х9999308136'],
+//            ['Element_code', '!=', 'х9999308143'],
+//            ['Element_code', '!=', 'х9999308148'],
+//            ['Element_code', '!=', 'х9999308149'],
+//            ['Element_code', '!=', 'х9999308150'],
+//            ['Element_code', '!=', 'х9999213203'],
+//            ['Element_code', '!=', 'х9999299093'],
+//            ['Element_code', '!=', 'х9999213204'],
+//            ['Name', 'not like', '%ставк%'],
+//            ['Name', 'not like', '%ступен%'],
+//            ['Name', 'not like', '%пецэлем%'],
+//            ['balance', 1],
+//            ['RMPrice', '>=', '650'],
+//            ['RMPrice', '!=', ''],
+//            ['Picture', '!=', ''],
+//        ])
+//            ->whereColumn('RMPrice', '>', 'Price')
+//            ->get();
 
-        $blaze = Product::where([['Element_Code', 'х9999293160']])->get();      //blaze silver 60x120
+//        $blaze = Product::where([['Element_Code', 'х9999293160']])->get();      //blaze silver 60x120
 
 //        $kerama_marazzi = Product::where([['GroupProduct', '01 Плитка'],
 //            ['Producer_Brand', '=', 'Kerama Marazzi'],
@@ -82,7 +82,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //            ->get();
 
 //        $products = $products->merge($kerama_marazzi);  // KERAMA-MARAZZI NO/OFF
-        $products = $products->merge($blaze);
+//        $products = $products->merge($blaze);
 
 //      ==================GOLITSYNO====================
         $golitsyno_duplicate = ['х9999275874'];
@@ -192,7 +192,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         }
 
         return view('exports.avito.main.main', [
-            'products' => $products,
+//            'products' => $products,
             'golitsyno_duplicate' => $golitsyno_duplicate,
             'primavera' => $primavera,
             'absolut_gres' => $absolut_gres,

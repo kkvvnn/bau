@@ -6,6 +6,7 @@ use App\Models\AvitoTwoExcel;
 use App\Models\Discount;
 use App\Traits\Avito\ExportConstruct;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
@@ -19,30 +20,63 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
     {
         set_time_limit(90);
 
-        $laparets = Product::where('GroupProduct', '=', '01 Плитка')
-            ->where('RMPrice', '>=', 700)
-            ->where('Element_Code', '!=', 'х9999278638')
-            ->where('Element_Code', '!=', 'х9999299093')
-            ->where('Picture', '!=', '')
-            ->where('Producer_Brand', '=', 'Laparet')
-            ->whereColumn('RMPrice', '>', 'Price')
-            ->get()
-            ->filter(function (Product $product) {
-                return $product->balance == 1
-                    || (isset($product->kzn->balance) && $product->kzn->balance == 1)
-                    || (isset($product->spb->balance) && $product->spb->balance == 1);
+//        $laparets = Product::where('GroupProduct', '=', '01 Плитка')
+//            ->where('RMPrice', '>=', 700)
+//            ->where('Element_Code', '!=', 'х9999278638')
+//            ->where('Element_Code', '!=', 'х9999299093')
+//            ->where('Picture', '!=', '')
+//            ->where('Producer_Brand', '=', 'Laparet')
+//            ->whereColumn('RMPrice', '>', 'Price')
+//            ->get()
+//            ->filter(function (Product $product) {
+//                return $product->balance == 1
+//                    || (isset($product->kzn->balance) && $product->kzn->balance == 1)
+//                    || (isset($product->spb->balance) && $product->spb->balance == 1);
+//            })
+//            ->filter(function (Product $product) {
+//                $length = (int)$product->Lenght;
+//                $height = (int)$product->Height;
+//                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+//                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+//                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+//                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+//                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
+//                    || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
+//                    || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
+//            });
+
+
+        $laparets = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Element_code', '!=', 'х9999286854'],
+            ['Element_code', '!=', 'х9999221101'],
+            ['Element_code', '!=', 'х9999278638'],
+            ['Element_code', '!=', 'х9999213228'],
+            ['Element_code', '!=', 'х9999308135'],
+            ['Element_code', '!=', 'х9999308136'],
+            ['Element_code', '!=', 'х9999308143'],
+            ['Element_code', '!=', 'х9999308148'],
+            ['Element_code', '!=', 'х9999308149'],
+            ['Element_code', '!=', 'х9999308150'],
+            ['Element_code', '!=', 'х9999213203'],
+            ['Element_code', '!=', 'х9999299093'],
+            ['Element_code', '!=', 'х9999213204'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['balance', 1],
+            ['RMPrice', '>=', '700'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+            ['Element_code', '!=', 'х9999294554'],
+        ])
+            ->where(function (Builder $query) {
+                $query->where('Producer_Brand', 'Laparet');
+                $query->orWhere('Producer_Brand', 'Ceradim');
             })
-            ->filter(function (Product $product) {
-                $length = (int)$product->Lenght;
-                $height = (int)$product->Height;
-                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
-                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
-                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
-                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
-                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
-                    || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
-                    || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
-            });
+
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get();
 
 //  ===========================OLD=================================
         $olds = AvitoTwoExcel::whereIn('AvitoId', [

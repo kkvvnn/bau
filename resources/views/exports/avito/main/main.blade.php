@@ -44,7 +44,7 @@
     </thead>
     <tbody>
 
-        @include('exports.avito.main.bauservice')  //READY
+{{--        @include('exports.avito.main.bauservice')  //READY POWER OFF--}}
 {{--        @include('exports.avito.main.global-tile') //READY  POWER OFF--}}
         @include('exports.avito.main.kerranova') //READY
         @include('exports.avito.main.primavera') //READY
