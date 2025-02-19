@@ -129,7 +129,7 @@ class AvitoController extends Controller
                 $data['color'] = 'text-bg-info';
                 $data['title'] = 'Автозагрузка Авито КАЗАНЬ';
                 $data['phone'] = '89150072659';
-                $data['manager_name'] = 'Родион';
+                $data['manager_name'] = 'Маргарита';
                 $data['address'] = 'Республика Татарстан (Татарстан), Казань, улица Габдуллы Тукая, 57';
                 $data['communication'] = [
                     'phone_and_message' => 'selected',
