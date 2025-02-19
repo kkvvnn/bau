@@ -88,6 +88,33 @@ if (!function_exists('avito_show_discount')) {
     }
 }
 
+if (!function_exists('avito_show_discount_2')) {
+    /**
+     * @param int|null $vivod
+     * @param int $price
+     * @param string $brand
+     * @param array $discounts
+     * @param int $price_old
+     * @return string
+     */
+    function avito_show_discount_2(int|null $vivod, int $price, string $brand, array $discounts, int $price_old = 0): string
+    {
+        if ($vivod) {
+            return 'Вывод из ОА';
+        }
+        list('discount' => $discount, 'additional' => $additional) = $discounts[$brand];
+        if ($discount && $additional == 'По умолчанию') {
+            if ($price_old == 0 || $price_old == $price) {
+                return $discount;
+            } else {
+                return 'Распродажа';
+            }
+        }
+
+        return '';
+    }
+}
+
 if (!function_exists('avito_tile_type')) {
     /**
      * @param string $name

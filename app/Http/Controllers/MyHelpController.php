@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LaparetKazanExport;
 use App\Models\Altacera\AltaceraTovar;
 use App\Models\Altacera\AltaceraTovarAvailable;
 use App\Models\Kevis;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageManager;
+use Maatwebsite\Excel\Facades\Excel;
 use mysql_xdevapi\Table;
 
 class MyHelpController extends Controller
@@ -927,5 +929,11 @@ class MyHelpController extends Controller
             'products' => $products,
             'type' => 'Laparet-Запад',
         ]);
+    }
+
+    public function avito_laparet_kazan()
+    {
+        $filename = 'Laparet-Kazan-'.date('Y-m-d-H-i-s').'.xlsx';
+        return Excel::download(new LaparetKazanExport(), $filename);
     }
 }

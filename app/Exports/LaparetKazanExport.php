@@ -9,14 +9,26 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCustomValueBinder
+class LaparetKazanExport extends DefaultValueBinder implements FromView, WithCustomValueBinder, ShouldAutoSize, WithStyles
 {
-    use ExportConstruct;
+    public function styles(Worksheet $sheet)
+    {
+        return [
+            // Style the first row as bold text.
+            1    => ['font' => ['bold' => true]],
+
+        ];
+    }
 
     public function view(): View
     {
         set_time_limit(120);
+
+
 
         $products = Product::where([
             ['GroupProduct', '01 Плитка'],
@@ -27,6 +39,7 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
             ['Element_Code', '!=', 'х9999299093'],
         ])
             ->whereColumn('RMPrice', '>', 'Price')
+            ->orderByRaw('Lenght * Height DESC')
             ->get()
             ->filter(function (Product $product) {
                 return $product->balance == 1
@@ -70,14 +83,8 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
             $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
         }
 
-        return view('exports.avito.laparet-kazan', [
+        return view('exports.laparet-kazan-test', [
             'products' => $products,
-            'phone' => $this->phone,
-            'name' => $this->name,
-            'contact_method' => $this->contact_method,
-            'address' => $this->address,
-            'add_description' => $this->add_description_last,
-            'add_description_first' => $this->add_description_first,
             'discounts' => $discounts_all,
         ]);
     }
