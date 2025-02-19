@@ -29,8 +29,9 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
             ->filter(function (Product $product) {
-                return $product->balance == 1
-                    || (isset($product->kzn->balance) && $product->kzn->balance == 1);
+//                return $product->balance == 1
+//                    || (isset($product->kzn->balance) && $product->kzn->balance == 1);
+                return (isset($product->kzn->balance) && $product->kzn->balance == 1);
             })
             ->filter(function (Product $product) {
                 $length = (int)$product->Lenght;
@@ -70,7 +71,7 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
             $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
         }
 
-        return view('exports.avito.laparet-kazan', [
+        return view('exports.avito.laparet-kazan-v2', [
             'products' => $products,
             'phone' => $this->phone,
             'name' => $this->name,
