@@ -130,10 +130,10 @@
             $disc = avito_show_discount_2($product->Vivod, $price_rrc, $brand, $discounts, $price_old);
             if ($disc != 'Распродажа' && $disc != 'Вывод из ОА' && $product->Producer_Brand == 'Laparet') {
                 $description .= '<ul>';
-                    $description .= '<li>Цена при заказе <strong>до 15 тысяч рублей</strong> - ' . $product->RMPrice . '/'.$product->MainUnit.' (РРЦ)</li>';
-                    $description .= '<li>Цена при заказе <strong>15-40 тысяч рублей</strong> - ' . round($product->RMPrice * 0.95, -1) . '/'.$product->MainUnit.'</li>';
-                    $description .= '<li>Цена при заказе <strong>40-100 тысяч рублей</strong> - ' . round($product->RMPrice * 0.90, -1) . '/'.$product->MainUnit.'</li>';
-                    $description .= '<li>Цена при заказе <strong>более 100 тысяч рублей</strong> - ' . round($product->RMPrice * 0.85, -1) . '/'.$product->MainUnit.'</li>';
+                    $description .= '<li>Цена при заказе <strong>до 15 тысяч рублей</strong> - ' . $product->RMPrice . ' р/'.$product->MainUnit.' (РРЦ)</li>';
+                    $description .= '<li>Цена при заказе <strong>15-40 тысяч рублей</strong> - ' . round($product->RMPrice * 0.95, -1) . ' р/'.$product->MainUnit.'</li>';
+                    $description .= '<li>Цена при заказе <strong>40-100 тысяч рублей</strong> - ' . round($product->RMPrice * 0.90, -1) . ' р/'.$product->MainUnit.'</li>';
+                    $description .= '<li>Цена при заказе <strong>более 100 тысяч рублей</strong> - ' . round($product->RMPrice * 0.85, -1) . ' р/'.$product->MainUnit.'</li>';
                 $description .= '</ul>';
             }
 
