@@ -356,49 +356,52 @@
                                         <li><a class="nav-link" href="{{ route('global-tile.index') }}">GLOBAL TILE</a>
                                         </li>
                                         <li><a class="nav-link" href="{{ route('kerranova.index') }}">KERRANOVA</a></li>
-                                        <li><a class="nav-link" href="{{ route('keramopro.index') }}">NOVIN CERAM</a>
+{{--                                        <li><a class="nav-link" href="{{ route('keramopro.index') }}">NOVIN CERAM</a>--}}
+{{--                                        </li>--}}
+
+                                        <li><a class="nav-link" href="{{ route('artcenter.index', 'Art-Ceramic') }}">ART CERAMIC</a>
                                         </li>
 
-                                        <div class="border">
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Art-Ceramic') }}">ART CERAMIC</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Atlas-Concorde-Italy') }}">ATLAS CONCORDE ITALY</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Atlas-Concorde-Russia') }}">{{mb_strtoupper('Atlas Concorde Russia')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Baldocer') }}">{{mb_strtoupper('Baldocer')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Basconi-Home') }}">{{mb_strtoupper('Basconi Home')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Bien') }}">{{mb_strtoupper('Bien')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Cube-Ceramica') }}">{{mb_strtoupper('Cube Ceramica')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'DAKO') }}">{{mb_strtoupper('DAKO')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Geotiles') }}">{{mb_strtoupper('Geotiles')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Grasaro') }}">{{mb_strtoupper('Grasaro')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Idalgo') }}">{{mb_strtoupper('Idalgo')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Kerranova') }}">{{mb_strtoupper('Kerranova')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'LB') }}">{{mb_strtoupper('Lasselsberger (LB)')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Pamesa') }}">{{mb_strtoupper('Pamesa')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Prime-Ceramics') }}">{{mb_strtoupper('Prime Ceramics')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Qua') }}">{{mb_strtoupper('Qua')}}</a>
-                                            </li>
+{{--                                        <div class="border">--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Art-Ceramic') }}">ART CERAMIC</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Atlas-Concorde-Italy') }}">ATLAS CONCORDE ITALY</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Atlas-Concorde-Russia') }}">{{mb_strtoupper('Atlas Concorde Russia')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Baldocer') }}">{{mb_strtoupper('Baldocer')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Basconi-Home') }}">{{mb_strtoupper('Basconi Home')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Bien') }}">{{mb_strtoupper('Bien')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Cube-Ceramica') }}">{{mb_strtoupper('Cube Ceramica')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'DAKO') }}">{{mb_strtoupper('DAKO')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Geotiles') }}">{{mb_strtoupper('Geotiles')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Grasaro') }}">{{mb_strtoupper('Grasaro')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Idalgo') }}">{{mb_strtoupper('Idalgo')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Kerranova') }}">{{mb_strtoupper('Kerranova')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'LB') }}">{{mb_strtoupper('Lasselsberger (LB)')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Pamesa') }}">{{mb_strtoupper('Pamesa')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Prime-Ceramics') }}">{{mb_strtoupper('Prime Ceramics')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'Qua') }}">{{mb_strtoupper('Qua')}}</a>--}}
+{{--                                            </li>--}}
 {{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'REDA') }}">{{mb_strtoupper('REDA')}}</a>--}}
 {{--                                            </li>--}}
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'ГРАНИТЕЯ') }}">{{mb_strtoupper('ГРАНИТЕЯ')}}</a>
-                                            </li>
-                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'УРАЛЬСКИЙ-ГРАНИТ') }}">{{mb_strtoupper('УРАЛЬСКИЙ ГРАНИТ')}}</a>
-                                            </li>
-                                        </div>
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'ГРАНИТЕЯ') }}">{{mb_strtoupper('ГРАНИТЕЯ')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                            <li><a class="nav-link" href="{{ route('artcenter.index', 'УРАЛЬСКИЙ-ГРАНИТ') }}">{{mb_strtoupper('УРАЛЬСКИЙ ГРАНИТ')}}</a>--}}
+{{--                                            </li>--}}
+{{--                                        </div>--}}
 
 
 
