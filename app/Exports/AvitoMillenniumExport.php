@@ -317,7 +317,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
             'Aquafloor' => [
                 'discount' => 0,
-                'additional' => 'По умолчанию',
+                'additional' => 'Не указывать цену',
             ],
             'Global Tile' => [
                 'discount' => 0,

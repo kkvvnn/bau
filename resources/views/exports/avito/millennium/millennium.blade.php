@@ -45,31 +45,36 @@
     <tbody>
 
 {{--        KAZAN         --}}
-        @include('exports.avito.millennium.artkera')
-        @include('exports.avito.millennium.artCeramic')
+{{--        @include('exports.avito.millennium.artkera')--}}
+{{--        @include('exports.avito.millennium.artCeramic')--}}
+{{--        @include('exports.avito.millennium.primavera')--}}
+{{--        @include('exports.avito.millennium.leedo-kazan')--}}
+{{--        @include('exports.avito.millennium.pixmosaic-kazan')--}}
+
+
 {{--        @include('exports.avito.millennium.CubeCeramica')--}}
 {{--        @include('exports.avito.millennium.idalgo')--}}
 {{--        @include('exports.avito.millennium.qua')--}}
 {{--        @include('exports.avito.millennium.dako')--}}
 {{--        @include('exports.avito.millennium.graniteya')--}}
 {{--        @include('exports.avito.millennium.primeCeramics')--}}
-        @include('exports.avito.millennium.primavera')
 {{--        @include('exports.avito.millennium.kerama-marazzi-kazan')--}}
 {{--        @include('exports.avito.millennium.global-tile') POWER OFF --}}
-        @include('exports.avito.millennium.leedo-kazan')
-        @include('exports.avito.millennium.pixmosaic-kazan')
+
 
 
 {{--        SPB         --}}
         @include('exports.avito.millennium.artkera-spb')
         @include('exports.avito.millennium.bauservice-spb')
         @include('exports.avito.millennium.primavera-spb')
-{{--        @include('exports.avito.millennium.kerama-marazzi-spb')--}}
-{{--        @include('exports.avito.millennium.global-tile-spb') POWER OFF --}}
         @include('exports.avito.millennium.aquafloor')
         @include('exports.avito.millennium.nt-ceramic-spb-hand')
         @include('exports.avito.millennium.leedo-spb')
         @include('exports.avito.millennium.pixmosaic-spb')
+
+
+{{--        @include('exports.avito.millennium.kerama-marazzi-spb')--}}
+{{--        @include('exports.avito.millennium.global-tile-spb') POWER OFF --}}
 
     </tbody>
 </table>
