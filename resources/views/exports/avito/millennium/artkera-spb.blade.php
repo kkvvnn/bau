@@ -1,6 +1,6 @@
 {{-----ARTKERA-SPB-----}}
 
-@foreach($artkera as $product)
+@foreach($artkera_spb as $product)
 
     @php
         $product_type = avito_type($product->collection_item);
@@ -109,7 +109,6 @@
         $description .= '<p><strong>На '.$date.' доступно: </strong></p>';
         $description .= '<ul>';
         $description .= '<li>Склад СПб: ' . $product->spb + $product->spb_sale . ' ' . $product->unit . '</li>';
-        $description .= '<li>Склад Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve + $product->moscow_way) . ' ' . $product->unit . '</li>';
         if($product->spb_way) {
             $description .= '<li>СПб (в пути): ' . $product->spb_way . ' ' . $product->unit . '</li>';
         }

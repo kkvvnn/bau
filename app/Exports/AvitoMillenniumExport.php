@@ -37,7 +37,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 //       ----- BAUSERVICE-SPB -----
         $bauservice_spb = Product::with('spb')
             ->whereHas('spb', function ($spb) {
-                $spb->where('balanceCount', '>', 1);
+                $spb->where('balanceCount', '>', 2);
             })
             ->where(function (Builder $query) {
                 $query->where('Producer_Brand', 'Laparet');
@@ -45,7 +45,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             })
             ->where([
                 ['GroupProduct', '01 Плитка'],
-                ['RMPrice', '>=', '900'],
+                ['RMPrice', '>=', '1300'],
                 ['Picture', '!=', ''],
                 ['Element_code', '!=', 'х9999294554'],
                 ['Element_code', '!=', 'х9999299093'],
@@ -53,8 +53,11 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ->whereColumn('RMPrice', '>', 'Price')
             ->get();
 
+
 //        ----- ARTKERA -----
-        $artkera = ArtkeraTovarAvailable::where([
+        $artkera_spb = ArtkeraTovarAvailable::where([
+            ['sale', 0],
+            ['spb', '>=', 1],
             ['artikul', '!=', 'DW11VST00'],
             ['artikul', '!=', 'TWU2550MLN10'],
             ['artikul', '!=', 'TWU2550MLN20'],
@@ -63,7 +66,8 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
         ])
             ->get();
 
-//        $artkera = [];
+
+//        $artkera_spb = [];
 
 //        ----- ART CERAMIC -----
         $price_min = 1000;
@@ -164,7 +168,12 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 //      ==================PRIMAVERA====================
         $primavera = PrimaveraNew::whereHas('balance')
             ->whereHas('price')
+            ->where(column: function (Builder $query) {
+                $query->orWhere('size_format',  '60x120 см');
+                $query->orWhere('size_format',  '60x60 см');
+            })
             ->get();
+
 
 
 //      ============KERAMA-MARAZZI================
@@ -236,6 +245,8 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
         ])
             ->get();
 
+//        dd($aquafloor);
+
 //      ===================GLOBAL-TILE====================
         $globaltile = GlobalTileNew::where([
             ['brand', 'GlobalTile'],
@@ -246,19 +257,23 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
         //      ===================LEEDO===================
         $leedo = LeedoProduct::where([
-            ['Sklad_Msk_LeeDo', '>', 0],
+            ['Sklad_SPb_LeeDo', '>', 0],
             ['Category', 'like', 'Мозаика/%'],
         ])
-            ->orWhere([
-                ['Sklad_SPb_LeeDo', '>', 0],
-                ['Category', 'like', 'Мозаика/%'],
-            ])
+//            ->orWhere([
+//                ['Sklad_Msk_LeeDo', '>', 0],
+//                ['Category', 'like', 'Мозаика/%'],
+//            ])
             ->get();
+
+//        dd($leedo);
 
         //      ===================PIXMOSAIC====================
         $pixmosaics = PixmosaicNew::where('price', '!=', 0)
             ->where('stock', '!=', '')
             ->get();
+
+//        dd($pixmosaics);
 
         $discounts_all = [
             'Artkera' => [
@@ -335,7 +350,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
         return view('exports.avito.millennium.millennium', [
 
-            'artkera' => $artkera,
+            'artkera_spb' => $artkera_spb,
             'artCeramic' => $artCeramic,
             'cubeCeramica' => $cubeCeramica,
             'idalgo' => $idalgo,
