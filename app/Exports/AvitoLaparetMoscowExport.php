@@ -65,7 +65,7 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
             ['balance', 1],
-            ['RMPrice', '>=', '700'],
+            ['RMPrice', '>=', '1300'],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
             ['Element_code', '!=', 'х9999294554'],
@@ -77,6 +77,7 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
 
             ->whereColumn('RMPrice', '>', 'Price')
             ->get();
+
 
 //  ===========================OLD=================================
         $olds = AvitoTwoExcel::whereIn('AvitoId', [

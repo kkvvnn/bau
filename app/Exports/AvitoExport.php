@@ -23,6 +23,7 @@ use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Product;
 use App\Traits\Avito\ExportConstruct;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
@@ -90,6 +91,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ==================PRIMAVERA====================
         $primavera = PrimaveraNew::whereHas('balance')
             ->whereHas('price')
+            ->where(column: function (Builder $query) {
+                $query->orWhere('size_format',  '60x120 см');
+                $query->orWhere('size_format',  '60x60 см');
+            })
             ->get();
 
 //      =================ABSOLUT-GRES====================
@@ -101,19 +106,30 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['Sklad_Msk_LeeDo', '>', 0],
             ['Category', 'like', 'Мозаика/%'],
             ])
-            ->orWhere([
-                ['Sklad_SPb_LeeDo', '>', 0],
-                ['Category', 'like', 'Мозаика/%'],
-                ])
+//            ->orWhere([
+//                ['Sklad_SPb_LeeDo', '>', 0],
+//                ['Category', 'like', 'Мозаика/%'],
+//                ])
             ->get();
+
 
 //      ====================ARTKERA===================
         $altacera = ArtkeraTovarAvailable::where([
+            ['sale', 0],
+//            ['moscow', '>=', 1],
             ['artikul', '!=', 'DW11VST00'],
             ['artikul', '!=', 'TWU2550MLN10'],
             ['artikul', '!=', 'TWU2550MLN30'],
         ])
+            ->where(function (Builder $query) {
+                $query->where('moscow', '>=', 1);
+                $query->orWhere('moscow_way', '>=', 1);
+                $query->orWhere('moscow_reserve', '>=', 1);
+                $query->orWhere('moscow_depot_reserve', '>=', 1);
+//                $query->orWhere('Producer_Brand', 'Ceradim');
+            })
             ->get();
+
 
 //      =================NT-CERAMIC==================
         $ntceramic = NtCeramicNoImgs::all();
