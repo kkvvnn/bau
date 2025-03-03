@@ -116,15 +116,15 @@ class SearchController extends Controller
                 'search_name' => $search_name,
             ]);
         }
-
-        $empero = \App\Models\Empero::where('title', 'LIKE', $name)->paginate(15);
-        $empero->appends(['name' => $name]);
-        if (count($empero)) {
-            return view('empero.index', [
-                'products' => $empero,
-                'search_name' => $search_name,
-            ]);
-        }
+//
+//        $empero = \App\Models\Empero::where('title', 'LIKE', $name)->paginate(15);
+//        $empero->appends(['name' => $name]);
+//        if (count($empero)) {
+//            return view('empero.index', [
+//                'products' => $empero,
+//                'search_name' => $search_name,
+//            ]);
+//        }
 
         $kerranova = Kerranova::where('title', 'LIKE', $name)
             ->orWhere('vendor_code', 'LIKE', $name)
