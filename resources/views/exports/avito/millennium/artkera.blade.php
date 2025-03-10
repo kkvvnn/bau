@@ -1,5 +1,5 @@
 {{-----ARTKERA-----}}
-@foreach($artkera as $product)
+@foreach($artkera_kazan as $product)
 
     @php
         $product_type = avito_type($product->collection_item);

@@ -126,6 +126,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 $query->orWhere('moscow_way', '>=', 1);
                 $query->orWhere('moscow_reserve', '>=', 1);
                 $query->orWhere('moscow_depot_reserve', '>=', 1);
+                $query->orWhere('moscow_sale', '>=', 1);
             })
             ->get();
 
