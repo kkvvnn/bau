@@ -115,7 +115,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ====================ARTKERA===================
         $altacera = ArtkeraTovarAvailable::where([
-            ['sale', 0],
+//            ['sale', 0],
 //            ['moscow', '>=', 1],
             ['artikul', '!=', 'DW11VST00'],
             ['artikul', '!=', 'TWU2550MLN10'],
@@ -126,7 +126,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 $query->orWhere('moscow_way', '>=', 1);
                 $query->orWhere('moscow_reserve', '>=', 1);
                 $query->orWhere('moscow_depot_reserve', '>=', 1);
-//                $query->orWhere('Producer_Brand', 'Ceradim');
             })
             ->get();
 

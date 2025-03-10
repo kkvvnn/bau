@@ -45,11 +45,11 @@
     <tbody>
 
 {{--        KAZAN         --}}
-{{--        @include('exports.avito.millennium.artkera')--}}
-{{--        @include('exports.avito.millennium.artCeramic')--}}
-{{--        @include('exports.avito.millennium.primavera')--}}
+        @include('exports.avito.millennium.artkera')
+        @include('exports.avito.millennium.artCeramic')
+        @include('exports.avito.millennium.primavera')
 {{--        @include('exports.avito.millennium.leedo-kazan')--}}
-{{--        @include('exports.avito.millennium.pixmosaic-kazan')--}}
+        @include('exports.avito.millennium.pixmosaic-kazan')
 
 
 {{--        @include('exports.avito.millennium.CubeCeramica')--}}

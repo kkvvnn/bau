@@ -65,7 +65,7 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
             ['balance', 1],
-            ['RMPrice', '>=', '1300'],
+            ['RMPrice', '>=', '900'],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
             ['Element_code', '!=', 'х9999294554'],
@@ -74,7 +74,6 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
                 $query->where('Producer_Brand', 'Laparet');
                 $query->orWhere('Producer_Brand', 'Ceradim');
             })
-
             ->whereColumn('RMPrice', '>', 'Price')
             ->get();
 

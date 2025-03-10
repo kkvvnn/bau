@@ -22,7 +22,7 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', 'Laparet'],
             ['Picture', '!=', ''],
-            ['RMPrice', '>=', '1300'],
+            ['RMPrice', '>=', '900'],
             ['Element_Code', '!=', 'х9999278638'],
             ['Element_Code', '!=', 'х9999299093'],
         ])

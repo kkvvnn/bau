@@ -45,7 +45,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             })
             ->where([
                 ['GroupProduct', '01 Плитка'],
-                ['RMPrice', '>=', '1300'],
+                ['RMPrice', '>=', '900'],
                 ['Picture', '!=', ''],
                 ['Element_code', '!=', 'х9999294554'],
                 ['Element_code', '!=', 'х9999299093'],
@@ -56,7 +56,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
 //        ----- ARTKERA -----
         $artkera_spb = ArtkeraTovarAvailable::where([
-            ['sale', 0],
+//            ['sale', 0],
             ['spb', '>=', 1],
             ['artikul', '!=', 'DW11VST00'],
             ['artikul', '!=', 'TWU2550MLN10'],
