@@ -46,36 +46,36 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
 //            });
 
 
-        $laparets = Product::where([
-            ['GroupProduct', '01 Плитка'],
-            ['Element_code', '!=', 'х9999286854'],
-            ['Element_code', '!=', 'х9999221101'],
-            ['Element_code', '!=', 'х9999278638'],
-            ['Element_code', '!=', 'х9999213228'],
-            ['Element_code', '!=', 'х9999308135'],
-            ['Element_code', '!=', 'х9999308136'],
-            ['Element_code', '!=', 'х9999308143'],
-            ['Element_code', '!=', 'х9999308148'],
-            ['Element_code', '!=', 'х9999308149'],
-            ['Element_code', '!=', 'х9999308150'],
-            ['Element_code', '!=', 'х9999213203'],
-            ['Element_code', '!=', 'х9999299093'],
-            ['Element_code', '!=', 'х9999213204'],
-            ['Name', 'not like', '%ставк%'],
-            ['Name', 'not like', '%ступен%'],
-            ['Name', 'not like', '%пецэлем%'],
-            ['balance', 1],
-            ['RMPrice', '>=', '900'],
-            ['RMPrice', '!=', ''],
-            ['Picture', '!=', ''],
-            ['Element_code', '!=', 'х9999294554'],
-        ])
-            ->where(function (Builder $query) {
-                $query->where('Producer_Brand', 'Laparet');
-                $query->orWhere('Producer_Brand', 'Ceradim');
-            })
-            ->whereColumn('RMPrice', '>', 'Price')
-            ->get();
+//        $laparets = Product::where([
+//            ['GroupProduct', '01 Плитка'],
+//            ['Element_code', '!=', 'х9999286854'],
+//            ['Element_code', '!=', 'х9999221101'],
+//            ['Element_code', '!=', 'х9999278638'],
+//            ['Element_code', '!=', 'х9999213228'],
+//            ['Element_code', '!=', 'х9999308135'],
+//            ['Element_code', '!=', 'х9999308136'],
+//            ['Element_code', '!=', 'х9999308143'],
+//            ['Element_code', '!=', 'х9999308148'],
+//            ['Element_code', '!=', 'х9999308149'],
+//            ['Element_code', '!=', 'х9999308150'],
+//            ['Element_code', '!=', 'х9999213203'],
+//            ['Element_code', '!=', 'х9999299093'],
+//            ['Element_code', '!=', 'х9999213204'],
+//            ['Name', 'not like', '%ставк%'],
+//            ['Name', 'not like', '%ступен%'],
+//            ['Name', 'not like', '%пецэлем%'],
+//            ['balance', 1],
+//            ['RMPrice', '>=', '900'],
+//            ['RMPrice', '!=', ''],
+//            ['Picture', '!=', ''],
+//            ['Element_code', '!=', 'х9999294554'],
+//        ])
+//            ->where(function (Builder $query) {
+//                $query->where('Producer_Brand', 'Laparet');
+//                $query->orWhere('Producer_Brand', 'Ceradim');
+//            })
+//            ->whereColumn('RMPrice', '>', 'Price')
+//            ->get();
 
 
 //  ===========================OLD=================================
@@ -105,7 +105,7 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
         }
 
         return view('exports.avito.laparet-moscow', [
-            'laparets' => $laparets,
+//            'laparets' => $laparets,
             'olds' => $olds,
             'phone' => $this->phone,
             'name' => $this->name,

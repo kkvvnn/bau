@@ -85,6 +85,37 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //        $products = $products->merge($kerama_marazzi);  // KERAMA-MARAZZI NO/OFF
 //        $products = $products->merge($blaze);
 
+        $laparets = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Element_code', '!=', 'х9999286854'],
+            ['Element_code', '!=', 'х9999221101'],
+            ['Element_code', '!=', 'х9999278638'],
+            ['Element_code', '!=', 'х9999213228'],
+            ['Element_code', '!=', 'х9999308135'],
+            ['Element_code', '!=', 'х9999308136'],
+            ['Element_code', '!=', 'х9999308143'],
+            ['Element_code', '!=', 'х9999308148'],
+            ['Element_code', '!=', 'х9999308149'],
+            ['Element_code', '!=', 'х9999308150'],
+            ['Element_code', '!=', 'х9999213203'],
+            ['Element_code', '!=', 'х9999299093'],
+            ['Element_code', '!=', 'х9999213204'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['balance', 1],
+            ['RMPrice', '>=', '900'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+            ['Element_code', '!=', 'х9999294554'],
+        ])
+            ->where(function (Builder $query) {
+                $query->where('Producer_Brand', 'Laparet');
+                $query->orWhere('Producer_Brand', 'Ceradim');
+            })
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get();
+
 //      ==================GOLITSYNO====================
         $golitsyno_duplicate = ['х9999275874'];
 
@@ -208,7 +239,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         }
 
         return view('exports.avito.main.main', [
-//            'products' => $products,
+            'products' => $laparets,
             'golitsyno_duplicate' => $golitsyno_duplicate,
             'primavera' => $primavera,
             'absolut_gres' => $absolut_gres,
