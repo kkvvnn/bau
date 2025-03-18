@@ -104,8 +104,10 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
             $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
         }
 
+        $laparets = [];
+
         return view('exports.avito.laparet-moscow', [
-//            'laparets' => $laparets,
+            'laparets' => $laparets,
             'olds' => $olds,
             'phone' => $this->phone,
             'name' => $this->name,
