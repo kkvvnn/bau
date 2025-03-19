@@ -36,7 +36,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
     <meta name="author" content="kkvvnn">
     <meta name="generator" content="Hugo 0.111.3">
 
@@ -293,8 +292,6 @@
         </a>
 
 
-
-
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
                 aria-controls="offcanvasDarkNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -535,12 +532,12 @@
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="{{route('product_index')}}"
                                     class="nav-link px-2 text-body-secondary">Главная</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Контакты</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О нас</a></li>
+{{--            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>--}}
+            <li class="nav-item"><a href="{{route('contacts')}}" class="nav-link px-2 text-body-secondary">Контакты</a></li>
+{{--            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>--}}
+{{--            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О нас</a></li>--}}
         </ul>
-        <p class="text-center text-body-secondary">&copy; {{ date('Y') }} Company Name, Inc</p>
+        <p class="text-center text-body-secondary">&copy; {{ date('Y') }} service-plitka.ru</p>
     </footer>
 </div>
 

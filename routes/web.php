@@ -25,7 +25,15 @@ use Illuminate\Support\Facades\Route;
 Route::resource('discounts', \App\Http\Controllers\DiscountController::class);
 
 //----- BAUSERVICE -----
-Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
+//Route::get('/', [ProductController::class, 'index_all'])->name('product_index');
+Route::get('/', function () {
+    return view('index-main');
+})->name('product_index');
+
+Route::get('/contacts', function () {
+    return view('contacts');
+})->name('contacts');
+
 Route::get('/laparet', [ProductController::class, 'laparet'])->name('laparet.index');
 Route::get('/cersanit', [ProductController::class, 'cersanit'])->name('cersanit.index');
 Route::get('/vitra', [ProductController::class, 'vitra'])->name('vitra.index');
