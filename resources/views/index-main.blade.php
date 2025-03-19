@@ -85,7 +85,7 @@
                         <div class="col">
                             <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url({{Storage::disk('no_image')->url('laminat.jpg')}});">
                                 <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Ламинат, кварцвинил, инженерная доска</h3>
+                                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Ламинат, <span class="text-nowrap">кварцвинил,</span> <span class="text-nowrap">инженерная</span> доска</h3>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                         <div class="col">
                             <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url({{Storage::disk('no_image')->url('sant.jpg')}});">
                                 <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Сантехника</h3>
+                                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><span class="text-nowrap">Сантехника</span></h3>
                                 </div>
                             </div>
                         </div>
