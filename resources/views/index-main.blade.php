@@ -11,7 +11,7 @@
     <meta name="keywords" content="керамогранит, мозаика, ламинат, кварцвинил, керамическая плитка">
 @endsection
 
-@section('title', $type??$search_name??config('app.name') . ' - керамогранит, мозаика, ламинат в Москве, СПб, Казани')
+@section('title', $type??$search_name??config('app.name') . ' - Керамогранит, мозаика, ламинат в Москве, СПб, Казани')
 
 @section('content')
     <div class="album py-5 bg-body-tertiary">
