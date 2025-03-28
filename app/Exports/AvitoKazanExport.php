@@ -28,11 +28,11 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
         ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
-            ->filter(function (Product $product) {
-//                return $product->balance == 1
-//                    || (isset($product->kzn->balance) && $product->kzn->balance == 1);
-                return (isset($product->kzn->balance) && $product->kzn->balance == 1);
-            })
+//            ->filter(function (Product $product) {
+////                return $product->balance == 1
+////                    || (isset($product->kzn->balance) && $product->kzn->balance == 1);
+//                return (isset($product->kzn->balance) && $product->kzn->balance == 1);
+//            })
             ->filter(function (Product $product) {
                 $length = (int)$product->Lenght;
                 $height = (int)$product->Height;

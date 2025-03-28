@@ -69,7 +69,7 @@
         @include('exports.avito.millennium.primavera-spb')
         @include('exports.avito.millennium.aquafloor')
         @include('exports.avito.millennium.nt-ceramic-spb-hand')
-{{--        @include('exports.avito.millennium.leedo-spb')--}}
+        @include('exports.avito.millennium.leedo-spb')
         @include('exports.avito.millennium.pixmosaic-spb')
 
 

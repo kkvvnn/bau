@@ -283,10 +283,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ['Sklad_SPb_LeeDo', '>', 0],
             ['Category', 'like', 'Мозаика/%'],
         ])
-//            ->orWhere([
-//                ['Sklad_Msk_LeeDo', '>', 0],
-//                ['Category', 'like', 'Мозаика/%'],
-//            ])
+            ->orWhere([
+                ['Sklad_Msk_LeeDo', '>', 0],
+                ['Category', 'like', 'Мозаика/%'],
+            ])
             ->get();
 
 //        dd($leedo);
@@ -362,11 +362,11 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
                 'additional' => 'По умолчанию',
             ],
             'Leedo' => [
-                'discount' => 0,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
             'Pixmosaic' => [
-                'discount' => 7,
+                'discount' => 5,
                 'additional' => 'По умолчанию',
             ],
         ];
