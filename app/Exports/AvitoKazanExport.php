@@ -56,10 +56,10 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
             ['Picture', '!=', ''],
         ])
             ->whereColumn('RMPrice', '>', 'Price')
-            ->get()
-            ->filter(function (Product $product) {
-                return isset($product->kzn->balance) && $product->kzn->balance == 1;
-            });
+            ->get();
+//            ->filter(function (Product $product) {
+//                return isset($product->kzn->balance) && $product->kzn->balance == 1;
+//            });
 
         $products = $products->merge($ceradim);
 

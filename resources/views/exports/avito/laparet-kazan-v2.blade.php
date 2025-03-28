@@ -112,16 +112,16 @@
             $description .= '<p>------------------</p>';
             $date = date('d.m.Y');
 
-            if (isset($product->kzn)) {
-                $description .= '<p>&#9193;  '.$date.' склад Казань '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.' </p>';
-            } else {
-                $description .= '<p>&#9193;  '.$date.' склад Казань 0 '.$product->MainUnit.' </p>';
-            }
-            if ($product->balanceCount) {
-                $description .= '<p>&#9193;  склад Москва '.round($product->balanceCount, 2).' '.$product->MainUnit.' </p>';
-            }
+//            if (isset($product->kzn)) {
+//                $description .= '<p>&#9193;  '.$date.' склад Казань '.round($product->kzn->balanceCount, 2).' '.$product->MainUnit.' </p>';
+//            } else {
+//                $description .= '<p>&#9193;  '.$date.' склад Казань 0 '.$product->MainUnit.' </p>';
+//            }
+//            if ($product->balanceCount) {
+//                $description .= '<p>&#9193;  склад Москва '.round($product->balanceCount, 2).' '.$product->MainUnit.' </p>';
+//            }
 
-            $description .= '<p><em>(актуальную информацию уточняйте у менеджера)</em></p>';
+            $description .= '<p><em>(актуальную информацию о ценах и наличии уточняйте у менеджера)</em></p>';
             $description .= '<p>------------------</p>';
 
             $price_rrc = $product->RMPrice;
