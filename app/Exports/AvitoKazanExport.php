@@ -39,14 +39,14 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
                 return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
                     || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
                     || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
-                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+//                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
                     || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
                     || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
                     || ($length >= 59 && $length <= 61 && $height >= 29 && $height <= 31)           //30x60
                     || ($length >= 49 && $length <= 51 && $height >= 24 && $height <= 26)           //25x50
                     || ($length >= 74 && $length <= 76 && $height >= 24 && $height <= 26)           //25x75
                     || ($length >= 59 && $length <= 61 && $height >= 19 && $height <= 21)           //20x60
-                    || ($length >= 39 && $length <= 41 && $height >= 19 && $height <= 21)           //20x40
+//                    || ($length >= 39 && $length <= 41 && $height >= 19 && $height <= 21)           //20x40
                     || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
             });
 
