@@ -74,6 +74,14 @@ return [
             'throw' => false,
         ],
 
+        'media' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images'),
+            'url' => env('APP_URL').'/storage/images',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'leedo-images' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/leedo'),
@@ -126,6 +134,14 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public/images/rusplitka'),
             'url' => env('APP_URL').'/storage/images/rusplitka',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'kevis' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/kevis'),
+            'url' => env('APP_URL').'/storage/images/kevis',
             'visibility' => 'public',
             'throw' => false,
         ],

@@ -155,9 +155,14 @@ Route::get('/ntceramic', [\App\Http\Controllers\NtCeramicController::class, 'ind
 Route::get('/ntceramic/{id}', [\App\Http\Controllers\NtCeramicController::class, 'show'])->name('ntceramic.show');
 
 //----- KEVIS (Import from fixed .xlsx) -----
-Route::get('/kevis/import', [\App\Http\Controllers\KevisController::class, 'import']);
-Route::get('/kevis', [\App\Http\Controllers\KevisController::class, 'index'])->name('kevis.index');
-Route::get('/kevis/{id}', [\App\Http\Controllers\KevisController::class, 'show'])->name('kevis.show');
+//Route::get('/kevis/import', [\App\Http\Controllers\KevisController::class, 'import']);
+//Route::get('/kevis', [\App\Http\Controllers\KevisController::class, 'index'])->name('kevis.index');
+//Route::get('/kevis/{id}', [\App\Http\Controllers\KevisController::class, 'show'])->name('kevis.show');
+
+Route::get('/kevis/import', [\App\Http\Controllers\NewKevisController::class, 'import']);
+Route::get('/kevis', [\App\Http\Controllers\NewKevisController::class, 'index'])->name('kevis.index');
+Route::get('/kevis/{slug:slug}', [\App\Http\Controllers\NewKevisController::class, 'show'])->name('kevis.show');
+Route::get('/kevis/collection/{name}', [\App\Http\Controllers\NewKevisController::class, 'collection'])->name('kevis.collection');
 
 
 //----- TECHNOTILE (Import from auto-updated .xml) -----
@@ -283,3 +288,6 @@ Route::get('/artcenter/{slug:slug}', [\App\Http\Controllers\ArtcenterController:
 Route::get('/artcenter/collection/{name}/{brand}', [\App\Http\Controllers\ArtcenterController::class, 'collection'])->name('artcenter.collection');
 
 Route::view('/grafik-new-year-2025', 'new-year');
+
+Route::view('/save-media', 'storage.form');
+Route::post('/save-media', [\App\Http\Controllers\StorageController::class, 'store']);
