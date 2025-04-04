@@ -12,6 +12,7 @@ use App\Models\GlobalTileNew;
 use App\Models\Keramopro;
 use App\Models\Kerranova;
 use App\Models\LeedoProduct;
+use App\Models\NewKevis;
 use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Pixmosaic;
 use App\Models\PixmosaicNew;
@@ -161,6 +162,15 @@ class SearchController extends Controller
         if (count($primavera_new)) {
             return view('primavera-new.index', [
                 'products' => $primavera_new,
+                'search_name' => $search_name,
+            ]);
+        }
+
+        $kevis = NewKevis::where('title', 'LIKE', $name)->orWhere('code', 'LIKE', $name)->paginate(15);
+        $kevis->appends(['name' => $name]);
+        if (count($kevis)) {
+            return view('new-kevis.index', [
+                'products' => $kevis,
                 'search_name' => $search_name,
             ]);
         }
