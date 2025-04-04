@@ -12,6 +12,8 @@ class NewKevisController extends Controller
 {
     public function import()
     {
+        NewKevis::truncate();
+
         $name = 'import/new-kevis/kevis.xlsx';
 
         Excel::import(new NewKevisImport(), $name);
