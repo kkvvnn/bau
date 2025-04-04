@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mt-3">
-                    <video autoplay loop muted controls width="350">
+                    <video autoplay loop muted controls width="300">
                         <source src="{{$videos}}" type="video/mp4">
                         Ваш браузер не поддерживает встроенные видео :(
                     </video>
