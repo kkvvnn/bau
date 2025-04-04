@@ -90,7 +90,7 @@
                             @endphp
                             @foreach($images as $url)
                                 <div class="carousel-item {{$active_slider}}">
-                                    <a href="{{$url}}" data-fancybox="gallery" data-caption="Лицо {{++$nn}} из {{$nn_all}}">
+                                    <a href="{{$url}}" data-fancybox="gallery" data-caption="">
                                         <img src="{{$url}}" class="d-block w-100" alt="...">
                                     </a>
                                 </div>
