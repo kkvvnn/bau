@@ -478,51 +478,5 @@
         <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
     </tr>
 
-    // duplicate in Golitsyno
-    @if (in_array($product->Element_Code, $golitsyno_duplicate))
-        @php
-            $address_golitsyno = 'Московская область, Одинцовский городской округ, Голицыно';
-            $code = $product->Element_Code . '_golitsyno';
-            $video = '';
-        @endphp
-
-        <tr>
-            <td></td>                                                   {{-- AvitoID --}}
-            <td>{{ $code }}</td>                                        {{-- Id --}}
-            <td>{{ $name }}</td>                                        {{-- ManagerName --}}
-            <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
-            <td>{{ $address_golitsyno }}</td>                           {{-- Address --}}
-            <td>{{ $title }}</td>                                       {{-- Title --}}
-            <td>{{ $description }}</td>                                 {{-- Description --}}
-            <td>{{ $price }}</td>                                       {{-- Price --}}
-            <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-            <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
-            <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
-            <td>Ремонт и строительство</td>                             {{-- Category --}}
-            <td>Стройматериалы</td>                                     {{-- GoodsType --}}
-            <td>Товар от производителя</td>                             {{-- AdType --}}
-            <td>Новое</td>                                              {{-- Condition --}}
-            <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
-            <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
-            <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
-            <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
-            <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
-            <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
-            <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
-            <td>{{ $Brand }}</td>                                       {{-- Brand --}}
-            <td>{{ $TileType }}</td>                                    {{-- TileType --}}
-            <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
-            <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
-            <td>{{ $Width }}</td>                                       {{-- Width --}}
-            <td>{{ $Length }}</td>                                      {{-- Length --}}
-            <td>{{ $Height }}</td>                                      {{-- Height --}}
-            <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
-            <td>{{ $Color }}</td>                                       {{-- Color --}}
-            <td>{{ $Material }}</td>                                    {{-- Material --}}
-            <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
-            <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
-            <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
-        </tr>
-    @endif
 @endforeach
 {{-----BAUSERVICE-END----}}

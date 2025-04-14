@@ -37,53 +37,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         set_time_limit(300);
 
 //      ==================BAUSERVIS====================
-//        $products = Product::where([
-//            ['GroupProduct', '01 Плитка'],
-//            ['Producer_Brand', '!=', 'Kerama Marazzi'],
-//            ['Producer_Brand', '!=', 'Cersanit'],
-//            ['Producer_Brand', '!=', 'Шахтинская плитка'],
-//            ['Producer_Brand', '!=', ''],
-//            ['Element_code', '!=', 'х9999286854'],
-//            ['Element_code', '!=', 'х9999221101'],
-//            ['Element_code', '!=', 'х9999278638'],
-//            ['Element_code', '!=', 'х9999213228'],
-//            ['Element_code', '!=', 'х9999308135'],
-//            ['Element_code', '!=', 'х9999308136'],
-//            ['Element_code', '!=', 'х9999308143'],
-//            ['Element_code', '!=', 'х9999308148'],
-//            ['Element_code', '!=', 'х9999308149'],
-//            ['Element_code', '!=', 'х9999308150'],
-//            ['Element_code', '!=', 'х9999213203'],
-//            ['Element_code', '!=', 'х9999299093'],
-//            ['Element_code', '!=', 'х9999213204'],
-//            ['Name', 'not like', '%ставк%'],
-//            ['Name', 'not like', '%ступен%'],
-//            ['Name', 'not like', '%пецэлем%'],
-//            ['balance', 1],
-//            ['RMPrice', '>=', '650'],
-//            ['RMPrice', '!=', ''],
-//            ['Picture', '!=', ''],
-//        ])
-//            ->whereColumn('RMPrice', '>', 'Price')
-//            ->get();
-
-//        $blaze = Product::where([['Element_Code', 'х9999293160']])->get();      //blaze silver 60x120
-
-//        $kerama_marazzi = Product::where([['GroupProduct', '01 Плитка'],
-//            ['Producer_Brand', '=', 'Kerama Marazzi'],
-//            ['Name', 'not like', '%ставк%'],
-//            ['Name', 'not like', '%ступен%'],
-//            ['Name', 'not like', '%пецэлем%'],
-//            ['balance', 1],
-//            ['RMPrice', '>=', '650'],
-//            ['RMPrice', '!=', ''],
-//            ['Picture', '!=', ''],
-//        ])
-//            ->whereColumn('RMPrice', '>', 'Price')
-//            ->get();
-
-//        $products = $products->merge($kerama_marazzi);  // KERAMA-MARAZZI NO/OFF
-//        $products = $products->merge($blaze);
 
         $laparets = Product::where([
             ['GroupProduct', '01 Плитка'],
@@ -100,14 +53,14 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['Element_code', '!=', 'х9999213203'],
             ['Element_code', '!=', 'х9999299093'],
             ['Element_code', '!=', 'х9999213204'],
+            ['Element_code', '!=', 'х9999294554'],
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
-            ['balance', 1],
-            ['RMPrice', '>=', '900'],
+            ['balanceCount', '>=', 1],
+            ['RMPrice', '>=', 900],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
-            ['Element_code', '!=', 'х9999294554'],
         ])
             ->where(function (Builder $query) {
                 $query->where('Producer_Brand', 'Laparet');
@@ -116,8 +69,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->whereColumn('RMPrice', '>', 'Price')
             ->get();
 
-//      ==================GOLITSYNO====================
-        $golitsyno_duplicate = ['х9999275874'];
 
 //      ==================PRIMAVERA====================
         $primavera = PrimaveraNew::whereHas('balance')
@@ -128,26 +79,17 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             })
             ->get();
 
-//      =================ABSOLUT-GRES====================
-//        $absolut_gres = AbsolutGresScrap::all();
-        $absolut_gres = [];
-
 //      ===================LEEDO===================
         $leedo = LeedoProduct::where([
-            ['Sklad_Msk_LeeDo', '>', 0],
-            ['Category', 'like', 'Мозаика/%'],
+                ['Sklad_Msk_LeeDo', '>', 0],
+                ['Category', 'like', 'Мозаика/%'],
             ])
-//            ->orWhere([
-//                ['Sklad_SPb_LeeDo', '>', 0],
-//                ['Category', 'like', 'Мозаика/%'],
-//                ])
             ->get();
 
 
 //      ====================ARTKERA===================
         $altacera = ArtkeraTovarAvailable::where([
 //            ['sale', 0],
-//            ['moscow', '>=', 1],
             ['artikul', '!=', 'DW11VST00'],
             ['artikul', '!=', 'TWU2550MLN10'],
             ['artikul', '!=', 'TWU2550MLN30'],
@@ -165,8 +107,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      =================NT-CERAMIC==================
         $ntceramic = NtCeramicNoImgs::all();
 
-//      =================KEVIS==================
-        $kevis = Kevis::all();
 
 //      ================RUSPLITKA====================
         $rusplitka = RusplitkaProduct::where([
@@ -177,9 +117,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         ])
             ->get();
 
-//      ==================TECHNOTILE===================
-//        $technotile = TechnotileProduct::where('available', 'true')->get();
-        $technotile = [];
 
 //      ===================AQUAFLOOR====================
         $aquafloor = AquaFloor::where([
@@ -205,7 +142,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $globaltile = GlobalTileNew::where([
             ['brand', 'GlobalTile'],
             ['Picture', '!=', ''],
-            ['balance', '>=', 0],
+            ['balance', '>', 0],
         ])
             ->get();
 
@@ -240,15 +177,11 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         return view('exports.avito.main.main', [
             'products' => $laparets,
-            'golitsyno_duplicate' => $golitsyno_duplicate,
             'primavera' => $primavera,
-            'absolut_gres' => $absolut_gres,
             'leedo' => $leedo,
             'altacera' => $altacera,
             'ntceramic' => $ntceramic,
-            'kevis' => $kevis,
             'rusplitka' => $rusplitka,
-            'technotile' => $technotile,
             'aquafloor' => $aquafloor,
             'pixmosaics' => $pixmosaics,
             'artcenter' => $artcenter,
