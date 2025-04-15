@@ -171,9 +171,9 @@
         $Delivery = 'ПВЗ | Курьер | Постамат | Самовывоз с онлайн-оплатой';
 
         $WeightForDelivery = round($product->Kg_per_box / $product->Pcs_per_box, 2);
-        $LengthForDelivery = $Length + 2;
-        $HeightForDelivery = $Thickness / 10 + 2;
-        $WidthForDelivery = $Width + 2;
+        $LengthForDelivery = round($Length + 2);
+        $HeightForDelivery = round($Thickness / 10 + 2);
+        $WidthForDelivery = round($Width + 2);
     @endphp
 
     @php
