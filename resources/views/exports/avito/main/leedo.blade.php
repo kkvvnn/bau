@@ -85,7 +85,7 @@
                     $description .= '<p>'.nl2br($add_description_first).'</p>';
                     }
 
-                    $description .= '<p>Мозаика и керамогранит Caramelle & LeeDo. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, по РФ, cамовывоз на западе Москвы.</p>';
+                    $description .= '<p>Мозаика Caramelle & LeeDo / Лидо. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, по РФ, cамовывоз на западе Москвы.</p>';
                     $description .= '<p><strong>' . $product->Item_chip . '. '
                             . $product->Brand_name . '</strong></p>';
 
