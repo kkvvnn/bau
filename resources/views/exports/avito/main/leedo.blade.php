@@ -214,6 +214,7 @@
         <td>{{ $GoodsSubType }}</td>                            {{-- GoodsSubType --}}
         <td>{{ $FinishingMaterialsType }}</td>                  {{-- FinishingMaterialsType --}}
         <td>{{ $CeramicPorcelainTilesSubType }}</td>            {{-- CeramicPorcelainTilesSubType --}}
+        <td>{{ $FlooringMaterialsSubType }}</td>                {{-- FlooringMaterialsSubType --}}
         <td>{{ $Brand }}</td>                                   {{-- Brand --}}
         <td>{{ $TileType }}</td>                                {{-- TileType --}}
         <td>{{ $Width }}</td>                                   {{-- Width --}}
@@ -228,7 +229,6 @@
         <td>{{ $EdgeType }}</td>                                {{-- EdgeType --}}
         <td>{{ $Shape }}</td>                                   {{-- Shape --}}
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
-
     </tr>
 @endforeach
 {{-----LEEDO-END----}}

@@ -34,6 +34,7 @@
             <th>GoodsSubType</th>
             <th>FinishingMaterialsType</th>
             <th>CeramicPorcelainTilesSubType</th>
+            <th>FlooringMaterialsSubType</th>
             <th>Brand</th>
             <th>TileType</th>
             <th>Width</th>
@@ -64,14 +65,14 @@
 {{--        @include('exports.avito.main.artcenter') //READY--}}
 {{--        @include('exports.avito.main.skalla') //READY--}}
 
-{{--        @include('exports.avito.main.nt-ceramic-hand')--}}
-{{--        @include('exports.avito.main.primavera-hand')--}}
-{{--        @include('exports.avito.main.primavera-hand-2')--}}
-{{--        @include('exports.avito.main.primavera-hand-3')--}}
-{{--        @include('exports.avito.main.rusplitka-hand-1')--}}
-{{--        @include('exports.avito.main.rusplitka-hand-2')--}}
-{{--        @include('exports.avito.main.aquafloor-hand-1')--}}
-{{--        @include('exports.avito.main.aquafloor-hand-2')--}}
+        @include('exports.avito.main.nt-ceramic-hand')
+        @include('exports.avito.main.primavera-hand')
+        @include('exports.avito.main.primavera-hand-2')
+        @include('exports.avito.main.primavera-hand-3')
+        @include('exports.avito.main.rusplitka-hand-1')
+        @include('exports.avito.main.rusplitka-hand-2')
+        @include('exports.avito.main.aquafloor-hand-1')
+        @include('exports.avito.main.aquafloor-hand-2')
 
 
 {{--        @include('exports.avito.main.keramopro') //READY NOT USE--}}
