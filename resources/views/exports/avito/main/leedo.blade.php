@@ -1,28 +1,6 @@
 {{-----LEEDO-----}}
 @foreach($leedo as $product)
 
-{{--    @php--}}
-{{--        $GoodsSubType = 'Другое';--}}
-{{--        $FinishingMaterialsType = '';--}}
-{{--        $CeramicPorcelainTilesSubType = '';--}}
-{{--        $Brand = '';--}}
-{{--        $TileType = '';--}}
-{{--        $SpaceType = '';--}}
-{{--        $InstallationType = '';--}}
-{{--        $Width = '';--}}
-{{--        $Length = '';--}}
-{{--        $Height = '';--}}
-{{--        $Pattern = '';--}}
-{{--        $Color = '';--}}
-
-{{--        $FlooringMaterialsSubType = '';--}}
-{{--        $ExteriorFinishingDecorativeStoneSubType = '';--}}
-{{--        $WallPanelsSlatsDecorativeElementsSubType = '';--}}
-{{--        $MixesType = '';--}}
-{{--        $Material = '';--}}
-{{--        $OutsideUsage = '';--}}
-{{--    @endphp--}}
-
     @php
         $GoodsSubType = 'Отделка';
         $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
@@ -33,9 +11,9 @@
         $InstallationType = ($product->Thickness_mm >= 5)?'На пол | На стену':'На стену';
         $Width = avito_bauservice_size('', 0, 150, str_replace('*', 'x', $product->Tile_size_cm), 'W');
         $Length = avito_bauservice_size('', 1, 400, str_replace('*', 'x', $product->Tile_size_cm), 'L');
-        $Height = '';
-        $Pattern = avito_bauservice_pattern('', 'Другой');
-        $Color = avito_bauservice_color($product->Color);
+        $Thickness = round($product->Thickness_mm);
+        $Pattern = avito_pattern_leedo($product->Color_solution);
+        $Color = avito_color_leedo($product->Color);
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
@@ -107,7 +85,7 @@
                     $description .= '<p>'.nl2br($add_description_first).'</p>';
                     }
 
-                    $description .= '<p>Мозаика и керамогранит Caramelle & LeeDo. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                    $description .= '<p>Мозаика и керамогранит Caramelle & LeeDo. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, по РФ, cамовывоз на западе Москвы.</p>';
                     $description .= '<p><strong>' . $product->Item_chip . '. '
                             . $product->Brand_name . '</strong></p>';
 
@@ -116,24 +94,21 @@
                     if (($product->Sklad_Msk_LeeDo > 0 && $product->Sklad_Msk_LeeDo != null) || ($product->Sklad_SPb_LeeDo > 0 && $product->Sklad_SPb_LeeDo != null)) {
                     $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->Sklad_Msk_LeeDo)+round($product->Sklad_SPb_LeeDo).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
                     }
-                    $description .= '<p>--------------------</p>';
-                    $description .= '<p><strong>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже самый минимальный заказ. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
-                    $description .= '<p>--------------------</p>';
 
                     $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
 
 
                         if($product->Tile_size_cm != null) {
-                        $description .= '<li><strong>Размер листа, см: </strong>' . $product->Tile_size_cm . '</li>';
+                        $description .= '<li><strong>Размер листа: </strong>' . $Width. ' x ' .$Length. ' см</li>';
                         }
                         if($product->Chip_size_mm != null) {
-                        $description .= '<li><strong>Размер чипа, мм: </strong>' . $product->Chip_size_mm . '</li>';
+                        $description .= '<li><strong>Размер чипа: </strong>' . $product->Chip_size_mm . ' мм</li>';
                         }
                         if($product->Thickness_mm != null) {
-                        $description .= '<li><strong>Толщина, мм: </strong>' . $product->Thickness_mm . '</li>';
+                        $description .= '<li><strong>Толщина, мм: </strong>' . round($product->Thickness_mm) . '</li>';
                         }
                         if($product->Tile_sheet_square != null) {
-                        $description .= '<li><strong>Площадь листа: </strong>' . $product->Tile_sheet_square . '</li>';
+                        $description .= '<li><strong>Площадь листа: </strong>' . round($product->Tile_sheet_square, 3) . ' м2</li>';
                         }
                         if($product->Form != null) {
                         $description .= '<li><strong>Форма: </strong>' . $product->Form . '</li>';
@@ -150,9 +125,9 @@
                         if($product->Usage != null) {
                         $description .= '<li><strong>Применение: </strong>' . $product->Usage . '</li>';
                         }
-                        if($product->Category != null) {
-                        $description .= '<li><strong>Категория: </strong>' . str_replace('_', ' ', $product->Category) . '</li>';
-                        }
+//                        if($product->Category != null) {
+//                        $description .= '<li><strong>Категория: </strong>' . str_replace('_', ' ', $product->Category) . '</li>';
+//                        }
 
                         $description .= '</ul><p><em>';
 
@@ -191,42 +166,69 @@
         }
     @endphp
 
+    @php
+        $AdStatus = 'Free';
+        $Delivery = 'ПВЗ | Курьер | Постамат | Самовывоз с онлайн-оплатой';
+
+        $WeightForDelivery = round($product->Kg_per_box / $product->Pcs_per_box, 2);
+        $LengthForDelivery = $Length + 2;
+        $HeightForDelivery = $Thickness / 10 + 2;
+        $WidthForDelivery = $Width + 2;
+    @endphp
+
+    @php
+        $Surface = avito_surface_leedo($product->Surface);
+        $Texture = avito_texture_leedo($product->Surface);
+        $EdgeType = '';
+        $Shape = avito_shape_leedo($product->Form);
+        $ResistanceClass = '';
+    @endphp
+
     <tr>
-        <td></td>                                                   {{-- AvitoID --}}
-        <td>{{ $code }}</td>                                        {{-- Id --}}
-        <td>{{ $name }}</td>                                        {{-- ManagerName --}}
-        <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
-        <td>{{ $address }}</td>                                     {{-- Address --}}
-        <td>{{ $title }}</td>                                       {{-- Title --}}
-        <td>{{ $description }}</td>                                 {{-- Description --}}
-        <td>{{ $price }}</td>                                       {{-- Price --}}
-        <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-        <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
-        <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
-        <td>Ремонт и строительство</td>                             {{-- Category --}}
-        <td>Стройматериалы</td>                                     {{-- GoodsType --}}
-        <td>Товар от производителя</td>                             {{-- AdType --}}
-        <td>Новое</td>                                              {{-- Condition --}}
-        <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
-        <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
-        <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
-        <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
-        <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
-        <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
-        <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
-        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
-        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
-        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
-        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
-        <td>{{ $Width }}</td>                                       {{-- Width --}}
-        <td>{{ $Length }}</td>                                      {{-- Length --}}
-        <td>{{ $Height }}</td>                                      {{-- Height --}}
-        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
-        <td>{{ $Color }}</td>                                       {{-- Color --}}
-        <td>{{ $Material }}</td>                                    {{-- Material --}}
-        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
-        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
-        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
+        <td>{{ $code }}</td>                                    {{-- Id --}}
+        <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
+        <td></td>                                               {{-- AvitoId --}}
+        <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+        <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
+        <td>{{ $address }}</td>                                 {{-- Address --}}
+        <td>{{ $title }}</td>                                   {{-- Title --}}
+        <td>{{ $description }}</td>                             {{-- Description --}}
+        <td>{{ $price }}</td>                                   {{-- Price --}}
+        <td>{{ $image_urls }}</td>                              {{-- ImageUrls --}}
+        <td>{{ $video }}</td>                                   {{-- VideoURL --}}
+        <td>{{ $contact_method }}</td>                          {{-- ContactMethod --}}
+        <td></td>                                               {{-- Addresses --}}
+        <td></td>                                               {{-- DeliveryAddresses --}}
+        <td>Ремонт и строительство</td>                         {{-- Category --}}
+        <td>{{ $PackagingType }}</td>                           {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                         {{-- PackageQuantity --}}
+        <td>{{ $Delivery }}</td>                                {{-- Delivery --}}
+        <td>{{ $WeightForDelivery }}</td>                       {{-- WeightForDelivery --}}
+        <td>{{ $LengthForDelivery }}</td>                       {{-- LengthForDelivery --}}
+        <td>{{ $HeightForDelivery }}</td>                       {{-- HeightForDelivery --}}
+        <td>{{ $WidthForDelivery }}</td>                        {{-- WidthForDelivery --}}
+        <td>Стройматериалы</td>                                 {{-- GoodsType --}}
+        <td>Товар от производителя</td>                         {{-- AdType --}}
+        <td>Новое</td>                                          {{-- Condition --}}
+        <td>В наличии</td>                                      {{-- Availability --}}
+        <td>{{ $GoodsSubType }}</td>                            {{-- GoodsSubType --}}
+        <td>{{ $FinishingMaterialsType }}</td>                  {{-- FinishingMaterialsType --}}
+        <td>{{ $CeramicPorcelainTilesSubType }}</td>            {{-- CeramicPorcelainTilesSubType --}}
+        <td>{{ $Brand }}</td>                                   {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                {{-- TileType --}}
+        <td>{{ $Width }}</td>                                   {{-- Width --}}
+        <td>{{ $Length }}</td>                                  {{-- Length --}}
+        <td>{{ $Thickness }}</td>                               {{-- Thickness --}}
+        <td>{{ $SpaceType }}</td>                               {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                        {{-- InstallationType --}}
+        <td>{{ $Color }}</td>                                   {{-- Color --}}
+        <td>{{ $Pattern }}</td>                                 {{-- Pattern --}}
+        <td>{{ $Surface }}</td>                                 {{-- Surface --}}
+        <td>{{ $Texture }}</td>                                 {{-- Texture --}}
+        <td>{{ $EdgeType }}</td>                                {{-- EdgeType --}}
+        <td>{{ $Shape }}</td>                                   {{-- Shape --}}
+        <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
+
     </tr>
 @endforeach
 {{-----LEEDO-END----}}
