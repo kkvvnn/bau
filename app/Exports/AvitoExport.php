@@ -54,6 +54,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['Element_code', '!=', 'х9999299093'],
             ['Element_code', '!=', 'х9999213204'],
             ['Element_code', '!=', 'х9999294554'],
+            ['Element_code', '!=', 'х9999219655'],
+            ['Element_code', '!=', 'х9999219679'],
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
@@ -83,6 +85,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $leedo = LeedoProduct::where([
                 ['Sklad_Msk_LeeDo', '>', 0],
                 ['Category', 'like', 'Мозаика/%'],
+                ['System_ID', '!=', '00-00002393'],
             ])
             ->get();
 
