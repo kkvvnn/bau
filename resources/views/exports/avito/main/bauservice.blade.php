@@ -15,7 +15,7 @@
                 $InstallationType = avito_bauservice_for($product->Architectural_surface);
                 $Width = avito_bauservice_size($product->Height, 5, 200, $product->Name, 'W');
                 $Length = avito_bauservice_size($product->Lenght, 5, 400, $product->Name, 'L');
-                $Height = avito_bauservice_height($product->Thickness, 2, 30);
+                $Thickness = avito_bauservice_height($product->Thickness, 2, 30);
                 $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                 $Color = avito_bauservice_color($product->Color);
                 break;
@@ -29,7 +29,7 @@
                 $InstallationType = avito_bauservice_for($product->Architectural_surface);
                 $Width = avito_bauservice_size($product->Height, 0, 150, $product->Name, 'W');
                 $Length = avito_bauservice_size($product->Lenght, 1, 400, $product->Name, 'L');
-                $Height = '';
+                $Thickness = '';
                 $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                 $Color = avito_bauservice_color($product->Color);
                 break;
@@ -43,7 +43,7 @@
                 $InstallationType = '';
                 $Width = '';
                 $Length = '';
-                $Height = '';
+                $Thickness = '';
                 $Pattern = '';
                 $Color = '';
                 break;
@@ -58,25 +58,42 @@
     @endphp
 
     @php
+        $price_rrc = $product->RMPrice;
+        $price_old = $product->RMPriceOld;
+        $brand = $product->Producer_Brand;
+        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
+
+        $show_discount = avito_show_discount($price_rrc, $brand, $discounts, $price_old);
+    @endphp
+
+    @php
+        if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
+
+            $PackagingType = avito_packaging_type($product->MainUnit);
+
+            $square_in_pack = $product->Package_Value;
+            if ($product->Package_Value == $product->PCS_in_Package) {
+                $square_in_pack = ((float)$Length / 100) * ((float)$Width / 100) * (int)$product->PCS_in_Package;
+            }
+            $PackageQuantity = avito_package_quantity(round((float)$square_in_pack, 2));
+
+            if ($PackagingType == 'Упаковка') {
+                $price = round($price * (float)$PackageQuantity, -1);
+            }
+        } else {
+            $PackagingType = '';
+            $PackageQuantity = '';
+        }
+    @endphp
+
+    @php
         $description = '';
 
         if($add_description_first != '') {
         $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
 
-        if ($product->Producer_Brand == 'Laparet') {
-            $description .= '<p>Керамическая плитка и керамогранит Laparet , Лапарет. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-        } elseif ($product->Producer_Brand == 'Cersanit') {
-            $description .= '<p>Керамическая плитка и керамогранит Cersanit , Церсанит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-        } elseif ($product->Producer_Brand == 'Kerama Marazzi') {
-            $description .= '<p>Керамическая плитка и керамогранит Kerama Marazzi , Керама Марацци. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-        } elseif ($product->Producer_Brand == 'Vitra') {
-            $description .= '<p>Керамическая плитка и керамогранит Vitra , Витра. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-        } elseif ($product->Producer_Brand == 'Ceradim') {
-            $description .= '<p>Керамическая плитка и керамогранит Ceradim , Керадим. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-        } else {
-            $description .= '<p>Керамическая плитка и керамогранит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
-        }
+
 
         if ($product->Novinka == 1) {
             $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Producer_Brand . ' ' . $product->Name .  ' ('
@@ -86,25 +103,24 @@
                 . $product->Country_of_manufacture . ')</strong></p>';
         }
 
-        if ($product->Element_Code == 'х9999293160') {
-            $description .= '<p>--------------------</p>';
-            $date = date('d.m.Y');
-            $description .= '<p>&#9989; На утро '.$date.' есть в наличии </p>';
-            $description .= '<p>--------------------</p>';
-            $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от одной упаковки.<br>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже 1 упаковку. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
-            $description .= '<p>--------------------</p>';
-        } else {
-            $description .= '<p>--------------------</p>';
-            $date = date('d.m.Y');
-            if ($product->balanceCount > 0) {
-                $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
-            }
-            $description .= '<p>--------------------</p>';
-            $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от одной упаковки.<br>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже 1 упаковку. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
-            $description .= '<p>--------------------</p>';
+        $description .= '<p>--------------------</p>';
+        $date = date('d.m.Y');
+        if ($product->balanceCount > 0) {
+            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
         }
 
-        $description .= '<p><em>Цена указана за 1 ' . $product->MainUnit . '</em></p>';
+
+        if ($PackagingType == 'Упаковка') {
+
+            $description .= '<p>--------------------</p>';
+            $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
+            $description .= '<p>--------------------</p>';
+
+            $description .= '<p><em>Цена указана за 1 упаковку ('.$PackageQuantity.' м2)</em></p>';
+        } else {
+            $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.'</em></p>';
+        }
+
 
         $description .= '<p><strong>Коллекция: </strong>';
         $collections = $product->collections;
@@ -116,46 +132,62 @@
 
 
         if ($product->Height != 0 && $product->Lenght != 0) {
-           $description .= '<li><strong>Размер: </strong>' . $product->Height .'x' . $product->Lenght . '</li>';
+           $description .= '<li><strong>Размер: </strong>' . $product->Height .'x' . $product->Lenght . ' см</li>';
         }
         if ($product->Thickness != null && $product->Thickness != 0) {
-           $description .= '<li><strong>Толщина: </strong>' . $product->Thickness . '</li>';
+           $description .= '<li><strong>Толщина: </strong>' . $product->Thickness . ' см</li>';
         }
-        if ($product->Place_in_the_Collection != null) {
-           $description .= '<li><strong>Место в коллекции: </strong>' . $product->Place_in_the_Collection . '</li>';
-        }
+//        if ($product->Place_in_the_Collection != null) {
+//           $description .= '<li><strong>Место в коллекции: </strong>' . $product->Place_in_the_Collection . '</li>';
+//        }
         if ($product->DesignValue != null) {
            $description .= '<li><strong>Рисунок: </strong>' . $product->DesignValue . '</li>';
         }
         if ($product->Color != null) {
            $description .= '<li><strong>Цвет: </strong>' . $product->Color . '</li>';
         }
-        if ($product->Cover != null) {
-           $description .= '<li><strong>Покрытие: </strong>' . $product->Cover . '</li>';
-        }
+//        if ($product->Cover != null) {
+//           $description .= '<li><strong>Покрытие: </strong>' . $product->Cover . '</li>';
+//        }
         if ($product->Surface != null) {
            $description .= '<li><strong>Поверхность: </strong>' . $product->Surface . '</li>';
         }
-        if ($product->MainUnit != null) {
-           $description .= '<li><strong>Единица измерения товара: </strong>' . $product->MainUnit . '</li>';
-        }
+//        if ($product->MainUnit != null) {
+//           $description .= '<li><strong>Единица измерения товара: </strong>' . $product->MainUnit . '</li>';
+//        }
         if ($product->PCS_in_Package != null) {
-           $description .= '<li><strong>Штук в упаковке: </strong>' . $product->PCS_in_Package . '</li>';
+           $description .= '<li><strong>В упаковке: </strong>' . $product->PCS_in_Package . ' шт</li>';
         }
         if ($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
-           $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->Package_Value . '</li>';
+           $description .= '<li><strong>В упаковке: </strong>' . $product->Package_Value . ' м2</li>';
         }
         if ($product->Producer_Brand != null) {
-           $description .= '<li><strong>Производитель: </strong>' . $product->Producer_Brand . '</li>';
+           $description .= '<li><strong>Производитель: </strong>' . $product->Producer_Brand .' ('. $product->Country_of_manufacture .') </li>';
         }
-        if ($product->Country_of_manufacture != null) {
-           $description .= '<li><strong>Страна производства: </strong>' . $product->Country_of_manufacture . '</li>';
-        }
+//        if ($product->Country_of_manufacture != null) {
+//           $description .= '<li><strong>Страна производства: </strong>' . $product->Country_of_manufacture . '</li>';
+//        }
 
         $description .= '</ul><br>';
 
-        $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
-        $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
+        $description .= '<p><strong>Наличие и актуальные цены на ваш объем уточняйте у менеджера.</strong></p>';
+
+        if ($product->Producer_Brand == 'Laparet') {
+            $description .= '<p>Laparet , Лапарет . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+        } elseif ($product->Producer_Brand == 'Cersanit') {
+            $description .= '<p>Cersanit , Церсанит . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+        } elseif ($product->Producer_Brand == 'Kerama Marazzi') {
+            $description .= '<p>Kerama Marazzi , Керама Марацци . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+        } elseif ($product->Producer_Brand == 'Vitra') {
+            $description .= '<p>Vitra , Витра . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+        } elseif ($product->Producer_Brand == 'Ceradim') {
+            $description .= '<p>Ceradim , Керадим . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+        } else {
+            $description .= '<p>Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+        }
+
+        $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
+        $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный! Отгрузка или доставка в максимально короткие сроки, есть услуги разгрузки и подъема.</p>';
         $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
         if ($add_description != '') {
@@ -305,7 +337,8 @@
 
         if ($type != 'декор') {
             $description .= '<p>_____________________</p>';
-            $description .= '<p><em>' . $keywords . '</em></p>';
+            $dop_description = ' керамогранит для ванной керамогранит на фартук плитка в санузел керамогранит купить керамагранит керамическая плитка под дерево керамогранит под бетон глянцевый керамогранит глянцевый матовый керамогранит керамогранит карвинг carving плитка в ванну плитка в ванную комнату ';
+            $description .= '<p><em>' . $keywords . $dop_description . '</em></p>';
         }
     @endphp
 
@@ -404,18 +437,7 @@
         }
     @endphp
 
-    @php
-        $price_rrc = $product->RMPrice;
-        $price_old = $product->RMPriceOld;
-        $brand = $product->Producer_Brand;
-        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
-        if ($product->Element_Code == 'х9999309479' || $product->Element_Code == 'х9999309441') {
-            $price = round($product->RMPrice * 0.9, -1);
-        }
-
-        $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
-    @endphp
 
     @php
 
@@ -424,58 +446,76 @@
 
     @endphp
 
-    @php
-        if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
-            $PackagingType = avito_packaging_type('м2');
 
-            $square_in_pack = $product->Package_Value;
-            if ($product->Package_Value == $product->PCS_in_Package) {
-                $square_in_pack = ((float)$Length / 100) * ((float)$Width / 100) * (int)$product->PCS_in_Package;
-            }
-            $PackageQuantity = avito_package_quantity(round((float)$square_in_pack, 2));
-        } else {
-            $PackagingType = '';
-            $PackageQuantity = '';
-        }
+
+    @php
+        $AdStatus = 'Free';
+        $Delivery = 'Самовывоз с онлайн-оплатой';
+
+        $WeightForDelivery = round((float)$product->Package_Weight, 2);
+        $LengthForDelivery = round((float)$Length + 2);
+        $HeightForDelivery = 5;
+        $WidthForDelivery = round((float)$Width + 2);
+    @endphp
+
+    @php
+        $Surface = avito_surface_leedo($product->Surface);
+        $Texture = avito_texture_leedo($product->Surface);
+        $EdgeType = '';
+        $Shape = '';
+        $ResistanceClass = '';
+    @endphp
+
+    @php
+        $description .= $show_discount;
     @endphp
 
 
     <tr>
-        <td></td>                                                   {{-- AvitoID --}}
-        <td>{{ $code }}</td>                                        {{-- Id --}}
-        <td>{{ $name }}</td>                                        {{-- ManagerName --}}
-        <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
-        <td>{{ $address }}</td>                                     {{-- Address --}}
-        <td>{{ $title }}</td>                                       {{-- Title --}}
-        <td>{{ $description }}</td>                                 {{-- Description --}}
-        <td>{{ $price }}</td>                                       {{-- Price --}}
-        <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-        <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
-        <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
-        <td>Ремонт и строительство</td>                             {{-- Category --}}
-        <td>Стройматериалы</td>                                     {{-- GoodsType --}}
-        <td>Товар от производителя</td>                             {{-- AdType --}}
-        <td>Новое</td>                                              {{-- Condition --}}
-        <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
-        <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
-        <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
-        <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
-        <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
-        <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
-        <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
-        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
-        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
-        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
-        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
-        <td>{{ $Width }}</td>                                       {{-- Width --}}
-        <td>{{ $Length }}</td>                                      {{-- Length --}}
-        <td>{{ $Height }}</td>                                      {{-- Height --}}
-        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
-        <td>{{ $Color }}</td>                                       {{-- Color --}}
-        <td>{{ $Material }}</td>                                    {{-- Material --}}
-        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
-        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
-        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
+        <td>{{ $code }}</td>                                    {{-- Id --}}
+        <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
+        <td></td>                                               {{-- AvitoId --}}
+        <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+        <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
+        <td>{{ $address }}</td>                                 {{-- Address --}}
+        <td>{{ $title }}</td>                                   {{-- Title --}}
+        <td>{{ $description }}</td>                             {{-- Description --}}
+        <td>{{ $price }}</td>                                   {{-- Price --}}
+        <td>{{ $image_urls }}</td>                              {{-- ImageUrls --}}
+        <td>{{ $video }}</td>                                   {{-- VideoURL --}}
+        <td>{{ $contact_method }}</td>                          {{-- ContactMethod --}}
+        <td></td>                                               {{-- Addresses --}}
+        <td></td>                                               {{-- DeliveryAddresses --}}
+        <td>Ремонт и строительство</td>                         {{-- Category --}}
+        <td>{{ $PackagingType }}</td>                           {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                         {{-- PackageQuantity --}}
+        <td>{{ $Delivery }}</td>                                {{-- Delivery --}}
+        <td>{{ $WeightForDelivery }}</td>                       {{-- WeightForDelivery --}}
+        <td>{{ $LengthForDelivery }}</td>                       {{-- LengthForDelivery --}}
+        <td>{{ $HeightForDelivery }}</td>                       {{-- HeightForDelivery --}}
+        <td>{{ $WidthForDelivery }}</td>                        {{-- WidthForDelivery --}}
+        <td>Стройматериалы</td>                                 {{-- GoodsType --}}
+        <td>Товар от производителя</td>                         {{-- AdType --}}
+        <td>Новое</td>                                          {{-- Condition --}}
+        <td>В наличии</td>                                      {{-- Availability --}}
+        <td>{{ $GoodsSubType }}</td>                            {{-- GoodsSubType --}}
+        <td>{{ $FinishingMaterialsType }}</td>                  {{-- FinishingMaterialsType --}}
+        <td>{{ $CeramicPorcelainTilesSubType }}</td>            {{-- CeramicPorcelainTilesSubType --}}
+        <td>{{ $FlooringMaterialsSubType }}</td>                {{-- FlooringMaterialsSubType --}}
+        <td>{{ $Brand }}</td>                                   {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                {{-- TileType --}}
+        <td>{{ $Width }}</td>                                   {{-- Width --}}
+        <td>{{ $Length }}</td>                                  {{-- Length --}}
+        <td>{{ $Thickness }}</td>                               {{-- Thickness --}}
+        <td>{{ $SpaceType }}</td>                               {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                        {{-- InstallationType --}}
+        <td>{{ $Color }}</td>                                   {{-- Color --}}
+        <td>{{ $Pattern }}</td>                                 {{-- Pattern --}}
+        <td>{{ $Surface }}</td>                                 {{-- Surface --}}
+        <td>{{ $Texture }}</td>                                 {{-- Texture --}}
+        <td>{{ $EdgeType }}</td>                                {{-- EdgeType --}}
+        <td>{{ $Shape }}</td>                                   {{-- Shape --}}
+        <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
     </tr>
 
 @endforeach

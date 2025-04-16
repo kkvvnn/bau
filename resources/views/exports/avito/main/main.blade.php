@@ -53,7 +53,7 @@
     </thead>
     <tbody>
 
-{{--        @include('exports.avito.main.bauservice') //READY--}}
+        @include('exports.avito.main.bauservice') //READY
 {{--        @include('exports.avito.main.global-tile') //READY --}}
 {{--        @include('exports.avito.main.kerranova') //READY--}}
 {{--        @include('exports.avito.main.primavera') //READY--}}
