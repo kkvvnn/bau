@@ -172,8 +172,8 @@
 
         $WeightForDelivery = round($product->Kg_per_box / $product->Pcs_per_box, 2);
         $LengthForDelivery = round($Length + 2);
-        $HeightForDelivery = round($Thickness / 10 + 2);
-        $WidthForDelivery = round($Width + 2);
+        $HeightForDelivery = round($Width + 2);
+        $WidthForDelivery = round($Thickness / 10 + 2);
     @endphp
 
     @php
