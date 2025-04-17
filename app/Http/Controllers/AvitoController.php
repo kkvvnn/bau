@@ -106,8 +106,8 @@ class AvitoController extends Controller
                 $data['title'] = 'Автозагрузка Авито Напольные Решения';
                 $data['phone'] = '89197697802';
                 $data['manager_name'] = 'Владимир';
-//                $data['address'] = 'Москва, Филёвская линия, метро Фили';
-                $data['address'] = 'Москва, Можайское шоссе, 42';
+                $data['address'] = 'Москва, Филёвская линия, метро Фили';
+//                $data['address'] = 'Москва, Можайское шоссе, 42';
                 $data['communication'] = [
                     'phone_and_message' => 'selected',
                     'only_message' => '',

@@ -168,7 +168,7 @@
 
     @php
         $AdStatus = 'Free';
-        $Delivery = 'Самовывоз с онлайн-оплатой';
+        $Delivery = 'Выключена';
 
         $WeightForDelivery = round($product->Kg_per_box / $product->Pcs_per_box, 2);
         $LengthForDelivery = round($Length + 2);

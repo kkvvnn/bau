@@ -71,15 +71,20 @@
 
             $PackagingType = avito_packaging_type($product->MainUnit);
 
-            $square_in_pack = $product->Package_Value;
-            if ($product->Package_Value == $product->PCS_in_Package) {
-                $square_in_pack = ((float)$Length / 100) * ((float)$Width / 100) * (int)$product->PCS_in_Package;
-            }
-            $PackageQuantity = avito_package_quantity(round((float)$square_in_pack, 2));
-
             if ($PackagingType == 'Упаковка') {
-                $price = round($price * (float)$PackageQuantity, -1);
+                $PackageQuantity = '1';
+            } else {
+                $square_in_pack = $product->Package_Value;
+                if ($product->Package_Value == $product->PCS_in_Package) {
+                    $square_in_pack = ((float)$Length / 100) * ((float)$Width / 100) * (int)$product->PCS_in_Package;
+                }
+                $PackageQuantity = avito_package_quantity(round((float)$square_in_pack, 2));
             }
+
+//            if ($PackagingType == 'Упаковка') {
+//                $price = round($price * (float)$PackageQuantity, -1);
+//            }
+
         } else {
             $PackagingType = '';
             $PackageQuantity = '';
@@ -110,16 +115,21 @@
         }
 
 
-        if ($PackagingType == 'Упаковка') {
+//        if ($PackagingType == 'Упаковка') {
+//
+//            $description .= '<p>--------------------</p>';
+//            $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
+//            $description .= '<p>--------------------</p>';
+//
+//            $description .= '<p><em>Цена указана за 1 упаковку ('.$PackageQuantity.' м2)</em></p>';
+//        } else {
+//            $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.'</em></p>';
+//        }
 
-            $description .= '<p>--------------------</p>';
-            $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
-            $description .= '<p>--------------------</p>';
-
-            $description .= '<p><em>Цена указана за 1 упаковку ('.$PackageQuantity.' м2)</em></p>';
-        } else {
-            $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.'</em></p>';
-        }
+        $description .= '<p>--------------------</p>';
+        $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
+        $description .= '<p>--------------------</p>';
+        $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.'</em></p>';
 
 
         $description .= '<p><strong>Коллекция: </strong>';
@@ -413,7 +423,7 @@
             $img_arr[] = $img6;
         }
 
-        $image_urls = avito_images_urls($img_arr);
+        $image_urls = avito_images_urls($img_arr, true);
 
     @endphp
 
@@ -450,7 +460,7 @@
 
     @php
         $AdStatus = 'Free';
-        $Delivery = 'Самовывоз с онлайн-оплатой';
+        $Delivery = 'Выключена';
 
         $WeightForDelivery = round((float)$product->Package_Weight, 2);
         $LengthForDelivery = round((float)$Length + 2);
