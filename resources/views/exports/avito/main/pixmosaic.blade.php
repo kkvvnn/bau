@@ -10,7 +10,7 @@
         $InstallationType = ($product->fat >= 5)?'На пол | На стену':'На стену';
         $Width = avito_bauservice_size('', 0, 150, str_replace('*', 'x', $product->size_tile), 'W') / 10;
         $Length = avito_bauservice_size('', 1, 400, str_replace('*', 'x', $product->size_tile), 'L') / 10;
-        $Height = '';
+        $Thickness = '';
         $Pattern = avito_bauservice_pattern('', 'Другой');
         $Color = avito_bauservice_color('Другой');
         $FlooringMaterialsSubType = '';
@@ -29,9 +29,9 @@
         if (stripos($title, 'PIX') === false) {
             $title = $title . ' ' . $product->vendor_code;
         }
-        if (mb_strlen($title) > 50) {
-            $title = str_replace(' прокрашенного в массе', '', $title);
-        }
+//        if (mb_strlen($title) > 50) {
+//            $title = str_replace(' прокрашенного в массе', '', $title);
+//        }
         if (stripos($title, 'озаика') === false) {
             $title .= ' мозаика';
         }
@@ -51,7 +51,7 @@
             $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
 
-        $description .= '<p>Мозаика Pixel mosaic. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+        $description .= '<p>Мозаика Pixel mosaic / Пикс Мозаик. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
 
         $description .= '<p><strong>' . $product->title . '</strong></p>';
 
@@ -61,10 +61,10 @@
             $description .= '<p>&#9989; На утро '.$date.' склад Москва '.$product->stock.' м2 <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
             $description .= '<p>--------------------</p>';
         }
-        $description .= '<p><strong>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже самый минимальный заказ. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
-        $description .= '<p>--------------------</p>';
+//        $description .= '<p><strong>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже самый минимальный заказ. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
+//        $description .= '<p>--------------------</p>';
 
-        $description .= '<p><em>Цена указана за 1 м.кв.</em></p>';
+//        $description .= '<p><em>Цена указана за 1 шт.</em></p>';
 
         $description .='<ul>';
         if($product->surface != null) {
@@ -144,6 +144,7 @@
                     $description .= '<p>_____________</p>';
                     $description .= '<p><em>pixmosaic pixelmosaic pixel mosaic мозаика для ванной мозайка для пола ';
                     $description .= 'мозаика со скидкой купить мозаику купить мозайку красивая мозаика красивая мозайка недорогая ';
+                    $description .= 'писк мозаик пиксель мозаика pix mosaic мозаика для хамам мозаика для бассейнов мозаика на фартук ';
                     $description .= $key_words;
                     $description .= '</em></p>';
                     if($add_description != '') {
@@ -167,6 +168,8 @@
         $brand = 'Pixmosaic';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
+        $price = round($price * (float)$product->square_list, -1);
+
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
@@ -181,42 +184,69 @@
         }
     @endphp
 
+    @php
+        $AdStatus = 'Free';
+        $Delivery = 'ПВЗ';
+
+        $WeightForDelivery = 1;
+        $LengthForDelivery = 35;
+        $WidthForDelivery = 35;
+        $HeightForDelivery = 2;
+    @endphp
+
+    @php
+        $Surface = avito_surface_leedo($product->surface);
+        $Texture = avito_texture_leedo($product->surface); //!!!!!!!!!!!!!!!!!!!!!
+        $EdgeType = '';
+        $Shape = avito_shape_leedo('DEFAULT'); //!!!!!!!!!!!!!!!!!!!!!
+        $ResistanceClass = '';
+    @endphp
+
     <tr>
-        <td></td>                                                   {{-- AvitoID --}}
-        <td>{{ $code }}</td>                                        {{-- Id --}}
-        <td>{{ $name }}</td>                                        {{-- ManagerName --}}
-        <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
-        <td>{{ $address }}</td>                                     {{-- Address --}}
-        <td>{{ $title }}</td>                                       {{-- Title --}}
-        <td>{{ $description }}</td>                                 {{-- Description --}}
-        <td>{{ $price }}</td>                                       {{-- Price --}}
-        <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-        <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
-        <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
-        <td>Ремонт и строительство</td>                             {{-- Category --}}
-        <td>Стройматериалы</td>                                     {{-- GoodsType --}}
-        <td>Товар от производителя</td>                             {{-- AdType --}}
-        <td>Новое</td>                                              {{-- Condition --}}
-        <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
-        <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
-        <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
-        <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
-        <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
-        <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
-        <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
-        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
-        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
-        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
-        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
-        <td>{{ $Width }}</td>                                       {{-- Width --}}
-        <td>{{ $Length }}</td>                                      {{-- Length --}}
-        <td>{{ $Height }}</td>                                      {{-- Height --}}
-        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
-        <td>{{ $Color }}</td>                                       {{-- Color --}}
-        <td>{{ $Material }}</td>                                    {{-- Material --}}
-        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
-        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
-        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
+        <td>{{ $code }}</td>                                    {{-- Id --}}
+        <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
+        <td></td>                                               {{-- AvitoId --}}
+        <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+        <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
+        <td>{{ $address }}</td>                                 {{-- Address --}}
+        <td>{{ $title }}</td>                                   {{-- Title --}}
+        <td>{{ $description }}</td>                             {{-- Description --}}
+        <td>{{ $price }}</td>                                   {{-- Price --}}
+        <td>{{ $image_urls }}</td>                              {{-- ImageUrls --}}
+        <td>{{ $video }}</td>                                   {{-- VideoURL --}}
+        <td>{{ $contact_method }}</td>                          {{-- ContactMethod --}}
+        <td></td>                                               {{-- Addresses --}}
+        <td></td>                                               {{-- DeliveryAddresses --}}
+        <td>Ремонт и строительство</td>                         {{-- Category --}}
+        <td>{{ $PackagingType }}</td>                           {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                         {{-- PackageQuantity --}}
+        <td>{{ $Delivery }}</td>                                {{-- Delivery --}}
+        <td>{{ $WeightForDelivery }}</td>                       {{-- WeightForDelivery --}}
+        <td>{{ $LengthForDelivery }}</td>                       {{-- LengthForDelivery --}}
+        <td>{{ $HeightForDelivery }}</td>                       {{-- HeightForDelivery --}}
+        <td>{{ $WidthForDelivery }}</td>                        {{-- WidthForDelivery --}}
+        <td>Стройматериалы</td>                                 {{-- GoodsType --}}
+        <td>Товар от производителя</td>                         {{-- AdType --}}
+        <td>Новое</td>                                          {{-- Condition --}}
+        <td>В наличии</td>                                      {{-- Availability --}}
+        <td>{{ $GoodsSubType }}</td>                            {{-- GoodsSubType --}}
+        <td>{{ $FinishingMaterialsType }}</td>                  {{-- FinishingMaterialsType --}}
+        <td>{{ $CeramicPorcelainTilesSubType }}</td>            {{-- CeramicPorcelainTilesSubType --}}
+        <td>{{ $FlooringMaterialsSubType }}</td>                {{-- FlooringMaterialsSubType --}}
+        <td>{{ $Brand }}</td>                                   {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                {{-- TileType --}}
+        <td>{{ $Width }}</td>                                   {{-- Width --}}
+        <td>{{ $Length }}</td>                                  {{-- Length --}}
+        <td>{{ $Thickness }}</td>                               {{-- Thickness --}}
+        <td>{{ $SpaceType }}</td>                               {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                        {{-- InstallationType --}}
+        <td>{{ $Color }}</td>                                   {{-- Color --}}
+        <td>{{ $Pattern }}</td>                                 {{-- Pattern --}}
+        <td>{{ $Surface }}</td>                                 {{-- Surface --}}
+        <td>{{ $Texture }}</td>                                 {{-- Texture --}}
+        <td>{{ $EdgeType }}</td>                                {{-- EdgeType --}}
+        <td>{{ $Shape }}</td>                                   {{-- Shape --}}
+        <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
     </tr>
 @endforeach
 {{-----PIXMOSAIC-END----}}
