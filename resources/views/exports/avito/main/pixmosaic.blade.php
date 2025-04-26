@@ -35,6 +35,8 @@
         if (stripos($title, 'озаика') === false) {
             $title .= ' мозаика';
         }
+
+        $title .= ' Pixel mosaic';
         //            ---TITLE-AVITO-END--
 
         //            ---IMAGES---
