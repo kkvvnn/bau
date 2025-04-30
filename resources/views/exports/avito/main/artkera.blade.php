@@ -102,7 +102,7 @@
                     }
 
 
-                    $image_urls = avito_images_urls($images);
+                    $image_urls = avito_images_urls($images, true);
 
         $description = '';
 
@@ -139,12 +139,13 @@
 
 
                     $description .= '</ul><p><em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+
                     $description .= '<p>--------------------</p>';
-                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от одной упаковки.<br>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже 1 упаковку. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
+                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
                     $description .= '<p>--------------------</p>';
 
                     $description .= '<p><em>Цена указана за 1 '.$product->unit.'.</em></p>';
-                    $description .= '<p><em>Цена зависит от количества, формы оплаты, даты доставки (срочности), адреса доставки и подъема. Более детально по вашему заказу можем ответить после получения всех вводных данных.</em></p><ul>';
+//                    $description .= '<p><em>Цена зависит от количества, формы оплаты, даты доставки (срочности), адреса доставки и подъема. Более детально по вашему заказу можем ответить после получения всех вводных данных.</em></p><ul>';
 
 
                         if($product->width != 0 && $product->height != 0) {
@@ -287,7 +288,11 @@
     @php
         if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
             $PackagingType = avito_packaging_type($product->unit);
-            $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
+            if ($PackagingType == 'Упаковка') {
+                $PackageQuantity = '1';
+            } else {
+                $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
+            }
         } else {
             $PackagingType = '';
             $PackageQuantity = '';
