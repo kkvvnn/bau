@@ -188,7 +188,7 @@
 
     @php
         $AdStatus = 'Free';
-        $Delivery = 'ПВЗ';
+        $Delivery = 'Выключена';
 
         $WeightForDelivery = 1;
         $LengthForDelivery = 35;
