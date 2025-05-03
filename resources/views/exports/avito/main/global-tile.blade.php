@@ -21,7 +21,7 @@
                     $gb_fat = $gb_fat / 10;
                 }
 
-                $Height = avito_bauservice_height($gb_fat, 2, 30);
+                $Thickness = avito_bauservice_height($gb_fat, 2, 30);
                 $Pattern = avito_bauservice_pattern($product->title, $product->design);
                 $Color = avito_bauservice_color($product->color);
                 break;
