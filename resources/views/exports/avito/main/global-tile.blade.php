@@ -444,7 +444,7 @@
 
     @php
         if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
-            $PackagingType = avito_packaging_type('м2');
+            $PackagingType = avito_packaging_type($product->unit);
             if ($PackagingType == 'Упаковка') {
                 $PackageQuantity = '1';
             } else {
