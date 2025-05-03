@@ -11,7 +11,7 @@
         $InstallationType = avito_bauservice_for('На пол | На стену');
         $Width = avito_bauservice_size($product->width/10, 5, 200, '', 'W');
         $Length = avito_bauservice_size($product->length/10, 5, 400, '', 'L');
-        $Height = avito_bauservice_height($product->fat, 2, 30);
+        $Thickness = avito_bauservice_height($product->fat, 2, 30);
         $Pattern = avito_bauservice_pattern($product->title, $product->design);
         $Color = avito_bauservice_color($product->color);
 
@@ -43,8 +43,9 @@
         if ($product->props->balance > 0) {
             $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->props->balance, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
         }
+
         $description .= '<p>--------------------</p>';
-        $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от одной упаковки.<br>На заказ до 10000 рублей при самовывозе установлена фиксированная доплата 300 рублей. Это сделано для того, чтобы не увеличивать минимальную сумму заказа, и мы могли отгрузить Вам даже 1 упаковку. <br>Для нас важен каждый клиент и каждый заказ! Спасибо за понимание.</strong></p>';
+        $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
         $description .= '<p>--------------------</p>';
 
 
@@ -95,7 +96,8 @@
 
 
         $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
-        $description .= '<p>В нашем шоуруме представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
+        $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
+        $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный! Отгрузка или доставка в максимально короткие сроки, есть услуги разгрузки и подъема.</p>';
         $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
 
         if($add_description != '') {
@@ -240,49 +242,80 @@
     @php
         if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
             $PackagingType = avito_packaging_type('м2');
-            $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
+            if ($PackagingType == 'Упаковка') {
+                $PackageQuantity = '1';
+            } else {
+                $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
+            }
         } else {
             $PackagingType = '';
             $PackageQuantity = '';
         }
     @endphp
 
+    @php
+        $AdStatus = 'Free';
+        $Delivery = 'Выключена';
+
+        $WeightForDelivery = round((float)$product->massa_one_meter * (float)$product->square_in_pack, 2);
+        $LengthForDelivery = round((float)$Length + 2);
+        $HeightForDelivery = 5;
+        $WidthForDelivery = round((float)$Width + 2);
+    @endphp
+
+    @php
+        $Surface = avito_surface_leedo($product->surface);
+        $Texture = avito_texture_leedo($product->surface);
+        $EdgeType = '';
+        $Shape = '';
+        $ResistanceClass = '';
+    @endphp
+
     <tr>
-        <td></td>                                                   {{-- AvitoID --}}
-        <td>{{ $code }}</td>                                        {{-- Id --}}
-        <td>{{ $name }}</td>                                        {{-- ManagerName --}}
-        <td>{{ $phone }}</td>                                       {{-- ContactPhone --}}
-        <td>{{ $address }}</td>                                     {{-- Address --}}
-        <td>{{ $title }}</td>                                       {{-- Title --}}
-        <td>{{ $description }}</td>                                 {{-- Description --}}
-        <td>{{ $price }}</td>                                       {{-- Price --}}
-        <td>{{ $video }}</td>                                       {{-- VideoURL --}}
-        <td>{{ $image_urls }}</td>                                  {{-- ImageUrls --}}
-        <td>{{ $contact_method }}</td>                              {{-- ContactMethod --}}
-        <td>Ремонт и строительство</td>                             {{-- Category --}}
-        <td>Стройматериалы</td>                                     {{-- GoodsType --}}
-        <td>Товар от производителя</td>                             {{-- AdType --}}
-        <td>Новое</td>                                              {{-- Condition --}}
-        <td>{{ $GoodsSubType }}</td>                                {{-- GoodsSubType --}}
-        <td>{{ $FinishingMaterialsType }}</td>                      {{-- FinishingMaterialsType --}}
-        <td>{{ $CeramicPorcelainTilesSubType }}</td>                {{-- CeramicPorcelainTilesSubType --}}
-        <td>{{ $FlooringMaterialsSubType }}</td>                    {{-- FlooringMaterialsSubType --}}
-        <td>{{ $ExteriorFinishingDecorativeStoneSubType }}</td>     {{-- ExteriorFinishingDecorativeStoneSubType --}}
-        <td>{{ $WallPanelsSlatsDecorativeElementsSubType }}</td>    {{-- WallPanelsSlatsDecorativeElementsSubType --}}
-        <td>{{ $MixesType }}</td>                                   {{-- MixesType --}}
-        <td>{{ $Brand }}</td>                                       {{-- Brand --}}
-        <td>{{ $TileType }}</td>                                    {{-- TileType --}}
-        <td>{{ $SpaceType }}</td>                                   {{-- SpaceType --}}
-        <td>{{ $InstallationType }}</td>                            {{-- InstallationType --}}
-        <td>{{ $Width }}</td>                                       {{-- Width --}}
-        <td>{{ $Length }}</td>                                      {{-- Length --}}
-        <td>{{ $Height }}</td>                                      {{-- Height --}}
-        <td>{{ $Pattern }}</td>                                     {{-- Pattern --}}
-        <td>{{ $Color }}</td>                                       {{-- Color --}}
-        <td>{{ $Material }}</td>                                    {{-- Material --}}
-        <td>{{ $OutsideUsage }}</td>                                {{-- OutsideUsage --}}
-        <td>{{ $PackagingType }}</td>                               {{-- PackagingType --}}
-        <td>{{ $PackageQuantity }}</td>                             {{-- PackageQuantity --}}
+        <td>{{ $code }}</td>                                    {{-- Id --}}
+        <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
+        <td></td>                                               {{-- AvitoId --}}
+        <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+        <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
+        <td>{{ $address }}</td>                                 {{-- Address --}}
+        <td>{{ $title }}</td>                                   {{-- Title --}}
+        <td>{{ $description }}</td>                             {{-- Description --}}
+        <td>{{ $price }}</td>                                   {{-- Price --}}
+        <td>{{ $image_urls }}</td>                              {{-- ImageUrls --}}
+        <td>{{ $video }}</td>                                   {{-- VideoURL --}}
+        <td>{{ $contact_method }}</td>                          {{-- ContactMethod --}}
+        <td></td>                                               {{-- Addresses --}}
+        <td></td>                                               {{-- DeliveryAddresses --}}
+        <td>Ремонт и строительство</td>                         {{-- Category --}}
+        <td>{{ $PackagingType }}</td>                           {{-- PackagingType --}}
+        <td>{{ $PackageQuantity }}</td>                         {{-- PackageQuantity --}}
+        <td>{{ $Delivery }}</td>                                {{-- Delivery --}}
+        <td>{{ $WeightForDelivery }}</td>                       {{-- WeightForDelivery --}}
+        <td>{{ $LengthForDelivery }}</td>                       {{-- LengthForDelivery --}}
+        <td>{{ $HeightForDelivery }}</td>                       {{-- HeightForDelivery --}}
+        <td>{{ $WidthForDelivery }}</td>                        {{-- WidthForDelivery --}}
+        <td>Стройматериалы</td>                                 {{-- GoodsType --}}
+        <td>Товар от производителя</td>                         {{-- AdType --}}
+        <td>Новое</td>                                          {{-- Condition --}}
+        <td>В наличии</td>                                      {{-- Availability --}}
+        <td>{{ $GoodsSubType }}</td>                            {{-- GoodsSubType --}}
+        <td>{{ $FinishingMaterialsType }}</td>                  {{-- FinishingMaterialsType --}}
+        <td>{{ $CeramicPorcelainTilesSubType }}</td>            {{-- CeramicPorcelainTilesSubType --}}
+        <td>{{ $FlooringMaterialsSubType }}</td>                {{-- FlooringMaterialsSubType --}}
+        <td>{{ $Brand }}</td>                                   {{-- Brand --}}
+        <td>{{ $TileType }}</td>                                {{-- TileType --}}
+        <td>{{ $Width }}</td>                                   {{-- Width --}}
+        <td>{{ $Length }}</td>                                  {{-- Length --}}
+        <td>{{ $Thickness }}</td>                               {{-- Thickness --}}
+        <td>{{ $SpaceType }}</td>                               {{-- SpaceType --}}
+        <td>{{ $InstallationType }}</td>                        {{-- InstallationType --}}
+        <td>{{ $Color }}</td>                                   {{-- Color --}}
+        <td>{{ $Pattern }}</td>                                 {{-- Pattern --}}
+        <td>{{ $Surface }}</td>                                 {{-- Surface --}}
+        <td>{{ $Texture }}</td>                                 {{-- Texture --}}
+        <td>{{ $EdgeType }}</td>                                {{-- EdgeType --}}
+        <td>{{ $Shape }}</td>                                   {{-- Shape --}}
+        <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
     </tr>
 @endforeach
 {{-----KERRANOVA-END----}}
