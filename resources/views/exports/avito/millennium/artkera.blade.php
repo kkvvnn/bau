@@ -75,7 +75,7 @@
 
     @php
 
-                    $title = $product->category_r->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul;
+                    $title = $product->category_r->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul . ' ' . $Width . 'x' . $Length . ' см';
                     $title = str_replace('Архив', '', $title);
 
         //              ------------------------------------------FOTO-------------------------------------
