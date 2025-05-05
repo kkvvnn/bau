@@ -333,11 +333,11 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ],
 
             'Laparet' => [
-                'discount' => 7,
+                'discount' => 10,
                 'additional' => 'По умолчанию',
             ],
             'Ceradim' => [
-                'discount' => 7,
+                'discount' => 10,
                 'additional' => 'По умолчанию',
             ],
             'Primavera' => [
