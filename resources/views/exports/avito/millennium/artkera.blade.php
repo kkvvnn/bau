@@ -20,6 +20,9 @@
                 $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                 $CeramicPorcelainTilesSubType = 'Керамогранит';
                 $Brand = $product->category_r->parent;
+                if ($Brand == 'Artkera Group') {
+                    $Brand = 'Altacera';
+                }
                 $TileType = '';
                 $SpaceType = '';
                 $InstallationType = avito_bauservice_for('На пол | На стену');
@@ -34,6 +37,9 @@
                 $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                 $CeramicPorcelainTilesSubType = 'Керамическая плитка';
                 $Brand = $product->category_r->parent;
+                if ($Brand == 'Artkera Group') {
+                    $Brand = 'Altacera';
+                }
                 $TileType = avito_tile_type($product->collection_item);
                 $SpaceType = avito_bauservice_space_type('default');
                 $InstallationType = avito_bauservice_for($product->collection_item??'');
