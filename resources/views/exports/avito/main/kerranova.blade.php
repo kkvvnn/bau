@@ -218,7 +218,7 @@
     @endphp
 
     @php
-        $title = $product->title;
+        $title = $product->title . ' ' . $Width . 'x' . $Length . ' см';
 
         if (mb_strlen($title) > 50) {
             $title = str_replace(' Керамогранит', '', $title);
