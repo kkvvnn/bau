@@ -408,18 +408,18 @@
     @endphp
 
     @php
-        $title = $product->vendor_code . ' ' . $product->type . ' ' . $product->brand . ' ' . str_replace('_GT', ' GT', $product->collection);
+        $title = $product->vendor_code . ' ' . $product->type . ' ' . $product->brand . ' ' . str_replace('_GT', ' GT', $product->collection) . ' ' . $Width . 'x' . $Length . ' см';
 
-        if (mb_strlen($title) > 50) {
+        if (mb_strlen($title) > 100) {
             $title = str_replace(' Керамическая плитка', '', $title);
         }
-        if (mb_strlen($title) > 50) {
+        if (mb_strlen($title) > 100) {
             $title = str_replace(' Керамогранит', '', $title);
         }
-        if (mb_strlen($title) > 50) {
+        if (mb_strlen($title) > 100) {
             $title = str_replace(' Керамогранит', '', $title);
         }
-        if (mb_strlen($title) > 50) {
+        if (mb_strlen($title) > 100) {
             $title = str_replace(' GT', '', $title);
         }
 
