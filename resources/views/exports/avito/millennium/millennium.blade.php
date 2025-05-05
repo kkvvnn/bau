@@ -75,7 +75,7 @@
 
 {{--        SPB         --}}
         @include('exports.avito.millennium.artkera-spb')
-{{--        @include('exports.avito.millennium.bauservice-spb')--}}
+        @include('exports.avito.millennium.bauservice-spb')
 {{--        @include('exports.avito.millennium.primavera-spb')--}}
 {{--        @include('exports.avito.millennium.aquafloor')--}}
 {{--        @include('exports.avito.millennium.nt-ceramic-spb-hand')--}}

@@ -37,7 +37,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 //       ----- BAUSERVICE-SPB -----
         $bauservice_spb = Product::with('spb')
             ->whereHas('spb', function ($spb) {
-                $spb->where('balanceCount', '>', 2);
+                $spb->where('balanceCount', '>', 10);
             })
             ->where(function (Builder $query) {
                 $query->where('Producer_Brand', 'Laparet');
@@ -45,7 +45,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             })
             ->where([
                 ['GroupProduct', '01 Плитка'],
-                ['RMPrice', '>=', '900'],
+                ['RMPrice', '>=', '1300'],
                 ['Picture', '!=', ''],
                 ['Element_code', '!=', 'х9999294554'],
                 ['Element_code', '!=', 'х9999299093'],
