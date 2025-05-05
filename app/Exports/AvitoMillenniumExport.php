@@ -65,10 +65,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ['artikul', '!=', 'WT15EXT00R'],
         ])
             ->where(function (Builder $query) {
-                $query->where('spb', '>=', 1);
-                $query->orWhere('spb_way', '>=', 1);
-                $query->orWhere('spb_reserve', '>=', 1);
-                $query->orWhere('spb_sale', '>=', 1);
+                $query->where('spb', '>=', 10);
+                $query->orWhere('spb_way', '>=', 10);
+//                $query->orWhere('spb_reserve', '>=', 10);
+                $query->orWhere('spb_sale', '>=', 10);
             })
             ->get();
 
