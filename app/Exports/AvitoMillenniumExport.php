@@ -82,10 +82,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ['artikul', '!=', 'WT15EXT00R'],
         ])
             ->where(function (Builder $query) {
-                $query->where('kazan', '>=', 1);
-                $query->orWhere('kazan_way', '>=', 1);
-                $query->orWhere('kazan_reserve', '>=', 1);
-                $query->orWhere('kazan_sale', '>=', 1);
+                $query->where('kazan', '>=', 5);
+                $query->orWhere('kazan_way', '>=', 5);
+                $query->orWhere('kazan_reserve', '>=', 5);
+                $query->orWhere('kazan_sale', '>=', 5);
             })
             ->get();
 
@@ -300,7 +300,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
         $discounts_all = [
             'Artkera' => [
-                'discount' => 7,
+                'discount' => 10,
                 'additional' => 'По умолчанию',
             ],
             'Art Ceramic' => [
