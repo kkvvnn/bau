@@ -304,9 +304,9 @@
         <td>{{ $code }}</td>                                    {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
         <td></td>                                               {{-- AvitoId --}}
-        <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+        <td>Денис</td>                                          {{-- ManagerName --}}
         <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
-        <td>{{ $address }}</td>                                 {{-- Address --}}
+        <td>Санкт-Петербург, Лесной проспект, 22</td>           {{-- Address --}}
         <td>{{ $title }}</td>                                   {{-- Title --}}
         <td>{{ $description }}</td>                             {{-- Description --}}
         <td>{{ $price }}</td>                                   {{-- Price --}}
