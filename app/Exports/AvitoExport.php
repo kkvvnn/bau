@@ -38,29 +38,46 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ==================BAUSERVIS====================
 
+//        $laparets = Product::where([
+//            ['GroupProduct', '01 Плитка'],
+//            ['Element_code', '!=', 'х9999286854'],
+//            ['Element_code', '!=', 'х9999221101'],
+//            ['Element_code', '!=', 'х9999278638'],
+//            ['Element_code', '!=', 'х9999213228'],
+//            ['Element_code', '!=', 'х9999308135'],
+//            ['Element_code', '!=', 'х9999308136'],
+//            ['Element_code', '!=', 'х9999308143'],
+//            ['Element_code', '!=', 'х9999308148'],
+//            ['Element_code', '!=', 'х9999308149'],
+//            ['Element_code', '!=', 'х9999308150'],
+//            ['Element_code', '!=', 'х9999213203'],
+//            ['Element_code', '!=', 'х9999299093'],
+//            ['Element_code', '!=', 'х9999213204'],
+//            ['Element_code', '!=', 'х9999294554'],
+//            ['Element_code', '!=', 'х9999219655'],
+//            ['Element_code', '!=', 'х9999219679'],
+//            ['Name', 'not like', '%ставк%'],
+//            ['Name', 'not like', '%ступен%'],
+//            ['Name', 'not like', '%пецэлем%'],
+//            ['balanceCount', '>=', 1],
+//            ['RMPrice', '>=', 900],
+//            ['RMPrice', '!=', ''],
+//            ['Picture', '!=', ''],
+//        ])
+//            ->where(function (Builder $query) {
+//                $query->where('Producer_Brand', 'Laparet');
+//                $query->orWhere('Producer_Brand', 'Ceradim');
+//            })
+//            ->whereColumn('RMPrice', '>', 'Price')
+//            ->get();
+
         $laparets = Product::where([
             ['GroupProduct', '01 Плитка'],
-            ['Element_code', '!=', 'х9999286854'],
-            ['Element_code', '!=', 'х9999221101'],
-            ['Element_code', '!=', 'х9999278638'],
-            ['Element_code', '!=', 'х9999213228'],
-            ['Element_code', '!=', 'х9999308135'],
-            ['Element_code', '!=', 'х9999308136'],
-            ['Element_code', '!=', 'х9999308143'],
-            ['Element_code', '!=', 'х9999308148'],
-            ['Element_code', '!=', 'х9999308149'],
-            ['Element_code', '!=', 'х9999308150'],
-            ['Element_code', '!=', 'х9999213203'],
-            ['Element_code', '!=', 'х9999299093'],
-            ['Element_code', '!=', 'х9999213204'],
-            ['Element_code', '!=', 'х9999294554'],
-            ['Element_code', '!=', 'х9999219655'],
-            ['Element_code', '!=', 'х9999219679'],
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
-            ['balanceCount', '>=', 1],
-            ['RMPrice', '>=', 900],
+            ['balanceCount', '>=', 25],
+            ['RMPrice', '>=', 1000],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
         ])
@@ -69,8 +86,23 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 $query->orWhere('Producer_Brand', 'Ceradim');
             })
             ->whereColumn('RMPrice', '>', 'Price')
-            ->get();
-
+            ->get()
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
+//                    || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
+//                    || ($length >= 59 && $length <= 61 && $height >= 29 && $height <= 31)           //30x60
+//                    || ($length >= 49 && $length <= 51 && $height >= 24 && $height <= 26)           //25x50
+//                    || ($length >= 74 && $length <= 76 && $height >= 24 && $height <= 26)           //25x75
+//                    || ($length >= 59 && $length <= 61 && $height >= 19 && $height <= 21)           //20x60
+//                    || ($length >= 39 && $length <= 41 && $height >= 19 && $height <= 21)           //20x40
+                    || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
+            });
 
 //      ==================PRIMAVERA====================
         $primavera = PrimaveraNew::whereHas('balance')

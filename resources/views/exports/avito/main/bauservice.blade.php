@@ -111,7 +111,7 @@
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
         if ($product->balanceCount > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->balanceCount, 2).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->balanceCount).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
         }
 
 
@@ -127,35 +127,37 @@
 //        }
 
         $description .= '<p>--------------------</p>';
-        $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
+        $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей. Скидка рассчитывается индивидуально.</strong></p>';
         $description .= '<p>--------------------</p>';
         $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.'</em></p>';
 
 
-        $description .= '<p><strong>Коллекция: </strong>';
-        $collections = $product->collections;
-        foreach ($collections as $collection) {
-              $description .= $collection->Collection_Name;
-              $description .= '. ';
-          }
-        $description .= '</p><ul>';
+//        $description .= '<p><strong>Коллекция: </strong>';
+//        $collections = $product->collections;
+//        foreach ($collections as $collection) {
+//              $description .= $collection->Collection_Name;
+//              $description .= '. ';
+//          }
+//        $description .= '</p><ul>';
+
+        $description .= '<ul>';
 
 
         if ($product->Height != 0 && $product->Lenght != 0) {
            $description .= '<li><strong>Размер: </strong>' . $product->Height .'x' . $product->Lenght . ' см</li>';
         }
-        if ($product->Thickness != null && $product->Thickness != 0) {
-           $description .= '<li><strong>Толщина: </strong>' . $product->Thickness . ' см</li>';
-        }
+//        if ($product->Thickness != null && $product->Thickness != 0) {
+//           $description .= '<li><strong>Толщина: </strong>' . $product->Thickness . ' см</li>';
+//        }
 //        if ($product->Place_in_the_Collection != null) {
 //           $description .= '<li><strong>Место в коллекции: </strong>' . $product->Place_in_the_Collection . '</li>';
 //        }
         if ($product->DesignValue != null) {
            $description .= '<li><strong>Рисунок: </strong>' . $product->DesignValue . '</li>';
         }
-        if ($product->Color != null) {
-           $description .= '<li><strong>Цвет: </strong>' . $product->Color . '</li>';
-        }
+//        if ($product->Color != null) {
+//           $description .= '<li><strong>Цвет: </strong>' . $product->Color . '</li>';
+//        }
 //        if ($product->Cover != null) {
 //           $description .= '<li><strong>Покрытие: </strong>' . $product->Cover . '</li>';
 //        }
@@ -165,40 +167,45 @@
 //        if ($product->MainUnit != null) {
 //           $description .= '<li><strong>Единица измерения товара: </strong>' . $product->MainUnit . '</li>';
 //        }
-        if ($product->PCS_in_Package != null) {
-           $description .= '<li><strong>В упаковке: </strong>' . $product->PCS_in_Package . ' шт</li>';
+//        if ($product->PCS_in_Package != null) {
+//           $description .= '<li><strong>В упаковке: </strong>' . $product->PCS_in_Package . ' шт</li>';
+//        }
+//        if ($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
+//           $description .= '<li><strong>В упаковке: </strong>' . $product->Package_Value . ' м2</li>';
+//        }
+        if ($product->PCS_in_Package != null && ($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package)) {
+           $description .= '<li><strong>В упаковке: </strong>' . $product->PCS_in_Package . ' шт ( ' .$product->Package_Value. ' м2 )</li>';
         }
-        if ($product->Package_Value != null && $product->Package_Value != $product->PCS_in_Package) {
-           $description .= '<li><strong>В упаковке: </strong>' . $product->Package_Value . ' м2</li>';
-        }
-        if ($product->Producer_Brand != null) {
-           $description .= '<li><strong>Производитель: </strong>' . $product->Producer_Brand .' ('. $product->Country_of_manufacture .') </li>';
-        }
+
+//        if ($product->Producer_Brand != null) {
+//           $description .= '<li><strong>Производитель: </strong>' . $product->Producer_Brand .' ('. $product->Country_of_manufacture .') </li>';
+//        }
 //        if ($product->Country_of_manufacture != null) {
 //           $description .= '<li><strong>Страна производства: </strong>' . $product->Country_of_manufacture . '</li>';
 //        }
 
         $description .= '</ul><br>';
 
-        $description .= '<p><strong>Наличие и актуальные цены на ваш объем уточняйте у менеджера.</strong></p>';
+        $description .= '<p><strong>Наличие и актуальные цены на ваш объем уточняйте у менеджера в чате или по телефону.</strong></p>';
 
         if ($product->Producer_Brand == 'Laparet') {
-            $description .= '<p>Laparet , Лапарет . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+            $description .= '<p>Laparet , Лапарет . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
         } elseif ($product->Producer_Brand == 'Cersanit') {
-            $description .= '<p>Cersanit , Церсанит . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+            $description .= '<p>Cersanit , Церсанит . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
         } elseif ($product->Producer_Brand == 'Kerama Marazzi') {
-            $description .= '<p>Kerama Marazzi , Керама Марацци . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+            $description .= '<p>Kerama Marazzi , Керама Марацци . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
         } elseif ($product->Producer_Brand == 'Vitra') {
-            $description .= '<p>Vitra , Витра . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+            $description .= '<p>Vitra , Витра . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
         } elseif ($product->Producer_Brand == 'Ceradim') {
-            $description .= '<p>Ceradim , Керадим . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+            $description .= '<p>Ceradim , Керадим . Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
         } else {
-            $description .= '<p>Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы, есть отправка в регионы через ТК.</p>';
+            $description .= '<p>Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
         }
 
-        $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
-        $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный! Отгрузка или доставка в максимально короткие сроки, есть услуги разгрузки и подъема.</p>';
+//        $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
+        $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный! Керамогранит, керамическая плитка, мозаика, ламинат, кварцвинил, инженерная доска и др.</p>';
         $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+        $description .= '<p>Можем отправить в регионы через ТК.</p>';
 
         if ($add_description != '') {
             $description .= '<p>'.nl2br($add_description).'</p>';
