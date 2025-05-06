@@ -55,7 +55,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
 
 //        ----- ARTKERA -----
-        $artkera_spb = ArtkeraTovarAvailable::where([
+        $artkera_spb = ArtkeraTovarAvailable::whereHas('price', function($query) {
+            $query->where('price', '>', 750);
+        })
+        ->where([
 //            ['sale', 0],
 //            ['spb', '>=', 1],
             ['artikul', '!=', 'DW11VST00'],
@@ -72,7 +75,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             })
             ->get();
 
-            $artkera_kazan = ArtkeraTovarAvailable::where([
+            $artkera_kazan = ArtkeraTovarAvailable::whereHas('price', function($query) {
+                $query->where('price', '>', 750);
+            })
+            ->where([
 //            ['sale', 0],
 //            ['spb', '>=', 1],
             ['artikul', '!=', 'DW11VST00'],
@@ -82,10 +88,10 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ['artikul', '!=', 'WT15EXT00R'],
         ])
             ->where(function (Builder $query) {
-                $query->where('kazan', '>=', 5);
-                $query->orWhere('kazan_way', '>=', 5);
-                $query->orWhere('kazan_reserve', '>=', 5);
-                $query->orWhere('kazan_sale', '>=', 5);
+                $query->where('kazan', '>=', 10);
+                $query->orWhere('kazan_way', '>=', 10);
+                $query->orWhere('kazan_reserve', '>=', 10);
+                $query->orWhere('kazan_sale', '>=', 10);
             })
             ->get();
 
