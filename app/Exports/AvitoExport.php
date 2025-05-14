@@ -76,7 +76,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
-            ['balanceCount', '>=', 25],
+            ['balanceCount', '>=', 10],
             ['RMPrice', '>=', 1000],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
@@ -130,11 +130,11 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['artikul', '!=', 'TWU2550MLN30'],
         ])
             ->where(function (Builder $query) {
-                $query->where('moscow', '>=', 1);
-                $query->orWhere('moscow_way', '>=', 1);
-                $query->orWhere('moscow_reserve', '>=', 1);
-                $query->orWhere('moscow_depot_reserve', '>=', 1);
-                $query->orWhere('moscow_sale', '>=', 1);
+                $query->where('moscow', '>=', 10);
+                $query->orWhere('moscow_way', '>=', 10);
+                $query->orWhere('moscow_reserve', '>=', 10);
+                $query->orWhere('moscow_depot_reserve', '>=', 10);
+                $query->orWhere('moscow_sale', '>=', 10);
             })
             ->get();
 
