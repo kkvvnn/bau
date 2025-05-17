@@ -159,7 +159,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ===================PIXMOSAIC====================
         $pixmosaics = PixmosaicNew::where('price', '!=', 0)
-            ->where('stock', '!=', '')
+            ->where('stock', '>=', 2)
             ->get();
 
 //      ===================ARTCENTER====================
