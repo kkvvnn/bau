@@ -38,39 +38,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ==================BAUSERVIS====================
 
-//        $laparets = Product::where([
-//            ['GroupProduct', '01 Плитка'],
-//            ['Element_code', '!=', 'х9999286854'],
-//            ['Element_code', '!=', 'х9999221101'],
-//            ['Element_code', '!=', 'х9999278638'],
-//            ['Element_code', '!=', 'х9999213228'],
-//            ['Element_code', '!=', 'х9999308135'],
-//            ['Element_code', '!=', 'х9999308136'],
-//            ['Element_code', '!=', 'х9999308143'],
-//            ['Element_code', '!=', 'х9999308148'],
-//            ['Element_code', '!=', 'х9999308149'],
-//            ['Element_code', '!=', 'х9999308150'],
-//            ['Element_code', '!=', 'х9999213203'],
-//            ['Element_code', '!=', 'х9999299093'],
-//            ['Element_code', '!=', 'х9999213204'],
-//            ['Element_code', '!=', 'х9999294554'],
-//            ['Element_code', '!=', 'х9999219655'],
-//            ['Element_code', '!=', 'х9999219679'],
-//            ['Name', 'not like', '%ставк%'],
-//            ['Name', 'not like', '%ступен%'],
-//            ['Name', 'not like', '%пецэлем%'],
-//            ['balanceCount', '>=', 1],
-//            ['RMPrice', '>=', 900],
-//            ['RMPrice', '!=', ''],
-//            ['Picture', '!=', ''],
-//        ])
-//            ->where(function (Builder $query) {
-//                $query->where('Producer_Brand', 'Laparet');
-//                $query->orWhere('Producer_Brand', 'Ceradim');
-//            })
-//            ->whereColumn('RMPrice', '>', 'Price')
-//            ->get();
-
         $laparets = Product::where([
             ['GroupProduct', '01 Плитка'],
             ['Name', 'not like', '%ставк%'],
@@ -143,7 +110,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ================RUSPLITKA====================
         $rusplitka = RusplitkaProduct::where([
             ['svoystvo', 'Керамогранит'],
-            ['rest_real_free', '!=', 0],
+            ['rest_real_free', '>=', 10],
             ['price_rozn', '!=', 0],
             ['brand_name', '!=', 'Best Ceramic'],
         ])
@@ -165,7 +132,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //      ===================ARTCENTER====================
         $artcenter = ArtCentreNew::where([
             ['brand', 'Art Ceramic'],
-            ['moscow', '>=', 4],
+            ['moscow', '>=', 10],
             ['code', '!=', 'ЦБ-00043906'],
         ])
             ->get();
@@ -180,7 +147,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->get();
 
 //      ===================KERRANOVA====================
-        $kerranova = Kerranova::whereHas('props')
+        $kerranova = Kerranova::whereHas('props', function ($props) {
+            $props->where('balance', '>=', 10);
+        })
             ->get();
 
 //      ===================NOVIN-CERAM==================
