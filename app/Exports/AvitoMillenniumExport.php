@@ -56,7 +56,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
 //        ----- ARTKERA -----
         $artkera_spb = ArtkeraTovarAvailable::whereHas('price', function($query) {
-            $query->where('price', '>', 750);
+            $query->where('price', '>', 1000);
         })
         ->where([
 //            ['sale', 0],
@@ -76,7 +76,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ->get();
 
             $artkera_kazan = ArtkeraTovarAvailable::whereHas('price', function($query) {
-                $query->where('price', '>', 750);
+                $query->where('price', '>', 1000);
             })
             ->where([
 //            ['sale', 0],
@@ -90,7 +90,7 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ->where(function (Builder $query) {
                 $query->where('kazan', '>=', 10);
                 $query->orWhere('kazan_way', '>=', 10);
-                $query->orWhere('kazan_reserve', '>=', 10);
+//                $query->orWhere('kazan_reserve', '>=', 10);
                 $query->orWhere('kazan_sale', '>=', 10);
             })
             ->get();
@@ -286,11 +286,11 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
         //      ===================LEEDO===================
         $leedo = LeedoProduct::where([
-            ['Sklad_SPb_LeeDo', '>', 0],
+            ['Sklad_SPb_LeeDo', '>', 10],
             ['Category', 'like', 'Мозаика/%'],
         ])
             ->orWhere([
-                ['Sklad_Msk_LeeDo', '>', 0],
+                ['Sklad_Msk_LeeDo', '>', 10],
                 ['Category', 'like', 'Мозаика/%'],
             ])
             ->get();
@@ -299,14 +299,14 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
 
         //      ===================PIXMOSAIC====================
         $pixmosaics = PixmosaicNew::where('price', '!=', 0)
-            ->where('stock', '!=', '')
+            ->where('stock', '>=', 2)
             ->get();
 
 //        dd($pixmosaics);
 
         $discounts_all = [
             'Artkera' => [
-                'discount' => 10,
+                'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
             'Art Ceramic' => [
@@ -339,11 +339,11 @@ class AvitoMillenniumExport extends DefaultValueBinder implements FromView, With
             ],
 
             'Laparet' => [
-                'discount' => 10,
+                'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
             'Ceradim' => [
-                'discount' => 10,
+                'discount' => 0,
                 'additional' => 'По умолчанию',
             ],
             'Primavera' => [
