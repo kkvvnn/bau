@@ -115,7 +115,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ===================LEEDO===================
         $leedo = LeedoProduct::where([
-                ['Sklad_Msk_LeeDo', '>', 0],
+                ['Sklad_Msk_LeeDo', '>', 5],
                 ['Category', 'like', 'Мозаика/%'],
                 ['System_ID', '!=', '00-00002393'],
             ])
@@ -123,21 +123,18 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 
 //      ====================ARTKERA===================
-        $altacera = ArtkeraTovarAvailable::where([
-//            ['sale', 0],
-            ['artikul', '!=', 'DW11VST00'],
-            ['artikul', '!=', 'TWU2550MLN10'],
-            ['artikul', '!=', 'TWU2550MLN30'],
-        ])
+        $altacera = ArtkeraTovarAvailable::whereHas('price', function($price) {
+                $price->where('price', '>=', 700);
+            })
             ->where(function (Builder $query) {
-                $query->where('moscow', '>=', 10);
-                $query->orWhere('moscow_way', '>=', 10);
-                $query->orWhere('moscow_reserve', '>=', 10);
-                $query->orWhere('moscow_depot_reserve', '>=', 10);
-                $query->orWhere('moscow_sale', '>=', 10);
+                $stock_min = 10;
+                $query->where('moscow', '>=', $stock_min);
+                $query->orWhere('moscow_way', '>=', $stock_min);
+                $query->orWhere('moscow_reserve', '>=', $stock_min);
+                $query->orWhere('moscow_depot_reserve', '>=', $stock_min);
+                $query->orWhere('moscow_sale', '>=', $stock_min);
             })
             ->get();
-
 
 //      =================NT-CERAMIC==================
         $ntceramic = NtCeramicNoImgs::all();
@@ -177,7 +174,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $globaltile = GlobalTileNew::where([
             ['brand', 'GlobalTile'],
             ['Picture', '!=', ''],
-            ['balance', '>', 0],
+            ['balance', '>', 10],
             ['vendor_code', '!=', 'GT60601903MR'],
         ])
             ->get();
