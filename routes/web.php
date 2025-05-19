@@ -233,6 +233,21 @@ Route::name('kerranova.')->group(function () {
     Route::post('/kerranova-import-work-price-stock', [KerranovaController::class, 'import_work_price_stock'])->name('import-work-price-stock');
 });
 
+//----- AZARIO -----
+Route::name('azario.')->group(function (){
+    Route::controller(\App\Http\Controllers\AzarioController::class)->group(function () {
+        Route::view('/azario/import', 'azario.import');
+        Route::post('/azario/import', 'import')->name('import');
+        Route::get('/azario', 'index')->name('index');
+        Route::get('/azario/{slug:slug}', 'show')->name('show');
+        Route::get('/azario/collection/{name}', 'collection')->name('collection');
+    });
+
+    //----- AZARIO-PRICE-LIST-AND-STOCKS (Import from .csv via form) -----
+    Route::view('/azario-price-stock-import', 'azario.import-price-stock');
+    Route::post('/azario-price-stock-import', [\App\Http\Controllers\AzarioController::class, 'import_price_stock'])->name('import-price-stock');
+});
+
 //----- SKALLA -----
 Route::name('skalla.')->group(function () {
     Route::controller(SkallaController::class)->group(function () {

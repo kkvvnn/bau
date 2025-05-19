@@ -114,6 +114,14 @@ return [
             'throw' => false,
         ],
 
+        'azario' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/azario'),
+            'url' => env('APP_URL').'/storage/images/azario',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'artkera' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/artkera'),
