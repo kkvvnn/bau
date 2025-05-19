@@ -51,6 +51,7 @@ class AzarioController extends Controller
     {
         $products = Azario::whereHas('props', function ($query) {
             $query->where('price', '!=', 0);
+            $query->where('stock', '!=', 0);
         })
             ->orderByDesc('length')
             ->orderByDesc('width')
