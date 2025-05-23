@@ -4,7 +4,9 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{url()->full()}}">
     <meta property="og:title" content="{{$product->Name}}">
-    <meta property="og:description" content="Коллекция {{$product->Producer_Brand.' '.$collection[0]->Collection_Name}}">
+    @isset($collection[0])
+        <meta property="og:description" content="Коллекция {{$product->Producer_Brand.' '.$collection[0]->Collection_Name}}">
+    @endisset
     <meta property="og:image" content="{{$urls[0]}}">
 @endsection
 

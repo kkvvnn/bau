@@ -7,6 +7,7 @@ use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
+use App\Models\Azario;
 use App\Models\Discount;
 use App\Models\GlobalTileNew;
 use App\Models\Kerabellezza2;
@@ -169,6 +170,14 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $skalla = Skalla::whereHas('price')
             ->get();
 
+        //==================AZARIO==================
+        $azario = Azario::whereHas('props', function ($query) {
+            $query->where('price', '!=', 0);
+            $query->where('stock', '!=', 0);
+        })
+            ->get();
+
+
 //      ===================DISCOUNTS==================
 
         $discounts = Discount::whereAccount('Напольные решения')->get();
@@ -176,6 +185,11 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         foreach ($discounts as $discount) {
             $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
         }
+
+        $discounts_all['Azario'] = [
+            'discount' => 0,
+            'additional' => 'По умолчанию',
+        ];
 
         return view('exports.avito.main.main', [
             'products' => $laparets,
@@ -191,6 +205,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'kerranova' => $kerranova,
             'keramopro' => $keramopro,
             'kerabellezza' => $kerabellezza,
+            'azario' => $azario,
             'skalla' => $skalla,
             'phone' => $this->phone,
             'name' => $this->name,

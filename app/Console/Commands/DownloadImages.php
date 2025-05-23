@@ -32,6 +32,7 @@ class DownloadImages extends Command
         $this->call('pixmosaic:download-images');
         $this->call('kerranova:download-images');
         $this->call('global-tile:download-images');
+//        $this->call('azario:download-images');
 
         $this->info('Download Images [OK]');
     }
