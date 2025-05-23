@@ -30,15 +30,18 @@
         $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
 
-        $description .= '<p>Керамогранит. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+        $description .= '<p>Керамогранит AZARIO. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены при покупке большого объема. Доставка по Москве, cамовывоз на западе Москвы.</p>';
 
         $description .= '<p><strong>' . $product->category . ' ' . $product->title .  '</strong></p>';
 
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
-        if ($product->props->balance > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->props->balance, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+        if ($product->props->stock > 0) {
+            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->props->stock_moscow, 2).' '.$product->unit.'<br>';
+            $description .= 'Краснодар '.round($product->props->stock_krasnodar, 2).' '.$product->unit.'</p>';
         }
+
+        $description .= '<p><em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
 
         $description .= '<p>--------------------</p>';
         $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
@@ -47,15 +50,15 @@
 
         $description .= '<p><em>Цена указана за 1 ' . $product->unit . '</em></p>';
 
-        $description .= '<p><strong>Коллекция: </strong>';
-        $description .= $product->collection . '</p><ul>';
+//        $description .= '<p><strong>Коллекция: </strong>';
+//        $description .= $product->collection . '</p><ul>';
 
 
             if($product->length != 0 && $product->width != 0) {
-            $description .= '<li><strong>Размер: </strong>' . $product->length/10 .'x' . $product->width/10 . ' см </li>';
+            $description .= '<li><strong>Размер: </strong>' . $product->length .'x' . $product->width . ' см </li>';
             }
-            if($product->fat != null && $product->fat != 0) {
-            $description .= '<li><strong>Толщина: </strong>' . $product->fat/10 . ' см </li>';
+            if($product->thickness != null && $product->thickness != 0) {
+            $description .= '<li><strong>Толщина: </strong>' . $product->thickness/10 . ' см </li>';
             }
             if($product->type != null) {
             $description .= '<li><strong>Место в коллекции: </strong>' . $product->type . '</li>';
@@ -132,8 +135,8 @@
 //            $lenght = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
 //            $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);
 
-        $lenght = $product->length / 10;
-        $height = $product->width / 10;
+        $lenght = $product->length;
+        $height = $product->width;
 
         $size = '';
         $size .= $type . ' ' . $lenght . 'х' . $height . ' ';
@@ -149,7 +152,7 @@
         $keywords .= $size;
         }
 
-        $keywords .= $type . ' керранова kerranova ';
+        $keywords .= $type . ' азарио azario ';
 
         $surface = $product->surface;
         $surf = '';
@@ -203,18 +206,18 @@
     @endphp
 
     @php
-        $string_for_delete = 'https://lk.kerranova.ru/storage/images/products/';
+        $string_for_delete = 'https://www.santehcentr.com';
 
         $img_arr = [];
         foreach ($product->images as $key => $value) {
-            $img_arr[] = Storage::disk('kerranova')->url(Str::remove($string_for_delete, $value));
+            $img_arr[] = Storage::disk('azario')->url(Str::remove($string_for_delete, $value));
         }
 
-        $image_urls = avito_images_urls($img_arr);
+        $image_urls = avito_images_urls($img_arr, true);
     @endphp
 
     @php
-        $title = 'Керамогранит '. $product->title . ' ' . $Width . 'x' . $Length . ' см';
+        $title = 'Керамогранит Azario '. $product->title . ' ' . $Width . 'x' . $Length . ' см';
 
         if (mb_strlen($title) > 100) {
             $title = str_replace(' Керамогранит', '', $title);
@@ -224,14 +227,14 @@
     @php
         $price_rrc = $product->props->price;
         $price_old = 0;
-        $brand = 'Kerranova';
+        $brand = 'Azario';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
         $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
     @php
-        $code = str_replace('/', '-', $product->vendor_code);
+        $code = $product->vendor_code . '_azario';
         $video = '';
     @endphp
 
@@ -253,7 +256,7 @@
         $AdStatus = 'Free';
         $Delivery = 'Выключена';
 
-        $WeightForDelivery = round((float)$product->massa_one_meter * (float)$product->square_in_pack, 2);
+        $WeightForDelivery = 25;
         $LengthForDelivery = round((float)$Length + 2);
         $HeightForDelivery = 5;
         $WidthForDelivery = round((float)$Width + 2);
