@@ -336,6 +336,7 @@
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <ul class="">
+                                        <li><a class="nav-link" href="{{ route('azario.index') }}">AZARIO</a></li>
                                         <li><a class="nav-link" href="{{ route('laparet.index') }}">LAPARET</a></li>
                                         <li><a class="nav-link" href="{{ route('cersanit.index') }}">CERSANIT</a></li>
                                         <li><a class="nav-link" href="{{ route('vitra.index') }}">VITRA</a></li>
