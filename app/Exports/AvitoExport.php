@@ -134,8 +134,6 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ])
             ->get();
 
-        dd($pixmosaics);
-
 //      ===================ARTCENTER====================
         $artcenter = ArtCentreNew::where([
             ['brand', 'Art Ceramic'],
