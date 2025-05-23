@@ -8,6 +8,7 @@ use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
+use App\Models\Azario;
 use App\Models\GlobalTileNew;
 use App\Models\Keramopro;
 use App\Models\Kerranova;
@@ -153,6 +154,15 @@ class SearchController extends Controller
         if (count($global_tile)) {
             return view('global-tile.index', [
                 'products' => $global_tile,
+                'search_name' => $search_name,
+            ]);
+        }
+
+        $azario = Azario::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $azario->appends(['name' => $name]);
+        if (count($azario)) {
+            return view('azario.index', [
+                'products' => $azario,
                 'search_name' => $search_name,
             ]);
         }

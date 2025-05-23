@@ -76,7 +76,7 @@
             $description .= '<li><strong>Поверхность: </strong>' . $product->surface . '</li>';
             }
             if($product->unit != null) {
-            $description .= '<li><strong>Единица измерения товара: </strong>' . $product->unit . '</li>';
+            $description .= '<li><strong>Ед. измерения: </strong>' . $product->unit . '</li>';
             }
             if($product->count_in_pack != null) {
             $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_pack . '</li>';
@@ -88,7 +88,7 @@
             $description .= '<li><strong>Производитель: </strong>' . $product->brand . '</li>';
             }
             if($product->country != null) {
-            $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
+            $description .= '<li><strong>Страна: </strong>' . $product->country . '</li>';
             }
 
             $description .= '</ul><br>';
