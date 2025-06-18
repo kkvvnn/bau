@@ -76,8 +76,9 @@
 
 
         @include('exports.avito.main.primavera') //READY
+        @include('exports.avito.main.rusplitka') //READY
 
-{{--        @include('exports.avito.main.rusplitka') //READY--}}
+
 {{--        @include('exports.avito.main.aquafloor') //READY--}}
 
 {{--        @include('exports.avito.main.artcenter') //READY--}}
