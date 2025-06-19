@@ -69,21 +69,27 @@
     @php
         if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
 
-            $PackagingType = avito_packaging_type($product->MainUnit);
+//            $PackagingType = avito_packaging_type($product->MainUnit);
+            $PackagingType = 'Штучно';
 
-            if ($PackagingType == 'Упаковка') {
-                $PackageQuantity = '1';
-            } else {
+//            if ($PackagingType == 'Упаковка') {
+//                $PackageQuantity = '1';
+//            } else {
                 $square_in_pack = $product->Package_Value;
                 if ($product->Package_Value == $product->PCS_in_Package) {
                     $square_in_pack = ((float)$Length / 100) * ((float)$Width / 100) * (int)$product->PCS_in_Package;
                 }
                 $PackageQuantity = avito_package_quantity(round((float)$square_in_pack, 2));
-            }
+//            }
 
 //            if ($PackagingType == 'Упаковка') {
 //                $price = round($price * (float)$PackageQuantity, -1);
 //            }
+
+                if (avito_packaging_type($product->MainUnit) == 'Упаковка') {
+                    $square_one_tile = ((float)$Length / 100) * ((float)$Width / 100);
+                    $price = round($price * $square_one_tile, -1);
+                }
 
         } else {
             $PackagingType = '';
@@ -111,7 +117,7 @@
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
         if ($product->balanceCount > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->balanceCount).' '.$product->MainUnit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' в Москве '.round($product->balanceCount).' '.$product->MainUnit.' <em>(уточняйте у менеджера)</em></p>';
         }
 
 
@@ -126,10 +132,16 @@
 //            $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.'</em></p>';
 //        }
 
+//        $description .= '<p>--------------------</p>';
+//        $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей. Скидка рассчитывается индивидуально.</strong></p>';
+//        $description .= '<p>--------------------</p>';
+//        $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.'</em></p>';
+
         $description .= '<p>--------------------</p>';
-        $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей. Скидка рассчитывается индивидуально.</strong></p>';
+        $description .= '<p><strong>Цена в объявлении указана за 1 шт.</strong></p>';
+        $description .= '<p><strong>Под каждый проект действуют индивидуальные условия предоставления скидки, обращайтесь в чат к менеджеру для рассчета.</strong></p>';
+        $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 8000 р. Скидка рассчитывается индивидуально.</strong></p>';
         $description .= '<p>--------------------</p>';
-        $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.'</em></p>';
 
 
 //        $description .= '<p><strong>Коллекция: </strong>';
@@ -203,9 +215,9 @@
         }
 
 //        $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
-        $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный! Керамогранит, керамическая плитка, мозаика, ламинат, кварцвинил, инженерная доска и др.</p>';
+        $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный (4 шоурума в одном месте)! Керамогранит, керамическая плитка, мозаика, ламинат, кварцвинил, инженерная доска и др.</p>';
         $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
-        $description .= '<p>Можем отправить в регионы через ТК.</p>';
+        $description .= '<p>Отправляем через ТК по всей России.</p>';
 
         if ($add_description != '') {
             $description .= '<p>'.nl2br($add_description).'</p>';

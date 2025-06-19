@@ -54,11 +54,21 @@
     <tbody>
 
         @include('exports.avito.main.bauservice') //READY
-{{--        @include('exports.avito.main.leedo') //READY--}}
-{{--        @include('exports.avito.main.pixmosaic') //READY--}}
         @include('exports.avito.main.artkera') //READY
         @include('exports.avito.main.kerranova') //READY
         @include('exports.avito.main.global-tile') //READY
+        @include('exports.avito.main.azario') //READY
+        @include('exports.avito.main.primavera') //READY
+        @include('exports.avito.main.rusplitka') //READ
+
+
+{{--        OFF--}}
+
+        {{--        @include('exports.avito.main.leedo') //READY--}}
+        {{--        @include('exports.avito.main.pixmosaic') //READY--}}
+
+
+{{--        HAND--}}
 
         @include('exports.avito.main.nt-ceramic-hand')
         @include('exports.avito.main.primavera-hand')
@@ -69,14 +79,11 @@
         @include('exports.avito.main.aquafloor-hand-1')
         @include('exports.avito.main.aquafloor-hand-2')
 
-        @include('exports.avito.main.azario') //READY
 
 
-{{----------------------------}}
 
+{{--        NOT READY--}}
 
-        @include('exports.avito.main.primavera') //READY
-        @include('exports.avito.main.rusplitka') //READY
 
 
 {{--        @include('exports.avito.main.aquafloor') //READY--}}
