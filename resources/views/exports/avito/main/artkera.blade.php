@@ -74,6 +74,47 @@
     @endphp
 
     @php
+        $price_rrc = $product->price->price;
+        $price_old = intval($product->sale || $product->is_action);
+        $brand = 'Artkera';
+        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
+
+        $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
+    @endphp
+
+    @php
+        if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
+
+            $PackagingType = avito_packaging_type($product->unit);
+
+            $is_big_format = false;
+
+            if ($Width >=59 && $Length >= 59) {
+                $PackagingType = 'Штучно';
+                $is_big_format = true;
+            }
+
+
+
+
+            if ($PackagingType == 'Упаковка') {
+                $PackageQuantity = '1';
+            } else {
+                $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
+            }
+
+            if ($is_big_format && (avito_packaging_type($product->unit) == 'Упаковка')) {
+                    $square_one_tile = ((float)$Length / 100) * ((float)$Width / 100);
+                    $price = round($price * $square_one_tile, -1);
+            }
+
+        } else {
+            $PackagingType = '';
+            $PackageQuantity = '';
+        }
+    @endphp
+
+    @php
 
                     $title = $product->category_r->parent.' '.$product->collection_item.' '.$product->name_for_site.' '.$product->artikul;
                     $title = str_replace('Архив', '', $title);
@@ -143,9 +184,8 @@
 
                     $description .= '<p>--------------------</p>';
                     $date = date('d.m.Y');
-                     if ($product->balanceCount > 0) {
+
                         $description .= '<p>&#9989; На утро '.$date.' в Москве '.round($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve).' '.$product->unit.' <em>(уточняйте у менеджера)</em></p>';
-                     }
 
 //                    $description .= '<p>--------------------</p>';
 //                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
@@ -295,37 +335,7 @@
                     $video = '';
     @endphp
 
-    @php
-        $price_rrc = $product->price->price;
-        $price_old = intval($product->sale || $product->is_action);
-        $brand = 'Artkera';
-        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
-        $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
-    @endphp
-
-    @php
-        if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
-//            $PackagingType = avito_packaging_type($product->unit);
-
-            $PackagingType = 'Штучно';
-
-            if ($PackagingType == 'Упаковка') {
-                $PackageQuantity = '1';
-            } else {
-                $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
-            }
-
-            if (avito_packaging_type($product->unit) == 'Упаковка') {
-                    $square_one_tile = ((float)$Length / 100) * ((float)$Width / 100);
-                    $price = round($price * $square_one_tile, -1);
-            }
-
-        } else {
-            $PackagingType = '';
-            $PackageQuantity = '';
-        }
-    @endphp
 
     @php
         $AdStatus = 'Free';
