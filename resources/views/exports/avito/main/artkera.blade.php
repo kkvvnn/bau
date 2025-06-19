@@ -219,9 +219,9 @@
                         if($product->surface_type != null) {
                         $description .= '<li><strong>Поверхность: </strong>' . $product->surface_type . '</li>';
                         }
-                        if($product->Рельеф != null) {
-                        $description .= '<li><strong>Рельеф: </strong>' . $product->Рельеф . '</li>';
-                        }
+//                        if($product->Рельеф != null) {
+//                        $description .= '<li><strong>Рельеф: </strong>' . $product->Рельеф . '</li>';
+//                        }
                         if($product->packing) {
                         $description .= '<li><strong>Штук в упаковке: </strong>' . $product->packing . '</li>';
                         }

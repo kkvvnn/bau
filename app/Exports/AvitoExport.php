@@ -102,6 +102,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 $query->orWhere('moscow_depot_reserve', '>=', $stock_min);
                 $query->orWhere('moscow_sale', '>=', $stock_min);
             })
+            ->where('title', 'not like', '%анно%')
             ->get();
 
 //      =================NT-CERAMIC==================
