@@ -79,7 +79,7 @@
         $brand = 'Artkera';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
-        $description .= avito_show_discount($price_rrc, $brand, $discounts, $price_old);
+        $show_discount = avito_show_discount($price_rrc, $brand, $discounts, $price_old);
     @endphp
 
     @php
@@ -353,6 +353,10 @@
         $EdgeType = '';
         $Shape = '';
         $ResistanceClass = '';
+    @endphp
+
+    @php
+        $description .= $show_discount;
     @endphp
 
     <tr>
