@@ -44,7 +44,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
-            ['balanceCount', '>=', 10],
+            ['balanceCount', '>=', 2],
             ['RMPrice', '>=', 1000],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
@@ -92,10 +92,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ====================ARTKERA===================
         $altacera = ArtkeraTovarAvailable::whereHas('price', function($price) {
-                $price->where('price', '>=', 700);
+                $price->where('price', '>=', 1000);
             })
             ->where(function (Builder $query) {
-                $stock_min = 10;
+                $stock_min = 2;
                 $query->where('moscow', '>=', $stock_min);
                 $query->orWhere('moscow_way', '>=', $stock_min);
                 $query->orWhere('moscow_reserve', '>=', $stock_min);

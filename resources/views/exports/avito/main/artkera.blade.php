@@ -117,11 +117,11 @@
 
 
 
-                    $date = date('d.m.Y');
-                    $description .= '<p>--------------------</p>';
-                    $description .= '<p>&#9989; На утро '.$date.' остаток: </p><ul>';
-
-                    $description .= '<li>Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve) . ' ' . $product->unit . '</li>';
+//                    $date = date('d.m.Y');
+//                    $description .= '<p>--------------------</p>';
+//                    $description .= '<p>&#9989; На утро '.$date.' остаток: </p><ul>';
+//
+//                    $description .= '<li>Москва: ' . ($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve) . ' ' . $product->unit . '</li>';
 
 //                    if($product->moscow_way) {
 //                        $description .= '<li>Москва (в пути): ' . $product->moscow_way . ' ' . $product->unit . '</li>';
@@ -139,15 +139,30 @@
 
 
 
-                    $description .= '</ul><p><em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+//                    $description .= '</ul><p><em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
 
                     $description .= '<p>--------------------</p>';
-                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
-                    $description .= '<p>--------------------</p>';
+                    $date = date('d.m.Y');
+                     if ($product->balanceCount > 0) {
+                        $description .= '<p>&#9989; На утро '.$date.' в Москве '.round($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve).' '.$product->unit.' <em>(уточняйте у менеджера)</em></p>';
+                     }
 
-                    $description .= '<p><em>Цена указана за 1 '.$product->unit.'.</em></p>';
+//                    $description .= '<p>--------------------</p>';
+//                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
+//                    $description .= '<p>--------------------</p>';
+//
+//                    $description .= '<p><em>Цена указана за 1 '.$product->unit.'.</em></p>';
 //                    $description .= '<p><em>Цена зависит от количества, формы оплаты, даты доставки (срочности), адреса доставки и подъема. Более детально по вашему заказу можем ответить после получения всех вводных данных.</em></p><ul>';
 
+
+                    $description .= '<p>--------------------</p>';
+                    $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 шт &#9889;</strong></p>';
+                    $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
+                    $description .= '<p><strong>Под каждый проект действуют индивидуальные условия предоставления скидки, обращайтесь в чат к менеджеру для рассчета.</strong></p>';
+                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 8000 р. Скидка рассчитывается индивидуально.</strong></p>';
+                    $description .= '<p>--------------------</p>';
+
+                    $description .= '<ul>';
 
                         if($product->width != 0 && $product->height != 0) {
                         $description .= '<li><strong>Размер: </strong>' . $product->height/10 .'x' . $product->width/10 . ' см</li>';
@@ -167,9 +182,9 @@
                         if($product->square_in_pack) {
                         $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->square_in_pack . '</li>';
                         }
-                        if($product->massa_pack) {
-                        $description .= '<li><strong>Вес упаковки: </strong>' . $product->massa_pack . '</li>';
-                        }
+//                        if($product->massa_pack) {
+//                        $description .= '<li><strong>Вес упаковки: </strong>' . $product->massa_pack . '</li>';
+//                        }
                         if($product->country != null) {
                         $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
                         }
@@ -183,8 +198,9 @@
                     $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
                     $description .= '<p>Керамическая плитка и керамогранит '.$product->category_r->parent.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
                     $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
-                    $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный! Отгрузка или доставка в максимально короткие сроки, есть услуги разгрузки и подъема.</p>';
+                    $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный (4 шоурума в одном месте)! Керамогранит, керамическая плитка, мозаика, ламинат, кварцвинил, инженерная доска и др.</p>';
                     $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+                    $description .= '<p>Отправляем через ТК по всей России.</p>';
 
                     if($add_description != '') {
                     $description .= '<p>'.nl2br($add_description).'</p>';
@@ -290,12 +306,21 @@
 
     @php
         if ($CeramicPorcelainTilesSubType == 'Керамогранит' || $CeramicPorcelainTilesSubType == 'Керамическая плитка') {
-            $PackagingType = avito_packaging_type($product->unit);
+//            $PackagingType = avito_packaging_type($product->unit);
+
+            $PackagingType = 'Штучно';
+
             if ($PackagingType == 'Упаковка') {
                 $PackageQuantity = '1';
             } else {
                 $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
             }
+
+            if (avito_packaging_type($product->unit) == 'Упаковка') {
+                    $square_one_tile = ((float)$Length / 100) * ((float)$Width / 100);
+                    $price = round($price * $square_one_tile, -1);
+            }
+
         } else {
             $PackagingType = '';
             $PackageQuantity = '';
