@@ -2,22 +2,20 @@
     @php
 
         $image_main = Storage::disk('images-hand')->url('alpinefloor/spc-1.png');
-//        $image_2 = Storage::disk('images-hand')->url('aquafloor/2.jpg');
-//        $image_3 = Storage::disk('images-hand')->url('aquafloor/3.jpg');
-//        $image_4 = Storage::disk('images-hand')->url('aquafloor/4.jpg');
-//        $image_5 = Storage::disk('images-hand')->url('aquafloor/5.jpg');
-//        $image_7 = Storage::disk('images-hand')->url('aquafloor/7.jpg');
-//        $image_8 = Storage::disk('images-hand')->url('aquafloor/8.jpg');
-//        $image_9 = Storage::disk('images-hand')->url('aquafloor/9.jpg');
-//        $image_10 = Storage::disk('images-hand')->url('aquafloor/10.jpg');
+        $image_2 = Storage::disk('images-hand')->url('alpinefloor/1.jpg');
+        $image_3 = Storage::disk('images-hand')->url('alpinefloor/3.jpg');
+        $image_4 = Storage::disk('images-hand')->url('alpinefloor/5.jpg');
+        $image_5 = Storage::disk('images-hand')->url('alpinefloor/7.jpg');
+        $image_6 = Storage::disk('images-hand')->url('alpinefloor/9.jpg');
+//
 
 
-                $image_urls = $image_main;
-//                        . ' | ' . $image_2
-//                        . ' | ' . $image_3
-//                        . ' | ' . $image_4
-//                        . ' | ' . $image_5
-//                        . ' | ' . $image_7
+                $image_urls = $image_main
+                        . ' | ' . $image_2
+                        . ' | ' . $image_3
+                        . ' | ' . $image_4
+                        . ' | ' . $image_5
+                        . ' | ' . $image_6;
 //                        . ' | ' . $image_8
 //                        . ' | ' . $image_9
 //                        . ' | ' . $image_10;
