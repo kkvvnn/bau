@@ -261,7 +261,7 @@
 
     @php
         $AdStatus = 'Free';
-        $Delivery = 'Выключена';
+        $Delivery = 'Самовывоз с онлайн-оплатой';
 
         $WeightForDelivery = 25;
         $LengthForDelivery = round((float)$Length + 2);

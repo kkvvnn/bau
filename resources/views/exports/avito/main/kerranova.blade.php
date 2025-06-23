@@ -260,7 +260,7 @@
 
     @php
         $AdStatus = 'Free';
-        $Delivery = 'Выключена';
+        $Delivery = 'Самовывоз с онлайн-оплатой';
 
         $WeightForDelivery = round((float)$product->massa_one_meter * (float)$product->square_in_pack, 2);
         $LengthForDelivery = round((float)$Length + 2);
