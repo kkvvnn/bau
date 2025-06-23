@@ -6,6 +6,7 @@ use App\Models\Discount;
 use App\Models\Product;
 use App\Traits\Avito\ExportConstruct;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
@@ -20,12 +21,17 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
 
         $products = Product::where([
             ['GroupProduct', '01 Плитка'],
-            ['Producer_Brand', 'Laparet'],
+            ['Vivod', null],
+//            ['Producer_Brand', 'Laparet'],
             ['Picture', '!=', ''],
-            ['RMPrice', '>=', '900'],
+            ['RMPrice', '>=', '1500'],
             ['Element_Code', '!=', 'х9999278638'],
             ['Element_Code', '!=', 'х9999299093'],
         ])
+            ->where(function (Builder $query) {
+                $query->where('Producer_Brand', 'Laparet');
+                $query->orWhere('Producer_Brand', 'Ceradim');
+            })
             ->whereColumn('RMPrice', '>', 'Price')
             ->get()
 //            ->filter(function (Product $product) {
@@ -50,18 +56,6 @@ class AvitoKazanExport extends DefaultValueBinder implements FromView, WithCusto
                     || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
             });
 
-        $ceradim = Product::where([
-            ['GroupProduct', '01 Плитка'],
-            ['Producer_Brand', 'Ceradim'],
-            ['Picture', '!=', ''],
-        ])
-            ->whereColumn('RMPrice', '>', 'Price')
-            ->get();
-//            ->filter(function (Product $product) {
-//                return isset($product->kzn->balance) && $product->kzn->balance == 1;
-//            });
-
-        $products = $products->merge($ceradim);
 
         //      ===================DISCOUNTS==================
 

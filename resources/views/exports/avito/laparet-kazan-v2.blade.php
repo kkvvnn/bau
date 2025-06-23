@@ -1,35 +1,50 @@
 <table>
     <thead>
     <tr>
-        <th>AvitoId</th>
         <th>Id</th>
+        <th>AdStatus</th>
+        <th>AvitoId</th>
         <th>ManagerName</th>
         <th>ContactPhone</th>
         <th>Address</th>
         <th>Title</th>
         <th>Description</th>
         <th>Price</th>
-        <th>VideoUrl</th>
         <th>ImageUrls</th>
+        <th>VideoURL</th>
         <th>ContactMethod</th>
+        <th>Addresses</th>
+        <th>DeliveryAddresses</th>
         <th>Category</th>
+        <th>PackagingType</th>
+        <th>PackageQuantity</th>
+        <th>Delivery</th>
+        <th>WeightForDelivery</th>
+        <th>LengthForDelivery</th>
+        <th>HeightForDelivery</th>
+        <th>WidthForDelivery</th>
         <th>GoodsType</th>
         <th>AdType</th>
         <th>Condition</th>
+        <th>Availability</th>
         <th>GoodsSubType</th>
         <th>FinishingMaterialsType</th>
         <th>CeramicPorcelainTilesSubType</th>
+        <th>FlooringMaterialsSubType</th>
         <th>Brand</th>
         <th>TileType</th>
-        <th>SpaceType</th>
-        <th>InstallationType</th>
         <th>Width</th>
         <th>Length</th>
-        <th>Height</th>
-        <th>Pattern</th>
+        <th>Thickness</th>
+        <th>SpaceType</th>
+        <th>InstallationType</th>
         <th>Color</th>
-        <th>PackagingType</th>
-        <th>PackageQuantity</th>
+        <th>Pattern</th>
+        <th>Surface</th>
+        <th>Texture</th>
+        <th>EdgeType</th>
+        <th>Shape</th>
+        <th>ResistanceClass</th>
     </tr>
     </thead>
     <tbody>
@@ -49,7 +64,7 @@
                     $InstallationType = avito_bauservice_for($product->Architectural_surface);
                     $Width = avito_bauservice_size($product->Height, 5, 200, $product->Name, 'W');
                     $Length = avito_bauservice_size($product->Lenght, 5, 400, $product->Name, 'L');
-                    $Height = avito_bauservice_height($product->Thickness, 2, 30);
+                    $Thickness = avito_bauservice_height($product->Thickness, 2, 30);
                     $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                     $Color = avito_bauservice_color($product->Color);
                     break;
@@ -63,7 +78,7 @@
                     $InstallationType = avito_bauservice_for($product->Architectural_surface);
                     $Width = avito_bauservice_size($product->Height, 0, 150, $product->Name, 'W');
                     $Length = avito_bauservice_size($product->Lenght, 1, 400, $product->Name, 'L');
-                    $Height = '';
+                    $Thickness = '';
                     $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                     $Color = avito_bauservice_color($product->Color);
                     break;
@@ -77,11 +92,18 @@
                     $InstallationType = '';
                     $Width = '';
                     $Length = '';
-                    $Height = '';
+                    $Thickness = '';
                     $Pattern = '';
                     $Color = '';
                     break;
             }
+
+            $FlooringMaterialsSubType = '';
+            $ExteriorFinishingDecorativeStoneSubType = '';
+            $WallPanelsSlatsDecorativeElementsSubType = '';
+            $MixesType = '';
+            $Material = '';
+            $OutsideUsage = '';
         @endphp
 
         @php
@@ -155,7 +177,7 @@
                 $description .= '<li><strong>Pазмеp: </strong>' . $Width .'x' . $Length . ' см</li>';
                 }
                 if($product->Thickness != null && $product->Thickness != 0) {
-                $description .= '<li><strong>Тoлщина: </strong>' . $Height . '</li>';
+                $description .= '<li><strong>Тoлщина: </strong>' . $Thickness . '</li>';
                 }
 
                 if($product->DesignValue != null) {
@@ -338,75 +360,83 @@
                 $description .= '<p>_____________</p>';
                 $description .= '<p><em>' . $keywords . '</em></p>';
             }
+@endphp
+            @php
+        $img1 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture);
 
-            $img1 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture);
-
-            if (isset($product->Picture2) && $product->Picture2 != null) {
+        if (isset($product->Picture2) && $product->Picture2 != null) {
             $img2 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture2);
-            } else {$img2 = null;}
-            if (isset($product->Picture3) && $product->Picture3 != null) {
-            $img3 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture3);
-            } else {$img3 = null;}
-            if (isset($product->Picture4) && $product->Picture4 != null) {
-            $img4 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture4);
-            } else {$img4 = null;}
-            if (isset($product->Picture5) && $product->Picture5 != null) {
-            $img5 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture5);
-            } else {$img5 = null;}
-            if (isset($product->Picture6) && $product->Picture6 != null) {
-            $img6 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture6);
-            } else {$img6 = null;}
+        } else {
+            $img2 = null;
+        }
 
-            if (isset($product->collections[0])) {
+        if (isset($product->Picture3) && $product->Picture3 != null) {
+            $img3 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture3);
+        } else {
+            $img3 = null;
+        }
+
+        if (isset($product->Picture4) && $product->Picture4 != null) {
+            $img4 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture4);
+        } else {
+            $img4 = null;
+        }
+
+        if (isset($product->Picture5) && $product->Picture5 != null) {
+            $img5 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture5);
+        } else {
+            $img5 = null;
+        }
+
+        if (isset($product->Picture6) && $product->Picture6 != null) {
+            $img6 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/products/', $product->Picture6);
+        } else {
+            $img6 = null;
+        }
+
+        if (isset($product->collections[0])) {
             $img_coll_all = $product->collections[0]->Interior_Pic;
             $img_coll_all = explode(', ', $img_coll_all);
             $img_coll = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/collections/', $img_coll_all[0]);
-            } else {
+        } else {
             $img_coll = null;
-            }
+        }
 
-
-            if (isset($img_coll_all[1])) {
+        if (isset($img_coll_all[1])) {
             $img_coll_2 = str_replace('ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/', config('app.url').'/storage/images/bauservice/collections/', $img_coll_all[1]);
-            } else {
+        } else {
             $img_coll_2 = null;
-            }
+        }
 
-//    ------------------------------------------FOTO-------------------------------------
+        $img_arr = [];
+        if ($img_coll != null) {
+            $img_arr[] = $img_coll;
+        }
+        $img_arr[] = $img1;
+        if ($img_coll_2 != null) {
+            $img_arr[] = $img_coll_2;
+        }
+        if ($img2 != null) {
+            $img_arr[] = $img2;
+        }
+        if ($img3 != null) {
+            $img_arr[] = $img3;
+        }
+        if ($img4 != null) {
+            $img_arr[] = $img4;
+        }
+        if ($img5 != null) {
+            $img_arr[] = $img5;
+        }
+        if ($img6 != null) {
+            $img_arr[] = $img6;
+        }
 
-//            if ($img_coll != null) {
-//                $img_full = $img_coll . ' | ' . $img1;
-//            } else {
-//                $img_full = $img1;
-//            }
+        $image_urls = avito_images_urls($img_arr, true);
 
-            $img_full = $img1;
-            if ($img_coll != null) {
-            $img_full .= ' | ' . $img_coll;
-            }
-
-            if ($img4 != null) {
-            $img_full .= ' | ' . $img4;
-            }
-            if ($img2 != null) {
-            $img_full .= ' | ' . $img2;
-            }
-            if ($img5 != null) {
-            $img_full .= ' | ' . $img5;
-            }
-            if ($img3 != null) {
-            $img_full .= ' | ' . $img3;
-            }
-            if ($img6 != null) {
-            $img_full .= ' | ' . $img6;
-            }
-
-            if ($img_coll_2 != null) {
-            $img_full .= ' | ' . $img_coll_2;
-            }
 
             $title = $product->Name;
-            if (mb_strlen($title) > 50) {
+            if (mb_strlen($title) > 100) {
                 $title = str_replace('Полированный', 'полир.', $title);
                 $title = str_replace('полированный', 'полир.', $title);
                 $title = str_replace('ректифицированный', 'ректиф.', $title);
@@ -434,6 +464,7 @@
 
 //----------------------------------------------------------------------------
             $code = $product->Element_Code . '_kzn';
+            $video = '';
         @endphp
 
         @php
@@ -451,36 +482,73 @@
             }
         @endphp
 
+        @php
+            $AdStatus = 'Free';
+            $Delivery = 'Выключена';
+
+            $WeightForDelivery = round((float)$product->Package_Weight, 2);
+            $LengthForDelivery = round((float)$Length + 2);
+            $HeightForDelivery = 5;
+            $WidthForDelivery = round((float)$Width + 2);
+        @endphp
+
+        @php
+            $Surface = avito_surface_leedo($product->Surface);
+            $Texture = avito_texture_leedo($product->Surface);
+            $EdgeType = '';
+            $Shape = '';
+            $ResistanceClass = '';
+        @endphp
+
+{{--        @php--}}
+{{--            $description .= $show_discount;--}}
+{{--        @endphp--}}
+
         <tr>
-            <td></td>                                       {{-- AvitoID--}}
-            <td>{{ $code }}</td>                            {{-- Id--}}
-            <td>{{ $name }}</td>                            {{-- ManagerName--}}
-            <td>{{ $phone }}</td>                           {{-- ContactPhone--}}
-            <td>{{ $address }}</td>                         {{-- Address--}}
-            <td>{{ $title }}</td>                           {{-- Title--}}
-            <td>{{ $description }}</td>                     {{-- Description--}}
-            <td>{{ $price }}</td>                           {{-- Price--}}
-            <td></td>                                       {{-- VideoURL--}}
-            <td>{{ $img_full }}</td>                        {{-- ImageUrls--}}
-            <td>{{ $contact_method }}</td>                  {{-- ContactMethod--}}
-            <td>Ремонт и строительство</td>                 {{-- Category--}}
-            <td>Стройматериалы</td>                         {{-- GoodsType--}}
-            <td>Товар от производителя</td>                 {{-- AdType--}}
-            <td>Новое</td>                                  {{-- Condition--}}
-            <td>{{ $GoodsSubType }}</td>                    {{-- GoodsSubType--}}
-            <td>{{ $FinishingMaterialsType }}</td>          {{-- FinishingMaterialsType--}}
-            <td>{{ $CeramicPorcelainTilesSubType }}</td>    {{-- CeramicPorcelainTilesSubType--}}
-            <td>{{ $Brand }}</td>                           {{-- Brand --}}
-            <td>{{ $TileType }}</td>                        {{-- TileType --}}
-            <td>{{ $SpaceType }}</td>                       {{-- SpaceType --}}
-            <td>{{ $InstallationType }}</td>                {{-- InstallationType --}}
-            <td>{{ $Width }}</td>                           {{-- Width --}}
-            <td>{{ $Length }}</td>                          {{-- Length --}}
-            <td>{{ $Height }}</td>                          {{-- Height --}}
-            <td>{{ $Pattern }}</td>                         {{-- Pattern --}}
-            <td>{{ $Color }}</td>                           {{-- Color --}}
-            <td>{{ $PackagingType }}</td>                   {{-- PackagingType --}}
-            <td>{{ $PackageQuantity }}</td>                 {{-- PackageQuantity --}}
+            <td>{{ $code }}</td>                                    {{-- Id --}}
+            <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
+            <td></td>                                               {{-- AvitoId --}}
+            <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+            <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
+            <td>{{ $address }}</td>                                 {{-- Address --}}
+            <td>{{ $title }}</td>                                   {{-- Title --}}
+            <td>{{ $description }}</td>                             {{-- Description --}}
+            <td>{{ $price }}</td>                                   {{-- Price --}}
+            <td>{{ $image_urls }}</td>                              {{-- ImageUrls --}}
+            <td>{{ $video }}</td>                                   {{-- VideoURL --}}
+            <td>{{ $contact_method }}</td>                          {{-- ContactMethod --}}
+            <td></td>                                               {{-- Addresses --}}
+            <td></td>                                               {{-- DeliveryAddresses --}}
+            <td>Ремонт и строительство</td>                         {{-- Category --}}
+            <td>{{ $PackagingType }}</td>                           {{-- PackagingType --}}
+            <td>{{ $PackageQuantity }}</td>                         {{-- PackageQuantity --}}
+            <td>{{ $Delivery }}</td>                                {{-- Delivery --}}
+            <td>{{ $WeightForDelivery }}</td>                       {{-- WeightForDelivery --}}
+            <td>{{ $LengthForDelivery }}</td>                       {{-- LengthForDelivery --}}
+            <td>{{ $HeightForDelivery }}</td>                       {{-- HeightForDelivery --}}
+            <td>{{ $WidthForDelivery }}</td>                        {{-- WidthForDelivery --}}
+            <td>Стройматериалы</td>                                 {{-- GoodsType --}}
+            <td>Товар от производителя</td>                         {{-- AdType --}}
+            <td>Новое</td>                                          {{-- Condition --}}
+            <td>В наличии</td>                                      {{-- Availability --}}
+            <td>{{ $GoodsSubType }}</td>                            {{-- GoodsSubType --}}
+            <td>{{ $FinishingMaterialsType }}</td>                  {{-- FinishingMaterialsType --}}
+            <td>{{ $CeramicPorcelainTilesSubType }}</td>            {{-- CeramicPorcelainTilesSubType --}}
+            <td>{{ $FlooringMaterialsSubType }}</td>                {{-- FlooringMaterialsSubType --}}
+            <td>{{ $Brand }}</td>                                   {{-- Brand --}}
+            <td>{{ $TileType }}</td>                                {{-- TileType --}}
+            <td>{{ $Width }}</td>                                   {{-- Width --}}
+            <td>{{ $Length }}</td>                                  {{-- Length --}}
+            <td>{{ $Thickness }}</td>                               {{-- Thickness --}}
+            <td>{{ $SpaceType }}</td>                               {{-- SpaceType --}}
+            <td>{{ $InstallationType }}</td>                        {{-- InstallationType --}}
+            <td>{{ $Color }}</td>                                   {{-- Color --}}
+            <td>{{ $Pattern }}</td>                                 {{-- Pattern --}}
+            <td>{{ $Surface }}</td>                                 {{-- Surface --}}
+            <td>{{ $Texture }}</td>                                 {{-- Texture --}}
+            <td>{{ $EdgeType }}</td>                                {{-- EdgeType --}}
+            <td>{{ $Shape }}</td>                                   {{-- Shape --}}
+            <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
         </tr>
     @endforeach
 
