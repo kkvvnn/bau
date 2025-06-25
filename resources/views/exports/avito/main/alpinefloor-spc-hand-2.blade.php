@@ -9,8 +9,8 @@
         $image_5 = Storage::disk('images-hand')->url('alpinefloor/10.jpg');
 
 
-                $image_urls = $image_main
-                        . ' | ' . $image_2
+                $image_urls = $image_2
+                        . ' | ' . $image_main
                         . ' | ' . $image_3
                         . ' | ' . $image_4
                         . ' | ' . $image_5;
@@ -201,7 +201,7 @@
                     }
 
                     $description .= '<p>____________________</p>';
-                    $description .= '<p><em>Кварцвинил alpine floor spc кварц винил альпинфлор кварц винил альпин флор кварцвиниловая плитка аквафлур стеновые панели alpine flor ламинат spc кварц-винил кварцвиниловый ламинат  spc альпин флур кварцвинил</em></p>';
+                    $description .= '<p><em>Кварцвинил alpine floor spc кварц винил альпинфлор кварц винил альпин флор кварцвиниловая плитка аквафлур стеновые панели alpine flor ламинат spc кварц-винил кварцвиниловый ламинат  spc альпин флур кварцвинил alpinfloor ламинат alpin floor alpinefloor</em></p>';
     @endphp
 
     @php
