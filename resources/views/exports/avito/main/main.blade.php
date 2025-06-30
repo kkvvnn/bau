@@ -75,6 +75,7 @@
 
     @include('exports.avito.main.nt-ceramic-hand')
     @include('exports.avito.main.primavera-hand')
+    @include('exports.avito.main.kutahya-hand')
     @include('exports.avito.main.primavera-hand-2')
     @include('exports.avito.main.primavera-hand-3')
     @include('exports.avito.main.rusplitka-hand-1')
