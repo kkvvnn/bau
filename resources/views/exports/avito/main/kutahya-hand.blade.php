@@ -114,11 +114,11 @@
                     $description .= '<ul>';
 
                     foreach ($kutahya as $k) {
-                        $description .= '<li>Kutahya ' . $k . ' 60x120</li>';
+                        $description .= '<li>KUTAHYA ' . $k . ' 60x120</li>';
                     }
 
                     foreach ($usak as $u) {
-                        $description .= '<li>Usak Seramik ' . $u . ' 60x120</li>';
+                        $description .= '<li>USAK SERAMIK ' . $u . ' 60x120</li>';
                     }
 
                     $description .= '</ul><br>';
