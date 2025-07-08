@@ -148,6 +148,39 @@ if (!function_exists('avito_tile_type')) {
     }
 }
 
+if (!function_exists('avito_type_of_water_mixers')) {
+    /**
+     * @param string $name
+     * @return string
+     */
+    function avito_type_of_water_mixers(string $name): string
+    {
+        if (stripos($name, 'ванн') !== false || stripos($name, 'душ') !== false) {
+            return 'Для ванн и душей';
+        }
+        if (stripos($name, 'раковин') !== false) {
+            return 'Для умывальников и раковин';
+        }
+        if (stripos($name, 'кухн') !== false) {
+            return 'Для кухни';
+        }
+        if (stripos($name, 'биде') !== false) {
+            return 'Для биде';
+        }
+        if (stripos($name, 'питьев') !== false) {
+            return 'Краны питьевой воды';
+        }
+        if (stripos($name, 'омплект') !== false) {
+            return 'Комплекты';
+        }
+        if (stripos($name, 'омплектующ') !== false) {
+            return 'Комплектующие';
+        }
+
+        return 'Для ванн и душей';
+    }
+}
+
 if (!function_exists('avito_type')) {
     /**
      * @param string $name

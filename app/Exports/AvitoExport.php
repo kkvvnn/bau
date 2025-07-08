@@ -182,6 +182,17 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         })
             ->get();
 
+        //==================BAUSERVICE-WATER-MIXERS==================
+
+        $water_mixers = Product::where([
+            ['GroupProduct', '02 Сантехника'],
+            ['balanceCount', '>', 0],
+            ['RMPrice', '>', 0],
+            ['Picture', '!=', ''],
+            ['Category', 'Смесители'],
+        ])
+            ->get();
+
 
 //      ===================DISCOUNTS==================
 
@@ -211,6 +222,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'keramopro' => $keramopro,
             'kerabellezza' => $kerabellezza,
             'azario' => $azario,
+            'water_mixers' => $water_mixers,
             'skalla' => $skalla,
             'phone' => $this->phone,
             'name' => $this->name,

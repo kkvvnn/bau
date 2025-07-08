@@ -175,6 +175,8 @@
         <td>{{ $EdgeType }}</td>                                {{-- EdgeType --}}
         <td>{{ $Shape }}</td>                                   {{-- Shape --}}
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
+        <td></td>                                               {{-- ProductType --}}
+        <td></td>                                               {{-- ProductSubType --}}
     </tr>
 
 {{-----LEEDO-GENERAL-END----}}

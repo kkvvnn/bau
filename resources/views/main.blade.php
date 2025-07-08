@@ -474,9 +474,9 @@
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <ul class="">
+                                        <li><a class="nav-link text-success" href="{{ route('water_mixers.index') }}">Смесители</a></li>
                                         <li><a class="nav-link" href="">Ванны</a></li>
                                         <li><a class="nav-link" href="">Раковины</a></li>
-                                        <li><a class="nav-link" href="">Смесители</a></li>
                                         <li><a class="nav-link" href="">Системы инсталляций</a></li>
                                         <li><a class="nav-link" href="">Унитазы</a></li>
                                         <li><a class="nav-link" href="">Полотенцесушители</a></li>

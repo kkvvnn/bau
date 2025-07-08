@@ -49,43 +49,50 @@
         <th>EdgeType</th>
         <th>Shape</th>
         <th>ResistanceClass</th>
+        <th>ProductType</th>
+        <th>ProductSubType</th>
     </tr>
     </thead>
     <tbody>
 
-    @include('exports.avito.main.bauservice') //READY
-    @include('exports.avito.main.artkera') //READY
-    @include('exports.avito.main.kerranova') //READY
-    @include('exports.avito.main.global-tile') //READY
-    @include('exports.avito.main.azario') //READY
-    @include('exports.avito.main.primavera') //READY
-    @include('exports.avito.main.rusplitka') //READ
+{{--    @include('exports.avito.main.bauservice') //READY--}}
+{{--    @include('exports.avito.main.artkera') //READY--}}
+{{--    @include('exports.avito.main.kerranova') //READY--}}
+{{--    @include('exports.avito.main.global-tile') //READY--}}
+{{--    @include('exports.avito.main.azario') //READY--}}
+{{--    @include('exports.avito.main.primavera') //READY--}}
+{{--    @include('exports.avito.main.rusplitka') //READ--}}
 
-    @include('exports.avito.main.pix-general') //READ
-    @include('exports.avito.main.leedo-general') //READ
+{{--    @include('exports.avito.main.pix-general') //READ--}}
+{{--    @include('exports.avito.main.leedo-general') //READ--}}
 
 
-    {{--        OFF--}}
+    {{--        SANTECH     --}}
 
-    {{--            @include('exports.avito.main.leedo') //READY--}}
-    {{--            @include('exports.avito.main.pixmosaic') //READY--}}
+    @include('exports.avito.main.bauservice-water-mixers')
 
 
     {{--        HAND--}}
 
-    @include('exports.avito.main.nt-ceramic-hand')
-    @include('exports.avito.main.primavera-hand')
-    @include('exports.avito.main.kutahya-hand')
-    @include('exports.avito.main.vitra-hand-1')
-    @include('exports.avito.main.vitra-hand-2')
-    @include('exports.avito.main.primavera-hand-2')
-    @include('exports.avito.main.primavera-hand-3')
-    @include('exports.avito.main.rusplitka-hand-1')
-    @include('exports.avito.main.rusplitka-hand-2')
-    @include('exports.avito.main.aquafloor-hand-1')
-    @include('exports.avito.main.aquafloor-hand-2')
-    @include('exports.avito.main.alpinefloor-spc-hand-1')
-    @include('exports.avito.main.alpinefloor-spc-hand-2')
+{{--    @include('exports.avito.main.nt-ceramic-hand')--}}
+{{--    @include('exports.avito.main.primavera-hand')--}}
+{{--    @include('exports.avito.main.kutahya-hand')--}}
+{{--    @include('exports.avito.main.vitra-hand-1')--}}
+{{--    @include('exports.avito.main.vitra-hand-2')--}}
+{{--    @include('exports.avito.main.primavera-hand-2')--}}
+{{--    @include('exports.avito.main.primavera-hand-3')--}}
+{{--    @include('exports.avito.main.rusplitka-hand-1')--}}
+{{--    @include('exports.avito.main.rusplitka-hand-2')--}}
+{{--    @include('exports.avito.main.aquafloor-hand-1')--}}
+{{--    @include('exports.avito.main.aquafloor-hand-2')--}}
+{{--    @include('exports.avito.main.alpinefloor-spc-hand-1')--}}
+{{--    @include('exports.avito.main.alpinefloor-spc-hand-2')--}}
+
+
+    {{--        OFF     --}}
+
+    {{--                @include('exports.avito.main.leedo') //READY--}}
+    {{--                @include('exports.avito.main.pixmosaic') //READY--}}
 
 
 

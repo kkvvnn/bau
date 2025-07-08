@@ -44,6 +44,7 @@ Route::get('/kerama-marazzi/test', [ProductController::class, 'kerama_marazzi_te
 Route::get('/bauservice-spb', [ProductController::class, 'index_spb']);
 
 Route::get('/santech', [ProductController::class, 'index_santech'])->name('santech_index');
+Route::get('/water-mixers', [ProductController::class, 'water_mixers'])->name('water_mixers.index');
 
 Route::get('/sale', [ProductController::class, 'index_sale'])->name('product_sale');
 
