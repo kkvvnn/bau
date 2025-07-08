@@ -36,7 +36,8 @@ class ArtkeraTovar extends Command
         $products = json_decode($json, true);
 
         foreach ($products as $product) {
-            unset($product['Противоскольжение']); // 30.05.25 change struct of file tovar.json (add new field 'Противоскольжение')
+            unset($product['Противоскольжение']);   // 30.05.25 change struct of file tovar.json (add new field 'Противоскольжение')
+            unset($product['out']);                 // 08.07.25 change struct of file tovar.json (add new field 'out')
             Tovar::create($product);
         }
 
