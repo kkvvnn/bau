@@ -462,6 +462,36 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                    САНТЕХНИКА
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <ul class="">
+                                        <li><a class="nav-link" href="">Ванны</a></li>
+                                        <li><a class="nav-link" href="">Раковины</a></li>
+                                        <li><a class="nav-link" href="">Смесители</a></li>
+                                        <li><a class="nav-link" href="">Системы инсталляций</a></li>
+                                        <li><a class="nav-link" href="">Унитазы</a></li>
+                                        <li><a class="nav-link" href="">Полотенцесушители</a></li>
+                                        <li><a class="nav-link" href="">Водосливная арматура</a></li>
+                                        <li><a class="nav-link" href="">Комплектующие для ванн</a></li>
+                                        <li><a class="nav-link" href="">Панели для ванн</a></li>
+                                        <li><a class="nav-link" href="">Комплектующие</a></li>
+                                        <li><a class="nav-link" href="">Душевая программа</a></li>
+                                        <li><a class="nav-link" href="">Мебель для ванной комнаты</a></li>
+                                        <li><a class="nav-link" href="">Писсуары</a></li>
+                                        <li><a class="nav-link" href="">Аксессуары для ванной комнаты</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {{--                    <li class="nav-item dropdown">--}}
