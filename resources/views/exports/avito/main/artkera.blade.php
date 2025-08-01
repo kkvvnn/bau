@@ -210,7 +210,7 @@
                     $description .= '<ul>';
 
                         if($product->width != 0 && $product->height != 0) {
-                        $description .= '<li><strong>Размер: </strong>' . $product->height/10 .'x' . $product->width/10 . ' см</li>';
+                        $description .= '<li><strong>Размер: </strong>' . $product->height/10 .' * ' . $product->width/10 . ' см</li>';
                         }
                         if($product->thickness != null) {
                         $description .= '<li><strong>Толщина: </strong>' . $product->thickness . ' мм</li>';
@@ -231,7 +231,7 @@
 //                        $description .= '<li><strong>Вес упаковки: </strong>' . $product->massa_pack . '</li>';
 //                        }
                         if($product->country != null) {
-                        $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
+                        $description .= '<li><strong>Страна: </strong>' . $product->country . '</li>';
                         }
                         if($product->artikul != null) {
                         $description .= '<li><strong>Артикул: </strong>' . $product->artikul . '</li>';
@@ -241,7 +241,7 @@
 
 
                     $description .= '<p>Наличие а также актуальные цены на ваш объем уточняйте у менеджера.</p>';
-                    $description .= '<p>Керамическая плитка и керамогранит '.$product->category_r->parent.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+                    $description .= '<p>Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
 
                     $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
                     $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный (4 шоурума в одном месте)! Керамогранит, керамическая плитка, мозаика, ламинат, кварцвинил, инженерная доска и др.</p>';
