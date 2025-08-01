@@ -39,38 +39,32 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ==================BAUSERVIS====================
 
-        $laparets = Product::where([
-            ['GroupProduct', '01 Плитка'],
-            ['Name', 'not like', '%ставк%'],
-            ['Name', 'not like', '%ступен%'],
-            ['Name', 'not like', '%пецэлем%'],
-            ['balanceCount', '>=', 2],
-            ['RMPrice', '>=', 1000],
-            ['RMPrice', '!=', ''],
-            ['Picture', '!=', ''],
-        ])
-            ->where(function (Builder $query) {
-                $query->where('Producer_Brand', 'Laparet');
-                $query->orWhere('Producer_Brand', 'Ceradim');
-            })
-            ->whereColumn('RMPrice', '>', 'Price')
-            ->get()
-            ->filter(function (Product $product) {
-                $length = (int)$product->Lenght;
-                $height = (int)$product->Height;
-                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
-                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
-                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
-                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
-                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
-//                    || ($length >= 79 && $length <= 81 && $height >= 19 && $height <= 21)           //20x80
-//                    || ($length >= 59 && $length <= 61 && $height >= 29 && $height <= 31)           //30x60
-//                    || ($length >= 49 && $length <= 51 && $height >= 24 && $height <= 26)           //25x50
-//                    || ($length >= 74 && $length <= 76 && $height >= 24 && $height <= 26)           //25x75
-//                    || ($length >= 59 && $length <= 61 && $height >= 19 && $height <= 21)           //20x60
-//                    || ($length >= 39 && $length <= 41 && $height >= 19 && $height <= 21)           //20x40
-                    || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
-            });
+//        $laparets = Product::where([
+//            ['GroupProduct', '01 Плитка'],
+//            ['Name', 'not like', '%ставк%'],
+//            ['Name', 'not like', '%ступен%'],
+//            ['Name', 'not like', '%пецэлем%'],
+//            ['balanceCount', '>=', 2],
+//            ['RMPrice', '>=', 1000],
+//            ['RMPrice', '!=', ''],
+//            ['Picture', '!=', ''],
+//        ])
+//            ->where(function (Builder $query) {
+//                $query->where('Producer_Brand', 'Laparet');
+//                $query->orWhere('Producer_Brand', 'Ceradim');
+//            })
+//            ->whereColumn('RMPrice', '>', 'Price')
+//            ->get()
+//            ->filter(function (Product $product) {
+//                $length = (int)$product->Lenght;
+//                $height = (int)$product->Height;
+//                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+//                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+//                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+//                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+//                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
+//                    || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
+//            });
 
 //      ==================PRIMAVERA====================
         $primavera = PrimaveraNew::whereHas('balance')
@@ -184,14 +178,14 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         //==================BAUSERVICE-WATER-MIXERS==================
 
-        $water_mixers = Product::where([
-            ['GroupProduct', '02 Сантехника'],
-            ['balanceCount', '>', 0],
-            ['RMPrice', '>', 0],
-            ['Picture', '!=', ''],
-            ['Category', 'Смесители'],
-        ])
-            ->get();
+//        $water_mixers = Product::where([
+//            ['GroupProduct', '02 Сантехника'],
+//            ['balanceCount', '>', 0],
+//            ['RMPrice', '>', 0],
+//            ['Picture', '!=', ''],
+//            ['Category', 'Смесители'],
+//        ])
+//            ->get();
 
 
 //      ===================DISCOUNTS==================
@@ -208,7 +202,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         ];
 
         return view('exports.avito.main.main', [
-            'products' => $laparets,
+//            'products' => $laparets,
             'primavera' => $primavera,
             'leedo' => $leedo,
             'altacera' => $altacera,
@@ -222,7 +216,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'keramopro' => $keramopro,
             'kerabellezza' => $kerabellezza,
             'azario' => $azario,
-            'water_mixers' => $water_mixers,
+//            'water_mixers' => $water_mixers,
             'skalla' => $skalla,
             'phone' => $this->phone,
             'name' => $this->name,

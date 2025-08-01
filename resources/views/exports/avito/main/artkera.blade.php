@@ -87,12 +87,12 @@
 
             $PackagingType = avito_packaging_type($product->unit);
 
-            $is_big_format = false;
-
-            if ($Width >=59 && $Length >= 59) {
-                $PackagingType = 'Штучно';
-                $is_big_format = true;
-            }
+//            $is_big_format = false;
+//
+//            if ($Width >=59 && $Length >= 59) {
+//                $PackagingType = 'Штучно';
+//                $is_big_format = true;
+//            }
 
 
 
@@ -103,10 +103,10 @@
                 $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
             }
 
-            if ($is_big_format && (avito_packaging_type($product->unit) == 'Упаковка')) {
-                    $square_one_tile = ((float)$Length / 100) * ((float)$Width / 100);
-                    $price = round($price * $square_one_tile, -1);
-            }
+//            if ($is_big_format && (avito_packaging_type($product->unit) == 'Упаковка')) {
+//                    $square_one_tile = ((float)$Length / 100) * ((float)$Width / 100);
+//                    $price = round($price * $square_one_tile, -1);
+//            }
 
         } else {
             $PackagingType = '';
@@ -148,7 +148,7 @@
         $description = '';
 
         if($add_description_first != '') {
-        $description .= '<p>'.nl2br($add_description_first).'</p>';
+            $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
 
                     $description .= '<p><strong>' . $product->tovar . '. '
@@ -197,11 +197,11 @@
 
                     $description .= '<p>--------------------</p>';
 
-                    if ($is_big_format) {
-                        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 шт &#9889;</strong></p>';
-                    } else {
+//                    if ($is_big_format) {
+//                        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 шт &#9889;</strong></p>';
+//                    } else {
                         $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 '.$product->unit.' &#9889;</strong></p>';
-                    }
+//                    }
 
                     $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
                     $description .= '<p><strong>Под каждый проект действуют индивидуальные условия предоставления скидки, обращайтесь в чат к менеджеру для рассчета.</strong></p>';
