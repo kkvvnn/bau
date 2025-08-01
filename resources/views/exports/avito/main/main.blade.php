@@ -55,7 +55,7 @@
     </thead>
     <tbody>
 
-    @include('exports.avito.main.bauservice') //READY
+{{--    @include('exports.avito.main.bauservice') //READY--}}
     @include('exports.avito.main.artkera') //READY
     @include('exports.avito.main.kerranova') //READY
     @include('exports.avito.main.global-tile') //READY
@@ -69,7 +69,7 @@
 
     {{--        SANTECH     --}}
 
-    @include('exports.avito.main.bauservice-water-mixers')
+{{--    @include('exports.avito.main.bauservice-water-mixers')--}}
 
 
     {{--        HAND--}}

@@ -38,6 +38,8 @@ class ArtkeraTovar extends Command
         foreach ($products as $product) {
             unset($product['Противоскольжение']);   // 30.05.25 change struct of file tovar.json (add new field 'Противоскольжение')
             unset($product['out']);                 // 08.07.25 change struct of file tovar.json (add new field 'out')
+            unset($product['Спецэффект']);          // 01.08.25 change struct of file tovar.json (add new field 'Спецэффект')
+            unset($product['Категория']);           // 01.08.25 change struct of file tovar.json (add new field 'Категория')
             Tovar::create($product);
         }
 
