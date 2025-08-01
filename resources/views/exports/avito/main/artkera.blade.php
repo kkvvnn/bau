@@ -151,10 +151,8 @@
             $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
 
-                    $description .= '<p><strong>' . $product->tovar . '. '
-                            . $product->category_r->parent . ' ('
-                            . $product->country . ')</strong></p>';
-                    $description .= '<p><strong>Коллекция: </strong>'.$product->category_r->parent.' / '.$product->category. '</p>';
+                    $description .= '<p><strong>' . $product->title . '</strong></p>';
+//                    $description .= '<p><strong>Коллекция: </strong>'.$product->category_r->parent.' / '.$product->category. '</p>';
 
 
 
@@ -200,12 +198,13 @@
 //                    if ($is_big_format) {
 //                        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 шт &#9889;</strong></p>';
 //                    } else {
-                        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 '.$product->unit.' &#9889;</strong></p>';
+                        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 '.$product->unit.'</strong></p>';
 //                    }
 
                     $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
-                    $description .= '<p><strong>Под каждый проект действуют индивидуальные условия предоставления скидки, обращайтесь в чат к менеджеру для рассчета.</strong></p>';
-                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 8000 р. Скидка рассчитывается индивидуально.</strong></p>';
+                    $description .= '<p><strong>Действуют индивидуальные условия предоставления скидки, обращайтесь в чат к менеджеру для рассчета.</strong></p>';
+                    $description .= '<p><strong>Отгрузка кратно упаковкам. Минимальный заказ - от 8000 р. Скидка рассчитывается индивидуально.</strong></p>';
+                    $description .= '<p><strong>Доставка / Самовывоз. Оплата при получении.</strong></p>';
                     $description .= '<p>--------------------</p>';
 
                     $description .= '<ul>';
@@ -222,12 +221,12 @@
 //                        if($product->Рельеф != null) {
 //                        $description .= '<li><strong>Рельеф: </strong>' . $product->Рельеф . '</li>';
 //                        }
-                        if($product->packing) {
-                        $description .= '<li><strong>Штук в упаковке: </strong>' . $product->packing . '</li>';
+                        if($product->packing && $product->square_in_pack) {
+                        $description .= '<li><strong>Упаковка: </strong>' . $product->packing . ' шт = ' .$product->square_in_pack. ' м2</li>';
                         }
-                        if($product->square_in_pack) {
-                        $description .= '<li><strong>Кв. метров в упаковке: </strong>' . $product->square_in_pack . '</li>';
-                        }
+//                        if($product->square_in_pack) {
+//                        $description .= '<li><strong>В упаковке: </strong>' . $product->square_in_pack . ' м2</li>';
+//                        }
 //                        if($product->massa_pack) {
 //                        $description .= '<li><strong>Вес упаковки: </strong>' . $product->massa_pack . '</li>';
 //                        }
@@ -241,12 +240,12 @@
                         $description .= '</ul><br>';
 
 
-                    $description .= '<p>Наличие а также актуальные цены уточняйте у менеджера.</p>';
+                    $description .= '<p>Наличие а также актуальные цены на ваш объем уточняйте у менеджера.</p>';
                     $description .= '<p>Керамическая плитка и керамогранит '.$product->category_r->parent.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
 
                     $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
                     $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный (4 шоурума в одном месте)! Керамогранит, керамическая плитка, мозаика, ламинат, кварцвинил, инженерная доска и др.</p>';
-                    $description .= '<p>Работаем с розничными и оптовыми покупателями. А так же предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
+                    $description .= '<p>Работаем с розничными и оптовыми покупателями. Предлагаем сотрудничество дизайнерам и строительным компаниям.</p>';
                     $description .= '<p>Отправляем через ТК по всей России.</p>';
 
                     if($add_description != '') {
