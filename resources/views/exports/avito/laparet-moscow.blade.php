@@ -639,8 +639,8 @@
             $Width = 60;
             $Length = 120;
             $Thickness = '';
-            $Pattern = 'Другой';
-            $Color = 'Другой';
+            $Pattern = 'Мрамор';
+            $Color = 'Бежевая';
 
             $PackagingType = 'Упаковка';
             $PackageQuantity = '1.44';
