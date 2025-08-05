@@ -78,6 +78,48 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
 //            ->get();
 
 
+//              ==================BAUSERVIS====================
+
+        $laparets = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['balanceCount', '>=', 2],
+            ['RMPrice', '>=', 1000],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->where(function (Builder $query) {
+                $query->where('Producer_Brand', 'Laparet');
+                $query->orWhere('Producer_Brand', 'Ceradim');
+            })
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get()
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+                    || ($length >= 159 && $length <= 161 && $height >= 79 && $height <= 81)         //80x160
+                    || ($length >= 119 && $length <= 121 && $height >= 19 && $height <= 21)         //20x120
+                    || ($length >= 59 && $length <= 61 && $height >= 14 && $height <= 16);          //15x60
+            });
+
+
+        //==================BAUSERVICE-WATER-MIXERS==================
+
+        $water_mixers = Product::where([
+            ['GroupProduct', '02 Сантехника'],
+            ['balanceCount', '>', 0],
+            ['RMPrice', '>', 0],
+            ['Picture', '!=', ''],
+            ['Category', 'Смесители'],
+        ])
+            ->get();
+
+
 //  ===========================OLD=================================
         $olds = AvitoTwoExcel::whereIn('AvitoId', [
             '2925091517',
@@ -104,10 +146,10 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
             $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
         }
 
-        $laparets = [];
 
         return view('exports.avito.laparet-moscow', [
             'laparets' => $laparets,
+            'water_mixers' => $water_mixers,
             'olds' => $olds,
             'phone' => $this->phone,
             'name' => $this->name,
