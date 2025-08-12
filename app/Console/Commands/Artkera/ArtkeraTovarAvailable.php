@@ -61,7 +61,7 @@ class ArtkeraTovarAvailable extends Command
             }
         }
 
-        unset($depots_list['Склад Краснодар Новороссийская РАСПРОДАЖА']);
+        unset($depots_list['Склад Краснодар Новороссийская ЛИКВИДАЦИЯ']);
         unset($depots_list['Склад Краснодар Новороссийская']);
         unset($depots_list['Товары в пути (на Краснодар Буфер LCM)']);
         unset($depots_list['Товары в пути (на Буфер Афипский)']);
@@ -178,7 +178,7 @@ class ArtkeraTovarAvailable extends Command
                 if ($balance['depot_id'] == $depots_list['Товары в пути (на Казань)']) {
                     $balance_kazan_way = (float)$balance['free_balance'];
                 }
-                if ($balance['depot_id'] == $depots_list['Склад КазаньРАСПРОДАЖА']) {
+                if ($balance['depot_id'] == $depots_list['Склад КазаньЛИКВИДАЦИЯ']) {
                     $balance_kazan_sale = (float)$balance['free_balance'];
                     $balance_kazan_sale_reserve = (float)$balance['reserve'];
                 }
@@ -190,7 +190,7 @@ class ArtkeraTovarAvailable extends Command
                 if ($balance['depot_id'] == $depots_list['Товары в пути (на Балашиху)']) {
                     $balance_moscow_way = (float)$balance['free_balance'];
                 }
-                if ($balance['depot_id'] == $depots_list['Склад Балашиха РАСПРОДАЖА']) {
+                if ($balance['depot_id'] == $depots_list['Склад Балашиха ЛИКВИДАЦИЯ']) {
                     $balance_moscow_sale = (float)$balance['free_balance'];
                     $balance_moscow_sale_reserve = (float)$balance['reserve'];
                 }
@@ -207,7 +207,7 @@ class ArtkeraTovarAvailable extends Command
                 if ($balance['depot_id'] == $depots_list['Товары в пути (на СанктПетербург)']) {
                     $balance_spb_way = (float)$balance['free_balance'];
                 }
-                if ($balance['depot_id'] == $depots_list['Склад СанктПетербургРАСПРОДАЖА']) {
+                if ($balance['depot_id'] == $depots_list['Склад СанктПетербургЛИКВИДАЦИЯ']) {
                     $balance_spb_sale = (float)$balance['free_balance'];
                     $balance_spb_sale_reserve = (float)$balance['reserve'];
                 }
@@ -220,7 +220,7 @@ class ArtkeraTovarAvailable extends Command
                 if ($balance['depot_id'] == $depots_list['Товары в пути (на Самару)']) {
                     $balance_samara_way = (float)$balance['free_balance'];
                 }
-                if ($balance['depot_id'] == $depots_list['Склад СамараРАСПРОДАЖА']) {
+                if ($balance['depot_id'] == $depots_list['Склад СамараЛИКВИДАЦИЯ']) {
                     $balance_samara_sale = (float)$balance['free_balance'];
                     $balance_samara_sale_reserve = (float)$balance['reserve'];
                 }
