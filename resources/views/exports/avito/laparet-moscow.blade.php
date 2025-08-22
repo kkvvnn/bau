@@ -49,6 +49,8 @@
         <th>ResistanceClass</th>
         <th>ProductType</th>
         <th>ProductSubType</th>
+        <th>ReturnPolicy</th>
+        <th>TargetAudience</th>
     </tr>
     </thead>
     <tbody>
@@ -537,7 +539,7 @@
 
         @php
             $AdStatus = 'Free';
-            $Delivery = 'Самовывоз с онлайн-оплатой';
+            $Delivery = 'ПВЗ | Самовывоз с онлайн-оплатой';
 
             $WeightForDelivery = round((float)$product->Package_Weight, 2);
             $LengthForDelivery = round((float)$Length + 2);
@@ -551,6 +553,9 @@
             $EdgeType = '';
             $Shape = '';
             $ResistanceClass = '';
+
+            $ReturnPolicy = 'По любой причине — 7 дней';
+            $TargetAudience = 'Частные лица и бизнес';
         @endphp
 
         @php
@@ -604,6 +609,8 @@
             <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
             <td></td>                                               {{-- ProductType --}}
             <td></td>                                               {{-- ProductSubType --}}
+            <td>{{ $ReturnPolicy }}</td>                            {{-- ReturnPolicy --}}
+            <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
         </tr>
     @endforeach
     {{------------------END-BAUSERVICE--------------------}}
@@ -647,7 +654,7 @@
         @endphp
         @php
             $AdStatus = 'Free';
-            $Delivery = 'Самовывоз с онлайн-оплатой';
+            $Delivery = 'ПВЗ | Самовывоз с онлайн-оплатой';
 
             $WeightForDelivery = 30;
             $LengthForDelivery = 122;
@@ -661,6 +668,9 @@
             $EdgeType = '';
             $Shape = '';
             $ResistanceClass = '';
+
+            $ReturnPolicy = 'По любой причине — 7 дней';
+            $TargetAudience = 'Частные лица и бизнес';
         @endphp
 
         <tr>
@@ -710,6 +720,8 @@
             <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
             <td></td>                                               {{-- ProductType --}}
             <td></td>                                               {{-- ProductSubType --}}
+            <td>{{ $ReturnPolicy }}</td>                            {{-- ReturnPolicy --}}
+            <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
         </tr>
     @endforeach
     {{-----------------OLDS-END-------------------}}
