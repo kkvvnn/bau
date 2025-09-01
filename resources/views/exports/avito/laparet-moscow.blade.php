@@ -559,7 +559,7 @@
             $ResistanceClass = '';
 
             $ReturnPolicy = 'По любой причине — 7 дней';
-            $TargetAudience = 'Частные лица и бизнес';
+            $TargetAudience = 'Частные лица';
         @endphp
 
         @php
@@ -675,7 +675,7 @@
             $ResistanceClass = '';
 
             $ReturnPolicy = 'По любой причине — 7 дней';
-            $TargetAudience = 'Частные лица и бизнес';
+            $TargetAudience = 'Частные лица';
             $ColorName = '';
         @endphp
 
