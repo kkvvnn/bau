@@ -51,6 +51,7 @@
         <th>ProductSubType</th>
         <th>ReturnPolicy</th>
         <th>TargetAudience</th>
+        <th>ColorName</th>
     </tr>
     </thead>
     <tbody>
@@ -75,6 +76,7 @@
                     $Thickness = avito_bauservice_height($product->Thickness, 2, 30);
                     $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                     $Color = avito_bauservice_color($product->Color);
+                    $ColorName = $Color;
                     break;
                 case 'Керамическая плитка':
                     $GoodsSubType = 'Отделка';
@@ -89,6 +91,7 @@
                     $Thickness = '';
                     $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                     $Color = avito_bauservice_color($product->Color);
+                    $ColorName = '';
                     break;
                 case 'Другое':
                     $GoodsSubType = 'Другое';
@@ -103,6 +106,7 @@
                     $Thickness = '';
                     $Pattern = '';
                     $Color = '';
+                    $ColorName = '';
                     break;
             }
 
@@ -611,6 +615,7 @@
             <td></td>                                               {{-- ProductSubType --}}
             <td>{{ $ReturnPolicy }}</td>                            {{-- ReturnPolicy --}}
             <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
+            <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
         </tr>
     @endforeach
     {{------------------END-BAUSERVICE--------------------}}
@@ -671,6 +676,7 @@
 
             $ReturnPolicy = 'По любой причине — 7 дней';
             $TargetAudience = 'Частные лица и бизнес';
+            $ColorName = '';
         @endphp
 
         <tr>
@@ -722,6 +728,7 @@
             <td></td>                                               {{-- ProductSubType --}}
             <td>{{ $ReturnPolicy }}</td>                            {{-- ReturnPolicy --}}
             <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
+            <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
         </tr>
     @endforeach
     {{-----------------OLDS-END-------------------}}
