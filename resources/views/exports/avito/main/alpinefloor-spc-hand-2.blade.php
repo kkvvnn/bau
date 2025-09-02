@@ -235,6 +235,7 @@
         $Thickness = '';
         $Pattern = '';
         $Color = '';
+        $ColorName = '';
 
         $AdStatus = 'Free';
         $Delivery = 'Выключена';
@@ -297,5 +298,6 @@
     <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
     <td></td>                                               {{-- ProductType --}}
     <td></td>                                               {{-- ProductSubType --}}
+    <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
 </tr>
 {{-----ALPINFLOOR-SPC-END-HAND----}}

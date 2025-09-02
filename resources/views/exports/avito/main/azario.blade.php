@@ -14,6 +14,7 @@
         $Thickness = avito_bauservice_height($product->thickness, 2, 30);
         $Pattern = avito_bauservice_pattern($product->title, $product->design);
         $Color = avito_bauservice_color($product->color);
+        $ColorName = $Color;
 
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
@@ -324,6 +325,7 @@
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
         <td></td>                                               {{-- ProductType --}}
         <td></td>                                               {{-- ProductSubType --}}
+        <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     </tr>
 @endforeach
 {{-----KERRANOVA-END----}}

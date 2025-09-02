@@ -140,6 +140,7 @@
         $Thickness = 10;
         $Pattern = 'Травертин';
         $Color = 'Разноцветная';
+        $ColorName = $Color;
 
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
@@ -209,5 +210,6 @@
     <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
     <td></td>                                               {{-- ProductType --}}
     <td></td>                                               {{-- ProductSubType --}}
+    <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
 </tr>
 {{-----PRIMAVERA-END-HAND----}}

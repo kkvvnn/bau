@@ -24,6 +24,7 @@
                 $Thickness = avito_bauservice_height($gb_fat, 2, 30);
                 $Pattern = avito_bauservice_pattern($product->title, $product->design);
                 $Color = avito_bauservice_color($product->color);
+                $ColorName = $Color;
                 break;
             case 'Керамическая плитка':
                 $GoodsSubType = 'Отделка';
@@ -38,6 +39,7 @@
                 $Height = '';
                 $Pattern = avito_bauservice_pattern($product->title, $product->design);
                 $Color = avito_bauservice_color($product->color);
+                $ColorName = '';
                 break;
             case 'Другое':
                 $GoodsSubType = 'Другое';
@@ -52,6 +54,7 @@
                 $Height = '';
                 $Pattern = '';
                 $Color = '';
+                $ColorName = '';
                 break;
         }
 
@@ -527,6 +530,7 @@
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
         <td></td>                                               {{-- ProductType --}}
         <td></td>                                               {{-- ProductSubType --}}
+        <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     </tr>
 @endforeach
 {{-----GLOBAL-TILE-END----}}

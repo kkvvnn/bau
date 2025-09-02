@@ -177,6 +177,7 @@
         $Thickness = 10;
         $Pattern = 'Оникс';
         $Color = 'Зелёная';
+        $ColorName = $Color;
 
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
@@ -246,5 +247,6 @@
     <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
     <td></td>                                               {{-- ProductType --}}
     <td></td>                                               {{-- ProductSubType --}}
+    <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
 </tr>
 {{-----PRIMAVERA-END-HAND----}}

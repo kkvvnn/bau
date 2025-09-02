@@ -51,6 +51,7 @@
         <th>ResistanceClass</th>
         <th>ProductType</th>
         <th>ProductSubType</th>
+        <th>ColorName</th>
     </tr>
     </thead>
     <tbody>

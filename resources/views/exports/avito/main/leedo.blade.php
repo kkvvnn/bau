@@ -14,6 +14,7 @@
         $Thickness = round($product->Thickness_mm);
         $Pattern = avito_pattern_leedo($product->Color_solution);
         $Color = avito_color_leedo($product->Color);
+        $ColorName = '';
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
@@ -231,6 +232,7 @@
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
         <td></td>                                               {{-- ProductType --}}
         <td></td>                                               {{-- ProductSubType --}}
+        <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     </tr>
 @endforeach
 {{-----LEEDO-END----}}

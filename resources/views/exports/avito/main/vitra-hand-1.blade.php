@@ -159,6 +159,7 @@
         $Thickness = 10;
         $Pattern = 'Мрамор';
         $Color = 'Бежевая';
+        $ColorName = $Color;
 
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
@@ -228,5 +229,6 @@
     <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
     <td></td>                                               {{-- ProductType --}}
     <td></td>                                               {{-- ProductSubType --}}
+    <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
 </tr>
 {{-----VITRA-END-HAND----}}

@@ -13,6 +13,7 @@
         $Thickness = 10;
         $Pattern = 'Мрамор';
         $Color = 'Белая';
+        $ColorName = $Color;
 
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
@@ -286,5 +287,6 @@
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
         <td></td>                                               {{-- ProductType --}}
         <td></td>                                               {{-- ProductSubType --}}
+        <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     </tr>
 {{-----NTCERAMIC-END-HAND----}}

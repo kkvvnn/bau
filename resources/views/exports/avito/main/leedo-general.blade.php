@@ -13,6 +13,7 @@
         $Thickness = '';
         $Pattern = avito_bauservice_pattern('', 'Другой');
         $Color = avito_bauservice_color('Другой');
+        $ColorName = '';
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
@@ -177,6 +178,7 @@
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
         <td></td>                                               {{-- ProductType --}}
         <td></td>                                               {{-- ProductSubType --}}
+        <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     </tr>
 
 {{-----LEEDO-GENERAL-END----}}
