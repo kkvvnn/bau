@@ -73,6 +73,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 $query->orWhere('size_format',  '60x120 см');
                 $query->orWhere('size_format',  '60x60 см');
             })
+            ->where([
+                ['vendor_code', '!=', 'PR152'],
+            ])
             ->get();
 
 //      ===================LEEDO===================
@@ -96,7 +99,14 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 $query->orWhere('moscow_depot_reserve', '>=', $stock_min);
                 $query->orWhere('moscow_sale', '>=', $stock_min);
             })
-            ->where('title', 'not like', '%анно%')
+            ->where([
+                ['title', 'not like', '%анно%'],
+                ['artikul', '!=', 'GFU60120SPR08R'],
+                ['artikul', '!=', 'GFU60120SPR10R'],
+                ['artikul', '!=', 'GFU6060BTP07R'],
+                ['artikul', '!=', 'GFU6060SPR20R'],
+                ['artikul', '!=', 'GFU6060TTM00R'],
+            ])
             ->get();
 
 //      =================NT-CERAMIC==================
