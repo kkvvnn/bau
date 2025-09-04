@@ -75,8 +75,26 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             })
             ->where([
                 ['vendor_code', '!=', 'PR152'],
+                ['vendor_code', '!=', 'PR214'],
+                ['vendor_code', '!=', 'PR120'],
+                ['vendor_code', '!=', 'PC208'],
+                ['vendor_code', '!=', 'PC206'],
+                ['vendor_code', '!=', 'PC201'],
+                ['vendor_code', '!=', 'LR204'],
+                ['vendor_code', '!=', 'GR213'],
+                ['vendor_code', '!=', 'GR205'],
+                ['vendor_code', '!=', 'GR204'],
+                ['vendor_code', '!=', 'GG212'],
+                ['vendor_code', '!=', 'GG205'],
+                ['vendor_code', '!=', 'GG204'],
+                ['vendor_code', '!=', 'GG203'],
+                ['vendor_code', '!=', 'GG202'],
+                ['vendor_code', '!=', 'GG201'],
+                ['vendor_code', '!=', 'CR212'],
+                ['vendor_code', '!=', 'CR205'],
             ])
             ->get();
+
 
 //      ===================LEEDO===================
         $leedo = LeedoProduct::where([
@@ -153,6 +171,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['Picture', '!=', ''],
             ['balance', '>', 10],
             ['vendor_code', '!=', 'GT60601903MR'],
+            ['vendor_code', '!=', '9EM0000TG'],
         ])
             ->get();
 
