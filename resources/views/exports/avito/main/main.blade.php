@@ -64,7 +64,7 @@
     @include('exports.avito.main.primavera') //READY
     @include('exports.avito.main.rusplitka') //READ
 
-{{--    @include('exports.avito.main.pix-general') //READ--}}
+    @include('exports.avito.main.pix-general') //READ
     @include('exports.avito.main.leedo-general') //READ
 
 
@@ -93,7 +93,7 @@
     {{--        OFF     --}}
 
                     @include('exports.avito.main.leedo') //READY
-                    @include('exports.avito.main.pixmosaic') //READY
+{{--                    @include('exports.avito.main.pixmosaic') //READY--}}
 
 
 
