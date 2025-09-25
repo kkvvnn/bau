@@ -91,7 +91,7 @@
                     $Thickness = '';
                     $Pattern = avito_bauservice_pattern($product->Name, $product->DesignValue);
                     $Color = avito_bauservice_color($product->Color);
-                    $ColorName = '';
+                    $ColorName = $Color;
                     break;
                 case 'Другое':
                     $GoodsSubType = 'Другое';
@@ -653,6 +653,7 @@
             $Thickness = '';
             $Pattern = 'Мрамор';
             $Color = 'Бежевая';
+            $ColorName = $Color;
 
             $PackagingType = 'Упаковка';
             $PackageQuantity = '1.44';
@@ -676,7 +677,6 @@
 
             $ReturnPolicy = 'По любой причине — 7 дней';
             $TargetAudience = 'Частные лица';
-            $ColorName = '';
         @endphp
 
         <tr>

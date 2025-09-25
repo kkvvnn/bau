@@ -39,7 +39,7 @@
                 $Height = '';
                 $Pattern = avito_bauservice_pattern($product->title, $product->design);
                 $Color = avito_bauservice_color($product->color);
-                $ColorName = '';
+                $ColorName = $Color;
                 break;
             case 'Другое':
                 $GoodsSubType = 'Другое';

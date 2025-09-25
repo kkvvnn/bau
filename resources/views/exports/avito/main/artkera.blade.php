@@ -49,7 +49,7 @@
                 $Thickness = '';
                 $Pattern = avito_bauservice_pattern($product->tovar, '');
                 $Color = avito_bauservice_color('');
-                $ColorName = '';
+                $ColorName = $Color;
                 break;
             case 'Другое':
                 $GoodsSubType = 'Другое';

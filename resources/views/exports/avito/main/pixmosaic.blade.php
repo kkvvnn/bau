@@ -13,7 +13,7 @@
         $Thickness = '';
         $Pattern = avito_bauservice_pattern('', 'Другой');
         $Color = avito_bauservice_color('Другой');
-        $ColorName = '';
+        $ColorName = $Color;
         $FlooringMaterialsSubType = '';
         $ExteriorFinishingDecorativeStoneSubType = '';
         $WallPanelsSlatsDecorativeElementsSubType = '';
