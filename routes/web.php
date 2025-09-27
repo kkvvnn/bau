@@ -38,7 +38,8 @@ Route::get('/laparet', [ProductController::class, 'laparet'])->name('laparet.ind
 Route::get('/cersanit', [ProductController::class, 'cersanit'])->name('cersanit.index');
 Route::get('/vitra', [ProductController::class, 'vitra'])->name('vitra.index');
 Route::get('/ceradim', [ProductController::class, 'index_ceradim'])->name('ceradim.index');
-Route::get('/kerama-marazzi', [ProductController::class, 'index_kerama_marazzi'])->name('kerama-marazzi.index');
+Route::get('/kerama-marazzi', [ProductController::class, 'index_kerama_marazzi']);
+Route::get('/kerama-marazzi-keramogranit', [ProductController::class, 'index_kerama_marazzi_keramogranit'])->name('kerama-marazzi.index');
 Route::get('/kerama-marazzi/test', [ProductController::class, 'kerama_marazzi_test']);
 
 Route::get('/bauservice-spb', [ProductController::class, 'index_spb']);
