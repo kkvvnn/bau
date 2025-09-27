@@ -52,11 +52,17 @@
         <th>ProductType</th>
         <th>ProductSubType</th>
         <th>ColorName</th>
+        <th>TargetAudience</th>
     </tr>
     </thead>
     <tbody>
 
+    @php
+        $TargetAudience = 'Частные лица';
+    @endphp
+
 {{--    @include('exports.avito.main.bauservice') //READY--}}
+    @include('exports.avito.main.kerama-marazzi') //READY
     @include('exports.avito.main.artkera') //READY
     @include('exports.avito.main.kerranova') //READY
     @include('exports.avito.main.global-tile') //READY

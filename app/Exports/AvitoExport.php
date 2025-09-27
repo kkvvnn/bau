@@ -216,6 +216,26 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //        ])
 //            ->get();
 
+        //==================KERAMA MARAZZI==================
+
+        $kerama_marazzi = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Producer_Brand', '=', 'Kerama Marazzi'],
+            ['Category', '=', 'Керамогранит'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['Name', 'not like', '%Декор%'],
+            ['balanceCount', '>=', 5],
+            ['Lenght', '>=', 50],
+            ['RMPrice', '>=', '650'],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->whereColumn('RMPrice', '>', 'Price')
+            ->get();
+
+
 
 //      ===================DISCOUNTS==================
 
@@ -227,6 +247,11 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         $discounts_all['Azario'] = [
             'discount' => 10,
+            'additional' => 'По умолчанию',
+        ];
+
+        $discounts_all['Kerama Marazzi'] = [
+            'discount' => 0,
             'additional' => 'По умолчанию',
         ];
 
@@ -245,6 +270,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'keramopro' => $keramopro,
             'kerabellezza' => $kerabellezza,
             'azario' => $azario,
+            'kerama_marazzi' => $kerama_marazzi,
 //            'water_mixers' => $water_mixers,
             'skalla' => $skalla,
             'phone' => $this->phone,

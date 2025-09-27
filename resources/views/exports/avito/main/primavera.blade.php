@@ -455,6 +455,7 @@
         <td></td>                                               {{-- ProductType --}}
         <td></td>                                               {{-- ProductSubType --}}
         <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
+        <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
     </tr>
 @endforeach
 {{-----PRIMAVERA-END----}}

@@ -200,6 +200,12 @@ if (!function_exists('avito_type')) {
             return 'Керамическая плитка';
         } elseif (stripos($name, 'ерамогранит') !== false) {
             return 'Керамогранит';
+        }
+        elseif (stripos($name, 'обрезной') !== false) {
+            return 'Керамогранит';
+        }
+        elseif (stripos($name, 'лаппатированный') !== false) {
+            return 'Керамогранит';
         } else {
             return 'Другое';
         }
