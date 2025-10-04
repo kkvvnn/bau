@@ -73,6 +73,8 @@
     @include('exports.avito.main.pix-general') //READ
     @include('exports.avito.main.leedo-general') //READ
 
+    @include('exports.avito.main.artcenter') //READY
+
 
     {{--        SANTECH     --}}
 
@@ -110,7 +112,7 @@
 
     {{--        @include('exports.avito.main.aquafloor') //READY--}}
 
-{{--            @include('exports.avito.main.artcenter') //READY--}}
+
     {{--        @include('exports.avito.main.skalla') //READY--}}
 
 
