@@ -245,10 +245,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             $discounts_all[$discount->name] = ['discount' => $discount->discount, 'additional' => $discount->additional];
         }
 
-        $discounts_all['Azario'] = [
-            'discount' => 10,
-            'additional' => 'По умолчанию',
-        ];
+//        $discounts_all['Azario'] = [
+//            'discount' => 10,
+//            'additional' => 'По умолчанию',
+//        ];
 
         $discounts_all['Kerama Marazzi'] = [
             'discount' => 0,

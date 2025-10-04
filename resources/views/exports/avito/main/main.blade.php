@@ -99,7 +99,7 @@
     {{--        OFF     --}}
 
                     @include('exports.avito.main.leedo') //READY
-{{--                    @include('exports.avito.main.pixmosaic') //READY--}}
+                    @include('exports.avito.main.pixmosaic') //READY
 
 
 
@@ -110,7 +110,7 @@
 
     {{--        @include('exports.avito.main.aquafloor') //READY--}}
 
-    {{--        @include('exports.avito.main.artcenter') //READY--}}
+{{--            @include('exports.avito.main.artcenter') //READY--}}
     {{--        @include('exports.avito.main.skalla') //READY--}}
 
 

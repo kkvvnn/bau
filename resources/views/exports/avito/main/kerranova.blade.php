@@ -220,7 +220,7 @@
             $img_arr[] = Storage::disk('kerranova')->url(Str::remove($string_for_delete, $value));
         }
 
-        $image_urls = avito_images_urls($img_arr);
+        $image_urls = avito_images_urls($img_arr, true);
     @endphp
 
     @php
