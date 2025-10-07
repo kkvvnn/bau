@@ -121,8 +121,8 @@ class AvitoController extends Controller
                 $data['manager_name'] = 'Родион';
                 $data['address'] = 'Москва, Арбатско-Покровская линия, метро Славянский бульвар';
                 $data['communication'] = [
-                    'phone_and_message' => '',
-                    'only_message' => 'selected',
+                    'phone_and_message' => 'selected',
+                    'only_message' => '',
                     'only_phone' => '',
                 ];
                 break;
