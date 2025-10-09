@@ -170,6 +170,39 @@ class ProductController extends Controller
         return $this->index($products, $type);
     }
 
+    public function index_ceradim_table()
+    {
+        $ceradims = Product::where([
+            ['GroupProduct', '01 Плитка'],
+            ['Name', 'not like', '%ставк%'],
+            ['Name', 'not like', '%ступен%'],
+            ['Name', 'not like', '%пецэлем%'],
+            ['balanceCount', '>=', 1],
+            ['RMPrice', '!=', ''],
+            ['Picture', '!=', ''],
+        ])
+            ->where(function (Builder $query) {
+                $query->where('Producer_Brand', 'Ceradim');
+            })
+            ->whereColumn('RMPrice', '>', 'Price')
+
+            ->orderByDesc('Lenght')
+            ->orderBy('Name')
+            ->get()
+            ->filter(function (Product $product) {
+                $length = (int)$product->Lenght;
+                $height = (int)$product->Height;
+                return ($length >= 119 && $length <= 121 && $height >= 59 && $height <= 61)         //60x120
+                    || ($length >= 59 && $length <= 61 && $height >= 59 && $height <= 61)           //60x60
+                    || ($length >= 79 && $length <= 81 && $height >= 79 && $height <= 81)           //80x80
+                    || ($length >= 49 && $length <=51 && $height >= 49 && $height <= 51);           //50x50
+            });
+
+        return view('help.list', [
+            'products' => $ceradims,
+        ]);
+    }
+
     public function index_kerama_marazzi()
     {
         $type = 'Kerama Marazzi';
