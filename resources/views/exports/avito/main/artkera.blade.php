@@ -2,6 +2,10 @@
 @foreach($altacera as $product)
 
     @php
+//        dd($discounts['Altacera']);
+    @endphp
+
+    @php
         $product_type = avito_type($product->collection_item);
 
         $wid_artkera_temp = $product->width/10;
@@ -21,7 +25,7 @@
                 $CeramicPorcelainTilesSubType = 'Керамогранит';
                 $Brand = $product->category_r->parent;
                 if ($Brand == 'Artkera Group') {
-                    $Brand = 'Altacera';
+                    $Brand = 'AltaCera';
                 }
                 $TileType = '';
                 $SpaceType = '';
@@ -39,7 +43,7 @@
                 $CeramicPorcelainTilesSubType = 'Керамическая плитка';
                 $Brand = $product->category_r->parent;
                 if ($Brand == 'Artkera Group') {
-                    $Brand = 'Altacera';
+                    $Brand = 'AltaCera';
                 }
                 $TileType = avito_tile_type($product->collection_item);
                 $SpaceType = avito_bauservice_space_type('default');
@@ -79,10 +83,11 @@
     @php
         $price_rrc = $product->price->price;
         $price_old = intval($product->sale || $product->is_action);
-        $brand = 'Artkera';
-        $price = avito_price($price_rrc, $brand, $discounts, $price_old);
 
-        $show_discount = avito_show_discount($price_rrc, $brand, $discounts, $price_old);
+
+        $price = avito_price($price_rrc, $Brand, $discounts, $price_old);
+
+        $show_discount = avito_show_discount($price_rrc, $Brand, $discounts, $price_old);
     @endphp
 
     @php

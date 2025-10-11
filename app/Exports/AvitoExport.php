@@ -250,10 +250,12 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 //            'additional' => 'По умолчанию',
 //        ];
 
-        $discounts_all['Kerama Marazzi'] = [
-            'discount' => 0,
-            'additional' => 'По умолчанию',
-        ];
+//        $discounts_all['Kerama Marazzi'] = [
+//            'discount' => 0,
+//            'additional' => 'По умолчанию',
+//        ];
+
+//        dd($discounts_all);
 
         return view('exports.avito.main.main', [
 //            'products' => $laparets,
