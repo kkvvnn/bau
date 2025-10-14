@@ -1,12 +1,22 @@
 @extends('main')
 
-@section('meta')
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{url()->full()}}">
-    <meta property="og:title" content="Мультибрендовый магазин">
-    <meta property="og:description" content="Керамогранит, плитка, мозаика, ламинат и др. в Москве, СПб, Казани">
-    <meta property="og:image" content="{{Storage::disk('no_image')->url('millennium-2.jpg')}}">
-@endsection
+@if($type == 'Ceradim')
+    @section('meta')
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{url()->full()}}">
+        <meta property="og:title" content="Ceradim">
+        <meta property="og:description" content="Коллекции керамогранита бренда Ceradim">
+        <meta property="og:image" content="{{Storage::disk('no_image')->url('ceradim.jpg')}}">
+    @endsection
+@else
+    @section('meta')
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{url()->full()}}">
+        <meta property="og:title" content="Мультибрендовый магазин">
+        <meta property="og:description" content="Керамогранит, плитка, мозаика, ламинат и др. в Москве, СПб, Казани">
+        <meta property="og:image" content="{{Storage::disk('no_image')->url('millennium-2.jpg')}}">
+    @endsection
+@endif
 
 @section('title', $type??$search_name??config('app.name'))
 
