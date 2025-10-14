@@ -161,9 +161,21 @@ class ProductController extends Controller
 
 
          $products = Product::where([
-             ['Producer_Brand', 'Ceradim'],
+             ['GroupProduct', '01 Плитка'],
+             ['Name', 'not like', '%ставк%'],
+             ['Name', 'not like', '%ступен%'],
+             ['Name', 'not like', '%пецэлем%'],
+             ['balanceCount', '>=', 1],
+             ['RMPrice', '!=', ''],
              ['Picture', '!=', ''],
-             ])
+         ])
+             ->where(function (Builder $query) {
+                 $query->where('Producer_Brand', 'Ceradim');
+             })
+             ->whereColumn('RMPrice', '>', 'Price')
+
+             ->orderByDesc('Height')
+             ->orderBy('Name')
              ->paginate(15);
 //         dd($products);
 
