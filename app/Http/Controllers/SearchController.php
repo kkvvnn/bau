@@ -38,6 +38,7 @@ class SearchController extends Controller
             return view('product.index', [
                 'products' => $products,
                 'search_name' => $search_name,
+                'type' => 'search',
             ]);
         }
 
