@@ -1,5 +1,13 @@
 @extends('main')
 
+@section('meta')
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{url()->full()}}">
+    <meta property="og:title" content="SKALLA Кварцвинил">
+    <meta property="og:description" content="Скандинавский каменный пол">
+    <meta property="og:image" content="{{Storage::disk('no_image')->url('skalla-logo.png')}}">
+@endsection
+
 @section('title', $search_name??'Skalla')
 
 @section('content')
