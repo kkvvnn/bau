@@ -69,10 +69,6 @@
     @include('exports.avito.main.azario') //READY
     @include('exports.avito.main.primavera') //READY
     @include('exports.avito.main.rusplitka') //READ
-
-    @include('exports.avito.main.pix-general') //READ
-    @include('exports.avito.main.leedo-general') //READ
-
     @include('exports.avito.main.artcenter') //READY
 
 
@@ -98,22 +94,20 @@
     @include('exports.avito.main.alpinefloor-spc-hand-2')
 
 
-    {{--        OFF     --}}
+    {{--        MOSAIC     --}}
 
-                    @include('exports.avito.main.leedo') //READY
+    @include('exports.avito.main.leedo') //READY
+    @include('exports.avito.main.pix-general') //READ
+    @include('exports.avito.main.leedo-general') //READ
 {{--                    @include('exports.avito.main.pixmosaic') //READY--}}
 
 
 
 
-    {{--        NOT READY--}}
-
-
+    {{--        SPC     --}}
 
     {{--        @include('exports.avito.main.aquafloor') //READY--}}
-
-
-            @include('exports.avito.main.skalla-new') //READY
+    @include('exports.avito.main.skalla-new') //READY
 
 
 
