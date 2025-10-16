@@ -37,7 +37,8 @@
 
     @php
         $PackagingType = '';
-        $PackageQuantity = $product->square_in_pack;
+//        $PackageQuantity = $product->square_in_pack;
+        $PackageQuantity = 1;
     @endphp
 
     @php
