@@ -334,6 +334,44 @@ if (!function_exists('avito_bauservice_pattern')) {
     }
 }
 
+if (!function_exists('avito_spc_skalla_pattern')) {
+    /**
+     * @param string $title
+     * @return string
+     */
+    function avito_spc_skalla_pattern(string $title): string
+    {
+        if (stripos($title, 'Дуб') !== false) {
+            return 'Дуб';
+        } elseif (stripos($title, 'Орех') !== false) {
+            return 'Орех';
+        } elseif (stripos($title, 'Мрамор') !== false) {
+            return 'Мрамор';
+        } elseif (stripos($title, 'Бетон') !== false) {
+            return 'Бетон';
+        } else {
+            return 'Одноцветный';
+        }
+
+    }
+}
+
+if (!function_exists('avito_spc_skalla_thickness')) {
+    /**
+     * @param float $thickness
+     * @return string
+     */
+    function avito_spc_skalla_thickness(float $thickness): string
+    {
+        return match ($thickness) {
+            4.0 => '4 мм',
+            4.5 => '4,5 мм',
+            5.0 => '5 мм',
+            default => '',
+        };
+    }
+}
+
 if (!function_exists('avito_bauservice_for')) {
     /**
      * @param string|null $for

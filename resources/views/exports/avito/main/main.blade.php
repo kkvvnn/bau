@@ -113,7 +113,7 @@
     {{--        @include('exports.avito.main.aquafloor') //READY--}}
 
 
-    {{--        @include('exports.avito.main.skalla') //READY--}}
+            @include('exports.avito.main.skalla-new') //READY
 
 
 
