@@ -117,6 +117,9 @@
             if($product->design != null) {
             $description .= '<li><strong>Дизайн: </strong>' . $product->design . '</li>';
             }
+            if($product->square_in_pack && $product->count_in_pack) {
+            $description .= '<li><strong>В упаковке: </strong>' . $product->count_in_pack . ' шт ( ' . $product->square_in_pack . ' м2 ) </li>';
+            }
             if($product->faska != null) {
             $description .= '<li><strong>Фаска: </strong>' . $product->faska . '</li>';
             }
