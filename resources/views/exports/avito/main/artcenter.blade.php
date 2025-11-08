@@ -282,7 +282,8 @@
         <td>{{ $code }}</td>                                    {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
         <td></td>                                               {{-- AvitoId --}}
-        <td>Vladimir</td>                                    {{-- ManagerName --}}
+        <td>Vladimir</td>                                       {{-- ManagerName --}}
+        <td>kkvvnn.k@yandex.ru</td>                             {{-- Email --}}
         <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
         <td>{{ $address }}</td>                                 {{-- Address --}}
         <td>{{ $title }}</td>                                   {{-- Title --}}

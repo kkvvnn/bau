@@ -256,6 +256,7 @@
     <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
     <td></td>                                               {{-- AvitoId --}}
     <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+    <td></td>                                               {{-- Email --}}
     <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
     <td>{{ $address }}</td>                                 {{-- Address --}}
     <td>{{ $title }}</td>                                   {{-- Title --}}

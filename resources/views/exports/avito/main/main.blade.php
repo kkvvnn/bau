@@ -9,6 +9,7 @@
         <th>AdStatus</th>
         <th>AvitoId</th>
         <th>ManagerName</th>
+        <th>Email</th>
         <th>ContactPhone</th>
         <th>Address</th>
         <th>Title</th>
@@ -106,18 +107,18 @@
 
     {{--        SPC     --}}
 
-    {{--        @include('exports.avito.main.aquafloor') //READY--}}
+{{--            @include('exports.avito.main.aquafloor') //READY--}}
     @include('exports.avito.main.skalla-new') //READY
 
 
 
 
-    {{--        @include('exports.avito.main.keramopro') //READY NOT USE--}}
+    {{--        @include('exports.avito.main.keramopro') // NOT USE--}}
     {{--        @include('exports.avito.main.absolut-gres') // NOT USE--}}
-    {{--        @include('exports.avito.main.kevis') //READY  NOT USE--}}
+    {{--        @include('exports.avito.main.kevis') // NOT USE--}}
     {{--        @include('exports.avito.main.technotile') // NOT USE--}}
     {{--        @include('exports.avito.main.kerabellezza') // NOT USE--}}
-    {{--        @include('exports.avito.main.nt-ceramic') //READY NOT USE--}}
+    {{--        @include('exports.avito.main.nt-ceramic') // NOT USE--}}
 
     </tbody>
 </table>
