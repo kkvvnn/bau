@@ -285,7 +285,8 @@
         <td>Vladimir</td>                                       {{-- ManagerName --}}
         <td>kkvvnn.k@yandex.ru</td>                             {{-- Email --}}
         <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
-        <td>{{ $address }}</td>                                 {{-- Address --}}
+{{--        <td>{{ $address }}</td>                                 --}}{{-- Address --}}
+        <td>{{ $address_id }}</td>                              {{-- SellerAddressID --}}
         <td>{{ $title }}</td>                                   {{-- Title --}}
         <td>{{ $description }}</td>                             {{-- Description --}}
         <td>{{ $price }}</td>                                   {{-- Price --}}

@@ -11,7 +11,8 @@
         <th>ManagerName</th>
         <th>Email</th>
         <th>ContactPhone</th>
-        <th>Address</th>
+{{--        <th>Address</th>--}}
+        <th>SellerAddressID</th>
         <th>Title</th>
         <th>Description</th>
         <th>Price</th>
@@ -60,6 +61,7 @@
 
     @php
         $TargetAudience = 'Частные лица';
+        $address_id = '101202718';
     @endphp
 
 {{--    @include('exports.avito.main.bauservice') //READY--}}
