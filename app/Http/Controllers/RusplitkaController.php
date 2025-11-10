@@ -16,6 +16,14 @@ class RusplitkaController extends Controller
         return view('rusplitka.index2', compact('products'));
     }
 
+    public function names()
+    {
+        $products = Product::where('price_rozn', '!=', 0)
+            ->orderBy('size_a')
+            ->get();
+        return view('rusplitka.index3', compact('products'));
+    }
+
     public function show($slug)
     {
         $product = Product::whereSlug($slug)->firstOrFail();

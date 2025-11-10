@@ -299,6 +299,8 @@ Route::get('/rusplitka', [\App\Http\Controllers\RusplitkaController::class, 'ind
 Route::get('/rusplitka/{slug:slug}', [\App\Http\Controllers\RusplitkaController::class, 'show'])->name('rusplitka.show');
 Route::get('/rusplitka/collection/{name}', [\App\Http\Controllers\RusplitkaController::class, 'collection'])->name('rusplitka.collection');
 
+Route::get('/rusplitka-names', [\App\Http\Controllers\RusplitkaController::class, 'names']);
+
 
 //----- ARTCENTER -----
 Route::get('/artcenter/brand/{brand}', [\App\Http\Controllers\ArtcenterController::class, 'artcenter'])->name('artcenter.index');
