@@ -36,7 +36,7 @@
                     <h1 class="display-6">{{$product->svoystvo}} {{$product->name}} ({{$product->size_b}}x{{$product->size_a}})</h1>
                     <hr>
 
-                    @if($product->price_rozn > 1900)
+                    @if($product->price_rozn > 1800)
                         <h1 class="display-6 shadow-lg p-3 mb-5 bg-body rounded text-center text-danger">Распродажа 11.11 -15%</h1>
                     @endif
 
@@ -104,7 +104,7 @@
 
 
 
-                    @if($product->price_rozn > 1900)
+                    @if($product->price_rozn > 1800)
                         <h2 class="card-title mt-5 pricing-card-title">{{round($product->price_rozn * 0.85, -1)}} <span class="text-muted fw-light"><del>{{$product->price_rozn}} </del></span> <small
                                 class="text-muted fw-light">₽/{{$product->unit}}</small></h2>
 
