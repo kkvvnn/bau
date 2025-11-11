@@ -11,7 +11,9 @@ class RusplitkaController extends Controller
     public function index()
     {
         $products = Product::where('price_rozn', '!=', 0)
-            ->orderBy('size_a')
+            ->where('rest_real_free', '>', 0)
+//            ->orderBy('size_a')
+            ->orderByRaw('size_a * size_b DESC')
             ->paginate(15);
         return view('rusplitka.index2', compact('products'));
     }
