@@ -1,13 +1,5 @@
 @extends('main')
 
-@section('meta')
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{url()->full()}}">
-    <meta property="og:title" content="Duna Rusplitka">
-    <meta property="og:description" content="Распродажа 11.11">
-    <meta property="og:image" content="{{Storage::disk('no_image')->url('duna-sale.jpg')}}">
-@endsection
-
 @section('title', $type??$search_name??config('app.name'))
 
 @section('content')
@@ -26,12 +18,6 @@
             @if(@isset($count))
                 <h5>{{$count}}</h5>
             @endif
-
-            <div class="row">
-                <div class="col">
-                        <h1 class="display-6 shadow-lg p-3 mb-5 bg-body rounded text-center text-danger">Распродажа 11.11 -15%</h1>
-                </div>
-            </div>
 
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
 
@@ -61,7 +47,7 @@
                         <div class="card h-100 position-relative">
                             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
 
-                            @if($product->price_rozn > 1800)
+                            @if($product->price_rozn > 1900)
                                 <!-- Плашка "Распродажа" -->
                                 <div class="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 m-2 rounded">
                                     <small class="fw-bold">-15%</small>
@@ -79,7 +65,7 @@
                             </div>
                             <div class="card-footer">
 
-                                @if($product->price_rozn > 1800)
+                                @if($product->price_rozn > 1900)
                                     <h5 class="card-title pricing-card-title">{{round($product->price_rozn * 0.85, -1)}} <span class="text-muted fw-light"><del>{{$product->price_rozn}} </del></span> <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
                                 @else
                                     <h5 class="card-title pricing-card-title">{{$product->price_rozn}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
