@@ -44,17 +44,8 @@
                     @endphp
 
                     <div class="col">
-                        <div class="card h-100 position-relative">
+                        <div class="card h-100">
                             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-
-                            @if($product->price_rozn > 1900)
-                                <!-- Плашка "Распродажа" -->
-                                <div class="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 m-2 rounded">
-                                    <small class="fw-bold">-15%</small>
-                                </div>
-                            @endif
-
-
                             <a href="/rusplitka/{{$product->slug}}">
                                 <img src="{{$img}}" class="card-img-top" alt="...">
                             </a>
@@ -64,13 +55,7 @@
                                 </a>
                             </div>
                             <div class="card-footer">
-
-                                @if($product->price_rozn > 1900)
-                                    <h5 class="card-title pricing-card-title">{{round($product->price_rozn * 0.85, -1)}} <span class="text-muted fw-light"><del>{{$product->price_rozn}} </del></span> <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
-                                @else
-                                    <h5 class="card-title pricing-card-title">{{$product->price_rozn}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
-                                @endif
-
+                                <h5 class="card-title pricing-card-title">{{$product->price_rozn}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
 {{--                                @if($product->Producer_Brand == 'Laparet' && ($product->RMPriceOld == 0 || $product->RMPriceOld == $product->RMPrice))--}}
 {{--                                    <p class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-info-emphasis bg-info-subtle border border-info-subtle rounded-2">Цена -10% {{round($product->RMPrice * 0.90, -1)}} ₽/{{$product->MainUnit}}</p>--}}
 {{--                                    <hr>--}}
