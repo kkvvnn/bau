@@ -107,7 +107,7 @@
 
     @php
         $code = 'Rusplitka-Hand-2';
-        $video = '';
+        $video = $custom_video;
         $price = '';
         $title = 'Керамогранит Velsaa все коллекции';
     @endphp

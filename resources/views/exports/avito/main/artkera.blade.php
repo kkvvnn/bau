@@ -350,7 +350,7 @@
                     $description = str_replace('Архив', '', $description);
 
                     $code = $product->artikul;
-                    $video = '';
+                    $video = $custom_video;
     @endphp
 
 

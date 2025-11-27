@@ -370,7 +370,7 @@
 //            $title = preg_replace('/\d+-\d+-\d+-\d+/', '', $title);
 
         $code = $product->vendor_code;
-        $video = '';
+        $video = $custom_video;
 
     @endphp
     @php

@@ -153,7 +153,7 @@
                     }
 
                     $code = $product->System_ID;
-                    $video = '';
+                    $video = $custom_video;
     @endphp
 
     @php

@@ -153,7 +153,7 @@
         $description .= '<p><em>' . $keywords . '</em></p>';
 
         $code = $product->vendor_code . '_skalla';
-        $video = '';
+        $video = $custom_video;
     @endphp
 
 

@@ -150,7 +150,7 @@
 
     @php
         $code = 'vitra-hand-2';
-        $video = '';
+        $video = $custom_video;
         $price = '';
         $title = 'Керамогранит Vitra все коллекции - 2';
     @endphp

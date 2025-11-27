@@ -234,7 +234,7 @@
 
     @php
         $code = str_replace('ЦБ-', '', $product->code).'_artcenter';
-        $video = '';
+        $video = $custom_video;
     @endphp
 
     @php

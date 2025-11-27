@@ -97,7 +97,7 @@
     @endphp
     @php
 
-        $video = '';
+        $video = $custom_video;
 
         $code = 'pix-general';
     @endphp

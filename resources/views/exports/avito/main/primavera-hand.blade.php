@@ -160,7 +160,7 @@
 
     @php
         $code = 'Primavera-Hand-1';
-        $video = '';
+        $video = $custom_video;
         $price = '';
         $title = 'Primavera все коллекции - 1';
     @endphp

@@ -97,7 +97,7 @@
     @endphp
     @php
 
-        $video = '';
+        $video = $custom_video;
 
         $code = 'leedo-general';
     @endphp

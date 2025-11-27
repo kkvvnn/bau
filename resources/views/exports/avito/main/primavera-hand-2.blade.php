@@ -158,7 +158,7 @@
 
     @php
         $code = 'Primavera-Hand-2';
-        $video = '';
+        $video = $custom_video;
         $price = '';
         $title = 'Primavera все коллекции - 2';
     @endphp

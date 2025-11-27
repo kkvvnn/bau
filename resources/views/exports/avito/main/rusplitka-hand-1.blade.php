@@ -124,7 +124,7 @@
 
     @php
         $code = 'Rusplitka-Hand-1';
-        $video = '';
+        $video = $custom_video;
         $price = '';
         $title = 'Керамогранит Bluezone, Colortile все коллекции';
     @endphp

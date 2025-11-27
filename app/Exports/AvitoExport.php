@@ -257,6 +257,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //        dd($discounts_all);
 
+        $custom_video_url = 'https://rutube.ru/shorts/fc71bd4ee9531199d7cbce7c4a4accd7/';
+
         return view('exports.avito.main.main', [
 //            'products' => $laparets,
             'primavera' => $primavera,
@@ -282,6 +284,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'add_description_first' => $this->add_description_first,
             'add_description' => $this->add_description_last,
             'discounts' => $discounts_all,
+            'custom_video' => $custom_video_url,
         ]);
     }
 }

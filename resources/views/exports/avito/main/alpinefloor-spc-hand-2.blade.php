@@ -206,7 +206,7 @@
 
     @php
         $code = 'Alpinefloor-spc-Hand-2';
-        $video = '';
+        $video = $custom_video;
         $price = '';
         $title = 'SPC ламинат Alpine Floor все коллекции - 2';
     @endphp

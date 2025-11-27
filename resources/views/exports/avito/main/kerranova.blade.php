@@ -248,7 +248,7 @@
 
     @php
         $code = str_replace('/', '-', $product->vendor_code);
-        $video = '';
+        $video = $custom_video;
     @endphp
 
     @php

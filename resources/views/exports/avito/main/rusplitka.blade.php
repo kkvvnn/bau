@@ -152,7 +152,7 @@
 
 
                     $code = $product->external_id . 'RusPL';
-                    $video = '';
+                    $video = $custom_video;
     @endphp
 
     @php

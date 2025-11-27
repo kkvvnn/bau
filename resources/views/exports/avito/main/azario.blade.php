@@ -249,7 +249,7 @@
 
     @php
         $code = $product->vendor_code . '_azario';
-        $video = '';
+        $video = $custom_video;
     @endphp
 
     @php
