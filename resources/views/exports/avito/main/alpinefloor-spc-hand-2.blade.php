@@ -234,8 +234,8 @@
         $Length = 1460;
         $Thickness = '';
         $Pattern = '';
-        $Color = '';
-        $ColorName = '';
+        $Color = 'Бежевый';
+        $ColorName = $Color;
 
         $AdStatus = 'Free';
         $Delivery = 'Выключена';
@@ -248,7 +248,7 @@
         $Texture = '';
         $EdgeType = '';
         $Shape = '';
-        $ResistanceClass = '';
+        $ResistanceClass = '43';
     @endphp
 
 <tr>

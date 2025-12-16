@@ -14,7 +14,7 @@
         $Length = $product->length;
         $Thickness = avito_spc_skalla_thickness($product->fat);
         $Pattern = avito_spc_skalla_pattern($product->title);
-        $Color = '';
+        $Color = 'Разноцветный';
         $ColorName = $Color;
 
         $FlooringMaterialsSubType = 'Кварц-винил';

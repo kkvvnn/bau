@@ -254,8 +254,8 @@
         $Length = 1520;
         $Thickness = '';
         $Pattern = '';
-        $Color = '';
-        $ColorName = '';
+        $Color = 'Светло-коричневое дерево';
+        $ColorName = $Color;
 
         $AdStatus = 'Free';
         $Delivery = 'Выключена';
@@ -268,7 +268,7 @@
         $Texture = '';
         $EdgeType = '';
         $Shape = '';
-        $ResistanceClass = '';
+        $ResistanceClass = '43';
     @endphp
 
 <tr>

@@ -124,6 +124,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 ['artikul', '!=', 'GFU6060BTP07R'],
                 ['artikul', '!=', 'GFU6060SPR20R'],
                 ['artikul', '!=', 'GFU6060TTM00R'],
+                ['artikul', '!=', 'GFU6060TTM07R'],
+                ['artikul', '!=', 'TWA11BTQ007'],
             ])
             ->get();
 
