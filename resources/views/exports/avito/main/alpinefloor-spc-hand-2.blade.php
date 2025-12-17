@@ -2,10 +2,10 @@
     @php
 
 
-        $image_main = Storage::disk('images-hand')->url('alpinefloor/2.jpg');
+        $image_main = Storage::disk('images-hand')->url('alpinefloor/8.jpg');
         $image_2 = Storage::disk('images-hand')->url('alpinefloor/4.jpg');
         $image_3 = Storage::disk('images-hand')->url('alpinefloor/6.jpg');
-        $image_4 = Storage::disk('images-hand')->url('alpinefloor/8.jpg');
+        $image_4 = Storage::disk('images-hand')->url('alpinefloor/2.jpg');
         $image_5 = Storage::disk('images-hand')->url('alpinefloor/10.jpg');
 
 
