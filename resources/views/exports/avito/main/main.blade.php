@@ -94,13 +94,13 @@
     @include('exports.avito.main.aquafloor-hand-1')
     @include('exports.avito.main.aquafloor-hand-2')
     @include('exports.avito.main.alpinefloor-spc-hand-1')
-    @include('exports.avito.main.alpinefloor-spc-hand-2')
+{{--    @include('exports.avito.main.alpinefloor-spc-hand-2')--}}
     @include('exports.avito.main.general-hand')
 
 
     {{--        MOSAIC     --}}
 
-    @include('exports.avito.main.leedo') //READY
+{{--    @include('exports.avito.main.leedo') //READY POWER OFF--}}
     @include('exports.avito.main.pix-general') //READ
     @include('exports.avito.main.leedo-general') //READ
 {{--                    @include('exports.avito.main.pixmosaic') //READY--}}
