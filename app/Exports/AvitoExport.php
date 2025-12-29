@@ -107,7 +107,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 //      ====================ARTKERA===================
         $altacera = ArtkeraTovarAvailable::whereHas('price', function($price) {
-                $price->where('price', '>=', 1000);
+                $price->where('price', '>=', 1600);  //NEW YEAR!!!!!!!!!!!
             })
             ->where(function (Builder $query) {
                 $stock_min = 2;
