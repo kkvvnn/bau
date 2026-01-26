@@ -188,7 +188,7 @@
 
             if ($product->balanceCount > 0) {
 //                $description .= '<p>&#9989; На утро '.$date.' в Москве '.round($product->balanceCount).' '.$product->MainUnit.' <em>(уточняйте)</em></p>';
-                $description .= '<p><strong>&#9989; В НАЛИЧИИ на складе в Москве: '.round($product->balanceCount).' '.$product->MainUnit.'</strong> (актуально на '.$date.' — уточняйте перед заказом).</p>';
+                $description .= '<p><strong>&#9989; В наличии на складе в Москве: '.round($product->balanceCount).' '.$product->MainUnit.'</strong> (актуально на '.$date.' — уточняйте перед заказом).</p>';
             }
 
 
@@ -212,7 +212,7 @@
             $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.' (без учета доп скидки)</em></p>';
             $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
             $description .= '<p><strong>Под каждый проект действуют индивидуальные условия</strong></p>';
-            $description .= '<p><Отгружаем кратно упаковкам. Минимальный заказ - от 1 упаковки. Скидка рассчитывается индивидуально.</p>';
+            $description .= '<p>Отгружаем кратно упаковкам. Минимальный заказ - от 1 упаковки. Скидка рассчитывается индивидуально.</p>';
             $description .= '<p>--------------------</p>';
 
 
