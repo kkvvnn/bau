@@ -55,6 +55,8 @@
 
         $ReturnPolicy = 'По любой причине — 7 дней';
         $TargetAudience = 'Частные лица';
+
+        $FlooringMaterialsSubType = '';
     @endphp
 
     <tr>
