@@ -509,13 +509,15 @@
         $EdgeType = '';
         $Shape = '';
         $ResistanceClass = '';
-
-        $ReturnPolicy = 'По любой причине — 7 дней';
-        $TargetAudience = 'Частные лица';
     @endphp
 
     @php
         $description .= $show_discount;
+    @endphp
+
+    @php
+        $MultiItem = 'Нет';
+        $MultiName = '';
     @endphp
 
     <tr>
@@ -523,8 +525,10 @@
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
         <td></td>                                               {{-- AvitoId --}}
         <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+        <td></td>                                               {{-- Email --}}
         <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
-        <td>{{ $address }}</td>                                 {{-- Address --}}
+{{--        <td>{{ $address }}</td>                                 --}}{{-- Address --}}
+        <td>{{ $address_id }}</td>                              {{-- SellerAddressID --}}
         <td>{{ $title }}</td>                                   {{-- Title --}}
         <td>{{ $description }}</td>                             {{-- Description --}}
         <td>{{ $price }}</td>                                   {{-- Price --}}
@@ -565,9 +569,10 @@
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
         <td></td>                                               {{-- ProductType --}}
         <td></td>                                               {{-- ProductSubType --}}
-        <td>{{ $ReturnPolicy }}</td>                            {{-- ReturnPolicy --}}
-        <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
         <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
+        <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
+        <td>{{ $MultiItem }}</td>                               {{-- MultiItem --}}
+        <td>{{ $MultiName }}</td>                               {{-- MultiName --}}
     </tr>
 @endforeach
 {{------------------END-BAUSERVICE--------------------}}

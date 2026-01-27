@@ -7,8 +7,10 @@
         <th>AdStatus</th>
         <th>AvitoId</th>
         <th>ManagerName</th>
+        <th>Email</th> <!--!!!-->
         <th>ContactPhone</th>
-        <th>Address</th>
+        {{--        <th>Address</th>--}}
+        <th>SellerAddressID</th> <!--!!!-->
         <th>Title</th>
         <th>Description</th>
         <th>Price</th>
@@ -49,15 +51,22 @@
         <th>ResistanceClass</th>
         <th>ProductType</th>
         <th>ProductSubType</th>
-        <th>ReturnPolicy</th>
-        <th>TargetAudience</th>
         <th>ColorName</th>
+        <th>TargetAudience</th>
+        <th>MultiItem</th>
+        <th>MultiName</th>
     </tr>
     </thead>
     <tbody>
 
+    @php
+        $TargetAudience = 'Частные лица';
+        $address_id = '101202135';
+    @endphp
+
     @include('exports.avito.laparet-moscow.laparets')
     @include('exports.avito.laparet-moscow.olds')
+    @include('exports.avito.laparet-moscow.pixmosaic')
 
 
     </tbody>

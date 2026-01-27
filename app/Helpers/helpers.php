@@ -719,3 +719,295 @@ if (!function_exists('avito_pattern_leedo')) {
         }
     }
 }
+
+
+if (!function_exists('is_multi_pixel')) {
+    /**
+     * @param string $vendor_code
+     * @return string|bool
+     */
+    function is_multi_pixel(string $vendor_code): string|bool
+    {
+        $multies = [
+            'PIX341' => 'Pixmosaic Venezia',
+            'PIX340' => 'Pixmosaic Venezia',
+            'PIX348' => 'Pixmosaic Venezia',
+            'PIX347' => 'Pixmosaic Venezia',
+            'PIX346' => 'Pixmosaic Venezia',
+            'PIX345' => 'Pixmosaic Venezia',
+            'PIX344' => 'Pixmosaic Venezia',
+            'PIX343' => 'Pixmosaic Venezia',
+            'PIX342' => 'Pixmosaic Venezia',
+
+            'PIX264' => 'Pixmosaic galka',
+            'PIX265' => 'Pixmosaic galka',
+            'PIX266' => 'Pixmosaic galka',
+            'PIX267' => 'Pixmosaic galka',
+
+            'PIX736' => 'Pixmosaic kamen glass 1',
+            'PIX735' => 'Pixmosaic kamen glass 1',
+            'PIX734' => 'Pixmosaic kamen glass 1',
+            'PIX730' => 'Pixmosaic kamen glass 1',
+            'PIX729' => 'Pixmosaic kamen glass 1',
+            'PIX728' => 'Pixmosaic kamen glass 1',
+            'PIX727' => 'Pixmosaic kamen glass 1',
+            'PIX726' => 'Pixmosaic kamen glass 1',
+            'PIX725' => 'Pixmosaic kamen glass 1',
+
+            'PIX737' => 'Pixmosaic kamen glass 2',
+            'PIX723' => 'Pixmosaic kamen glass 2',
+            'PIX722' => 'Pixmosaic kamen glass 2',
+            'PIX721' => 'Pixmosaic kamen glass 2',
+            'PIX720' => 'Pixmosaic kamen glass 2',
+            'PIX715' => 'Pixmosaic kamen glass 2',
+            'PIX714' => 'Pixmosaic kamen glass 2',
+            'PIX704' => 'Pixmosaic kamen glass 2',
+
+            'PIX717' => 'Pixmosaic glass',
+            'PIX739' => 'Pixmosaic glass',
+            'PIX716' => 'Pixmosaic glass',
+            'PIX712' => 'Pixmosaic glass',
+            'PIX710' => 'Pixmosaic glass',
+            'PIX708' => 'Pixmosaic glass',
+            'PIX707' => 'Pixmosaic glass',
+            'PIX705' => 'Pixmosaic glass',
+
+            'PIX766' => 'Pixmosaic soft touch',
+            'PIX764' => 'Pixmosaic soft touch',
+            'PIX765' => 'Pixmosaic soft touch',
+            'PIX757' => 'Pixmosaic soft touch',
+            'PIX756' => 'Pixmosaic soft touch',
+            'PIX755' => 'Pixmosaic soft touch',
+            'PIX759' => 'Pixmosaic soft touch',
+            'PIX758' => 'Pixmosaic soft touch',
+            'PIX762' => 'Pixmosaic soft touch',
+            'PIX763' => 'Pixmosaic soft touch',
+            'PIX761' => 'Pixmosaic soft touch',
+            'PIX760' => 'Pixmosaic soft touch',
+
+            'PIX775' => 'Pixmosaic perlamutr',
+            'PIX774' => 'Pixmosaic perlamutr',
+            'PIX773' => 'Pixmosaic perlamutr',
+            'PIX772' => 'Pixmosaic perlamutr',
+            'PIX771' => 'Pixmosaic perlamutr',
+            'PIX770' => 'Pixmosaic perlamutr',
+            'PIX769' => 'Pixmosaic perlamutr',
+            'PIX768' => 'Pixmosaic perlamutr',
+            'PIX767' => 'Pixmosaic perlamutr',
+            'PIX754' => 'Pixmosaic perlamutr',
+            'PIX753' => 'Pixmosaic perlamutr',
+            'PIX752' => 'Pixmosaic perlamutr',
+            'PIX751' => 'Pixmosaic perlamutr',
+            'PIX750' => 'Pixmosaic perlamutr',
+            'PIX701' => 'Pixmosaic perlamutr',
+            'PIX700' => 'Pixmosaic perlamutr',
+            'PIX703' => 'Pixmosaic perlamutr',
+            'PIX702' => 'Pixmosaic perlamutr',
+
+            'PIX732' => 'Pixmosaic metall',
+            'PIX731' => 'Pixmosaic metall',
+            'PIX709' => 'Pixmosaic metall',
+
+            'PIX132' => 'Pixmosaic glass pressovan',
+            'PIX131' => 'Pixmosaic glass pressovan',
+            'PIX130' => 'Pixmosaic glass pressovan',
+            'PIX133' => 'Pixmosaic glass pressovan',
+            'PIX129' => 'Pixmosaic glass pressovan',
+            'PIX128' => 'Pixmosaic glass pressovan',
+            'PIX127' => 'Pixmosaic glass pressovan',
+            'PIX126' => 'Pixmosaic glass pressovan',
+            'PIX125' => 'Pixmosaic glass pressovan',
+            'PIX124' => 'Pixmosaic glass pressovan',
+            'PIX107' => 'Pixmosaic glass pressovan',
+            'PIX106' => 'Pixmosaic glass pressovan',
+            'PIX104' => 'Pixmosaic glass pressovan',
+            'PIX102' => 'Pixmosaic glass pressovan',
+            'PIX110' => 'Pixmosaic glass pressovan',
+            'PIX105' => 'Pixmosaic glass pressovan',
+            'PIX111' => 'Pixmosaic glass pressovan',
+            'PIX109' => 'Pixmosaic glass pressovan',
+            'PIX108' => 'Pixmosaic glass pressovan',
+            'PIX121' => 'Pixmosaic glass pressovan',
+            'PIX100' => 'Pixmosaic glass pressovan',
+            'PIX122' => 'Pixmosaic glass pressovan',
+            'PIX123' => 'Pixmosaic glass pressovan',
+            'PIX120' => 'Pixmosaic glass pressovan',
+            'PIX113' => 'Pixmosaic glass pressovan',
+            'PIX116' => 'Pixmosaic glass pressovan',
+            'PIX117' => 'Pixmosaic glass pressovan',
+            'PIX114' => 'Pixmosaic glass pressovan',
+            'PIX119' => 'Pixmosaic glass pressovan',
+
+            'PIX014' => 'Pixmosaic crystall glass',
+            'PIX013' => 'Pixmosaic crystall glass',
+            'PIX006' => 'Pixmosaic crystall glass',
+            'PIX005' => 'Pixmosaic crystall glass',
+            'PIX004' => 'Pixmosaic crystall glass',
+            'PIX003' => 'Pixmosaic crystall glass',
+            'PIX002' => 'Pixmosaic crystall glass',
+            'PIX001' => 'Pixmosaic crystall glass',
+
+            'PIX610' => 'Pixmosaic keramika sot',
+            'PIX623' => 'Pixmosaic keramika sot',
+            'PIX622' => 'Pixmosaic keramika sot',
+
+            'PIX625' => 'Pixmosaic keramika 2',
+            'PIX624' => 'Pixmosaic keramika 2',
+
+            'PIX307' => 'Pixmosaic onyx',
+            'PIX306' => 'Pixmosaic onyx',
+            'PIX305' => 'Pixmosaic onyx',
+            'PIX210' => 'Pixmosaic onyx',
+            'PIX211' => 'Pixmosaic onyx',
+            'PIX207' => 'Pixmosaic onyx',
+            'PIX206' => 'Pixmosaic onyx',
+            'PIX204' => 'Pixmosaic onyx',
+            'PIX203' => 'Pixmosaic onyx',
+            'PIX201' => 'Pixmosaic onyx',
+            'PIX200' => 'Pixmosaic onyx',
+
+            'PIX259' => 'Pixmosaic travertin',
+            'PIX258' => 'Pixmosaic travertin',
+
+            'PIX302' => 'Pixmosaic slanec',
+            'PIX301' => 'Pixmosaic slanec',
+            'PIX300' => 'Pixmosaic slanec',
+            'PIX299' => 'Pixmosaic slanec',
+            'PIX298' => 'Pixmosaic slanec',
+            'PIX297' => 'Pixmosaic slanec',
+
+            'PIX290' => 'Pixmosaic mramor 1',
+            'PIX288' => 'Pixmosaic mramor 1',
+            'PIX289' => 'Pixmosaic mramor 1',
+
+            'PIX281' => 'Pixmosaic mramor 2',
+            'PIX282' => 'Pixmosaic mramor 2',
+            'PIX283' => 'Pixmosaic mramor 2',
+
+            'PIX284' => 'Pixmosaic mramor 3',
+            'PIX285' => 'Pixmosaic mramor 3',
+
+            'PIX291' => 'Pixmosaic mramor 4',
+            'PIX292' => 'Pixmosaic mramor 4',
+
+            'PIX209' => 'Pixmosaic mramor 5',
+            'PIX212' => 'Pixmosaic mramor 5',
+
+            'PIX262' => 'Pixmosaic mramor 6',
+            'PIX261' => 'Pixmosaic mramor 6',
+            'PIX263' => 'Pixmosaic mramor 6',
+            'PIX260' => 'Pixmosaic mramor 6',
+
+            'PIX280' => 'Pixmosaic mramor 7',
+            'PIX279' => 'Pixmosaic mramor 7',
+
+            'PIX277' => 'Pixmosaic mramor 8',
+            'PIX272' => 'Pixmosaic mramor 8',
+            'PIX271' => 'Pixmosaic mramor 8',
+            'PIX269' => 'Pixmosaic mramor 8',
+            'PIX268' => 'Pixmosaic mramor 8',
+            'PIX270' => 'Pixmosaic mramor 8',
+
+            'PIX278' => 'Pixmosaic mramor 9',
+            'PIX273' => 'Pixmosaic mramor 9',
+            'PIX274' => 'Pixmosaic mramor 9',
+            'PIX276' => 'Pixmosaic mramor 9',
+            'PIX275' => 'Pixmosaic mramor 9',
+
+            'PIX230' => 'Pixmosaic nova',
+            'PIX229' => 'Pixmosaic nova',
+            'PIX226' => 'Pixmosaic nova',
+            'PIX227' => 'Pixmosaic nova',
+            'PIX228' => 'Pixmosaic nova',
+
+            'PIX231' => 'Pixmosaic cream marfil',
+            'PIX232' => 'Pixmosaic cream marfil',
+            'PIX233' => 'Pixmosaic cream marfil',
+            'PIX234' => 'Pixmosaic cream marfil',
+            'PIX235' => 'Pixmosaic cream marfil',
+
+            'PIX224' => 'Pixmosaic ligth emperador',
+            'PIX225' => 'Pixmosaic ligth emperador',
+            'PIX223' => 'Pixmosaic ligth emperador',
+            'PIX222' => 'Pixmosaic ligth emperador',
+            'PIX221' => 'Pixmosaic ligth emperador',
+            'PIX802' => 'Pixmosaic ligth emperador',
+            'PIX350' => 'Pixmosaic ligth emperador',
+
+            'PIX220' => 'Pixmosaic dark emperador',
+            'PIX219' => 'Pixmosaic dark emperador',
+            'PIX303' => 'Pixmosaic dark emperador',
+            'PIX217' => 'Pixmosaic dark emperador',
+            'PIX218' => 'Pixmosaic dark emperador',
+            'PIX304' => 'Pixmosaic dark emperador',
+
+            'PIX294' => 'Pixmosaic thassos',
+            'PIX295' => 'Pixmosaic thassos',
+            'PIX296' => 'Pixmosaic thassos',
+
+            'PIX241' => 'Pixmosaic bianco carrara',
+            'PIX242' => 'Pixmosaic bianco carrara',
+            'PIX238' => 'Pixmosaic bianco carrara',
+            'PIX239' => 'Pixmosaic bianco carrara',
+            'PIX240' => 'Pixmosaic bianco carrara',
+
+            'PIX244' => 'Pixmosaic nero marquna',
+            'PIX245' => 'Pixmosaic nero marquna',
+            'PIX246' => 'Pixmosaic nero marquna',
+            'PIX247' => 'Pixmosaic nero marquna',
+            'PIX248' => 'Pixmosaic nero marquna',
+            'PIX249' => 'Pixmosaic nero marquna',
+
+            'PIX250' => 'Pixmosaic black majesty',
+            'PIX251' => 'Pixmosaic black majesty',
+            'PIX252' => 'Pixmosaic black majesty',
+
+            'PIX214' => 'Pixmosaic dondong',
+            'PIX213' => 'Pixmosaic dondong',
+
+            'PIX256' => 'Pixmosaic white wooden',
+            'PIX255' => 'Pixmosaic white wooden',
+            'PIX254' => 'Pixmosaic white wooden',
+            'PIX253' => 'Pixmosaic white wooden',
+
+            'PIX336' => 'Pixmosaic ice grey',
+            'PIX334' => 'Pixmosaic ice grey',
+            'PIX333' => 'Pixmosaic ice grey',
+            'PIX338' => 'Pixmosaic ice grey',
+            'PIX337' => 'Pixmosaic ice grey',
+            'PIX335' => 'Pixmosaic ice grey',
+
+            'PIX332' => 'Pixmosaic tundra grey',
+            'PIX330' => 'Pixmosaic tundra grey',
+            'PIX329' => 'Pixmosaic tundra grey',
+            'PIX328' => 'Pixmosaic tundra grey',
+
+            'PIX326' => 'Pixmosaic cappuchino',
+            'PIX325' => 'Pixmosaic cappuchino',
+            'PIX324' => 'Pixmosaic cappuchino',
+            'PIX323' => 'Pixmosaic cappuchino',
+            'PIX322' => 'Pixmosaic cappuchino',
+            'PIX321' => 'Pixmosaic cappuchino',
+
+            'PIX319' => 'Pixmosaic mramor 10',
+            'PIX318' => 'Pixmosaic mramor 10',
+            'PIX317' => 'Pixmosaic mramor 10',
+            'PIX316' => 'Pixmosaic mramor 10',
+
+            'PIX315' => 'Pixmosaic jet green',
+            'PIX314' => 'Pixmosaic jet green',
+            'PIX313' => 'Pixmosaic jet green',
+            'PIX312' => 'Pixmosaic jet green',
+            'PIX311' => 'Pixmosaic jet green',
+
+            'PIX308/6' => 'Pixmosaic spider green',
+            'PIX308'   => 'Pixmosaic spider green',
+        ];
+
+        if (array_key_exists($vendor_code, $multies)) {
+            return $multies[$vendor_code];
+        } else {
+            return false;
+        }
+    }
+}

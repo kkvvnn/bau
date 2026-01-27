@@ -53,10 +53,14 @@
         $Shape = '';
         $ResistanceClass = '';
 
-        $ReturnPolicy = 'По любой причине — 7 дней';
-        $TargetAudience = 'Частные лица';
+
 
         $FlooringMaterialsSubType = '';
+    @endphp
+
+    @php
+        $MultiItem = 'Нет';
+        $MultiName = '';
     @endphp
 
     <tr>
@@ -64,8 +68,10 @@
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
         <td>{{ $old->AvitoId }}</td>                            {{-- AvitoId --}}
         <td>{{ $name }}</td>                                    {{-- ManagerName --}}
+        <td></td>                                               {{-- Email --}}
         <td>{{ $phone }}</td>                                   {{-- ContactPhone --}}
-        <td>{{ $address }}</td>                                 {{-- Address --}}
+{{--        <td>{{ $address }}</td>                                 --}}{{-- Address --}}
+        <td>{{ $address_id }}</td>                              {{-- SellerAddressID --}}
         <td>{{ $title }}</td>                                   {{-- Title --}}
         <td>{{ $description }}</td>                             {{-- Description --}}
         <td>{{ $price }}</td>                                   {{-- Price --}}
@@ -106,9 +112,10 @@
         <td>{{ $ResistanceClass }}</td>                         {{-- ResistanceClass --}}
         <td></td>                                               {{-- ProductType --}}
         <td></td>                                               {{-- ProductSubType --}}
-        <td>{{ $ReturnPolicy }}</td>                            {{-- ReturnPolicy --}}
-        <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
         <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
+        <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
+        <td>{{ $MultiItem }}</td>                               {{-- MultiItem --}}
+        <td>{{ $MultiName }}</td>                               {{-- MultiName --}}
     </tr>
 @endforeach
 {{-----------------OLDS-END-------------------}}

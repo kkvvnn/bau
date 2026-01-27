@@ -4,6 +4,8 @@ namespace App\Exports;
 
 use App\Models\AvitoTwoExcel;
 use App\Models\Discount;
+use App\Models\LeedoProduct;
+use App\Models\PixmosaicNew;
 use App\Traits\Avito\ExportConstruct;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
@@ -138,6 +140,23 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
         ])
         ->get();
 
+//      ===================PIXMOSAIC====================
+        $pixmosaics = PixmosaicNew::where('price', '!=', 0)
+            ->where('stock', '>=', 1)
+            ->where([
+                ['vendor_code', '!=', 'PIX700-2'],
+                ['vendor_code', '!=', 'PIX752'],
+            ])
+            ->get();
+
+//      ===================LEEDO===================
+        $leedo = LeedoProduct::where([
+            ['Sklad_Msk_LeeDo', '>', 4],
+            ['Category', 'like', 'Мозаика/%'],
+            ['System_ID', '!=', '00-00002393'],
+        ])
+            ->get();
+
         //      ===================DISCOUNTS==================
 
         $discounts = Discount::whereAccount('Laparet-Запад')->get();
@@ -151,6 +170,8 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
             'laparets' => $laparets,
             'water_mixers' => $water_mixers,
             'olds' => $olds,
+            'pixmosaics' => $pixmosaics,
+            'leedo' => $leedo,
             'phone' => $this->phone,
             'name' => $this->name,
             'contact_method' => $this->contact_method,
