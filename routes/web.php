@@ -110,7 +110,7 @@ Route::get('/images-text', [MyHelpController::class, 'image_text']);
 Route::view('/text', 'av');
 
 Route::get('/avito-napolnye-resheniya-laparet', [MyHelpController::class, 'avito_napolnye_resheniya_laparet']);
-Route::get('/avito-laparet-zapad', [MyHelpController::class, 'avito_laparet_zapad']);
+Route::get('/avito-laparet-moscow', [MyHelpController::class, 'avito_laparet_zapad']);
 
 Route::get('/avito-laparet-kazan', [MyHelpController::class, 'avito_laparet_kazan']);
 
