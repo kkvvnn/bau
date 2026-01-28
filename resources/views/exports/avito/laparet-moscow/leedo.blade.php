@@ -94,9 +94,9 @@
 
                     $description .= '<p>--------------------</p>';
                     $date = date('d.m.Y');
-                    if (($product->Sklad_Msk_LeeDo > 0 && $product->Sklad_Msk_LeeDo != null) || ($product->Sklad_SPb_LeeDo > 0 && $product->Sklad_SPb_LeeDo != null)) {
+                    if ($product->Sklad_Msk_LeeDo > 0 && $product->Sklad_Msk_LeeDo != null) {
 //                        $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->Sklad_Msk_LeeDo)+round($product->Sklad_SPb_LeeDo).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
-                        $description .= '<p><strong>&#9989; В наличии на складе в Москве: '.round($product->Sklad_Msk_LeeDo)+round($product->Sklad_SPb_LeeDo).' '.$product->unit.'</strong> (актуально на '.$date.' — уточняйте перед заказом).</p>';
+                        $description .= '<p><strong>&#9989; В наличии на складе в Москве: '.round($product->Sklad_Msk_LeeDo).' '.$product->unit.'</strong> (актуально на '.$date.' — уточняйте перед заказом).</p>';
                     }
 
                     $description .= '<p><em>Цена указана за 1 '.$product->unit.'</em></p><ul>';
