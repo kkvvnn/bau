@@ -67,6 +67,7 @@
     @include('exports.avito.laparet-moscow.laparets')
     @include('exports.avito.laparet-moscow.olds')
     @include('exports.avito.laparet-moscow.pixmosaic')
+    @include('exports.avito.laparet-moscow.leedo')
 
 
     </tbody>
