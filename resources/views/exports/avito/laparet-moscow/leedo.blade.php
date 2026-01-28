@@ -165,7 +165,8 @@
                     }
 
                     $code = $product->System_ID . '_leedo_lz';
-                    $video = $custom_video;
+//                    $video = $custom_video;
+                    $video = '';
     @endphp
 
     @php
