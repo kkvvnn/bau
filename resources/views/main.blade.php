@@ -277,6 +277,34 @@
             margin-top: 11px;
         }
 
+
+        .telegram-float {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            width: 60px;
+            height: 60px;
+            background: #0088cc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        .telegram-float:hover {
+            background: #006699;
+            transform: scale(1.1);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 136, 204, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); }
+        }
+
+
     </style>
 
     @yield('styles')
@@ -557,6 +585,12 @@
 
 <main>
     @yield('content')
+
+    <a href="https://t.me/NovaTile?text=Здравствуйте. Пишу вам с service-plitka.ru. " target="_blank" class="telegram-float">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.05 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.535-.196 1.004.128.832.941z"/>
+        </svg>
+    </a>
 </main>
 
 <div class="container">
