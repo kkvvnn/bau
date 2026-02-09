@@ -197,6 +197,10 @@ Route::get('/pixmosaic/video/import', [\App\Http\Controllers\PixmosaicVideoContr
 //----- GLOBAL-TILE (Import from .xls via form) -----
 Route::view('/global-tile/import', 'global-tile.import');
 Route::post('/global-tile/import', [\App\Http\Controllers\GlobalTileController::class, 'import'])->name('global-tile.import');
+
+Route::view('/global-tile/import-price-stock', 'global-tile.import-price-stock');
+Route::post('/global-tile/import-price-stock', [\App\Http\Controllers\GlobalTileController::class, 'import_price_stock'])->name('global-tile.import-price-stock');
+
 Route::get('/global-tile', [\App\Http\Controllers\GlobalTileController::class, 'index'])->name('global-tile.index');
 Route::get('/global-tile/{slug:slug}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
 Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection');

@@ -103,13 +103,13 @@
                             $old_price = '';
                     @endphp
 
-                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price}} <small
-                            class="text-muted fw-light">₽/{{$product->unit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->adds->price}} <small
+                            class="text-muted fw-light">₽/{{$product->adds->unit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
 
                     <br>
 
 
-                    <h5 class="mt-4 mb-0">Москва: {{$product->balance}} {{$product->unit}} {{$vivod}}</h5>
+                    <h5 class="mt-4 mb-0">Москва: {{$product->adds->stock}} {{$product->adds->unit}} {{$vivod}}</h5>
 {{--                    @if ($stock_spb)--}}
 {{--                        <h5 class="mt-0 mb-0">СПб: {{$stock_spb}} {{$product->unit}} {{$vivod}}</h5>--}}
 {{--                    @endif--}}
@@ -117,7 +117,7 @@
 {{--                        <h5 class="mt-0 mb-0">Казань: {{$stock_kzn}} {{$product->unit}} {{$vivod}}</h5>--}}
 {{--                    @endif--}}
                     <p class="mt-4">Актуально на <span
-                            class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
+                            class="{{$text_color}} fw-bolder">{{$product->adds->updated_at->format('d.m.Y')}}</span></p>
 
 
                     {{--                    <a title="Whatsapp" href="whatsapp://send?phone=79373209953&text={{$product->Name}}">--}}

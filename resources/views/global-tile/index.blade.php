@@ -22,7 +22,7 @@
                     @php
                         $text_color = '';
                         $date_now = \Carbon\Carbon::now();
-                        $date_of_update = $product->updated_at;
+                        $date_of_update = $product->adds->updated_at;
                         $diff_days = $date_now->diffInDays($date_of_update);
 
                         if ($diff_days == 0) {
@@ -50,11 +50,11 @@
                                 </a>
                             </div>
                             <div class="card-footer">
-                                <h5 class="card-title pricing-card-title">{{$product->price}} <span class="text-muted fw-light">₽/{{$product->unit}}</span></h5>
+                                <h5 class="card-title pricing-card-title">{{$product->adds->price}} <span class="text-muted fw-light">₽/{{$product->adds->unit}}</span></h5>
 
-                                <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->balance}} {{$product->unit}}</p>
+                                <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->adds->stock}} {{$product->adds->unit}}</p>
 
-                                <small class="mb-0 fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->updated_at->format('d.m.Y')}}</span></small>
+                                <small class="mb-0 fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->adds->updated_at->format('d.m.Y')}}</span></small>
                             </div>
                         </div>
                     </div>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Imports\GlobalTileImport;
+use App\Imports\GlobalTilePriceStockImport;
 use App\Models\GlobalTile;
 use App\Models\GlobalTileNew;
+use App\Models\GlobalTilePriceStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -28,9 +30,26 @@ class GlobalTileController extends Controller
         return redirect()->route('global-tile.index')->with('success', 'Global Tile обновлено!');
     }
 
+    public function import_price_stock(Request $request)
+    {
+        $file = $request->file('file');
+
+        $date = date('Y-m-d_His');
+        $name = 'import/global-tile/';
+
+        Storage::putFileAs($name, $file,'global-tile-price-stock_'.$date.'.xls' );
+
+        $name_uploaded_file = 'import/global-tile/global-tile-price-stock_'.$date.'.xls';
+        GlobalTilePriceStock::truncate();
+        Excel::import(new GlobalTilePriceStockImport(), $name_uploaded_file);
+
+        return redirect()->route('global-tile.index')->with('success', 'Global Tile Price Stock обновлено обновлено!');
+    }
+
     public function index()
     {
-        $products = GlobalTileNew::where([
+        $products = GlobalTileNew::has('adds')
+            ->where([
 //            ['brand', 'GlobalTile'],
             ['Picture', '!=', ''],
         ])
@@ -87,7 +106,7 @@ class GlobalTileController extends Controller
 
         $text_color = '';
         $date_now = \Carbon\Carbon::now();
-        $date_of_update = $product->updated_at;
+        $date_of_update = $product->adds->updated_at;
         $diff_days = $date_now->diffInDays($date_of_update);
 
         if ($diff_days == 0) {
