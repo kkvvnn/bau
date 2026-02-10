@@ -146,6 +146,10 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
             ->where([
                 ['vendor_code', '!=', 'PIX700-2'],
                 ['vendor_code', '!=', 'PIX752'],
+                ['vendor_code', '!=', 'PIX767'],
+                ['vendor_code', '!=', 'PIX750'],
+                ['vendor_code', '!=', 'PIX700'],
+                ['vendor_code', '!=', 'PIX701'],
             ])
             ->get();
 
