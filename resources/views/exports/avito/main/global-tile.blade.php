@@ -92,12 +92,12 @@
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
         if ($product->balance > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->balance, 2).' '.$product->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->adds->stock, 2).' '.$product->adds->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
         }
 
 
         $description .= '<p>--------------------</p>';
-        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 '. $product->unit .' (есть доп скидки) &#9889;</strong></p>';
+        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 '. $product->adds->unit .' (есть доп скидки) &#9889;</strong></p>';
         $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
         $description .= '<p><strong>Сделаем индивидуальную скидку, обращайтесь в чат.</strong></p>';
         $description .= '<p><strong>Отгружаем кратно упаковкам. Минимальный заказ - от 1 упаковки</strong></p>';
@@ -445,7 +445,7 @@
     @endphp
 
     @php
-        $price_rrc = $product->price;
+        $price_rrc = $product->adds->price;
         $price_old = 0;
         $brand = 'Global Tile';
         $price = avito_price($price_rrc, $brand, $discounts, $price_old);

@@ -168,7 +168,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->get();
 
 //      ===================GLOBAL-TILE====================
-        $globaltile = GlobalTileNew::where([
+        $globaltile = GlobalTileNew::has('adds')
+            ->where([
             ['brand', 'GlobalTile'],
             ['Picture', '!=', ''],
             ['balance', '>', 10],

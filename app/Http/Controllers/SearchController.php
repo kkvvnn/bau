@@ -150,7 +150,7 @@ class SearchController extends Controller
             ]);
         }
 
-        $global_tile = GlobalTileNew::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+        $global_tile = GlobalTileNew::has('adds')->where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
         $global_tile->appends(['name' => $name]);
         if (count($global_tile)) {
             return view('global-tile.index', [

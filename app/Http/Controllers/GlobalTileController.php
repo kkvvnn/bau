@@ -72,7 +72,7 @@ class GlobalTileController extends Controller
 
     public function show($slug)
     {
-        $product = GlobalTileNew::whereSlug($slug)->firstOrFail();
+        $product = GlobalTileNew::has('adds')->whereSlug($slug)->firstOrFail();
 
         $string_for_delete = 'https://gallery.vogtrade.ru/wp-content/uploads/images/';
         $img = Storage::disk('global-tile')->url(Str::remove($string_for_delete, $product->Picture));
@@ -133,7 +133,7 @@ class GlobalTileController extends Controller
 
     public function collection($name)
     {
-        $products = GlobalTileNew::where('collection', 'LIKE', '%'.$name.'%')
+        $products = GlobalTileNew::has('adds')->where('collection', 'LIKE', '%'.$name.'%')
             ->paginate(15);
 
         return view('global-tile.index', compact('products'));
