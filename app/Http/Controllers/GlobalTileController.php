@@ -37,9 +37,9 @@ class GlobalTileController extends Controller
         $date = date('Y-m-d_His');
         $name = 'import/global-tile/';
 
-        Storage::putFileAs($name, $file,'global-tile-price-stock_'.$date.'.xls' );
+        Storage::putFileAs($name, $file,'global-tile-price-stock_'.$date .'.'. $file->extension() );
 
-        $name_uploaded_file = 'import/global-tile/global-tile-price-stock_'.$date.'.xls';
+        $name_uploaded_file = 'import/global-tile/global-tile-price-stock_'.$date .'.'. $file->extension();
         GlobalTilePriceStock::truncate();
         Excel::import(new GlobalTilePriceStockImport(), $name_uploaded_file);
 
