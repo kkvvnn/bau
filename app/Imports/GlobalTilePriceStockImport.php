@@ -34,7 +34,7 @@ class GlobalTilePriceStockImport implements ToModel, SkipsEmptyRows, WithUpserts
             'weight_pack' => $row[6],
             'price_rbc' => (int)$row[9]??0,
             'price' => (int)$row[10]??0,
-            'stock' => (int)$row[11]??0,
+            'stock' => (float)$row[11]??0,
 //            'price_rbc' => 111,
 //            'price' => 222,
 //            'stock' => 5000,
