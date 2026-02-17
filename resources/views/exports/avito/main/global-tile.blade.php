@@ -89,15 +89,17 @@
                 . $product->country . ')</strong></p>';
         }
 
+        $description .= '<p><strong>Персональная скидка</strong> — пишите объем, рассчитаем цену.</p>';
+
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
         if ($product->balance > 0) {
-            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->adds->stock, 2).' '.$product->adds->unit.' <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+            $description .= '<p>&#9989; На утро '.$date.' склад Москва '.round($product->adds->stock, 2).' '.$product->adds->unit.' <em>(информация приблизительная, уточняйте)</em></p>';
         }
 
 
         $description .= '<p>--------------------</p>';
-        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 '. $product->adds->unit .' (есть доп скидки) &#9889;</strong></p>';
+        $description .= '<p><strong>&#9889; Цена за 1 '. $product->adds->unit .' (есть доп скидки) &#9889;</strong></p>';
         $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
         $description .= '<p><strong>Сделаем индивидуальную скидку, обращайтесь в чат.</strong></p>';
         $description .= '<p><strong>Отгружаем кратно упаковкам. Минимальный заказ - от 1 упаковки</strong></p>';
@@ -119,9 +121,9 @@
             if($product->fat != null && $product->fat != 0) {
             $description .= '<li><strong>Толщина: </strong>' . $product->fat*100 . ' см </li>';
             }
-            if($product->type != null) {
-            $description .= '<li><strong>Место в коллекции: </strong>' . $product->type . '</li>';
-            }
+//            if($product->type != null) {
+//            $description .= '<li><strong>Место в коллекции: </strong>' . $product->type . '</li>';
+//            }
             if($product->design != null) {
             $description .= '<li><strong>Рисунок: </strong>' . $product->design . '</li>';
             }
@@ -134,9 +136,9 @@
             if($product->surface != null) {
             $description .= '<li><strong>Поверхность: </strong>' . $product->surface . '</li>';
             }
-            if($product->unit != null) {
-            $description .= '<li><strong>Единица измерения товара: </strong>' . $product->unit . '</li>';
-            }
+//            if($product->unit != null) {
+//            $description .= '<li><strong>Единица измерения товара: </strong>' . $product->unit . '</li>';
+//            }
             if($product->count_in_pack != null) {
             $description .= '<li><strong>Штук в упаковке: </strong>' . $product->count_in_pack . '</li>';
             }
@@ -147,7 +149,7 @@
             $description .= '<li><strong>Производитель: </strong>' . $product->brand . '</li>';
             }
             if($product->country != null) {
-            $description .= '<li><strong>Страна производства: </strong>' . $product->country . '</li>';
+            $description .= '<li><strong>Страна: </strong>' . $product->country . '</li>';
             }
 
             $description .= '</ul><br>';

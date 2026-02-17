@@ -175,6 +175,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['balance', '>', 10],
             ['vendor_code', '!=', 'GT60601903MR'],
             ['vendor_code', '!=', '9EM0000TG'],
+            ['price', '>', 600],
         ])
             ->get();
 
@@ -272,8 +273,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'aquafloor' => $aquafloor,
             'pixmosaics' => $pixmosaics,
             'artcenter' => $artcenter,
-//            'globaltile' => $globaltile,
-            'globaltile' => [],
+            'globaltile' => $globaltile,
             'kerranova' => $kerranova,
             'keramopro' => $keramopro,
             'kerabellezza' => $kerabellezza,
