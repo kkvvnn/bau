@@ -9,6 +9,7 @@
     @endisset
     <meta property="og:image" content="{{$urls[0]}}">
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="{{$urls[0]}}" />
 @endsection
 
 @section('title', $product->Name . ' | ' . $product->originals->Name)
