@@ -52,7 +52,8 @@ class ProductController extends Controller
     {
         $type = 'Laparet';
 
-        $products = Product::where([
+        $products = Product::has('originals')
+        ->where([
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', 'Laparet'],
             ['balanceCount', '>', 0],
@@ -94,7 +95,8 @@ class ProductController extends Controller
     {
         $type = 'Cersanit';
 
-        $products = Product::where([
+        $products = Product::has('originals')
+        ->where([
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', 'Cersanit'],
             ['balanceCount', '>', 0],
@@ -112,7 +114,8 @@ class ProductController extends Controller
     {
         $type = 'Vitra';
 
-        $products = Product::where([
+        $products = Product::has('originals')
+        ->where([
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', 'Vitra'],
             ['balanceCount', '>', 0],
@@ -160,7 +163,8 @@ class ProductController extends Controller
         $type = 'Ceradim';
 
 
-         $products = Product::where([
+         $products = Product::has('originals')
+         ->where([
              ['GroupProduct', '01 Плитка'],
              ['Name', 'not like', '%ставк%'],
              ['Name', 'not like', '%ступен%'],
@@ -227,7 +231,8 @@ class ProductController extends Controller
 //             ->paginate(15);
 //         dd($products);
 
-        $products = Product::where([['GroupProduct', '01 Плитка'],
+        $products = Product::has('originals')
+        ->where([['GroupProduct', '01 Плитка'],
             ['Producer_Brand', '=', 'Kerama Marazzi'],
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
@@ -256,7 +261,8 @@ class ProductController extends Controller
 //             ->paginate(15);
 //         dd($products);
 
-        $products = Product::where([['GroupProduct', '01 Плитка'],
+        $products = Product::has('originals')
+        ->where([['GroupProduct', '01 Плитка'],
             ['Producer_Brand', '=', 'Kerama Marazzi'],
             ['Category', '=', 'Керамогранит'],
             ['Name', 'not like', '%ставк%'],
@@ -418,9 +424,14 @@ class ProductController extends Controller
 //        dd($slug);
         $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
 
-//        $product = Product::findOrFail($slug);
-        $product = Product::whereSlug($slug)->firstOrFail();
-//        dd($product);
+//        $product = Product::whereSlug($slug)->firstOrFail();
+
+
+        $product = Product::whereHas('originals', function ($query) use ($slug) {
+            $query->whereSlug($slug);
+        })->firstOrFail();
+
+
         $collection = $product->collections;
 
         if (count($collection)) {

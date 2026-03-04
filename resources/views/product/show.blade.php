@@ -3,7 +3,7 @@
 @section('meta')
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{url()->full()}}">
-    <meta property="og:title" content="{{$product->Name}}">
+    <meta property="og:title" content="{{$product->Name}} | {{$product->originals->Name}}">
     @isset($collection[0])
         <meta property="og:description" content="Коллекция {{$product->Producer_Brand.' '.$collection[0]->Collection_Name}}">
     @endisset
@@ -36,6 +36,10 @@
             <div class="row">
                 <div class="col">
                     <h1 class="display-6">{{$product->Name}}</h1>
+
+                    @if($product->Name != $product->originals->Name)
+                        <h1 class="display-6  text-body-secondary">{{$product->originals->Name}}</h1>
+                    @endif
                     <hr>
                     <h1 class="display-6">{{$product->Producer_Brand}}</h1>
                     <p class="fs-2">Коллекция:

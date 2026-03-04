@@ -27,6 +27,11 @@
                 <div class="col">
                     <h1 class="display-6">{{$product->Name}}</h1>
 
+                    @if($product->Name != $product->originals->Name)
+                        <h1 class="display-6  text-body-secondary">{{$product->originals->Name}}</h1>
+                    @endif
+
+
                     <hr>
 
                     <h1 class="display-6">{{$product->Producer_Brand}}</h1>

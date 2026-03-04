@@ -31,9 +31,22 @@ class SearchController extends Controller
         $search_name = $name;
         $name = '%'.$name.'%';
 
-        $products = Product::where('Name', 'LIKE', $name)->paginate(15);
+//        $products = Product::where('Name', 'LIKE', $name)->paginate(15);
+//        $products->appends(['name' => $name]);
+//        if (count($products)) {
+//            return view('product.index', [
+//                'products' => $products,
+//                'search_name' => $search_name,
+//                'type' => 'search',
+//            ]);
+//        }
+
+        $products = Product::whereHas('originals', function ($query) use ($name) {
+            $query->where('Name', 'LIKE', $name);
+        })
+            ->orWhere('Name', 'LIKE', $name)
+            ->paginate(15);
         $products->appends(['name' => $name]);
-//        dd(count($products));
         if (count($products)) {
             return view('product.index', [
                 'products' => $products,

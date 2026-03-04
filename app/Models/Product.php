@@ -16,6 +16,11 @@ class Product extends Model
         return $this->belongsToMany(Collection::class, 'collection_product');
     }
 
+    public function originals(): HasOne
+    {
+        return $this->hasOne(BauOriginalName::class, 'Element_Code', 'Element_Code');
+    }
+
     public function spb(): HasOne
     {
         return $this->hasOne(BauserviceSpb::class, 'Element_Code', 'Element_Code');
