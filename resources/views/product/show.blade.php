@@ -10,7 +10,7 @@
     <meta property="og:image" content="{{$urls[0]}}">
 @endsection
 
-@section('title', $product->Name)
+@section('title', $product->Name . ' | ' . $product->originals->Name)
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
