@@ -8,6 +8,7 @@
         <meta property="og:description" content="Коллекция {{$product->Producer_Brand.' '.$collection[0]->Collection_Name}}">
     @endisset
     <meta property="og:image" content="{{$urls[0]}}">
+    <meta name="twitter:card" content="summary_large_image" />
 @endsection
 
 @section('title', $product->Name . ' | ' . $product->originals->Name)
