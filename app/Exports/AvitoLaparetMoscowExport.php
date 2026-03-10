@@ -87,8 +87,8 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
-            ['balanceCount', '>=', 2],
-            ['RMPrice', '>=', 1000],
+            ['balanceCount', '>=', 1],
+            ['RMPrice', '>=', 990],
             ['RMPrice', '!=', ''],
             ['Picture', '!=', ''],
         ])
