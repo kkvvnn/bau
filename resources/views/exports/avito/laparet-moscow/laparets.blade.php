@@ -117,7 +117,7 @@
                 . $product->Country_of_manufacture . ')</strong></p>';
 
             if($product->Name != $product->originals->Name) {
-                $description .= '<p>' .$product->originals->Name. '</p>';
+                $description .= '<p>' . $product->Producer_Brand . ' ' .$product->originals->Name. '</p>';
             }
 
         } else {
@@ -125,7 +125,7 @@
                 . $product->Country_of_manufacture . ')</strong></p>';
 
             if($product->Name != $product->originals->Name) {
-                $description .= '<p>' .$product->originals->Name. '</p>';
+                $description .= '<p>' . $product->Producer_Brand . ' ' .$product->originals->Name. '</p>';
             }
         }
 
