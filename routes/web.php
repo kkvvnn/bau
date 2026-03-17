@@ -211,7 +211,7 @@ Route::post('/global-tile/import-price-stock', [\App\Http\Controllers\GlobalTile
 
 Route::get('/global-tile', [\App\Http\Controllers\GlobalTileController::class, 'index'])->name('global-tile.index');
 Route::get('/global-tile/{slug:slug}', [\App\Http\Controllers\GlobalTileController::class, 'show'])->name('global-tile.show');
-Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection');
+Route::get('/global-tile/collection/{name}', [\App\Http\Controllers\GlobalTileController::class, 'collection'])->name('global-tile.collection')->where('name', '.*');
 
 //----- PRIMAVERA -----
 Route::name('primavera-new.')->group(function () {
