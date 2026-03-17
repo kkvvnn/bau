@@ -491,9 +491,9 @@
         }
 
 
-        if($product->Name != $product->originals->Name) {
-                $title .= ' (' . ($product->collections[0]->Collection_Name??' ') . ')';
-            }
+//        if($product->Name != $product->originals->Name) {
+//                $title .= ' (' . ($product->collections[0]->Collection_Name??' ') . ')';
+//            }
 
 
     @endphp
