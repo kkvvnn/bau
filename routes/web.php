@@ -297,7 +297,7 @@ Route::get('/kerabellezza/{id}', [\App\Http\Controllers\KerabellezzaController::
 //----- ARTKERA-NEW -----
 Route::get('/artkera', [\App\Http\Controllers\ArtkeraController::class, 'index'])->name('artkera.index');
 Route::get('/artkera/{slug:slug}', [\App\Http\Controllers\ArtkeraController::class, 'show'])->name('artkera.show');
-Route::get('/artkera/collection/{name}', [\App\Http\Controllers\ArtkeraController::class, 'collection'])->name('artkera.collection');
+Route::get('/artkera/collection/{name}', [\App\Http\Controllers\ArtkeraController::class, 'collection'])->name('artkera.collection')->where('name', '.*');
 
 
 //----- LEEDO-CARAMELLE (Import from auto-updated .json) -----
