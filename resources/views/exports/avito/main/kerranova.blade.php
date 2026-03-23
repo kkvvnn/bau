@@ -39,6 +39,8 @@
 
         $description .= '<p><strong>' . $product->category . ' ' . $product->title .  '</strong></p>';
 
+        $description .= '<p><strong>Индивидуальная скидка</strong> — укажите объем, рассчитаем цену.</p>';
+
         $description .= '<p>--------------------</p>';
         $date = date('d.m.Y');
         if ($product->props->balance > 0) {
