@@ -239,6 +239,11 @@
 
     @endphp
 
+    @php
+        $Promo = '';
+        $PromoManualOptions = '';
+    @endphp
+
     <tr>
         <td>{{ $code }}</td>                                    {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
@@ -292,6 +297,8 @@
         <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
         <td>{{ $MultiItem }}</td>                               {{-- MultiItem --}}
         <td>{{ $MultiName }}</td>                               {{-- MultiName --}}
+        <td>{{ $Promo }}</td>                                   {{-- Promo --}}
+        <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
     </tr>
 @endforeach
 {{-----PIXMOSAIC-END----}}

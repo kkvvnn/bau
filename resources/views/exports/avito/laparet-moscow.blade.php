@@ -55,6 +55,8 @@
         <th>TargetAudience</th>
         <th>MultiItem</th>
         <th>MultiName</th>
+        <th>Promo</th>
+        <th>PromoManualOptions</th>
     </tr>
     </thead>
     <tbody>

@@ -536,6 +536,11 @@
         $MultiName = '';
     @endphp
 
+    @php
+        $Promo = 'Manual';
+        $PromoManualOptions = '|6|600';
+    @endphp
+
     <tr>
         <td>{{ $code }}</td>                                    {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
@@ -589,6 +594,8 @@
         <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
         <td>{{ $MultiItem }}</td>                               {{-- MultiItem --}}
         <td>{{ $MultiName }}</td>                               {{-- MultiName --}}
+        <td>{{ $Promo }}</td>                                   {{-- Promo --}}
+        <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
     </tr>
 @endforeach
 {{------------------END-BAUSERVICE--------------------}}
