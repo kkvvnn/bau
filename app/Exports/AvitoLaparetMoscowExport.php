@@ -84,6 +84,7 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
 
         $laparets = Product::where([
             ['GroupProduct', '01 Плитка'],
+            ['Element_code', '!=', 'х9999282648'],
             ['Name', 'not like', '%ставк%'],
             ['Name', 'not like', '%ступен%'],
             ['Name', 'not like', '%пецэлем%'],
