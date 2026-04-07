@@ -48,11 +48,12 @@ class ArtcenterImport implements ToModel, WithUpserts, SkipsEmptyRows
             'square_in_pack' => str_replace('#NULL!', '', $row[15]),
             'images' => $this->images_to_array($row),
             'price' => (int)$row[20],
-            'kazan' => (float) str_replace('#NULL!', '', $row[21]),
-            'moscow' => (float) str_replace('#NULL!', '', $row[22]),
-            'nn' => (float) str_replace('#NULL!', '', $row[23]),
-            'samara' => (float) str_replace('#NULL!', '', $row[24]),
-            'spb' => (float) str_replace('#NULL!', '', $row[25]),
+//            'kazan' => (float) str_replace('#NULL!', '', $row[21]),
+            'kazan' => 0.0,
+            'moscow' => (float) str_replace('#NULL!', '', $row[21]),
+            'nn' => (float) str_replace('#NULL!', '', $row[22]),
+            'samara' => (float) str_replace('#NULL!', '', $row[23]),
+            'spb' => (float) str_replace('#NULL!', '', $row[24]),
         ]);
     }
 
