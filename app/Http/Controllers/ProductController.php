@@ -52,13 +52,12 @@ class ProductController extends Controller
     {
         $type = 'Laparet';
 
-        $products = Product::has('originals')
-        ->where([
+        $products = Product::where([
             ['GroupProduct', '01 Плитка'],
             ['Producer_Brand', 'Laparet'],
             ['balanceCount', '>', 0],
             ['RMPrice', '!=', ''],
-            ['Picture', '!=', ''],
+//            ['Picture', '!=', ''],
         ])
             ->whereColumn('RMPrice', '>', 'Price')
             ->orderByRaw('Lenght * Height DESC')
@@ -429,7 +428,9 @@ class ProductController extends Controller
 
         $product = Product::whereHas('originals', function ($query) use ($slug) {
             $query->whereSlug($slug);
-        })->firstOrFail();
+        })
+            ->orWhere('slug', $slug)
+            ->firstOrFail();
 
 
         $collection = $product->collections;

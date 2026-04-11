@@ -94,7 +94,11 @@
                     <div class="col">
                         <div class="card h-100">
                             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                            <a href="/product/{{$product->originals->slug}}">
+                            @if($product->originals)
+                                <a href="/product/{{$product->originals->slug}}">
+                            @else
+                                <a href="/product/{{$product->slug}}">
+                            @endif
                                 @if($product->Novinka)
                                 <span class="bag-image">
                                     <img src="{{$url1}}" class="card-img-top" alt="...">
@@ -108,14 +112,18 @@
                                 @endif
                             </a>
                             <div class="card-body">
-                                <a href="/product/{{$product->originals->slug}}" class="text-decoration-none text-reset">
+                                @if($product->originals)
+                                    <a href="/product/{{$product->originals->slug}}" class="text-decoration-none text-reset"></a>
+                                @else
+                                    <a href="/product/{{$product->slug}}" class="text-decoration-none text-reset"></a>
+                                @endif
                                     <h5 class="card-title">{{$product->Producer_Brand}} {{$product->Name}}</h5>
 
-                                    @if($product->Name != $product->originals->Name)
+                                    @if($product->originals && $product->Name != $product->originals->Name)
                                         <h5 class="card-title text-body-secondary">( {{$product->originals->Name}} )</h5>
                                     @endif
 
-                                </a>
+
                             </div>
                             <div class="card-footer">
                                 <h5 class="card-title pricing-card-title">{{$product->RMPrice}} <span class="text-muted fw-light">₽/{{$product->MainUnit}}</span> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h5>
