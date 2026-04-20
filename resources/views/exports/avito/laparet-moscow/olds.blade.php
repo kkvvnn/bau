@@ -65,7 +65,7 @@
 
     @php
         $Promo = 'Manual';
-        $PromoManualOptions = '|12|500';
+        $PromoManualOptions = '|10|500';
     @endphp
 
     <tr>
