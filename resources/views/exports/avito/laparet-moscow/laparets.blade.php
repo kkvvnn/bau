@@ -2,7 +2,12 @@
 @foreach($laparets as $product)
 
     @php
-        $product_type = avito_type($product->originals->Name);
+        if (isset($product->originals->Name)) {
+            $use_name = $product->originals->Name;
+        } else {
+            $use_name = $product->Name;
+        }
+        $product_type = avito_type($use_name);
 
         switch ($product_type) {
             case 'Керамогранит':
@@ -13,10 +18,10 @@
                 $TileType = '';
                 $SpaceType = '';
                 $InstallationType = avito_bauservice_for($product->Architectural_surface);
-                $Width = avito_bauservice_size($product->Height, 5, 200, $product->originals->Name, 'W');
-                $Length = avito_bauservice_size($product->Lenght, 5, 400, $product->originals->Name, 'L');
+                $Width = avito_bauservice_size($product->Height, 5, 200, $use_name, 'W');
+                $Length = avito_bauservice_size($product->Lenght, 5, 400, $use_name, 'L');
                 $Thickness = avito_bauservice_height($product->Thickness, 2, 30);
-                $Pattern = avito_bauservice_pattern($product->originals->Name, $product->DesignValue);
+                $Pattern = avito_bauservice_pattern($use_name, $product->DesignValue);
                 $Color = avito_bauservice_color($product->Color);
                 $ColorName = $Color;
                 break;
@@ -25,13 +30,13 @@
                 $FinishingMaterialsType = 'Керамическая плитка и керамогранит';
                 $CeramicPorcelainTilesSubType = 'Керамическая плитка';
                 $Brand = $product->Producer_Brand;
-                $TileType = avito_tile_type($product->originals->Name);
+                $TileType = avito_tile_type($use_name);
                 $SpaceType = avito_bauservice_space_type($product->Field_of_Application);
                 $InstallationType = avito_bauservice_for($product->Architectural_surface);
-                $Width = avito_bauservice_size($product->Height, 0, 150, $product->originals->Name, 'W');
-                $Length = avito_bauservice_size($product->Lenght, 1, 400, $product->originals->Name, 'L');
+                $Width = avito_bauservice_size($product->Height, 0, 150, $use_name, 'W');
+                $Length = avito_bauservice_size($product->Lenght, 1, 400, $use_name, 'L');
                 $Thickness = '';
-                $Pattern = avito_bauservice_pattern($product->originals->Name, $product->DesignValue);
+                $Pattern = avito_bauservice_pattern($use_name, $product->DesignValue);
                 $Color = avito_bauservice_color($product->Color);
                 $ColorName = $Color;
                 break;
@@ -116,16 +121,16 @@
             $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Producer_Brand . ' ' . $product->Name .  ' ('
                 . $product->Country_of_manufacture . ')</strong></p>';
 
-            if($product->Name != $product->originals->Name) {
-                $description .= '<p>' . $product->Producer_Brand . ' ' .$product->originals->Name. '</p>';
+            if($product->Name != $use_name) {
+                $description .= '<p>' . $product->Producer_Brand . ' ' .$use_name. '</p>';
             }
 
         } else {
             $description .= '<p><strong>' . $product->Producer_Brand . ' ' . $product->Name .  ' ('
                 . $product->Country_of_manufacture . ')</strong></p>';
 
-            if($product->Name != $product->originals->Name) {
-                $description .= '<p>' . $product->Producer_Brand . ' ' .$product->originals->Name. '</p>';
+            if($product->Name != $use_name) {
+                $description .= '<p>' . $product->Producer_Brand . ' ' .$use_name. '</p>';
             }
         }
 
@@ -253,13 +258,13 @@
     @php
         $keywords = '';
 
-        if (stripos($product->originals->Name, 'екор') !== false) {
+        if (stripos($use_name, 'екор') !== false) {
             $type = 'декор';
-        } elseif (stripos($product->originals->Name, 'озаика') !== false) {
+        } elseif (stripos($use_name, 'озаика') !== false) {
             $type = 'мозаика';
-        } elseif (stripos($product->originals->Name, 'литка') !== false) {
+        } elseif (stripos($use_name, 'литка') !== false) {
             $type = 'керамическая плитка';
-        } elseif (stripos($product->originals->Name, 'ерамогранит') !== false) {
+        } elseif (stripos($use_name, 'ерамогранит') !== false) {
             $type = 'керамогранит';
         } else {
             $type = '';
@@ -385,7 +390,7 @@
             $keywords .= $type . ' под мрамор черный ';
         }
 
-        if (stripos($product->originals->Name, 'alacatta') || stripos($product->originals->Name, 'alacata')) {
+        if (stripos($use_name, 'alacatta') || stripos($use_name, 'alacata')) {
             $keywords .= ' керамогранит калаката плитка калаката керамогранит калакатта плитка калакатта';
         }
 
@@ -472,7 +477,7 @@
     @endphp
 
     @php
-        $title = $product->originals->Name;
+        $title = $use_name;
         if (mb_strlen($title) > 100) {
             $title = str_replace('Полированный', 'полир.', $title);
             $title = str_replace('полированный', 'полир.', $title);
@@ -491,7 +496,7 @@
         }
 
 
-//        if($product->Name != $product->originals->Name) {
+//        if($product->Name != $use_name) {
 //                $title .= ' (' . ($product->collections[0]->Collection_Name??' ') . ')';
 //            }
 
