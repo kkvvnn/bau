@@ -543,7 +543,7 @@
 
     @php
         $Promo = 'Manual';
-        $PromoManualOptions = '|5|600';
+        $PromoManualOptions = '|6|600';
     @endphp
 
     <tr>
