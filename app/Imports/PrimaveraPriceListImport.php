@@ -20,6 +20,7 @@ class PrimaveraPriceListImport implements ToModel, WithUpserts, WithHeadingRow
         return new PrimaveraPriceList([
             'vendor_code' => $row['vendor_code'],
             'title' => $row['title'],
+            'new_title' => $row['new_title'],
             'unit' => $row['unit'],
             'price' => (int) $row['price'],
             'price_opt' => (int) $row['price_opt'],
