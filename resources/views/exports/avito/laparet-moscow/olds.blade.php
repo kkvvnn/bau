@@ -1,7 +1,7 @@
 {{-----------------OLDS--------------------}}
 @foreach($olds as $old)
     @php
-        $price = '';
+        $price = '1590';
         $title = $old->Title;
 
         $img_full = $old->ImageUrls;
