@@ -542,11 +542,11 @@
     @endphp
 
     @php
-//        $Promo = 'Manual';
-//        $PromoManualOptions = '|6|600';
+        $Promo = 'Manual';
+        $PromoManualOptions = '|7|500';
 
-        $Promo = '';
-        $PromoManualOptions = '';
+//        $Promo = '';
+//        $PromoManualOptions = '';
     @endphp
 
     <tr>

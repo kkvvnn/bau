@@ -163,6 +163,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
         $artcenter = ArtCentreNew::where([
             ['brand', 'Art Ceramic'],
             ['moscow', '>=', 10],
+            ['price', '>=', 1600],
             ['code', '!=', 'ЦБ-00043906'],
         ])
             ->get();
