@@ -353,7 +353,7 @@ class ProductController extends Controller
         $type = 'sale';
 
         $products = Product::whereRaw('(RMPriceOld - RMPrice) > 0')
-            ->whereRaw('balanceCount > 10')
+            ->whereRaw('balanceCount > 1')
             ->whereRaw('Name not like "%екор%"')
             ->whereRaw('Name not like "%ордюр%"')
             ->orderByRaw('Lenght * Height DESC')
