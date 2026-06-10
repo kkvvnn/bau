@@ -147,7 +147,7 @@
     @php
         $code = 'Kutahya-usak-Hand';
         $video = $custom_video;
-        $price = '';
+        $price = '1590';
         $title = 'Керамогранит NG KUTAHYA SERAMIK USAK SERAMIK Турция';
     @endphp
 

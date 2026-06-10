@@ -224,7 +224,7 @@
     @php
         $code = 'NT-Ceramic-Hand';
         $video = $custom_video;
-        $price = '';
+        $price = '1590';
         $title = 'NT Ceramic все коллекции';
     @endphp
 

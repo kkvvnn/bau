@@ -62,7 +62,7 @@
     @php
         $code = 'general-hand';
         $video = $custom_video;
-        $price = '';
+        $price = '1590';
         $title = 'Керамогранит, плитка, мозаика, ламинат, кварцвинил — всё для ремонта!';
     @endphp
 

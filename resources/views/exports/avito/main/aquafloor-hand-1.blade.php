@@ -227,7 +227,7 @@
     @php
         $code = 'Aquafloor-Hand-1';
         $video = $custom_video;
-        $price = '';
+        $price = '1590';
         $title = 'Кварцвинил Aquafloor все коллекции - 1';
     @endphp
 
