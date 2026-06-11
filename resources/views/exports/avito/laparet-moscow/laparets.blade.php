@@ -549,6 +549,56 @@
 //        $PromoManualOptions = '';
     @endphp
 
+    @php
+        $WholesaleType = '';
+        $WholesaleMinOrderType = '';
+        $WholesaleMinOrderCount = '';
+        $WholesalePacking = '';
+        $WholesalePackingCount = '';
+        $WholesaleMeasureUnit = '';
+        $WholesaleDiscountLadderType = '';
+        $DiscountLadderList = '';
+    @endphp
+
+    @php
+        if ($product->Element_Code == 'х9999275882') {
+            $WholesaleType = 'Да';
+            $WholesaleMinOrderType = 'От суммы';
+            $WholesaleMinOrderCount = '1000';
+            $WholesalePacking = '';
+            $WholesalePackingCount = '';
+            $WholesaleMeasureUnit = 'Метр квадратный';
+            $WholesaleDiscountLadderType = 'Зависит от суммы';
+            $DiscountLadderList = '1000|10<br>5000|15';
+        }
+    @endphp
+
+    @php
+        if ($product->Element_Code == 'х9999311686') {
+            $WholesaleType = 'Да';
+            $WholesaleMinOrderType = 'От количества';
+            $WholesaleMinOrderCount = '2';
+            $WholesalePacking = '';
+            $WholesalePackingCount = '';
+            $WholesaleMeasureUnit = 'Метр квадратный';
+            $WholesaleDiscountLadderType = 'Зависит от суммы';
+            $DiscountLadderList = '1000|10<br>5000|15';
+        }
+    @endphp
+
+    @php
+        if ($product->Element_Code == 'х9999316107') {
+            $WholesaleType = 'Да';
+            $WholesaleMinOrderType = 'От количества';
+            $WholesaleMinOrderCount = '2';
+            $WholesalePacking = '';
+            $WholesalePackingCount = '';
+            $WholesaleMeasureUnit = 'Метр квадратный';
+            $WholesaleDiscountLadderType = 'Зависит от количества';
+            $DiscountLadderList = '3|10<br>10|15';
+        }
+    @endphp
+
     <tr>
         <td>{{ $code }}</td>                                    {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
@@ -604,6 +654,14 @@
         <td>{{ $MultiName }}</td>                               {{-- MultiName --}}
         <td>{{ $Promo }}</td>                                   {{-- Promo --}}
         <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
+        <td>{{ $WholesaleType }}</td>                           {{-- WholesaleType --}}
+        <td>{{ $WholesaleMinOrderType }}</td>                   {{-- WholesaleMinOrderType --}}
+        <td>{{ $WholesaleMinOrderCount }}</td>                  {{-- WholesaleMinOrderCount --}}
+        <td>{{ $WholesalePacking }}</td>                        {{-- WholesalePacking --}}
+        <td>{{ $WholesalePackingCount }}</td>                   {{-- WholesalePackingCount --}}
+        <td>{{ $WholesaleMeasureUnit }}</td>                    {{-- WholesaleMeasureUnit --}}
+        <td>{{ $WholesaleDiscountLadderType }}</td>             {{-- WholesaleDiscountLadderType --}}
+        <td>{!! nl2br($DiscountLadderList) !!}</td>                      {{-- DiscountLadderList --}}
     </tr>
 @endforeach
 {{------------------END-BAUSERVICE--------------------}}

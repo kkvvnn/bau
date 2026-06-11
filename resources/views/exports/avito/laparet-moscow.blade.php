@@ -57,6 +57,14 @@
         <th>MultiName</th>
         <th>Promo</th>
         <th>PromoManualOptions</th>
+        <th>WholesaleType</th>
+        <th>WholesaleMinOrderType</th>
+        <th>WholesaleMinOrderCount</th>
+        <th>WholesalePacking</th>
+        <th>WholesalePackingCount</th>
+        <th>WholesaleMeasureUnit</th>
+        <th>WholesaleDiscountLadderType</th>
+        <th>DiscountLadderList</th>
     </tr>
     </thead>
     <tbody>

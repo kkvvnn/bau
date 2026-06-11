@@ -217,6 +217,17 @@
         $PromoManualOptions = '';
     @endphp
 
+    @php
+        $WholesaleType = '';
+        $WholesaleMinOrderType = '';
+        $WholesaleMinOrderCount = '';
+        $WholesalePacking = '';
+        $WholesalePackingCount = '';
+        $WholesaleMeasureUnit = '';
+        $WholesaleDiscountLadderType = '';
+        $DiscountLadderList = '';
+    @endphp
+
     <tr>
         <td>{{ $code }}</td>                                    {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
@@ -272,6 +283,14 @@
         <td>{{ $MultiName }}</td>                               {{-- MultiName --}}
         <td>{{ $Promo }}</td>                                   {{-- Promo --}}
         <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
+        <td>{{ $WholesaleType }}</td>                           {{-- WholesaleType --}}
+        <td>{{ $WholesaleMinOrderType }}</td>                   {{-- WholesaleMinOrderType --}}
+        <td>{{ $WholesaleMinOrderCount }}</td>                  {{-- WholesaleMinOrderCount --}}
+        <td>{{ $WholesalePacking }}</td>                        {{-- WholesalePacking --}}
+        <td>{{ $WholesalePackingCount }}</td>                   {{-- WholesalePackingCount --}}
+        <td>{{ $WholesaleMeasureUnit }}</td>                    {{-- WholesaleMeasureUnit --}}
+        <td>{{ $WholesaleDiscountLadderType }}</td>             {{-- WholesaleDiscountLadderType --}}
+        <td>{{ $DiscountLadderList }}</td>                      {{-- DiscountLadderList --}}
     </tr>
 @endforeach
 {{-----LEEDO-END----}}
