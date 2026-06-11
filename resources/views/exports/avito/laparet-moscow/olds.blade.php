@@ -82,6 +82,17 @@
         $DiscountLadderList = '';
     @endphp
 
+    @php
+        $WholesaleType = 'Да';
+        $WholesaleMinOrderType = 'От количества';
+        $WholesaleMinOrderCount = '1';
+        $WholesalePacking = '';
+        $WholesalePackingCount = '';
+        $WholesaleMeasureUnit = 'Метр квадратный';
+        $WholesaleDiscountLadderType = 'Зависит от суммы';
+        $DiscountLadderList = '10000|10<br>50000|15<br>100000|20';
+    @endphp
+
     <tr>
         <td>{{ $old->Id_av }}</td>                              {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
