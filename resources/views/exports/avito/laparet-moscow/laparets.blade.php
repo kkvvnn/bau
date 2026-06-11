@@ -560,44 +560,44 @@
         $DiscountLadderList = '';
     @endphp
 
+{{--    @php--}}
+{{--        if ($product->Element_Code == 'х9999275882') {--}}
+{{--            $WholesaleType = 'Да';--}}
+{{--            $WholesaleMinOrderType = 'От суммы';--}}
+{{--            $WholesaleMinOrderCount = '1000';--}}
+{{--            $WholesalePacking = '';--}}
+{{--            $WholesalePackingCount = '';--}}
+{{--            $WholesaleMeasureUnit = 'Метр квадратный';--}}
+{{--            $WholesaleDiscountLadderType = 'Зависит от суммы';--}}
+{{--            $DiscountLadderList = '1000|10<br>5000|15';--}}
+{{--        }--}}
+{{--    @endphp--}}
+
     @php
-        if ($product->Element_Code == 'х9999275882') {
+        if ($price_old == 0 || $price_old == $price) {
             $WholesaleType = 'Да';
-            $WholesaleMinOrderType = 'От суммы';
-            $WholesaleMinOrderCount = '1000';
+            $WholesaleMinOrderType = 'От количества';
+            $WholesaleMinOrderCount = '1';
             $WholesalePacking = '';
             $WholesalePackingCount = '';
             $WholesaleMeasureUnit = 'Метр квадратный';
             $WholesaleDiscountLadderType = 'Зависит от суммы';
-            $DiscountLadderList = '1000|10<br>5000|15';
+            $DiscountLadderList = '10000|10<br>50000|15<br>100000|20';
         }
     @endphp
 
-    @php
-        if ($product->Element_Code == 'х9999311686') {
-            $WholesaleType = 'Да';
-            $WholesaleMinOrderType = 'От количества';
-            $WholesaleMinOrderCount = '2';
-            $WholesalePacking = '';
-            $WholesalePackingCount = '';
-            $WholesaleMeasureUnit = 'Метр квадратный';
-            $WholesaleDiscountLadderType = 'Зависит от суммы';
-            $DiscountLadderList = '1000|10<br>5000|15';
-        }
-    @endphp
-
-    @php
-        if ($product->Element_Code == 'х9999316107') {
-            $WholesaleType = 'Да';
-            $WholesaleMinOrderType = 'От количества';
-            $WholesaleMinOrderCount = '2';
-            $WholesalePacking = '';
-            $WholesalePackingCount = '';
-            $WholesaleMeasureUnit = 'Метр квадратный';
-            $WholesaleDiscountLadderType = 'Зависит от количества';
-            $DiscountLadderList = '3|10<br>10|15';
-        }
-    @endphp
+{{--    @php--}}
+{{--        if ($product->Element_Code == 'х9999316107') {--}}
+{{--            $WholesaleType = 'Да';--}}
+{{--            $WholesaleMinOrderType = 'От количества';--}}
+{{--            $WholesaleMinOrderCount = '2';--}}
+{{--            $WholesalePacking = '';--}}
+{{--            $WholesalePackingCount = '';--}}
+{{--            $WholesaleMeasureUnit = 'Метр квадратный';--}}
+{{--            $WholesaleDiscountLadderType = 'Зависит от количества';--}}
+{{--            $DiscountLadderList = '3|10<br>10|15';--}}
+{{--        }--}}
+{{--    @endphp--}}
 
     <tr>
         <td>{{ $code }}</td>                                    {{-- Id --}}
