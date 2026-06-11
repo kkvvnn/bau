@@ -661,7 +661,7 @@
         <td>{{ $WholesalePackingCount }}</td>                   {{-- WholesalePackingCount --}}
         <td>{{ $WholesaleMeasureUnit }}</td>                    {{-- WholesaleMeasureUnit --}}
         <td>{{ $WholesaleDiscountLadderType }}</td>             {{-- WholesaleDiscountLadderType --}}
-        <td>{!! nl2br($DiscountLadderList) !!}</td>                      {{-- DiscountLadderList --}}
+        <td>{!! nl2br($DiscountLadderList) !!}</td>             {{-- DiscountLadderList --}}
     </tr>
 @endforeach
 {{------------------END-BAUSERVICE--------------------}}
