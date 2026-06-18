@@ -115,24 +115,28 @@
 
 
 
-
-
         if ($product->Novinka == 1) {
-            $description .= '<p>&#9889;Новинка&#9889; <strong>' . $product->Producer_Brand . ' ' . $product->Name .  ' ('
-                . $product->Country_of_manufacture . ')</strong></p>';
-
-            if($product->Name != $use_name) {
-                $description .= '<p>' . $product->Producer_Brand . ' ' .$use_name. '</p>';
-            }
-
+            $novinka = '&#9889;Новинка&#9889; ';
         } else {
-            $description .= '<p><strong>' . $product->Producer_Brand . ' ' . $product->Name .  ' ('
-                . $product->Country_of_manufacture . ')</strong></p>';
+            $novinka = '';
+        }
 
-            if($product->Name != $use_name) {
-                $description .= '<p>' . $product->Producer_Brand . ' ' .$use_name. '</p>';
+        if($product->Name != $use_name) {
+            $brand_name = $product->Producer_Brand;
+            if ($brand_name == 'Laparet') {
+                $brand_name = 'Лапарет';
+            } elseif ($brand_name == 'Ceradim') {
+                $brand_name = 'Керадим';
             }
         }
+
+        $description .= '<p>'.$novinka.'<strong>' . $brand_name . ' ' . $product->Name .  ' ('
+                . $product->Country_of_manufacture . ')</strong></p>';
+
+        if($product->Name != $use_name) {
+            $description .= '<p>' . $product->Producer_Brand . ' ' .$use_name. '</p>';
+        }
+
 
         $description .= '<p><strong>Персональная скидка</strong> — пишите объем, рассчитаем цену.</p>';
 
@@ -144,7 +148,7 @@
 
         if ($product->balanceCount > 0) {
 //                $description .= '<p>&#9989; На утро '.$date.' в Москве '.round($product->balanceCount).' '.$product->MainUnit.' <em>(уточняйте)</em></p>';
-            $description .= '<p><strong>&#9989; В наличии на складе в Москве: '.round($product->balanceCount).' '.$product->MainUnit.'</strong> (актуально на '.$date.' — уточняйте перед заказом).</p>';
+            $description .= '<p><strong>&#9989; Склад Москва: '.round($product->balanceCount).' '.$product->MainUnit.'</strong> (актуально на '.$date.' — уточняйте).</p>';
         }
 
 
@@ -168,7 +172,8 @@
         $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.' (без учета доп скидки)</em></p>';
         $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
         $description .= '<p><strong>Под каждый проект действуют индивидуальные условия</strong></p>';
-        $description .= '<p>Отгружаем кратно упаковкам. Минимальный заказ - от 1 упаковки. Скидка рассчитывается индивидуально.</p>';
+        $description .= '<p>Кратно упаковкам. Минимальный заказ - от 1 упаковки.</p>';
+        $description .= '<p><strong>Оплата при получении.</strong></p>';
         $description .= '<p>--------------------</p>';
 
 
@@ -231,10 +236,10 @@
         $description .= '<p>&#128142; <strong>Наши преимущества:</strong></p><ul>';
         $description .= '<li>Надежная компания, опыт работы более 15 лет</li>';
         $description .= '<li>Выгодные скидки: больше объем - больше скидка!</li>';
-        $description .= '<li>Быстрая доставка: Возможна уже на следующий день</li>';
-        $description .= '<li>Несколько шоурумов: все образцы в одном месте</li>';
+        $description .= '<li>Быстрая доставка</li>';
+        $description .= '<li>Несколько шоурумов: керамогранит, ламинат, кварцвинил, паркет.</li>';
         $description .= '<li>Есть пункт самовывоза - поможем с погрузкой. Или доставим до адреса</li>';
-        $description .= '<li>Специальные условия и бонусы для постоянных клиентов, дизайнеров, строителей</li>';
+//        $description .= '<li>Специальные условия и бонусы для постоянных клиентов, дизайнеров, строителей</li>';
         $description .= '</ul>';
 
         $description .= '<p><em>Так же в наличии другие бренды: Kerama Marazzi Керама Марацци , Vitra Витра , Primavera Примавера , GlobalTile ГлобалТайл , NT CERAMIC НТ КЕРАМИК , Delacora Делакора, LCM ЛЦМ, EMPERO ЭМПЕРО, и многие другие</em></p>';
@@ -395,9 +400,9 @@
         }
 
         if ($type != 'декор') {
-            $description .= '<p>_____________________</p>';
-            $dop_description = ' керамогранит для ванной керамогранит на фартук плитка в санузел керамогранит купить керамагранит керамическая плитка под дерево керамогранит под бетон глянцевый керамогранит глянцевый матовый керамогранит керамогранит карвинг carving плитка в ванну плитка в ванную комнату ';
-            $description .= '<p><em>' . $keywords . $dop_description . '</em></p>';
+            $description .= '<p>--------------------</p>';
+            $dop_description = ' керамогранит для ванной керамогранит на фартук плитка в санузел керамогранит купить керамагранит керамическая плитка под дерево керамогранит под бетон глянцевый керамогранит глянцевый матовый керамогранит керамогранит карвинг керамагранит лапарет керамагранит laparet керамагранит carving плитка в ванну плитка в ванную комнату керамогранит лапарет плитка лапарет кафель керамогранит laparet керамогранит кафельная плитка лапарет плитка керамогранит лапарет керамогранит';
+            $description .= '<p>' . $keywords . $dop_description . '</p>';
         }
     @endphp
 
