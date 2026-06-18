@@ -275,17 +275,17 @@
             $type = '';
         }
 
-        if ((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {
-            $naznachenie = $type . ' для пола ' . $type . ' для ванной комнаты';
-        } elseif (stripos($product->Field_of_Application, 'пол') !== false) {
-            $naznachenie = $type . ' для пола';
-        } elseif (stripos($product->Field_of_Application, 'ван') !== false) {
-            $naznachenie = $type . ' для ванной комнаты';
-        } else {
-            $naznachenie = '';
-        }
-
-        $keywords .= $naznachenie . ' ';
+//        if ((stripos($product->Field_of_Application, 'пол') !== false) && (stripos($product->Field_of_Application, 'ван') !== false)) {
+//            $naznachenie = $type . ' для пола ' . $type . ' для ванной комнаты';
+//        } elseif (stripos($product->Field_of_Application, 'пол') !== false) {
+//            $naznachenie = $type . ' для пола';
+//        } elseif (stripos($product->Field_of_Application, 'ван') !== false) {
+//            $naznachenie = $type . ' для ванной комнаты';
+//        } else {
+//            $naznachenie = '';
+//        }
+//
+//        $keywords .= $naznachenie . ' ';
 
         if (stripos($product->DesignValue, 'Дерев') !== false) {
             $pod = $type . ' под дерево';
@@ -303,22 +303,22 @@
 
         $keywords .= $pod . ' ';
 
-        $lenght = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
-        $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);
-
-        $size = '';
-        $size .= $type . ' ' . $lenght . 'х' . $height . ' ';
-        if ($lenght != $height) {
-            $size .= $type . ' ' . $height . 'х' . $lenght . ' ';
-        }
-        $size .= $type . ' ' . $lenght . '*' . $height . ' ';
-        if ($lenght != $height) {
-            $size .= $type . ' ' . $height . '*' . $lenght . ' ';
-        }
-
-        if ($product->Height != 0 && $product->Lenght != 0) {
-            $keywords .= $size;
-        }
+//        $lenght = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
+//        $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);
+//
+//        $size = '';
+//        $size .= $type . ' ' . $lenght . 'х' . $height . ' ';
+//        if ($lenght != $height) {
+//            $size .= $type . ' ' . $height . 'х' . $lenght . ' ';
+//        }
+//        $size .= $type . ' ' . $lenght . '*' . $height . ' ';
+//        if ($lenght != $height) {
+//            $size .= $type . ' ' . $height . '*' . $lenght . ' ';
+//        }
+//
+//        if ($product->Height != 0 && $product->Lenght != 0) {
+//            $keywords .= $size;
+//        }
 
         if ($product->Producer_Brand == 'Laparet') {
             $keywords .= $type . ' лапарет ';
@@ -348,60 +348,60 @@
         $keywords .= $type . ' ' .mb_strtolower($surf) . ' ';
 
 
-        if (stripos($product->Architectural_surface, 'Стена') !== false) {
-            $keywords .= $type . ' для стен' . ' ';
-        }
-        if (stripos($product->Architectural_surface, 'Пол') !== false) {
-            $keywords .= $type . ' для пола' . ' ';
-        }
+//        if (stripos($product->Architectural_surface, 'Стена') !== false) {
+//            $keywords .= $type . ' для стен' . ' ';
+//        }
+//        if (stripos($product->Architectural_surface, 'Пол') !== false) {
+//            $keywords .= $type . ' для пола' . ' ';
+//        }
 
         $keywords .= ' плитка керамическая плитка ';
 
-        $color_baza = $product->Color;
-        $color = '';
-
-        if ($color_baza != null) {
-            if ($type == 'мозаика' || $type == 'керамическая плитка') {
-                $color = str_replace('ый', 'ая', $color_baza);
-                $color = str_replace('ой', 'ая', $color);
-                $color = str_replace('ий', 'яя', $color);
-            }
-            if ($type == 'керамогранит') {
-                $color = $color_baza;
-            }
-        }
-        $keywords .= $type . ' ' .mb_strtolower($color) . ' ';
+//        $color_baza = $product->Color;
+//        $color = '';
+//
+//        if ($color_baza != null) {
+//            if ($type == 'мозаика' || $type == 'керамическая плитка') {
+//                $color = str_replace('ый', 'ая', $color_baza);
+//                $color = str_replace('ой', 'ая', $color);
+//                $color = str_replace('ий', 'яя', $color);
+//            }
+//            if ($type == 'керамогранит') {
+//                $color = $color_baza;
+//            }
+//        }
+//        $keywords .= $type . ' ' .mb_strtolower($color) . ' ';
 
         $keywords .= $product->Producer_Brand . ' ' . $type . ' ';
 
-        $owner_code = $product->Owner_Article;
-        if ($owner_code != null) {
-            $keywords .= $type . ' ' . $owner_code . ' ';
+//        $owner_code = $product->Owner_Article;
+//        if ($owner_code != null) {
+//            $keywords .= $type . ' ' . $owner_code . ' ';
+//        }
+
+//        $country = $product->Country_of_manufacture;
+//
+//        if ($country != null) {
+//            $keywords .= $type . ' ' . $country . ' ';
+//        }
+
+        if (/*$product->Color == 'Белый' && */$product->DesignValue == 'Мрамор') {
+            $keywords .= ' под мрамор ';
         }
 
-        $country = $product->Country_of_manufacture;
-
-        if ($country != null) {
-            $keywords .= $type . ' ' . $country . ' ';
-        }
-
-        if ($product->Color == 'Белый' && $product->DesignValue == 'Мрамор') {
-            $keywords .= $type . ' белый мрамор ';
-            $keywords .= $type . ' под мрамор белый ';
-        }
-
-        if ($product->Color == 'Черный' && $product->DesignValue == 'Мрамор') {
-            $keywords .= $type . ' черный мрамор ';
-            $keywords .= $type . ' под мрамор черный ';
-        }
+//        if ($product->Color == 'Черный' && $product->DesignValue == 'Мрамор') {
+//            $keywords .= $type . ' черный мрамор ';
+//            $keywords .= $type . ' под мрамор черный ';
+//        }
 
         if (stripos($use_name, 'alacatta') || stripos($use_name, 'alacata')) {
-            $keywords .= ' керамогранит калаката плитка калаката керамогранит калакатта плитка калакатта';
+            $keywords .= ' калаката плитка калаката керамогранит калакатта ';
         }
 
         if ($type != 'декор') {
             $description .= '<p>--------------------</p>';
-            $dop_description = ' керамогранит для ванной керамогранит на фартук плитка в санузел керамогранит купить керамагранит керамическая плитка под дерево керамогранит под бетон глянцевый керамогранит глянцевый матовый керамогранит керамогранит карвинг керамагранит лапарет керамагранит laparet керамагранит carving плитка в ванну плитка в ванную комнату керамогранит лапарет плитка лапарет кафель керамогранит laparet керамогранит кафельная плитка лапарет плитка керамогранит лапарет керамогранит';
+//            $dop_description = ' керамогранит для ванной керамогранит на фартук плитка в санузел керамогранит купить керамагранит керамическая плитка под дерево керамогранит под бетон глянцевый керамогранит глянцевый матовый керамогранит керамогранит карвинг керамагранит лапарет керамагранит laparet керамагранит carving плитка в ванну плитка в ванную комнату керамогранит лапарет плитка лапарет кафель керамогранит laparet керамогранит кафельная плитка лапарет плитка керамогранит лапарет керамогранит';
+            $dop_description = ' карвинг керамагранит лапарет керамогранит лапарет  кафель кафельная плитка лапарет керамогранит';
             $description .= '<p>' . $keywords . $dop_description . '</p>';
         }
     @endphp
