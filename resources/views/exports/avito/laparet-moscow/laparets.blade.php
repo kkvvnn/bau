@@ -300,23 +300,6 @@
         }
 
 
-//        $lenght = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
-//        $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);
-//
-//        $size = '';
-//        $size .= $type . ' ' . $lenght . 'х' . $height . ' ';
-//        if ($lenght != $height) {
-//            $size .= $type . ' ' . $height . 'х' . $lenght . ' ';
-//        }
-//        $size .= $type . ' ' . $lenght . '*' . $height . ' ';
-//        if ($lenght != $height) {
-//            $size .= $type . ' ' . $height . '*' . $lenght . ' ';
-//        }
-//
-//        if ($product->Height != 0 && $product->Lenght != 0) {
-//            $keywords .= $size;
-//        }
-
         //-----------SIZE----------
                     $length = round((float)str_replace(',', '.', $product->Lenght), 0, PHP_ROUND_HALF_EVEN);
                     $height = round((float)str_replace(',', '.', $product->Height), 0, PHP_ROUND_HALF_EVEN);
@@ -410,12 +393,10 @@
         shuffle($keywords_arr);
         $keywords = implode(' ', $keywords_arr);
 
-        if ($type != 'декор') {
-            $description .= '<p>-----------------</p>';
-//            $dop_description = ' керамогранит для ванной керамогранит на фартук плитка в санузел керамогранит купить керамагранит керамическая плитка под дерево керамогранит под бетон глянцевый керамогранит глянцевый матовый керамогранит керамогранит карвинг керамагранит лапарет керамагранит laparet керамагранит carving плитка в ванну плитка в ванную комнату керамогранит лапарет плитка лапарет кафель керамогранит laparet керамогранит кафельная плитка лапарет плитка керамогранит лапарет керамогранит';
-
-            $description .= '<p><em>' . $keywords . '</em></p>';
-        }
+//        if ($type != 'декор') {
+//            $description .= '<p>-----------------</p>';
+//            $description .= '<p><em>' . $keywords . '</em></p>';
+//        }
     @endphp
 
     @php
