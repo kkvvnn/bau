@@ -212,9 +212,10 @@
 //                    }
 
                     $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
-                    $description .= '<p>Сделаем индивидуальную скидку, обращайтесь в чат</p>';
+//                    $description .= '<p>Сделаем индивидуальную скидку, обращайтесь в чат</p>';
                     $description .= '<p>Отгружаем кратно упаковкам. Минимальный заказ - от 1 упаковки</p>';
-                    $description .= '<p>Доставка / Самовывоз. Оплата при получении</p>';
+                    $description .= '<p>Доставка или Самовывоз</p>';
+                    $description .= '<p>Оплата при получении</p>';
                     $description .= '<p>--------------</p>';
 
                     $description .= '<ul>';
@@ -343,10 +344,10 @@
                     $keywords = implode(' ', $keywords_arr);
 
         //---
-                    if ($type != 'декор') {
-                        $description .= '<p>--------------</p>';
-                        $description .= '<p><em>' . $keywords . '</em></p>';
-                    }
+//                    if ($type != 'декор') {
+//                        $description .= '<p>--------------</p>';
+//                        $description .= '<p><em>' . $keywords . '</em></p>';
+//                    }
 
                     $description = str_replace('Архив', '', $description);
 

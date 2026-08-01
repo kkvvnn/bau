@@ -80,10 +80,10 @@
                     $description .= '<p>'.nl2br($add_description_first).'</p>';
                     }
 
-                    $description .= '<p>Керамогранит '.$product->brand_name.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+//                    $description .= '<p>Керамогранит '.$product->brand_name.'. Официальный дилер(работаем уже более 10 лет). Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
                     $description .= '<p><strong>'.$product->svoystvo.' '.$product->brand_name.' '
-                            .$product->name.' ['.$product->size_b.'x'.$product->size_a.'] ('
-                            .$product->collection->country.')</strong></p>';
+                            .$product->name.' '.$product->size_b.'x'.$product->size_a.' '
+                            .$product->collection->country.'</strong></p>';
 
                     $bronnicy_stock = (float)$product->rest_skald_bronnicy - (float)$product->rest_skald_bronnicy_rezerv;
                     $ljubercy_stock = (float)$product->rest_skald_ljubercy - (float)$product->rest_skald_ljubercy_rezerv;
