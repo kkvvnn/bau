@@ -242,7 +242,7 @@
 //        $description .= '<li>Специальные условия и бонусы для постоянных клиентов, дизайнеров, строителей</li>';
         $description .= '</ul>';
 
-        $description .= '<p><em>Так же в наличии другие бренды: Kerama Marazzi Керама Марацци , Vitra Витра , Primavera Примавера , GlobalTile ГлобалТайл , NT CERAMIC НТ КЕРАМИК , Delacora Делакора, LCM ЛЦМ, EMPERO ЭМПЕРО, и многие другие</em></p>';
+//        $description .= '<p><em>Так же в наличии другие бренды: Kerama Marazzi, Vitra, Primavera, GlobalTile, NT CERAMIC, Delacora, LCM, EMPERO, Gravita и многие другие</em></p>';
         $description .= '<p><em>А ещё у нас можно приобрести кварцвинил, ламинат, инженерную доску, SPC по очень выгодным ценам</em></p>';
 
 //            $description .= '<p>&#127972; <strong>Адрес шоурума: ТД"Можайский двор" ул.Западная, стр 100</strong></p>';
