@@ -55,6 +55,7 @@
         <th>ProductSubType</th>
         <th>ColorName</th>
         <th>TargetAudience</th>
+        <th>VideoFileURL</th>
     </tr>
     </thead>
     <tbody>

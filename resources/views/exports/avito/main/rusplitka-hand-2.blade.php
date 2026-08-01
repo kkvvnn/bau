@@ -154,6 +154,10 @@
         $ResistanceClass = 'Значительная проходимость (PEI 4)';
     @endphp
 
+    @php
+        $VideoFileURL = '';
+    @endphp
+
 <tr>
     <td>{{ $code }}</td>                                    {{-- Id --}}
     <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
@@ -205,5 +209,6 @@
     <td></td>                                               {{-- ProductSubType --}}
     <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
+    <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
 </tr>
 {{-----PRIMAVERA-END-HAND----}}

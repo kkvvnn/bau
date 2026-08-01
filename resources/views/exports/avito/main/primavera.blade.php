@@ -414,6 +414,14 @@
         $ResistanceClass = '';
     @endphp
 
+    @php
+        $VideoFileURL = '';
+
+        if ($product->vendor_code == 'CR204') {
+            $VideoFileURL = 'https://service-plitka.ru/storage/CR204.mp4';
+        }
+    @endphp
+
     <tr>
         <td>{{ $code }}</td>                                    {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
@@ -465,6 +473,7 @@
         <td></td>                                               {{-- ProductSubType --}}
         <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
         <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
+        <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
     </tr>
 @endforeach
 {{-----PRIMAVERA-END----}}
