@@ -190,10 +190,10 @@
 
                     $description .= '<p><strong>Индивидуальная скидка</strong> — укажите объем, рассчитаем цену.</p>';
 
-                    $description .= '<p>--------------------</p>';
+                    $description .= '<p>--------------</p>';
                     $date = date('d.m.Y');
 
-                        $description .= '<p>&#9989; На утро '.$date.' в Москве '.round($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve).' '.$product->unit.' <em>(уточняйте)</em></p>';
+                        $description .= '<p>&#9989; '.$date.' в Москве '.round($product->moscow + $product->moscow_sale + $product->moscow_depot_reserve).' '.$product->unit.' <em>(уточняйте)</em></p>';
 
 //                    $description .= '<p>--------------------</p>';
 //                    $description .= '<p><strong>Отгрузка с нашего склада осуществляется кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</strong></p>';
@@ -203,19 +203,19 @@
 //                    $description .= '<p><em>Цена зависит от количества, формы оплаты, даты доставки (срочности), адреса доставки и подъема. Более детально по вашему заказу можем ответить после получения всех вводных данных.</em></p><ul>';
 
 
-                    $description .= '<p>--------------------</p>';
+                    $description .= '<p>--------------</p>';
 
 //                    if ($is_big_format) {
 //                        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 шт &#9889;</strong></p>';
 //                    } else {
-                        $description .= '<p><strong>&#9889; Цена в объявлении указана за 1 '.$product->unit.' (есть доп скидки)</strong></p>';
+                        $description .= '<p><strong> Цена указана за 1 '.$product->unit.' (есть доп скидки)</strong></p>';
 //                    }
 
                     $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
-                    $description .= '<p><strong>Сделаем индивидуальную скидку, обращайтесь в чат.</strong></p>';
-                    $description .= '<p><strong>Отгружаем кратно упаковкам. Минимальный заказ - от 1 упаковки</strong></p>';
-                    $description .= '<p><strong>Доставка / Самовывоз. Оплата при получении. Замена боя</strong></p>';
-                    $description .= '<p>--------------------</p>';
+                    $description .= '<p>Сделаем индивидуальную скидку, обращайтесь в чат</p>';
+                    $description .= '<p>Отгружаем кратно упаковкам. Минимальный заказ - от 1 упаковки</p>';
+                    $description .= '<p>Доставка / Самовывоз. Оплата при получении</p>';
+                    $description .= '<p>--------------</p>';
 
                     $description .= '<ul>';
 
@@ -251,11 +251,11 @@
 
 
                     $description .= '<p>Наличие и цены на ваш объем спрашивайте у менеджера.</p>';
-                    $description .= '<p>Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
+//                    $description .= '<p>Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
 
 //                    $description .= '<p>В наших шоурумах представлены коллекции многих других известных производителей керамогранита, керамической плитки, мозаики и других напольных покрытий (ламинат, паркет, кварцвинил, инженерная доска и др.)</p>';
 
-                    $description .= '<p><em>Так же в наличии другие бренды: Kerama Marazzi Керама Марацци , Italon Италон , Primavera Примавера , ENNFACE энфэйс , NT CERAMIC НТ КЕРАМИК , Gravita Гравита, Realistik Реалистик и многие другие</em></p>';
+//                    $description .= '<p><em>Так же в наличии другие бренды: Kerama Marazzi Керама Марацци , Italon Италон , Primavera Примавера , ENNFACE энфэйс , NT CERAMIC НТ КЕРАМИК , Gravita Гравита, Realistik Реалистик и многие другие</em></p>';
                     $description .= '<br>А ещё у нас можно приобрести кварцвинил, ламинат, инженерную доску, SPC по очень выгодным ценам</em></p>';
 
                     $description .= '<p>Можно приехать и вживую посмотреть - выбор огромный (4 шоурума в одном месте)! Керамогранит, керамическая плитка, мозаика, ламинат, кварцвинил, инженерная доска и др.</p>';
@@ -268,6 +268,7 @@
 
 
                     $keywords = '';
+                    $keywords_arr = [];
 
 
                     if(stripos($product->collection_item, 'екор') !== false) {
@@ -292,23 +293,17 @@
                             $type = '';
                     }
 
-                    $lenght = $product->height;
+                    //-----------SIZE----------
+                    $length = $product->height;
                     $height = $product->width;
 
-                    $size = '';
-                    $size .= $type . ' ' . $lenght . 'х' . $height . ', ';
-                    if ($lenght != $height) {
-                        $size .= $type . ' ' . $height . 'х' . $lenght . ', ';
-                    }
-                    $size .= $type . ' ' . $lenght . '*' . $height . ', ';
-                    if ($lenght != $height) {
-                        $size .= $type . ' ' . $height . '*' . $lenght . ', ';
-                    }
-
                     if($product->width != 0 && $product->height != 0) {
-                    $keywords .= $size;
+                        $keywords_arr[] = $type . ' ' . $length . 'х' . $height;
+                        $keywords_arr[] = $type . ' ' . $length . '*' . $height;
                     }
+                    //-----------SIZE-END----------
 
+                    //-----------SURFACE----------
                     $surface = $product->surface_type;
                     $surf = '';
 
@@ -327,25 +322,29 @@
                         }
                     }
 
-                    $keywords .= $type . ' ' .mb_strtolower($surf) . ', ';
+                    $keywords_arr[] = $type . ' ' .mb_strtolower($surf);
 
-                    $keywords .= $product->category_r->parent . ' ' . $type . ', ';
+                    $keywords_arr[] = $product->category_r->parent . ' ' . $type;
 
 
                     $owner_code = $product->artikul;
 
                     if ($owner_code != null) {
-                        $keywords .= $type . ' ' . $owner_code . ', ';
+                        $keywords_arr[] = $type . ' ' . $owner_code;
                     }
 
                     $country = $product->country;
 
                     if ($country != null) {
-                        $keywords .= $type . ' ' . $country;
+                        $keywords_arr[] = $type . ' ' . $country;
                     }
+
+                    shuffle($keywords_arr);
+                    $keywords = implode(' ', $keywords_arr);
+
         //---
                     if ($type != 'декор') {
-                        $description .= '<p>_____________________</p>';
+                        $description .= '<p>--------------</p>';
                         $description .= '<p><em>' . $keywords . '</em></p>';
                     }
 
