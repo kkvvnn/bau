@@ -205,7 +205,7 @@
 
     @php
         if (str_contains($product->name, 'Лаш Плюс')) {
-            $price = round($product->price_rozn * 0.95, -1);
+            $price = round($product->price_rozn * 0.85, -1);
         }
     @endphp
 
