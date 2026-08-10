@@ -63,7 +63,7 @@
                                 <a href="/product/{{$slug}}" class="text-decoration-none text-reset">
                                     <h5 class="card-title">{{$product->Producer_Brand}} {{$product->Name}}</h5>
 
-                                    @if($product->Name != $product->originals->Name)
+                                    @if($product->originals && $product->Name != $product->originals->Name)
                                         <h5 class="card-title text-body-secondary">{{$product->Producer_Brand}} {{$product->originals->Name}}</h5>
                                     @endif
                                 </a>
