@@ -94,8 +94,11 @@
 
                     $description .= '<p>--------------------</p>';
                     $date = date('d.m.Y');
+//                    if ($product->rest_real_free > 0) {
+//                    $description .= '<p>&#9989; На утро '.$date.' склад Москва '.$moscow_stock.' '.$product->unit.' (Москва); '.$krasnodar_stock.' '.$product->unit.' (Краснодар)  <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+//                    }
                     if ($product->rest_real_free > 0) {
-                    $description .= '<p>&#9989; На утро '.$date.' склад Москва '.$moscow_stock.' '.$product->unit.' (Москва); '.$krasnodar_stock.' '.$product->unit.' (Краснодар)  <em>(информация приблизительная, точную информацию о наличии спрашивайте у менеджера)</em></p>';
+                    $description .= '<p>&#9989; '.$date.' Москва '.$product->rest_real_free.' '.$product->unit.' <em>(уточняйте)</em></p>';
                     }
 
                     $description .= '<p>--------------------</p>';
@@ -198,6 +201,12 @@
 
     @php
         $VideoFileURL = '';
+    @endphp
+
+    @php
+        if (str_contains($product->name, 'Лаш Плюс')) {
+            $price = round($product->price_rozn * 0.85, -1);
+        }
     @endphp
 
     <tr>
