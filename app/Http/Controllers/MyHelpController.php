@@ -11,6 +11,7 @@ use App\Models\NTCeramic\NtCeramicNoImgs;
 use App\Models\Primavera;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -935,5 +936,33 @@ class MyHelpController extends Controller
     {
         $filename = 'Laparet-Kazan-'.date('Y-m-d-H-i-s').'.xlsx';
         return Excel::download(new LaparetKazanExport(), $filename);
+    }
+
+    public function belleza_api()
+    {
+//        $token = config('services.api.token'); // или env('API_TOKEN')
+//        $url = config('services.api.url');    // или env('API_URL')
+
+        $token = '3epGIyqB5umFPzYKgobvBMaYRe28AkML2Si8yG2uvGx4BohLmVUGhrvNyCJgRpBn';
+//        $url = 'https://api.mkplitka.ru/api/products/%D0%A1%D0%9A000043088';
+//        $url = 'https://api.mkplitka.ru/api/products';
+//        $url_brands = 'https://api.mkplitka.ru/api/brands';
+        $url = 'https://api.mkplitka.ru/api/products?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
+//        $url_brands = 'https://api.mkplitka.ru/api/collections?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
+
+//        $response = Http::withToken($token)->get($url);
+
+        $response = Http::withHeaders([
+            'Authorization' => $token,
+        ])->get($url);
+
+        if ($response->successful()) {
+            $data = $response->json(); // преобразует JSON-ответ в массив
+            dd($data);
+        } else {
+            // обрабатываем ошибку
+            $error = $response->status();
+            dd($error);
+        }
     }
 }

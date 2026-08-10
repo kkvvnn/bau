@@ -323,3 +323,6 @@ Route::view('/grafik-new-year-2025', 'new-year');
 
 Route::view('/save-media', 'storage.form');
 Route::post('/save-media', [\App\Http\Controllers\StorageController::class, 'store']);
+
+
+Route::get('belleza-api', [MyHelpController::class, 'belleza_api']);
