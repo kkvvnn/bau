@@ -311,7 +311,7 @@ if (!function_exists('avito_artkera_height')) {
     function avito_artkera_height(string|null $height, float $from, float $to): int
     {
         $height = str_replace(',', '.', $height);
-        $height =((float) $height) / 10;
+        $height =((float) $height);
         $height = round($height);
 
         if ($height >= $from && $height <= $to) {
