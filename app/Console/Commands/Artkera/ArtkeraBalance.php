@@ -27,6 +27,7 @@ class ArtkeraBalance extends Command
      */
     public function handle(): void
     {
+        ini_set('memory_limit', '512M');
 
 
         Balance::truncate();

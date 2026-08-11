@@ -37,6 +37,9 @@ class ArtkeraPrice extends Command
         $products = json_decode($json, true);
 
         foreach ($products as $product) {
+            if ($product['type_price_id'] != '5945b787-12b2-11eb-80eb-00155d5d5700') {
+                continue;
+            }
             foreach ($product['price_list'] as $price) {
                 Price::create([
                    'type_price_id' => $product['type_price_id'],
