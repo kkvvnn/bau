@@ -111,6 +111,10 @@
                 $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
             }
 
+            if ($product->artikul == '60120MIT15' || $product->artikul == '60120GRY11') {
+                $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
+            }
+
 //            if ($is_big_format && (avito_packaging_type($product->unit) == 'Упаковка')) {
 //                    $square_one_tile = ((float)$Length / 100) * ((float)$Width / 100);
 //                    $price = round($price * $square_one_tile, -1);
