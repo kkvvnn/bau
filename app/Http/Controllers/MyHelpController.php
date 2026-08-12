@@ -943,11 +943,11 @@ class MyHelpController extends Controller
 //        $token = config('services.api.token'); // или env('API_TOKEN')
 //        $url = config('services.api.url');    // или env('API_URL')
 
-        $token = '3epGIyqB5umFPzYKgobvBMaYRe28AkML2Si8yG2uvGx4BohLmVUGhrvNyCJgRpBn';
-//        $url = 'https://api.mkplitka.ru/api/products/%D0%A1%D0%9A000043088';
+        $token = 'cyF7kAeU6ez9SLl7Nijymc7KQZGpEJD0slWEVmo7OKk1v5L6b9tCaJBVbtKdjH8f';
 //        $url = 'https://api.mkplitka.ru/api/products';
 //        $url_brands = 'https://api.mkplitka.ru/api/brands';
         $url = 'https://api.mkplitka.ru/api/products?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
+        $url = 'https://api.mkplitka.ru/api/products/СК000045385';
 //        $url_brands = 'https://api.mkplitka.ru/api/collections?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
 
 //        $response = Http::withToken($token)->get($url);

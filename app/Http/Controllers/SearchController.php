@@ -9,6 +9,7 @@ use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
 use App\Models\Azario;
+use App\Models\Belleza;
 use App\Models\GlobalTileNew;
 use App\Models\Keramopro;
 use App\Models\Kerranova;
@@ -186,6 +187,19 @@ class SearchController extends Controller
         if (count($primavera_new)) {
             return view('primavera-new.index', [
                 'products' => $primavera_new,
+                'search_name' => $search_name,
+            ]);
+        }
+
+        $belleza = Belleza::where('title', 'LIKE', $name)
+            ->orWhere('title_rus', 'LIKE', $name)
+            ->orWhere('vendor_code', 'LIKE', $name)
+            ->orWhere('code', 'LIKE', $name)
+            ->paginate(15);
+        $belleza->appends(['name' => $name]);
+        if (count($belleza)) {
+            return view('belleza.index2', [
+                'products' => $belleza,
                 'search_name' => $search_name,
             ]);
         }

@@ -23,11 +23,15 @@ class BellezaImport extends Command
      */
     protected $description = 'Belleza Import (Мир керамики client.mkplitka.ru)';
 
-    public function make_images_array($arr) : array
+    public function make_images_array($array) : array
     {
+//        if ($array === []) {
+//            return [];
+//        }
+
         $images = [];
-        foreach ($arr as $a) {
-            $images[] = $a[0];
+        foreach ($array as $arr) {
+            $images[] = $arr['img'];
         }
 
         return $images;
@@ -50,6 +54,7 @@ class BellezaImport extends Command
 //        dd($array['shop']['offers']['offer'][2]);
 //        dd($array[100]['Name']);
 
+//        dd($products);
 
 
         Belleza::truncate();
@@ -57,46 +62,60 @@ class BellezaImport extends Command
         foreach ($products as $product) {
             Belleza::create([
                 'name' => $product['Name'],
+                'title' => str_replace('Керамогранит ', '', $product['Name']) . ' ' . $product['width'] . 'x' . $product['length'],
+                'title_rus' => str_replace('Керамогранит ', '', str_replace("\xC2\xA0", " ", $product['NameRus']??'')) . ' ' . $product['width'] . 'x' . $product['length'],
                 'slug' => Str::slug($product['Name']),
                 'brand' => $product['Brand'],
                 'code' => $product['ID'],
-                'vender_code' => $product['Article'],
+                'vendor_code' => $product['Article'],
                 'country' => $product['Country'],
                 'unit' => $product['Unit'],
                 'count_in_pack' => $product['UnitInPack'],
                 'collection' => $product['Collection'],
                 'sale' => $product['Sale'] == 'true',
                 'byOrder' => $product['ByOrder'] == 'true',
-                'price' => $product['PriceRozn'],
-                'price_opt' => $product['PriceDiler2'],
+                'novelty' => $product['novelty'] == 'true',
+                'TradeOnlyPack' => $product['TradeOnlyPack'] == 'true',
+                'CollectionNovelty' => $product['CollectionNovelty'] == 'true',
+                'Rectified' => (bool) ($product['Rectified']??false == 'true'),
+                'Frost_resistance' => (bool) ($product['Frost_resistance']??false == 'true'),
+                'Suitable_for_heated_floors' => (bool) ($product['Suitable_for_heated_floors']??false == 'true'),
+                'price' => (int)$product['PriceRozn'],
+                'price_opt' => (int)$product['PriceDiler2'],
+                'size' => $product['size'],
                 'length' => $product['length'],
                 'width' => $product['width'],
-                'thickness' => $product['height'],
+                'thickness' => $product['height']??0,
                 'color' => $product['color'],
                 'type' => $product['type'],
-                'stock' => $product['Rest']['Moskow']['Available'],
-                'stock_reserv' => $product['Rest']['Moskow']['reserved'],
-                'stock_all' => $product['Rest']['Moskow']['OnStock'],
+                'stock' => $product['Rest']['Moskow']['Available']??0,
+                'stock_reserv' => $product['Rest']['Moskow']['reserved']??0,
+                'stock_all' => $product['Rest']['Moskow']['OnStock']??0,
                 'units_m2' => $product['Units']['м2'],
-                'units_pallet' => $product['Units']['под'],
+                'units_pallet' => $product['Units']['под']??0,
                 'units_pack' => $product['Units']['упак'],
-                'units_one' => $product['Units']['упак'],
+                'units_one' => $product['Units']['шт'],
                 'weight' => $product['weight'],
                 'isTrash' => $product['isTrash'] == 'true',
 
-                'images' => make_images_array($product['gallery']),
+                'images' => $this->make_images_array($product['gallery']),
+                'Expected' => $product['Expected'],
 
-                'name_rus' => $product['name_rus'],
+                'name_rus' => str_replace("\xC2\xA0", " ", $product['NameRus']??''),
+                'image_1' => $product['image'],
+                'image_2' => $product['image2'],
+                'itemCategory' => $product['itemCategory'],
                 'surface' => $product['itemSurface'],
-                'image_collection' => $product['image_collection'],
+                'surface_2' => $product['surface']??'',
+                'image_collection' => $product['imageCollection'],
 
 
-                'code' => $product['id'],
+//                'code' => $product['id'],
 //                'slug' => str_replace('https://www.rusplitka.ru/products/', '', $product['url']),
-                'slug' => Str::slug(),
-                'picture' => is_array($product['picture']) ? $product['picture'] : array($product['picture']),
-
-                'rest_real_free' => $product['rest_real_free'] ?? null,
+//                'slug' => Str::slug(),
+//                'picture' => is_array($product['picture']) ? $product['picture'] : array($product['picture']),
+//
+//                'rest_real_free' => $product['rest_real_free'] ?? null,
             ]);
         }
 
@@ -114,16 +133,16 @@ class BellezaImport extends Command
         //        $token = config('services.api.token'); // или env('API_TOKEN')
 //        $url = config('services.api.url');    // или env('API_URL')
 
-        $token = '3epGIyqB5umFPzYKgobvBMaYRe28AkML2Si8yG2uvGx4BohLmVUGhrvNyCJgRpBn';
+        $token = 'cyF7kAeU6ez9SLl7Nijymc7KQZGpEJD0slWEVmo7OKk1v5L6b9tCaJBVbtKdjH8f';
 //        $url = 'https://api.mkplitka.ru/api/products/%D0%A1%D0%9A000043088';
 //        $url_products = 'https://api.mkplitka.ru/api/products';
 //        $url_brands = 'https://api.mkplitka.ru/api/brands';
-        $url_brands = 'https://api.mkplitka.ru/api/products?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
-
+        $url = 'https://api.mkplitka.ru/api/products?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
+//        $url = 'https://api.mkplitka.ru/api/products/СК000045385';
 
         $response = Http::withHeaders([
             'Authorization' => $token,
-        ])->get($url_brands);
+        ])->get($url);
 
         if ($response->successful()) {
             // преобразует JSON-ответ в массив

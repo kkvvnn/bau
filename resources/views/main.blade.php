@@ -366,6 +366,7 @@
                                     <ul class="">
 {{--                                        <li><a class="nav-link" href="{{ route('kevis.index') }}">KEVIS</a></li>--}}
                                         <li><a class="nav-link" href="{{ route('azario.index') }}">AZARIO</a></li>
+                                        <li><a class="nav-link" href="{{ route('belleza.index') }}">BELLEZA</a></li>
                                         <li><a class="nav-link" href="{{ route('laparet.index') }}">LAPARET</a></li>
                                         <li><a class="nav-link" href="{{ route('cersanit.index') }}">CERSANIT</a></li>
                                         <li><a class="nav-link" href="{{ route('vitra.index') }}">VITRA</a></li>

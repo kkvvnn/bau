@@ -326,3 +326,9 @@ Route::post('/save-media', [\App\Http\Controllers\StorageController::class, 'sto
 
 
 Route::get('belleza-api', [MyHelpController::class, 'belleza_api']);
+
+//----- BELLEZA (Import from API mkplitka.ru) -----
+Route::get('/belleza', [\App\Http\Controllers\BellezaController::class, 'index'])->name('belleza.index');
+Route::get('/belleza/{slug:slug}', [\App\Http\Controllers\BellezaController::class, 'show'])->name('belleza.show');
+Route::get('/belleza/collection/{name}', [\App\Http\Controllers\BellezaController::class, 'collection'])->name('belleza.collection');
+

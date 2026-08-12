@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Belleza extends Model
 {
+    protected $guarded = false;
 
+    protected $casts = [
+        'images' => 'array',
+        'Expected' => 'array',
+    ];
 }
