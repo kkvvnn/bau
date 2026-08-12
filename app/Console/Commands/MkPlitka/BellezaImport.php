@@ -71,7 +71,7 @@ class BellezaImport extends Command
                 'country' => $product['Country'],
                 'unit' => $product['Unit'],
                 'count_in_pack' => $product['UnitInPack'],
-                'collection' => $product['Collection'],
+                'collection' => str_replace([' 60х120', ' 60х60', ' 60x120', ' 60x60', ' 20х120'], '', $product['Collection']),
                 'sale' => $product['Sale'] == 'true',
                 'byOrder' => $product['ByOrder'] == 'true',
                 'novelty' => $product['novelty'] == 'true',

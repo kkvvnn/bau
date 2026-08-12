@@ -945,7 +945,7 @@ class MyHelpController extends Controller
 
         $token = 'cyF7kAeU6ez9SLl7Nijymc7KQZGpEJD0slWEVmo7OKk1v5L6b9tCaJBVbtKdjH8f';
 //        $url = 'https://api.mkplitka.ru/api/products';
-//        $url_brands = 'https://api.mkplitka.ru/api/brands';
+        $url_brands = 'https://api.mkplitka.ru/api/brands';
         $url = 'https://api.mkplitka.ru/api/products?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
         $url = 'https://api.mkplitka.ru/api/products/СК000045385';
 //        $url_brands = 'https://api.mkplitka.ru/api/collections?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
@@ -954,7 +954,7 @@ class MyHelpController extends Controller
 
         $response = Http::withHeaders([
             'Authorization' => $token,
-        ])->get($url);
+        ])->get($url_brands);
 
         if ($response->successful()) {
             $data = $response->json(); // преобразует JSON-ответ в массив
