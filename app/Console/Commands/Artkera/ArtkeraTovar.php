@@ -40,6 +40,12 @@ class ArtkeraTovar extends Command
             unset($product['out']);                 // 08.07.25 change struct of file tovar.json (add new field 'out')
             unset($product['Спецэффект']);          // 01.08.25 change struct of file tovar.json (add new field 'Спецэффект')
             unset($product['Категория']);           // 01.08.25 change struct of file tovar.json (add new field 'Категория')
+            unset($product['is_DIY']);                  // 29.06.26
+            unset($product['is_time_action']);          // 29.06.26
+            unset($product['time_action_date_from']);   // 29.06.26
+            unset($product['time_action_date_to']);     // 29.06.26
+
+//            rrr
             Tovar::create($product);
         }
 

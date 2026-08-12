@@ -32,7 +32,7 @@
                 $InstallationType = avito_bauservice_for('На пол | На стену');
                 $Width = avito_bauservice_size($wid_artkera, 5, 200, $product->tovar??'', 'W');
                 $Length = avito_bauservice_size($len_artkera, 5, 400, $product->tovar??'', 'L');
-                $Thickness = avito_bauservice_height($product->thickness, 2, 30);
+                $Thickness = avito_artkera_height($product->thickness, 2, 30);
                 $Pattern = avito_bauservice_pattern($product->tovar, '');
                 $Color = avito_bauservice_color('');
                 $ColorName = $Color;
@@ -108,6 +108,10 @@
             if ($PackagingType == 'Упаковка') {
                 $PackageQuantity = '1';
             } else {
+                $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
+            }
+
+            if ($product->artikul == '60120MIT15' || $product->artikul == '60120GRY11') {
                 $PackageQuantity = avito_package_quantity(round($product->square_in_pack, 2));
             }
 

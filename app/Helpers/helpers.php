@@ -301,6 +301,26 @@ if (!function_exists('avito_bauservice_height')) {
         }
     }
 }
+if (!function_exists('avito_artkera_height')) {
+    /**
+     * @param string|null $height
+     * @param float $from
+     * @param float $to
+     * @return int
+     */
+    function avito_artkera_height(string|null $height, float $from, float $to): int
+    {
+        $height = str_replace(',', '.', $height);
+        $height =((float) $height);
+        $height = round($height);
+
+        if ($height >= $from && $height <= $to) {
+            return $height;
+        } else {
+            return 9;  //if not specified
+        }
+    }
+}
 
 if (!function_exists('avito_bauservice_pattern')) {
     /**
