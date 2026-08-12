@@ -34,6 +34,9 @@
             <div class="row">
                 <div class="col">
                     <h1 class="display-6">{{ $product->title }}</h1>
+                    @if($product->title_rus)
+                        <h1 class="display-6 text-body-secondary">{{ $product->title_rus }}</h1>
+                    @endif
                     <hr>
                     <h1 class="display-6">{{$product->brand}}</h1>
                     <p class="fs-2">Коллекция:
