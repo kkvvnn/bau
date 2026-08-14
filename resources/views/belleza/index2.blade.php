@@ -80,14 +80,14 @@
 
 
                                 @if($product->stock)
-                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Свободно: {{$product->stock}} {{$product->unit}}</p>
+                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Остаток: {{$product->stock}} {{$product->unit}}</p>
                                 @endif
                                 @if($product->stock_reserv)
                                     <p class="mb-0 mt-0 fs-5 text-body-secondary">Резерв: {{$product->stock_reserv}} {{$product->unit}}</p>
                                 @endif
-                                @if($product->stock_all)
-                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Всего: {{$product->stock_all}} {{$product->unit}}</p>
-                                @endif
+{{--                                @if($product->stock_all)--}}
+{{--                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Всего: {{$product->stock_all}} {{$product->unit}}</p>--}}
+{{--                                @endif--}}
 
 
 

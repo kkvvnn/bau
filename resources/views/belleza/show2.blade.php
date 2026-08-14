@@ -109,14 +109,14 @@
 {{--                    <h5 class="mt-4 mb-0">Остаток {{$product->rest_real_free}} {{$product->unit}}</h5>--}}
 
                     @if($product->stock)
-                        <p class="mb-0 mt-0 fs-5 text-body-secondary">Свободно: {{$product->stock}} {{$product->unit}}</p>
+                        <p class="mb-0 mt-0 fs-5 text-body-secondary">Остаток: {{$product->stock}} {{$product->unit}}</p>
                     @endif
                     @if($product->stock_reserv)
                         <p class="mb-0 mt-0 fs-5 text-body-secondary">Резерв: {{$product->stock_reserv}} {{$product->unit}}</p>
                     @endif
-                    @if($product->stock_all)
-                        <p class="mb-0 mt-0 fs-5 text-body-secondary">Всего: {{$product->stock_all}} {{$product->unit}}</p>
-                    @endif
+{{--                    @if($product->stock_all)--}}
+{{--                        <p class="mb-0 mt-0 fs-5 text-body-secondary">Всего: {{$product->stock_all}} {{$product->unit}}</p>--}}
+{{--                    @endif--}}
 
                     <p class="mt-4">Актуально на <span
                             class="{{$text_color}} fw-bolder">{{$product->updated_at->format('d.m.Y')}}</span></p>
