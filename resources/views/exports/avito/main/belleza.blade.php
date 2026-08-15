@@ -67,7 +67,7 @@
 
     @php
 
-                    $title = 'Керамогранит' . $product->title;
+                    $title = 'Керамогранит ' . $product->title;
 
         //              ------------------------------------------FOTO-------------------------------------
                     $images = [];
@@ -97,8 +97,8 @@
             $description .= '<p>'.nl2br($add_description_first).'</p>';
         }
 
-                    $description .= '<p><strong> Керамогранит' . $product->title . '</strong></p>';
-                    $description .= '<p><em> Керамогранит' . $product->title_rus . '</em></p>';
+                    $description .= '<p><strong> Керамогранит ' . $product->title . '</strong></p>';
+                    $description .= '<p><em> Керамогранит ' . $product->title_rus . '</em></p>';
 //                    $description .= '<p><strong>Коллекция: </strong>'.$product->category_r->parent.' / '.$product->category. '</p>';
 
 
