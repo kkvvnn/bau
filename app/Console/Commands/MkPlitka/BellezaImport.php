@@ -23,11 +23,14 @@ class BellezaImport extends Command
      */
     protected $description = 'Belleza Import (Мир керамики client.mkplitka.ru)';
 
-    public function make_images_array($array) : array
+    public function make_images_array($array, $str) : array
     {
-//        if ($array === []) {
-//            return [];
-//        }
+        if ($array === []) {
+            $temp = [];
+            $temp[] = $str;
+
+            return $temp;
+        }
 
         $images = [];
         foreach ($array as $arr) {
@@ -98,7 +101,7 @@ class BellezaImport extends Command
                 'weight' => $product['weight'],
                 'isTrash' => $product['isTrash'] == 'true',
 
-                'images' => $this->make_images_array($product['gallery']),
+                'images' => $this->make_images_array($product['gallery'], $product['image']),
                 'Expected' => $product['Expected'],
 
                 'name_rus' => str_replace("\xC2\xA0", " ", $product['NameRus']??''),
@@ -118,6 +121,14 @@ class BellezaImport extends Command
 //                'rest_real_free' => $product['rest_real_free'] ?? null,
             ]);
         }
+
+//        $deleted = Belleza::where([
+//                ['code', 'СК000045763'],
+//                ['code', 'СК000045762'],
+//            ])
+//            ->delete();
+
+        Belleza::whereIn('code', ['СК000045763', 'СК000045762'])->delete();
 
         $bar->finish();
         $this->info(' ----- Belleza (mkplitka.ru) Import to database! [OK]');

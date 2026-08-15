@@ -38,7 +38,7 @@
                         <h1 class="display-6 text-body-secondary">{{ $product->title_rus }}</h1>
                     @endif
                     <hr>
-                    <h1 class="display-6">{{$product->brand}}</h1>
+                    <h1 class="display-6"><a href="{{ route('belleza.index') }}" class="link-secondary text-decoration-none">{{$product->brand}}</a></h1>
                     <p class="fs-2">Коллекция:
                     <a href="{{route('belleza.collection', $product->collection)}}"
                        class="link-secondary text-decoration-none">{{$product->collection}}
