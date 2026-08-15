@@ -417,6 +417,15 @@ if (!function_exists('avito_bauservice_for')) {
     }
 }
 
+if (!function_exists('my_mb_ucfirst')) {
+    function my_mb_ucfirst($string, $encoding = 'UTF-8'): string
+    {
+        $firstChar = mb_substr($string, 0, 1, $encoding);
+        $then = mb_substr($string, 1, null, $encoding);
+        return mb_strtoupper($firstChar, $encoding) . $then;
+    }
+}
+
 if (!function_exists('avito_bauservice_color')) {
     /**
      * @param string|null $color

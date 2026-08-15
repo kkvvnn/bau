@@ -13,7 +13,6 @@ class BellezaController extends Controller
     {
         $products = Belleza::where('price', '!=', 0)
             ->where('stock', '>', 0)
-            ->where('code', '!=', 'СК000045762')
             ->orderByRaw('length * width DESC')
             ->orderBy('price')
             ->paginate(15);

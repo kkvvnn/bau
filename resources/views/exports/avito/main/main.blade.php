@@ -67,6 +67,7 @@
 
 {{--    @include('exports.avito.main.bauservice') //READY--}}
 {{--    @include('exports.avito.main.kerama-marazzi') //READY--}}
+    @include('exports.avito.main.belleza')
     @include('exports.avito.main.artkera') //READY
     @include('exports.avito.main.kerranova') //READY
     @include('exports.avito.main.global-tile') //READY

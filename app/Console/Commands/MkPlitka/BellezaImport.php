@@ -110,7 +110,7 @@ class BellezaImport extends Command
                 'itemCategory' => $product['itemCategory'],
                 'surface' => $product['itemSurface'],
                 'surface_2' => $product['surface']??'',
-                'image_collection' => $product['imageCollection'],
+                'image_collection' => str_replace(['https://mkplitka.ru/https://mkplitka.ru/', 'https://mkplitka.ru/https://mkplitka.ru/https://mkplitka.ru/'], 'https://mkplitka.ru/', $product['imageCollection']),
 
 
 //                'code' => $product['id'],

@@ -8,6 +8,7 @@ use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
 use App\Models\Artcenter;
 use App\Models\Azario;
+use App\Models\Belleza;
 use App\Models\Discount;
 use App\Models\GlobalTileNew;
 use App\Models\Kerabellezza2;
@@ -213,6 +214,12 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         $azario = [];
 
+//        =======BELLEZA========
+        $bellezas = Belleza::where('price', '!=', 0)
+            ->where('stock', '>', 10)
+            ->get();
+
+
         //==================BAUSERVICE-WATER-MIXERS==================
 
 //        $water_mixers = Product::where([
@@ -269,6 +276,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
         return view('exports.avito.main.main', [
 //            'products' => $laparets,
+            'bellezas' => $bellezas,
             'primavera' => $primavera,
             'leedo' => $leedo,
             'altacera' => $altacera,
