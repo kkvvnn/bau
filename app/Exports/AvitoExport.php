@@ -175,9 +175,9 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['brand', 'GlobalTile'],
             ['Picture', '!=', ''],
             ['balance', '>', 10],
-            ['vendor_code', '!=', 'GT60601903MR'],
+//            ['vendor_code', '!=', 'GT60601903MR'],
             ['vendor_code', '!=', '9EM0000TG'],
-            ['vendor_code', '!=', 'GT1206021002SSDGR'], //17 mart
+//            ['vendor_code', '!=', 'GT1206021002SSDGR'], //17 mart
             ['price', '>', 600],
         ])
             ->get();
