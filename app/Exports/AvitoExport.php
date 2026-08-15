@@ -205,11 +205,13 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ->get();
 
         //==================AZARIO==================
-        $azario = Azario::whereHas('props', function ($query) {
-            $query->where('price', '!=', 0);
-            $query->where('stock', '!=', 0);
-        })
-            ->get();
+//        $azario = Azario::whereHas('props', function ($query) {
+//            $query->where('price', '!=', 0);
+//            $query->where('stock', '!=', 0);
+//        })
+//            ->get();
+
+        $azario = [];
 
         //==================BAUSERVICE-WATER-MIXERS==================
 

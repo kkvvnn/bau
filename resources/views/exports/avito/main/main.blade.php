@@ -70,7 +70,7 @@
     @include('exports.avito.main.artkera') //READY
     @include('exports.avito.main.kerranova') //READY
     @include('exports.avito.main.global-tile') //READY
-    @include('exports.avito.main.azario') //READY
+{{--    @include('exports.avito.main.azario') //READY--}}
     @include('exports.avito.main.primavera') //READY
     @include('exports.avito.main.rusplitka') //READ
     @include('exports.avito.main.artcenter') //READY

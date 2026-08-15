@@ -63,8 +63,8 @@ class BellezaImport extends Command
             Belleza::create([
                 'name' => $product['Name'],
                 'title' => str_replace('Керамогранит ', '', $product['Name']) . ' ' . $product['width'] . 'x' . $product['length'],
-                'title_rus' => str_replace('Керамогранит ', '', str_replace("\xC2\xA0", " ", $product['NameRus']??'')) . ' ' . $product['width'] . 'x' . $product['length'],
-                'slug' => Str::slug($product['Name']. ' ' . $product['width'] . 'x' . $product['length']),
+                'title_rus' => str_replace('Керамогранит ', '', str_replace("\xC2\xA0", " ", $product['NameRus']??''))/* . ' ' . $product['width'] . 'x' . $product['length']*/,
+                'slug' => Str::slug($product['Name']. ' ' . $product['width'] . 'x' . $product['length'] . '-' . $product['ID']),
                 'brand' => $product['Brand'],
                 'code' => $product['ID'],
                 'vendor_code' => $product['Article'],
