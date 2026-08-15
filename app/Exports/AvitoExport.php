@@ -111,7 +111,7 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
                 $price->where('price', '>=', 1300);  //NEW YEAR!!!!!!!!!!!
             })
             ->where(function (Builder $query) {
-                $stock_min = 2;
+                $stock_min = 4;
                 $query->where('moscow', '>=', $stock_min);
                 $query->orWhere('moscow_way', '>=', $stock_min);
                 $query->orWhere('moscow_reserve', '>=', $stock_min);
