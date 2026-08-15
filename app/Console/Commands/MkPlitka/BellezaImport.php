@@ -118,7 +118,7 @@ class BellezaImport extends Command
 //                'slug' => Str::slug(),
 //                'picture' => is_array($product['picture']) ? $product['picture'] : array($product['picture']),
 //
-//                'rest_real_free' => $product['rest_real_free'] ?? null,
+//                'rest_real_free' => $product['rest_real_free'] ?? null
             ]);
         }
 

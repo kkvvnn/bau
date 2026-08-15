@@ -949,6 +949,7 @@ class MyHelpController extends Controller
         $url = 'https://api.mkplitka.ru/api/products?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
         $url = 'https://api.mkplitka.ru/api/products/СК000045762';
         $url = 'https://api.mkplitka.ru/api/products/СК000043674';
+        $url = 'https://api.mkplitka.ru/api/products/СК000043679';
 //        $url_brands = 'https://api.mkplitka.ru/api/collections?filter=%7B"where":%7B"Brand":"BELLEZA ИНДИЯ"%7D %7D';
 
 //        $response = Http::withToken($token)->get($url);

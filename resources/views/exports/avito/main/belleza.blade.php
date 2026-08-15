@@ -78,7 +78,7 @@
                     }
 
                     $images_collection = [];
-                    $images_collection[] = $product->image_collection;
+                    $images_collection[] = str_replace('https://mkplitka.ru/https://mkplitka.ru/', 'https://mkplitka.ru/', $product->image_collection);
 
 //                    if (count($images_collection)) {
 //                        $images = array_merge(array_slice( $images, 0, 1 ),
