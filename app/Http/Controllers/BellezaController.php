@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BellezaFileExport;
 use App\Models\Belleza;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BellezaController extends Controller
 {
@@ -63,5 +65,15 @@ class BellezaController extends Controller
             ->paginate(15);
 
         return view('belleza.index2', compact('products'));
+    }
+
+    public function export()
+    {
+        $filename = 'belleza/belleza_file_'.date('Y-m-d_His').'.xlsx';
+
+        Excel::store(new BellezaFileExport(), $filename, 'woocommerce');
+
+        $url = Storage::disk('woocommerce')->url($filename);
+        return view('exports.url-woocommerce', compact('url'));
     }
 }
