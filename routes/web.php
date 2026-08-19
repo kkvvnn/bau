@@ -75,7 +75,7 @@ Route::prefix('avito')
 
 //----- CREATE_WOOCOMMERCE_FILE  -----
 Route::get('/woocommerce/export', [\App\Http\Controllers\WoocommerceController::class, 'export'])->name('woocommerce.export');
-Route::get('/belleza/export', [\App\Http\Controllers\BellezaController::class, 'export'])->name('belleza.export');
+Route::get('/belleza-export', [\App\Http\Controllers\BellezaController::class, 'export'])->name('belleza.export');
 
 //----- CREATE_INSALES_FILE  -----
 Route::get('/insales/export/laparet/carving', [\App\Http\Controllers\InsalesController::class, 'export_laparet_carving'])->name('insales.export.laparet.carving');
