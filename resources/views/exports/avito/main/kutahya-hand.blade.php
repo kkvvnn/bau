@@ -153,7 +153,7 @@
 
     @php
         $PackagingType = 'Упаковка';
-        $PackageQuantity = '2.16';
+        $PackageQuantity = '1';
     @endphp
 
     @php

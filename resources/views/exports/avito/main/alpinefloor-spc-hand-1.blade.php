@@ -215,7 +215,7 @@
 
     @php
         $PackagingType = '';
-        $PackageQuantity = '2.23';
+        $PackageQuantity = '1';
     @endphp
 
     @php
