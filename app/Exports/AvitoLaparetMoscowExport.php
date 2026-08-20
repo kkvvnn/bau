@@ -143,25 +143,25 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
         ->get();
 
 //      ===================PIXMOSAIC====================
-        $pixmosaics = PixmosaicNew::where('price', '!=', 0)
-            ->where('stock', '>=', 1)
-            ->where([
-                ['vendor_code', '!=', 'PIX700-2'],
-                ['vendor_code', '!=', 'PIX752'],
-                ['vendor_code', '!=', 'PIX767'],
-                ['vendor_code', '!=', 'PIX750'],
-                ['vendor_code', '!=', 'PIX700'],
-                ['vendor_code', '!=', 'PIX701'],
-            ])
-            ->get();
+//        $pixmosaics = PixmosaicNew::where('price', '!=', 0)
+//            ->where('stock', '>=', 1)
+//            ->where([
+//                ['vendor_code', '!=', 'PIX700-2'],
+//                ['vendor_code', '!=', 'PIX752'],
+//                ['vendor_code', '!=', 'PIX767'],
+//                ['vendor_code', '!=', 'PIX750'],
+//                ['vendor_code', '!=', 'PIX700'],
+//                ['vendor_code', '!=', 'PIX701'],
+//            ])
+//            ->get();
 
 //      ===================LEEDO===================
-        $leedo = LeedoProduct::where([
-            ['Sklad_Msk_LeeDo', '>', 4],
-            ['Category', 'like', 'Мозаика/%'],
-            ['System_ID', '!=', '00-00002393'],
-        ])
-            ->get();
+//        $leedo = LeedoProduct::where([
+//            ['Sklad_Msk_LeeDo', '>', 4],
+//            ['Category', 'like', 'Мозаика/%'],
+//            ['System_ID', '!=', '00-00002393'],
+//        ])
+//            ->get();
 
         //      ===================DISCOUNTS==================
 

@@ -541,7 +541,7 @@
 
     @php
         $Promo = 'Manual';
-        $PromoManualOptions = '|7|500';
+        $PromoManualOptions = '|6|500';
 
 //        $Promo = '';
 //        $PromoManualOptions = '';
