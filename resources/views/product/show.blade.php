@@ -3,8 +3,8 @@
 @section('meta')
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{url()->full()}}">
-    @if($product->Name != $product->originals->Name)
-        <meta property="og:title" content="{{$product->Name}} | {{$product->originals->Name}}">
+    @if($product->Name != optional($product->originals)->Name)
+        <meta property="og:title" content="{{$product->Name}} | {{optional($product->originals)->Name}}">
     @else
         <meta property="og:title" content="{{$product->Name}}">
     @endif
@@ -17,7 +17,7 @@
     <meta name="twitter:image" content="{{$urls[0]}}" />
 @endsection
 
-@section('title', $product->Name . ' | ' . $product->originals->Name)
+@section('title', $product->Name . ' | ' . optional($product->originals)->Name)
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
@@ -44,8 +44,8 @@
                 <div class="col">
                     <h1 class="display-6">{{$product->Name}}</h1>
 
-                    @if($product->Name != $product->originals->Name)
-                        <h1 class="display-6  text-body-secondary">{{$product->originals->Name}}</h1>
+                    @if($product->Name != optional($product->originals)->Name)
+                        <h1 class="display-6  text-body-secondary">{{optional($product->originals)->Name}}</h1>
                     @endif
                     <hr>
                     <h1 class="display-6">{{$product->Producer_Brand}}</h1>
