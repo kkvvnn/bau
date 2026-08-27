@@ -473,7 +473,7 @@
         $image_urls = avito_images_urls($img_arr, true);
 
         if ($product->Element_Code == 'х9999322735') {
-            $image_urls .= config('app.url') . '/storage/laparet_calacatta_viola.jpg';
+            $image_urls = config('app.url') . '/storage/laparet_calacatta_viola.jpg' . ' | '. $image_urls;
         }
 
     @endphp
