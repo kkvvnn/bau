@@ -30,6 +30,22 @@ class AquaController extends Controller
         return redirect()->route('aquafloor.index-collections')->with('success', 'Aquafloor Price List обновлен!');
     }
 
+    public function import_stocks(Request $request)
+    {
+        $file = $request->file('file');
+
+        $date = date('Y-m-d_His');
+        $name = 'import/aquafloor/stocks/';
+
+        Storage::putFileAs($name, $file,'aquafloor-stocks_'.$date.'.xlsx' );
+
+        $name_uploaded_file = 'import/aquafloor/stocks/aquafloor-stocks_'.$date.'.xlsx';
+        ::truncate();
+        Excel::import(new Import(), $name_uploaded_file);
+
+        return redirect()->route('aquafloor.index')->with('success', 'Aquafloor остатки обновлены!');
+    }
+
     public function index_collections()
     {
         return 'OK COLLECTIONS';
@@ -50,7 +66,7 @@ class AquaController extends Controller
         Aqua::truncate();
         Excel::import(new AquaImport(), $name_uploaded_file);
 
-        Artisan::call('aqua:download-images');
+//        Artisan::call('aqua:download-images');
 
         return redirect()->route('aquafloor.index')->with('success', 'Aquafloor Content (DECORS) обновлен! Выполните aqua:download-images');
     }

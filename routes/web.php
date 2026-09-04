@@ -253,8 +253,8 @@ Route::name('aquafloor.')->group(function () {
     Route::post('/aquafloor-price-list-import', [AquaController::class, 'import_price_list'])->name('import-price-list');
 
     //----- AQUAFLOOR-STOCKS (Import from .xls via form) -----
-//    Route::view('/aquafloor-stocks-import', 'aquafloor-new.import-stocks');
-//    Route::post('/aquafloor-stocks-import', [AquaController::class, 'import'])->name('import-stocks');
+    Route::view('/aquafloor-stocks-import', 'aqua.import-stocks');
+    Route::post('/aquafloor-stocks-import', [AquaController::class, 'import_stocks'])->name('import-stocks');
 });
 
 //----- KERRANOVA -----
