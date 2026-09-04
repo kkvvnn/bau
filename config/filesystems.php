@@ -106,6 +106,14 @@ return [
             'throw' => false,
         ],
 
+        'aquafloor' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/aquafloor'),
+            'url' => env('APP_URL').'/storage/images/aquafloor',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'kerranova' => [
             'driver' => 'local',
             'root' => storage_path('app/public/images/kerranova'),
@@ -234,13 +242,13 @@ return [
             'throw' => false,
         ],
 
-        'aquafloor' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/Aquafloor'),
-            // 'url' => env('APP_URL').'/storage',
-            // 'visibility' => 'public',
-            'throw' => false,
-        ],
+//        'aquafloor' => [
+//            'driver' => 'local',
+//            'root' => storage_path('app/public/Aquafloor'),
+//            // 'url' => env('APP_URL').'/storage',
+//            // 'visibility' => 'public',
+//            'throw' => false,
+//        ],
 
         'primavera' => [
             'driver' => 'local',

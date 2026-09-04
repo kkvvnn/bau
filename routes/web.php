@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Aqua\AquaController;
 use App\Http\Controllers\AquaFloorController;
 use App\Http\Controllers\AvitoController;
 use App\Http\Controllers\KerranovaController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\PrimaveraNewController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\SkallaController;
 use App\Http\Controllers\TelegramSendController;
+use App\Models\Aqua\AquaCollection;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,11 +87,11 @@ Route::get('/insales/export/laparet/wood', [\App\Http\Controllers\InsalesControl
 Route::get('/telegram/skip/{skip}/send/{count}', [TelegramSendController::class, 'send'])->name('send_to_telegram');
 
 //----- AQUAFLOOR ------
-Route::get('/aquafloor/import', [AquaFloorController::class, 'import'])->name('aqua_flor_import');
-Route::get('/aquafloor/download_pic', [AquaFloorController::class, 'download_pic']);
-Route::get('/aquafloor/index', [AquaFloorController::class, 'index'])->name('aquafloor_index');
-Route::get('/aquafloor/{id}', [AquaFloorController::class, 'show'])->name('aquafloor.show');
-Route::get('/aquafloor/collection/{name}', [AquaFloorController::class, 'show_collection'])->name('aquafloor.show.collection');
+//Route::get('/aquafloor/import', [AquaFloorController::class, 'import'])->name('aqua_flor_import');
+//Route::get('/aquafloor/download_pic', [AquaFloorController::class, 'download_pic']);
+//Route::get('/aquafloor/index', [AquaFloorController::class, 'index'])->name('aquafloor_index');
+//Route::get('/aquafloor/{id}', [AquaFloorController::class, 'show'])->name('aquafloor.show');
+//Route::get('/aquafloor/collection/{name}', [AquaFloorController::class, 'show_collection'])->name('aquafloor.show.collection');
 
 //----- HELP_CONTROLLER -----
 Route::get('/list-all', [MyHelpController::class, 'list']);
@@ -232,6 +234,27 @@ Route::name('primavera-new.')->group(function () {
     //----- PRIMAVERA-STOCKS (Import from .xls via form) -----
     Route::view('/primavera-stocks-import', 'primavera-new.import-stocks');
     Route::post('/primavera-stocks-import', [\App\Http\Controllers\PrimaveraNewStockController::class, 'import'])->name('import-stocks');
+});
+
+//----- AQUAFLOOR-NEW -----
+Route::name('aquafloor.')->group(function () {
+    //----- AQUAFLOOR (Import from .xls via form) -----
+    Route::controller(AquaController::class)->group(function () {
+        Route::view('/aquafloor/import', 'aqua.import');
+        Route::post('/aquafloor/import', 'import')->name('import');
+        Route::get('/aquafloor/collections', 'index_collections')->name('index-collections');
+        Route::get('/aquafloor', 'index')->name('index');
+        Route::get('/aquafloor/{slug:slug}', 'show')->name('show');
+        Route::get('/aquafloor/collection/{name}', 'collection')->name('collection');
+    });
+
+    //----- AQUAFLOOR-PRICE-LIST-COLLECTION (Import from .xls via form) -----
+    Route::view('/aquafloor-price-list-import', 'aqua.import-price-list');
+    Route::post('/aquafloor-price-list-import', [AquaController::class, 'import_price_list'])->name('import-price-list');
+
+    //----- AQUAFLOOR-STOCKS (Import from .xls via form) -----
+//    Route::view('/aquafloor-stocks-import', 'aquafloor-new.import-stocks');
+//    Route::post('/aquafloor-stocks-import', [AquaController::class, 'import'])->name('import-stocks');
 });
 
 //----- KERRANOVA -----

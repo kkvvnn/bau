@@ -468,7 +468,7 @@
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <ul class="">
-                                        <li><a class="nav-link" href="{{ route('aquafloor_index') }}">AQUAFLOOR</a></li>
+{{--                                        <li><a class="nav-link" href="{{ route('aquafloor_index') }}">AQUAFLOOR</a></li>--}}
                                         <li><a class="nav-link" href="{{ route('skalla.index') }}">SKALLA</a></li>
                                     </ul>
                                 </div>
