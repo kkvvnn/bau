@@ -27,7 +27,7 @@ class AquaStockImport implements ToModel, WithUpserts, WithHeadingRow, WithStart
     {
         return new AquaStock([
             'vendor_code' => str_replace($this->del, '', $row[0]),
-            'unit' => $row[5],
+            'unit' => $row[5]??0,
             'stock_msk_germes' => (int) $row[7],
             'stock_msk_eger' => (int) $row[8],
             'stock_msk' => (int) $row[9],
