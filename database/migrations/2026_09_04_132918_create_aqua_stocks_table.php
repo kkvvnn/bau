@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('aqua_stocks', function (Blueprint $table) {
             $table->id();
-
+            $table->string('vendor_code')->unique();
+            $table->string('unit');
+            $table->integer('stock_msk_germes');
+            $table->integer('stock_msk_eger');
+            $table->integer('stock_msk');
             $table->timestamps();
         });
     }

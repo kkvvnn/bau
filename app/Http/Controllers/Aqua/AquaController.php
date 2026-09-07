@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Aqua;
 use App\Http\Controllers\Controller;
 use App\Imports\AquaImport;
 use App\Imports\AquaPriceListImport;
+use App\Imports\AquaStockImport;
 use App\Models\Aqua\Aqua;
 use App\Models\Aqua\AquaCollection;
+use App\Models\Aqua\AquaStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
@@ -40,8 +42,8 @@ class AquaController extends Controller
         Storage::putFileAs($name, $file,'aquafloor-stocks_'.$date.'.xlsx' );
 
         $name_uploaded_file = 'import/aquafloor/stocks/aquafloor-stocks_'.$date.'.xlsx';
-        ::truncate();
-        Excel::import(new Import(), $name_uploaded_file);
+        AquaStock::truncate();
+        Excel::import(new AquaStockImport(), $name_uploaded_file);
 
         return redirect()->route('aquafloor.index')->with('success', 'Aquafloor остатки обновлены!');
     }
@@ -73,8 +75,13 @@ class AquaController extends Controller
 
     public function index()
     {
-        $products = Aqua::orderBy('price')
+        $products = Aqua::whereHas('stock')
+            ->orderBy('price')
             ->paginate(15);
+
+//        $products = Aqua::whereDoesntHave('stock')->get();
+//
+//        dd($products);
 
 
         return view('aqua.index', [

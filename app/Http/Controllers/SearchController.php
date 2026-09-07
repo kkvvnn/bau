@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AbsolutGres\AbsolutGresScrap;
 use App\Models\Altacera\AltaceraTovar;
+use App\Models\Aqua\Aqua;
 use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
@@ -103,14 +104,14 @@ class SearchController extends Controller
             ]);
         }
 
-        $aquafloor = AquaFloor::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
-        $aquafloor->appends(['name' => $name]);
-        if (count($aquafloor)) {
-            return view('aquafloor.index', [
-                'products' => $aquafloor,
-                'search_name' => $search_name,
-            ]);
-        }
+//        $aquafloor = AquaFloor::where('title', 'LIKE', $name)->orWhere('vendor_code', 'LIKE', $name)->paginate(15);
+//        $aquafloor->appends(['name' => $name]);
+//        if (count($aquafloor)) {
+//            return view('aquafloor.index', [
+//                'products' => $aquafloor,
+//                'search_name' => $search_name,
+//            ]);
+//        }
 
         $pixmosaic = PixmosaicNew::where('title', 'LIKE', $name)
             ->orWhere('vendor_code', 'LIKE', $name)
@@ -218,6 +219,17 @@ class SearchController extends Controller
         if (count($skalla)) {
             return view('skalla.index', [
                 'products' => $skalla,
+                'search_name' => $search_name,
+            ]);
+        }
+
+        $aqua = Aqua::where('title', 'LIKE', $name)
+            ->orWhere('vendor_code', 'LIKE', $name)
+            ->paginate(15);
+        $aqua->appends(['name' => $name]);
+        if (count($aqua)) {
+            return view('aqua.index', [
+                'products' => $aqua,
                 'search_name' => $search_name,
             ]);
         }

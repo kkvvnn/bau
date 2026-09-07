@@ -2,12 +2,16 @@
 
 namespace App\Models\Aqua;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Aqua extends Model
 {
-    use HasFactory;
 
     protected $guarded = false;
+
+    public function stock(): HasOne
+    {
+        return $this->hasOne(AquaStock::class, 'vendor_code', 'vendor_code');
+    }
 }
