@@ -14,4 +14,9 @@ class Aqua extends Model
     {
         return $this->hasOne(AquaStock::class, 'vendor_code', 'vendor_code');
     }
+
+    public function collection_relation(): HasOne
+    {
+        return $this->hasOne(AquaCollection::class, 'collection', 'collection');
+    }
 }

@@ -245,7 +245,7 @@ Route::name('aquafloor.')->group(function () {
         Route::get('/aquafloor/collections', 'index_collections')->name('index-collections');
         Route::get('/aquafloor', 'index')->name('index');
         Route::get('/aquafloor/{slug:slug}', 'show')->name('show');
-        Route::get('/aquafloor/collection/{name}', 'collection')->name('collection');
+        Route::get('/aquafloor/collection/{name}', 'collection')->name('collection')->where('name', '.*');
     });
 
     //----- AQUAFLOOR-PRICE-LIST-COLLECTION (Import from .xls via form) -----

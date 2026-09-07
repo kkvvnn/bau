@@ -12,6 +12,7 @@ use App\Models\Aqua\AquaStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AquaController extends Controller
@@ -87,5 +88,67 @@ class AquaController extends Controller
         return view('aqua.index', [
             'products' => $products,
         ]);
+    }
+
+    public function show($slug)
+    {
+        $product = Aqua::whereSlug($slug)->firstOrFail();
+
+        $string_for_delete = '';
+        $img = Storage::disk('aquafloor')->url($product->image);
+
+//        -----------------------------
+        $urls_c = [];
+        if ($product->collection_relation->image != '') {
+            $urls_c[] = $product->collection_relation->image;
+        } else {
+            $urls_c[] = Storage::disk('no_image')->url('no_image.jpg');
+        }
+//        -----------------------------------
+
+
+        $urls_2 = [];
+        $urls_2[] = $img;
+//        ------------------------------------
+
+        $text_color = '';
+        $date_now = \Carbon\Carbon::now();
+        $date_of_update = $product->stock->updated_at;
+        $diff_days = $date_now->diffInDays($date_of_update);
+
+        if ($diff_days == 0) {
+            $text_color = 'text-success';
+        } elseif ($diff_days <= 7) {
+            $text_color = 'text-warning';
+        } else {
+            $text_color = 'text-danger';
+        }
+
+        $vivod = '';
+
+        $text = $product->collection;
+        $char = "/";
+
+        $parts = explode($char, $text, 2);
+
+        $collection = trim($parts[1]);
+
+        return view('aqua.show', [
+            'product' => $product,
+            'urls' => $urls_2,
+            'url_collection' => $urls_c,
+            'vivod' => $vivod,
+            'text_color' => $text_color,
+            'collection' => $collection,
+        ]);
+    }
+
+    public function collection($name)
+    {
+        $products = Aqua::whereHas('stock')
+            ->where('collection', 'LIKE', '%'.$name.'%')
+            ->paginate(15);
+
+        return view('aqua.index', compact('products'));
     }
 }
