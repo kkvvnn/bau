@@ -228,6 +228,10 @@
         $DiscountLadderList = '';
     @endphp
 
+    @php
+        $VideoFileURL = '';
+    @endphp
+
     <tr>
         <td>{{ $code }}</td>                                    {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
@@ -291,6 +295,7 @@
         <td>{{ $WholesaleMeasureUnit }}</td>                    {{-- WholesaleMeasureUnit --}}
         <td>{{ $WholesaleDiscountLadderType }}</td>             {{-- WholesaleDiscountLadderType --}}
         <td>{!! nl2br($DiscountLadderList) !!}</td>             {{-- DiscountLadderList --}}
+        <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
     </tr>
 @endforeach
 {{-----LEEDO-END----}}

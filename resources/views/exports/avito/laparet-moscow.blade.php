@@ -65,6 +65,7 @@
         <th>WholesaleMeasureUnit</th>
         <th>WholesaleDiscountLadderType</th>
         <th>DiscountLadderList</th>
+        <th>VideoFileURL</th>
     </tr>
     </thead>
     <tbody>

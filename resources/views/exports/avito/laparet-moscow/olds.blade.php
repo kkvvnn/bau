@@ -93,6 +93,10 @@
         $DiscountLadderList = '10000|10<br>50000|15<br>100000|20';
     @endphp
 
+    @php
+        $VideoFileURL = '';
+    @endphp
+
     <tr>
         <td>{{ $old->Id_av }}</td>                              {{-- Id --}}
         <td>{{ $AdStatus }}</td>                                {{-- AdStatus --}}
@@ -156,6 +160,7 @@
         <td>{{ $WholesaleMeasureUnit }}</td>                    {{-- WholesaleMeasureUnit --}}
         <td>{{ $WholesaleDiscountLadderType }}</td>             {{-- WholesaleDiscountLadderType --}}
         <td>{!! nl2br($DiscountLadderList) !!}</td>             {{-- DiscountLadderList --}}
+        <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
     </tr>
 @endforeach
 {{-----------------OLDS-END-------------------}}

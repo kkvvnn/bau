@@ -588,6 +588,14 @@
         }
     @endphp
 
+    @php
+        $VideoFileURL = '';
+
+        if ($product->Element_Code == 'х9999322735') {
+            $VideoFileURL = 'https://service-plitka.ru/storage/media/laparet/calacatta_viola/calacatta_viola_1.mp4';
+        }
+    @endphp
+
 {{--    @php--}}
 {{--        if ($product->Element_Code == 'х9999316107') {--}}
 {{--            $WholesaleType = 'Да';--}}
@@ -664,6 +672,7 @@
         <td>{{ $WholesaleMeasureUnit }}</td>                    {{-- WholesaleMeasureUnit --}}
         <td>{{ $WholesaleDiscountLadderType }}</td>             {{-- WholesaleDiscountLadderType --}}
         <td>{!! nl2br($DiscountLadderList) !!}</td>             {{-- DiscountLadderList --}}
+        <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
     </tr>
 @endforeach
 {{------------------END-BAUSERVICE--------------------}}
