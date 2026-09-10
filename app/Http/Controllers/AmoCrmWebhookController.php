@@ -28,7 +28,10 @@ class AmoCrmWebhookController extends Controller
         $targetStatusId = 88517678; // ЗАМЕНИТЕ НА ВАШ ID ЭТАПА
 //        $targetStatusId = 82364358; // ЗАМЕНИТЕ НА ВАШ ID ЭТАПА
 
-        Log::info('ID ЭТАПА:', $targetStatusId);
+        $temp_arr = [];
+        $temp_arr[] = $newStatusId;
+
+        Log::info('ID ЭТАПА:', $temp_arr);
 
         // 5. Если сделка перешла на нужный этап — отправляем в Telegram
         if ($newStatusId == $targetStatusId) {
