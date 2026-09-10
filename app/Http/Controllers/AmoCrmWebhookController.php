@@ -61,7 +61,8 @@ class AmoCrmWebhookController extends Controller
 //            'parse_mode' => 'Markdown',
 //        ]);
 
-        $response = Http::post($url, [
+        $response = Http::timeout(10)
+            ->post($url, [
             'chat_id' => $chatId,
             'text' => $message,
             'parse_mode' => 'Markdown',
