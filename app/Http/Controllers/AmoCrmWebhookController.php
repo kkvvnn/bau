@@ -28,11 +28,6 @@ class AmoCrmWebhookController extends Controller
         $targetStatusId = 88517678; // ЗАМЕНИТЕ НА ВАШ ID ЭТАПА
 //        $targetStatusId = 82364358; // ЗАМЕНИТЕ НА ВАШ ID ЭТАПА
 
-        $temp_arr = [];
-        $temp_arr[] = $newStatusId;
-
-        Log::info('ID ЭТАПА:', $temp_arr);
-
         // 5. Если сделка перешла на нужный этап — отправляем в Telegram
         if ($newStatusId == $targetStatusId) {
             $this->sendTelegramNotification($leadId, $newStatusId, $pipelineId);
@@ -60,10 +55,18 @@ class AmoCrmWebhookController extends Controller
 
         $url = "https://api.telegram.org/bot{$botToken}/sendMessage";
 
-        Http::post($url, [
+//        Http::post($url, [
+//            'chat_id' => $chatId,
+//            'text' => $message,
+//            'parse_mode' => 'Markdown',
+//        ]);
+
+        $response = Http::post($url, [
             'chat_id' => $chatId,
             'text' => $message,
             'parse_mode' => 'Markdown',
         ]);
+
+        Log::info('Telegram response', ['body' => $response->body(), 'status' => $response->status()]);
     }
 }
