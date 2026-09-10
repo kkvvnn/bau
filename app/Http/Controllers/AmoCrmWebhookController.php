@@ -25,8 +25,8 @@ class AmoCrmWebhookController extends Controller
         $pipelineId = $leadStatus['pipeline_id'] ?? null;
 
         // 4. Укажите ID этапа, при переходе на который нужно отправить уведомление
-//        $targetStatusId = 88517678; // ЗАМЕНИТЕ НА ВАШ ID ЭТАПА
-        $targetStatusId = 82364358; // ЗАМЕНИТЕ НА ВАШ ID ЭТАПА
+        $targetStatusId = 88517678; // ЗАМЕНИТЕ НА ВАШ ID ЭТАПА
+//        $targetStatusId = 82364358; // ЗАМЕНИТЕ НА ВАШ ID ЭТАПА
 
         // 5. Если сделка перешла на нужный этап — отправляем в Telegram
         if ($newStatusId == $targetStatusId) {
