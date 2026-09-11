@@ -48,6 +48,7 @@
                             </a>
                             <div class="card-body">
                                 <a href="/aquafloor/{{$product->slug}}" class="text-decoration-none text-reset">
+                                    <h6 class="text-success fw-light">{{$product->type_soedinen}} соединение</h6>
                                     <h5 class="card-title">{{$product->title}}</h5>
                                 </a>
                             </div>
