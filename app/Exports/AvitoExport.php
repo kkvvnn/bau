@@ -141,6 +141,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             ['price_rozn', '!=', 0],
             ['brand_name', '!=', 'Best Ceramic'],
             ['articul', '!=', 'RP-259567'],
+            ['articul', '!=', 'RP-238671'], //Magnum White 60x120
+            ['articul', '!=', 'RP-238672'], //Magnum White 60x60
         ])
             ->get();
 
