@@ -255,6 +255,9 @@
 
 @php
     $VideoFileURL = '';
+
+    $Promo = 'Manual';
+    $PromoManualOptions = '|20|600';
 @endphp
 
 <tr>
@@ -309,5 +312,7 @@
     <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
     <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
+    <td>{{ $Promo }}</td>                                   {{-- Promo --}}
+    <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
 </tr>
 {{-----ALPINFLOOR-SPC-END-HAND----}}

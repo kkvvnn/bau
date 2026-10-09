@@ -2,22 +2,24 @@
     @php
 
 
-        $image_main = Storage::disk('images-hand')->url('alpinefloor/2.jpg');
+        $image_main = Storage::disk('images-hand')->url('alpinefloor/alpine-img.png');
         $image_2 = Storage::disk('images-hand')->url('alpinefloor/4.jpg');
         $image_3 = Storage::disk('images-hand')->url('alpinefloor/6.jpg');
         $image_4 = Storage::disk('images-hand')->url('alpinefloor/8.jpg');
         $image_5 = Storage::disk('images-hand')->url('alpinefloor/10.jpg');
 
 
-                $image_urls = $image_4
-                        . ' | ' . $image_main
-                        . ' | ' . $image_3
-                        . ' | ' . $image_2
-                        . ' | ' . $image_5;
+//                $image_urls = $image_4
+//                        . ' | ' . $image_main
+//                        . ' | ' . $image_3
+//                        . ' | ' . $image_2
+//                        . ' | ' . $image_5;
 //                        . ' | ' . $image_7
 //                        . ' | ' . $image_8
 //                        . ' | ' . $image_9
 //                        . ' | ' . $image_10;
+
+$image_urls = $image_main;
 
                     $description = '';
 
@@ -207,7 +209,7 @@
     @php
         $code = 'Alpinefloor-spc-Hand-2';
         $video = $custom_video;
-        $price = '';
+        $price = '1990';
         $title = 'SPC ламинат Alpine Floor все коллекции - 2';
     @endphp
 
@@ -250,6 +252,13 @@
         $Shape = '';
         $ResistanceClass = '43';
     @endphp
+
+@php
+    $VideoFileURL = '';
+
+    $Promo = 'Manual';
+    $PromoManualOptions = '|20|600';
+@endphp
 
 <tr>
     <td>{{ $code }}</td>                                    {{-- Id --}}
@@ -302,5 +311,8 @@
     <td></td>                                               {{-- ProductSubType --}}
     <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
+    <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
+    <td>{{ $Promo }}</td>                                   {{-- Promo --}}
+    <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
 </tr>
 {{-----ALPINFLOOR-SPC-END-HAND----}}

@@ -273,6 +273,9 @@
 
     @php
         $VideoFileURL = '';
+
+        $Promo = 'Manual';
+        $PromoManualOptions = '|15|500';
     @endphp
 
 <tr>
@@ -327,5 +330,7 @@
     <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
     <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
+    <td>{{ $Promo }}</td>                                   {{-- Promo --}}
+    <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
 </tr>
 {{-----AQUAFLOOR-END-HAND----}}

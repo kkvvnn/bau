@@ -23,7 +23,7 @@
                     @php
                         $text_color = '';
                         $date_now = \Carbon\Carbon::now();
-                        $date_of_update = $product->stock->updated_at;
+                        $date_of_update = $product->stock->updated_at??0;
                         $diff_days = $date_now->diffInDays($date_of_update);
 
                         if ($diff_days == 0) {
@@ -66,7 +66,9 @@
                                 <p class="mb-0 fs-5 text-body-secondary">Остаток: {{$product->stock->stock_msk??0}} {{$product->stock->unit??0}}</p>
 {{--                                <p class="mb-0 fs-5 text-body-secondary">Остаток: Balance {{$product->unit}}</p>--}}
 
-                                <small class="mb-0 fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->stock->updated_at->format('d.m.Y')}}</span></small>
+                                @if($product->stock)
+                                    <small class="mb-0 fs-5 text-body-secondary"> Обновлено: <span class="{{$text_color}}" style="--bs-text-opacity: .7;">{{$product->stock->updated_at->format('d.m.Y')}}</span></small>
+                                @endif
                             </div>
                         </div>
                     </div>

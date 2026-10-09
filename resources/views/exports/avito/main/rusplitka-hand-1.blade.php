@@ -173,6 +173,9 @@
 
     @php
         $VideoFileURL = '';
+
+        $Promo = '';
+        $PromoManualOptions = '';
     @endphp
 
 <tr>
@@ -227,5 +230,7 @@
     <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
     <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
     <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
+    <td>{{ $Promo }}</td>                                   {{-- Promo --}}
+    <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
 </tr>
 {{-----PRIMAVERA-END-HAND----}}

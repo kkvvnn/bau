@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Altacera\AltaceraTovarAvailable;
+use App\Models\Aqua\AquaCollection;
 use App\Models\ArtCentreNew;
 use App\Models\Artkera\ArtkeraTovarAvailable;
 use App\Models\AquaFloor;
@@ -148,11 +149,10 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
 
 
 //      ===================AQUAFLOOR====================
-        $aquafloor = AquaFloor::where([
-            ['title', 'not like', '%Подложка%'],
-            ['vendor_code', '!=', 'AF4078NXL'],
-        ])
+        $aquafloor_collections = AquaCollection::where('category', 'Кварцвинил')
             ->get();
+
+//        dd($aquafloor_collections->units);
 
 //      ===================PIXMOSAIC====================
         $pixmosaics = PixmosaicNew::where('price', '!=', 0)
@@ -285,7 +285,8 @@ class AvitoExport extends DefaultValueBinder implements FromView, WithCustomValu
             'altacera' => $altacera,
             'ntceramic' => $ntceramic,
             'rusplitka' => $rusplitka,
-            'aquafloor' => $aquafloor,
+//            'aquafloor' => $aquafloor,
+            'aquafloor_collections' => $aquafloor_collections,
             'pixmosaics' => $pixmosaics,
             'artcenter' => $artcenter,
             'globaltile' => $globaltile,

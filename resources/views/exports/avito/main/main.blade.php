@@ -56,6 +56,8 @@
         <th>ColorName</th>
         <th>TargetAudience</th>
         <th>VideoFileURL</th>
+        <th>Promo</th>
+        <th>PromoManualOptions</th>
     </tr>
     </thead>
     <tbody>
@@ -71,10 +73,10 @@
     @include('exports.avito.main.artkera') //READY
     @include('exports.avito.main.kerranova') //READY
     @include('exports.avito.main.global-tile') //READY
-{{--    @include('exports.avito.main.azario') //READY--}}
+    {{--    @include('exports.avito.main.azario') //READY--}}
     @include('exports.avito.main.primavera') //READY
     @include('exports.avito.main.rusplitka') //READ
-    @include('exports.avito.main.artcenter') //READY
+{{--    @include('exports.avito.main.artcenter') //READY--}}
 
 
     {{--        SANTECH     --}}
@@ -96,7 +98,7 @@
     @include('exports.avito.main.aquafloor-hand-1')
     @include('exports.avito.main.aquafloor-hand-2')
     @include('exports.avito.main.alpinefloor-spc-hand-1')
-{{--    @include('exports.avito.main.alpinefloor-spc-hand-2')--}}
+    @include('exports.avito.main.alpinefloor-spc-hand-2')
     @include('exports.avito.main.general-hand')
 
 
@@ -112,6 +114,7 @@
 
     {{--        SPC     --}}
 
+    @include('exports.avito.main.aquafloor_collections') //READY
 {{--            @include('exports.avito.main.aquafloor') //READY--}}
 {{--    @include('exports.avito.main.skalla-new') //READY--}}
 

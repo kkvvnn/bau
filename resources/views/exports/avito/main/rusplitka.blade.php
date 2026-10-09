@@ -201,13 +201,11 @@
 
     @php
         $VideoFileURL = '';
+
+        $Promo = '';
+        $PromoManualOptions = '';
     @endphp
 
-    @php
-        if (str_contains($product->name, 'Лаш Плюс')) {
-            $price = round($product->price_rozn * 0.85, -1);
-        }
-    @endphp
 
     <tr>
         <td>{{ $code }}</td>                                    {{-- Id --}}
@@ -261,6 +259,8 @@
         <td>{{ $ColorName }}</td>                               {{-- ColorName --}}
         <td>{{ $TargetAudience }}</td>                          {{-- TargetAudience --}}
         <td>{{ $VideoFileURL }}</td>                            {{-- VideoFileURL --}}
+        <td>{{ $Promo }}</td>                                   {{-- Promo --}}
+        <td>{{ $PromoManualOptions }}</td>                      {{-- PromoManualOptions --}}
     </tr>
 @endforeach
 {{-----RUSPLITKA-END----}}
