@@ -392,6 +392,31 @@ if (!function_exists('avito_spc_skalla_thickness')) {
     }
 }
 
+if (!function_exists('avito_spc_aquafloor_thickness')) {
+    /**
+     * @param float $thickness
+     * @return string
+     */
+    function avito_spc_aquafloor_thickness(float|int $thickness): string
+    {
+        return match ($thickness) {
+            2 => '2 мм',
+            2.5 => '2,5 мм',
+            3.2 => '3,2 мм',
+            3.5 => '3,5 мм',
+            4 => '4 мм',
+            4.2 => '4,2 мм',
+            4.5 => '4,5',
+            5 => '5 мм',
+            6 => '6 мм',
+            6.5 => '6,5 мм',
+            7, 7.5 => '7 мм',
+            8 => '8 мм',
+            default => '4 мм',
+        };
+    }
+}
+
 if (!function_exists('avito_bauservice_for')) {
     /**
      * @param string|null $for

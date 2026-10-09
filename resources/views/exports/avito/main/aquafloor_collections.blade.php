@@ -17,9 +17,9 @@
         $InstallationType = avito_kvartz_vinil_installation_type($product->connection);
         $Width = round($width_mm);
         $Length = round($length_mm);
-        $Thickness = $product->fat;
+        $Thickness = avito_spc_aquafloor_thickness($product->fat);
         $Pattern = '';
-        $Color = avito_bauservice_color('123');
+        $Color = 'Разноцветный';
         $ColorName = $Color;
 
         $FlooringMaterialsSubType = 'Кварц-винил';
