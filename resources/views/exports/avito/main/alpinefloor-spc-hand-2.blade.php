@@ -257,7 +257,7 @@ $image_urls = $image_main;
     $VideoFileURL = '';
 
     $Promo = 'Manual';
-    $PromoManualOptions = '|15|600';
+    $PromoManualOptions = '|10|600';
 @endphp
 
 <tr>

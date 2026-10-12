@@ -275,7 +275,7 @@
         $VideoFileURL = '';
 
         $Promo = 'Manual';
-        $PromoManualOptions = '|15|500';
+        $PromoManualOptions = '|10|500';
     @endphp
 
 <tr>

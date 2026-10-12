@@ -204,7 +204,7 @@
 //        $PromoManualOptions = '';
 
         $Promo = 'Manual';
-        $PromoManualOptions = '|12|600';
+        $PromoManualOptions = '|10|600';
     @endphp
 
     <tr>
