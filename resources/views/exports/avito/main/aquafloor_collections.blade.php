@@ -173,7 +173,8 @@
     @endphp
 
     @php
-        $PackageQuantity = $product->meters_in_pack;
+//        $PackageQuantity = $product->meters_in_pack;
+        $PackageQuantity = '1';
         $PackagingType = '';
     @endphp
 
