@@ -470,9 +470,9 @@ class ProductController extends Controller
             $urls_2[] = Storage::disk('public')->url($value);
         }
 
-        if ($product->Element_Code == 'х9999322735') {
-            array_unshift($urls_2, config('app.url') . '/storage/laparet_calacatta_viola.jpg');
-        }
+//        if ($product->Element_Code == 'х9999322735') {
+//            array_unshift($urls_2, config('app.url') . '/storage/laparet_calacatta_viola.jpg');
+//        }
 
         $vendor_code = str_replace('х', '', $product->Element_Code);
 

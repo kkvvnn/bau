@@ -91,11 +91,11 @@
 
                     @endphp
 
-                @php
-                    if ($product->Element_Code == 'х9999322735') {
-                        $url1 = config('app.url') . '/storage/laparet_calacatta_viola.jpg';
-                    }
-                @endphp
+{{--                @php--}}
+{{--                    if ($product->Element_Code == 'х9999322735') {--}}
+{{--                        $url1 = config('app.url') . '/storage/laparet_calacatta_viola.jpg';--}}
+{{--                    }--}}
+{{--                @endphp--}}
 
                     <div class="col">
                         <div class="card h-100">
