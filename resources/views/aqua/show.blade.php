@@ -107,8 +107,8 @@
                         $old_price = $product->old_price;
                     @endphp
 
-                    <h2 class="card-title mt-5 pricing-card-title">{{$product->price??'Не указана'}} <small
-                            class="text-muted fw-light">₽/{{$product->unit}}</small> <span class="text-muted fw-light"><del>{{$old_price}} </del></span></h2>
+                    <h2 class="card-title mt-5 pricing-card-title">{{$product->collection_relation->price??'Не указана'}} <small
+                            class="text-muted fw-light">₽/{{$product->unit}}</small> {{--<span class="text-muted fw-light"><del>{{$old_price}} </del></span>--}}</h2>
 
                     <br>
 
