@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Log;
 
 class BauserviceDownloadImages extends Command
 {
@@ -69,6 +70,38 @@ class BauserviceDownloadImages extends Command
 //        $this->info('-----[OK]');
     }
 
+//    private function download_images_to_storage($name): void
+//    {
+//        if ($name == null) {
+//            return;
+//        }
+//        $string_for_delete = 'ftp://ftp_drive_d_r:zP3CxVm4O8kg5UWkG5D@cloud.datastrg.ru:21/';
+//        $name_file = Str::remove($string_for_delete, $name);
+//
+//        if ($name_file == null) {
+//            return;
+//        }
+//
+//        if (Storage::disk('public')->missing($name_file)) {
+//            $file = Storage::disk('ftp')->get($name_file);
+//            if ($file != null) {
+//                $manager = new ImageManager(['driver' => 'imagick']);
+//                $image = $manager->make($file);
+//                $image->orientate();
+////                dd($image->exif());
+//                $image->resize(900, 900, function ($constraint) {
+//                    $constraint->aspectRatio();
+//                    $constraint->upsize();
+//                });
+//                $exif = $image->exif();
+//                if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && ($exif['COMPUTED']['Width'] < $exif['COMPUTED']['Height'])) {
+//                    $image->rotate(-90);
+//                }
+//                Storage::disk('public')->put($name_file, $image->encode());
+//            }
+//        }
+//    }
+
     private function download_images_to_storage($name): void
     {
         if ($name == null) {
@@ -86,16 +119,33 @@ class BauserviceDownloadImages extends Command
             if ($file != null) {
                 $manager = new ImageManager(['driver' => 'imagick']);
                 $image = $manager->make($file);
-                $image->orientate();
-//                dd($image->exif());
+
+                // Определяем MIME-тип или расширение, чтобы не вызывать orientate() для PNG
+                $mime = $image->mime(); // например, 'image/png' или 'image/jpeg'
+
+                // Пытаемся автоматически ориентировать ТОЛЬКО если это не PNG.
+                // Для JPEG это сработает, если EXIF не потерялся при чтении из строки.
+                if ($mime !== 'image/png') {
+                    try {
+                        $image->orientate();
+                    } catch (\Exception $e) {
+                        // Логируем, но не прерываем обработку, если EXIF прочитать не удалось
+                        Log::warning("Не удалось выполнить orientate() для файла {$name_file}: " . $e->getMessage());
+                    }
+                }
+
+                // Изменение размера (работает для всех форматов)
                 $image->resize(900, 900, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });
-                $exif = $image->exif();
-                if (isset($exif['COMPUTED']['Width']) && isset($exif['COMPUTED']['Height']) && ($exif['COMPUTED']['Width'] < $exif['COMPUTED']['Height'])) {
+
+                // Определение портретной ориентации по фактическим размерам изображения.
+                // Это надёжнее, чем $exif['COMPUTED'], так как не зависит от наличия EXIF.
+                if ($image->width() < $image->height()) {
                     $image->rotate(-90);
                 }
+
                 Storage::disk('public')->put($name_file, $image->encode());
             }
         }
