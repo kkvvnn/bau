@@ -39,10 +39,8 @@ if (!function_exists('avito_price')) {
      * @param int $price_old
      * @return int|string
      */
-    function avito_price(int $price_rrc, string $brand, array $discounts, int $price_old = 0): int|string
+    function avito_price(int $price, string $brand, array $discounts, int $price_old = 0): int|string
     {
-        $price = $price_rrc;
-
         if ($price == 0) {
             return '';
         }
@@ -55,7 +53,7 @@ if (!function_exists('avito_price')) {
         if ($additional == 'Цена 1 рубль') {
             return 1;
         }
-        if ($discount && $additional == 'По умолчанию') {
+        if (($discount && ($additional == 'По умолчанию')) && ($price > 1000)) {
             if ($price_old == 0 || $price_old == $price) {
                 return round($price * (100 - $discount) / 100, -1);
             }
