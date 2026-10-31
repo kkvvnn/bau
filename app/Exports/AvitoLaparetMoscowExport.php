@@ -126,7 +126,7 @@ class AvitoLaparetMoscowExport extends DefaultValueBinder implements FromView, W
 
 //  ===========================OLD=================================
         $olds = AvitoTwoExcel::whereIn('AvitoId', [
-            '2925091517',
+//            '2925091517',
             '2797125306',
             '2764970303',
             '2765196069',
