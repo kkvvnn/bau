@@ -53,7 +53,7 @@ if (!function_exists('avito_price')) {
         if ($additional == 'Цена 1 рубль') {
             return 1;
         }
-        if (($discount && ($additional == 'По умолчанию')) && ($price > 1000)) {
+        if ($discount && ($additional == 'По умолчанию')) {
             if ($price_old == 0 || $price_old == $price) {
                 return round($price * (100 - $discount) / 100, -1);
             }
