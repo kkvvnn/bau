@@ -100,6 +100,7 @@
     @include('exports.avito.main.alpinefloor-spc-hand-1')
     @include('exports.avito.main.alpinefloor-spc-hand-2')
     @include('exports.avito.main.general-hand')
+    @include('exports.avito.main.viola-staro')
 
 
     {{--        MOSAIC     --}}
