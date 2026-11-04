@@ -43,7 +43,7 @@
 
                     $description .= '<p><strong>Керамогранит Staro Bulgary Satin 60x120</strong></p>';
 
-                    $description .= '<p>Калакатта виола calacatta viola</p>';
+                    $description .= '<p><em>Калакатта виола calacatta viola</em></p>';
 
                     $description .= '<p>Наличие и цены на ваш объем спрашивайте у менеджера.</p>';
 //                    $description .= '<p>Скидки от розничной цены. Доставка по Москве, cамовывоз на западе Москвы.</p>';
@@ -93,8 +93,8 @@
 //    $VideoFileURL = '';
     $VideoFileURL = Storage::disk('images-hand')->url('viola/2.mp4');
 
-    $Promo = '';
-    $PromoManualOptions = '';
+    $Promo = 'Manual';
+    $PromoManualOptions = '|7|500';
 @endphp
 
     <tr>
