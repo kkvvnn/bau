@@ -374,7 +374,8 @@ return [
             'driver' => 'ftp',
             'host' => '92.53.96.128',
             'username' => 'leedoceram_nomenkl',
-            'password' => 'Zagruzka789',
+//            'password' => 'Zagruzka789',
+            'password' => 'JfPNkd2A',
 
             // Optional FTP Settings...
             'port' => 21,
