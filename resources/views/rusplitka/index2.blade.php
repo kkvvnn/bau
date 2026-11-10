@@ -69,14 +69,14 @@
 {{--                                @endif--}}
                                 @php
                                     $bronnicy_stock = (float)$product->rest_skald_bronnicy - (float)$product->rest_skald_bronnicy_rezerv;
-                                    $ljubercy_stock = (float)$product->rest_skald_ljubercy - (float)$product->rest_skald_ljubercy_rezerv;
-                                    $sklad_20t_stock = (float)$product->rest_skald_20t - (float)$product->rest_skald_20t_rezerv;
-                                    $krasnodar_stock = (float)$product->rest_skald_krasnodar - (float)$product->rest_skald_krasnodar_rezerv;
+                                    $ljubercy_stock = (float)$product->rest_skald_ljubercy;
+                                    $sklad_20t_stock = (float)$product->rest_skald_20t;
+                                    $krasnodar_stock = (float)$product->rest_skald_krasnodar;
                                 @endphp
 
-                                @if($bronnicy_stock)
-                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Бронницы: {{$bronnicy_stock}} {{$product->unit}}</p>
-                                @endif
+{{--                                @if($bronnicy_stock)--}}
+{{--                                    <p class="mb-0 mt-0 fs-5 text-body-secondary">Бронницы: {{$bronnicy_stock}} {{$product->unit}}</p>--}}
+{{--                                @endif--}}
                                 @if($ljubercy_stock)
                                     <p class="mb-0 mt-0 fs-5 text-body-secondary">Люберцы: {{$ljubercy_stock}} {{$product->unit}}</p>
                                 @endif
