@@ -213,14 +213,19 @@ class ArtkeraTovarAvailable extends Command
                 }
 
 //                                            SAMARA
-                if ($balance['depot_id'] == $depots_list['Склад Самара']) {
+//                if ($balance['depot_id'] == $depots_list['Склад Самара']) {
+                if ($balance['depot_id'] == $depots_list['Склад Самара  (Московское шоссе)']) {
                     $balance_samara = (float)$balance['free_balance'];
                     $balance_samara_reserve = (float)$balance['reserve'];
                 }
-                if ($balance['depot_id'] == $depots_list['Товары в пути (на Самару)']) {
-                    $balance_samara_way = (float)$balance['free_balance'];
-                }
-                if ($balance['depot_id'] == $depots_list['Склад СамараЛИКВИДАЦИЯ']) {
+//                if ($balance['depot_id'] == $depots_list['Товары в пути (на Самару)']) {
+//                    $balance_samara_way = (float)$balance['free_balance'];
+//                }
+
+                $balance_samara_way = 0;
+
+//                if ($balance['depot_id'] == $depots_list['Склад СамараЛИКВИДАЦИЯ']) {
+                if ($balance['depot_id'] == $depots_list['Склад СамараЛИКВИДАЦИЯ  (Московское шоссе)']) {
                     $balance_samara_sale = (float)$balance['free_balance'];
                     $balance_samara_sale_reserve = (float)$balance['reserve'];
                 }
