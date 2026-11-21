@@ -172,7 +172,7 @@
         $description .= '<p><em>Цена указана за 1 '.$product->MainUnit.' (без учета доп скидки)</em></p>';
         $description .= '<p><strong>&#128165; Скидки от объема &#128165;</strong></p>';
         $description .= '<p><strong>Под каждый проект действуют индивидуальные условия</strong></p>';
-        $description .= '<p>Кратно упаковкам. Минимальный заказ - от 1 упаковки.</p>';
+        $description .= '<p>Кратно упаковкам. Минимальный заказ - от 10 тысяч рублей.</p>';
         $description .= '<p><strong>Оплата при получении.</strong></p>';
         $description .= '<p>--------------------</p>';
 
@@ -555,7 +555,7 @@
     @endphp
 
     @php
-        $WholesaleType = '';
+        $WholesaleType = 'Нет';
         $WholesaleMinOrderType = '';
         $WholesaleMinOrderCount = '';
         $WholesalePacking = '';
@@ -578,18 +578,18 @@
 {{--        }--}}
 {{--    @endphp--}}
 
-    @php
-        if ($price_old == 0 || $price_old == $price) {
-            $WholesaleType = 'Да';
-            $WholesaleMinOrderType = 'От количества';
-            $WholesaleMinOrderCount = '1';
-            $WholesalePacking = '';
-            $WholesalePackingCount = '';
-            $WholesaleMeasureUnit = 'Метр квадратный';
-            $WholesaleDiscountLadderType = 'Зависит от суммы';
-            $DiscountLadderList = '10000|10<br>50000|15<br>100000|20';
-        }
-    @endphp
+{{--    @php--}}
+{{--        if ($price_old == 0 || $price_old == $price) {--}}
+{{--            $WholesaleType = 'Да';--}}
+{{--            $WholesaleMinOrderType = 'От количества';--}}
+{{--            $WholesaleMinOrderCount = '1';--}}
+{{--            $WholesalePacking = '';--}}
+{{--            $WholesalePackingCount = '';--}}
+{{--            $WholesaleMeasureUnit = 'Метр квадратный';--}}
+{{--            $WholesaleDiscountLadderType = 'Зависит от суммы';--}}
+{{--            $DiscountLadderList = '10000|10<br>50000|15<br>100000|20';--}}
+{{--        }--}}
+{{--    @endphp--}}
 
     @php
         $VideoFileURL = '';
