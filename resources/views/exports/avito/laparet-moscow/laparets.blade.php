@@ -555,7 +555,8 @@
     @endphp
 
     @php
-        $WholesaleType = 'Нет';
+//        $WholesaleType = 'Нет';
+        $WholesaleType = '';
         $WholesaleMinOrderType = '';
         $WholesaleMinOrderCount = '';
         $WholesalePacking = '';
@@ -578,18 +579,18 @@
 {{--        }--}}
 {{--    @endphp--}}
 
-{{--    @php--}}
-{{--        if ($price_old == 0 || $price_old == $price) {--}}
-{{--            $WholesaleType = 'Да';--}}
-{{--            $WholesaleMinOrderType = 'От количества';--}}
-{{--            $WholesaleMinOrderCount = '1';--}}
-{{--            $WholesalePacking = '';--}}
-{{--            $WholesalePackingCount = '';--}}
-{{--            $WholesaleMeasureUnit = 'Метр квадратный';--}}
-{{--            $WholesaleDiscountLadderType = 'Зависит от суммы';--}}
-{{--            $DiscountLadderList = '10000|10<br>50000|15<br>100000|20';--}}
-{{--        }--}}
-{{--    @endphp--}}
+    @php
+        if ($price_old == 0 || $price_old == $price) {
+            $WholesaleType = 'Да';
+            $WholesaleMinOrderType = 'От количества';
+            $WholesaleMinOrderCount = '1';
+            $WholesalePacking = '';
+            $WholesalePackingCount = '';
+            $WholesaleMeasureUnit = 'Метр квадратный';
+            $WholesaleDiscountLadderType = 'Зависит от суммы';
+            $DiscountLadderList = '10000|10<br>50000|15<br>100000|20';
+        }
+    @endphp
 
     @php
         $VideoFileURL = '';
