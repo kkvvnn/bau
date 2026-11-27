@@ -209,7 +209,7 @@ $image_urls = $image_main;
     @php
         $code = 'Alpinefloor-spc-Hand-2';
         $video = $custom_video;
-        $price = '1990';
+        $price = '2690';
         $title = 'SPC ламинат Alpine Floor все коллекции - 2';
     @endphp
 

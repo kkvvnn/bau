@@ -71,10 +71,10 @@
 {{--    @include('exports.avito.main.kerama-marazzi') //READY--}}
     @include('exports.avito.main.belleza')
     @include('exports.avito.main.artkera') //READY
-    @include('exports.avito.main.kerranova') //READY
+{{--    @include('exports.avito.main.kerranova') //READY--}}
     @include('exports.avito.main.global-tile') //READY
     {{--    @include('exports.avito.main.azario') //READY--}}
-    @include('exports.avito.main.primavera') //READY
+{{--    @include('exports.avito.main.primavera') //READY--}}
     @include('exports.avito.main.rusplitka') //READ
 {{--    @include('exports.avito.main.artcenter') //READY--}}
 
@@ -97,8 +97,8 @@
     @include('exports.avito.main.rusplitka-hand-2')
     @include('exports.avito.main.aquafloor-hand-1')
     @include('exports.avito.main.aquafloor-hand-2')
-    @include('exports.avito.main.alpinefloor-spc-hand-1')
-    @include('exports.avito.main.alpinefloor-spc-hand-2')
+{{--    @include('exports.avito.main.alpinefloor-spc-hand-1')--}}
+{{--    @include('exports.avito.main.alpinefloor-spc-hand-2')--}}
     @include('exports.avito.main.general-hand')
     @include('exports.avito.main.viola-staro')
 
